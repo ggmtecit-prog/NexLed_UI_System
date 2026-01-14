@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-grey-tertiary font-urbanist text-black min-h-screen flex flex-col">
+
+    <!-- Main content spacer -->
+    <div class="flex-1"></div>
+
+    <!-- FOOTER ORGANISM -->
+    <footer class="bg-white border-t border-grey-tertiary">
+
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+
+                <!-- Brand Column -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/nexled_logo_1768408567127.png"
+                            alt="NexLed Logo" class="w-16 h-16 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-black">NexLed</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-grey-primary hover:text-green-secondary transition-colors">Sobre
+                                Nós</a></li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Caminho</a></li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Subscrever
+                                Newsletter</a></li>
+                    </ul>
+                    <div class="flex gap-3 mt-4">
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center rounded text-grey-primary hover:text-green-secondary transition-colors">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center rounded text-grey-primary hover:text-green-secondary transition-colors">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 flex items-center justify-center rounded text-grey-primary hover:text-green-secondary transition-colors">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-xs text-grey-primary mt-4">Uma marca do grupo TechX</p>
+                </div>
+
+                <!-- Categorias -->
+                <div>
+                    <h4 class="text-base font-semibold text-black mb-4">Categorias</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Retalho</a></li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Interior</a></li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Industrial</a>
+                        </li>
+                        <li><a href="#" class="text-grey-primary hover:text-green-secondary transition-colors">Fontes de
+                                Alimentação</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contactos -->
+                <div>
+                    <h4 class="text-base font-semibold text-black mb-4">Contactos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:comercial@nexled.pt"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">comercial@nexled.pt</a>
+                        </li>
+                        <li><a href="tel:+351229999230"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">+351 229 999
+                                230</a></li>
+                        <li><a href="tel:+351919989354"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">+351 919 989
+                                354</a></li>
+                        <li><a href="tel:+351917321988"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">+351 917 321
+                                988</a></li>
+                    </ul>
+                </div>
+
+                <!-- Localização -->
+                <div>
+                    <h4 class="text-base font-semibold text-black mb-4">Localização</h4>
+                    <address class="not-italic text-sm text-grey-primary space-y-2">
+                        <p>Travessa Cabo do Mundo, 88</p>
+                        <p>4465-427 Pazinha,</p>
+                        <p>Matosinhos - Portugal</p>
+                    </address>
+                    <div class="mt-4">
+                        <h5 class="text-sm font-semibold text-black mb-1">Horário</h5>
+                        <p class="text-sm text-grey-primary">09:00h às 18:00h</p>
+                        <p class="text-sm text-grey-primary">Dias úteis</p>
+                    </div>
+                </div>
+
+                <!-- Suporte -->
+                <div>
+                    <h4 class="text-base font-semibold text-black mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-grey-primary hover:text-green-secondary transition-colors">FAQ &
+                                Garantia</a></li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Downloads</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors">Instruções
+                                Reparação</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="bg-green-primary text-white py-3">
+            <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-between items-center text-xs gap-4">
+                <span>Pellentesque</span>
+                <span>Pellentesque</span>
+                <span>Pellentesque</span>
+                <span>Pellentesque</span>
+                <span>Pellentesque</span>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

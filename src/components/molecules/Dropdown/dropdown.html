@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dropdown Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* Dropdown animation styles */
+        .dropdown__menu {
+            transition: opacity 180ms cubic-bezier(.2, .9, .2, 1),
+                transform 180ms cubic-bezier(.2, .9, .2, 1),
+                visibility 180ms cubic-bezier(.2, .9, .2, 1);
+        }
+    </style>
+</head>
+
+<body class="bg-white font-urbanist text-black p-10 flex flex-col items-center min-h-screen">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black">Dropdown Component</h1>
+
+    <!-- Single Select Dropdown -->
+    <section class="w-full max-w-4xl mb-12">
+        <h2 class="text-xl font-bold mb-6">Single Select</h2>
+        <div class="flex gap-8">
+
+            <!-- Active Dropdown -->
+            <div class="dropdown relative w-[280px]">
+                <button
+                    class="dropdown__trigger flex items-center justify-between w-full h-12 px-6 rounded-xl bg-white border border-black/8 text-black font-medium text-base cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                    aria-haspopup="listbox" aria-expanded="false">
+                    <span class="dropdown__value text-grey-primary">Select an option</span>
+                    <i
+                        class="ri-arrow-down-s-line dropdown__arrow text-xl text-grey-primary transition-transform duration-[180ms]"></i>
+                </button>
+                <ul class="dropdown__menu absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-xl shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-[100]"
+                    role="listbox" aria-label="Options">
+                    <li class="dropdown__item flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg"
+                        role="option" data-value="option1">Option 1</li>
+                    <li class="dropdown__item flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg"
+                        role="option" data-value="option2">Option 2</li>
+                    <li class="dropdown__item flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg"
+                        role="option" data-value="option3">Option 3</li>
+                    <li class="dropdown__item flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg"
+                        role="option" data-value="option4">Option 4</li>
+                </ul>
+            </div>
+
+            <!-- Disabled Dropdown -->
+            <div class="dropdown dropdown--disabled relative w-[280px]">
+                <button
+                    class="dropdown__trigger flex items-center justify-between w-full h-12 px-6 rounded-xl bg-white border border-black/4 text-grey-primary font-medium text-base cursor-not-allowed"
+                    aria-haspopup="listbox" aria-expanded="false" disabled aria-disabled="true">
+                    <span class="dropdown__value">Disabled</span>
+                    <i class="ri-arrow-down-s-line dropdown__arrow text-xl text-grey-primary"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Multi Select Dropdown -->
+    <section class="w-full max-w-4xl">
+        <h2 class="text-xl font-bold mb-6">Multi Select</h2>
+        <div class="flex gap-8">
+
+            <!-- Active Multi Dropdown -->
+            <div class="dropdown dropdown--multi relative w-[280px]">
+                <button
+                    class="dropdown__trigger flex items-center justify-between w-full h-12 px-6 rounded-xl bg-white border border-black/8 text-black font-medium text-base cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                    aria-haspopup="listbox" aria-expanded="false">
+                    <span class="dropdown__value text-grey-primary">Select options</span>
+                    <i
+                        class="ri-arrow-down-s-line dropdown__arrow text-xl text-grey-primary transition-transform duration-[180ms]"></i>
+                </button>
+                <ul class="dropdown__menu absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-xl shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-[100]"
+                    role="listbox" aria-multiselectable="true" aria-label="Options">
+                    <li class="dropdown__item relative flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg before:content-[''] before:inline-flex before:items-center before:justify-center before:w-[18px] before:h-[18px] before:border-2 before:border-black/20 before:rounded before:mr-3 before:flex-shrink-0 before:transition-all"
+                        role="option" data-value="option1">Option 1</li>
+                    <li class="dropdown__item relative flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg before:content-[''] before:inline-flex before:items-center before:justify-center before:w-[18px] before:h-[18px] before:border-2 before:border-black/20 before:rounded before:mr-3 before:flex-shrink-0 before:transition-all"
+                        role="option" data-value="option2">Option 2</li>
+                    <li class="dropdown__item relative flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg before:content-[''] before:inline-flex before:items-center before:justify-center before:w-[18px] before:h-[18px] before:border-2 before:border-black/20 before:rounded before:mr-3 before:flex-shrink-0 before:transition-all"
+                        role="option" data-value="option3">Option 3</li>
+                    <li class="dropdown__item relative flex items-center px-4 py-3 text-base font-medium cursor-pointer transition-all hover:bg-green-secondary/8 hover:text-green-secondary rounded-lg before:content-[''] before:inline-flex before:items-center before:justify-center before:w-[18px] before:h-[18px] before:border-2 before:border-black/20 before:rounded before:mr-3 before:flex-shrink-0 before:transition-all"
+                        role="option" data-value="option4">Option 4</li>
+                </ul>
+            </div>
+
+            <!-- Disabled Multi Dropdown -->
+            <div class="dropdown dropdown--multi dropdown--disabled relative w-[280px]">
+                <button
+                    class="dropdown__trigger flex items-center justify-between w-full h-12 px-6 rounded-xl bg-white border border-black/4 text-grey-primary font-medium text-base cursor-not-allowed"
+                    aria-haspopup="listbox" aria-expanded="false" disabled aria-disabled="true">
+                    <span class="dropdown__value">Disabled</span>
+                    <i class="ri-arrow-down-s-line dropdown__arrow text-xl text-grey-primary"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="dropdown.js" defer></script>
+
+</body>
+
+</html>

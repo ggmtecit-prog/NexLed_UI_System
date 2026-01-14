@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* Accordion transition styles */
+        .accordion-content {
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+
+        .accordion-trigger[aria-expanded="true"]+.accordion-content {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">Accordion Component</h1>
+
+    <!-- ACCORDION DEMO -->
+    <div class="w-full max-w-md bg-white p-8 md:p-10 rounded-[32px] shadow-sm border border-grey-tertiary">
+
+        <div class="accordion-group space-y-1">
+
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                <button
+                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                    aria-expanded="false">
+                    <span
+                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
+                        eget iaculis ante</span>
+                    <i
+                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
+                </button>
+                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
+                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                <button
+                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                    aria-expanded="false">
+                    <span
+                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
+                        eget iaculis ante</span>
+                    <i
+                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
+                </button>
+                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
+                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                <button
+                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                    aria-expanded="false">
+                    <span
+                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
+                        eget iaculis ante</span>
+                    <i
+                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
+                </button>
+                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
+                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="accordion.js"></script>
+</body>
+
+</html>

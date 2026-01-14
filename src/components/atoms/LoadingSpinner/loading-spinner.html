@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Loading Spinner Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* SVG Spinner Styles */
+        .spinner svg path {
+            fill: transparent;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transform-origin: center;
+        }
+
+        .spinner-track {
+            stroke: #EDEDED;
+            /* grey-tertiary */
+        }
+
+        .spinner-anim {
+            stroke: #058C53;
+            /* green-secondary */
+            stroke-dasharray: 100, 226;
+            animation: rotate-path 2s linear infinite;
+        }
+
+        @keyframes rotate-path {
+            0% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: -326;
+            }
+        }
+    </style>
+</head>
+
+<body class="p-10 bg-white flex flex-col items-center min-h-screen">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black">Loading Spinner</h1>
+
+    <!-- Size Variations -->
+    <div class="flex flex-wrap items-end justify-center gap-16 w-full max-w-4xl">
+
+        <!-- Small -->
+        <div class="flex flex-col items-center gap-4">
+            <div class="spinner w-12 h-12">
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <path class="spinner-track"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                    <path class="spinner-anim"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                </svg>
+            </div>
+            <span class="text-sm font-medium text-grey-primary">Small (48px)</span>
+        </div>
+
+        <!-- Medium -->
+        <div class="flex flex-col items-center gap-4">
+            <div class="spinner w-[100px] h-[100px]">
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <path class="spinner-track"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                    <path class="spinner-anim"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                </svg>
+            </div>
+            <span class="text-sm font-medium text-grey-primary">Medium (100px)</span>
+        </div>
+
+        <!-- Large -->
+        <div class="flex flex-col items-center gap-4">
+            <div class="spinner w-[156px] h-[156px]">
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <path class="spinner-track"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                    <path class="spinner-anim"
+                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                </svg>
+            </div>
+            <span class="text-sm font-medium text-grey-primary">Large (156px)</span>
+        </div>
+
+    </div>
+
+    <!-- Usage Guide -->
+    <div class="mt-16 max-w-2xl p-6 bg-grey-tertiary rounded-xl">
+        <h3 class="text-lg font-semibold mb-3 text-black">How to Use</h3>
+
+        <p class="text-[14px] text-grey-primary mb-4">
+            Copy the SVG spinner code and adjust the container size:
+        </p>
+
+        <pre class="bg-white p-4 rounded-lg text-[13px] overflow-x-auto mb-4"><code>&lt;!-- Small Spinner (48px) --&gt;
+&lt;div class="spinner w-12 h-12"&gt;
+  &lt;svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"&gt;
+    &lt;path class="spinner-track"
+      d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" /&gt;
+    &lt;path class="spinner-anim"
+      d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" /&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+
+        <div class="text-[14px] text-grey-primary">
+            <p class="font-medium text-black mb-2">Design:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Shape: Rounded square (20px corner radius)</li>
+                <li>Track color: <strong>grey-tertiary</strong> (#EDEDED)</li>
+                <li>Active stroke: <strong>green-secondary</strong> (#058C53)</li>
+                <li>Animation: 2s linear stroke dash animation</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploader Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">File Uploader Component</h1>
+
+    <!-- COMPONENT DISPLAY -->
+    <div class="w-full max-w-2xl space-y-8">
+
+        <!-- Folder Upload -->
+        <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+            <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Folder Upload</label>
+            <div id="folderDropZone"
+                class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                <input type="file" id="folderInput" class="hidden" webkitdirectory directory multiple>
+                <div class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                    <i class="ri-folder-add-line"></i>
+                </div>
+                <div class="drop-zone__text text-base font-medium text-black">
+                    Drag & Drop folder here
+                </div>
+                <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                    or click to browse your computer
+                </div>
+            </div>
+            <p class="text-xs text-grey-primary mt-2 ml-3">Supports bulk uploads with preserved structure.</p>
+        </div>
+
+        <!-- File Upload (Single or Multiple Files) -->
+        <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+            <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">File Upload</label>
+            <div id="fileDropZone"
+                class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                <input type="file" id="fileInput" class="hidden" multiple>
+                <div class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                    <i class="ri-file-add-line"></i>
+                </div>
+                <div class="drop-zone__text text-base font-medium text-black">
+                    Drag & Drop files here
+                </div>
+                <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                    or click to browse your computer
+                </div>
+            </div>
+            <p class="text-xs text-grey-primary mt-2 ml-3">Supports multiple file selection.</p>
+        </div>
+
+        <!-- Image Upload Only -->
+        <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+            <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Image Upload</label>
+            <div id="imageDropZone"
+                class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                <input type="file" id="imageInput" class="hidden" accept="image/*" multiple>
+                <div class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                    <i class="ri-image-add-line"></i>
+                </div>
+                <div class="drop-zone__text text-base font-medium text-black">
+                    Drag & Drop images here
+                </div>
+                <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                    or click to browse your computer
+                </div>
+            </div>
+            <p class="text-xs text-grey-primary mt-2 ml-3">Accepts image files only (jpg, png, gif, etc.).</p>
+        </div>
+
+    </div>
+
+    <script src="file-uploader.js"></script>
+</body>
+
+</html>

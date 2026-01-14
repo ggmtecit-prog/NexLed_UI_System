@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Button Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f4f4f6;
+        }
+    </style>
+</head>
+
+<body class="p-10 text-black bg-white">
+
+    <h1 class="text-2xl font-semibold mb-10">Buttons (No Install Version)</h1>
+
+    <!-- GRID LAYOUT FOR STATES -->
+    <div class="grid grid-cols-6 gap-8 mb-20 items-center justify-items-center text-center">
+        <!-- HEADERS -->
+        <h2 class="text-grey-primary font-light">Default</h2>
+        <h2 class="text-grey-primary font-light">Hover</h2>
+        <h2 class="text-grey-primary font-light">Focus</h2>
+        <h2 class="text-grey-primary font-light">Active</h2>
+        <h2 class="text-grey-primary font-light">Disabled</h2>
+        <h2 class="text-grey-primary font-light">Hover(Active)</h2>
+
+        <!-- ROW 1: STANDARD BUTTON (Visual Docs) -->
+
+        <!-- Default -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black font-medium text-[32px] transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-green-secondary/10 hover:shadow-btn-hover text-green-secondary font-medium text-[32px] -translate-y-[3px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Focus -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black font-medium text-[32px] ring-4 ring-green-secondary/30">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Active -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-primary border-none shadow-btn-active text-white font-medium text-[32px] scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Disabled -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-grey-tertiary border-none shadow-none text-grey-primary font-medium text-[32px] cursor-not-allowed">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover(Active) -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-secondary border-none shadow-[0_4px_12px_rgba(5,140,83,0.2)] text-white font-medium text-[32px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+
+        <!-- ROW 2: ICON ONLY -->
+
+        <!-- Default -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-green-secondary/10 hover:shadow-btn-hover text-green-secondary -translate-y-[3px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Focus -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black ring-4 ring-green-secondary/30">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Active -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-primary border-none shadow-btn-active text-white scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Disabled -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-grey-tertiary border-none shadow-none text-grey-primary cursor-not-allowed">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover(Active) -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-secondary border-none shadow-[0_4px_12px_rgba(5,140,83,0.2)] text-white">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+    </div>
+
+    <!-- LIVE COMPONENT DEMO with Classes -->
+    <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10">Live Interactive Components</h2>
+    <div class="flex gap-10">
+
+        <button class="
+            group flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-btn-default 
+            text-black font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <button class="
+            group flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-btn-default 
+            text-black font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+    </div>
+
+    <!-- TOGGLE BUTTONS DEMO -->
+    <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10 mt-10">Toggle Buttons</h2>
+    <div class="flex gap-10">
+
+        <!-- Standard Toggle -->
+        <button
+            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+            aria-pressed="false" class="
+            group flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-btn-default 
+            text-black font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
+            
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            
+            aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:scale-[0.98] aria-pressed:translate-y-0 aria-pressed:shadow-btn-active aria-pressed:border-green-primary
+            aria-pressed:hover:bg-green-secondary aria-pressed:hover:text-white aria-pressed:hover:translate-y-0 aria-pressed:hover:shadow-btn-hover-active
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Toggle Me
+        </button>
+
+        <!-- Icon Toggle -->
+        <button
+            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+            aria-pressed="false" class="
+            group flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-btn-default 
+            text-black font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
+            
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            
+            aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:scale-[0.98] aria-pressed:translate-y-0 aria-pressed:shadow-btn-active aria-pressed:border-green-primary
+            aria-pressed:hover:bg-green-secondary aria-pressed:hover:text-white aria-pressed:hover:translate-y-0 aria-pressed:hover:shadow-btn-hover-active
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+    </div>
+
+    <!-- GHOST BUTTONS SECTION -->
+    <h2 class="text-xl font-semibold mb-10 pt-10 border-t border-black/10 mt-10">Ghost Buttons (Icon Only)</h2>
+
+    <!-- GRID LAYOUT FOR GHOST BUTTON STATES -->
+    <div class="grid grid-cols-6 gap-8 mb-20 items-center justify-items-center text-center">
+        <!-- HEADERS -->
+        <h2 class="text-grey-primary font-light">Default</h2>
+        <h2 class="text-grey-primary font-light">Hover</h2>
+        <h2 class="text-grey-primary font-light">Focus</h2>
+        <h2 class="text-grey-primary font-light">Active</h2>
+        <h2 class="text-grey-primary font-light">Disabled</h2>
+        <h2 class="text-grey-primary font-light">Hover(Active)</h2>
+
+        <!-- Default -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-transparent border-none text-grey-primary transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-grey-tertiary border-none text-green-secondary">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Focus -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-transparent border-none text-grey-primary ring-4 ring-green-secondary/30">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Active -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-primary border-none text-white scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Disabled -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-grey-tertiary border-none text-grey-primary cursor-not-allowed">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover(Active) -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-secondary border-none text-white">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- ROW 2: TEXT + ICON VARIANT -->
+
+        <!-- Default -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-transparent border-none text-grey-primary font-medium text-[32px] transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-grey-tertiary border-none text-green-secondary font-medium text-[32px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Focus -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-transparent border-none text-grey-primary font-medium text-[32px] ring-4 ring-green-secondary/30">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Active -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-primary border-none text-white font-medium text-[32px] scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Disabled -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-grey-tertiary border-none text-grey-primary font-medium text-[32px] cursor-not-allowed">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover(Active) -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-secondary border-none text-white font-medium text-[32px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+    </div>
+
+    <!-- LIVE GHOST BUTTON DEMO -->
+    <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10">Live Ghost Buttons</h2>
+    <div class="flex gap-10">
+
+        <!-- Standard Interactive Ghost -->
+        <button class="
+            flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
+            bg-transparent border-none 
+            text-grey-primary
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:bg-grey-tertiary hover:text-green-secondary
+            
+            active:bg-green-primary active:text-white active:scale-[0.98]
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Ghost Toggle -->
+        <button
+            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+            aria-pressed="false" class="
+            flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
+            bg-transparent border-none 
+            text-grey-primary
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:bg-grey-tertiary hover:text-green-secondary
+            
+            active:bg-green-primary active:text-white active:scale-[0.98]
+            
+            aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:scale-[0.98]
+            aria-pressed:hover:bg-green-secondary aria-pressed:hover:text-white
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Ghost Text+Icon -->
+        <button class="
+            flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
+            bg-transparent border-none 
+            text-grey-primary font-medium text-[32px]
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:bg-grey-tertiary hover:text-green-secondary
+            
+            active:bg-green-primary active:text-white active:scale-[0.98]
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Ghost Text+Icon Toggle -->
+        <button
+            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+            aria-pressed="false" class="
+            flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
+            bg-transparent border-none 
+            text-grey-primary font-medium text-[32px]
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            
+            hover:bg-grey-tertiary hover:text-green-secondary
+            
+            active:bg-green-primary active:text-white active:scale-[0.98]
+            
+            aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:scale-[0.98]
+            aria-pressed:hover:bg-green-secondary aria-pressed:hover:text-white
+            
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            
+            disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:text-grey-primary
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Toggle Me
+        </button>
+
+    </div>
+
+</body>
+
+</html>

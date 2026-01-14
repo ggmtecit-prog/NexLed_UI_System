@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">List Component</h1>
+
+    <!-- COMPONENT DISPLAY -->
+    <div class="w-full max-w-2xl bg-white p-12 rounded-[32px] shadow-sm border border-grey-tertiary">
+
+        <h2 class="text-3xl font-semibold mb-10 text-black tracking-tight">Product Details</h2>
+
+        <div class="data-list divide-y divide-grey-tertiary">
+
+            <!-- List Row 1 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Brand</span>
+                <span class="value text-lg font-medium text-black">NEXLED</span>
+            </div>
+
+            <!-- List Row 2 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Model</span>
+                <span class="value text-lg font-medium text-black">NX-2024-PRO</span>
+            </div>
+
+            <!-- List Row 3 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Category</span>
+                <span class="value text-lg font-medium text-black">Electronics</span>
+            </div>
+
+            <!-- List Row 4 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Weight</span>
+                <span class="value text-lg font-medium text-black">2.5 kg</span>
+            </div>
+
+            <!-- List Row 5 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Dimensions</span>
+                <span class="value text-lg font-medium text-black">30 × 20 × 10 cm</span>
+            </div>
+
+            <!-- List Row 6 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Color</span>
+                <span class="value text-lg font-medium text-black">Matte Black</span>
+            </div>
+
+            <!-- List Row 7 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Warranty</span>
+                <span class="value text-lg font-medium text-black">2 Years</span>
+            </div>
+
+            <!-- List Row 8 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-grey-tertiary/30 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Status</span>
+                <span class="value text-lg font-medium text-green-secondary">In Stock</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

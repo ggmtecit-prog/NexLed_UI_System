@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Scrollbar Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* Custom Scrollbar Styles */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D9D9D9;
+            /* grey-secondary */
+            border-radius: 10px;
+            border: 3px solid #FCFCFC;
+            /* white */
+            background-clip: padding-box;
+            transition: background 240ms ease;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+        .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
+            background: #058C53;
+            /* green-secondary */
+            background-clip: padding-box;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:active {
+            background: #03683D;
+            /* green-primary */
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+
+<body class="p-10 bg-white">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black">Custom Scrollbar</h1>
+
+    <!-- Demo Container -->
+    <div class="w-[400px] h-[300px] bg-white border border-black/8 rounded-[20px] overflow-hidden mx-auto">
+        <div class="custom-scrollbar h-full overflow-y-auto px-6 py-4 my-3">
+            <h2 class="text-xl font-medium mb-4 text-black">Internal Scroll Design</h2>
+            <p class="text-[15px] text-grey-primary mb-4">
+                Notice how the scrollbar respects the card's curvature. It is physically offset from the edges to
+                prevent "popping out" at the corners.
+            </p>
+
+            <!-- Spacer to create scrollable content -->
+            <div class="h-[600px] rounded-xl bg-gradient-to-b from-green-secondary/5 to-grey-tertiary my-5"></div>
+
+            <p class="text-[15px] text-grey-primary mt-4">End of content.</p>
+        </div>
+    </div>
+
+    <!-- Usage Guide -->
+    <div class="mt-10 max-w-2xl mx-auto p-6 bg-grey-tertiary rounded-xl">
+        <h3 class="text-lg font-semibold mb-3 text-black">How to Use</h3>
+        <p class="text-[14px] text-grey-primary mb-2">Add the <code
+                class="px-2 py-1 bg-white rounded text-green-secondary">custom-scrollbar</code> class to any scrollable
+            container:</p>
+        <pre class="bg-white p-4 rounded-lg text-[13px] overflow-x-auto"><code>&lt;div class="custom-scrollbar overflow-y-auto h-[300px]"&gt;
+  Your content here...
+&lt;/div&gt;</code></pre>
+
+        <div class="mt-4 text-[14px] text-grey-primary">
+            <p class="font-medium text-black mb-2">States:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Default:</strong> Grey thumb (grey-secondary)</li>
+                <li><strong>Hover:</strong> Green thumb (green-secondary)</li>
+                <li><strong>Active:</strong> Dark green thumb (green-primary)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add .is-scrolling class when user scrolls with mouse wheel
+        const scrollContainer = document.querySelector('.custom-scrollbar');
+        let scrollTimeout;
+
+        scrollContainer.addEventListener('scroll', () => {
+            // Add the class immediately
+            scrollContainer.classList.add('is-scrolling');
+
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
+
+            // Remove the class after 1 second of no scrolling
+            scrollTimeout = setTimeout(() => {
+                scrollContainer.classList.remove('is-scrolling');
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepper Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+
+    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">Stepper Component</h1>
+
+    <!-- STEPPER COMPONENT -->
+    <div class="w-full max-w-4xl">
+
+        <div
+            class="flex flex-col md:flex-row items-center justify-between w-full p-8 bg-white rounded-[24px] shadow-sm border border-grey-tertiary">
+
+            <!-- Step 1: Active -->
+            <button
+                class="flex items-center gap-4 group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/20 rounded-xl p-2"
+                onclick="setActiveStep(1)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-green-primary text-white shadow-md transition-all duration-300 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold">1</span>
+                </div>
+                <span class="text-lg font-medium text-black">Order Details</span>
+            </button>
+
+            <!-- Arrow Separator -->
+            <i class="ri-arrow-right-line text-2xl text-grey-primary hidden md:block"></i>
+
+            <!-- Step 2: Inactive -->
+            <button
+                class="flex items-center gap-4 group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/20 rounded-xl p-2"
+                onclick="setActiveStep(2)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-grey-tertiary text-black transition-all duration-300 group-hover:bg-grey-primary/30 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold">2</span>
+                </div>
+                <span class="text-lg font-medium text-black">Shipping Info</span>
+            </button>
+
+            <!-- Arrow Separator -->
+            <i class="ri-arrow-right-line text-2xl text-grey-primary hidden md:block"></i>
+
+            <!-- Step 3: Inactive -->
+            <button
+                class="flex items-center gap-4 group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/20 rounded-xl p-2"
+                onclick="setActiveStep(3)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-grey-tertiary text-black transition-all duration-300 group-hover:bg-grey-primary/30 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold">3</span>
+                </div>
+                <span class="text-lg font-medium text-black">Payment</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="stepper.js"></script>
+</body>
+
+</html>
