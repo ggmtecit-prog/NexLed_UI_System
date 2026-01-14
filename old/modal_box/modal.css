@@ -1,0 +1,22 @@
+/*
+    Modal Box Styles
+    Most logic is handled via Tailwind classes in JS, 
+    but we define specific utility classes for the 'open' state to avoid complex inline strings in JS.
+*/
+
+/* Backdrop Open State */
+.backdrop-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Panel Open State */
+.panel-open {
+    opacity: 1 !important;
+    transform: scale(100%) !important;
+}
+
+/* Optional: Prevent body scroll when modal is open */
+body.modal-active {
+    overflow: hidden;
+}

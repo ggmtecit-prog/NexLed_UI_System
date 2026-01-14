@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperlink Component</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#058C53',
+                        'primary-dark': '#03683D',
+                        'page-bg': '#f4f4f6',
+                        'text-default': '#111827',
+                        'text-muted': '#6B7280',
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="hyperlink.css">
+</head>
+
+<body class="bg-page-bg font-sans text-text-default flex flex-col items-center justify-start min-h-screen p-8">
+
+    <!-- Specs Block -->
+    <header class="max-w-xl w-full bg-white p-8 rounded-2xl border border-gray-100 shadow-sm mb-12 mt-12">
+        <h1 class="text-2xl font-semibold mb-4">Hyperlink Specs</h1>
+        <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Font:</strong> Urbanist</p>
+            <p><strong>Primary Color:</strong> #058C53 (Green)</p>
+            <p><strong>States:</strong> Default, Hover, Focus, Disabled</p>
+        </div>
+    </header>
+
+    <!-- COMPONENT DEMO START -->
+    <!-- COMPONENT DEMO START -->
+    <div class="w-full max-w-5xl flex flex-col gap-16">
+
+        <!-- SECTION 1: VISUAL STATES -->
+        <section class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
+            <h2 class="text-xl font-bold mb-8 text-gray-900 border-b border-gray-100 pb-4">State Reference</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+                <!-- Default -->
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Default</span>
+                    <div>
+                        <a href="#default-link-demo" class="link-premium">
+                            Default Link
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hover -->
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Hover</span>
+                    <div>
+                        <a href="#hover-link-demo" class="link-premium state-hover">
+                            Hover Link
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Focus -->
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Focus</span>
+                    <div>
+                        <a href="#focus-link-demo" class="link-premium state-focus">
+                            Focused Link
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visited -->
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Visited</span>
+                    <div>
+                        <a href="#visited-link-demo" class="link-premium state-visited">
+                            Visited Link
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: USAGE VARIANTS -->
+        <section
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
+
+            <!-- Variant: Simple Text -->
+            <div class="flex flex-col gap-4">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Standard Text</span>
+                <div>
+                    <a href="#variant-simple" class="link-premium">
+                        Download Documentation
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500">Standard usage with premium left-to-right animation.</p>
+            </div>
+
+            <!-- Variant: With Icon -->
+            <div class="flex flex-col gap-4">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">With Icon</span>
+                <div>
+                    <a href="#variant-icon" class="link-premium group inline-flex items-center gap-1">
+                        <span>View Case Study</span>
+                        <i class="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500">Icon slides right on hover.</p>
+            </div>
+
+            <!-- Variant: Inline Context -->
+            <div class="flex flex-col gap-4">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Inline Context</span>
+                <p class="text-text-muted leading-relaxed">
+                    You can agree to our
+                    <a href="#variant-terms" class="link-premium">Terms of Service</a>
+                    and read our
+                    <a href="#variant-privacy" class="link-premium">Privacy Policy</a>
+                    to learn more about how we handle your data.
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+    <!-- COMPONENT DEMO END -->
+
+    <script src="hyperlink.js"></script>
+</body>
+
+</html>

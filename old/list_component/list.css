@@ -1,0 +1,51 @@
+:root {
+    --primary: #058C53;
+}
+
+.list-row {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-row:last-child {
+    border-bottom: none;
+}
+
+/* 
+   Smooth hover effect
+*/
+.list-row:hover .label,
+.list-row:hover .value {
+    color: var(--primary);
+}
+
+.label,
+.value {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.label::after,
+.value::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.list-row:hover .label::after,
+.list-row:hover .value::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Ensure font anti-aliasing for premium look */
+.list-row span {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

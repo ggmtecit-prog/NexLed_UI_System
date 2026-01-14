@@ -1,0 +1,74 @@
+/* 
+   Loading Spinner Styles 
+   Based on the provided reference but adapted for a square shape and project colors.
+*/
+
+.spinner-container {
+    /* Base layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Size Variants */
+.spinner-sm {
+    width: 48px;
+    height: 48px;
+}
+
+.spinner-md {
+    width: 100px;
+    height: 100px;
+}
+
+.spinner-lg {
+    width: 156px;
+    height: 156px;
+}
+
+.spinner-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.spinner-svg path {
+    fill: transparent;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform-origin: center;
+}
+
+.spinner-track {
+    stroke: #E5E7EB;
+    /* Light grey background */
+}
+
+.spinner-anim {
+    stroke: #058C53;
+    /* Primary Premium Green */
+
+    /* 
+       Perimeter Calculation:
+       Straight sides: (90 - 40) * 4 = 200
+       Corners: 2 * PI * 20 ≈ 125.6
+       Total ≈ 325.6px
+       
+       We set the pattern to sum to ~326px to ensure a smooth loop.
+    */
+    stroke-dasharray: 100, 226;
+
+    /* Animation settings */
+    animation: rotate-path 2s linear infinite;
+}
+
+@keyframes rotate-path {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        /* Move full perimeter length for seamless loop */
+        stroke-dashoffset: -326;
+    }
+}

@@ -1,0 +1,8 @@
+/* Custom styles if absolutely necessary, otherwise using Tailwind utility classes */
+.announcement-bar-closed {
+    opacity: 0;
+    transform: translateY(-100%);
+    margin-top: -60px;
+    /* Adjust based on height */
+    pointer-events: none;
+}

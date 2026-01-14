@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepper Component</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#058C53',
+                        'primary-dark': '#03683D',
+                        'page-bg': '#f4f4f6',
+                        'text-default': '#111827',
+                        'text-muted': '#6B7280',
+                        'step-inactive': '#E5E7EB', // Approx light gray
+                        'step-active-bg': '#03683D', // Dark Green for active step container
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 6px 14px rgba(15, 23, 42, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-page-bg font-sans text-text-default flex flex-col items-center justify-center min-h-screen p-8">
+
+    <!-- Specs Block -->
+    <header class="max-w-4xl w-full bg-white p-8 rounded-2xl border border-gray-100 shadow-sm mb-12">
+        <h1 class="text-2xl font-semibold mb-4">Stepper Specifications</h1>
+        <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Framework:</strong> Tailwind CSS</p>
+            <p><strong>Typography:</strong> Urbanist (600 Weight for Numbers, 500 for Labels)</p>
+            <p><strong>Active State:</strong> Dark Green (#03683D) background, White text</p>
+            <p><strong>Inactive State:</strong> Light Gray (#E5E7EB) background, Dark text</p>
+            <p><strong>Shape:</strong> Rounded Square (14px radius)</p>
+        </div>
+    </header>
+
+    <!-- COMPONENT DEMO START -->
+    <div class="w-full max-w-4xl space-y-12">
+
+        <!-- Stepper Component -->
+        <div
+            class="flex flex-col md:flex-row items-center justify-between w-full p-8 bg-white rounded-3xl shadow-premium border border-gray-100/50">
+
+            <!-- Step 1: Active -->
+            <button class="flex items-center gap-4 group focus:outline-none" onclick="setActiveStep(1)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-primary-dark text-white shadow-md transition-all duration-300 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold font-urbanist">1</span>
+                </div>
+                <span class="text-lg font-medium text-text-default">Condimentum</span>
+            </button>
+
+            <!-- Arrow Separator -->
+            <i class="ri-arrow-right-line text-2xl text-gray-300 hidden md:block"></i>
+
+            <!-- Step 2: Inactive -->
+            <button class="flex items-center gap-4 group focus:outline-none" onclick="setActiveStep(2)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-step-inactive text-text-default transition-all duration-300 group-hover:bg-gray-300 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold font-urbanist">2</span>
+                </div>
+                <span class="text-lg font-medium text-text-default">Condimentum</span>
+            </button>
+
+            <!-- Arrow Separator -->
+            <i class="ri-arrow-right-line text-2xl text-gray-300 hidden md:block"></i>
+
+            <!-- Step 3: Inactive -->
+            <button class="flex items-center gap-4 group focus:outline-none" onclick="setActiveStep(3)">
+                <div
+                    class="flex items-center justify-center w-12 h-12 rounded-[14px] bg-step-inactive text-text-default transition-all duration-300 group-hover:bg-gray-300 group-hover:scale-105 group-active:scale-95">
+                    <span class="text-xl font-bold font-urbanist">3</span>
+                </div>
+                <span class="text-lg font-medium text-text-default">Condimentum</span>
+            </button>
+
+        </div>
+
+    </div>
+    <!-- COMPONENT DEMO END -->
+
+    <script src="stepper.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantity Selector Component</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#058C53',
+                        'primary-dark': '#03683D',
+                        'page-bg': '#f4f4f6',
+                        'text-default': '#111827',
+                        'text-muted': '#6B7280',
+                        'border-default': '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="quantity_selector.css">
+</head>
+
+<body class="bg-page-bg font-sans text-text-default flex flex-col items-center justify-start min-h-screen p-8">
+
+    <!-- Specs Block -->
+    <header class="max-w-xl w-full bg-white p-8 rounded-2xl border border-gray-100 shadow-sm mb-12 mt-12">
+        <h1 class="text-2xl font-semibold mb-4">Quantity Selector Specs</h1>
+        <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Design:</strong> Minimalist Control</p>
+            <p><strong>Font:</strong> Urbanist (Bold Numbers)</p>
+            <p><strong>Interaction:</strong> Hover tint, Active scale, Min/Max limits</p>
+        </div>
+    </header>
+
+    <!-- COMPONENT DEMO START -->
+    <div
+        class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-12 bg-white p-12 rounded-3xl shadow-sm border border-gray-100 items-center justify-items-center">
+
+        <!-- Variant 1: Minimal (Matches Reference) -->
+        <div class="flex flex-col items-center gap-4">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Minimal (Ref)</span>
+
+            <div class="quantity-wrapper" data-min="0" data-max="10">
+                <button class="qty-btn" aria-label="Decrease quantity">
+                    <i class="ri-subtract-line"></i>
+                </button>
+
+                <input type="number" class="qty-input" value="0" readonly aria-label="Quantity">
+
+                <button class="qty-btn" aria-label="Increase quantity">
+                    <i class="ri-add-line"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Variant 2: Contained (Pill Shape) -->
+        <div class="flex flex-col items-center gap-4">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Contained Pill</span>
+
+            <div class="quantity-wrapper quantity-contained" data-min="1" data-max="99">
+                <button class="qty-btn" aria-label="Decrease quantity">
+                    <i class="ri-subtract-line"></i>
+                </button>
+
+                <input type="number" class="qty-input" value="1" readonly aria-label="Quantity">
+
+                <button class="qty-btn" aria-label="Increase quantity">
+                    <i class="ri-add-line"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Variant 3: Large/Solid -->
+        <div class="flex flex-col items-center gap-4">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Large Solid</span>
+
+            <div class="quantity-wrapper quantity-solid" data-min="0" data-max="50">
+                <button class="qty-btn" aria-label="Decrease quantity">
+                    <i class="ri-subtract-line"></i>
+                </button>
+
+                <input type="number" class="qty-input" value="10" readonly aria-label="Quantity">
+
+                <button class="qty-btn" aria-label="Increase quantity">
+                    <i class="ri-add-line"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- COMPONENT DEMO END -->
+
+    <script src="quantity_selector.js"></script>
+</body>
+
+</html>

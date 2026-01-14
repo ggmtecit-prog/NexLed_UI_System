@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Button Component</title>
+    <link rel="stylesheet" href="../../../styles/style.css">
+    <!-- Note: In Dev mode, Vite injects this. In this manual check, we rely on Vite to serve it. -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body class="bg-page p-10 font-urbanist text-default">
+
+    <h1 class="text-2xl font-semibold mb-10">Buttons</h1>
+
+    <!-- GRID LAYOUT FOR STATES -->
+    <div class="grid grid-cols-5 gap-8 mb-20 items-center justify-items-center text-center">
+        <!-- HEADERS -->
+        <h2 class="text-muted font-light">Default</h2>
+        <h2 class="text-muted font-light">Hover</h2>
+        <h2 class="text-muted font-light">Active</h2>
+        <h2 class="text-muted font-light">Disabled</h2>
+        <h2 class="text-muted font-light">Hover(Active)</h2>
+
+        <!-- ROW 1: STANDARD BUTTON (SIMULATED STATES for visual docs) -->
+
+        <!-- Default -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-[0_6px_14px_rgba(15,23,42,0.06)] text-default font-medium text-[32px] transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover (Simulated) -->
+        <!-- Added -translate-y-1, text-green-secondary, larger shadow to mimic hover -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-green-secondary/10 shadow-[0_18px_36px_rgba(5,140,83,0.14)] text-green-secondary font-medium text-[32px] -translate-y-[3px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Active (Simulated) -->
+        <!-- Added bg-green-primary, text-white, scale -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-primary border-none shadow-[0_4px_10px_rgba(0,0,0,0.2)] text-white font-medium text-[32px] scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Disabled (Simulated) -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-none text-muted font-medium text-[32px] cursor-not-allowed opacity-50">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <!-- Hover(Active) (Simulated: Active state but maybe with a slightly different shadow or brightness if specified) -->
+        <!-- Based on image, Hover(Active) looks just like an Active state, maybe slightly lighter? Legacy CSS shows no distinct hover-active. 
+             If it's a toggle button that is ON and Hovered: -->
+        <button
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-secondary border-none shadow-[0_4px_12px_rgba(5,140,83,0.2)] text-white font-medium text-[32px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+
+        <!-- ROW 2: ICON ONLY (SIMULATED) -->
+
+        <!-- Default -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-[0_6px_14px_rgba(15,23,42,0.06)] text-default transition-all">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-green-secondary/10 shadow-[0_18px_36px_rgba(5,140,83,0.14)] text-green-secondary -translate-y-[3px]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Active -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-primary border-none shadow-[0_4px_10px_rgba(0,0,0,0.2)] text-white scale-[0.98]">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Disabled -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-none text-muted cursor-not-allowed opacity-50">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+        <!-- Hover(Active) -->
+        <button
+            class="flex items-center justify-center w-[94px] h-[94px] rounded-[25px] bg-green-secondary border-none shadow-[0_4px_12px_rgba(5,140,83,0.2)] text-white">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+    </div>
+
+    <!-- LIVE COMPONENT DEMO -->
+    <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10">Live Interactive Components</h2>
+    <div class="flex gap-10">
+
+        <!-- ACTUAL IMPLEMENTATION TO USE IN PROJECT -->
+        <!-- Note: This class mapping needs to be abstracted into an @apply or Component Class later if desired, 
+             but for Atomic/Tailwind, standardizing these utility strings is step 1. -->
+
+        <button class="
+            group flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-[0_6px_14px_rgba(15,23,42,0.06)] 
+            text-default font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-[0_18px_36px_rgba(5,140,83,0.14)] hover:border-green-secondary/10
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-[0_4px_10px_rgba(0,0,0,0.2)]
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none disabled:hover:text-muted
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+            Delete All Files
+        </button>
+
+        <button class="
+            group flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
+            bg-white border border-black/5 shadow-[0_6px_14px_rgba(15,23,42,0.06)] 
+            text-default font-medium text-[32px] 
+            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-[0_18px_36px_rgba(5,140,83,0.14)] hover:border-green-secondary/10
+            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-[0_4px_10px_rgba(0,0,0,0.2)]
+            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
+            disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none disabled:hover:text-muted
+        ">
+            <i class="ri-delete-bin-2-line text-[48px]"></i>
+        </button>
+
+    </div>
+
+    <script type="module" src="../../../styles/main.css"></script>
+</body>
+
+</html>

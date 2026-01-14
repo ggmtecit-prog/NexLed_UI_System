@@ -1,0 +1,108 @@
+/* Material Selector Styles */
+
+:root {
+    --primary: #058C53;
+    --primary-dark: #03683D;
+    --text-default: #111827;
+    --text-muted: #6B7280;
+    --border-default: #E5E7EB;
+    --page-bg: #f4f4f6;
+    --transition-premium: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.material-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    transition: var(--transition-premium);
+}
+
+/* 
+   Thumb Container (Squircle)
+   - Using very rounded corners and object-fit
+*/
+.material-thumb-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    /* Squircle look */
+    overflow: hidden;
+    background: #f0f0f0;
+    transition: var(--transition-premium);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.material-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Fixed: was object-cover */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Label Wrapper & New Check icon */
+.material-label-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.material-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition-premium);
+}
+
+.label-check {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover State */
+.material-item:hover .material-thumb-container {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.material-item:hover .material-img {
+    transform: scale(1.12);
+}
+
+.material-item:hover .material-label {
+    color: var(--text-default);
+}
+
+/* Selected State */
+.material-item.is-selected .material-thumb-container {
+    box-shadow: 0 0 0 2px var(--primary);
+    /* Image border like reference */
+    transform: translateY(-6px);
+}
+
+.material-item.is-selected .material-label {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.material-item.is-selected .label-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Focus State for accessibility */
+.material-item:focus-visible .material-thumb-container {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}

@@ -1,0 +1,274 @@
+/* ============================================================
+  Page + Toggle Button + Disabled Copy styles
+  - Disabled copy is a full visual copy but non-interactive
+  - Disabled visuals: muted color, no shadow, cursor not-allowed
+  ============================================================ */
+
+:root {
+    --page-bg: #f4f4f6;
+    --btn-bg: #FCFCFC;
+    /* button fill (rest) */
+    --text-default: #111827;
+    /* default label color */
+    --muted-text: #9CA3AF;
+    /* disabled text color (muted gray) */
+    --accent: #058C53;
+    /* green accent for hover tint */
+    --accent-glow: rgba(5, 140, 83, 0.14);
+    /* hover glow */
+    --neutral-shadow: rgba(15, 23, 42, 0.06);
+    /* subtle neutral shadow */
+    --focus-ring: rgba(5, 140, 83, 0.28);
+    /* focus ring */
+    --active-bg: #03683D;
+    /* solid active background */
+    --active-text: #FCFCFC;
+    /* active text/icon color */
+    --font-size: 32px;
+    --font-weight: 500;
+    --btn-width: 333px;
+    --btn-height: 94px;
+    --radius: 25px;
+    --icon-size: 48px;
+    --padding-x: 24px;
+    --transition-shadow: 400ms cubic-bezier(.16, 1, 0.3, 1);
+    --transition-transform: 350ms cubic-bezier(.16, 1, 0.3, 1);
+    --transition-color: 800ms cubic-bezier(.16, 1, 0.3, 1);
+}
+
+/* Reset & base */
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    background: var(--page-bg);
+    color: var(--text-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 32px;
+}
+
+/* Specs block */
+.specs-block {
+    max-width: 760px;
+    text-align: left;
+    background: #ffffff;
+    padding: 20px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.specs-block h1 {
+    margin: 0 0 12px 0;
+    font-size: 22px;
+    letter-spacing: -0.2px
+}
+
+.specs-block p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #374151
+}
+
+/* Demo area: place buttons side-by-side */
+.demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Button base (toggle OFF visuals) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    width: var(--btn-width);
+    height: var(--btn-height);
+    padding: 0 var(--padding-x);
+    border-radius: var(--radius);
+    background: var(--btn-bg);
+    /* white background when off */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--text-default);
+    /* children inherit this color */
+    cursor: pointer;
+    transition:
+        box-shadow var(--transition-shadow),
+        transform var(--transition-transform),
+        color var(--transition-color),
+        border-color var(--transition-color),
+        background-color var(--transition-color);
+    box-shadow: 0 6px 14px var(--neutral-shadow);
+    /* neutral resting shadow */
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+    font-family: inherit;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Icon inherits color from the button so it tints correctly */
+.icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    /* important: inherit from .btn */
+}
+
+.icon i {
+    font-size: var(--icon-size);
+    line-height: 1;
+}
+
+/* Hover & focus-visible (OFF state)
+   - Keep background white
+   - Tint text/icon to accent
+   - Add green outer glow for discoverability
+   - Slight lift for micro-interaction
+   - No inner shadow, no background fill change
+*/
+.btn:hover,
+.btn:focus-visible {
+    background: var(--btn-bg);
+    /* remain white */
+    color: var(--accent);
+    /* tint text/icon */
+    border-color: rgba(5, 140, 83, 0.12);
+    box-shadow:
+        0 18px 36px var(--accent-glow),
+        0 6px 18px var(--neutral-shadow);
+    transform: translateY(-3px);
+}
+
+/* Toggle ON state (aria-pressed="true") AND Active (pressed) state
+   - Solid green background #03683D
+   - Text and icon white #FCFCFC
+   - Stronger neutral shadow while active
+*/
+.btn[aria-pressed="true"],
+.btn:active:not([disabled]):not(.btn--disabled) {
+    background: var(--active-bg);
+    color: var(--active-text);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(0) scale(0.98);
+    /* Snappy transition going IN (snaps to green) */
+    transition:
+        background-color 40ms,
+        color 40ms,
+        transform 80ms,
+        box-shadow 80ms;
+}
+
+/* Focus ring for keyboard users */
+.btn:focus-visible {
+    outline: none;
+    box-shadow:
+        0 18px 36px var(--accent-glow),
+        0 6px 18px var(--neutral-shadow),
+        0 0 0 6px var(--focus-ring);
+}
+
+/* =========================
+   Disabled copy styles
+   - Visual copy of the button but non-interactive
+   - No hover, no shadow, muted color, not-allowed cursor
+   ========================= */
+.btn--disabled,
+.btn[disabled],
+.btn[aria-disabled="true"] {
+    background: var(--btn-bg);
+    /* keep white background */
+    color: var(--muted-text);
+    /* muted label color */
+    border-color: rgba(0, 0, 0, 0.04);
+    box-shadow: none;
+    /* remove shadow */
+    cursor: not-allowed;
+    pointer-events: none;
+    /* ensure no interactions */
+    transform: none;
+}
+
+/* Ensure icon inherits muted color when disabled */
+.btn--disabled .icon,
+.btn[disabled] .icon,
+.btn[aria-disabled="true"] .icon {
+    color: var(--muted-text);
+}
+
+/* Make sure :hover doesn't apply to disabled */
+.btn--disabled:hover,
+.btn[disabled]:hover,
+.btn[aria-disabled="true"]:hover {
+    box-shadow: none;
+    transform: none;
+    color: var(--muted-text);
+}
+
+/* =========================
+   Icon-only button variant
+   - Square button with only an icon
+   ========================= */
+.btn--icon-only {
+    width: var(--btn-height);
+    /* Make it square using the height value */
+    padding: 0;
+    justify-content: center;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none;
+        transform: none
+    }
+}
+
+/* Responsive tweak */
+@media (max-width:420px) {
+    :root {
+        --btn-width: 90%;
+        --btn-height: 72px;
+        --font-size: 16px;
+        --radius: 18px;
+        --icon-size: 28px;
+    }
+
+    .btn {
+        width: var(--btn-width);
+        height: var(--btn-height);
+        font-size: var(--font-size);
+        border-radius: var(--radius)
+    }
+
+    .specs-block {
+        padding: 16px
+    }
+}

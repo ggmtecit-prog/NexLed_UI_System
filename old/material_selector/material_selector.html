@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Selector Component</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#058C53',
+                        'primary-dark': '#03683D',
+                        'page-bg': '#f4f4f6',
+                        'text-default': '#111827',
+                        'text-muted': '#6B7280',
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+                        'selected': '0 0 0 2px #058C53, 0 10px 30px -5px rgba(5, 140, 83, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="material_selector.css">
+</head>
+
+<body class="bg-page-bg font-sans text-text-default flex flex-col items-center justify-start min-h-screen p-8">
+
+    <!-- Specs Block -->
+    <header class="max-w-xl w-full bg-white p-8 rounded-2xl border border-gray-100 shadow-sm mb-12 mt-12">
+        <h1 class="text-2xl font-semibold mb-4">Material Selector Specs</h1>
+        <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Design:</strong> Squircle selection grid</p>
+            <p><strong>Font:</strong> Urbanist</p>
+            <p><strong>Interaction:</strong> Selection with border & checkmark</p>
+        </div>
+    </header>
+
+    <!-- COMPONENT DEMO START -->
+    <div class="w-full max-w-4xl bg-white p-12 rounded-[32px] shadow-premium border border-gray-50">
+
+        <h2 class="text-3xl font-semibold mb-8 text-gray-800">Volutpat</h2>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-10 justify-start">
+
+            <!-- Item 1 -->
+            <button class="material-item group" onclick="selectMaterial(this)">
+                <div class="material-thumb-container">
+                    <img src="C:/Users/USER/.gemini/antigravity/brain/fa308242-c2ce-4aa0-8f52-c0a1bc0cf79c/material_wood_1768302377996.png"
+                        alt="Wood" class="material-img">
+                </div>
+                <div class="material-label-wrapper">
+                    <span class="material-label">Wood</span>
+                    <i class="ri-check-line label-check"></i>
+                </div>
+            </button>
+
+            <!-- Item 2 -->
+            <button class="material-item group" onclick="selectMaterial(this)">
+                <div class="material-thumb-container">
+                    <img src="C:/Users/USER/.gemini/antigravity/brain/fa308242-c2ce-4aa0-8f52-c0a1bc0cf79c/material_marble_1768302391925.png"
+                        alt="Marble" class="material-img">
+                </div>
+                <div class="material-label-wrapper">
+                    <span class="material-label">Marble</span>
+                    <i class="ri-check-line label-check"></i>
+                </div>
+            </button>
+
+            <!-- Item 3 -->
+            <button class="material-item group" onclick="selectMaterial(this)">
+                <div class="material-thumb-container">
+                    <img src="C:/Users/USER/.gemini/antigravity/brain/fa308242-c2ce-4aa0-8f52-c0a1bc0cf79c/material_leather_1768302406499.png"
+                        alt="Leather" class="material-img">
+                </div>
+                <div class="material-label-wrapper">
+                    <span class="material-label">Leather</span>
+                    <i class="ri-check-line label-check"></i>
+                </div>
+            </button>
+
+            <!-- Item 4 -->
+            <button class="material-item group" onclick="selectMaterial(this)">
+                <div class="material-thumb-container">
+                    <img src="C:/Users/USER/.gemini/antigravity/brain/fa308242-c2ce-4aa0-8f52-c0a1bc0cf79c/material_fabric_1768302419491.png"
+                        alt="Fabric" class="material-img">
+                </div>
+                <div class="material-label-wrapper">
+                    <span class="material-label">Fabric</span>
+                    <i class="ri-check-line label-check"></i>
+                </div>
+            </button>
+
+        </div>
+
+    </div>
+    <!-- COMPONENT DEMO END -->
+
+    <script src="material_selector.js"></script>
+</body>
+
+</html>

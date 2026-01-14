@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Component</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#058C53',
+                        'primary-dark': '#03683D',
+                        'page-bg': '#f4f4f6',
+                        'text-default': '#111827',
+                        'text-muted': '#6B7280',
+                        'border-light': '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="list.css">
+</head>
+
+<body class="bg-page-bg font-sans text-text-default flex flex-col items-center justify-start min-h-screen p-8">
+
+    <!-- Specs Block -->
+    <header class="max-w-xl w-full bg-white p-8 rounded-2xl border border-gray-100 shadow-sm mb-12 mt-12">
+        <h1 class="text-2xl font-semibold mb-4 text-primary">List Specs</h1>
+        <div class="space-y-1 text-sm text-gray-600">
+            <p><strong>Design:</strong> Minimalist data rows</p>
+            <p><strong>Font:</strong> Urbanist</p>
+            <p><strong>Spacing:</strong> Responsive padding</p>
+            <p><strong>Alignment:</strong> Flex justify-between</p>
+        </div>
+    </header>
+
+    <!-- COMPONENT DEMO START -->
+    <div class="w-full max-w-2xl bg-white p-12 rounded-[32px] shadow-sm border border-gray-100">
+
+        <h2 class="text-3xl font-semibold mb-10 text-gray-900 tracking-tight">Lorem Ipsum Dolor</h2>
+
+        <div class="data-list divide-y divide-gray-100">
+
+            <!-- List Row 1 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 2 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 3 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 4 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 5 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 6 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 7 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+            <!-- List Row 8 -->
+            <div
+                class="list-row flex justify-between py-5 group hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg">
+                <span
+                    class="label text-lg font-medium text-gray-400 group-hover:text-gray-600 transition-colors">Vestibulum</span>
+                <span class="value text-lg font-medium text-gray-800">Vestibulum</span>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- COMPONENT DEMO END -->
+
+    <script src="list.js"></script>
+</body>
+
+</html>

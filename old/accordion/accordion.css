@@ -1,0 +1,36 @@
+/* Accordion Styles */
+
+.accordion-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-trigger[aria-expanded="true"] span {
+    color: var(--text-default);
+}
+
+.accordion-trigger[aria-expanded="true"] .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--text-default);
+}
+
+/* 
+   Content Transition 
+   Using max-height for smooth transition without fixed heights 
+*/
+.accordion-content {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.accordion-trigger[aria-expanded="true"]+.accordion-content {
+    max-height: 500px;
+    /* Adjust based on expected content length */
+    opacity: 1;
+}
+
+/* Custom focus state */
+.accordion-trigger:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+    border-radius: 8px;
+}
