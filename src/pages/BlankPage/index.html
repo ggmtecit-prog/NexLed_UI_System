@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank Page - NexLed</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <!-- Adjusted path for pages/BlankPage/index.html (2 levels deep) -->
+    <script src="../../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* Dropdown transition styles for Language Selector */
+        .lang-dropdown-menu {
+            transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+        }
+    </style>
+</head>
+
+<!-- Body Background: bg-grey-tertiary (Grey Page) -->
+
+<body class="bg-grey-tertiary font-urbanist text-black min-h-screen flex flex-col">
+
+    <!-- =========================================
+         HEADER SECTION
+         ========================================= -->
+    <!-- Header Wrapper with padding to match design -->
+    <header class="w-full relative z-50 pt-6 px-4 md:px-6">
+
+        <!-- UNIFIED CARD CONTAINER -->
+        <div
+            class="max-w-[1800px] mx-auto rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-green-primary flex flex-col">
+
+            <!-- 1. ANNOUNCEMENT BAR section -->
+            <div class="relative w-full bg-green-primary text-white py-2 px-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                id="announcement-bar-main">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                    <!-- Spacer -->
+                    <div class="hidden sm:block w-8"></div>
+
+                    <!-- Content -->
+                    <div
+                        class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-[15px] md:text-[16px]">
+                        <span class="inline-flex items-center gap-2">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </span>
+                    </div>
+
+                    <!-- Close Button -->
+                    <div class="flex items-center justify-end">
+                        <button
+                            class="group relative flex items-center justify-center w-8 h-8 rounded-[10px] bg-transparent text-white/60 transition-all duration-300 hover:bg-white hover:text-green-secondary hover:shadow-btn-hover active:bg-green-primary active:text-white"
+                            aria-label="Close" onclick="closeBar('announcement-bar-main')">
+                            <i class="ri-close-line text-lg leading-none"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. NAVBAR section -->
+            <!-- Rounded Corners on White Navbar -->
+            <div
+                class="w-full bg-white text-black h-[100px] px-6 md:px-10 flex items-center justify-between relative z-20 rounded-[32px]">
+
+                <!-- LEFT: LOGO -->
+                <a href="#" class="flex-shrink-0">
+                    <!-- Adjusted path to public folder -->
+                    <img src="../../../public/nexled-logo-color.svg" alt="NexLed" class="h-14 w-auto object-contain">
+                </a>
+
+                <!-- CENTER: NAVIGATION (4 Dropdowns) -->
+                <nav class="hidden lg:flex items-center gap-12">
+
+                    <!-- Menu Item 1 -->
+                    <div class="group relative py-6">
+                        <button
+                            class="flex items-center gap-1 text-[18px] font-bold text-black hover:text-green-secondary transition-colors">
+                            consectetur
+                            <i class="ri-arrow-down-s-line text-2xl transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white text-black shadow-xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 border border-grey-tertiary/20 overflow-hidden z-20">
+                            <a href="#" class="block px-4 py-3 hover:bg-grey-tertiary text-[14px]">Submenu Item 1</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-grey-tertiary text-[14px]">Submenu Item 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 2 -->
+                    <div class="group relative py-6">
+                        <button
+                            class="flex items-center gap-1 text-[18px] font-bold text-black hover:text-green-secondary transition-colors">
+                            consectetur
+                            <i class="ri-arrow-down-s-line text-2xl transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div
+                            class="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white text-black shadow-xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 border border-grey-tertiary/20 overflow-hidden z-20">
+                            <a href="#" class="block px-4 py-3 hover:bg-grey-tertiary text-[14px]">Option A</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-grey-tertiary text-[14px]">Option B</a>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 3 -->
+                    <div class="group relative py-6">
+                        <button
+                            class="flex items-center gap-1 text-[18px] font-bold text-black hover:text-green-secondary transition-colors">
+                            consectetur
+                            <i class="ri-arrow-down-s-line text-2xl transition-transform group-hover:rotate-180"></i>
+                        </button>
+                    </div>
+
+                    <!-- Menu Item 4 -->
+                    <div class="group relative py-6">
+                        <button
+                            class="flex items-center gap-1 text-[18px] font-bold text-black hover:text-green-secondary transition-colors">
+                            consectetur
+                            <i class="ri-arrow-down-s-line text-2xl transition-transform group-hover:rotate-180"></i>
+                        </button>
+                    </div>
+
+                </nav>
+
+                <!-- RIGHT: ACTIONS -->
+                <div class="flex items-center gap-4">
+
+                    <!-- Search Button -->
+                    <button class="
+                        flex items-center justify-center w-[50px] h-[50px] rounded-[14px] 
+                        bg-transparent border-none 
+                        text-black
+                        transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+                        hover:bg-grey-tertiary hover:text-green-secondary
+                        active:bg-green-primary active:text-white active:scale-[0.98]
+                    ">
+                        <i class="ri-search-line text-2xl"></i>
+                    </button>
+
+                    <!-- Cart Button -->
+                    <div class="relative">
+                        <button class="
+                            flex items-center justify-center w-[50px] h-[50px] rounded-[14px] 
+                            bg-transparent border-none 
+                             text-black
+                            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+                            hover:bg-grey-tertiary hover:text-green-secondary
+                            active:bg-green-primary active:text-white active:scale-[0.98]
+                        ">
+                            <i class="ri-shopping-cart-2-line text-2xl"></i>
+                        </button>
+                        <span
+                            class="absolute top-1.5 right-1.5 bg-green-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center border border-white">2</span>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="relative inline-block text-left language-selector-root">
+                        <!-- Trigger -->
+                        <button type="button"
+                            class="flex items-center justify-center gap-2 bg-white text-black px-3 py-2.5 rounded-xl border border-black/10 shadow-btn-default hover:border-green-secondary/30 hover:shadow-btn-hover transition-all duration-200 focus-visible:outline-none focus:ring-4 focus:ring-green-secondary/20 active:scale-95 group h-[50px]"
+                            aria-expanded="false" aria-haspopup="true" onclick="toggleLangMenu(this)">
+
+                            <img src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+                                width="24" height="24" alt="English"
+                                class="w-6 h-6 rounded-md object-cover current-lang-flag shadow-sm">
+                            <i
+                                class="ri-arrow-down-s-line text-grey-primary group-hover:text-green-secondary transition-colors text-lg arrow-icon"></i>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <div class="lang-dropdown-menu absolute right-0 mt-2 w-40 origin-top-right bg-white rounded-xl shadow-btn-hover border border-black/5 focus:outline-none opacity-0 invisible transform scale-95 z-50 overflow-hidden"
+                            role="menu">
+                            <div class="py-1">
+                                <!-- Items -->
+                                <a href="#"
+                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-black hover:bg-green-secondary/5 hover:text-green-secondary transition-colors"
+                                    onclick="selectLang(this, 'English', 'gb')">
+                                    <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
+                                        class="w-5 h-5 rounded-[5px] object-cover">
+                                    <span>English</span>
+                                    <i class="ri-check-line text-green-secondary ml-auto opacity-100 check-icon"></i>
+                                </a>
+                                <a href="#"
+                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-black hover:bg-green-secondary/5 hover:text-green-secondary transition-colors"
+                                    onclick="selectLang(this, 'Português', 'pt')">
+                                    <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
+                                        class="w-5 h-5 rounded-[5px] object-cover">
+                                    <span>Português</span>
+                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- =========================================
+         MAIN CONTENT (BLANK)
+         ========================================= -->
+    <main class="flex-1 w-full max-w-[1800px] mx-auto p-6 md:p-10">
+        <!-- Blank Content Area -->
+        <div
+            class="w-full h-full min-h-[400px] flex items-center justify-center border-2 border-dashed border-black/10 rounded-[32px] text-grey-primary font-medium">
+            Blank Page Content
+        </div>
+    </main>
+
+    <!-- =========================================
+         FOOTER SECTION
+         ========================================= -->
+    <!-- Footer Wrapper -->
+    <div class="w-full max-w-[1800px] mx-auto px-4 md:px-6 pb-6">
+        <footer class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] overflow-hidden w-full">
+
+            <!-- Main Footer Content -->
+            <div class="px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3">
+                <!-- Changed to 6 columns grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 items-start">
+
+                    <!-- Column 1: Logo (Tagline Moved) -->
+                    <div class="flex flex-col items-center lg:items-center text-center">
+                        <img src="../../../public/nexled-logo.svg" alt="NexLed Logo" class="w-[180px] h-[180px] mb-2">
+                    </div>
+
+                    <!-- Column 2: Brand Nav and Socials -->
+                    <div class="flex flex-col">
+                        <h3 class="text-3xl font-bold text-black tracking-tight mb-3">NexLed</h3>
+                        <ul class="space-y-1 text-[15px] flex-1 mb-4">
+                            <li><a href="#"
+                                    class="text-black hover:text-green-secondary transition-colors font-medium">Sobre
+                                    Nós</a></li>
+                            <li><a href="#"
+                                    class="text-black hover:text-green-secondary transition-colors font-medium">Carrinho</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-black hover:text-green-secondary transition-colors font-medium">Subscrever
+                                    Newsletter</a></li>
+                        </ul>
+
+                        <!-- Social Icons -->
+                        <div class="flex gap-3">
+                            <a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors hover:-translate-y-1 duration-300">
+                                <i class="ri-linkedin-fill text-2xl"></i>
+                            </a>
+                            <a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors hover:-translate-y-1 duration-300">
+                                <i class="ri-linkedin-fill text-2xl"></i>
+                            </a>
+                            <a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors hover:-translate-y-1 duration-300">
+                                <i class="ri-linkedin-fill text-2xl"></i>
+                            </a>
+                            <a href="#"
+                                class="text-grey-primary hover:text-green-secondary transition-colors hover:-translate-y-1 duration-300">
+                                <i class="ri-linkedin-fill text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Categorias -->
+                    <div class="pt-1">
+                        <h4 class="text-lg font-normal text-black mb-3">Categorias</h4>
+                        <ul class="space-y-1 text-[15px] font-light text-black">
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Retalho</a></li>
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Interior</a></li>
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Industrial</a></li>
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Fontes de
+                                    Alimentação</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: Contactos -->
+                    <div class="pt-1">
+                        <h4 class="text-lg font-normal text-black mb-3">Contactos</h4>
+                        <ul class="space-y-1 text-[15px] font-light text-black">
+                            <li><a href="mailto:comercial@tecit.pt"
+                                    class="hover:text-green-secondary transition-colors">comercial@tecit.pt</a></li>
+                            <li><a href="tel:+351229999230" class="hover:text-green-secondary transition-colors">+351
+                                    229 999 230</a></li>
+                            <li><a href="tel:+351919989354" class="hover:text-green-secondary transition-colors">+351
+                                    919 989 354</a></li>
+                            <li><a href="tel:+351917321988" class="hover:text-green-secondary transition-colors">+351
+                                    917 321 988</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 5: Localização -->
+                    <div class="pt-1">
+                        <h4 class="text-lg font-normal text-black mb-3">Localização</h4>
+                        <address class="not-italic text-[15px] font-light text-black space-y-0.5 mb-4">
+                            <p>Travessa Cabo do Mundo, 681</p>
+                            <p>4455-427 Perafita,</p>
+                            <p>Matosinhos - Portugal</p>
+                        </address>
+                        <div>
+                            <h4 class="text-lg font-normal text-black mb-1">Horário</h4>
+                            <p class="text-[15px] font-light text-black">09:00h às 18:00h Dias úteis</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 6: Suporte -->
+                    <div class="pt-1">
+                        <h4 class="text-lg font-normal text-black mb-3">Suporte</h4>
+                        <ul class="space-y-1 text-[15px] font-light text-black">
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">FAQ & Garantia</a></li>
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Download's</a></li>
+                            <li><a href="#" class="hover:text-green-secondary transition-colors">Instruções
+                                    Reparação</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="bg-green-primary text-white py-3 px-16 md:px-32">
+                <div
+                    class="flex flex-wrap justify-between items-center text-[11px] font-light gap-x-6 gap-y-2 opacity-90">
+                    <p class="hover:text-white transition-all cursor-default w-full md:w-auto text-left">Uma marca do
+                        grupo Tecit</p>
+                    <a href="#" class="hover:text-white hover:underline transition-all">Termos e Condições</a>
+                    <a href="#" class="hover:text-white hover:underline transition-all">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white hover:underline transition-all">Política de Cookies</a>
+                    <a href="#" class="hover:text-white hover:underline transition-all">Resolução Alternativa de
+                        Litígios de Consumo</a>
+                    <a href="#" class="hover:text-white hover:underline transition-all">Livro de Reclamações</a>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        /**
+         * Announcement Bar Logic
+         */
+        function closeBar(id) {
+            const bar = document.getElementById(id);
+            if (!bar) return;
+
+            bar.style.transition = "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+            bar.style.opacity = "0";
+            bar.style.transform = "translateY(-100%)";
+            bar.style.marginTop = `-${bar.offsetHeight}px`;
+
+            setTimeout(() => {
+                bar.style.display = 'none';
+            }, 500);
+        }
+
+        /**
+         * Language Selector Logic
+         */
+        function toggleLangMenu(button) {
+            const container = button.closest('.language-selector-root');
+            const menu = container.querySelector('[role="menu"]');
+            const arrow = button.querySelector('.arrow-icon');
+            const isClosed = menu.classList.contains('invisible');
+
+            closeAllLangMenus();
+
+            if (isClosed) {
+                menu.classList.remove('opacity-0', 'invisible', 'scale-95');
+                menu.classList.add('opacity-100', 'visible', 'scale-100');
+                if (arrow) {
+                    arrow.classList.add('rotate-180', 'text-green-secondary');
+                    arrow.classList.remove('text-grey-primary');
+                }
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function selectLang(option, langName, countryCode) {
+            const container = option.closest('.language-selector-root');
+            const button = container.querySelector('button');
+            const label = button.querySelector('.current-lang-text');
+            if (label) label.textContent = langName;
+
+            const flagParams = {
+                'gb': { src: 'https://flagcdn.com/w40/gb.png', srcset: 'https://flagcdn.com/w80/gb.png 2x', alt: 'English' },
+                'pt': { src: 'https://flagcdn.com/w40/pt.png', srcset: 'https://flagcdn.com/w80/pt.png 2x', alt: 'Português' },
+            };
+
+            if (countryCode && flagParams[countryCode]) {
+                const flagImg = button.querySelector('.current-lang-flag');
+                if (flagImg) {
+                    flagImg.src = flagParams[countryCode].src;
+                    flagImg.srcset = flagParams[countryCode].srcset;
+                    flagImg.alt = flagParams[countryCode].alt;
+                }
+            }
+
+            const allChecks = container.querySelectorAll('.check-icon');
+            allChecks.forEach(icon => {
+                icon.classList.remove('opacity-100');
+                icon.classList.add('opacity-0');
+            });
+
+            const thisCheck = option.querySelector('.check-icon');
+            if (thisCheck) {
+                thisCheck.classList.remove('opacity-0');
+                thisCheck.classList.add('opacity-100');
+            }
+
+            closeAllLangMenus();
+        }
+
+        function closeAllLangMenus() {
+            document.querySelectorAll('.language-selector-root').forEach(container => {
+                const menu = container.querySelector('[role="menu"]');
+                const arrow = container.querySelector('.arrow-icon');
+                const button = container.querySelector('button');
+
+                menu.classList.add('opacity-0', 'invisible', 'scale-95');
+                menu.classList.remove('opacity-100', 'visible', 'scale-100');
+                if (arrow) {
+                    arrow.classList.remove('rotate-180', 'text-green-secondary');
+                    arrow.classList.add('text-grey-primary');
+                }
+                button.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.language-selector-root')) {
+                closeAllLangMenus();
+            }
+        });
+    </script>
+</body>
+
+</html>

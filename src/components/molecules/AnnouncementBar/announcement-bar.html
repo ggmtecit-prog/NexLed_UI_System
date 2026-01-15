@@ -33,12 +33,13 @@
     <!-- COMPONENT DEMO -->
     <div class="space-y-4 w-full">
 
-        <!-- Announcement Bar - Dismissible -->
+        <!-- Announcement Bar - Variant 1: Standard -->
+        <h2 class="text-sm font-medium text-grey-primary pl-4">Variant 1: Standard Square</h2>
         <div class="relative w-full bg-green-primary text-white py-3 px-4 shadow-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
             id="announcement-bar-1">
             <div class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
 
-                <!-- Spacer for centering balance -->
+                <!-- Spacer -->
                 <div class="hidden sm:block w-8"></div>
 
                 <!-- Content -->
@@ -52,9 +53,63 @@
                 <!-- Close Button -->
                 <div class="flex items-center justify-end">
                     <button
-                        class="group relative flex items-center justify-center w-10 h-10 rounded-[14px] bg-transparent text-white/60 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-white hover:text-green-secondary hover:shadow-btn-hover hover:-translate-y-[2px] active:bg-green-primary active:text-white active:translate-y-0 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                        class="group relative flex items-center justify-center w-10 h-10 rounded-[14px] bg-transparent text-white/60 transition-all duration-300 hover:bg-white hover:text-green-secondary hover:shadow-btn-hover active:bg-green-primary active:text-white"
                         aria-label="Close" onclick="closeBar('announcement-bar-1')">
                         <i class="ri-close-line text-xl leading-none"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcement Bar - Variant 2: Footer Style (Green + Rounded) -->
+        <h2 class="text-sm font-medium text-grey-primary pl-4 pt-8">Variant 2: Footer Style (Green + Rounded)</h2>
+        <div class="relative w-full bg-green-primary text-white py-2 px-4 shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-[32px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            id="announcement-bar-2">
+            <div class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                <!-- Spacer -->
+                <div class="hidden sm:block w-8"></div>
+
+                <!-- Content -->
+                <div class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-[15px]">
+                    <span class="inline-flex items-center gap-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </span>
+                </div>
+
+                <!-- Close Button -->
+                <div class="flex items-center justify-end">
+                    <button
+                        class="group relative flex items-center justify-center w-8 h-8 rounded-[10px] bg-transparent text-white/60 transition-all duration-300 hover:bg-white hover:text-green-secondary hover:shadow-btn-hover active:bg-green-primary active:text-white"
+                        aria-label="Close" onclick="closeBar('announcement-bar-2')">
+                        <i class="ri-close-line text-lg leading-none"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcement Bar - Variant 3: Footer Style (White + Rounded) -->
+        <h2 class="text-sm font-medium text-grey-primary pl-4 pt-8">Variant 3: Footer Style (White + Rounded)</h2>
+        <div class="relative w-full bg-white text-black py-2 px-4 shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-[32px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            id="announcement-bar-3">
+            <div class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                <!-- Spacer -->
+                <div class="hidden sm:block w-8"></div>
+
+                <!-- Content -->
+                <div class="flex-1 text-center sm:text-left md:text-center text-black font-medium text-[15px]">
+                    <span class="inline-flex items-center gap-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </span>
+                </div>
+
+                <!-- Close Button -->
+                <div class="flex items-center justify-end">
+                    <button
+                        class="group relative flex items-center justify-center w-8 h-8 rounded-[10px] bg-transparent text-black/60 transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary hover:shadow-btn-hover active:bg-green-primary active:text-white"
+                        aria-label="Close" onclick="closeBar('announcement-bar-3')">
+                        <i class="ri-close-line text-lg leading-none"></i>
                     </button>
                 </div>
             </div>
