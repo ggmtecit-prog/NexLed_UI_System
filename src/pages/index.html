@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - NexLed UI System</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: #ffffff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: #00813D;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F6F6F6] min-h-screen text-black">
+
+    <main class="max-w-[1400px] mx-auto px-6 py-16 md:py-24">
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center gap-6 mb-20 animate-fade-in">
+            <img src="../../public/nexled-logo-color.svg" alt="NexLed" class="h-16 w-auto mb-4">
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight">Project Sitemap</h1>
+            <p class="text-grey-primary text-xl max-w-2xl font-light leading-relaxed">
+                A complete directory of all pages designed for the NexLed UI System.
+                Use the cards below to navigate through the project components and assemblies.
+            </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <!-- Homepage -->
+            <a href="homepage.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-home-4-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Homepage</h3>
+                    <p class="text-grey-primary text-sm font-light">The main landing page with hero slides, featured
+                        grids and services.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Product Categories -->
+            <a href="categories.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-grid-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Categories</h3>
+                    <p class="text-grey-primary text-sm font-light">Browse through the top-level product
+                        classifications.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Product Type -->
+            <a href="product-type.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-list-check-3 text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Product Type</h3>
+                    <p class="text-grey-primary text-sm font-light">List view for specific categories with filtering
+                        sidebar.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Product Detail -->
+            <a href="product-detail.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-focus-3-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Product Detail</h3>
+                    <p class="text-grey-primary text-sm font-light">PDP featuring variations, gallery, and descriptions.
+                    </p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Contact -->
+            <a href="contact.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-mail-send-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Contact Us</h3>
+                    <p class="text-grey-primary text-sm font-light">Get in touch with the company via form or location
+                        info.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- About Us -->
+            <a href="about-us.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-information-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">About Us</h3>
+                    <p class="text-grey-primary text-sm font-light">Learn more about the company history and vision.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Cart -->
+            <a href="cart.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-shopping-cart-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Shopping Cart</h3>
+                    <p class="text-grey-primary text-sm font-light">Review your selected products and proceed to
+                        checkout.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Checkout -->
+            <a href="checkout.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-bank-card-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Checkout</h3>
+                    <p class="text-grey-primary text-sm font-light">Secure final payment and shipping information entry.
+                    </p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Order Confirmation -->
+            <a href="order-confirmation.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-checkbox-circle-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Confirmation</h3>
+                    <p class="text-grey-primary text-sm font-light">The success page displayed after a completed
+                        purchase.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Legal -->
+            <a href="legal.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-scales-3-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Legal Page</h3>
+                    <p class="text-grey-primary text-sm font-light">Terms and conditions, privacy policy and legal
+                        notices.</p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+            <!-- Blank Page -->
+            <a href="blank-page.html" class="glass-card rounded-[32px] p-8 flex flex-col gap-6">
+                <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <i class="ri-sticky-note-line text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Blank Template</h3>
+                    <p class="text-grey-primary text-sm font-light">Clean starting point for creating new custom pages.
+                    </p>
+                </div>
+                <div class="mt-auto flex items-center text-green-primary font-bold gap-2">
+                    View Page <i class="ri-arrow-right-line"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-24 pt-12 border-t border-black/5 text-center">
+            <p class="text-grey-primary font-light">NexLed UI System Project &copy; 2026. All rights reserved.</p>
+        </footer>
+    </main>
+
+</body>
+
+</html>

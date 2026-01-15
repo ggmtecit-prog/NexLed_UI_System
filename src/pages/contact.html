@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories - NexLed</title>
-    <meta name="description" content="Product Categories">
+    <title>Contact Us - NexLed</title>
+    <meta name="description" content="Get in touch with NexLed">
 
     <!-- 1. Load Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,31 +14,61 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- 2. Tailwind CDN (No Install Required) -->
+    <!-- 2. Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- 3. Configure Tailwind (Shared Config) -->
-    <script src="../../config-cdn.js"></script>
+    <!-- 3. Configure Tailwind -->
+    <script src="../config-cdn.js"></script>
 
     <style>
         body {
             font-family: 'Urbanist', sans-serif;
         }
 
-        /* Dropdown transition styles for Language Selector */
         .lang-dropdown-menu {
             transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+        }
+
+        /* Custom checkbox styling */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #D1D5DB;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .custom-checkbox:checked {
+            background-color: #000;
+            border-color: #000;
+        }
+
+        .custom-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-checkbox:hover {
+            border-color: #9CA3AF;
         }
     </style>
 </head>
 
 <body class="bg-white font-urbanist text-black min-h-screen flex flex-col">
 
-    <!-- HEADER SECTION -->
+    <!-- HEADER -->
     <header class="w-full relative z-50 pt-6 px-4 md:px-6">
         <div
             class="max-w-[1800px] mx-auto rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-green-primary flex flex-col">
-            <!-- 1. ANNOUNCEMENT BAR section -->
+            <!-- ANNOUNCEMENT BAR -->
             <div class="relative w-full bg-green-primary text-white py-2 px-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 id="announcement-bar-main">
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -57,14 +87,13 @@
                     </div>
                 </div>
             </div>
-            <!-- 2. NAVBAR section -->
+
+            <!-- NAVBAR -->
             <div
                 class="w-full bg-white text-black h-[100px] px-6 md:px-10 flex items-center justify-between relative z-20 rounded-[32px]">
-                <!-- LEFT: LOGO -->
-                <a href="#" class="flex-shrink-0">
-                    <img src="../../../public/nexled-logo-color.svg" alt="NexLed" class="h-14 w-auto object-contain">
+                <a href="homepage.html" class="flex-shrink-0">
+                    <img src="../../public/nexled-logo-color.svg" alt="NexLed" class="h-14 w-auto object-contain">
                 </a>
-                <!-- CENTER: NAVIGATION -->
                 <nav class="hidden lg:flex items-center gap-12">
                     <div class="group relative py-6">
                         <button
@@ -95,7 +124,6 @@
                         </button>
                     </div>
                 </nav>
-                <!-- RIGHT: ACTIONS -->
                 <div class="flex items-center gap-4">
                     <button
                         class="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-transparent border-none text-black transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white">
@@ -103,13 +131,11 @@
                     </button>
                     <div class="relative">
                         <button
-                            class="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-transparent border-none text-black transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white">
-                            <i class="ri-shopping-cart-2-line text-2xl"></i>
-                        </button>
+                            class="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-transparent border-none text-black transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white" onclick="window.location.href='cart.html'">
+                            <i class="ri-shopping-cart-2-line text-2xl"></i></button>
                         <span
                             class="absolute top-1.5 right-1.5 bg-green-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center border border-white">2</span>
                     </div>
-                    <!-- Language Selector -->
                     <div class="relative inline-block text-left language-selector-root">
                         <button type="button"
                             class="flex items-center justify-center gap-2 bg-white text-black px-3 py-2.5 rounded-xl border border-black/10 shadow-btn-default hover:border-green-secondary/30 hover:shadow-btn-hover transition-all duration-200 focus-visible:outline-none focus:ring-4 focus:ring-green-secondary/20 active:scale-95 group h-[50px]"
@@ -155,143 +181,199 @@
             <p class="text-base text-grey-primary font-light max-w-2xl">
                 Morbi volutpat, leo ac varius egestas, diam magna faucibus magna
             </p>
+        </div>
 
-            <!-- Centered Filter Dropdown -->
-            <div class="mt-8">
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8">
+
+            <!-- LEFT: Contact Form -->
+            <div class="flex flex-col gap-6">
+
+                <!-- Row 1: Two Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                        <input type="text"
+                            class="w-full h-[56px] px-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all"
+                            placeholder="">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                        <input type="text"
+                            class="w-full h-[56px] px-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all"
+                            placeholder="">
+                    </div>
+                </div>
+
+                <!-- Row 2: Single Field -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                    <input type="text"
+                        class="w-full h-[56px] px-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all"
+                        placeholder="">
+                </div>
+
+                <!-- Row 3: Single Field -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                    <input type="text"
+                        class="w-full h-[56px] px-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all"
+                        placeholder="">
+                </div>
+
+                <!-- Row 4: Single Field -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                    <input type="text"
+                        class="w-full h-[56px] px-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all"
+                        placeholder="">
+                </div>
+
+                <!-- Row 5: Textarea -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                    <textarea rows="4"
+                        class="w-full p-4 rounded-2xl bg-grey-tertiary border-none text-black placeholder-grey-primary focus:outline-none focus:ring-2 focus:ring-green-secondary transition-all resize-none"
+                        placeholder=""></textarea>
+                </div>
+
+                <!-- Checkboxes Section -->
+                <div class="flex flex-col gap-3">
+                    <label class="text-sm font-medium text-black">Morbi volutpat</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" class="custom-checkbox">
+                            <span class="text-sm text-grey-primary">Cras fermentum</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
                 <button
-                    class="flex items-center gap-2 text-xl font-medium text-black hover:text-green-secondary transition-colors">
-                    Lorem Ipsum Dolor
-                    <i class="ri-arrow-down-s-line text-2xl"></i>
+                    class="w-full h-[56px] rounded-2xl bg-black text-white font-medium text-base hover:bg-green-secondary transition-all duration-300 active:scale-[0.98] mt-4">
+                    Fusce Condimentum
                 </button>
-            </div>
-        </div>
 
-        <!-- Categories Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-
-            <!-- Card 1 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <!-- Image Container -->
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <!-- Placeholder SVG Pattern -->
-                    <div class="absolute inset-0 flex items-center justify-center opacity-10">
-                        <svg width="100%" height="100%">
-                            <rect width="100%" height="100%" fill="currentColor" />
-                        </svg>
-                    </div>
-                    <!-- Title Overlay -->
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black drop-shadow-sm">Lorem</span>
-                    </div>
-                </div>
-                <!-- Description -->
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
             </div>
 
-            <!-- Card 2 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
+            <!-- RIGHT: Info Card -->
+            <div class="bg-[#595959] rounded-[32px] p-8 flex flex-col gap-8 text-white h-fit sticky top-6">
 
-            <!-- Card 3 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
+                <!-- Section 1 -->
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl font-bold text-white">Sed Vehicula</h3>
+                    <p class="text-sm text-white/70 font-light">Lorem libero tempor aliquam</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
                     </div>
                 </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
-            <!-- Card 5 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
+                <!-- Divider -->
+                <div class="h-px bg-white/20"></div>
 
-            <!-- Card 6 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
+                <!-- Section 2 -->
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl font-bold text-white">Sed Vehicula</h3>
+                    <p class="text-sm text-white/70 font-light">Lorem libero tempor aliquam</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
                     </div>
                 </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
 
-            <!-- Card 7 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
-                    </div>
-                </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
-            </div>
+                <!-- Divider -->
+                <div class="h-px bg-white/20"></div>
 
-            <!-- Card 8 -->
-            <div class="flex flex-col gap-4 group cursor-pointer">
-                <div
-                    class="w-full aspect-[2/1] bg-[#808080] rounded-[24px] relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
-                    <div class="absolute bottom-6 left-6 z-10">
-                        <span class="text-2xl font-medium text-black">Lorem</span>
+                <!-- Section 3 -->
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl font-bold text-white">Sed Vehicula</h3>
+                    <p class="text-sm text-white/70 font-light">Lorem libero tempor aliquam</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
+                        <a href="#"
+                            class="flex items-center gap-2 text-sm text-white/90 hover:text-white transition-colors">
+                            <i class="ri-arrow-right-s-line"></i>
+                            <span>Sed Vehicula</span>
+                        </a>
                     </div>
                 </div>
-                <p class="text-center text-sm text-grey-primary font-light">
-                    Sed imperdiet, libero et porttitor varius,
-                </p>
+
             </div>
 
         </div>
+
     </main>
 
-    <!-- FOOTER SECTION -->
-    <div class="w-full max-w-[1800px] mx-auto px-4 md:px-6 pb-6">
+    <!-- FOOTER -->
+    <div class="w-full max-w-[1800px] mx-auto px-4 md:px-6 pb-6 mt-20">
         <footer class="bg-[#d2d2d2] rounded-[32px] overflow-hidden w-full">
             <div class="px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 items-start">
-                    <!-- Column 1 -->
                     <div class="flex flex-col items-center lg:items-center text-center">
-                        <!-- Placeholder Logo Box -->
                         <div
                             class="w-[120px] h-[120px] bg-transparent border border-black/30 flex items-center justify-center relative mb-4">
                             <i class="ri-close-line text-6xl text-black/20 absolute inset-0 m-auto"></i>
@@ -301,7 +383,6 @@
                             </svg>
                         </div>
                     </div>
-                    <!-- Column 2 -->
                     <div class="flex flex-col">
                         <h3 class="text-2xl font-bold text-black tracking-tight mb-3">Lorem</h3>
                         <ul class="space-y-1 text-[13px] flex-1 mb-4 text-black/80">
@@ -316,7 +397,6 @@
                             <div class="w-8 h-8 bg-black/40 rounded-sm"></div>
                         </div>
                     </div>
-                    <!-- Cols 3-6 (Simulated based on image) -->
                     <div class="pt-1">
                         <h4 class="text-base font-medium text-black mb-3">Vestibulum eleifend</h4>
                         <ul class="space-y-1 text-[13px] font-normal text-black/80">
@@ -386,8 +466,12 @@
                 button.setAttribute('aria-expanded', 'true');
             }
         }
-        function selectLang(option, langName, countryCode) { }; // Placeholder
+        function selectLang(option, langName, countryCode) { }
     </script>
 </body>
 
 </html>
+
+
+
+

@@ -1,0 +1,33 @@
+# Environment files
+.env
+app/config/database.php
+
+# Logs
+*.log
+logs/
+
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Dependencies
+vendor/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

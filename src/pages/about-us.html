@@ -18,7 +18,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- 3. Configure Tailwind -->
-    <script src="../../config-cdn.js"></script>
+    <script src="../config-cdn.js"></script>
 
     <style>
         body {
@@ -58,8 +58,8 @@
 
             <div
                 class="w-full bg-white text-black h-[100px] px-6 md:px-10 flex items-center justify-between relative z-20 rounded-[32px]">
-                <a href="#" class="flex-shrink-0">
-                    <img src="../../../public/nexled-logo-color.svg" alt="NexLed" class="h-14 w-auto object-contain">
+                <a href="homepage.html" class="flex-shrink-0">
+                    <img src="../../public/nexled-logo-color.svg" alt="NexLed" class="h-14 w-auto object-contain">
                 </a>
                 <nav class="hidden lg:flex items-center gap-12">
                     <div class="group relative py-6">
@@ -98,9 +98,8 @@
                     </button>
                     <div class="relative">
                         <button
-                            class="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-transparent border-none text-black transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white">
-                            <i class="ri-shopping-cart-2-line text-2xl"></i>
-                        </button>
+                            class="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-transparent border-none text-black transition-all duration-300 hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white" onclick="window.location.href='cart.html'">
+                            <i class="ri-shopping-cart-2-line text-2xl"></i></button>
                         <span
                             class="absolute top-1.5 right-1.5 bg-green-primary text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center border border-white">2</span>
                     </div>
@@ -436,3 +435,7 @@
 </body>
 
 </html>
+
+
+
+
