@@ -36,6 +36,15 @@ tailwind.config = {
 
                 // Hover (Active): Green shadow
                 'btn-hover-active': '0 4px 12px rgba(5, 140, 83, 0.2)',
+
+                // New Glow shadow from reference
+                'btn-glow': '0 20px 40px rgba(16, 185, 129, 0.22)',
+            },
+            transitionDuration: {
+                '400': '400ms',
+            },
+            transitionTimingFunction: {
+                'button-ease': 'cubic-bezier(0.16, 1, 0.3, 1)',
             }
         }
     }

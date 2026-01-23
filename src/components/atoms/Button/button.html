@@ -46,7 +46,7 @@
 
         <!-- Default -->
         <button
-            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black font-medium text-[32px] transition-all">
+            class="group flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-black/5 shadow-btn-default text-black font-medium text-[32px] transform-gpu transition-all duration-400 ease-button-ease">
             <i class="ri-delete-bin-2-line text-[48px]"></i>
             Delete All Files
         </button>
@@ -67,7 +67,7 @@
 
         <!-- Active -->
         <button
-            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-green-primary border-none shadow-btn-active text-white font-medium text-[32px] scale-[0.98]">
+            class="flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] bg-white border border-green-secondary/10 shadow-btn-glow text-green-secondary font-medium text-[32px] scale-95 transition-all duration-400 ease-button-ease">
             <i class="ri-delete-bin-2-line text-[48px]"></i>
             Delete All Files
         </button>
@@ -135,12 +135,12 @@
             group flex items-center gap-4 px-6 w-[333px] h-[94px] rounded-[25px] 
             bg-white border border-black/5 shadow-btn-default 
             text-black font-medium text-[32px] 
-            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            transform-gpu transition-all duration-400 ease-button-ease
             hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
-            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            active:scale-95 active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary
             focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
             disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
-        ">
+        " style="will-change: transform, box-shadow;">
             <i class="ri-delete-bin-2-line text-[48px]"></i>
             Delete All Files
         </button>
@@ -149,16 +149,25 @@
             group flex items-center justify-center w-[94px] h-[94px] rounded-[25px] 
             bg-white border border-black/5 shadow-btn-default 
             text-black font-medium text-[32px] 
-            transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+            transform-gpu transition-all duration-400 ease-button-ease
             hover:-translate-y-[3px] hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10
-            active:bg-green-primary active:text-white active:scale-[0.98] active:translate-y-0 active:shadow-btn-active
+            active:scale-95 active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary
             focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30
             disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-none disabled:shadow-none disabled:text-grey-primary
-        ">
+        " style="will-change: transform, box-shadow;">
             <i class="ri-delete-bin-2-line text-[48px]"></i>
         </button>
 
     </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <br>
+    <br>
+    <br>
 
     <!-- TOGGLE BUTTONS DEMO -->
     <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10 mt-10">Toggle Buttons</h2>
