@@ -29,7 +29,8 @@
         .link-premium {
             position: relative;
             display: inline-block;
-            transition: all 0.400s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+            /* motion-duration-default motion-ease-premium */
             transform-origin: center;
         }
 
@@ -41,16 +42,19 @@
             bottom: -2px;
             left: 0;
             background-color: currentColor;
-            opacity: 0.2;
+            opacity: 0.10;
+            /* opacity-faint */
             /* Visible by default as planned */
-            transition: all 0.400s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+            /* motion-duration-default motion-ease-premium */
         }
 
         .link-premium:hover,
         .link-premium.state-hover {
             transform: translateY(-1px) scale(1.02);
+            /* interactive-lift-subtle interactive-scale-hover */
             color: #058C53;
-            /* green-secondary */
+            /* colors-green-secondary */
         }
 
         .link-premium:hover::after,
@@ -63,11 +67,13 @@
         .link-premium:active,
         .link-premium.state-active {
             transform: translateY(0) scale(0.98);
+            /* interactive-scale-press */
         }
 
         .link-premium:active::after,
         .link-premium.state-active::after {
             transform: translateY(1px);
+            /* interactive-press-offset */
             opacity: 1;
         }
 
@@ -86,99 +92,99 @@
     <div class="grid grid-cols-6 gap-48 mb-20 items-center justify-items-center text-center">
         <!-- HEADERS -->
         <h2 class="text-grey-primary font-light">Default</h2>
-        <h2 class="text-grey-primary font-light">Hover<br><span class="text-[10px] opacity-50">(Static)</span></h2>
-        <h2 class="text-grey-primary font-light">Focus<br><span class="text-[10px] opacity-50">(Static)</span></h2>
-        <h2 class="text-grey-primary font-light">Active<br><span class="text-[10px] opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Hover<br><span class="text-body-xs opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Focus<br><span class="text-body-xs opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Active<br><span class="text-body-xs opacity-50">(Static)</span></h2>
         <h2 class="text-grey-primary font-light">Visited</h2>
         <h2 class="text-grey-primary font-light">Disabled</h2>
 
         <!-- ROW 1: INLINE LINK -->
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="link-premium text-green-primary">Inline Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="link-premium state-hover text-green-secondary">Inline Link</a>
         </div>
-        <div class="text-[20px]">
-            <a href="#" class="link-premium text-black ring-4 ring-black rounded-sm">Inline Link</a>
+        <div class="text-body-lg">
+            <a href="#" class="link-premium text-black ring rounded-sm">Inline Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="link-premium state-active text-green-secondary transform-gpu">Inline Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="link-premium text-link-visited no-underline">Inline Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="text-grey-secondary no-underline cursor-not-allowed">Inline Link</a>
         </div>
 
         <!-- ROW 2: STANDALONE LINK -->
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#" class="link-premium text-green-primary font-semibold">Standalone Link</a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#" class="link-premium state-hover text-green-secondary font-semibold">Standalone Link</a>
         </div>
-        <div class="text-[24px]">
-            <a href="#" class="link-premium text-black font-semibold ring-4 ring-black rounded-sm px-1">Standalone
+        <div class="text-h3">
+            <a href="#" class="link-premium text-black font-semibold ring rounded-sm px-1">Standalone
                 Link</a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#" class="link-premium state-active text-green-secondary font-semibold transform-gpu">Standalone
                 Link</a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#" class="link-premium text-link-visited font-semibold no-underline">Standalone Link</a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
                 class="text-grey-secondary font-semibold no-underline cursor-not-allowed border-b border-grey-secondary">Standalone
                 Link</a>
         </div>
 
         <!-- ROW 3: LINK + ICON -->
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
-                class="link-premium flex items-center justify-center gap-2 text-green-primary font-semibold no-underline">
+                class="link-premium flex items-center justify-center gap-icon-xs text-green-primary font-semibold no-underline">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
-                class="link-premium state-hover flex items-center gap-2 text-green-secondary font-semibold no-underline">
+                class="link-premium state-hover flex items-center gap-icon-xs text-green-secondary font-semibold no-underline">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line translate-x-1"></i>
             </a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
-                class="link-premium flex items-center gap-2 text-black font-semibold no-underline ring-4 ring-black rounded-sm px-1">
+                class="link-premium flex items-center gap-icon-xs text-black font-semibold no-underline ring rounded-sm px-1">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
-                class="link-premium flex items-center gap-2 text-green-secondary font-semibold no-underline scale-[0.98] transform-gpu">
+                class="link-premium flex items-center gap-icon-xs text-green-secondary font-semibold no-underline active:scale-press transform-gpu">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
         </div>
-        <div class="text-[24px]">
-            <a href="#" class="link-premium flex items-center gap-2 text-link-visited font-semibold no-underline">
+        <div class="text-h3">
+            <a href="#" class="link-premium flex items-center gap-icon-xs text-link-visited font-semibold no-underline">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
         </div>
-        <div class="text-[24px]">
+        <div class="text-h3">
             <a href="#"
-                class="flex items-center gap-2 text-grey-secondary font-semibold no-underline cursor-not-allowed">
+                class="flex items-center gap-icon-xs text-grey-secondary font-semibold no-underline cursor-not-allowed">
                 <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
@@ -186,49 +192,49 @@
         </div>
 
         <!-- ROW 4: NAVIGATION LINK -->
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="text-black font-medium no-underline transition-colors duration-400">Nav Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="text-green-primary font-medium no-underline">Nav Link</a>
         </div>
-        <div class="text-[20px]">
-            <a href="#" class="text-black font-medium no-underline ring-4 ring-black rounded-sm px-4">Nav
+        <div class="text-body-lg">
+            <a href="#" class="text-black font-medium no-underline ring rounded-sm px-4">Nav
                 Link</a>
         </div>
-        <div class="text-[20px]">
-            <a href="#" class="text-green-secondary font-medium no-underline scale-[0.95]">Nav Link</a>
+        <div class="text-body-lg">
+            <a href="#" class="text-green-secondary font-medium no-underline active:scale-press">Nav Link</a>
         </div>
-        <div class="text-[20px]">
-            <a href="#" class="text-black font-medium no-underline opacity-80">Nav Link</a>
+        <div class="text-body-lg">
+            <a href="#" class="text-black font-medium no-underline opacity-muted">Nav Link</a>
         </div>
-        <div class="text-[20px]">
+        <div class="text-body-lg">
             <a href="#" class="text-grey-secondary font-medium no-underline cursor-not-allowed">Nav Link</a>
         </div>
 
         <!-- ROW 5: SUBTLE LINK -->
-        <div class="text-[18px]">
+        <div class="text-body-lg">
             <a href="#"
                 class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400">Subtle
                 Link</a>
         </div>
-        <div class="text-[18px]">
+        <div class="text-body-lg">
             <a href="#" class="text-green-secondary underline decoration-green-secondary underline-offset-4">Subtle
                 Link</a>
         </div>
-        <div class="text-[18px]">
+        <div class="text-body-lg">
             <a href="#"
-                class="text-grey-primary underline decoration-grey-secondary underline-offset-4 ring-2 ring-black rounded-sm">Subtle
+                class="text-grey-primary underline decoration-grey-secondary underline-offset-4 ring-subtle rounded-sm">Subtle
                 Link</a>
         </div>
-        <div class="text-[18px]">
+        <div class="text-body-lg">
             <a href="#" class="text-green-secondary underline decoration-green-secondary underline-offset-1">Subtle
                 Link</a>
         </div>
-        <div class="text-[18px]">
-            <a href="#" class="text-grey-primary underline decoration-grey-secondary opacity-60">Subtle Link</a>
+        <div class="text-body-lg">
+            <a href="#" class="text-grey-primary underline decoration-grey-secondary opacity-semi">Subtle Link</a>
         </div>
-        <div class="text-[18px]">
+        <div class="text-body-lg">
             <a href="#" class="text-grey-secondary no-underline cursor-not-allowed">Subtle Link</a>
         </div>
     </div>
@@ -240,17 +246,17 @@
         <!-- Live Variants -->
         <div class="flex flex-col gap-10">
             <h3 class="text-sm text-grey-primary uppercase tracking-widest">Live Variants</h3>
-            <div class="flex flex-wrap items-center gap-20">
+            <div class="flex flex-wrap items-center gap-icon-xs">
 
                 <!-- Standalone Live -->
                 <a href="#"
-                    class="link-premium text-green-primary font-semibold hover:text-green-secondary focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm visited:text-link-visited">
+                    class="link-premium text-green-primary font-semibold hover:text-green-secondary focus-visible:ring focus-visible:rounded-sm visited:text-link-visited">
                     Standalone Live
                 </a>
 
                 <!-- Link + Icon Live -->
                 <a href="#"
-                    class="link-premium group flex items-center gap-2 text-green-primary font-semibold no-underline hover:text-green-secondary active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm visited:text-link-visited">
+                    class="link-premium group flex items-center gap-icon-xs text-green-primary font-semibold no-underline hover:text-green-secondary active:scale-press focus-visible:ring focus-visible:rounded-sm visited:text-link-visited">
                     <i class="ri-delete-bin-2-line"></i>
                     <span>Explore System</span>
                     <i class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
@@ -258,13 +264,13 @@
 
                 <!-- Navigation Live -->
                 <a href="#"
-                    class="text-black font-medium no-underline transition-all duration-400 hover:text-green-primary active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm focus-visible:px-4">
+                    class="text-black font-medium no-underline transition-all duration-400 hover:text-green-primary active:scale-press focus-visible:ring focus-visible:rounded-sm focus-visible:px-4">
                     Navigation Live
                 </a>
 
                 <!-- Subtle Live -->
                 <a href="#"
-                    class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400 hover:text-green-secondary hover:decoration-green-secondary active:text-green-secondary active:decoration-green-secondary focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded-sm">
+                    class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400 hover:text-green-secondary hover:decoration-green-secondary active:text-green-secondary active:decoration-green-secondary focus-visible:ring-subtle focus-visible:rounded-sm">
                     Subtle Live
                 </a>
 
@@ -272,14 +278,14 @@
         </div>
 
         <!-- Inline Context Live -->
-        <div class="bg-white p-12 rounded-[25px] border border-grey-tertiary">
+        <div class="bg-white p-12 rounded-btn border border-grey-tertiary">
             <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-6">Inline context example</h3>
-            <p class="text-[24px] leading-relaxed text-black">
+            <p class="text-h3 leading-relaxed text-black">
                 Our design system is built on <a href="#"
-                    class="link-premium font-bold text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring-4 focus-visible:ring-black transition-all">Atomic
+                    class="link-premium font-bold text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring transition-all">Atomic
                     Principles</a>,
                 ensuring that every <a href="#"
-                    class="link-premium text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring-4 focus-visible:ring-black transition-all">component</a>
+                    class="link-premium text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring transition-all">component</a>
                 scales perfectly from <a href="#"
                     class="link-premium text-green-secondary no-underline hover:text-green-primary transition-all">Mobile</a>
                 to <a href="#"

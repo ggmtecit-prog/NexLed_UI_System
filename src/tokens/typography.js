@@ -1,4 +1,6 @@
 export const fontSizes = {
+  'display': '48px',
+  'button-lg': '32px',
   'h1': '36px',
   'h2': '30px',
   'h3': '24px',
@@ -19,6 +21,8 @@ export const fontSizes = {
 };
 
 export const lineHeights = {
+  'display': '1',
+  'button-lg': '40px',
   'h1': '44px',
   'h2': '38px',
   'h3': '32px',

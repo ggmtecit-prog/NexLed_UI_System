@@ -15,6 +15,8 @@ tailwind.config = {
                 urbanist: ['Urbanist', 'sans-serif'],
             },
             fontSize: {
+                'display': ['48px', { lineHeight: '1' }],
+                'button-lg': ['32px', { lineHeight: '40px' }],
                 'h1': ['36px', { lineHeight: '44px' }],
                 'h2': ['30px', { lineHeight: '38px' }],
                 'h3': ['24px', { lineHeight: '32px' }],
@@ -32,6 +34,13 @@ tailwind.config = {
                 'h1-fluid': ['clamp(30px, 4vw, 36px)', { lineHeight: '1.2' }],
                 'h2-fluid': ['clamp(26px, 3vw, 30px)', { lineHeight: '1.2' }],
                 'h3-fluid': ['clamp(22px, 2.5vw, 24px)', { lineHeight: '1.2' }],
+                // Icon Sizes
+                'icon-xs': '12px',
+                'icon-sm': '16px',
+                'icon-md': '20px',
+                'icon-lg': '24px',
+                'icon-xl': '32px',
+                'icon-xxl': '48px',
             },
             fontWeight: {
                 'light': '300',
@@ -65,6 +74,11 @@ tailwind.config = {
                 '32': '32px',
                 '40': '40px',
                 '48': '48px',
+                // Icon Gaps
+                'icon-xs': '4px',
+                'icon-sm': '8px',
+                'icon-md': '12px',
+                'icon-lg': '20px',
             },
             colors: {
                 // page/default removed as requested
@@ -80,29 +94,104 @@ tailwind.config = {
                 'link-visited': '#4C1D95',
                 'red-primary': '#B1242F',
                 'red-secondary': '#C94A55',
+                // Icon Colors
+                'icon-primary': '#03683D',
+                'icon-secondary': '#878787',
+                'icon-muted': '#D9D9D9',
+                'icon-danger': '#B1242F',
+                'icon-success': '#03683D',
+                'icon-on-dark': '#FCFCFC',
             },
             boxShadow: {
-                // Default: Uses 'grey-primary' (#878787)
-                // Converted hex to rgba manually for shadow opacity
                 'btn-default': '0 6px 14px rgba(135, 135, 135, 0.20)',
-
-                // Hover: Uses 'green-hover-icons' (#BEE0D2) + 'grey-primary'
                 'btn-hover': '0 18px 36px rgba(190, 224, 210, 0.40), 0 6px 18px rgba(135, 135, 135, 0.15)',
-
-                // Active
                 'btn-active': '0 4px 10px rgba(0, 0, 0, 0.2)',
-
-                // Hover (Active): Green shadow
                 'btn-hover-active': '0 4px 12px rgba(5, 140, 83, 0.2)',
-
-                // New Glow shadow from reference
                 'btn-glow': '0 20px 40px rgba(16, 185, 129, 0.22)',
+            },
+            borderRadius: {
+                'none': '0',
+                'xs': '4px',
+                'sm': '8px',
+                'md': '12px',
+                'lg': '16px',
+                'xl': '24px',
+                'btn': '25px',
+                'full': '9999px',
+            },
+            opacity: {
+                'muted': '0.80',
+                'semi': '0.50',
+                'faint': '0.10',
+            },
+            scale: {
+                'hover': '1.02',
+                'press': '0.98',
+                'press-deep': '0.92',
+            },
+            zIndex: {
+                'base': '0',
+                'dropdown': '1000',
+                'sticky': '1100',
+                'overlay': '2000',
+                'modal': '2100',
+                'popover': '2200',
+                'tooltip': '3000',
+            },
+            maxWidth: {
+                'standard': '1280px',
+                'wide': '1440px',
+                'narrow': '768px',
+                'readable': '65ch',
+            },
+            borderWidth: {
+                'thin': '1px',
+                'standard': '2px',
+                'thick': '4px',
+                // Icon Strokes
+                'icon-stroke-thin': '1px',
+                'icon-stroke-default': '1.5px',
+                'icon-stroke-bold': '2px',
             },
             transitionDuration: {
                 '400': '400ms',
+                'default': '400ms',
             },
             transitionTimingFunction: {
                 'button-ease': 'cubic-bezier(0.16, 1, 0.3, 1)',
+                'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
+            },
+            translate: {
+                'lift': '-3px',
+                'lift-subtle': '-1px',
+                'press': '1px',
+            },
+            width: {
+                'btn-lg': '380px',
+                'btn-icon': '94px',
+                'icon-xs': '12px',
+                'icon-sm': '16px',
+                'icon-md': '20px',
+                'icon-lg': '24px',
+                'icon-xl': '32px',
+                'icon-xxl': '48px',
+            },
+            height: {
+                'btn-lg': '94px',
+                'btn-icon': '94px',
+                'icon-xs': '12px',
+                'icon-sm': '16px',
+                'icon-md': '20px',
+                'icon-lg': '24px',
+                'icon-xl': '32px',
+                'icon-xxl': '48px',
+            },
+            ringWidth: {
+                'DEFAULT': '4px',
+                'subtle': '2px',
+            },
+            ringColor: {
+                'DEFAULT': '#121212',
             }
         }
     }
