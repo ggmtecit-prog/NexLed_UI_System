@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Badge Component (CDN Mode)</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN (No Install Required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind (Shared Config) -->
+    <script src="../../../config-cdn.js"></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="p-10 text-black bg-white">
+
+    <h1 class="text-2xl font-semibold mb-10">Badges</h1>
+
+    <!-- 1. REFERENCES SECTION -->
+    <h2
+        class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
+        References & Sizes</h2>
+
+    <div class="space-y-24 mb-20">
+
+        <!-- LARGE SIZE (MD) -->
+        <div class="flex items-center gap-24">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Large</h3>
+            <div class="flex items-center gap-16">
+                <!-- Primary: High Contrast -->
+                <div class="inline-flex bg-green-primary text-white px-16 py-8 rounded-sm font-medium">
+                    <span class="text-body-sm">Primary</span>
+                </div>
+                <!-- Success: Subtle -->
+                <div class="inline-flex bg-green-hover-icons text-black px-16 py-8 rounded-sm font-medium">
+                    <span class="text-body-sm">Success</span>
+                </div>
+                <!-- Danger: Subtle -->
+                <div class="inline-flex bg-red-primary/10 text-black px-16 py-8 rounded-sm font-medium">
+                    <span class="text-body-sm">Danger</span>
+                </div>
+                <!-- Neutral: Subtle -->
+                <div class="inline-flex bg-grey-tertiary text-grey-primary px-16 py-8 rounded-sm font-medium">
+                    <span class="text-body-sm">Neutral</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEDIUM SIZE (SM) -->
+        <div class="flex items-center gap-24">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Medium</h3>
+            <div class="flex items-center gap-16">
+                <!-- Primary: High Contrast -->
+                <div class="inline-flex bg-green-primary text-white px-12 py-4 rounded-xs font-medium">
+                    <span class="text-body-xs">Primary</span>
+                </div>
+                <!-- Success: Subtle -->
+                <div class="inline-flex bg-green-hover-icons text-black px-12 py-4 rounded-xs font-medium">
+                    <span class="text-body-xs">Success</span>
+                </div>
+                <!-- Danger: Subtle -->
+                <div class="inline-flex bg-red-primary/10 text-black px-12 py-4 rounded-xs font-medium">
+                    <span class="text-body-xs">Danger</span>
+                </div>
+                <!-- Neutral: Subtle -->
+                <div class="inline-flex bg-grey-tertiary text-grey-primary px-12 py-4 rounded-xs font-medium">
+                    <span class="text-body-xs">Neutral</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SMALL SIZE (XS) -->
+        <div class="flex items-center gap-24">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Small</h3>
+            <div class="flex items-center gap-16">
+                <!-- Primary: High Contrast -->
+                <div class="inline-flex bg-green-primary text-white px-4 py-4 rounded-xs font-medium">
+                    <span class="text-overline uppercase">Primary</span>
+                </div>
+                <!-- Success: Subtle -->
+                <div class="inline-flex bg-green-hover-icons text-black px-4 py-4 rounded-xs font-medium">
+                    <span class="text-overline uppercase">Success</span>
+                </div>
+                <!-- Danger: Subtle -->
+                <div class="inline-flex bg-red-primary/10 text-black px-4 py-4 rounded-xs font-medium">
+                    <span class="text-overline uppercase">Danger</span>
+                </div>
+                <!-- Neutral: Subtle -->
+                <div class="inline-flex bg-grey-tertiary text-grey-primary px-4 py-4 rounded-xs font-medium">
+                    <span class="text-overline uppercase">Neutral</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2. LIVE INTERACTIVE DEMOS -->
+    <h2
+        class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
+        Live Contextual Demos</h2>
+
+    <div class="flex flex-wrap gap-48 items-center bg-grey-tertiary/20 p-40 rounded-lg">
+
+        <!-- Status Indicator Trigger (Square Rework) -->
+        <div class="relative">
+            <div
+                class="w-48 h-48 bg-white border border-grey-secondary rounded-sm flex items-center justify-center text-grey-primary">
+                <i class="ri-notification-3-line text-icon-md"></i>
+            </div>
+            <!-- Status Indicator (16px Rounded Square) -->
+            <div class="absolute -top-4 -right-4 bg-green-primary w-16 h-16 rounded-xs shadow-sm">
+            </div>
+        </div>
+
+        <!-- Status Pill in Card -->
+        <div
+            class="p-20 bg-white border border-grey-secondary rounded-sm shadow-btn-default flex flex-col gap-12 min-w-[200px]">
+            <div class="flex justify-between items-center">
+                <span class="text-body-sm font-semibold">Project Beta</span>
+                <div class="bg-green-hover-icons text-black px-8 py-4 rounded-xs">
+                    <span class="text-body-xs font-medium">Active</span>
+                </div>
+            </div>
+            <p class="text-body-xs text-grey-primary">System architecture audit in progress.</p>
+        </div>
+
+        <!-- Category Labels -->
+        <div class="flex flex-wrap gap-8">
+            <div class="bg-grey-tertiary text-grey-primary px-12 py-4 rounded-xs">
+                <span class="text-body-xs font-medium">Design</span>
+            </div>
+            <div class="bg-grey-tertiary text-grey-primary px-12 py-4 rounded-xs">
+                <span class="text-body-xs font-medium">System</span>
+            </div>
+            <div class="bg-grey-tertiary text-grey-primary px-12 py-4 rounded-xs">
+                <span class="text-body-xs font-medium">Architecture</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SPECS -->
+
+
+</body>
+
+</html>
