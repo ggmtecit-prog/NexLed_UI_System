@@ -28,10 +28,12 @@
         .token-badge {
             font-family: monospace;
             font-size: 10px;
-            background: #e5e7eb;
+            background: #EDEDED;
+            /* grey-tertiary */
             padding: 2px 6px;
             border-radius: 4px;
-            color: #4b5563;
+            color: #878787;
+            /* grey-primary */
         }
 
         .spacing-indicator {
@@ -44,7 +46,8 @@
             left: -12px;
             width: 4px;
             height: 100%;
-            background: #ef4444;
+            background: #B1242F;
+            /* red-primary */
             opacity: 0.3;
         }
     </style>
@@ -59,6 +62,21 @@
         <h2 class="text-body-xs font-semibold text-grey-primary uppercase tracking-widest mb-8">Headings Master Scale
         </h2>
         <div class="space-y-12">
+            <div class="grid grid-cols-[200px_1fr] items-baseline gap-10 border-b border-grey-tertiary pb-6">
+                <div class="flex flex-col gap-1 text-xs">
+                    <span class="font-semibold text-black italic">Display Tier</span>
+                    <span class="token-badge">text-display (48px/1)</span>
+                </div>
+                <h1 class="text-display font-bold">Uncompromising visual impact</h1>
+            </div>
+
+            <div class="grid grid-cols-[200px_1fr] items-baseline gap-10 border-b border-grey-tertiary pb-6">
+                <div class="flex flex-col gap-1 text-xs">
+                    <span class="font-semibold text-black italic">Large Button</span>
+                    <span class="token-badge">text-button-lg (32px/40px)</span>
+                </div>
+                <span class="text-button-lg font-semibold">High-impact interaction tier</span>
+            </div>
 
             <div class="grid grid-cols-[200px_1fr] items-baseline gap-10 border-b border-grey-tertiary pb-6">
                 <div class="flex flex-col gap-1 text-xs">
@@ -169,7 +187,74 @@
         </div>
     </div>
 
-    <!-- SECTION 4: WEIGHT & SPACING AUDIT -->
+    <!-- SECTION 4: MASTER ICON SYSTEM -->
+    <div class="mb-20">
+        <h2 class="text-body-xs font-semibold text-grey-primary uppercase tracking-widest mb-8">Master Icon System</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <!-- Sizes & Strokes -->
+            <div class="space-y-10">
+                <h3 class="text-label font-bold text-black uppercase mb-4">Sizing & Strokes</h3>
+                <div class="flex flex-wrap items-center gap-8 bg-grey-tertiary p-8 rounded-2xl">
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-xxl w-icon-xxl h-icon-xxl flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">xxl (48px)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-xl w-icon-xl h-icon-xl flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">xl (32px)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-lg w-icon-lg h-icon-lg flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">lg (24px)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-md w-icon-md h-icon-md flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">md (20px)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-sm w-icon-sm h-icon-sm flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">sm (16px)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <i
+                            class="ri-settings-4-line text-icon-xs w-icon-xs h-icon-xs flex items-center justify-center border border-black/5 rounded"></i>
+                        <span class="token-badge">xs (12px)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semantic Colors -->
+            <div class="space-y-6">
+                <h3 class="text-label font-bold text-black uppercase mb-4">Semantic Colors</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-4 p-4 border border-grey-tertiary rounded-xl">
+                        <i class="ri-checkbox-circle-line text-icon-lg text-icon-success"></i>
+                        <span class="text-body-sm font-medium">Success</span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 border border-grey-tertiary rounded-xl">
+                        <i class="ri-error-warning-line text-icon-lg text-icon-danger"></i>
+                        <span class="text-body-sm font-medium">Danger</span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 border border-grey-tertiary rounded-xl">
+                        <i class="ri-user-line text-icon-lg text-icon-primary"></i>
+                        <span class="text-body-sm font-medium">Primary</span>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 border border-grey-tertiary rounded-xl bg-black">
+                        <i class="ri-sun-line text-icon-lg text-icon-on-dark"></i>
+                        <span class="text-body-sm font-medium text-white">On Dark</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: WEIGHT & SPACING AUDIT -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
         <!-- WEIGHTS -->

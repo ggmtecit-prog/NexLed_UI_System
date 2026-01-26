@@ -41,6 +41,9 @@ tailwind.config = {
                 'icon-lg': '24px',
                 'icon-xl': '32px',
                 'icon-xxl': '48px',
+                'checkbox-sm': '16px',
+                'checkbox-md': '22px',
+                'checkbox-lg': '28px',
             },
             fontWeight: {
                 'light': '300',
@@ -111,7 +114,7 @@ tailwind.config = {
             },
             borderRadius: {
                 'none': '0',
-                'xs': '4px',
+                'xs': '6px',
                 'sm': '8px',
                 'md': '12px',
                 'lg': '16px',
@@ -175,6 +178,9 @@ tailwind.config = {
                 'icon-lg': '24px',
                 'icon-xl': '32px',
                 'icon-xxl': '48px',
+                'checkbox-sm': '16px',
+                'checkbox-md': '22px',
+                'checkbox-lg': '28px',
             },
             height: {
                 'btn-lg': '94px',
@@ -185,6 +191,9 @@ tailwind.config = {
                 'icon-lg': '24px',
                 'icon-xl': '32px',
                 'icon-xxl': '48px',
+                'checkbox-sm': '16px',
+                'checkbox-md': '22px',
+                'checkbox-lg': '28px',
             },
             ringWidth: {
                 'DEFAULT': '4px',
