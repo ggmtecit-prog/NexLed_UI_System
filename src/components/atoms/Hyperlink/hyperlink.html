@@ -48,14 +48,14 @@
 
         .link-premium:hover,
         .link-premium.state-hover {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-1px) scale(1.02);
             color: #058C53;
             /* green-secondary */
         }
 
         .link-premium:hover::after,
         .link-premium.state-hover::after {
-            transform: translateY(4px);
+            transform: translateY(2px);
             opacity: 1;
         }
 
@@ -67,7 +67,7 @@
 
         .link-premium:active::after,
         .link-premium.state-active::after {
-            transform: translateY(2px);
+            transform: translateY(1px);
             opacity: 1;
         }
 
@@ -140,6 +140,7 @@
         <div class="text-[24px]">
             <a href="#"
                 class="link-premium flex items-center justify-center gap-2 text-green-primary font-semibold no-underline">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
@@ -147,6 +148,7 @@
         <div class="text-[24px]">
             <a href="#"
                 class="link-premium state-hover flex items-center gap-2 text-green-secondary font-semibold no-underline">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line translate-x-1"></i>
             </a>
@@ -154,6 +156,7 @@
         <div class="text-[24px]">
             <a href="#"
                 class="link-premium flex items-center gap-2 text-black font-semibold no-underline ring-4 ring-black rounded-sm px-1">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
@@ -161,12 +164,14 @@
         <div class="text-[24px]">
             <a href="#"
                 class="link-premium flex items-center gap-2 text-green-secondary font-semibold no-underline scale-[0.98] transform-gpu">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="text-[24px]">
             <a href="#" class="link-premium flex items-center gap-2 text-link-visited font-semibold no-underline">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
@@ -174,6 +179,7 @@
         <div class="text-[24px]">
             <a href="#"
                 class="flex items-center gap-2 text-grey-secondary font-semibold no-underline cursor-not-allowed">
+                <i class="ri-delete-bin-2-line"></i>
                 <span>Link + Icon</span>
                 <i class="ri-arrow-right-line"></i>
             </a>
@@ -181,20 +187,20 @@
 
         <!-- ROW 4: NAVIGATION LINK -->
         <div class="text-[20px]">
-            <a href="#" class="text-green-primary font-medium no-underline transition-colors duration-400">Nav Link</a>
+            <a href="#" class="text-black font-medium no-underline transition-colors duration-400">Nav Link</a>
         </div>
         <div class="text-[20px]">
-            <a href="#" class="text-black font-medium no-underline scale-[1.05] transform-gpu">Nav Link</a>
+            <a href="#" class="text-green-primary font-medium no-underline">Nav Link</a>
         </div>
         <div class="text-[20px]">
-            <a href="#" class="text-grey-primary font-medium no-underline ring-4 ring-black rounded-sm px-4">Nav
+            <a href="#" class="text-black font-medium no-underline ring-4 ring-black rounded-sm px-4">Nav
                 Link</a>
         </div>
         <div class="text-[20px]">
             <a href="#" class="text-green-secondary font-medium no-underline scale-[0.95]">Nav Link</a>
         </div>
         <div class="text-[20px]">
-            <a href="#" class="text-green-primary font-medium no-underline opacity-80">Nav Link</a>
+            <a href="#" class="text-black font-medium no-underline opacity-80">Nav Link</a>
         </div>
         <div class="text-[20px]">
             <a href="#" class="text-grey-secondary font-medium no-underline cursor-not-allowed">Nav Link</a>
@@ -207,7 +213,8 @@
                 Link</a>
         </div>
         <div class="text-[18px]">
-            <a href="#" class="text-black underline decoration-black underline-offset-4">Subtle Link</a>
+            <a href="#" class="text-green-secondary underline decoration-green-secondary underline-offset-4">Subtle
+                Link</a>
         </div>
         <div class="text-[18px]">
             <a href="#"
@@ -244,19 +251,20 @@
                 <!-- Link + Icon Live -->
                 <a href="#"
                     class="link-premium group flex items-center gap-2 text-green-primary font-semibold no-underline hover:text-green-secondary active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm visited:text-link-visited">
+                    <i class="ri-delete-bin-2-line"></i>
                     <span>Explore System</span>
                     <i class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
                 </a>
 
                 <!-- Navigation Live -->
                 <a href="#"
-                    class="text-green-primary font-medium no-underline transition-all duration-400 hover:text-black hover:scale-[1.05] active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm focus-visible:px-4">
+                    class="text-black font-medium no-underline transition-all duration-400 hover:text-green-primary active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm focus-visible:px-4">
                     Navigation Live
                 </a>
 
                 <!-- Subtle Live -->
                 <a href="#"
-                    class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400 hover:text-black hover:decoration-black active:text-green-secondary active:decoration-green-secondary focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded-sm">
+                    class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400 hover:text-green-secondary hover:decoration-green-secondary active:text-green-secondary active:decoration-green-secondary focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded-sm">
                     Subtle Live
                 </a>
 
