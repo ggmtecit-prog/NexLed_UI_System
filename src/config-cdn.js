@@ -4,9 +4,26 @@
 
 tailwind.config = {
     theme: {
+        screens: {
+            'sm': '481px',
+            'md': '769px',
+            'lg': '1025px',
+            'xl': '1441px',
+        },
         extend: {
             fontFamily: {
                 urbanist: ['Urbanist', 'sans-serif'],
+            },
+            spacing: {
+                '4': '4px',
+                '8': '8px',
+                '12': '12px',
+                '16': '16px',
+                '20': '20px',
+                '24': '24px',
+                '32': '32px',
+                '40': '40px',
+                '48': '48px',
             },
             colors: {
                 // page/default removed as requested

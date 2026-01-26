@@ -22,138 +22,267 @@
     <style>
         body {
             font-family: 'Urbanist', sans-serif;
+            background-color: #f4f4f6;
         }
 
-        /* Premium Underline Animation */
+        /* Premium Underline Animation Redesign: Spatial Separation */
         .link-premium {
             position: relative;
             display: inline-block;
-            padding-bottom: 2px;
+            transition: all 0.400s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: center;
         }
 
         .link-premium::after {
             content: '';
             position: absolute;
             width: 100%;
-            transform: scaleX(0);
             height: 2px;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
-            background-color: #058C53;
+            background-color: currentColor;
+            opacity: 0.2;
+            /* Visible by default as planned */
+            transition: all 0.400s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .link-premium:hover,
+        .link-premium.state-hover {
+            transform: translateY(-2px) scale(1.02);
+            color: #058C53;
             /* green-secondary */
-            transform-origin: bottom right;
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .link-premium:hover::after,
         .link-premium.state-hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+            transform: translateY(4px);
+            opacity: 1;
+        }
+
+        /* Active / Pressed State */
+        .link-premium:active,
+        .link-premium.state-active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .link-premium:active::after,
+        .link-premium.state-active::after {
+            transform: translateY(2px);
+            opacity: 1;
+        }
+
+        /* Focus Ring Fix */
+        .link-premium:focus-visible {
+            outline: none;
         }
     </style>
 </head>
 
-<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+<body class="p-10 text-black bg-white">
 
-    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">Hyperlink Component</h1>
+    <h1 class="text-2xl font-semibold mb-10">Hyperlinks</h1>
 
-    <!-- SECTION 1: VISUAL STATES -->
-    <section class="w-full max-w-5xl bg-white p-12 rounded-3xl shadow-sm border border-black/10 mb-12">
-        <h2 class="text-xl font-bold mb-8 text-black border-b border-grey-tertiary pb-4">State Reference</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <!-- GRID LAYOUT FOR STATES -->
+    <div class="grid grid-cols-6 gap-48 mb-20 items-center justify-items-center text-center">
+        <!-- HEADERS -->
+        <h2 class="text-grey-primary font-light">Default</h2>
+        <h2 class="text-grey-primary font-light">Hover<br><span class="text-[10px] opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Focus<br><span class="text-[10px] opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Active<br><span class="text-[10px] opacity-50">(Static)</span></h2>
+        <h2 class="text-grey-primary font-light">Visited</h2>
+        <h2 class="text-grey-primary font-light">Disabled</h2>
 
-            <!-- Default -->
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Default</span>
-                <div>
-                    <a href="#default-link-demo" class="link-premium text-black font-semibold no-underline">
-                        Default Link
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hover -->
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Hover</span>
-                <div>
-                    <a href="#hover-link-demo"
-                        class="link-premium state-hover text-green-secondary font-semibold no-underline">
-                        Hover Link
-                    </a>
-                </div>
-            </div>
-
-            <!-- Focus -->
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Focus</span>
-                <div>
-                    <a href="#focus-link-demo"
-                        class="link-premium text-black font-semibold no-underline outline outline-2 outline-green-secondary outline-offset-4 rounded-sm">
-                        Focused Link
-                    </a>
-                </div>
-            </div>
-
-            <!-- Visited -->
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Visited</span>
-                <div>
-                    <a href="#visited-link-demo" class="link-premium text-link-visited font-semibold no-underline">
-                        Visited Link
-                    </a>
-                </div>
-            </div>
-
+        <!-- ROW 1: INLINE LINK -->
+        <div class="text-[20px]">
+            <a href="#" class="link-premium text-green-primary">Inline Link</a>
         </div>
-    </section>
+        <div class="text-[20px]">
+            <a href="#" class="link-premium state-hover text-green-secondary">Inline Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="link-premium text-black ring-4 ring-black rounded-sm">Inline Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="link-premium state-active text-green-secondary transform-gpu">Inline Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="link-premium text-link-visited no-underline">Inline Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-grey-secondary no-underline cursor-not-allowed">Inline Link</a>
+        </div>
 
+        <!-- ROW 2: STANDALONE LINK -->
+        <div class="text-[24px]">
+            <a href="#" class="link-premium text-green-primary font-semibold">Standalone Link</a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#" class="link-premium state-hover text-green-secondary font-semibold">Standalone Link</a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#" class="link-premium text-black font-semibold ring-4 ring-black rounded-sm px-1">Standalone
+                Link</a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#" class="link-premium state-active text-green-secondary font-semibold transform-gpu">Standalone
+                Link</a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#" class="link-premium text-link-visited font-semibold no-underline">Standalone Link</a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#"
+                class="text-grey-secondary font-semibold no-underline cursor-not-allowed border-b border-grey-secondary">Standalone
+                Link</a>
+        </div>
 
-    <!-- SECTION 2: USAGE VARIANTS -->
-    <section
-        class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-12 rounded-3xl shadow-sm border border-black/10">
+        <!-- ROW 3: LINK + ICON -->
+        <div class="text-[24px]">
+            <a href="#"
+                class="link-premium flex items-center justify-center gap-2 text-green-primary font-semibold no-underline">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#"
+                class="link-premium state-hover flex items-center gap-2 text-green-secondary font-semibold no-underline">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line translate-x-1"></i>
+            </a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#"
+                class="link-premium flex items-center gap-2 text-black font-semibold no-underline ring-4 ring-black rounded-sm px-1">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#"
+                class="link-premium flex items-center gap-2 text-green-secondary font-semibold no-underline scale-[0.98] transform-gpu">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#" class="link-premium flex items-center gap-2 text-link-visited font-semibold no-underline">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
+        <div class="text-[24px]">
+            <a href="#"
+                class="flex items-center gap-2 text-grey-secondary font-semibold no-underline cursor-not-allowed">
+                <span>Link + Icon</span>
+                <i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
 
-        <!-- Variant: Simple Text -->
-        <div class="flex flex-col gap-4">
-            <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Standard Text</span>
-            <div>
-                <a href="#variant-simple"
-                    class="link-premium text-black font-semibold no-underline hover:text-green-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-sm visited:text-link-visited transition-colors duration-300">
-                    Download Documentation
+        <!-- ROW 4: NAVIGATION LINK -->
+        <div class="text-[20px]">
+            <a href="#" class="text-green-primary font-medium no-underline transition-colors duration-400">Nav Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-black font-medium no-underline scale-[1.05] transform-gpu">Nav Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-grey-primary font-medium no-underline ring-4 ring-black rounded-sm px-4">Nav
+                Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-green-secondary font-medium no-underline scale-[0.95]">Nav Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-green-primary font-medium no-underline opacity-80">Nav Link</a>
+        </div>
+        <div class="text-[20px]">
+            <a href="#" class="text-grey-secondary font-medium no-underline cursor-not-allowed">Nav Link</a>
+        </div>
+
+        <!-- ROW 5: SUBTLE LINK -->
+        <div class="text-[18px]">
+            <a href="#"
+                class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400">Subtle
+                Link</a>
+        </div>
+        <div class="text-[18px]">
+            <a href="#" class="text-black underline decoration-black underline-offset-4">Subtle Link</a>
+        </div>
+        <div class="text-[18px]">
+            <a href="#"
+                class="text-grey-primary underline decoration-grey-secondary underline-offset-4 ring-2 ring-black rounded-sm">Subtle
+                Link</a>
+        </div>
+        <div class="text-[18px]">
+            <a href="#" class="text-green-secondary underline decoration-green-secondary underline-offset-1">Subtle
+                Link</a>
+        </div>
+        <div class="text-[18px]">
+            <a href="#" class="text-grey-primary underline decoration-grey-secondary opacity-60">Subtle Link</a>
+        </div>
+        <div class="text-[18px]">
+            <a href="#" class="text-grey-secondary no-underline cursor-not-allowed">Subtle Link</a>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE PLAYGROUND -->
+    <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10">Interactive Playground</h2>
+    <div class="space-y-16 pb-20">
+
+        <!-- Live Variants -->
+        <div class="flex flex-col gap-10">
+            <h3 class="text-sm text-grey-primary uppercase tracking-widest">Live Variants</h3>
+            <div class="flex flex-wrap items-center gap-20">
+
+                <!-- Standalone Live -->
+                <a href="#"
+                    class="link-premium text-green-primary font-semibold hover:text-green-secondary focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm visited:text-link-visited">
+                    Standalone Live
                 </a>
-            </div>
-            <p class="text-sm text-grey-primary">Standard usage with premium left-to-right animation.</p>
-        </div>
 
-        <!-- Variant: With Icon -->
-        <div class="flex flex-col gap-4">
-            <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">With Icon</span>
-            <div>
-                <a href="#variant-icon"
-                    class="link-premium group inline-flex items-center gap-1 text-black font-semibold no-underline hover:text-green-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-sm visited:text-link-visited transition-colors duration-300">
-                    <span>View Case Study</span>
-                    <i class="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1"></i>
+                <!-- Link + Icon Live -->
+                <a href="#"
+                    class="link-premium group flex items-center gap-2 text-green-primary font-semibold no-underline hover:text-green-secondary active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm visited:text-link-visited">
+                    <span>Explore System</span>
+                    <i class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
                 </a>
+
+                <!-- Navigation Live -->
+                <a href="#"
+                    class="text-green-primary font-medium no-underline transition-all duration-400 hover:text-black hover:scale-[1.05] active:scale-[0.95] focus-visible:ring-4 focus-visible:ring-black focus-visible:rounded-sm focus-visible:px-4">
+                    Navigation Live
+                </a>
+
+                <!-- Subtle Live -->
+                <a href="#"
+                    class="text-grey-primary underline decoration-grey-secondary underline-offset-4 transition-all duration-400 hover:text-black hover:decoration-black active:text-green-secondary active:decoration-green-secondary focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded-sm">
+                    Subtle Live
+                </a>
+
             </div>
-            <p class="text-sm text-grey-primary">Icon slides right on hover.</p>
         </div>
 
-        <!-- Variant: Inline Context -->
-        <div class="flex flex-col gap-4 md:col-span-2">
-            <span class="text-xs font-bold text-grey-primary uppercase tracking-wider">Inline Context</span>
-            <p class="text-grey-primary leading-relaxed">
-                You can agree to our
-                <a href="#variant-terms"
-                    class="link-premium text-black font-semibold no-underline hover:text-green-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-sm visited:text-link-visited transition-colors duration-300">Terms
-                    of Service</a>
-                and read our
-                <a href="#variant-privacy"
-                    class="link-premium text-black font-semibold no-underline hover:text-green-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-sm visited:text-link-visited transition-colors duration-300">Privacy
-                    Policy</a>
-                to learn more about how we handle your data.
+        <!-- Inline Context Live -->
+        <div class="bg-white p-12 rounded-[25px] border border-grey-tertiary">
+            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-6">Inline context example</h3>
+            <p class="text-[24px] leading-relaxed text-black">
+                Our design system is built on <a href="#"
+                    class="link-premium font-bold text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring-4 focus-visible:ring-black transition-all">Atomic
+                    Principles</a>,
+                ensuring that every <a href="#"
+                    class="link-premium text-green-primary hover:text-green-secondary visited:text-link-visited focus-visible:ring-4 focus-visible:ring-black transition-all">component</a>
+                scales perfectly from <a href="#"
+                    class="link-premium text-green-secondary no-underline hover:text-green-primary transition-all">Mobile</a>
+                to <a href="#"
+                    class="link-premium text-green-secondary no-underline hover:text-green-primary transition-all">Wide
+                    Desktop</a>
+                without losing <a href="#" class="text-grey-secondary no-underline cursor-not-allowed">Visual
+                    Integrity</a>.
             </p>
         </div>
 
-    </section>
+    </div>
 
 </body>
 
