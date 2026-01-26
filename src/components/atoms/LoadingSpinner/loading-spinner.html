@@ -38,10 +38,10 @@
         }
 
         .spinner-anim {
-            stroke: #03683D;
-            /* green-primary */
+            stroke: #058C53;
+            /* green-secondary */
             stroke-dasharray: 100, 226;
-            animation: rotate-path 1.5s linear infinite;
+            animation: rotate-path 2s linear infinite;
         }
 
         @keyframes rotate-path {
@@ -61,9 +61,9 @@
     <h1 class="text-2xl font-semibold mb-10 text-black">Loading Spinner</h1>
 
     <!-- Size Variations -->
-    <div class="flex flex-wrap items-end justify-center gap-24 w-full max-w-4xl mb-20">
+    <div class="flex flex-wrap items-end justify-center gap-16 w-full max-w-4xl">
 
-        <!-- Large (48px) -->
+        <!-- Small -->
         <div class="flex flex-col items-center gap-4">
             <div class="spinner w-12 h-12">
                 <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -73,12 +73,12 @@
                         d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
                 </svg>
             </div>
-            <span class="text-sm font-medium text-grey-primary">Large (48px)</span>
+            <span class="text-sm font-medium text-grey-primary">Small (48px)</span>
         </div>
 
-        <!-- Medium (32px) -->
+        <!-- Medium -->
         <div class="flex flex-col items-center gap-4">
-            <div class="spinner w-8 h-8">
+            <div class="spinner w-[100px] h-[100px]">
                 <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                     <path class="spinner-track"
                         d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
@@ -86,12 +86,12 @@
                         d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
                 </svg>
             </div>
-            <span class="text-sm font-medium text-grey-primary">Medium (32px)</span>
+            <span class="text-sm font-medium text-grey-primary">Medium (100px)</span>
         </div>
 
-        <!-- Small (24px) -->
+        <!-- Large -->
         <div class="flex flex-col items-center gap-4">
-            <div class="spinner w-6 h-6">
+            <div class="spinner w-[156px] h-[156px]">
                 <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                     <path class="spinner-track"
                         d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
@@ -99,7 +99,7 @@
                         d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
                 </svg>
             </div>
-            <span class="text-sm font-medium text-grey-primary">Small (24px)</span>
+            <span class="text-sm font-medium text-grey-primary">Large (156px)</span>
         </div>
 
     </div>
@@ -109,11 +109,11 @@
         <h3 class="text-lg font-semibold mb-3 text-black">How to Use</h3>
 
         <p class="text-[14px] text-grey-primary mb-4">
-            Copy the SVG spinner code and adjust the container size using Tailwind classes (w-*, h-*):
+            Copy the SVG spinner code and adjust the container size:
         </p>
 
-        <pre class="bg-white p-4 rounded-lg text-[13px] overflow-x-auto mb-4"><code>&lt;!-- Example: Medium Spinner (32px) --&gt;
-&lt;div class="spinner w-8 h-8"&gt;
+        <pre class="bg-white p-4 rounded-lg text-[13px] overflow-x-auto mb-4"><code>&lt;!-- Small Spinner (48px) --&gt;
+&lt;div class="spinner w-12 h-12"&gt;
   &lt;svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"&gt;
     &lt;path class="spinner-track"
       d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" /&gt;
@@ -127,8 +127,8 @@
             <ul class="list-disc pl-5 space-y-1">
                 <li>Shape: Rounded square (20px corner radius)</li>
                 <li>Track color: <strong>grey-tertiary</strong> (#EDEDED)</li>
-                <li>Active stroke: <strong>green-primary</strong> (#03683D)</li>
-                <li>Animation: 1.5s linear stroke dash animation</li>
+                <li>Active stroke: <strong>green-secondary</strong> (#058C53)</li>
+                <li>Animation: 2s linear stroke dash animation</li>
             </ul>
         </div>
     </div>
