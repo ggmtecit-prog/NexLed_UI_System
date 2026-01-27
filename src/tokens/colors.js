@@ -3,6 +3,8 @@ export const colors = {
   'green-secondary': '#058C53',
   'green-hover-icons': '#BEE0D2',
   'green-hover-text': '#E3F1EB',
+  'blue-primary': '#386789',
+  'blue-secondary': '#5B8BAA',
   'black': '#121212',
   'white': '#FCFCFC',
   'grey-primary': '#878787',
