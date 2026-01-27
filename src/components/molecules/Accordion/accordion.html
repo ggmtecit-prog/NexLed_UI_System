@@ -19,88 +19,206 @@
     <!-- 3. Configure Tailwind (Shared Config) -->
     <script src="../../../config-cdn.js"></script>
 
-    <style>
-        body {
-            font-family: 'Urbanist', sans-serif;
-        }
-
-        /* Accordion transition styles */
-        .accordion-content {
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-        }
-
-        .accordion-trigger[aria-expanded="true"]+.accordion-content {
-            max-height: 500px;
-        }
-    </style>
 </head>
 
-<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+<body class="p-10 text-black bg-white font-urbanist">
 
-    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">Accordion Component</h1>
+    <h1 class="text-2xl font-semibold mb-10 text-black">Accordion Component</h1>
 
-    <!-- ACCORDION DEMO -->
-    <div class="w-full max-w-md bg-white p-8 md:p-10 rounded-[32px] shadow-sm border border-grey-tertiary">
+    <!-- 1. REFERENCES & SIZES -->
+    <h2
+        class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
+        References & Sizes</h2>
 
-        <div class="accordion-group space-y-1">
+    <div class="space-y-24 mb-20 max-w-wide">
 
-            <!-- Accordion Item 1 -->
-            <div class="accordion-item border-b border-grey-tertiary last:border-0">
-                <button
-                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
-                    aria-expanded="false">
-                    <span
-                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
-                        eget iaculis ante</span>
-                    <i
-                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
-                </button>
-                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
-                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
+        <!-- SMALL SIZE -->
+        <div class="flex flex-col gap-6">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Small (py-12)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Default -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-12 text-left">
+                        <span class="text-body-sm font-medium text-grey-primary">Small Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-sm text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Hover (State) -->
+                <div class="w-full border-b border-grey-tertiary cursor-pointer">
+                    <div class="flex items-center justify-between py-12 text-left">
+                        <span class="text-body-sm font-medium text-green-secondary">Small Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-sm text-green-secondary"></i>
+                    </div>
+                </div>
+                <!-- Focus (State) -->
+                <div
+                    class="w-full border-b border-grey-tertiary rounded-lg outline outline-2 outline-black outline-offset-[-2px]">
+                    <div class="flex items-center justify-between py-12 px-2 text-left">
+                        <span class="text-body-sm font-medium text-grey-primary">Small Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-sm text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Active -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-12 text-left">
+                        <span class="text-body-sm font-medium text-black">Small Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-sm text-black rotate-180"></i>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Accordion Item 2 -->
-            <div class="accordion-item border-b border-grey-tertiary last:border-0">
-                <button
-                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
-                    aria-expanded="false">
-                    <span
-                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
-                        eget iaculis ante</span>
-                    <i
-                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
-                </button>
-                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
-                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.
+        <!-- MEDIUM SIZE (Default) -->
+        <div class="flex flex-col gap-6">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Medium (py-16)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Default -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-16 text-left">
+                        <span class="text-body-lg font-medium text-grey-primary">Medium Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-md text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Hover (State) -->
+                <div class="w-full border-b border-grey-tertiary cursor-pointer">
+                    <div class="flex items-center justify-between py-16 text-left">
+                        <span class="text-body-lg font-medium text-green-secondary">Medium Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-md text-green-secondary"></i>
+                    </div>
+                </div>
+                <!-- Focus (State) -->
+                <div
+                    class="w-full border-b border-grey-tertiary rounded-lg outline outline-2 outline-black outline-offset-[-2px]">
+                    <div class="flex items-center justify-between py-16 px-2 text-left">
+                        <span class="text-body-lg font-medium text-grey-primary">Medium Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-md text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Active -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-16 text-left">
+                        <span class="text-body-lg font-medium text-black">Medium Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-md text-black rotate-180"></i>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Accordion Item 3 -->
-            <div class="accordion-item border-b border-grey-tertiary last:border-0">
-                <button
-                    class="accordion-trigger w-full flex items-center justify-between py-4 text-left group transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
-                    aria-expanded="false">
-                    <span
-                        class="text-lg font-medium text-grey-primary group-hover:text-black transition-colors">Praesent
-                        eget iaculis ante</span>
-                    <i
-                        class="chevron-icon ri-arrow-down-s-line text-xl text-grey-primary group-hover:text-black transition-all duration-300"></i>
-                </button>
-                <div class="accordion-content overflow-hidden max-h-0 opacity-0">
-                    <div class="pb-6 text-grey-primary leading-relaxed text-sm">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                        laudantium.
+        <!-- BIG SIZE -->
+        <div class="flex flex-col gap-6">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Big (py-24)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Default -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-24 text-left">
+                        <span class="text-h3 font-medium text-grey-primary">Big Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-lg text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Hover (State) -->
+                <div class="w-full border-b border-grey-tertiary cursor-pointer">
+                    <div class="flex items-center justify-between py-24 text-left">
+                        <span class="text-h3 font-medium text-green-secondary">Big Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-lg text-green-secondary"></i>
+                    </div>
+                </div>
+                <!-- Focus (State) -->
+                <div
+                    class="w-full border-b border-grey-tertiary rounded-lg outline outline-2 outline-black outline-offset-[-2px]">
+                    <div class="flex items-center justify-between py-24 px-2 text-left">
+                        <span class="text-h3 font-medium text-grey-primary">Big Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-lg text-grey-primary"></i>
+                    </div>
+                </div>
+                <!-- Active -->
+                <div class="w-full border-b border-grey-tertiary">
+                    <div class="flex items-center justify-between py-24 text-left">
+                        <span class="text-h3 font-medium text-black">Big Title</span>
+                        <i class="ri-arrow-down-s-line text-icon-lg text-black rotate-180"></i>
                     </div>
                 </div>
             </div>
+        </div>
 
+    </div>
+
+    <!-- 2. LIVE INTERACTIVE DEMOS -->
+    <h2
+        class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
+        Live Contextual Demos</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">
+
+        <!-- SMALL DEMO -->
+        <div class="w-full bg-white rounded-none">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Small</h3>
+            <div class="accordion-group space-y-1">
+                <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between py-12 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                        aria-expanded="false">
+                        <span
+                            class="text-body-sm font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Small
+                            Accordion</span>
+                        <i
+                            class="chevron-icon ri-arrow-down-s-line text-icon-sm text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                    </button>
+                    <div
+                        class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium">
+                        <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                            Small variant content description.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEDIUM DEMO -->
+        <div class="w-full bg-white rounded-none">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Medium (Default)</h3>
+            <div class="accordion-group space-y-1">
+                <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between py-16 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                        aria-expanded="false">
+                        <span
+                            class="text-body-lg font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Medium
+                            Accordion</span>
+                        <i
+                            class="chevron-icon ri-arrow-down-s-line text-icon-md text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                    </button>
+                    <div
+                        class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium">
+                        <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                            Medium variant content description.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIG DEMO -->
+        <div class="w-full bg-white rounded-none">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Big</h3>
+            <div class="accordion-group space-y-1">
+                <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                    <button
+                        class="accordion-trigger w-full flex items-center justify-between py-24 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                        aria-expanded="false">
+                        <span
+                            class="text-h3 font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Big
+                            Accordion</span>
+                        <i
+                            class="chevron-icon ri-arrow-down-s-line text-icon-lg text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                    </button>
+                    <div
+                        class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium">
+                        <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                            Big variant content description.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

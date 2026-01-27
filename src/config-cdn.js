@@ -201,6 +201,9 @@ tailwind.config = {
             },
             ringColor: {
                 'DEFAULT': '#121212',
+            },
+            ringOpacity: {
+                'DEFAULT': '1',
             }
         }
     }

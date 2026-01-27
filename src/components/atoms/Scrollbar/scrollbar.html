@@ -19,106 +19,147 @@
     <!-- 3. Configure Tailwind (Shared Config) -->
     <script src="../../../config-cdn.js"></script>
 
-    <style>
-        /* Base styles */
-        body {
-            font-family: 'Urbanist', sans-serif;
-        }
+    <style type="text/tailwindcss">
+        @layer components {
+            .custom-scrollbar {
+                @apply overflow-y-auto;
+            }
 
-        /* Custom Scrollbar Styles */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 12px;
-        }
+            /* Custom Scrollbar Styles using Tokens */
+            .custom-scrollbar::-webkit-scrollbar {
+                @apply w-8;
+            }
 
-        .custom-scrollbar::-webkit-scrollbar-button {
-            display: none;
-        }
+            .custom-scrollbar::-webkit-scrollbar-button {
+                @apply hidden;
+            }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                @apply bg-transparent;
+            }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #D9D9D9;
-            /* grey-secondary */
-            border-radius: 10px;
-            border: 3px solid #FCFCFC;
-            /* white */
-            background-clip: padding-box;
-            transition: background 240ms ease;
-        }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                @apply bg-grey-secondary rounded-full border-thin border-white bg-clip-padding transition-colors duration-default ease-premium;
+            }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-        .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
-            background: #058C53;
-            /* green-secondary */
-            background-clip: padding-box;
-        }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+            .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
+                @apply bg-green-primary;
+            }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb:active {
-            background: #03683D;
-            /* green-primary */
-            background-clip: padding-box;
+            .custom-scrollbar::-webkit-scrollbar-thumb:active {
+                @apply bg-green-secondary;
+            }
         }
     </style>
 </head>
 
-<body class="p-10 bg-white">
+<body class="font-urbanist bg-white text-black p-40">
 
-    <h1 class="text-2xl font-semibold mb-10 text-black">Custom Scrollbar</h1>
+    <h1 class="text-2xl font-semibold mb-10">Custom Scrollbar</h1>
 
-    <!-- Demo Container -->
-    <div class="w-[400px] h-[300px] bg-white border border-black/8 rounded-[20px] overflow-hidden mx-auto">
-        <div class="custom-scrollbar h-full overflow-y-auto px-6 py-4 my-3">
-            <h2 class="text-xl font-medium mb-4 text-black">Internal Scroll Design</h2>
-            <p class="text-[15px] text-grey-primary mb-4">
-                Notice how the scrollbar respects the card's curvature. It is physically offset from the edges to
-                prevent "popping out" at the corners.
-            </p>
+    <!-- 1. REFERENCES & STATES -->
+    <h2
+        class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
+        References & States</h2>
 
-            <!-- Spacer to create scrollable content -->
-            <div class="h-[600px] rounded-xl bg-gradient-to-b from-green-secondary/5 to-grey-tertiary my-5"></div>
+    <div class="grid grid-cols-3 gap-24 mb-20">
+        <!-- Default State -->
+        <div class="flex flex-col gap-12">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Default</h3>
+            <div class="bg-grey-tertiary/faint p-24 rounded-lg flex items-center justify-center">
+                <div class="w-64 h-32 bg-white border border-grey-secondary rounded-xs overflow-hidden pr-2 py-4">
+                    <div class="h-full w-full bg-grey-tertiary/faint rounded-xs flex justify-end">
+                        <div class="w-4 h-12 bg-grey-secondary rounded-full mr-0.5 opacity-80"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <p class="text-[15px] text-grey-primary mt-4">End of content.</p>
+        <!-- Hover State -->
+        <div class="flex flex-col gap-12">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Hover / Scrolling</h3>
+            <div class="bg-grey-tertiary/faint p-24 rounded-lg flex items-center justify-center">
+                <div class="w-64 h-32 bg-white border border-grey-secondary rounded-xs overflow-hidden pr-2 py-4">
+                    <div class="h-full w-full bg-grey-tertiary/faint rounded-xs flex justify-end">
+                        <div class="w-4 h-12 bg-green-primary rounded-full mr-0.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active State -->
+        <div class="flex flex-col gap-12">
+            <h3 class="text-grey-primary font-light text-body-xs uppercase">Active</h3>
+            <div class="bg-grey-tertiary/faint p-24 rounded-lg flex items-center justify-center">
+                <div class="w-64 h-32 bg-white border border-grey-secondary rounded-xs overflow-hidden pr-2 py-4">
+                    <div class="h-full w-full bg-grey-tertiary/faint rounded-xs flex justify-end">
+                        <div class="w-4 h-12 bg-green-secondary rounded-full mr-0.5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. LIVE INTERACTIVE DEMOS -->
+    <h2
+        class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
+        Live Contextual Demos</h2>
+
+    <div class="flex flex-wrap gap-48 items-center bg-grey-tertiary/faint p-40 rounded-lg">
+        <!-- Demo Card 1 -->
+        <div
+            class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4">
+            <div class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12">
+                <h2 class="text-body font-semibold mb-16 text-black">Interface Scroll</h2>
+                <p class="text-body-sm text-grey-primary mb-16 leading-relaxed">
+                    This scrollbar uses the brand's green palette to provide high recognition while maintaining
+                    structural elegance.
+                </p>
+                <div class="h-[600px] rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-20"></div>
+                <p class="text-body-xs text-grey-primary text-center">End of content.</p>
+            </div>
+        </div>
+
+        <!-- Demo Card 2 -->
+        <div
+            class="w-btn-lg h-[300px] bg-black border border-white/faint shadow-btn-default rounded-xl overflow-hidden pr-4">
+            <div class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12 text-white">
+                <h2 class="text-body font-semibold mb-16 text-white">Dark Context</h2>
+                <p class="text-body-sm text-grey-primary mb-16 leading-relaxed opacity-muted">
+                    In dark environments, the green thumb remains visible and provides a premium architectural accent.
+                </p>
+                <div class="h-[600px] rounded-sm bg-gradient-to-b from-white/5 to-white/10 mb-20"></div>
+                <p class="text-body-xs text-grey-primary text-center opacity-semi">End of content.</p>
+            </div>
         </div>
     </div>
 
     <!-- Usage Guide -->
-    <div class="mt-10 max-w-2xl mx-auto p-6 bg-grey-tertiary rounded-xl">
-        <h3 class="text-lg font-semibold mb-3 text-black">How to Use</h3>
-        <p class="text-[14px] text-grey-primary mb-2">Add the <code
-                class="px-2 py-1 bg-white rounded text-green-secondary">custom-scrollbar</code> class to any scrollable
+    <div class="mt-40 max-w-narrow p-24 bg-grey-tertiary rounded-xl">
+        <h3 class="text-lg font-semibold mb-12 text-black">How to Use</h3>
+        <p class="text-body-sm text-grey-primary mb-8">Add the <code
+                class="px-8 py-4 bg-white rounded-xs text-green-primary font-medium">custom-scrollbar</code> class to
+            any scrollable
             container:</p>
-        <pre class="bg-white p-4 rounded-lg text-[13px] overflow-x-auto"><code>&lt;div class="custom-scrollbar overflow-y-auto h-[300px]"&gt;
+        <pre class="bg-white p-24 rounded-sm text-body-xs overflow-x-auto text-green-primary"><code>&lt;div class="custom-scrollbar overflow-y-auto h-[300px]"&gt;
   Your content here...
 &lt;/div&gt;</code></pre>
-
-        <div class="mt-4 text-[14px] text-grey-primary">
-            <p class="font-medium text-black mb-2">States:</p>
-            <ul class="list-disc pl-5 space-y-1">
-                <li><strong>Default:</strong> Grey thumb (grey-secondary)</li>
-                <li><strong>Hover:</strong> Green thumb (green-secondary)</li>
-                <li><strong>Active:</strong> Dark green thumb (green-primary)</li>
-            </ul>
-        </div>
     </div>
 
     <script>
         // Add .is-scrolling class when user scrolls with mouse wheel
-        const scrollContainer = document.querySelector('.custom-scrollbar');
-        let scrollTimeout;
+        const scrollContainers = document.querySelectorAll('.custom-scrollbar');
 
-        scrollContainer.addEventListener('scroll', () => {
-            // Add the class immediately
-            scrollContainer.classList.add('is-scrolling');
-
-            // Clear any existing timeout
-            clearTimeout(scrollTimeout);
-
-            // Remove the class after 1 second of no scrolling
-            scrollTimeout = setTimeout(() => {
-                scrollContainer.classList.remove('is-scrolling');
-            }, 1000);
+        scrollContainers.forEach(container => {
+            let scrollTimeout;
+            container.addEventListener('scroll', () => {
+                container.classList.add('is-scrolling');
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    container.classList.remove('is-scrolling');
+                }, 1000);
+            });
         });
     </script>
 
