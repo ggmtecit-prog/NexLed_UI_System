@@ -7,13 +7,13 @@ function closeBar(id) {
     if (!bar) return;
 
     // Smooth collapse animation
-    bar.style.transition = "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+    // Note: CSS classes handle ease-premium, JS triggers the state change
     bar.style.opacity = "0";
     bar.style.transform = "translateY(-100%)";
     bar.style.marginTop = `-${bar.offsetHeight}px`;
 
-    // Remove from DOM after animation
+    // Remove from DOM after animation (400ms match)
     setTimeout(() => {
         bar.style.display = 'none';
-    }, 500);
+    }, 400);
 }

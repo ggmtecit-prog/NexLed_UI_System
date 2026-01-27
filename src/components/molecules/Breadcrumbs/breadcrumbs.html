@@ -26,60 +26,106 @@
     </style>
 </head>
 
-<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-8">
+<body class="bg-white font-urbanist text-black flex flex-col items-center justify-start min-h-screen p-10">
 
-    <h1 class="text-2xl font-semibold mb-10 text-black mt-12">Breadcrumbs Component</h1>
+    <h1 class="text-2xl font-semibold mb-10 text-black">Breadcrumbs Component</h1>
 
-    <!-- BREADCRUMBS DEMO -->
-    <div class="w-full max-w-3xl space-y-12">
+     <!-- REFERENCES & SIZES -->
+    <div class="w-full max-w-4xl space-y-12 mt-8">
 
-        <!-- Variant 1: Standard Text -->
-        <div class="bg-white p-8 rounded-2xl border border-grey-tertiary">
-            <h2 class="text-lg font-bold mb-6 border-b border-grey-tertiary pb-2">Standard Navigation</h2>
-            <nav aria-label="Breadcrumb">
-                <ol class="flex items-center space-x-2 text-sm font-medium text-grey-primary">
+        <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+            <h2 class="text-xl font-bold mb-6 border-b border-grey-tertiary pb-2">References & Sizes</h2>
+
+            <!-- Variant A: Standard (Static Reference) -->
+            <div class="mb-6">
+                <h3 class="text-body-sm text-grey-primary mb-2">Variant A: Standard</h3>
+                <nav aria-label="Breadcrumb static standard">
+                    <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
+                        <li><a href="#" class="link-premium text-grey-primary focus-visible:ring focus-visible:rounded-sm">Home</a></li>
+                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                        <li><a href="#" class="link-premium text-grey-primary focus-visible:ring focus-visible:rounded-sm">Projects</a></li>
+                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                        <li class="text-black font-semibold" aria-current="page">UI System</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- Variant B: Condensed (Static Reference) -->
+            <div class="mb-6">
+                <h3 class="text-body-sm text-grey-primary mb-2">Variant B: Condensed</h3>
+                <nav aria-label="Breadcrumb static condensed">
+                    <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
+                        <li><a href="#" class="link-premium text-grey-primary focus-visible:ring focus-visible:rounded-sm">Home</a></li>
+                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                        <li>
+                            <button class="flex items-center justify-center w-icon-md h-icon-md rounded-sm bg-transparent text-grey-primary pointer-events-none">
+                                <i class="ri-more-line text-icon-md"></i>
+                            </button>
+                        </li>
+                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                        <li><a href="#" class="link-premium text-grey-primary focus-visible:ring focus-visible:rounded-sm">Design System</a></li>
+                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                        <li class="text-black font-semibold" aria-current="page">Components</li>
+                    </ol>
+                </nav>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- LIVE VARIANTS -->
+    <div class="w-full max-w-4xl space-y-12">
+
+        <!-- Live Variant: Standard -->
+        <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+            <h2 class="text-xl font-bold mb-6 border-b border-grey-tertiary pb-2">Live Variants</h2>
+            <nav aria-label="Breadcrumb Example">
+                <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
                     <li>
-                        <a href="#" class="hover:text-green-secondary transition-colors duration-200">Home</a>
+                        <a href="#" class="link-premium text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Home</a>
                     </li>
-                    <li><i class="ri-arrow-right-s-line text-lg"></i></li>
+                    <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
                     <li>
-                        <a href="#" class="hover:text-green-secondary transition-colors duration-200">Projects</a>
+                        <a href="#" class="link-premium text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Projects</a>
                     </li>
-                    <li><i class="ri-arrow-right-s-line text-lg"></i></li>
+                    <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
                     <li class="text-black font-semibold" aria-current="page">UI System</li>
                 </ol>
             </nav>
-        </div>
+        </section>
 
-        <!-- Variant 2: Condensed / With Dropdown -->
-        <div class="bg-white p-8 rounded-2xl border border-grey-tertiary">
-            <h2 class="text-lg font-bold mb-6 border-b border-grey-tertiary pb-2">Condensed Navigation</h2>
-            <nav aria-label="Breadcrumb">
-                <ol class="flex items-center space-x-2 text-sm font-medium text-grey-primary">
+        <!-- Live Variant: Condensed / With Overflow -->
+        <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Condensed</h3>
+            <nav aria-label="Breadcrumb Condensed">
+                <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
                     <li>
-                        <a href="#" class="hover:text-green-secondary transition-colors duration-200">Home</a>
+                        <a href="#" class="link-premium text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Home</a>
                     </li>
-                    <li><i class="ri-arrow-right-s-line text-lg"></i></li>
+                    <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
 
-                    <!-- Collapsed Items -->
+                    <!-- Collapsed Items (interactive) -->
                     <li class="group relative">
-                        <button
-                            class="flex items-center justify-center w-6 h-6 rounded hover:bg-grey-tertiary transition-colors text-grey-primary hover:text-black">
-                            <i class="ri-more-line"></i>
+                        <button aria-label="More" class="flex items-center justify-center w-icon-md h-icon-md rounded-sm bg-transparent text-grey-primary transition-colors duration-400 hover:bg-grey-tertiary hover:text-black focus-visible:outline-none focus-visible:ring">
+                            <i class="ri-more-line text-icon-md"></i>
                         </button>
                     </li>
 
-                    <li><i class="ri-arrow-right-s-line text-lg"></i></li>
+                    <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
                     <li>
-                        <a href="#" class="hover:text-green-secondary transition-colors duration-200">Design System</a>
+                        <a href="#" class="link-premium text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Design System</a>
                     </li>
-                    <li><i class="ri-arrow-right-s-line text-lg"></i></li>
+                    <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
                     <li class="text-black font-semibold" aria-current="page">Components</li>
                 </ol>
             </nav>
-        </div>
+        </section>
 
     </div>
+
+   
 
 </body>
 
