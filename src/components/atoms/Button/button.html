@@ -33,7 +33,7 @@
     <h1 class="text-2xl font-semibold mb-10">Buttons</h1>
 
     <!-- GRID LAYOUT FOR STATES -->
-    <div class="grid grid-cols-6 gap-48 mb-20 items-center justify-items-center text-center">
+    <div class="grid grid-cols-6 gap-64 mb-20 items-center justify-items-center text-center">
         <!-- HEADERS -->
         <h2 class="text-grey-primary font-light">Default</h2>
         <h2 class="text-grey-primary font-light">Hover<br><span class="text-[10px] opacity-50">(Static)</span></h2>
@@ -51,7 +51,7 @@
         </button>
         <!-- Hover (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover text-white font-medium text-button-lg -translate-y-[3px]">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover text-white font-medium text-button-lg -translate-y-lift">
             Primary Button
         </button>
         <!-- Focus (Static) -->
@@ -61,7 +61,7 @@
         </button>
         <!-- Active (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-glow text-white font-medium text-button-lg active:scale-press-deep">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-glow text-white font-medium text-button-lg scale-press-deep">
             Primary Button
         </button>
         <!-- Disabled -->
@@ -75,22 +75,25 @@
             Primary Button
         </button>
 
+        <!-- ROW 2: SECONDARY BUTTON -->
+        <!-- Default -->
         <button
             class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease">
             Secondary Button
         </button>
         <!-- Hover (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-green-secondary/10 shadow-btn-hover text-green-secondary font-medium text-button-lg -translate-y-[3px]">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-green-secondary/10 shadow-btn-hover text-green-secondary font-medium text-button-lg -translate-y-lift">
             Secondary Button
         </button>
+        <!-- Focus (Static) -->
         <button
             class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg ring">
             Secondary Button
         </button>
         <!-- Active (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-green-secondary/10 shadow-btn-glow text-green-secondary font-medium text-button-lg active:scale-press-deep">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-green-secondary/10 shadow-btn-glow text-green-secondary font-medium text-button-lg scale-press-deep">
             Secondary Button
         </button>
         <!-- Disabled -->
@@ -113,31 +116,31 @@
         </button>
         <!-- Hover (Static) -->
         <button
-            class="flex items-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover text-white font-medium text-button-lg -translate-y-[3px]">
+            class="flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover text-white font-medium text-button-lg -translate-y-lift">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
             Icon + Text
         </button>
         <!-- Focus (Static) -->
         <button
-            class="flex items-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg ring">
+            class="flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg ring">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
             Icon + Text
         </button>
         <!-- Active (Static) -->
         <button
-            class="flex items-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-glow text-white font-medium text-button-lg active:scale-press-deep">
+            class="flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-glow text-white font-medium text-button-lg scale-press-deep">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
             Icon + Text
         </button>
         <!-- Disabled -->
         <button
-            class="flex items-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border border-grey-secondary shadow-none text-grey-primary font-medium text-button-lg cursor-not-allowed">
+            class="flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border border-grey-secondary shadow-none text-grey-primary font-medium text-button-lg cursor-not-allowed">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
             Icon + Text
         </button>
         <!-- Hover(Active) (Static) -->
         <button
-            class="flex items-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white font-medium text-button-lg">
+            class="flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white font-medium text-button-lg">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
             Icon + Text
         </button>
@@ -151,7 +154,7 @@
         </button>
         <!-- Hover (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border-none text-green-secondary font-medium text-button-lg -translate-y-[3px]">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border-none text-green-secondary font-medium text-button-lg -translate-y-lift">
             Ghost Button
         </button>
         <!-- Focus (Static) -->
@@ -161,7 +164,7 @@
         </button>
         <!-- Active (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border border-grey-secondary text-green-secondary font-medium text-button-lg active:scale-press-deep">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-grey-tertiary border border-grey-secondary text-green-secondary font-medium text-button-lg scale-press-deep">
             Ghost Button
         </button>
         <!-- Disabled -->
@@ -171,145 +174,262 @@
         </button>
         <!-- Hover(Active) (Static) -->
         <button
-            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none text-white font-medium text-button-lg">
+            class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white font-medium text-button-lg">
             Ghost Button
         </button>
 
-        <!-- ROW 4: ICON ONLY (Secondary) -->
+        <!-- ROW 5: ICON ONLY (Secondary) -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black transition-all">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black transition-all">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
         <!-- Hover (Static) -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-white border border-green-secondary/10 shadow-btn-hover text-green-secondary -translate-y-[3px]">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black ring">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-        <!-- Active (Static) -->
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-green-primary border-none shadow-btn-active text-white active:scale-press-deep">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-        <!-- Disabled -->
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-grey-tertiary border border-grey-secondary shadow-none text-grey-primary cursor-not-allowed">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-        <!-- Hover(Active) (Static) -->
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-
-        <!-- ROW 5: ICON ONLY (Ghost) -->
-        <!-- Default -->
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-transparent border-none text-grey-primary transition-all">
-            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-        </button>
-        <!-- Hover (Static) -->
-        <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-grey-tertiary border-none text-green-secondary -translate-y-[3px]">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-white border border-green-secondary/10 shadow-btn-hover text-green-secondary -translate-y-lift">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
         <!-- Focus (Static) -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-transparent border-none text-grey-primary ring">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black ring">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
         <!-- Active (Static) -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-grey-tertiary border border-grey-secondary text-green-secondary active:scale-press-deep">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-green-primary border-none shadow-btn-active text-white scale-press-deep">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
         <!-- Disabled -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-grey-tertiary border border-grey-secondary text-grey-primary cursor-not-allowed">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-grey-tertiary border border-grey-secondary shadow-none text-grey-primary cursor-not-allowed">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
         <!-- Hover(Active) (Static) -->
         <button
-            class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-green-secondary border-none text-white">
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white">
             <i class="ri-delete-bin-2-line text-icon-xxl"></i>
         </button>
+
+        <!-- ROW 6: ICON ONLY (Ghost) -->
+        <!-- Default -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-transparent border-none text-grey-primary transition-all">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+        <!-- Hover (Static) -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-grey-tertiary border-none text-green-secondary -translate-y-lift">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+        <!-- Focus (Static) -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-transparent border-none text-grey-primary ring">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+        <!-- Active (Static) -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-grey-tertiary border border-grey-secondary text-green-secondary scale-press-deep">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+        <!-- Disabled -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-grey-tertiary border border-grey-secondary text-grey-primary cursor-not-allowed">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+        <!-- Hover(Active) (Static) -->
+        <button
+            class="flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-green-secondary border-none shadow-btn-hover-active text-white">
+            <i class="ri-delete-bin-2-line text-icon-xxl"></i>
+        </button>
+
+
     </div>
 
     <!-- INTERACTIVE PLAYGROUND -->
     <h2 class="text-xl font-semibold mb-6 pt-10 border-t border-black/10">Interactive Playground</h2>
-    <div class="space-y-12 pb-20">
-        <!-- Standard Variants -->
-        <div>
-            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard Interactives</h3>
-            <div class="flex gap-10 flex-wrap">
-                <!-- Primary Live -->
-                <button
-                    class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
-                    style="will-change: transform, box-shadow;">
-                    Primary Live
-                </button>
-                <!-- Secondary Live -->
-                <button
-                    class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
-                    style="will-change: transform, box-shadow;">
-                    Secondary Live
-                </button>
-                <!-- Icon + Text Live -->
-                <button
-                    class="group flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
-                    style="will-change: transform, box-shadow;">
-                    <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                    Icon + Text
-                </button>
-                <!-- Ghost Live -->
-                <button
-                    class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-transparent border-none text-grey-primary font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep active:translate-y-0 active:bg-grey-tertiary active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
-                    style="will-change: transform, box-shadow;">
-                    Ghost Live
-                </button>
+
+    <div class="space-y-24 pb-20">
+
+        <!-- EXTRA-LARGE (XL) VARIATIONS -->
+        <div class="space-y-12">
+            <h2 class="text-2xl font-bold text-green-primary">Size: Extra-Large (XL)</h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard Interactives - XL</h3>
+                    <div class="flex gap-10 flex-wrap items-center">
+                        <button
+                            class="group flex items-center justify-center px-40 w-btn-xl h-btn-xl rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Primary XL</button>
+                        <button
+                            class="group flex items-center justify-center px-40 w-btn-xl h-btn-xl rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Secondary XL</button>
+                        <button
+                            class="group flex items-center justify-center gap-icon-lg px-40 w-btn-xl h-btn-xl rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text XL</button>
+                        <button
+                            class="group flex items-center justify-center px-40 w-btn-xl h-btn-xl rounded-btn bg-transparent border-none text-grey-primary font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep active:translate-y-0 active:bg-grey-tertiary active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Ghost XL</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon Toggles - XL</h3>
+                    <div class="flex gap-48 flex-wrap items-center">
+                        <!-- Secondary Icon Toggle -->
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-xl h-btn-icon-xl rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                        <!-- Ghost Icon Toggle -->
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-xl h-btn-icon-xl rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                        <!-- Standard Toggle (Text) -->
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center gap-icon-lg px-40 w-btn-xl h-btn-xl rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle XL</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Icon-Only Interactives -->
-        <div>
-            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon-Only Interactives</h3>
-            <div class="flex gap-48 flex-wrap">
-                <!-- Secondary Icon Live -->
-                <button
-                    class="group flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
-                    style="will-change: transform, box-shadow;">
-                    <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                </button>
-                <!-- Ghost Icon Live -->
-                <button
-                    class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:bg-grey-tertiary active:text-green-secondary active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary">
-                    <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                </button>
+        <!-- LARGE (L) VARIATIONS - CURRENT -->
+        <div class="space-y-12">
+            <h2 class="text-2xl font-bold text-green-primary">Size: Large (L) <span
+                    class="text-grey-primary text-sm font-normal"> - System Default</span></h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard Interactives - L</h3>
+                    <div class="flex gap-10 flex-wrap items-center">
+                        <button
+                            class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Primary L</button>
+                        <button
+                            class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Secondary L</button>
+                        <button
+                            class="group flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text L</button>
+                        <button
+                            class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-transparent border-none text-grey-primary font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep active:translate-y-0 active:bg-grey-tertiary active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Ghost L</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon Toggles - L</h3>
+                    <div class="flex gap-48 flex-wrap items-center">
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-lg h-btn-icon-lg rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle L</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Toggles -->
-        <div>
-            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Interaction Toggles</h3>
-            <div class="flex gap-48 flex-wrap">
-                <!-- Standard Toggle -->
-                <button
-                    onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                    aria-pressed="false"
-                    class="group flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:active:scale-press-deep aria-pressed:translate-y-0 aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary">
-                    <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                    Standard Toggle
-                </button>
-                <!-- Ghost Toggle -->
-                <button
-                    onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                    aria-pressed="false"
-                    class="flex items-center justify-center w-btn-icon h-btn-icon rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:bg-green-primary active:text-white active:scale-press-deep active:translate-y-0 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:active:scale-press-deep aria-pressed:translate-y-0 aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary">
-                    <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                </button>
+        <!-- MEDIUM (M) VARIATIONS -->
+        <div class="space-y-12">
+            <h2 class="text-2xl font-bold text-green-primary">Size: Medium (M)</h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard Interactives - M</h3>
+                    <div class="flex gap-10 flex-wrap items-center">
+                        <button
+                            class="group flex items-center justify-center px-24 w-btn-md h-btn-md rounded-lg bg-green-primary border-none shadow-btn-default text-white font-medium text-h2 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Primary M</button>
+                        <button
+                            class="group flex items-center justify-center px-24 w-btn-md h-btn-md rounded-lg bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-h2 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Secondary M</button>
+                        <button
+                            class="group flex items-center justify-center gap-icon-md px-24 w-btn-md h-btn-md rounded-lg bg-green-primary border-none shadow-btn-default text-white font-medium text-h2 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;"><i
+                                class="ri-delete-bin-2-line text-icon-xl"></i>Icon + Text M</button>
+                        <button
+                            class="group flex items-center justify-center px-24 w-btn-md h-btn-md rounded-lg bg-transparent border-none text-grey-primary font-medium text-h2 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep active:translate-y-0 active:bg-grey-tertiary active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Ghost M</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon Toggles - M</h3>
+                    <div class="flex gap-48 flex-wrap items-center">
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-md h-btn-icon-md rounded-lg bg-white border border-grey-secondary shadow-btn-default text-black font-medium transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-md h-btn-icon-md rounded-lg bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center gap-icon-lg px-24 w-btn-md h-btn-md rounded-lg bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-h2 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-xl"></i>Toggle M</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SMALL (S) VARIATIONS -->
+        <div class="space-y-12">
+            <h2 class="text-2xl font-bold text-green-primary">Size: Small (S)</h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard Interactives - S</h3>
+                    <div class="flex gap-10 flex-wrap items-center">
+                        <button
+                            class="group flex items-center justify-center px-16 w-btn-sm h-btn-sm rounded-md bg-green-primary border-none shadow-btn-default text-white font-medium text-h3 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Primary S</button>
+                        <button
+                            class="group flex items-center justify-center px-16 w-btn-sm h-btn-sm rounded-md bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-h3 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Secondary S</button>
+                        <button
+                            class="group flex items-center justify-center gap-icon-sm px-16 w-btn-sm h-btn-sm rounded-md bg-green-primary border-none shadow-btn-default text-white font-medium text-h3 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-green-secondary hover:shadow-btn-hover active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-green-primary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;"><i
+                                class="ri-delete-bin-2-line text-icon-lg"></i>Icon + Text S</button>
+                        <button
+                            class="group flex items-center justify-center px-16 w-btn-sm h-btn-sm rounded-md bg-transparent border-none text-grey-primary font-medium text-h3 transform-gpu transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg_grey-tertiary hover:text-green-secondary active:scale-press-deep active:translate-y-0 active:bg-grey-tertiary active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"
+                            style="will-change: transform, box-shadow;">Ghost S</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon Toggles - S</h3>
+                    <div class="flex gap-48 flex-wrap items-center">
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-white border border-grey-secondary shadow-btn-default text-black font-medium transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 active:scale-press-deep active:translate-y-0 active:shadow-btn-glow active:bg-white active:text-green-secondary focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                        <button
+                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                            aria-pressed="false"
+                            class="group flex items-center justify-center gap-icon-sm px-16 w-btn-sm h-btn-sm rounded-md bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-h3 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:text-green-secondary hover:shadow-btn-hover hover:border-green-secondary/10 aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:shadow-btn-active aria-pressed:border-green-primary aria-pressed:hover:bg-green-secondary aria-pressed:hover:shadow-btn-hover-active active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:bg-grey-tertiary disabled:border-grey-secondary disabled:shadow-none disabled:text-grey-primary"><i
+                                class="ri-delete-bin-2-line text-icon-lg"></i>Toggle S</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

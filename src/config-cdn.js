@@ -5,10 +5,10 @@
 tailwind.config = {
     theme: {
         screens: {
-            'sm': '481px',
-            'md': '769px',
-            'lg': '1025px',
-            'xl': '1441px',
+            'sm': '480px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1440px',
         },
         extend: {
             fontFamily: {
@@ -34,7 +34,7 @@ tailwind.config = {
                 'h1-fluid': ['clamp(30px, 4vw, 36px)', { lineHeight: '1.2' }],
                 'h2-fluid': ['clamp(26px, 3vw, 30px)', { lineHeight: '1.2' }],
                 'h3-fluid': ['clamp(22px, 2.5vw, 24px)', { lineHeight: '1.2' }],
-                // Icon Sizes
+                // Icon Sizes (icons.js)
                 'icon-xs': '12px',
                 'icon-sm': '16px',
                 'icon-md': '20px',
@@ -77,14 +77,15 @@ tailwind.config = {
                 '32': '32px',
                 '40': '40px',
                 '48': '48px',
-                // Icon Gaps
+                // Icon Gaps (icons.js)
                 'icon-xs': '4px',
                 'icon-sm': '8px',
                 'icon-md': '12px',
                 'icon-lg': '20px',
+                '56': '56px',
+                '64': '64px',
             },
             colors: {
-                // page/default removed as requested
                 'green-primary': '#03683D',
                 'green-secondary': '#058C53',
                 'green-hover-icons': '#BEE0D2',
@@ -97,7 +98,7 @@ tailwind.config = {
                 'link-visited': '#4C1D95',
                 'red-primary': '#B1242F',
                 'red-secondary': '#C94A55',
-                // Icon Colors
+                // Icon Colors (icons.js)
                 'icon-primary': '#03683D',
                 'icon-secondary': '#878787',
                 'icon-muted': '#D9D9D9',
@@ -109,8 +110,8 @@ tailwind.config = {
                 'btn-default': '0 6px 14px rgba(135, 135, 135, 0.20)',
                 'btn-hover': '0 18px 36px rgba(190, 224, 210, 0.40), 0 6px 18px rgba(135, 135, 135, 0.15)',
                 'btn-active': '0 4px 10px rgba(0, 0, 0, 0.2)',
-                'btn-hover-active': '0 4px 12px rgba(5, 140, 83, 0.2)',
                 'btn-glow': '0 20px 40px rgba(16, 185, 129, 0.22)',
+                'btn-hover-active': '0 18px 36px rgba(5, 140, 83, 0.35)',
             },
             borderRadius: {
                 'none': '0',
@@ -119,7 +120,7 @@ tailwind.config = {
                 'md': '12px',
                 'lg': '16px',
                 'xl': '24px',
-                'btn': '12px',
+                'btn': '20px',
                 'full': '9999px',
             },
             opacity: {
@@ -151,7 +152,7 @@ tailwind.config = {
                 'thin': '1px',
                 'standard': '2px',
                 'thick': '4px',
-                // Icon Strokes
+                // Icon Strokes (icons.js)
                 'icon-stroke-thin': '1px',
                 'icon-stroke-default': '1.5px',
                 'icon-stroke-bold': '2px',
@@ -170,8 +171,15 @@ tailwind.config = {
                 'press': '1px',
             },
             width: {
+                'btn-xl': '420px',
                 'btn-lg': '380px',
-                'btn-icon': '94px',
+                'btn-md': '320px',
+                'btn-sm': '240px',
+                'btn-icon-xl': '110px',
+                'btn-icon-lg': '94px',
+                'btn-icon-md': '72px',
+                'btn-icon-sm': '56px',
+                'thumb-md': '120px',
                 'icon-xs': '12px',
                 'icon-sm': '16px',
                 'icon-md': '20px',
@@ -183,8 +191,15 @@ tailwind.config = {
                 'checkbox-lg': '28px',
             },
             height: {
+                'btn-xl': '110px',
                 'btn-lg': '94px',
-                'btn-icon': '94px',
+                'btn-md': '72px',
+                'btn-sm': '56px',
+                'btn-icon-xl': '110px',
+                'btn-icon-lg': '94px',
+                'btn-icon-md': '72px',
+                'btn-icon-sm': '56px',
+                'thumb-md': '120px',
                 'icon-xs': '12px',
                 'icon-sm': '16px',
                 'icon-md': '20px',
@@ -206,5 +221,10 @@ tailwind.config = {
                 'DEFAULT': '1',
             }
         }
-    }
+    },
+    plugins: [
+        function ({ addVariant }) {
+            addVariant('aria-pressed', '&[aria-pressed="true"]')
+        }
+    ]
 }
