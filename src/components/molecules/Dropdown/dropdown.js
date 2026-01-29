@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', () => {
                 items.forEach(i => {
                     i.removeAttribute('aria-selected');
-                    i.classList.remove('text-green-secondary', 'font-semibold');
+                    i.classList.remove('text-green-secondary', 'font-semibold', 'bg-green-hover-text');
                 });
                 item.setAttribute('aria-selected', 'true');
-                item.classList.add('text-green-secondary', 'font-semibold');
+                item.classList.add('text-green-secondary', 'font-semibold', 'bg-green-hover-text');
 
                 // Add checkmark using Remix icon
                 items.forEach(i => {
@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.setAttribute('aria-selected', String(!isSelected));
 
                 if (!isSelected) {
-                    item.classList.add('text-green-secondary', 'font-semibold', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]');
+                    item.classList.add('text-green-secondary', 'font-semibold', 'bg-green-hover-text', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]', 'before:text-white', 'before:text-[10px]');
                 } else {
-                    item.classList.remove('text-green-secondary', 'font-semibold', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]');
+                    item.classList.remove('text-green-secondary', 'font-semibold', 'bg-green-hover-text', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]', 'before:text-white', 'before:text-[10px]');
                 }
 
                 updateMultiValue(dropdown, valueDisplay);
