@@ -79,13 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isSelected = item.getAttribute('aria-selected') === 'true';
-                item.setAttribute('aria-selected', String(!isSelected));
 
-                if (!isSelected) {
-                    item.classList.add('text-green-secondary', 'font-semibold', 'bg-green-hover-text', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]', 'before:text-white', 'before:text-[10px]');
+                // Find the checkbox input within this item
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (!checkbox) return;
+
+                // Toggle the checkbox
+                checkbox.checked = !checkbox.checked;
+
+                // Update aria-selected to match checkbox state
+                item.setAttribute('aria-selected', String(checkbox.checked));
+
+                // Add/remove selected styling to the item
+                if (checkbox.checked) {
+                    item.classList.add('bg-green-hover-text');
                 } else {
-                    item.classList.remove('text-green-secondary', 'font-semibold', 'bg-green-hover-text', 'before:bg-green-secondary', 'before:border-green-secondary', 'before:content-["✓"]', 'before:text-white', 'before:text-[10px]');
+                    item.classList.remove('bg-green-hover-text');
                 }
 
                 updateMultiValue(dropdown, valueDisplay);
@@ -121,6 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     items[0]?.focus();
                 }
             }
+
+            // Open menu and focus last item on ArrowUp from trigger
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (!dropdown.classList.contains('open')) {
+                    trigger.click();
+                    items[items.length - 1]?.focus();
+                }
+            }
+
             if (e.key === 'Escape') {
                 closeDropdown(dropdown);
             }
@@ -128,19 +147,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         items.forEach((item, index) => {
             item.setAttribute('tabindex', '-1');
+
+            // Ensure focused item is visible (works across sizes)
+            item.addEventListener('focus', () => {
+                item.scrollIntoView({ block: 'nearest' });
+            });
+
             item.addEventListener('keydown', (e) => {
+                // Wrap navigation: ArrowDown -> next (wrap to first), ArrowUp -> prev (wrap to last)
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
-                    items[index + 1]?.focus();
+                    if (index === items.length - 1) {
+                        items[0]?.focus();
+                    } else {
+                        items[index + 1]?.focus();
+                    }
                 }
+
                 if (e.key === 'ArrowUp') {
                     e.preventDefault();
                     if (index === 0) {
-                        trigger.focus();
+                        items[items.length - 1]?.focus();
                     } else {
                         items[index - 1]?.focus();
                     }
                 }
+
+                // Home/End support for quick navigation
+                if (e.key === 'Home') {
+                    e.preventDefault();
+                    items[0]?.focus();
+                }
+
+                if (e.key === 'End') {
+                    e.preventDefault();
+                    items[items.length - 1]?.focus();
+                }
+
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     item.click();
@@ -148,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         trigger.focus();
                     }
                 }
+
                 if (e.key === 'Escape') {
                     closeDropdown(dropdown);
                     trigger.focus();

@@ -4,21 +4,23 @@
 
 function toggleLangMenu(button) {
     const container = button.closest('.language-selector-root');
-    const menu = container.querySelector('[role="menu"]');
+    const menu = container.querySelector('.dropdown__menu');
     const arrow = button.querySelector('.arrow-icon');
 
-    // Check current state
+    // Check current state (menu hidden via 'invisible')
     const isClosed = menu.classList.contains('invisible');
 
     // Close all other menus first
     closeAllLangMenus();
 
     if (isClosed) {
-        // Open
-        menu.classList.remove('opacity-0', 'invisible', 'scale-95');
-        menu.classList.add('opacity-100', 'visible', 'scale-100');
-        arrow.classList.add('rotate-180', 'text-green-secondary');
-        arrow.classList.remove('text-grey-primary');
+        // Open: remove hidden classes used by dropdown component and add visible ones
+        menu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
+        menu.classList.add('opacity-100', 'visible', 'translate-y-0');
+        if (arrow) {
+            arrow.classList.add('rotate-180', 'text-green-secondary');
+            arrow.classList.remove('text-grey-primary');
+        }
         button.setAttribute('aria-expanded', 'true');
     }
 }
@@ -72,17 +74,21 @@ function selectLang(option, langName, countryCode) {
 
 function closeAllLangMenus() {
     document.querySelectorAll('.language-selector-root').forEach(container => {
-        const menu = container.querySelector('[role="menu"]');
+        const menu = container.querySelector('.dropdown__menu');
         const arrow = container.querySelector('.arrow-icon');
         const button = container.querySelector('button');
 
-        menu.classList.add('opacity-0', 'invisible', 'scale-95');
-        menu.classList.remove('opacity-100', 'visible', 'scale-100');
+        if (menu) {
+            menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+            menu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
         if (arrow) {
             arrow.classList.remove('rotate-180', 'text-green-secondary');
             arrow.classList.add('text-grey-primary');
         }
-        button.setAttribute('aria-expanded', 'false');
+        if (button) {
+            button.setAttribute('aria-expanded', 'false');
+        }
     });
 }
 
