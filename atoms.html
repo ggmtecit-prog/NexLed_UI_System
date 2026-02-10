@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atoms - NexLed UI System</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind -->
+    <script src="src/config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--colors-white, #FCFCFC);
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism using verification mapping */
+        .glass-panel {
+            background: rgba(252, 252, 252, 0.7);
+            /* white + 70% opacity */
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(252, 252, 252, 0.4);
+            box-shadow: var(--shadows-default);
+            border-radius: var(--radius-md);
+        }
+
+        /* Syntax Highlighting Base */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: var(--spacing-16);
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            font-size: var(--typography-body-xs);
+            font-family: monospace;
+        }
+
+        /* Section Spacing */
+        section {
+            scroll-margin-top: 8rem;
+        }
+    </style>
+</head>
+
+<body class="text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
+
+    <!-- TOP NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-sticky px-32 py-24 pointer-events-none">
+        <div
+            class="max-w-wide mx-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-32 py-24 pointer-events-auto transition-all duration-default ease-premium hover:shadow-btn-hover">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-12 group">
+                <div
+                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
+                    <i class="ri-code-s-slash-line text-h3"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                    <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-32 h-full">
+
+                <!-- Components Dropdown (ACTIVE) -->
+                <div class="relative group h-full flex items-center">
+                    <button
+                        class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full z-overlay">
+                        <span>Components</span>
+                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                    </button>
+                    <!-- Dropdown Bridge -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        <!-- Visual Dropdown -->
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="atoms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-green-primary font-bold">
+                                    <i class="ri-box-1-line"></i> Atoms
+                                </a>
+                                <a href="molecules.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-hexagon-line"></i> Molecules
+                                </a>
+                                <a href="organisms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-layout-3-line"></i> Organisms
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="relative group h-full flex items-center">
+                    <button
+                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
+                        <span>Resources</span>
+                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                    </button>
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="tokens.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-palette-line"></i> Design Tokens
+                                </a>
+                                <a href="src/tokens/colors.js" target="_blank"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-code-line"></i> Colors Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-16">
+                <button
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-search-line text-icon-md"></i>
+                </button>
+                <div class="w-standard h-24 bg-grey-tertiary hidden md:block"></div>
+                <a href="#"
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-github-fill text-icon-lg"></i>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 mt-48 px-32 pb-64 max-w-standard mx-auto w-full">
+
+        <!-- PAGE HEADER -->
+        <header class="mb-48">
+            <h1 class="text-display font-semibold mb-12">Atoms</h1>
+            <p class="text-body-lg text-grey-primary max-w-readable font-light">
+                Fundamental elements that cannot be broken down further.
+            </p>
+        </header>
+
+        <div class="space-y-64">
+
+            <!-- 1. BUTTONS -->
+            <section id="buttons">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Buttons</h2>
+                    <span
+                        class="px-8 py-4 bg-grey-tertiary text-body-xs rounded-xs text-grey-primary uppercase font-bold tracking-wider">Core</span>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <!-- Primary LG -->
+                        <div class="flex flex-col items-center gap-12">
+                            <span class="text-body-xs text-grey-primary font-mono">Large (LG)</span>
+                            <button
+                                class="group flex items-center justify-center w-btn-lg h-btn-lg rounded-btn bg-green-primary shadow-btn-default text-white font-medium text-button-lg transition-all duration-default ease-premium hover:-translate-y-lift hover:shadow-btn-hover active:translate-y-0 active:scale-press">
+                                Primary LG
+                            </button>
+                        </div>
+
+                        <!-- Secondary MD -->
+                        <div class="flex flex-col items-center gap-12">
+                            <span class="text-body-xs text-grey-primary font-mono">Medium (MD)</span>
+                            <button
+                                class="flex items-center justify-center w-btn-md h-btn-md rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button transition-all duration-default ease-premium hover:-translate-y-lift hover:shadow-btn-hover active:scale-press">
+                                Secondary MD
+                            </button>
+                        </div>
+
+                        <!-- Small SM (Ghost) -->
+                        <div class="flex flex-col items-center gap-12">
+                            <span class="text-body-xs text-grey-primary font-mono">Small (SM)</span>
+                            <button
+                                class="flex items-center justify-center w-btn-sm h-btn-sm rounded-btn bg-transparent text-grey-primary font-medium text-button hover:text-green-primary transition-colors active:scale-press">
+                                Ghost SM
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. BADGES -->
+            <section id="badges">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Badges</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="flex flex-col items-center gap-16">
+                            <span class="text-body-xs text-grey-primary font-mono">Variants</span>
+                            <div class="flex gap-12">
+                                <span
+                                    class="px-16 py-8 bg-green-primary text-white rounded-xs text-body-sm font-semibold">Primary</span>
+                                <span
+                                    class="px-12 py-4 bg-green-hover-icons text-green-primary rounded-xs text-body-xs font-semibold">Success</span>
+                                <span
+                                    class="px-12 py-4 bg-red-primary text-white rounded-xs text-body-xs font-semibold">Critical</span>
+                                <span
+                                    class="px-8 py-2 bg-grey-secondary text-grey-primary rounded-3xs text-overline font-bold">MUTED</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. INPUTS & CONTROLS -->
+            <section id="inputs">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Inputs & Controls</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-40 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <!-- Checkboxes -->
+                        <div class="space-y-24">
+                            <h4 class="text-body-sm font-bold text-grey-primary uppercase mb-16">Checkboxes</h4>
+                            <div class="flex items-center gap-24">
+                                <label class="flex items-center gap-12 cursor-pointer group">
+                                    <div class="relative w-checkbox-md h-checkbox-md flex items-center justify-center">
+                                        <input type="checkbox"
+                                            class="peer appearance-none absolute inset-0 w-full h-full border border-grey-secondary rounded-2xs bg-white checked:bg-green-primary checked:border-green-primary transition-all duration-default ease-premium">
+                                        <i
+                                            class="ri-check-line text-white opacity-0 peer-checked:opacity-100 scale-0 peer-checked:scale-100 transition-all duration-default ease-premium"></i>
+                                    </div>
+                                    <span class="text-body-sm text-grey-primary group-hover:text-black">Standard</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Toggle Switch -->
+                        <div class="space-y-24">
+                            <h4 class="text-body-sm font-bold text-grey-primary uppercase mb-16">Toggle Switch</h4>
+                            <label class="flex items-center gap-12 cursor-pointer group">
+                                <div class="relative w-48 h-24">
+                                    <input type="checkbox"
+                                        class="peer appearance-none absolute inset-0 w-full h-full bg-grey-secondary rounded-full checked:bg-green-primary transition-colors duration-default ease-premium">
+                                    <div
+                                        class="absolute top-4 left-4 w-16 h-16 bg-white rounded-full shadow-sm transition-transform duration-default ease-premium peer-checked:translate-x-24">
+                                    </div>
+                                </div>
+                                <span class="text-body-sm text-grey-primary group-hover:text-black">Notification</span>
+                            </label>
+                        </div>
+
+                        <!-- Radio Buttons -->
+                        <div class="space-y-24">
+                            <h4 class="text-body-sm font-bold text-grey-primary uppercase mb-16">Radio Buttons</h4>
+                            <div class="flex flex-col gap-16">
+                                <label class="flex items-center gap-12 cursor-pointer group">
+                                    <div class="relative w-24 h-24 flex items-center justify-center">
+                                        <input type="radio" name="radio-demo"
+                                            class="peer appearance-none absolute inset-0 w-full h-full border border-grey-secondary rounded-full bg-white checked:border-green-primary transition-all">
+                                        <div
+                                            class="w-10 h-10 bg-green-primary rounded-full opacity-0 peer-checked:opacity-100 scale-0 peer-checked:scale-100 transition-all">
+                                        </div>
+                                    </div>
+                                    <span class="text-body-sm text-grey-primary group-hover:text-black">Option A</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. TYPOGRAPHY -->
+            <section id="typography">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Typography Scale</h2>
+                </div>
+
+                <div class="glass-panel p-32">
+                    <div class="space-y-32">
+                        <div class="border-b border-grey-tertiary pb-16 flex items-baseline justify-between">
+                            <h3 class="text-display font-semibold">Display Title</h3>
+                            <span class="text-body-xs font-mono text-grey-primary">48px / tracking-tight</span>
+                        </div>
+                        <div class="border-b border-grey-tertiary pb-16 flex items-baseline justify-between">
+                            <h1 class="text-h1 font-semibold">Heading 1</h1>
+                            <span class="text-body-xs font-mono text-grey-primary">36px</span>
+                        </div>
+                        <div class="border-b border-grey-tertiary pb-16 flex items-baseline justify-between">
+                            <h2 class="text-h2 font-medium">Heading 2</h2>
+                            <span class="text-body-xs font-mono text-grey-primary">30px</span>
+                        </div>
+                        <div class="border-b border-grey-tertiary pb-16 flex items-baseline justify-between">
+                            <p class="text-body">Body Regular - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                            <span class="text-body-xs font-mono text-grey-primary">16px / Leading-24</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-grey-tertiary px-32 py-32">
+        <div class="max-w-standard mx-auto flex justify-between items-center text-body-xs text-grey-primary">
+            <p>© 2026 NexLed UI Systems</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecules - NexLed UI System</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind -->
+    <script src="src/config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--colors-white, #FCFCFC);
+            scroll-behavior: smooth;
+        }
+
+        .glass-panel {
+            background: rgba(252, 252, 252, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(252, 252, 252, 0.4);
+            box-shadow: var(--shadows-default);
+            border-radius: var(--radius-md);
+        }
+    </style>
+</head>
+
+<body class="text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
+
+    <!-- TOP NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-sticky px-32 py-24 pointer-events-none">
+        <div
+            class="max-w-wide mx-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-32 py-24 pointer-events-auto transition-all duration-default ease-premium hover:shadow-btn-hover">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-12 group">
+                <div
+                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
+                    <i class="ri-code-s-slash-line text-h3"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                    <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-32 h-full">
+
+                <!-- Components Dropdown (ACTIVE) -->
+                <div class="relative group h-full flex items-center">
+                    <button
+                        class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full z-overlay">
+                        <span>Components</span>
+                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                    </button>
+                    <!-- Dropdown Bridge -->
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        <!-- Visual Dropdown -->
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="atoms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-box-1-line"></i> Atoms
+                                </a>
+                                <a href="molecules.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-green-primary font-bold">
+                                    <i class="ri-hexagon-line"></i> Molecules
+                                </a>
+                                <a href="organisms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-layout-3-line"></i> Organisms
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="relative group h-full flex items-center">
+                    <button
+                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
+                        <span>Resources</span>
+                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                    </button>
+                    <div
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="tokens.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-palette-line"></i> Design Tokens
+                                </a>
+                                <a href="src/tokens/colors.js" target="_blank"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-code-line"></i> Colors Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-16">
+                <button
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-search-line text-icon-md"></i>
+                </button>
+                <div class="w-standard h-24 bg-grey-tertiary hidden md:block"></div>
+                <a href="#"
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-github-fill text-icon-lg"></i>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 mt-48 px-32 pb-64 max-w-standard mx-auto w-full">
+
+        <header class="mb-48">
+            <h1 class="text-display font-semibold mb-12">Molecules</h1>
+            <p class="text-body-lg text-grey-primary max-w-readable font-light">
+                Combinations of atoms that work together as a single unit.
+            </p>
+        </header>
+
+        <div class="space-y-64">
+
+            <!-- 1. SEARCH FIELDS -->
+            <section id="search">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Search Fields</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <!-- Search Molecule -->
+                        <div
+                            class="flex items-center bg-white border border-grey-secondary rounded-btn px-16 py-8 focus-within:border-green-primary focus-within:ring-subtle focus-within:ring-black transition-all shadow-sm w-full max-w-md">
+                            <i class="ri-search-line text-grey-primary"></i>
+                            <input type="text" placeholder="Search components..."
+                                class="flex-1 bg-transparent border-none focus:outline-none px-12 text-body-sm">
+                            <button
+                                class="bg-black text-white px-16 py-4 rounded-btn text-body-xs font-medium hover:bg-grey-primary transition-colors">Find</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. FORM GROUPS -->
+            <section id="form-groups">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Form Groups</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="max-w-md mx-auto p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5 space-y-24">
+
+                        <div class="flex flex-col gap-8">
+                            <label class="text-label font-semibold text-black">Email Address</label>
+                            <input type="email" placeholder="john@example.com"
+                                class="w-full bg-white border border-grey-secondary rounded-xs px-16 py-12 text-body-sm focus:outline-none focus:border-green-primary focus:ring-subtle focus:ring-black transition-all">
+                            <span class="text-body-xs text-grey-primary">We will never share your email.</span>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. ALERTS -->
+            <section id="alerts">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Alert Messages</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="space-y-16 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <!-- Success Alert -->
+                        <div
+                            class="flex items-center gap-16 p-16 bg-green-primary/10 border border-green-primary/20 rounded-md text-green-primary">
+                            <i class="ri-checkbox-circle-line text-h3"></i>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-body-sm">Success</h4>
+                                <p class="text-body-xs opacity-80">Component successfully updated.</p>
+                            </div>
+                            <button class="hover:bg-green-primary/10 p-4 rounded-full"><i
+                                    class="ri-close-line"></i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-grey-tertiary px-32 py-32">
+        <div class="max-w-standard mx-auto flex justify-between items-center text-body-xs text-grey-primary">
+            <p>© 2026 NexLed UI Systems</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

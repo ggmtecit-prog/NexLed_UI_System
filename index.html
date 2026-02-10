@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexLed - Component Showcase</title>
+    <title>NexLed - Design System</title>
 
     <!-- 1. Load Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,139 +22,82 @@
     <style>
         body {
             font-family: 'Urbanist', sans-serif;
-            background-color: #F6F6F6;
+            background-color: var(--colors-white, #FCFCFC);
             scroll-behavior: smooth;
         }
 
-        /* Glassmorphism */
+        /* Glassmorphism using verification mapping */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(252, 252, 252, 0.7);
+            /* white + 70% opacity */
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            border-radius: 12px;
-            /* --radius-md */
+            border: 1px solid rgba(252, 252, 252, 0.4);
+            box-shadow: var(--shadows-default);
+            border-radius: var(--radius-md);
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(252, 252, 252, 0.7);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 16px;
-            /* --radius-lg */
+            border: 1px solid rgba(252, 252, 252, 0.4);
+            transition: all var(--motion-duration-default) var(--motion-ease-premium);
+            border-radius: var(--radius-lg);
         }
 
         .glass-card:hover {
-            transform: translateY(-4px);
-            background: #FFFFFF;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-            border-color: #03683D;
-            /* green-primary */
-        }
-
-        /* Syntax Highlighting Base */
-        pre {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-size: 0.875rem;
-            font-family: monospace;
-        }
-
-        .token-reference {
-            color: #4EC9B0;
-        }
-
-        .html-tag {
-            color: #569CD6;
-        }
-
-        .html-attr {
-            color: #9CDCFE;
-        }
-
-        .html-string {
-            color: #CE9178;
-        }
-
-        /* Sidebar Styling */
-        .sidebar-link {
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .sidebar-link.active {
-            color: #03683D;
-            font-weight: 600;
-        }
-
-        .sidebar-link.active::before {
-            content: '';
-            position: absolute;
-            left: -16px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 16px;
-            background-color: #03683D;
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* Section Spacing */
-        section {
-            scroll-margin-top: 2rem;
+            transform: translateY(var(--interactive-lift-standard));
+            background: var(--colors-white);
+            box-shadow: var(--shadows-hover);
+            border-color: var(--colors-green-primary);
         }
     </style>
 </head>
 
-<body class="text-black selection:bg-green-primary/10 flex min-h-screen">
+<body class="text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
 
     <!-- TOP NAVIGATION -->
-    <header class="fixed top-0 left-0 w-full z-[100] px-8 py-6 pointer-events-none">
+    <header class="fixed top-0 left-0 w-full z-sticky px-32 py-24 pointer-events-none">
         <div
-            class="max-w-[1600px] mx-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-8 py-7 pointer-events-auto transition-all duration-400 ease-premium hover:shadow-btn-hover">
+            class="max-w-wide mx-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-32 py-24 pointer-events-auto transition-all duration-default ease-premium hover:shadow-btn-hover">
 
             <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-3 group">
+            <a href="index.html" class="flex items-center gap-12 group">
                 <div
-                    class="w-10 h-10 bg-green-primary rounded-lg flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-                    <i class="ri-code-s-slash-line text-xl"></i>
+                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
+                    <i class="ri-code-s-slash-line text-h3"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-lg leading-none tracking-tight text-black">NexLed</span>
-                    <span class="text-[10px] font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
+                    <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                    <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
                 </div>
             </a>
 
-            <!-- Navigation Links (Dropdowns) -->
-            <nav class="hidden md:flex items-center gap-8 h-full">
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-32 h-full">
 
                 <!-- Components Dropdown -->
                 <div class="relative group h-full flex items-center">
                     <button
-                        class="flex items-center gap-2 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-2 h-full z-[102]">
+                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
                         <span>Components</span>
                         <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
                     </button>
-                    <!-- Dropdown Wrapper (Bridge) -->
+                    <!-- Dropdown Bridge -->
                     <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-[101] translate-y-2 group-hover:translate-y-0">
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
                         <!-- Visual Dropdown -->
-                        <div class="bg-white border border-grey-tertiary shadow-xl rounded-2xl overflow-hidden">
-                            <div class="p-2 flex flex-col gap-1">
-                                <a href="#atoms"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="atoms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
                                     <i class="ri-box-1-line"></i> Atoms
                                 </a>
-                                <a href="#molecules"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                <a href="molecules.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
                                     <i class="ri-hexagon-line"></i> Molecules
                                 </a>
-                                <a href="#organisms"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                <a href="organisms.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
                                     <i class="ri-layout-3-line"></i> Organisms
                                 </a>
                             </div>
@@ -165,615 +108,166 @@
                 <!-- Resources Dropdown -->
                 <div class="relative group h-full flex items-center">
                     <button
-                        class="flex items-center gap-2 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-2 h-full z-[102]">
+                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
                         <span>Resources</span>
                         <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
                     </button>
-                    <!-- Dropdown Wrapper (Bridge) -->
                     <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-[101] translate-y-2 group-hover:translate-y-0">
-                        <!-- Visual Dropdown -->
-                        <div class="bg-white border border-grey-tertiary shadow-xl rounded-2xl overflow-hidden">
-                            <div class="p-2 flex flex-col gap-1">
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                            <div class="p-8 flex flex-col gap-4">
+                                <a href="tokens.html"
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-palette-line"></i> Design Tokens
+                                </a>
                                 <a href="src/tokens/colors.js" target="_blank"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-palette-line"></i> Colors
-                                </a>
-                                <a href="src/tokens/typography.js" target="_blank"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-text"></i> Typography
-                                </a>
-                                <a href="src/tokens/spacing.js" target="_blank"
-                                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-layout-grid-line"></i> Spacing
+                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                    <i class="ri-code-line"></i> Colors Source
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Templates Link (Simple) -->
-                <a href="#templates"
-                    class="text-body-sm font-medium text-grey-primary hover:text-black transition-colors">Templates</a>
-
             </nav>
 
             <!-- Right Actions -->
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-16">
                 <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
-                    <i class="ri-search-line text-lg"></i>
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-search-line text-icon-md"></i>
                 </button>
-                <div class="w-px h-6 bg-grey-tertiary"></div>
+                <div class="w-standard h-24 bg-grey-tertiary hidden md:block"></div>
                 <a href="#"
-                    class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
-                    <i class="ri-github-fill text-xl"></i>
+                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                    <i class="ri-github-fill text-icon-lg"></i>
                 </a>
             </div>
 
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 p-8 lg:p-16 max-w-[1600px] w-full mx-auto mt-24">
+    <!-- LANDING CONTENT -->
+    <main class="flex-1 mt-48 px-32 pb-64 max-w-standard mx-auto w-full">
 
-        <!-- INTRO -->
-        <header class="mb-20">
-            <h1 class="text-display font-bold mb-4">Component Showcase</h1>
-            <p class="text-body-lg text-grey-primary max-w-readable font-light">
-                A structured catalogue of the NexLed design system components, organized by Atomic Design principles.
-                Use these references to maintain consistency across the application.
+        <!-- HERO -->
+        <header class="py-64 mb-48 text-center max-w-readable mx-auto">
+            <div
+                class="inline-flex items-center gap-12 px-16 py-8 rounded-full bg-green-primary/10 text-green-primary text-body-xs font-semibold mb-24 border border-green-primary/20">
+                <span>V1.2</span>
+                <span class="w-4 h-4 rounded-full bg-green-primary"></span>
+                <span>FEBRUARY 2026</span>
+            </div>
+            <h1 class="text-display font-semibold mb-24">NexLed Design System</h1>
+            <p class="text-body-lg text-grey-primary font-light leading-relaxed mb-40">
+                A high-fidelity, atomic design system for building premium electrical interfaces.
+                Strictly enforced tokens, glassmorphic aesthetics, and accessibility-first.
             </p>
+            <div class="flex flex-wrap justify-center gap-16">
+                <a href="#"
+                    class="group flex items-center gap-8 px-24 py-12 bg-black text-white rounded-btn shadow-btn-default hover:shadow-btn-hover transition-all duration-default ease-premium">
+                    <i class="ri-figma-fill text-icon-md"></i>
+                    <span class="font-medium">Open in Figma</span>
+                </a>
+                <a href="#"
+                    class="group flex items-center gap-8 px-24 py-12 bg-white border border-grey-secondary text-grey-primary rounded-btn hover:border-black hover:text-black transition-all duration-default ease-premium">
+                    <i class="ri-book-open-line text-icon-md"></i>
+                    <span class="font-medium">Read Guidelines</span>
+                </a>
+            </div>
         </header>
 
-        <!-- 📦 ATOMS -->
-        <section id="atoms" class="mb-32">
-            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
-                <div
-                    class="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center text-green-primary">
-                    <i class="ri-box-1-line text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-h2 font-bold">Atoms</h2>
-                    <p class="text-body-sm text-grey-primary">Fundamental building blocks. Cannot be broken down
-                        further.</p>
-                </div>
-            </div>
+        <!-- NAVIGATION CARDS -->
+        <section class="mb-64">
+            <h2 class="text-h2 font-semibold mb-32 text-center">Structure</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24">
 
-            <!-- Content will be injected here -->
-            <div class="space-y-20">
-
-                <!-- BUTTONS -->
-                <div id="buttons" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Buttons</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Primary interactive elements for user actions.</p>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-8 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                            <!-- Primary -->
-                            <button
-                                class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:-translate-y-lift">
-                                Primary
-                            </button>
-                            <!-- Secondary -->
-                            <button
-                                class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:-translate-y-lift">
-                                Secondary
-                            </button>
-                            <!-- Icon + Text -->
-                            <button
-                                class="group flex items-center justify-center gap-icon-lg px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:-translate-y-lift">
-                                <i class="ri-delete-bin-2-line text-icon-xxl"></i>
-                                Icon + Text
-                            </button>
-                            <!-- Ghost -->
-                            <button
-                                class="flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-transparent border-none text-grey-primary font-medium text-button-lg hover:text-green-secondary hover:-translate-y-lift transition-all">
-                                Ghost
-                            </button>
-                        </div>
+                <a href="atoms.html" class="glass-card p-24 group block">
+                    <div
+                        class="w-48 h-48 rounded-full bg-green-primary/10 flex items-center justify-center text-green-primary mb-20 group-hover:scale-hover transition-transform duration-default">
+                        <i class="ri-box-1-line text-h3"></i>
                     </div>
+                    <h3 class="text-h3 font-semibold mb-8 group-hover:text-green-primary transition-colors">Atoms</h3>
+                    <p class="text-body-sm text-grey-primary">Fundamental elements: buttons, inputs, labels, and badges.
+                    </p>
+                </a>
 
-                    <div class="glass-panel p-6 bg-black/95 border-grey-secondary/30 mt-4 overflow-x-auto">
-                        <pre><code class="language-html text-green-primary">&lt;!-- Primary Button --&gt;
-&lt;button class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-green-primary border-none shadow-btn-default text-white font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:-translate-y-lift"&gt;
-    Primary
-&lt;/button&gt;
-
-&lt;!-- Secondary Button --&gt;
-&lt;button class="group flex items-center justify-center px-32 w-btn-lg h-btn-lg rounded-btn bg-white border border-grey-secondary shadow-btn-default text-black font-medium text-button-lg transform-gpu transition-all duration-400 ease-button-ease hover:-translate-y-lift"&gt;
-    Secondary
-&lt;/button&gt;</code></pre>
+                <a href="molecules.html" class="glass-card p-24 group block">
+                    <div
+                        class="w-48 h-48 rounded-full bg-blue-primary/10 flex items-center justify-center text-blue-primary mb-20 group-hover:scale-hover transition-transform duration-default">
+                        <i class="ri-hexagon-line text-h3"></i>
                     </div>
-                </div>
+                    <h3 class="text-h3 font-semibold mb-8 group-hover:text-blue-primary transition-colors">Molecules
+                    </h3>
+                    <p class="text-body-sm text-grey-primary">Aura combinations: search bars, alerts, and form groups.
+                    </p>
+                </a>
 
-                <!-- BADGES -->
-                <div id="badges" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Badges</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Static elements to display status, counts, or
-                        metadata.</p>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                            <!-- Large -->
-                            <div class="flex flex-col gap-4 items-center">
-                                <h4 class="text-xs text-grey-primary uppercase">Large</h4>
-                                <div class="flex gap-4">
-                                    <div
-                                        class="inline-flex bg-green-primary text-white px-16 py-8 rounded-sm font-medium">
-                                        <span class="text-body-sm">Primary</span>
-                                    </div>
-                                    <div
-                                        class="inline-flex bg-green-hover-icons text-black px-16 py-8 rounded-sm font-medium">
-                                        <span class="text-body-sm">Success</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Medium -->
-                            <div class="flex flex-col gap-4 items-center">
-                                <h4 class="text-xs text-grey-primary uppercase">Medium</h4>
-                                <div class="flex gap-4">
-                                    <div
-                                        class="inline-flex bg-green-primary text-white px-12 py-4 rounded-xs font-medium">
-                                        <span class="text-body-xs">Primary</span>
-                                    </div>
-                                    <div
-                                        class="inline-flex bg-green-hover-icons text-black px-12 py-4 rounded-xs font-medium">
-                                        <span class="text-body-xs">Success</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Small -->
-                            <div class="flex flex-col gap-4 items-center">
-                                <h4 class="text-xs text-grey-primary uppercase">Small</h4>
-                                <div class="flex gap-4">
-                                    <div
-                                        class="inline-flex bg-green-primary text-white px-4 py-4 rounded-xs font-medium">
-                                        <span class="text-overline">Primary</span>
-                                    </div>
-                                    <div
-                                        class="inline-flex bg-green-hover-icons text-black px-4 py-4 rounded-xs font-medium">
-                                        <span class="text-overline">Success</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <a href="organisms.html" class="glass-card p-24 group block">
+                    <div
+                        class="w-48 h-48 rounded-full bg-red-primary/10 flex items-center justify-center text-red-primary mb-20 group-hover:scale-hover transition-transform duration-default">
+                        <i class="ri-layout-3-line text-h3"></i>
                     </div>
+                    <h3 class="text-h3 font-semibold mb-8 group-hover:text-red-primary transition-colors">Organisms</h3>
+                    <p class="text-body-sm text-grey-primary">Composite structures: navbars, accordions, and modals.</p>
+                </a>
 
-                    <div class="glass-panel p-6 bg-black/95 border-grey-secondary/30 mt-4 overflow-x-auto">
-                        <pre><code class="language-html text-green-primary">&lt;!-- Large Standard Badge --&gt;
-&lt;div class="inline-flex bg-green-primary text-white px-16 py-8 rounded-sm font-medium"&gt;
-    &lt;span class="text-body-sm"&gt;Primary&lt;/span&gt;
-&lt;/div&gt;
-
-&lt;!-- Medium Success Badge --&gt;
-&lt;div class="inline-flex bg-green-hover-icons text-black px-12 py-4 rounded-xs font-medium"&gt;
-    &lt;span class="text-body-xs"&gt;Success&lt;/span&gt;
-&lt;/div&gt;</code></pre>
+                <a href="tokens.html" class="glass-card p-24 group block">
+                    <div
+                        class="w-48 h-48 rounded-full bg-grey-primary/10 flex items-center justify-center text-grey-primary mb-20 group-hover:scale-hover transition-transform duration-default">
+                        <i class="ri-palette-line text-h3"></i>
                     </div>
-                </div>
-
-                <!-- CHECKBOXES -->
-                <div id="checkboxes" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Checkboxes</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Selection controls for multiple options.</p>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-
-                            <!-- Large Checkbox -->
-                            <label class="flex items-center gap-icon-sm cursor-pointer group">
-                                <div class="relative w-checkbox-lg h-checkbox-lg flex items-center justify-center">
-                                    <input type="checkbox"
-                                        class="peer absolute inset-0 w-checkbox-lg h-checkbox-lg rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                    <i
-                                        class="ri-check-line relative z-10 text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                </div>
-                                <span
-                                    class="text-body-md text-grey-primary select-none group-hover:text-black transition-colors">Large</span>
-                            </label>
-
-                            <!-- Medium Checkbox -->
-                            <label class="flex items-center gap-icon-sm cursor-pointer group">
-                                <div class="relative w-checkbox-md h-checkbox-md flex items-center justify-center">
-                                    <input type="checkbox"
-                                        class="peer absolute inset-0 w-checkbox-md h-checkbox-md rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                    <i
-                                        class="ri-check-line relative z-10 text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                </div>
-                                <span
-                                    class="text-body-sm text-grey-primary select-none group-hover:text-black transition-colors">Medium</span>
-                            </label>
-
-                            <!-- Small Checkbox -->
-                            <label class="flex items-center gap-icon-sm cursor-pointer group">
-                                <div class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center">
-                                    <input type="checkbox"
-                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                    <i
-                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                </div>
-                                <span
-                                    class="text-body-xs text-grey-primary select-none group-hover:text-black transition-colors">Small</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LOADING SPINNER -->
-                <div id="loading" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Loading Spinner</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Animated SVG indicator for loading states.</p>
-
-                    <style type="text/tailwindcss">
-                        .spinner-container {
-                            @apply flex items-center justify-center;
-                        }
-
-                        .spinner svg path {
-                            fill: transparent;
-                            stroke-width: 8;
-                            stroke-linecap: round;
-                            transform-origin: center;
-                        }
-
-                        .spinner-track {
-                            @apply stroke-grey-tertiary;
-                        }
-
-                        .spinner-anim {
-                            @apply stroke-green-secondary;
-                            stroke-dasharray: 100, 226;
-                            animation: rotate-path 2s linear infinite;
-                        }
-
-                        .spinner-white .spinner-track {
-                            @apply stroke-white/20;
-                        }
-
-                        .spinner-white .spinner-anim {
-                            @apply stroke-white;
-                        }
-
-                        @keyframes rotate-path {
-                            0% {
-                                stroke-dashoffset: 0;
-                            }
-
-                            100% {
-                                stroke-dashoffset: -326;
-                            }
-                        }
-                    </style>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                            <!-- Small -->
-                            <div class="spinner w-32 h-32">
-                                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <path class="spinner-track"
-                                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    <path class="spinner-anim"
-                                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                </svg>
-                            </div>
-                            <!-- Medium -->
-                            <div class="spinner w-48 h-48">
-                                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <path class="spinner-track"
-                                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    <path class="spinner-anim"
-                                        d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                </svg>
-                            </div>
-                            <!-- Context -->
-                            <button
-                                class="flex items-center gap-12 bg-green-primary text-white py-12 px-24 rounded-xs font-medium hover:bg-green-secondary transition-colors h-48">
-                                <div class="spinner spinner-white w-16 h-16">
-                                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                        <path class="spinner-track"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                        <path class="spinner-anim"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    </svg>
-                                </div>
-                                <span>Submitting...</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TOOLTIP -->
-                <div id="tooltips" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Tooltips</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Informative popups on hover.</p>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5 h-40">
-                            <!-- Interactive Trigger (Medium) -->
-                            <div class="relative group">
-                                <button
-                                    class="px-16 py-8 bg-white border border-grey-secondary rounded-xs text-button hover:border-green-secondary transition-all duration-400 ease-button-ease cursor-help font-medium">
-                                    Hover Me
-                                </button>
-                                <!-- Tooltip -->
-                                <div
-                                    class="absolute bottom-full left-1/2 -translate-x-1/2 mb-12 bg-black text-white px-12 py-8 rounded-xs shadow-btn-default opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-400 ease-button-ease pointer-events-none z-tooltip min-w-max">
-                                    <span class="text-body-sm">Standard component tooltip</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HYPERLINKS -->
-                <div id="hyperlinks" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Hyperlinks</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Navigation links with premium hover effects.</p>
-
-                    <style>
-                        /* Premium Underline Animation Redesign: Spatial Separation */
-                        .link-premium {
-                            position: relative;
-                            display: inline-block;
-                            transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
-                            transform-origin: center;
-                        }
-
-                        .link-premium::after {
-                            content: '';
-                            position: absolute;
-                            width: 100%;
-                            height: 2px;
-                            bottom: -2px;
-                            left: 0;
-                            background-color: currentColor;
-                            opacity: 0.10;
-                            transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
-                        }
-
-                        .link-premium:hover,
-                        .link-premium.state-hover {
-                            transform: translateY(-1px) scale(1.02);
-                            color: #058C53;
-                        }
-
-                        .link-premium:hover::after,
-                        .link-premium.state-hover::after {
-                            transform: translateY(2px);
-                            opacity: 1;
-                        }
-
-                        .link-premium:active,
-                        .link-premium.state-active {
-                            transform: translateY(0) scale(0.98);
-                        }
-
-                        .link-premium:active::after,
-                        .link-premium.state-active::after {
-                            transform: translateY(1px);
-                            opacity: 1;
-                        }
-
-                        .link-premium:focus-visible {
-                            outline: none;
-                        }
-                    </style>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                            <a href="#"
-                                class="link-premium text-green-primary font-semibold hover:text-green-secondary focus-visible:ring focus-visible:rounded-sm visited:text-link-visited">
-                                Standalone Link
-                            </a>
-                            <a href="#"
-                                class="link-premium group flex items-center gap-icon-xs text-green-primary font-semibold no-underline hover:text-green-secondary active:scale-press focus-visible:ring focus-visible:rounded-sm visited:text-link-visited">
-                                <i class="ri-delete-bin-2-line"></i>
-                                <span>Action Link</span>
-                                <i
-                                    class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TYPOGRAPHY -->
-                <div id="typography" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Typography</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Urbanist font scale and hierarchy.</p>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-col gap-8 p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                            <!-- Headings -->
-                            <div class="space-y-4">
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-display</span>
-                                    <h1 class="text-display font-bold">Display Heading</h1>
-                                </div>
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-h1</span>
-                                    <h1 class="text-h1 font-semibold">Heading 1</h1>
-                                </div>
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-h2</span>
-                                    <h2 class="text-h2 font-medium">Heading 2</h2>
-                                </div>
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-h3</span>
-                                    <h3 class="text-h3 font-medium">Heading 3</h3>
-                                </div>
-                            </div>
-                            <!-- Body -->
-                            <div class="space-y-4">
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-body-lg</span>
-                                    <p class="text-body-lg">Body Large: Ideal for lead paragraphs.</p>
-                                </div>
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-body</span>
-                                    <p class="text-body">Body Standard: The primary reading tier.</p>
-                                </div>
-                                <div
-                                    class="grid grid-cols-[150px_1fr] items-baseline gap-4 border-b border-grey-tertiary/50 pb-2">
-                                    <span class="text-xs text-grey-primary font-mono">text-body-sm</span>
-                                    <p class="text-body-sm">Body Small: Secondary text for descriptions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SCROLLBAR -->
-                <div id="scrollbar" class="scroll-mt-24">
-                    <h3 class="text-h3 font-bold mb-4">Scrollbar</h3>
-                    <p class="text-body-md text-grey-primary mb-6">Custom styled scrollbars for consistent UI.</p>
-
-                    <style type="text/tailwindcss">
-                        @layer components {
-                            .custom-scrollbar { @apply overflow-y-auto; }
-                            .custom-scrollbar::-webkit-scrollbar { @apply w-8; }
-                            .custom-scrollbar::-webkit-scrollbar-button { @apply hidden; }
-                            .custom-scrollbar::-webkit-scrollbar-track { @apply bg-transparent; }
-                            .custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-grey-secondary rounded-full border-thin border-white bg-clip-padding transition-colors duration-default ease-premium; }
-                            .custom-scrollbar::-webkit-scrollbar-thumb:hover, .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb { @apply bg-green-primary; }
-                            .custom-scrollbar::-webkit-scrollbar-thumb:active { @apply bg-green-secondary; }
-                        }
-                    </style>
-
-                    <div class="glass-panel p-8 mb-6">
-                        <div
-                            class="flex flex-wrap gap-12 items-center justify-center p-10 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-
-                            <!-- Demo Card -->
-                            <div
-                                class="w-btn-lg h-[200px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4">
-                                <div class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-6 pr-2 py-4 my-3">
-                                    <h2 class="text-body font-semibold mb-4 text-black">Interface Scroll</h2>
-                                    <p class="text-body-sm text-grey-primary mb-4 leading-relaxed">
-                                        This scrollbar uses the brand's green palette to provide high recognition while
-                                        maintaining
-                                        structural elegance.
-                                    </p>
-                                    <div
-                                        class="h-[400px] rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-4">
-                                    </div>
-                                    <p class="text-body-xs text-grey-primary text-center">End of content.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="text-h3 font-semibold mb-8 group-hover:text-black transition-colors">Tokens</h3>
+                    <p class="text-body-sm text-grey-primary">The engine: colors, spacing, radius, and motion values.
+                    </p>
+                </a>
 
             </div>
         </section>
 
-        <!-- 🧩 MOLECULES -->
-        <section id="molecules" class="mb-32">
-            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
-                <div
-                    class="w-10 h-10 rounded-full bg-blue-primary/10 flex items-center justify-center text-blue-primary">
-                    <i class="ri-hexagon-line text-xl"></i>
+        <!-- GETTING STARTED -->
+        <section class="max-w-readable mx-auto">
+            <div class="glass-panel p-40">
+                <div class="flex items-center gap-16 mb-24">
+                    <div class="w-40 h-40 rounded-full bg-black text-white flex items-center justify-center">
+                        <i class="ri-terminal-box-line text-h3"></i>
+                    </div>
+                    <h2 class="text-h2 font-semibold">Integration</h2>
                 </div>
-                <div>
-                    <h2 class="text-h2 font-bold">Molecules</h2>
-                    <p class="text-body-sm text-grey-primary">Simple groups of atoms functioning together.</p>
-                </div>
-            </div>
 
-            <div class="space-y-16">
-                <!-- Placeholders -->
-            </div>
-        </section>
+                <div class="space-y-24 text-body text-grey-primary">
+                    <p>
+                        Import the NexLed configuration to your global Tailwind environment to unlock the premium token
+                        sets.
+                    </p>
 
-        <!-- 🏗️ ORGANISMS -->
-        <section id="organisms" class="mb-32">
-            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
-                <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-600">
-                    <i class="ri-organism-line text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-h2 font-bold">Organisms</h2>
-                    <p class="text-body-sm text-grey-primary">Complex components composed of groups of molecules and/or
-                        atoms.</p>
-                </div>
-            </div>
+                    <div class="bg-black/95 rounded-lg p-24 overflow-x-auto border border-white/10">
+                        <pre
+                            class="text-body-xs font-mono text-grey-secondary leading-relaxed"><span class="text-grey-primary">// index.html</span>
+<span class="text-blue-400">&lt;script</span> <span class="text-sky-300">src</span>=<span class="text-orange-300">"https://cdn.tailwindcss.com"</span><span class="text-blue-400">&gt;&lt;/script&gt;</span>
+<span class="text-blue-400">&lt;script</span> <span class="text-sky-300">src</span>=<span class="text-orange-300">"src/config-cdn.js"</span><span class="text-blue-400">&gt;&lt;/script&gt;</span></pre>
+                    </div>
 
-            <div class="space-y-16">
-                <!-- Placeholders -->
-            </div>
-        </section>
-
-        <!-- 📄 TEMPLATES -->
-        <section id="templates" class="mb-32">
-            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
-                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-600">
-                    <i class="ri-layout-top-line text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-h2 font-bold">Templates</h2>
-                    <p class="text-body-sm text-grey-primary">Page-level structures without real content.</p>
+                    <p class="leading-relaxed">
+                        Follow the <strong class="text-black">Atomic Methodology</strong>. Use Atoms for basic tasks,
+                        and never hardcode shadow or radius values. Always reference tokens like <code
+                            class="bg-grey-tertiary px-4 py-2 rounded text-black text-body-xs">shadow-btn-default</code>.
+                    </p>
                 </div>
             </div>
         </section>
-
-        <!-- 📱 PAGES -->
-        <section id="pages" class="mb-20">
-            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
-                <div class="w-10 h-10 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-600">
-                    <i class="ri-pages-line text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-h2 font-bold">Pages</h2>
-                    <p class="text-body-sm text-grey-primary">Specific instances with real content.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer
-            class="mt-20 pt-10 border-t border-grey-tertiary flex justify-between items-center text-body-xs text-grey-primary">
-            <p>© 2026 NexLed UI System</p>
-            <a href="#" class="hover:text-black">Back to top <i class="ri-arrow-up-line ml-1"></i></a>
-        </footer>
 
     </main>
 
-    <script>
-        // Simple script to handle active state on sidebar
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-link');
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-grey-tertiary px-32 py-32">
+        <div class="max-w-standard mx-auto flex justify-between items-center text-body-xs text-grey-primary">
+            <p>© 2026 NexLed UI Systems</p>
+            <a href="#" class="hover:text-black transition-colors flex items-center gap-8">
+                Documentation <i class="ri-arrow-right-up-line"></i>
+            </a>
+        </div>
+    </footer>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
