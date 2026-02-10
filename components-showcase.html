@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLed - Component Showcase</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind -->
+    <script src="src/config-cdn.js"></script>
+
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #F6F6F6;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border-radius: 12px;
+            /* --radius-md */
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 16px;
+            /* --radius-lg */
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background: #FFFFFF;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-color: #03683D;
+            /* green-primary */
+        }
+
+        /* Syntax Highlighting Base */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            font-family: monospace;
+        }
+
+        .token-reference {
+            color: #4EC9B0;
+        }
+
+        .html-tag {
+            color: #569CD6;
+        }
+
+        .html-attr {
+            color: #9CDCFE;
+        }
+
+        .html-string {
+            color: #CE9178;
+        }
+
+        /* Sidebar Styling */
+        .sidebar-link {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .sidebar-link.active {
+            color: #03683D;
+            font-weight: 600;
+        }
+
+        .sidebar-link.active::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background-color: #03683D;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Section Spacing */
+        section {
+            scroll-margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body class="text-black selection:bg-green-primary/10 flex min-h-screen">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside
+        class="w-64 fixed h-screen p-6 border-r border-grey-tertiary bg-white/50 backdrop-blur-md hidden lg:flex flex-col z-sticky overflow-y-auto">
+        <div class="mb-10">
+            <a href="index.html" class="flex items-center gap-2 mb-1 group">
+                <i class="ri-arrow-left-s-line text-grey-primary group-hover:text-black transition-colors"></i>
+                <img src="public/nexled-logo-color.svg" alt="NexLed Logo"
+                    class="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+            <p class="text-xs text-grey-primary mt-2 ml-6">UI Components v1.2</p>
+        </div>
+
+        <nav class="flex flex-col gap-8">
+            <div>
+                <h3 class="text-xs font-bold text-grey-primary uppercase tracking-widest mb-4">Structure</h3>
+                <ul class="flex flex-col gap-3 text-body-sm text-grey-primary">
+                    <li><a href="#atoms" class="sidebar-link hover:text-black">Atoms</a></li>
+                    <li><a href="#molecules" class="sidebar-link hover:text-black">Molecules</a></li>
+                    <li><a href="#organisms" class="sidebar-link hover:text-black">Organisms</a></li>
+                    <li><a href="#templates" class="sidebar-link hover:text-black">Templates</a></li>
+                    <li><a href="#pages" class="sidebar-link hover:text-black">Pages</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xs font-bold text-grey-primary uppercase tracking-widest mb-4">Resources</h3>
+                <ul class="flex flex-col gap-3 text-body-sm text-grey-primary">
+                    <li><a href="src/tokens/colors.js" target="_blank"
+                            class="hover:text-black flex items-center gap-2"><i class="ri-palette-line"></i> Colors</a>
+                    </li>
+                    <li><a href="src/tokens/typography.js" target="_blank"
+                            class="hover:text-black flex items-center gap-2"><i class="ri-text"></i> Typography</a></li>
+                    <li><a href="src/tokens/spacing.js" target="_blank"
+                            class="hover:text-black flex items-center gap-2"><i class="ri-layout-grid-line"></i>
+                            Spacing</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 lg:ml-64 p-6 lg:p-12 max-w-7xl mx-auto w-full">
+
+        <!-- INTRO -->
+        <header class="mb-20">
+            <h1 class="text-display font-bold mb-4">Component Showcase</h1>
+            <p class="text-body-lg text-grey-primary max-w-readable font-light">
+                A structured catalogue of the NexLed design system components, organized by Atomic Design principles.
+                Use these references to maintain consistency across the application.
+            </p>
+        </header>
+
+        <!-- 📦 ATOMS -->
+        <section id="atoms" class="mb-32">
+            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
+                <div
+                    class="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center text-green-primary">
+                    <i class="ri-box-1-line text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-h2 font-bold">Atoms</h2>
+                    <p class="text-body-sm text-grey-primary">Fundamental building blocks. Cannot be broken down
+                        further.</p>
+                </div>
+            </div>
+
+            <!-- Content will be injected here -->
+            <div class="space-y-16">
+                <!-- Buttons Placeholder -->
+                <div class="glass-panel p-8">
+                    <div class="flex flex-col gap-6 text-center py-10 text-grey-primary">
+                        <i class="ri-loader-4-line text-4xl animate-spin mx-auto"></i>
+                        <p>Loading Atoms...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🧩 MOLECULES -->
+        <section id="molecules" class="mb-32">
+            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
+                <div
+                    class="w-10 h-10 rounded-full bg-blue-primary/10 flex items-center justify-center text-blue-primary">
+                    <i class="ri-hexagon-line text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-h2 font-bold">Molecules</h2>
+                    <p class="text-body-sm text-grey-primary">Simple groups of atoms functioning together.</p>
+                </div>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Placeholders -->
+            </div>
+        </section>
+
+        <!-- 🏗️ ORGANISMS -->
+        <section id="organisms" class="mb-32">
+            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
+                <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-600">
+                    <i class="ri-organism-line text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-h2 font-bold">Organisms</h2>
+                    <p class="text-body-sm text-grey-primary">Complex components composed of groups of molecules and/or
+                        atoms.</p>
+                </div>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Placeholders -->
+            </div>
+        </section>
+
+        <!-- 📄 TEMPLATES -->
+        <section id="templates" class="mb-32">
+            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
+                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-600">
+                    <i class="ri-layout-top-line text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-h2 font-bold">Templates</h2>
+                    <p class="text-body-sm text-grey-primary">Page-level structures without real content.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📱 PAGES -->
+        <section id="pages" class="mb-20">
+            <div class="flex items-center gap-3 mb-10 pb-4 border-b border-grey-tertiary">
+                <div class="w-10 h-10 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-600">
+                    <i class="ri-pages-line text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-h2 font-bold">Pages</h2>
+                    <p class="text-body-sm text-grey-primary">Specific instances with real content.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer
+            class="mt-20 pt-10 border-t border-grey-tertiary flex justify-between items-center text-body-xs text-grey-primary">
+            <p>© 2026 NexLed UI System</p>
+            <a href="#" class="hover:text-black">Back to top <i class="ri-arrow-up-line ml-1"></i></a>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple script to handle active state on sidebar
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
