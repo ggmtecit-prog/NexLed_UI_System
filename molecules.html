@@ -16,24 +16,15 @@
     <!-- 2. Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link rel="stylesheet" href="src/styles/main.css">
+
+
     <!-- 3. Configure Tailwind -->
     <script src="src/config-cdn.js"></script>
+    <!-- 4. Components Logic -->
+    <script src="components_logic.js"></script>
 
-    <style>
-        body {
-            font-family: 'Urbanist', sans-serif;
-            background-color: var(--colors-white, #FCFCFC);
-            scroll-behavior: smooth;
-        }
 
-        .glass-panel {
-            background: rgba(252, 252, 252, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(252, 252, 252, 0.4);
-            box-shadow: var(--shadows-default);
-            border-radius: var(--radius-md);
-        }
-    </style>
 </head>
 
 <body class="text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
@@ -141,55 +132,105 @@
 
         <div class="space-y-64">
 
-            <!-- 1. SEARCH FIELDS -->
-            <section id="search">
+            <!-- 1. Accordion -->
+            <section id="accordion">
                 <div class="flex items-center gap-12 mb-24">
-                    <h2 class="text-h2 font-semibold">Search Fields</h2>
+                    <h2 class="text-h2 font-semibold">Accordion</h2>
                 </div>
 
                 <div class="glass-panel p-32 mb-24">
                     <div
                         class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
 
-                        <!-- Search Molecule -->
-                        <div
-                            class="flex items-center bg-white border border-grey-secondary rounded-btn px-16 py-8 focus-within:border-green-primary focus-within:ring-subtle focus-within:ring-black transition-all shadow-sm w-full max-w-md">
-                            <i class="ri-search-line text-grey-primary"></i>
-                            <input type="text" placeholder="Search components..."
-                                class="flex-1 bg-transparent border-none focus:outline-none px-12 text-body-sm">
-                            <button
-                                class="bg-black text-white px-16 py-4 rounded-btn text-body-xs font-medium hover:bg-grey-primary transition-colors">Find</button>
+                        <!-- Accordion Molecule -->
+                        <div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">
+
+                                <!-- SMALL DEMO -->
+                                <div class="w-full bg-white rounded-none">
+                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Small</h3>
+                                    <div class="accordion-group space-y-1">
+                                        <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                                            <button
+                                                class="accordion-trigger w-full flex items-center justify-start gap-12 py-12 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                                                aria-expanded="false">
+                                                <span
+                                                    class="text-body-sm font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Small
+                                                    Accordion</span>
+                                                <i
+                                                    class="chevron-icon ri-arrow-down-s-line text-icon-sm text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                                            </button>
+                                            <div
+                                                class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium peer-aria-expanded:max-h-[500px] peer-aria-expanded:opacity-100">
+                                                <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                                                    Small variant content description.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- MEDIUM DEMO -->
+                                <div class="w-full bg-white rounded-none">
+                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Medium
+                                        (Default)</h3>
+                                    <div class="accordion-group space-y-1">
+                                        <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                                            <button
+                                                class="accordion-trigger w-full flex items-center justify-start gap-16 py-16 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                                                aria-expanded="false">
+                                                <span
+                                                    class="text-body-lg font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Medium
+                                                    Accordion</span>
+                                                <i
+                                                    class="chevron-icon ri-arrow-down-s-line text-icon-md text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                                            </button>
+                                            <div
+                                                class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium peer-aria-expanded:max-h-[500px] peer-aria-expanded:opacity-100">
+                                                <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                                                    Medium variant content description.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BIG DEMO -->
+                                <div class="w-full bg-white rounded-none">
+                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Big</h3>
+                                    <div class="accordion-group space-y-1">
+                                        <div class="accordion-item border-b border-grey-tertiary last:border-0">
+                                            <button
+                                                class="accordion-trigger w-full flex items-center justify-start gap-24 py-24 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                                                aria-expanded="false">
+                                                <span
+                                                    class="text-h3 font-medium text-grey-primary group-hover:text-green-secondary transition-colors">Big
+                                                    Accordion</span>
+                                                <i
+                                                    class="chevron-icon ri-arrow-down-s-line text-icon-lg text-grey-primary group-hover:text-green-secondary transition-all duration-400 ease-button-ease"></i>
+                                            </button>
+                                            <div
+                                                class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium peer-aria-expanded:max-h-[500px] peer-aria-expanded:opacity-100">
+                                                <div class="pb-6 text-grey-primary leading-relaxed text-sm">
+                                                    Big variant content description.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </section>
 
-            <!-- 2. FORM GROUPS -->
-            <section id="form-groups">
+            <!-- 3. ANNOUNCEMENT BAR -->
+            <section id="announcement-bar">
                 <div class="flex items-center gap-12 mb-24">
-                    <h2 class="text-h2 font-semibold">Form Groups</h2>
-                </div>
-
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="max-w-md mx-auto p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5 space-y-24">
-
-                        <div class="flex flex-col gap-8">
-                            <label class="text-label font-semibold text-black">Email Address</label>
-                            <input type="email" placeholder="john@example.com"
-                                class="w-full bg-white border border-grey-secondary rounded-xs px-16 py-12 text-body-sm focus:outline-none focus:border-green-primary focus:ring-subtle focus:ring-black transition-all">
-                            <span class="text-body-xs text-grey-primary">We will never share your email.</span>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. ALERTS -->
-            <section id="alerts">
-                <div class="flex items-center gap-12 mb-24">
-                    <h2 class="text-h2 font-semibold">Alert Messages</h2>
+                    <h2 class="text-h2 font-semibold">Announcement Bar</h2>
                 </div>
 
                 <div class="glass-panel p-32 mb-24">
@@ -197,16 +238,1195 @@
                         class="space-y-16 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
 
                         <!-- Success Alert -->
-                        <div
-                            class="flex items-center gap-16 p-16 bg-green-primary/10 border border-green-primary/20 rounded-md text-green-primary">
-                            <i class="ri-checkbox-circle-line text-h3"></i>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-body-sm">Success</h4>
-                                <p class="text-body-xs opacity-80">Component successfully updated.</p>
+                        <div>
+                            <div class="space-y-12 w-full">
+
+                                <!-- LIVE: Standard -->
+                                <div class="relative w-full bg-green-primary text-white py-3 px-4 shadow-md transition-all duration-400 ease-premium"
+                                    id="announcement-bar-1">
+                                    <div
+                                        class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                                        <!-- Spacer for center balance -->
+                                        <div class="hidden sm:block w-10"></div>
+
+                                        <!-- Content -->
+                                        <div
+                                            class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-body-sm sm:text-body">
+                                            <span class="inline-flex items-center gap-2">
+                                                <i class="ri-rocket-2-line text-icon-md"></i>
+                                                Live Demo: Standard Top Bar. Check this out!
+                                            </span>
+                                        </div>
+
+                                        <!-- Close Button -->
+                                        <div class="flex items-center justify-end">
+                                            <button
+                                                class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-white/60 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-white/10 hover:text-white active:bg-white/20 active:text-white active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
+                                                aria-label="Close" onclick="closeBar('announcement-bar-1')">
+                                                <i class="ri-close-line text-icon-md leading-none"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- LIVE: Green Rounded -->
+                                <div class="relative w-full bg-green-primary text-white py-2 px-4 shadow-xl rounded-2xl transition-all duration-400 ease-premium"
+                                    id="announcement-bar-2">
+                                    <div
+                                        class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                                        <div class="hidden sm:block w-8"></div>
+
+                                        <div
+                                            class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-body-sm">
+                                            <span class="inline-flex items-center gap-2">
+                                                Live Demo: Floating Green Bar.
+                                            </span>
+                                        </div>
+
+                                        <div class="flex items-center justify-end">
+                                            <button
+                                                class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-white/60 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-white/10 hover:text-white active:bg-white/20 active:text-white active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
+                                                aria-label="Close" onclick="closeBar('announcement-bar-2')">
+                                                <i class="ri-close-line text-icon-md leading-none"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- LIVE: White Rounded -->
+                                <div class="relative w-full bg-white text-black py-2 px-4 shadow-xl rounded-2xl border border-grey-tertiary transition-all duration-400 ease-premium"
+                                    id="announcement-bar-3">
+                                    <div
+                                        class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
+
+                                        <div class="hidden sm:block w-8"></div>
+
+                                        <div
+                                            class="flex-1 text-center sm:text-left md:text-center text-black font-medium text-body-sm">
+                                            <span class="inline-flex items-center gap-2">
+                                                Live Demo: Floating White Bar.
+                                            </span>
+                                        </div>
+
+                                        <div class="flex items-center justify-end">
+                                            <button
+                                                class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:bg-grey-tertiary active:text-green-secondary active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
+                                                aria-label="Close" onclick="closeBar('announcement-bar-3')">
+                                                <i class="ri-close-line text-icon-md leading-none"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <button class="hover:bg-green-primary/10 p-4 rounded-full"><i
-                                    class="ri-close-line"></i></button>
                         </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. breadcrumbs -->
+            <section id="breadcrumbs">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Breadcrumbs</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="space-y-16 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-4xl space-y-12">
+
+                            <!-- Live Variant: Standard -->
+                            <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+                                <h2 class="text-xl font-bold mb-6 border-b border-grey-tertiary pb-2">Live Variants</h2>
+                                <nav aria-label="Breadcrumb Example">
+                                    <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
+                                        <li>
+                                            <a href="#"
+                                                class="breadcrumb-link text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Home</a>
+                                        </li>
+                                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                                        <li>
+                                            <a href="#"
+                                                class="breadcrumb-link text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Projects</a>
+                                        </li>
+                                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                                        <li class="text-black font-semibold" aria-current="page">UI System</li>
+                                    </ol>
+                                </nav>
+                            </section>
+
+                            <!-- Live Variant: Condensed / With Overflow -->
+                            <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+                                <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Condensed</h3>
+                                <nav aria-label="Breadcrumb Condensed">
+                                    <ol class="flex items-center space-x-3 text-body-sm font-medium text-grey-primary">
+                                        <li>
+                                            <a href="#"
+                                                class="breadcrumb-link text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Home</a>
+                                        </li>
+                                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+
+                                        <!-- Collapsed Items (interactive) -->
+                                        <li class="group relative">
+                                            <button aria-label="More"
+                                                class="flex items-center justify-center w-icon-md h-icon-md rounded-sm bg-transparent text-grey-primary transition-colors duration-400 hover:bg-grey-tertiary hover:text-black focus-visible:outline-none focus-visible:ring">
+                                                <i class="ri-more-line text-icon-md"></i>
+                                            </button>
+                                        </li>
+
+                                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                                        <li>
+                                            <a href="#"
+                                                class="breadcrumb-link text-grey-primary hover:text-green-secondary transition-colors duration-400 focus-visible:ring focus-visible:rounded-sm">Design
+                                                System</a>
+                                        </li>
+                                        <li><i class="ri-arrow-right-s-line text-icon-md"></i></li>
+                                        <li class="text-black font-semibold" aria-current="page">Components</li>
+                                    </ol>
+                                </nav>
+                            </section>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="dropdown">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Dropdown</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div>
+                            <!-- Size Variants - Single Select -->
+                            <section class="w-full max-w-4xl mb-12">
+                                <h2 class="text-xl font-bold mb-6">Size Variants</h2>
+                                <div class="flex gap-8">
+
+                                    <!-- Large -->
+                                    <div class="dropdown dropdown--lg relative">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-md px-6 rounded-btn bg-white border border-black/8 text-black font-medium text-body-lg cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Large — Select an
+                                                option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Medium -->
+                                    <div class="dropdown dropdown--md relative">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-sm px-5 rounded-btn bg-white border border-black/8 text-black font-medium text-body cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Medium — Select an
+                                                option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Small -->
+                                    <div class="dropdown dropdown--sm relative w-btn-sm">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-sm px-4 rounded-btn bg-white border border-black/8 text-black font-medium text-body-sm cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Small — Select an
+                                                option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <!-- Minimal Variant -->
+                            <section class="w-full max-w-4xl mb-12">
+                                <h2 class="text-xl font-bold mb-6">Minimal Variant</h2>
+                                <div class="flex gap-8">
+
+                                    <!-- Minimal Large -->
+                                    <div class="dropdown dropdown--lg dropdown--minimal relative w-btn-md">
+                                        <button
+                                            class="dropdown__trigger dropdown__trigger--minimal flex items-center justify-between w-full h-btn-md px-6 rounded-btn bg-white border-transparent text-black font-regular text-body-lg cursor-pointer transition-all hover:bg-grey-tertiary/50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value">Select an option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Minimal Medium -->
+                                    <div class="dropdown dropdown--md dropdown--minimal relative w-btn-sm">
+                                        <button
+                                            class="dropdown__trigger dropdown__trigger--minimal flex items-center justify-between w-full h-btn-sm px-5 rounded-btn bg-white border-transparent text-black font-regular text-body cursor-pointer transition-all hover:bg-grey-tertiary/50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value">Select an option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Minimal Small -->
+                                    <div class="dropdown dropdown--sm dropdown--minimal relative w-btn-sm">
+                                        <button
+                                            class="dropdown__trigger dropdown__trigger--minimal flex items-center justify-between w-full h-btn-sm px-4 rounded-btn bg-white border-transparent text-black font-regular text-body-sm cursor-pointer transition-all hover:bg-grey-tertiary/50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value">Select an option</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-label="Options">
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option1">Option 1</li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option2">Option 2</li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option3">Option 3</li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
+                                                role="option" data-value="option4">Option 4</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <!-- Multi Select Dropdown (Size Variants) -->
+                            <section class="w-full max-w-4xl">
+                                <h2 class="text-xl font-bold mb-6">Multi Select</h2>
+                                <div class="flex gap-8">
+
+                                    <!-- Large Multi -->
+                                    <div class="dropdown dropdown--multi dropdown--lg relative">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-md px-6 rounded-btn bg-white border border-black/8 text-black font-medium text-body-lg cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Select options</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-multiselectable="true" aria-label="Options">
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option1">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    1</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option2">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    2</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option3">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    3</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option4">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    4</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Medium Multi -->
+                                    <div class="dropdown dropdown--multi dropdown--md relative">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-sm px-5 rounded-btn bg-white border border-black/8 text-black font-medium text-body cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Select options</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-multiselectable="true" aria-label="Options">
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option1">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    1</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option2">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    2</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option3">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    3</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option4">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    4</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Small Multi -->
+                                    <div class="dropdown dropdown--multi dropdown--sm relative w-btn-sm">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-sm px-4 rounded-btn bg-white border border-black/8 text-black font-medium text-body-sm cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="dropdown__value text-grey-primary">Select options</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
+                                        </button>
+                                        <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
+                                            role="listbox" aria-multiselectable="true" aria-label="Options">
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option1">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    1</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option2">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    2</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option3">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    3</span>
+                                            </li>
+                                            <li class="dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
+                                                role="option" data-value="option4">
+                                                <div
+                                                    class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
+                                                    <input type="checkbox"
+                                                        class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
+                                                    <i
+                                                        class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
+                                                </div>
+                                                <span class="group-hover:text-green-secondary transition-colors">Option
+                                                    4</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Disabled Multi Dropdown -->
+                                    <div class="dropdown dropdown--multi dropdown--disabled relative w-btn-md">
+                                        <button
+                                            class="dropdown__trigger flex items-center justify-between w-full h-btn-md px-6 rounded-btn bg-white border border-black/4 text-grey-primary font-medium text-body-lg cursor-not-allowed"
+                                            aria-haspopup="listbox" aria-expanded="false" disabled aria-disabled="true">
+                                            <span class="dropdown__value">Disabled</span>
+                                            <i
+                                                class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="file-uploader">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">File Uploader</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-2xl space-y-8">
+
+                            <!-- Folder Upload -->
+                            <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+                                <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Folder
+                                    Upload</label>
+                                <div id="folderDropZone"
+                                    class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                                    <input type="file" id="folderInput" class="hidden" webkitdirectory directory
+                                        multiple>
+                                    <div
+                                        class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                                        <i class="ri-folder-add-line"></i>
+                                    </div>
+                                    <div class="drop-zone__text text-base font-medium text-black">
+                                        Drag & Drop folder here
+                                    </div>
+                                    <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                                        or click to browse your computer
+                                    </div>
+                                </div>
+                                <p class="text-xs text-grey-primary mt-2 ml-3">Supports bulk uploads with preserved
+                                    structure.</p>
+                            </div>
+
+                            <!-- File Upload (Single or Multiple Files) -->
+                            <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+                                <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">File Upload</label>
+                                <div id="fileDropZone"
+                                    class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                                    <input type="file" id="fileInput" class="hidden" multiple>
+                                    <div
+                                        class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                                        <i class="ri-file-add-line"></i>
+                                    </div>
+                                    <div class="drop-zone__text text-base font-medium text-black">
+                                        Drag & Drop files here
+                                    </div>
+                                    <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                                        or click to browse your computer
+                                    </div>
+                                </div>
+                                <p class="text-xs text-grey-primary mt-2 ml-3">Supports multiple file selection.</p>
+                            </div>
+
+                            <!-- Image Upload Only -->
+                            <div class="bg-white p-6 rounded-2xl border border-grey-tertiary">
+                                <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Image
+                                    Upload</label>
+                                <div id="imageDropZone"
+                                    class="relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-grey-tertiary/20 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                                    <input type="file" id="imageInput" class="hidden" accept="image/*" multiple>
+                                    <div
+                                        class="drop-zone__icon text-green-secondary text-5xl transition-transform duration-300">
+                                        <i class="ri-image-add-line"></i>
+                                    </div>
+                                    <div class="drop-zone__text text-base font-medium text-black">
+                                        Drag & Drop images here
+                                    </div>
+                                    <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                                        or click to browse your computer
+                                    </div>
+                                </div>
+                                <p class="text-xs text-grey-primary mt-2 ml-3">Accepts image files only (jpg, png, gif,
+                                    etc.).</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="language-selector">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Language Selector</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-4xl flex flex-col md:flex-row justify-center gap-16">
+
+                            <!-- Variant 1: Standard (Text + Icon) -->
+                            <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
+                                <span class="text-sm font-medium text-grey-primary">Standard</span>
+
+                                <div class="dropdown dropdown--md relative language-selector-root w-btn-md">
+                                    <button type="button" onclick="toggleLangMenu(this)"
+                                        class="dropdown__trigger flex items-center justify-between w-full h-btn-sm px-5 rounded-btn bg-white border border-black/8 text-black font-medium text-body cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                        aria-haspopup="listbox" aria-expanded="false">
+
+                                        <div class="flex items-center gap-3">
+                                            <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
+                                                src="https://flagcdn.com/w40/gb.png"
+                                                srcset="https://flagcdn.com/w80/gb.png 2x" width="24" height="24"
+                                                alt="English">
+                                            <span class="current-lang-text text-body">English</span>
+                                        </div>
+
+                                        <i
+                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary arrow-icon transition-transform duration-400"></i>
+                                    </button>
+
+                                    <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
+                                        role="menu" aria-label="Language options">
+
+                                        <li role="option" data-lang="English" data-code="gb"
+                                            onclick="selectLang(this, 'English', 'gb')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>English</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-100 check-icon"></i>
+                                        </li>
+
+                                        <li role="option" data-lang="Português" data-code="pt"
+                                            onclick="selectLang(this, 'Português', 'pt')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>Português</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                        </li>
+
+                                        <li role="option" data-lang="Español" data-code="es"
+                                            onclick="selectLang(this, 'Español', 'es')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>Español</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Variant 2: Icon Only -->
+                            <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
+                                <span class="text-sm font-medium text-grey-primary">Icon Only</span>
+
+                                <div class="dropdown dropdown--sm relative language-selector-root w-btn-sm">
+                                    <button type="button" onclick="toggleLangMenu(this)"
+                                        class="dropdown__trigger flex items-center justify-center gap-2 w-full h-btn-sm px-4 rounded-btn bg-white border border-black/8 text-black font-medium text-body-sm cursor-pointer transition-all shadow-btn-default hover:border-green-secondary/20 hover:shadow-btn-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30"
+                                        aria-haspopup="listbox" aria-expanded="false">
+
+                                        <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
+                                            src="https://flagcdn.com/w40/gb.png"
+                                            srcset="https://flagcdn.com/w80/gb.png 2x" width="24" height="24"
+                                            alt="English">
+                                        <i
+                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon transition-transform duration-400"></i>
+                                    </button>
+
+                                    <ul class="dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
+                                        role="menu" aria-label="Language options">
+
+                                        <li role="option" data-lang="English" data-code="gb"
+                                            onclick="selectLang(this, 'English', 'gb')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>English</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-100 check-icon"></i>
+                                        </li>
+
+                                        <li role="option" data-lang="Português" data-code="pt"
+                                            onclick="selectLang(this, 'Português', 'pt')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>Português</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                        </li>
+
+                                        <li role="option" data-lang="Español" data-code="es"
+                                            onclick="selectLang(this, 'Español', 'es')"
+                                            class="dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                            <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
+                                                class="w-5 h-5 rounded-[5px] object-cover">
+                                            <span>Español</span>
+                                            <i
+                                                class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="List">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">List</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div
+                            class="w-full max-w-4xl bg-white p-12 rounded-2xl shadow-btn-default border border-grey-tertiary">
+
+                            <h2 class="text-h3 font-semibold mb-8 text-black">Product Details</h2>
+
+                            <div class="data-list divide-y divide-grey-tertiary">
+
+                                <!-- List Row 1 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Brand</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">NEXLED</span>
+                                </div>
+
+                                <!-- List Row 2 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Model</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">NX-2024-PRO</span>
+                                </div>
+
+                                <!-- List Row 3 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Category</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">Electronics</span>
+                                </div>
+
+                                <!-- List Row 4 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Weight</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">2.5
+                                        kg</span>
+                                </div>
+
+                                <!-- List Row 5 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Dimensions</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">30
+                                        × 20 × 10 cm</span>
+                                </div>
+
+                                <!-- List Row 6 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Color</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">Matte
+                                        Black</span>
+                                </div>
+
+                                <!-- List Row 7 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Warranty</span>
+                                    <span
+                                        class="value text-body font-medium text-black group-hover:text-green-secondary transition-colors">2
+                                        Years</span>
+                                </div>
+
+                                <!-- List Row 8 -->
+                                <div
+                                    class="list-row flex justify-between py-4 group hover:bg-grey-tertiary/30 transition-colors px-24 rounded-md">
+                                    <span
+                                        class="label text-body text-grey-primary group-hover:text-green-secondary transition-colors">Status</span>
+                                    <span
+                                        class="value text-body font-medium text-green-secondary group-hover:text-green-secondary transition-colors">In
+                                        Stock</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="material-selector">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Material Selector</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div
+                            class="w-full max-w-4xl bg-white p-12 rounded-[32px] shadow-sm border border-grey-tertiary">
+
+
+                            <div class="flex flex-wrap gap-x-6 gap-y-10 justify-start">
+
+                                <!-- Item 1: Wood -->
+                                <button
+                                    class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
+                                    onclick="selectMaterial(this)">
+                                    <div
+                                        class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
+                                        <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/wood_texture_1768407799802.png"
+                                            alt="Wood" class="material-img w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Wood</span>
+
+                                    </div>
+                                </button>
+
+                                <!-- Item 2: Marble -->
+                                <button
+                                    class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
+                                    onclick="selectMaterial(this)">
+                                    <div
+                                        class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
+                                        <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/marble_texture_1768407812732.png"
+                                            alt="Marble" class="material-img w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Marble</span>
+
+                                    </div>
+                                </button>
+
+                                <!-- Item 3: Leather -->
+                                <button
+                                    class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
+                                    onclick="selectMaterial(this)">
+                                    <div
+                                        class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
+                                        <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/leather_texture_1768407824625.png"
+                                            alt="Leather" class="material-img w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Leather</span>
+
+                                    </div>
+                                </button>
+
+                                <!-- Item 4: Fabric -->
+                                <button
+                                    class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
+                                    onclick="selectMaterial(this)">
+                                    <div
+                                        class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
+                                        <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/fabric_texture_1768407842425.png"
+                                            alt="Fabric" class="material-img w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Fabric</span>
+
+                                    </div>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="quantity-selector">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Quantity Selector</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-md">
+
+                            <!-- REFERENCES & SIZES -->
+                            <section
+                                class="bg-white p-8 rounded-2xl border border-grey-tertiary shadow-btn-default mb-6">
+                                <h2 class="text-xl font-bold mb-6 border-b border-grey-tertiary pb-2">References & Sizes
+                                </h2>
+
+                                <div class="mb-6">
+                                    <h3 class="text-body-sm text-grey-primary mb-4">Minimal</h3>
+
+                                    <div class="quantity-wrapper inline-flex items-center gap-icon-md" data-min="0"
+                                        data-max="10">
+                                        <!-- Decrease (ghost icon button) -->
+                                        <button
+                                            class="qty-btn group flex items-center justify-center w-icon-xl h-icon-xl rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary hover:shadow-btn-hover active:bg-grey-tertiary active:text-green-secondary active:scale-press-deep disabled:opacity-20 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring"
+                                            aria-label="Decrease quantity">
+                                            <i class="ri-subtract-line text-icon-lg"></i>
+                                        </button>
+
+                                        <!-- Value (tokenized typography) -->
+                                        <input type="number"
+                                            class="qty-input w-16 h-icon-xl leading-h1 text-center text-h3 font-semibold bg-transparent border-none outline-none p-0 m-0 cursor-default focus:ring-0"
+                                            value="0" readonly aria-label="Quantity">
+
+                                        <!-- Increase (ghost icon button) -->
+                                        <button
+                                            class="qty-btn group flex items-center justify-center w-icon-xl h-icon-xl rounded-btn bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary hover:shadow-btn-hover active:bg-grey-tertiary active:text-green-secondary active:scale-press-deep disabled:opacity-20 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring"
+                                            aria-label="Increase quantity">
+                                            <i class="ri-add-line text-icon-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="stepper">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Stepper</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-4xl space-y-12">
+
+                            <!-- Variant A: Horizontal -->
+                            <section class="bg-white p-8 rounded-2xl border border-grey-tertiary shadow-btn-default">
+                                <h2 class="text-xl font-bold mb-6 border-b border-grey-tertiary pb-2">References & Sizes
+                                </h2>
+
+                                <div class="mb-6">
+                                    <h3 class="text-body-sm text-grey-primary mb-4">Variant A: Horizontal</h3>
+
+                                    <div class="flex flex-col md:flex-row items-center justify-between w-full">
+
+                                        <!-- Step 1: Active -->
+                                        <button
+                                            class="step-item flex items-center gap-icon-md group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30 rounded-lg px-12 py-4"
+                                            onclick="setActiveStep(1)" aria-pressed="false">
+                                            <div
+                                                class="step-circle flex items-center justify-center w-icon-xxl h-icon-xxl rounded-md bg-green-primary text-white shadow-btn-glow transform-gpu transition-all duration-400 ease-button-ease group-hover:translate-y-lift group-hover:shadow-btn-hover group-active:scale-press-deep">
+                                                <span class="text-h3 font-bold">1</span>
+                                            </div>
+                                            <a href="#"
+                                                class="step-link text-body-lg text-green-primary font-semibold no-underline transition-colors duration-400 active:scale-press focus-visible:ring focus-visible:rounded-sm">Order
+                                                Details</a>
+                                        </button>
+
+
+
+                                        <!-- Step 2: Inactive -->
+                                        <button
+                                            class="step-item flex items-center gap-icon-md group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30 rounded-lg px-12 py-4"
+                                            onclick="setActiveStep(2)" aria-pressed="false">
+                                            <div
+                                                class="step-circle flex items-center justify-center w-icon-xxl h-icon-xxl rounded-md bg-grey-tertiary text-black shadow-btn-default transform-gpu transition-all duration-400 ease-button-ease group-hover:bg-grey-primary/30 group-hover:shadow-btn-hover group-hover:translate-y-lift group-active:scale-press-deep">
+                                                <span class="text-h3 font-bold">2</span>
+                                            </div>
+                                            <a href="#"
+                                                class="step-link text-body-lg text-black font-medium no-underline transition-colors duration-400 hover:text-green-primary active:scale-press focus-visible:ring focus-visible:rounded-sm">Shipping
+                                                Info</a>
+                                        </button>
+
+
+
+                                        <!-- Step 3: Inactive -->
+                                        <button
+                                            class="step-item flex items-center gap-icon-md group focus:outline-none focus-visible:ring-4 focus-visible:ring-green-secondary/30 rounded-lg px-12 py-4"
+                                            onclick="setActiveStep(3)" aria-pressed="false">
+                                            <div
+                                                class="step-circle flex items-center justify-center w-icon-xxl h-icon-xxl rounded-md bg-grey-tertiary text-black shadow-btn-default transform-gpu transition-all duration-400 ease-button-ease group-hover:bg-grey-primary/30 group-hover:shadow-btn-hover group-hover:translate-y-lift group-active:scale-press-deep">
+                                                <span class="text-h3 font-bold">3</span>
+                                            </div>
+                                            <a href="#"
+                                                class="step-link text-body-lg text-black font-medium no-underline transition-colors duration-400 hover:text-green-primary active:scale-press focus-visible:ring focus-visible:rounded-sm">Payment</a>
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </section>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="text-field">
+                <div class="flex items-center gap-12 mb-24">
+                    <h2 class="text-h2 font-semibold">Text Field</h2>
+                </div>
+
+                <div class="glass-panel p-32 mb-24">
+                    <div
+                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+
+                        <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <!-- Standard Input -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="standardInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Full Name</label>
+                                <input type="text" id="standardInput" placeholder="Enter your name"
+                                    class="w-full h-[50px] px-24 text-base font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                <p class="text-xs text-grey-primary mt-8 ml-12">Example of a standard descriptive input.
+                                </p>
+                            </div>
+
+                            <!-- Standard Input (Senior Persona - Larger) -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="seniorInput"
+                                    class="block text-base font-medium text-grey-primary mb-8 ml-12">Full Name
+                                    (Senior)</label>
+                                <input type="text" id="seniorInput" placeholder="Enter your name"
+                                    class="w-full h-[60px] px-24 text-lg font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                <p class="text-sm text-grey-primary mt-8 ml-12">Larger, more accessible design for
+                                    seniors.</p>
+                            </div>
+
+                            <!-- Password with Toggle -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="passwordInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Password</label>
+                                <div class="relative">
+                                    <input type="password" id="passwordInput" placeholder="Create a password"
+                                        class="w-full h-[50px] px-24 pr-48 text-base font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                    <button id="passwordToggle" type="button"
+                                        onclick="togglePassword('passwordInput', this)" aria-pressed="false"
+                                        aria-label="Show password"
+                                        class="absolute right-12 top-1/2 -translate-y-1/2 group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep focus-visible:outline-none focus-visible:ring transform-gpu scale-90">
+                                        <i class="ri-eye-line text-icon-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Input with Icon -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="urlInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Website URL</label>
+                                <div class="relative flex items-center">
+                                    <span class="absolute left-16 text-grey-primary">
+                                        <i class="ri-global-line text-xl"></i>
+                                    </span>
+                                    <input type="text" id="urlInput" placeholder="www.example.com"
+                                        class="w-full h-[50px] pl-48 pr-24 text-base font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                </div>
+                            </div>
+
+                            <!-- Success State -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="successInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Success
+                                    State</label>
+                                <input type="text" id="successInput" value="Valid input data"
+                                    class="w-full h-[50px] px-24 text-base font-normal rounded-md border border-green-secondary bg-white text-black transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                <p class="text-xs text-green-secondary mt-8 ml-12 flex items-center gap-4">
+                                    <i class="ri-checkbox-circle-fill"></i> Looks great!
+                                </p>
+                            </div>
+
+                            <!-- Error State -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="errorInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Error State</label>
+                                <input type="text" id="errorInput" placeholder="Wrong format"
+                                    class="w-full h-[50px] px-24 text-base font-normal rounded-md border border-red-500 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500/20 focus:border-red-500">
+                                <p class="text-xs text-red-500 mt-8 ml-12 flex items-center gap-4">
+                                    <i class="ri-error-warning-fill"></i> Please provide a valid entry.
+                                </p>
+                            </div>
+
+                            <!-- Textarea with Character Count -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary md:col-span-2">
+                                <div class="flex justify-between items-center mb-8 ml-12 mr-12">
+                                    <label for="bioInput" class="text-sm font-normal text-grey-primary">Short
+                                        Bio</label>
+                                    <span class="text-xs text-grey-primary" id="charCount">0/100</span>
+                                </div>
+                                <div class="relative">
+                                    <textarea id="bioInput" rows="3" maxlength="100"
+                                        placeholder="Tell us about yourself..."
+                                        class="w-full px-24 py-16 text-base font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary resize"
+                                        oninput="updateCharCount(this)"></textarea>
+                                    <button id="bioExpandBtn" type="button" aria-controls="bioInput"
+                                        aria-expanded="false" aria-label="Expand bio" onclick="toggleBioExpand()"
+                                        class="absolute right-12 bottom-12 group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep focus-visible:outline-none focus-visible:ring transform-gpu scale-90">
+                                        <i
+                                            class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Disabled State -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="disabledInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Disabled
+                                    Input</label>
+                                <input type="text" id="disabledInput" value="Cannot edit this" disabled
+                                    class="w-full h-[50px] px-24 text-base font-normal rounded-md border border-black/4 bg-grey-tertiary/30 text-grey-primary cursor-not-allowed">
+                            </div>
+
+                            <!-- Search Input -->
+                            <div class="bg-white p-24 rounded-2xl border border-grey-tertiary">
+                                <label for="searchInput"
+                                    class="block text-sm font-normal text-grey-primary mb-8 ml-12">Search</label>
+                                <div class="relative flex items-center">
+                                    <span class="absolute left-16 text-grey-primary">
+                                        <i class="ri-search-line text-xl"></i>
+                                    </span>
+                                    <input type="search" id="searchInput" placeholder="Search..."
+                                        class="w-full h-[50px] pl-48 pr-24 text-base font-normal rounded-md border border-black/8 bg-white text-black placeholder:text-grey-primary transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
+                                </div>
+                            </div>
+
+                        </div>
+
 
                     </div>
                 </div>
