@@ -58,7 +58,7 @@
                     </button>
                     <!-- Dropdown Bridge -->
                     <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
                         <!-- Visual Dropdown -->
                         <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
                             <div class="p-8 flex flex-col gap-4">
@@ -87,17 +87,14 @@
                         <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
                     </button>
                     <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-56 pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
                         <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
                             <div class="p-8 flex flex-col gap-4">
                                 <a href="tokens.html"
                                     class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
                                     <i class="ri-palette-line"></i> Design Tokens
                                 </a>
-                                <a href="src/tokens/colors.js" target="_blank"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-code-line"></i> Colors Source
-                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -517,11 +514,7 @@
                                     data-modal-target="modalStandard">
                                     Standard Modal
                                 </button>
-                                <button
-                                    class="px-6 py-3 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
-                                    data-modal-target="modalForm">
-                                    Form Modal
-                                </button>
+
                                 <button
                                     class="px-6 py-3 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
                                     data-modal-target="modalDestructive">
@@ -530,98 +523,70 @@
                             </div>
 
                             <!-- 1. Standard Modal -->
-                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-5"
+                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-16"
                                 id="modalStandard" aria-hidden="true">
-                                <div class="modal-container bg-white w-full max-w-[500px] rounded-2xl shadow-btn-hover flex flex-col relative"
+                                <div class="modal-container bg-white w-full max-w-[500px] rounded-xl shadow-btn-glow flex flex-col relative p-32"
                                     role="dialog" aria-modal="true" aria-labelledby="modalTitle1">
-                                    <div class="flex items-center justify-between px-6 pt-6 pb-3">
-                                        <h2 id="modalTitle1" class="text-xl font-semibold text-black m-0">Confirm Action
-                                        </h2>
+
+                                    <!-- Header -->
+                                    <div class="flex items-start justify-between mb-16">
+                                        <h2 id="modalTitle1" class="text-h3 font-semibold text-black m-0 leading-tight">
+                                            Lorem ipsum dolor</h2>
                                         <button
-                                            class="modal-close bg-transparent border-none text-grey-primary cursor-pointer text-2xl p-1 rounded-lg transition-all hover:bg-grey-tertiary hover:text-black flex items-center justify-center"
-                                            aria-label="Close modal">
+                                            class="modal-close bg-transparent border-none text-grey-primary cursor-pointer text-xl p-4 rounded-md transition-all hover:bg-grey-tertiary hover:text-black flex items-center justify-center"
+                                            aria-label="Close modal" data-close-modal>
                                             <i class="ri-close-line"></i>
                                         </button>
                                     </div>
-                                    <div class="px-6 py-3 pb-6 text-grey-primary text-base leading-relaxed">
-                                        <p>Are you sure you want to proceed? This is a standard modal dialog used for
-                                            general confirmations
-                                            and information.</p>
+
+                                    <!-- Body -->
+                                    <div class="text-body text-grey-primary font-normal leading-body mb-32">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                            augue suscipit imperdiet.</p>
                                     </div>
-                                    <div class="px-6 pb-6 flex items-center justify-end gap-3">
+
+                                    <!-- Actions (Left Aligned) -->
+                                    <div class="flex items-center gap-16">
                                         <button
-                                            class="px-5 py-2.5 rounded-xl bg-transparent border border-black/10 text-black font-medium hover:bg-grey-tertiary/50 transition-colors"
-                                            data-close-modal>Cancel</button>
+                                            class="px-24 py-12 rounded-btn bg-green-primary text-white font-medium hover:bg-green-secondary transition-colors shadow-btn-default hover:shadow-btn-hover text-button"
+                                            data-close-modal>Lorem ipsum</button>
                                         <button
-                                            class="px-5 py-2.5 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
-                                            data-close-modal>Confirm</button>
+                                            class="px-24 py-12 rounded-btn bg-white border border-grey-tertiary text-black font-medium hover:bg-grey-tertiary/50 transition-colors shadow-sm hover:shadow-md text-button"
+                                            data-close-modal>Lorem ipsum</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 2. Form Modal -->
-                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-5"
-                                id="modalForm" aria-hidden="true">
-                                <div class="modal-container bg-white w-full max-w-[500px] rounded-2xl shadow-btn-hover flex flex-col relative"
-                                    role="dialog" aria-modal="true" aria-labelledby="modalTitle2">
-                                    <div class="flex items-center justify-between px-6 pt-6 pb-3">
-                                        <h2 id="modalTitle2" class="text-xl font-semibold text-black m-0">Edit Profile
-                                        </h2>
-                                        <button
-                                            class="modal-close bg-transparent border-none text-grey-primary cursor-pointer text-2xl p-1 rounded-lg transition-all hover:bg-grey-tertiary hover:text-black flex items-center justify-center"
-                                            aria-label="Close modal">
-                                            <i class="ri-close-line"></i>
-                                        </button>
-                                    </div>
-                                    <div class="px-6 py-3 pb-6">
-                                        <div class="mb-4">
-                                            <label for="modalName"
-                                                class="block text-sm font-normal text-grey-primary mb-2">Full
-                                                Name</label>
-                                            <input type="text" id="modalName" placeholder="Update your name"
-                                                class="w-full h-12 px-4 text-base rounded-xl border border-black/8 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
-                                        </div>
-                                        <div>
-                                            <label
-                                                class="block text-sm font-normal text-grey-primary mb-2">Email</label>
-                                            <input type="email" placeholder="your@email.com"
-                                                class="w-full h-12 px-4 text-base rounded-xl border border-black/8 focus:outline-none focus:ring-4 focus:ring-green-secondary/20 focus:border-green-secondary">
-                                        </div>
-                                    </div>
-                                    <div class="px-6 pb-6 flex items-center justify-end gap-3">
-                                        <button
-                                            class="px-5 py-2.5 rounded-xl bg-transparent border border-black/10 text-black font-medium hover:bg-grey-tertiary/50 transition-colors"
-                                            data-close-modal>Cancel</button>
-                                        <button
-                                            class="px-5 py-2.5 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
-                                            data-close-modal>Save Changes</button>
-                                    </div>
-                                </div>
-                            </div>
+
 
                             <!-- 3. Destructive Modal -->
-                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-5"
+                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-16"
                                 id="modalDestructive" aria-hidden="true">
-                                <div class="modal-container bg-white w-full max-w-[500px] rounded-2xl shadow-btn-hover flex flex-col relative"
+                                <div class="modal-container bg-white w-full max-w-[500px] rounded-xl shadow-btn-glow flex flex-col relative p-32 text-center"
                                     role="dialog" aria-modal="true" aria-labelledby="modalTitle3">
-                                    <div class="px-6 pt-8 pb-6 text-center">
-                                        <div
-                                            class="w-16 h-16 rounded-full inline-flex items-center justify-center text-4xl bg-red-50 text-red-600 mb-4">
-                                            <i class="ri-error-warning-line"></i>
-                                        </div>
-                                        <h2 id="modalTitle3" class="text-xl font-semibold text-black mb-2">Delete
-                                            Account?</h2>
-                                        <p class="text-grey-primary">This action cannot be undone. All your data will be
-                                            permanently removed.
-                                        </p>
+
+                                    <!-- Header -->
+                                    <div class="mb-16">
+                                        <h2 id="modalTitle3" class="text-h3 font-semibold text-black m-0 leading-tight">
+                                            Lorem ipsum dolor</h2>
                                     </div>
-                                    <div class="px-6 pb-6 flex items-center justify-center gap-3">
+
+                                    <!-- Body -->
+                                    <div class="text-body text-grey-primary font-normal leading-body mb-32">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                            augue suscipit imperdiet.</p>
+                                    </div>
+
+                                    <!-- Actions (Centered) -->
+                                    <div class="flex items-center justify-center gap-16">
                                         <button
-                                            class="px-5 py-2.5 rounded-xl bg-transparent border border-black/10 text-black font-medium hover:bg-grey-tertiary/50 transition-colors"
-                                            data-close-modal>Keep Account</button>
+                                            class="px-24 py-12 rounded-btn bg-red-primary text-white font-medium hover:bg-red-secondary transition-colors shadow-btn-default hover:shadow-btn-hover text-button"
+                                            data-close-modal>Lorem ipsum</button>
                                         <button
-                                            class="px-5 py-2.5 rounded-xl bg-red-600 text-white font-medium hover:bg-red-700 transition-colors shadow-md"
-                                            data-close-modal>Delete</button>
+                                            class="px-24 py-12 rounded-btn bg-white border border-grey-tertiary text-black font-medium hover:bg-grey-tertiary/50 transition-colors shadow-sm hover:shadow-md text-button"
+                                            data-close-modal>Lorem ipsum</button>
                                     </div>
                                 </div>
                             </div>
