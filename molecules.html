@@ -147,7 +147,6 @@
 
                                 <!-- SMALL DEMO -->
                                 <div class="w-full bg-white rounded-none">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Small</h3>
                                     <div class="accordion-group space-y-1">
                                         <div class="accordion-item border-b border-grey-tertiary last:border-0">
                                             <button
@@ -171,8 +170,6 @@
 
                                 <!-- MEDIUM DEMO -->
                                 <div class="w-full bg-white rounded-none">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Medium
-                                        (Default)</h3>
                                     <div class="accordion-group space-y-1">
                                         <div class="accordion-item border-b border-grey-tertiary last:border-0">
                                             <button
@@ -196,7 +193,6 @@
 
                                 <!-- BIG DEMO -->
                                 <div class="w-full bg-white rounded-none">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase mb-4">Big</h3>
                                     <div class="accordion-group space-y-1">
                                         <div class="accordion-item border-b border-grey-tertiary last:border-0">
                                             <button
@@ -218,6 +214,33 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <!-- Category Filter Variant -->
+                            <div
+                                class="w-full flex items-center justify-between border-t border-grey-tertiary pt-40 mt-40">
+                                <h2 class="text-hero-title font-medium text-black">
+                                    Check Our Categories
+                                </h2>
+
+                                <div class="accordion-group">
+                                    <div class="accordion-item">
+                                        <button
+                                            class="accordion-trigger w-full flex items-center justify-start gap-24 py-24 text-left group peer transition-all duration-400 ease-button-ease focus-visible:outline focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-offset-[-2px] focus-visible:rounded-lg"
+                                            aria-expanded="false">
+                                            <span
+                                                class="text-h3 font-medium text-grey-primary group-hover:text-black transition-colors">Indoor</span>
+                                            <i
+                                                class="chevron-icon ri-arrow-down-s-line text-icon-lg text-grey-primary group-hover:text-black transition-all duration-400 ease-button-ease"></i>
+                                        </button>
+                                        <div
+                                            class="accordion-content overflow-hidden max-h-0 opacity-0 transition-all duration-400 ease-premium peer-aria-expanded:max-h-[500px] peer-aria-expanded:opacity-100">
+                                            <div class="py-12 text-grey-primary leading-relaxed text-body">
+                                                Category selection content goes here.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -250,15 +273,15 @@
 
                                         <!-- Content -->
                                         <div
-                                            class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-body-sm sm:text-body">
+                                            class="flex-1 text-center sm:text-left md:text-center text-white font-urbanist font-medium text-h2">
                                             <span class="inline-flex items-center gap-2">
-                                                <i class="ri-rocket-2-line text-icon-md"></i>
+                                                <i class="ri-rocket-2-line inline-flex items-center justify-center w-40 h-40 text-icon-xl leading-none"></i>
                                                 Live Demo: Standard Top Bar. Check this out!
                                             </span>
                                         </div>
 
                                         <!-- Close Button -->
-                                        <div class="flex items-center justify-end">
+                                        <div class="flex items-center justify-end pr-8">
                                             <button
                                                 class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-white/60 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-white/10 hover:text-white active:bg-white/20 active:text-white active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
                                                 aria-label="Close" onclick="closeBar('announcement-bar-1')">
@@ -277,13 +300,13 @@
                                         <div class="hidden sm:block w-8"></div>
 
                                         <div
-                                            class="flex-1 text-center sm:text-left md:text-center text-white font-medium text-body-sm">
+                                            class="flex-1 text-center sm:text-left md:text-center text-white font-urbanist font-medium text-h2">
                                             <span class="inline-flex items-center gap-2">
                                                 Live Demo: Floating Green Bar.
                                             </span>
                                         </div>
 
-                                        <div class="flex items-center justify-end">
+                                        <div class="flex items-center justify-end pr-8">
                                             <button
                                                 class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-white/60 transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-white/10 hover:text-white active:bg-white/20 active:text-white active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
                                                 aria-label="Close" onclick="closeBar('announcement-bar-2')">
@@ -302,13 +325,13 @@
                                         <div class="hidden sm:block w-8"></div>
 
                                         <div
-                                            class="flex-1 text-center sm:text-left md:text-center text-black font-medium text-body-sm">
+                                            class="flex-1 text-center sm:text-left md:text-center text-black font-urbanist font-medium text-h2">
                                             <span class="inline-flex items-center gap-2">
                                                 Live Demo: Floating White Bar.
                                             </span>
                                         </div>
 
-                                        <div class="flex items-center justify-end">
+                                        <div class="flex items-center justify-end pr-8">
                                             <button
                                                 class="group relative flex items-center justify-center w-icon-xxl h-icon-xxl rounded-sm bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:translate-y-lift hover:bg-grey-tertiary hover:text-green-secondary active:bg-grey-tertiary active:text-green-secondary active:scale-press-deep active:translate-y-0 focus-visible:outline-none focus-visible:ring"
                                                 aria-label="Close" onclick="closeBar('announcement-bar-3')">
@@ -1848,3 +1871,4 @@
 </body>
 
 </html>
+
