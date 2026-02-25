@@ -1457,99 +1457,173 @@
                     <h2 class="text-h2 font-semibold">Image Carousel</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+                <div
+                    class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-white">
 
-                        <!-- Image Carousel Component -->
-                        <div class="w-full max-w-4xl space-y-24">
+                    <!-- Image Carousel Component -->
+                    <div class="w-full max-w-4xl space-y-24">
 
-                            <!-- State 1: With Navigation Arrows -->
-                            <div
-                                class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-glow">
-                                <!-- Background Image with Gradient Overlay -->
-                                <div class="absolute inset-0 bg-cover bg-center"
-                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
-                                </div>
-
-                                <!-- Navigation Arrows -->
-                                <button
-                                    class="absolute left-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                                    aria-label="Previous slide">
-                                    <i class="ri-arrow-left-s-line text-icon-xl"></i>
-                                </button>
-
-                                <button
-                                    class="absolute right-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                                    aria-label="Next slide">
-                                    <i class="ri-arrow-right-s-line text-icon-xl"></i>
-                                </button>
-
-                                <!-- Text Overlay with Link -->
-                                <div class="absolute bottom-32 left-32">
-                                    <a href="#"
-                                        class="inline-flex items-center gap-8 text-white font-semibold text-h3 transition-all duration-400 hover:text-green-hover-text group">
-                                        <span>Curabitur faucibus</span>
-                                        <i
-                                            class="ri-arrow-right-up-line text-icon-lg transition-transform duration-400 group-hover:translate-x-4 group-hover:-translate-y-4"></i>
-                                    </a>
-                                </div>
-
-                                <!-- Navigation Dots -->
-                                <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 1"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 2"></button>
-                                    <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
-                                        aria-label="Slide 3" aria-current="true"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 4"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 5"></button>
-                                </div>
+                        <!-- State 1: With Navigation Arrows -->
+                        <div
+                            class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
+                            <!-- Background Image with Gradient Overlay -->
+                            <div class="absolute inset-0 bg-cover bg-center"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
                             </div>
 
-                            <!-- State 2: With Subtitle (No Arrows) -->
-                            <div
-                                class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-glow">
-                                <!-- Background Image with Gradient Overlay -->
-                                <div class="absolute inset-0 bg-cover bg-center"
-                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
-                                </div>
+                            <!-- Navigation Arrows -->
+                            <button
+                                class="absolute left-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+                                aria-label="Previous slide">
+                                <i class="ri-arrow-left-s-line text-icon-xl"></i>
+                            </button>
 
-                                <!-- Text Overlay with Subtitle -->
-                                <div class="absolute bottom-32 left-32">
-                                    <h3 class="text-white font-semibold text-h3 mb-8">Curabitur faucibus</h3>
-                                    <p class="text-white/80 font-normal text-body">Lorem ipsum dolor sit</p>
-                                </div>
+                            <button
+                                class="absolute right-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+                                aria-label="Next slide">
+                                <i class="ri-arrow-right-s-line text-icon-xl"></i>
+                            </button>
 
-                                <!-- Navigation Dots -->
-                                <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 1"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 2"></button>
-                                    <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
-                                        aria-label="Slide 3" aria-current="true"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 4"></button>
-                                    <button
-                                        class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                        aria-label="Slide 5"></button>
-                                </div>
+                            <!-- Text Overlay with Link -->
+                            <div class="absolute bottom-32 left-32">
+                                <a href="#"
+                                    class="inline-flex items-center gap-8 text-white font-semibold text-h3 transition-all duration-400 hover:text-green-hover-text group">
+                                    <span>Curabitur faucibus</span>
+                                    <i
+                                        class="ri-arrow-right-up-line text-icon-lg transition-transform duration-400 group-hover:translate-x-4 group-hover:-translate-y-4"></i>
+                                </a>
                             </div>
 
+                            <!-- Navigation Dots -->
+                            <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 1"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 2"></button>
+                                <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
+                                    aria-label="Slide 3" aria-current="true"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 4"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 5"></button>
+                            </div>
+                        </div>
+
+                        <!-- State 2: With Subtitle (No Arrows) -->
+                        <div
+                            class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
+                            <!-- Background Image with Gradient Overlay -->
+                            <div class="absolute inset-0 bg-cover bg-center"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
+                            </div>
+
+                            <!-- Text Overlay with Subtitle -->
+                            <div class="absolute bottom-32 left-32">
+                                <h3 class="text-white font-semibold text-h3 mb-8">Curabitur faucibus</h3>
+                                <p class="text-white/80 font-normal text-body">Lorem ipsum dolor sit</p>
+                            </div>
+
+                            <!-- Navigation Dots -->
+                            <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 1"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 2"></button>
+                                <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
+                                    aria-label="Slide 3" aria-current="true"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 4"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 5"></button>
+                            </div>
+                        </div>
+
+                        <!-- State 3: 4:3 Variation -->
+                        <div
+                            class="carousel-container relative w-full max-w-narrow mx-auto rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
+                            <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=1200&h=900&fit=crop"
+                                alt="Carousel slide" class="w-full h-auto block">
+
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-black/20"></div>
+
+                            <!-- Navigation Arrows -->
+                            <button
+                                class="absolute left-24 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+                                aria-label="Previous slide">
+                                <i class="ri-arrow-left-s-line text-icon-xl"></i>
+                            </button>
+                            <button
+                                class="absolute right-24 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+                                aria-label="Next slide">
+                                <i class="ri-arrow-right-s-line text-icon-xl"></i>
+                            </button>
+
+                            <!-- Navigation Dots -->
+                            <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-8">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 1"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 2"></button>
+                                <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
+                                    aria-label="Slide 3" aria-current="true"></button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
+                                    aria-label="Slide 4"></button>
+                            </div>
+                        </div>
+
+                        <!-- State 4: 4 Cards With Text -->
+                        <div class="carousel-container w-full">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-24">
+                                <a href="#"
+                                    class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
+                                    <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
+                                        alt="Indoor" class="w-full h-auto block">
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                    <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Indoor</div>
+                                </a>
+
+                                <a href="#"
+                                    class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
+                                    <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
+                                        alt="Retail" class="w-full h-auto block">
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                    <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Retail</div>
+                                </a>
+
+                                <a href="#"
+                                    class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
+                                    <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
+                                        alt="Industrial" class="w-full h-auto block">
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                    <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Industrial
+                                    </div>
+                                </a>
+
+                                <a href="#"
+                                    class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
+                                    <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
+                                        alt="Power Supplies" class="w-full h-auto block">
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                    <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Power
+                                        Supplies</div>
+                                </a>
+                            </div>
                         </div>
 
                     </div>
+
                 </div>
             </section>
 
