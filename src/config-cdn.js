@@ -40,6 +40,8 @@ const DESIGN_TOKENS = {
         },
         fontSizes: {
             'display': '48px',
+            'hero-title': '50px',
+            'hero-subtitle': '22px',
             'button-lg': '32px',
             'h1': '36px',
             'h2': '30px',
