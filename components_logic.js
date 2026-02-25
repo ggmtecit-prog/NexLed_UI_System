@@ -388,11 +388,20 @@ function setupDropZone(dropZoneId, inputId) {
 
 function handleFiles(files, dropZone) {
     const text = dropZone.querySelector('.drop-zone__text');
+    const container = dropZone.parentElement;
+    const label = container ? container.querySelector('label') : null;
+
+    if (label) {
+        label.classList.remove('text-grey-primary');
+        label.classList.add('text-black');
+    }
+
     if (text) {
         const count = files.length;
         const itemWord = count === 1 ? 'item' : 'items';
         text.textContent = `${count} ${itemWord} ready to upload`;
-        text.classList.add('text-green-secondary');
+        text.classList.remove('text-black', 'text-green-secondary');
+        text.classList.add('text-green-primary', 'group-hover:text-green-secondary');
     }
 
     console.log('Files selected:', files);
