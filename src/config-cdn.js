@@ -12,7 +12,7 @@ const DESIGN_TOKENS = {
         'blue-primary': '#386789',
         'blue-secondary': '#5B8BAA',
         'black': '#121212',
-        'white': '#0300c5ff',
+        'white': '#fcfcfc',
         'grey-primary': '#878787',
         'grey-secondary': '#D9D9D9',
         'grey-tertiary': '#EDEDED',
