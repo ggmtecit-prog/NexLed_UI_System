@@ -1,5 +1,5 @@
 /*
- * NexLed UI System — nexled.css
+ * NexLed UI System - nexled.css
  * Version: v1.2
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
  *
@@ -323,7 +323,7 @@ body {
   height: var(--size-btn-xl-h);
   padding-inline: var(--space-40);
   font-size: var(--font-size-button-lg);
-  line-height: 40px;
+  line-height: var(--line-height-button-lg);
 }
 
 .btn-lg {
@@ -331,7 +331,7 @@ body {
   height: var(--size-btn-lg-h);
   padding-inline: var(--space-32);
   font-size: var(--font-size-button-lg);
-  line-height: 40px;
+  line-height: var(--line-height-button-lg);
 }
 
 .btn-md {
@@ -465,7 +465,7 @@ body {
   padding: var(--space-4);
   border-radius: var(--radius-xs);
   font-size: var(--font-size-body-xs);
-  line-height: 16px;
+  line-height: var(--line-height-overline);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -755,7 +755,7 @@ textarea {
 .link {
   color: var(--color-green-primary);
   font-size: var(--font-size-body-sm);
-  line-height: 20px;
+  line-height: var(--line-height-link);
   font-weight: var(--font-weight-semibold);
   text-decoration: underline;
 }
@@ -767,7 +767,7 @@ textarea {
 .link-nav {
   color: var(--color-black);
   font-size: var(--font-size-body-sm);
-  line-height: 20px;
+  line-height: var(--line-height-link);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
@@ -779,7 +779,7 @@ textarea {
 .link-subtle {
   color: var(--color-grey-primary);
   font-size: var(--font-size-body-sm);
-  line-height: 20px;
+  line-height: var(--line-height-link);
   font-weight: var(--font-weight-regular);
   text-decoration: underline;
   text-decoration-color: var(--color-grey-secondary);
@@ -978,7 +978,7 @@ textarea {
 
 .card-product-name {
   margin: 0 0 var(--space-16);
-  font-size: 35px;
+  font-size: var(--font-size-35px);
   line-height: var(--line-height-h1);
   color: var(--color-black);
   font-weight: var(--font-weight-medium);
@@ -986,14 +986,14 @@ textarea {
 
 .card-product-desc {
   margin: 0 0 var(--space-20);
-  font-size: 20px;
+  font-size: var(--font-size-body-xl);
   line-height: var(--line-height-body-lg);
   color: var(--color-grey-primary);
 }
 
 .card-product-price {
   margin: 0 0 var(--space-24);
-  font-size: 35px;
+  font-size: var(--font-size-35px);
   line-height: var(--line-height-h1);
   color: var(--color-black);
   font-weight: var(--font-weight-medium);
