@@ -17,11 +17,88 @@
     <!-- 2. Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="src/styles/main.css">
-
-
     <!-- 3. Configure Tailwind -->
     <script src="src/config-cdn.js"></script>
+    <link rel="stylesheet" href="src/nexled.css">
+    <link rel="stylesheet" href="src/styles/main.css">
+
+    <style>
+        .code-snippet {
+            margin-top: var(--space-24);
+            border: var(--border-thin) solid var(--color-grey-secondary);
+            border-radius: var(--radius-lg);
+            background: var(--color-white);
+            box-shadow: var(--shadow-btn-default);
+            overflow: hidden;
+        }
+
+        .code-snippet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-12) var(--space-16);
+            background: var(--color-grey-tertiary);
+            border-bottom: var(--border-thin) solid var(--color-grey-secondary);
+        }
+
+        .code-snippet-label {
+            margin: 0;
+            color: var(--color-grey-primary);
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-body-sm);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-body-sm);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .copy-snippet-btn {
+            border: var(--border-thin) solid var(--color-green-primary);
+            border-radius: var(--radius-xs);
+            background: var(--color-green-primary);
+            color: var(--color-white);
+            padding: var(--space-4) var(--space-12);
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-body-xs);
+            font-weight: var(--font-weight-medium);
+            line-height: var(--line-height-body-xs);
+            cursor: pointer;
+            transition: all var(--motion-duration-default) var(--motion-ease-premium);
+        }
+
+        .copy-snippet-btn:hover {
+            background: var(--color-green-secondary);
+            border-color: var(--color-green-secondary);
+        }
+
+        .copy-snippet-btn:focus-visible {
+            outline: var(--focus-ring-width) solid var(--focus-ring-color);
+            outline-offset: var(--focus-ring-offset);
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            padding: var(--space-16);
+            background: var(--color-black);
+            color: var(--color-white);
+            overflow-x: auto;
+        }
+
+        .code-snippet code {
+            display: block;
+            font-family: "Courier New", monospace;
+            font-size: var(--font-size-body-xs);
+            line-height: var(--line-height-body-sm);
+            white-space: pre;
+        }
+    </style>
+
+    <style>
+        .modal-overlay.is-visible {
+            pointer-events: auto;
+        }
+    </style>
+
     <!-- 4. Components Logic -->
     <script src="components_logic.js"></script>
 
@@ -292,41 +369,170 @@
 
                     </div>
                 </div>
+
+                <div class="code-snippet">
+                    <div class="code-snippet-header">
+                        <p class="code-snippet-label">HTML</p>
+                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-footer">Copy</button>
+                    </div>
+                    <pre><code id="snippet-footer">&lt;footer class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] overflow-hidden w-full"&gt;
+  &lt;div class="px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3"&gt;
+    &lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 items-start"&gt;
+      &lt;div class="flex flex-col items-center text-center"&gt;
+        &lt;img src="../../../../public/nexled-logo.svg" alt="NexLed Logo" class="w-[180px] h-[180px] mb-2"&gt;
+      &lt;/div&gt;
+
+      &lt;div class="flex flex-col"&gt;
+        &lt;h3 class="text-3xl font-bold text-black tracking-tight mb-3"&gt;NexLed&lt;/h3&gt;
+        &lt;ul class="space-y-1 text-[15px] flex-1 mb-4"&gt;
+          &lt;li&gt;&lt;a href="#" class="text-black hover:text-green-secondary transition-colors font-medium"&gt;Sobre N&#195;&#179;s&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" class="text-black hover:text-green-secondary transition-colors font-medium"&gt;Carrinho&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;div class="pt-1"&gt;
+        &lt;h4 class="text-lg font-normal text-black mb-3"&gt;Contactos&lt;/h4&gt;
+        &lt;ul class="space-y-1 text-[15px] font-light text-black"&gt;
+          &lt;li&gt;&lt;a href="mailto:comercial@tecit.pt" class="hover:text-green-secondary transition-colors"&gt;comercial@tecit.pt&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="tel:+351229999230" class="hover:text-green-secondary transition-colors"&gt;+351 229 999 230&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="bg-green-primary text-white py-3 px-16 md:px-32"&gt;
+    &lt;div class="flex flex-wrap justify-between items-center text-[11px] font-light gap-x-6 gap-y-2 opacity-90"&gt;
+      &lt;p class="w-full md:w-auto text-left"&gt;Uma marca do grupo Tecit&lt;/p&gt;
+      &lt;a href="#" class="hover:text-white hover:underline transition-all"&gt;Termos e Condi&#195;&#167;&#195;&#181;es&lt;/a&gt;
+      &lt;a href="#" class="hover:text-white hover:underline transition-all"&gt;Pol&#195;&#173;tica de Privacidade&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
             </section>
 
 
             <section id="header">
                 <div class="flex items-center gap-12 mb-24">
-                    <h2 class="text-h2 font-semibold">Header Nav</h2>
+                    <h2 class="text-h2 font-semibold">Header / Nav</h2>
                 </div>
 
                 <div class="glass-panel p-32 mb-24">
                     <div
                         class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+                        <div class="w-full max-w-[1800px] mx-auto">
+                            <header
+                                class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex flex-wrap xl:flex-nowrap items-center justify-between gap-24 px-24 py-20">
+                                <a href="#" class="flex items-center gap-12 group">
+                                    <div
+                                        class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
+                                        <i class="ri-code-s-slash-line text-h3"></i>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                                        <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
+                                    </div>
+                                </a>
 
-                        <header class="mb-48">
-                            <h1 class="text-display font-semibold mb-12">Organisms</h1>
-                            <p class="text-body-lg text-grey-primary max-w-readable font-light">
-                                Complex UI sections composed of multiple molecules and atoms.
-                            </p>
-                        </header>
+                                <nav class="hidden md:flex items-center gap-24 h-full">
+                                    <div class="relative group h-full flex items-center">
+                                        <button
+                                            class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full">
+                                            <span>Components</span>
+                                            <i
+                                                class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                                        </button>
+                                        <div
+                                            class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                                            <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                                                <div class="p-8 flex flex-col gap-4">
+                                                    <a href="#"
+                                                        class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                                        <i class="ri-box-1-line"></i> Atoms
+                                                    </a>
+                                                    <a href="#"
+                                                        class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                                        <i class="ri-hexagon-line"></i> Molecules
+                                                    </a>
+                                                    <a href="#"
+                                                        class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-red-primary font-bold">
+                                                        <i class="ri-layout-3-line"></i> Organisms
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <header class="mb-48">
-                            <h1 class="text-display font-semibold mb-12">Organisms</h1>
-                            <p class="text-body-lg text-grey-primary max-w-readable font-light">
-                                Complex UI sections composed of multiple molecules and atoms.
-                            </p>
-                        </header>
+                                    <div class="relative group h-full flex items-center">
+                                        <button
+                                            class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full">
+                                            <span>Resources</span>
+                                            <i
+                                                class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                                        </button>
+                                        <div
+                                            class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
+                                            <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
+                                                <div class="p-8 flex flex-col gap-4">
+                                                    <a href="#"
+                                                        class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
+                                                        <i class="ri-palette-line"></i> Design Tokens
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
 
-                        <header class="mb-48">
-                            <h1 class="text-display font-semibold mb-12">Organisms</h1>
-                            <p class="text-body-lg text-grey-primary max-w-readable font-light">
-                                Complex UI sections composed of multiple molecules and atoms.
-                            </p>
-                        </header>
-
-
+                                <div class="flex items-center gap-12">
+                                    <button
+                                        class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                                        <i class="ri-search-line text-icon-md"></i>
+                                    </button>
+                                    <a href="#"
+                                        class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                                        <i class="ri-github-fill text-icon-lg"></i>
+                                    </a>
+                                    <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm">
+                                        Get in touch
+                                    </button>
+                                </div>
+                            </header>
+                        </div>
                     </div>
+                </div>
+
+                <div class="code-snippet">
+                    <div class="code-snippet-header">
+                        <p class="code-snippet-label">HTML</p>
+                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-header-nav">Copy</button>
+                    </div>
+                    <pre><code id="snippet-header-nav">&lt;header class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-24 py-20"&gt;
+  &lt;a href="#" class="flex items-center gap-12 group"&gt;
+    &lt;div class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform"&gt;
+      &lt;i class="ri-code-s-slash-line text-h3"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="flex flex-col"&gt;
+      &lt;span class="font-semibold text-body-lg leading-none tracking-tight text-black"&gt;NexLed&lt;/span&gt;
+      &lt;span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider"&gt;System v1.2&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+
+  &lt;nav class="hidden md:flex items-center gap-24"&gt;
+    &lt;a href="#" class="text-body-sm font-medium text-black"&gt;Components&lt;/a&gt;
+    &lt;a href="#" class="text-body-sm font-medium text-grey-primary hover:text-black transition-colors"&gt;Resources&lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="flex items-center gap-12"&gt;
+    &lt;button class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all"&gt;
+      &lt;i class="ri-search-line text-icon-md"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;a href="#" class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all"&gt;
+      &lt;i class="ri-github-fill text-icon-lg"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+    &lt;button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"&gt;Get in touch&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
                 </div>
             </section>
 
@@ -338,88 +544,65 @@
                 <div class="glass-panel p-32 mb-24">
                     <div
                         class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-
-                        <div>
-                            <!-- Demo Triggers -->
-                            <div class="flex flex-wrap gap-4 justify-center mb-8">
+                        <div class="w-full">
+                            <div class="flex flex-wrap gap-12 justify-center mb-8">
                                 <button
-                                    class="px-6 py-3 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
+                                    class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"
                                     data-modal-target="modalStandard">
                                     Standard Modal
                                 </button>
 
                                 <button
-                                    class="px-6 py-3 rounded-xl bg-green-secondary text-white font-medium hover:bg-green-primary transition-colors shadow-btn-default hover:shadow-btn-hover"
+                                    class="btn btn-danger h-btn-sm w-auto px-24 text-body-sm"
                                     data-modal-target="modalDestructive">
                                     Destructive Modal
                                 </button>
                             </div>
 
-                            <!-- 1. Standard Modal -->
-                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-16"
+                            <div class="modal-overlay"
                                 id="modalStandard" aria-hidden="true">
-                                <div class="modal-container bg-white w-full max-w-[500px] rounded-xl shadow-btn-glow flex flex-col relative p-32"
+                                <div class="modal modal-container max-w-[500px]"
                                     role="dialog" aria-modal="true" aria-labelledby="modalTitle1">
-
-                                    <!-- Header -->
-                                    <div class="flex items-start justify-between mb-16">
-                                        <h2 id="modalTitle1" class="text-h3 font-semibold text-black m-0 leading-tight">
-                                            Lorem ipsum dolor</h2>
+                                    <div class="modal-header">
+                                        <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
                                         <button
-                                            class="modal-close bg-transparent border-none text-grey-primary cursor-pointer text-xl p-4 rounded-md transition-all hover:bg-grey-tertiary hover:text-black flex items-center justify-center"
+                                            class="modal-close"
                                             aria-label="Close modal" data-close-modal>
-                                            <i class="ri-close-line"></i>
+                                            <i class="ri-close-line text-icon-md"></i>
                                         </button>
                                     </div>
 
-                                    <!-- Body -->
-                                    <div class="text-body text-grey-primary font-normal leading-body mb-32">
+                                    <div class="modal-body">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
                                             consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
                                             augue suscipit imperdiet.</p>
                                     </div>
 
-                                    <!-- Actions (Left Aligned) -->
-                                    <div class="flex items-center gap-16">
-                                        <button
-                                            class="px-24 py-12 rounded-btn bg-green-primary text-white font-medium hover:bg-green-secondary transition-colors shadow-btn-default hover:shadow-btn-hover text-button"
-                                            data-close-modal>Lorem ipsum</button>
-                                        <button
-                                            class="px-24 py-12 rounded-btn bg-white border border-grey-tertiary text-black font-medium hover:bg-grey-tertiary/50 transition-colors shadow-sm hover:shadow-md text-button"
-                                            data-close-modal>Lorem ipsum</button>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                        <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
                                     </div>
                                 </div>
                             </div>
 
-
-
-                            <!-- 3. Destructive Modal -->
-                            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[4px] z-[1000] flex items-center justify-center p-16"
+                            <div class="modal-overlay"
                                 id="modalDestructive" aria-hidden="true">
-                                <div class="modal-container bg-white w-full max-w-[500px] rounded-xl shadow-btn-glow flex flex-col relative p-32 text-center"
+                                <div class="modal modal-container modal-destructive max-w-[500px] text-center"
                                     role="dialog" aria-modal="true" aria-labelledby="modalTitle3">
 
-                                    <!-- Header -->
                                     <div class="mb-16">
-                                        <h2 id="modalTitle3" class="text-h3 font-semibold text-black m-0 leading-tight">
-                                            Lorem ipsum dolor</h2>
+                                        <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
                                     </div>
 
-                                    <!-- Body -->
-                                    <div class="text-body text-grey-primary font-normal leading-body mb-32">
+                                    <div class="modal-body">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
                                             consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
                                             augue suscipit imperdiet.</p>
                                     </div>
 
-                                    <!-- Actions (Centered) -->
-                                    <div class="flex items-center justify-center gap-16">
-                                        <button
-                                            class="px-24 py-12 rounded-btn bg-red-primary text-white font-medium hover:bg-red-secondary transition-colors shadow-btn-default hover:shadow-btn-hover text-button"
-                                            data-close-modal>Lorem ipsum</button>
-                                        <button
-                                            class="px-24 py-12 rounded-btn bg-white border border-grey-tertiary text-black font-medium hover:bg-grey-tertiary/50 transition-colors shadow-sm hover:shadow-md text-button"
-                                            data-close-modal>Lorem ipsum</button>
+                                    <div class="modal-footer justify-center">
+                                        <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                        <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
                                     </div>
                                 </div>
                             </div>
@@ -428,6 +611,47 @@
 
 
                     </div>
+                </div>
+
+                <div class="code-snippet">
+                    <div class="code-snippet-header">
+                        <p class="code-snippet-label">HTML</p>
+                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-modal">Copy</button>
+                    </div>
+                    <pre><code id="snippet-modal">&lt;button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm" data-modal-target="modalStandard"&gt;
+  Standard Modal
+&lt;/button&gt;
+
+&lt;div class="modal-overlay" id="modalStandard" aria-hidden="true"&gt;
+  &lt;div class="modal modal-container max-w-[500px]" role="dialog" aria-modal="true" aria-labelledby="modalTitle1"&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 id="modalTitle1" class="modal-title"&gt;Lorem ipsum dolor&lt;/h2&gt;
+      &lt;button class="modal-close" aria-label="Close modal" data-close-modal&gt;
+        &lt;i class="ri-close-line text-icon-md"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-primary" data-close-modal&gt;Lorem ipsum&lt;/button&gt;
+      &lt;button class="btn btn-secondary" data-close-modal&gt;Lorem ipsum&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="modal-overlay" id="modalDestructive" aria-hidden="true"&gt;
+  &lt;div class="modal modal-container modal-destructive max-w-[500px] text-center" role="dialog" aria-modal="true" aria-labelledby="modalTitle3"&gt;
+    &lt;h2 id="modalTitle3" class="modal-title"&gt;Lorem ipsum dolor&lt;/h2&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer justify-center"&gt;
+      &lt;button class="btn btn-primary" data-close-modal&gt;Lorem ipsum&lt;/button&gt;
+      &lt;button class="btn btn-secondary" data-close-modal&gt;Lorem ipsum&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
                 </div>
             </section>
 
@@ -440,6 +664,47 @@
             <p>© 2026 NexLed UI Systems</p>
         </div>
     </footer>
+
+    <script>
+        const copySnippetButtons = document.querySelectorAll('.copy-snippet-btn');
+
+        copySnippetButtons.forEach((button) => {
+            button.addEventListener('click', async () => {
+                const targetId = button.getAttribute('data-copy-target');
+                const snippetCode = document.getElementById(targetId);
+
+                if (!snippetCode) {
+                    return;
+                }
+
+                const snippetText = snippetCode.textContent;
+                const originalLabel = button.textContent;
+
+                try {
+                    await navigator.clipboard.writeText(snippetText);
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalLabel;
+                    }, 2000);
+                } catch (error) {
+                    const fallbackInput = document.createElement('textarea');
+                    fallbackInput.value = snippetText;
+                    fallbackInput.setAttribute('readonly', '');
+                    fallbackInput.style.position = 'absolute';
+                    fallbackInput.style.left = '-9999px';
+                    document.body.appendChild(fallbackInput);
+                    fallbackInput.select();
+                    const copied = document.execCommand('copy');
+                    document.body.removeChild(fallbackInput);
+
+                    button.textContent = copied ? 'Copied!' : 'Copy failed';
+                    setTimeout(() => {
+                        button.textContent = originalLabel;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
 
 </body>
 
