@@ -25,37 +25,6 @@
 
     <style type="text/tailwindcss">
         @layer components {
-            .custom-scrollbar {
-                @apply overflow-y-auto;
-            }
-
-            /* Custom Scrollbar Styles using Tokens */
-            .custom-scrollbar::-webkit-scrollbar {
-                @apply w-8;
-            }
-
-            .custom-scrollbar::-webkit-scrollbar-button {
-                @apply hidden;
-            }
-
-            .custom-scrollbar::-webkit-scrollbar-track {
-                @apply bg-transparent;
-            }
-
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-                @apply bg-grey-secondary rounded-full border-thin border-white bg-clip-padding transition-colors duration-default ease-premium;
-            }
-
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-            .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
-                @apply bg-green-primary;
-            }
-
-            .custom-scrollbar::-webkit-scrollbar-thumb:active {
-                @apply bg-green-secondary;
-            }
-        }
-        @layer components {
             .spinner-container {
                 @apply flex items-center justify-center;
             }
@@ -277,165 +246,163 @@
                     <h2 class="text-h2 font-semibold">Buttons</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div class="space-y-24 pb-20">
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-24 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div class="space-y-24 pb-20">
 
-                            <!-- EXTRA-LARGE (XL) VARIATIONS -->
+                        <!-- EXTRA-LARGE (XL) VARIATIONS -->
+                        <div class="space-y-12">
+                            <h2 class="text-2xl font-bold text-green-primary">Size: Extra-Large (XL)</h2>
                             <div class="space-y-12">
-                                <h2 class="text-2xl font-bold text-green-primary">Size: Extra-Large (XL)</h2>
-                                <div class="space-y-12">
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
-                                            Interactives - XL</h3>
-                                        <div class="flex gap-10 flex-wrap items-center">
-                                            <button class="btn btn-primary btn-xl">Primary XL</button>
-                                            <button class="btn btn-secondary btn-xl">Secondary XL</button>
-                                            <button class="btn btn-primary btn-xl"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text
-                                                XL</button>
-                                            <button class="btn btn-ghost btn-xl">Ghost XL</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
-                                            Toggles - XL</h3>
-                                        <div class="flex gap-48 flex-wrap items-center">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-xl"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-xl"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false"
-                                                class="btn btn-secondary btn-xl aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle XL</button>
-                                        </div>
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
+                                        Interactives - XL</h3>
+                                    <div class="flex gap-10 flex-wrap items-center">
+                                        <button class="btn btn-primary btn-xl">Primary XL</button>
+                                        <button class="btn btn-secondary btn-xl">Secondary XL</button>
+                                        <button class="btn btn-primary btn-xl"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text
+                                            XL</button>
+                                        <button class="btn btn-ghost btn-xl">Ghost XL</button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- LARGE (L) VARIATIONS - CURRENT -->
-                            <div class="space-y-12">
-                                <h2 class="text-2xl font-bold text-green-primary">Size: Large (L) <span
-                                        class="text-grey-primary text-sm font-normal"> - System Default</span></h2>
-                                <div class="space-y-12">
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
-                                            Interactives - L</h3>
-                                        <div class="flex gap-10 flex-wrap items-center">
-                                            <button class="btn btn-primary btn-lg">Primary L</button>
-                                            <button class="btn btn-secondary btn-lg">Secondary L</button>
-                                            <button class="btn btn-primary btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text
-                                                L</button>
-                                            <button class="btn btn-ghost btn-lg">Ghost L</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
-                                            Toggles - L</h3>
-                                        <div class="flex gap-48 flex-wrap items-center">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false"
-                                                class="btn btn-secondary btn-lg aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle L</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- MEDIUM (M) VARIATIONS -->
-                            <div class="space-y-12">
-                                <h2 class="text-2xl font-bold text-green-primary">Size: Medium (M)</h2>
-                                <div class="space-y-12">
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
-                                            Interactives - M</h3>
-                                        <div class="flex gap-10 flex-wrap items-center">
-                                            <button class="btn btn-primary btn-md">Primary M</button>
-                                            <button class="btn btn-secondary btn-md">Secondary M</button>
-                                            <button class="btn btn-primary btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i>Icon + Text M</button>
-                                            <button class="btn btn-ghost btn-md">Ghost M</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
-                                            Toggles - M</h3>
-                                        <div class="flex gap-48 flex-wrap items-center">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false"
-                                                class="btn btn-secondary btn-md aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i>Toggle M</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- SMALL (S) VARIATIONS -->
-                            <div class="space-y-12">
-                                <h2 class="text-2xl font-bold text-green-primary">Size: Small (S)</h2>
-                                <div class="space-y-12">
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
-                                            Interactives - S</h3>
-                                        <div class="flex gap-10 flex-wrap items-center">
-                                            <button class="btn btn-primary btn-sm">Primary S</button>
-                                            <button class="btn btn-secondary btn-sm">Secondary S</button>
-                                            <button class="btn btn-primary btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i>Icon + Text S</button>
-                                            <button class="btn btn-ghost btn-sm">Ghost S</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
-                                            Toggles - S</h3>
-                                        <div class="flex gap-48 flex-wrap items-center">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false"
-                                                class="btn btn-secondary btn-sm aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i>Toggle S</button>
-                                        </div>
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
+                                        Toggles - XL</h3>
+                                    <div class="flex gap-48 flex-wrap items-center">
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-secondary btn-icon btn-xl"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-ghost btn-icon btn-xl"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false"
+                                            class="btn btn-secondary btn-xl aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle XL</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- LARGE (L) VARIATIONS - CURRENT -->
+                        <div class="space-y-12">
+                            <h2 class="text-2xl font-bold text-green-primary">Size: Large (L) <span
+                                    class="text-grey-primary text-sm font-normal"> - System Default</span></h2>
+                            <div class="space-y-12">
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
+                                        Interactives - L</h3>
+                                    <div class="flex gap-10 flex-wrap items-center">
+                                        <button class="btn btn-primary btn-lg">Primary L</button>
+                                        <button class="btn btn-secondary btn-lg">Secondary L</button>
+                                        <button class="btn btn-primary btn-lg"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text
+                                            L</button>
+                                        <button class="btn btn-ghost btn-lg">Ghost L</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
+                                        Toggles - L</h3>
+                                    <div class="flex gap-48 flex-wrap items-center">
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-secondary btn-icon btn-lg"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-ghost btn-icon btn-lg"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false"
+                                            class="btn btn-secondary btn-lg aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
+                                                class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle L</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- MEDIUM (M) VARIATIONS -->
+                        <div class="space-y-12">
+                            <h2 class="text-2xl font-bold text-green-primary">Size: Medium (M)</h2>
+                            <div class="space-y-12">
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
+                                        Interactives - M</h3>
+                                    <div class="flex gap-10 flex-wrap items-center">
+                                        <button class="btn btn-primary btn-md">Primary M</button>
+                                        <button class="btn btn-secondary btn-md">Secondary M</button>
+                                        <button class="btn btn-primary btn-md"><i
+                                                class="ri-delete-bin-2-line text-icon-xl"></i>Icon + Text M</button>
+                                        <button class="btn btn-ghost btn-md">Ghost M</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
+                                        Toggles - M</h3>
+                                    <div class="flex gap-48 flex-wrap items-center">
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-secondary btn-icon btn-md"><i
+                                                class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-ghost btn-icon btn-md"><i
+                                                class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false"
+                                            class="btn btn-secondary btn-md aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
+                                                class="ri-delete-bin-2-line text-icon-xl"></i>Toggle M</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SMALL (S) VARIATIONS -->
+                        <div class="space-y-12">
+                            <h2 class="text-2xl font-bold text-green-primary">Size: Small (S)</h2>
+                            <div class="space-y-12">
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Standard
+                                        Interactives - S</h3>
+                                    <div class="flex gap-10 flex-wrap items-center">
+                                        <button class="btn btn-primary btn-sm">Primary S</button>
+                                        <button class="btn btn-secondary btn-sm">Secondary S</button>
+                                        <button class="btn btn-primary btn-sm"><i
+                                                class="ri-delete-bin-2-line text-icon-lg"></i>Icon + Text S</button>
+                                        <button class="btn btn-ghost btn-sm">Ghost S</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-4">Icon
+                                        Toggles - S</h3>
+                                    <div class="flex gap-48 flex-wrap items-center">
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-secondary btn-icon btn-sm"><i
+                                                class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false" class="btn btn-ghost btn-icon btn-sm"><i
+                                                class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                                        <button
+                                            onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
+                                            aria-pressed="false"
+                                            class="btn btn-secondary btn-sm aria-pressed:bg-green-primary aria-pressed:text-white aria-pressed:border-green-primary"><i
+                                                class="ri-delete-bin-2-line text-icon-lg"></i>Toggle S</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
 
                 <div class="code-snippet">
@@ -483,71 +450,67 @@
                     <h2 class="text-h2 font-semibold">Badges</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div>
-                            <!-- 1. REFERENCES SECTION -->
-                            <h2
-                                class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
-                                References & Sizes</h2>
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
 
-                            <div class="space-y-24 mb-20">
+                    <div>
+                        <!-- 1. REFERENCES SECTION -->
 
-                                <!-- LARGE SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Large
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-lg"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-lg"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-lg"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-lg"><span>Neutral</span></div>
-                                    </div>
+                        <div class="space-y-24 mb-20">
+
+                            <!-- LARGE SIZE -->
+                            <div class="flex items-center gap-24">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Large
+                                </h3>
+                                <div class="flex items-center gap-16">
+                                    <div class="badge badge-primary badge-lg"><span>Primary</span></div>
+                                    <div class="badge badge-success badge-lg"><span>Success</span></div>
+                                    <div class="badge badge-danger badge-lg"><span>Danger</span></div>
+                                    <div class="badge badge-neutral badge-lg"><span>Neutral</span></div>
                                 </div>
-
-                                <!-- MEDIUM SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Medium
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-md"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-md"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-md"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-md"><span>Neutral</span></div>
-                                    </div>
-                                </div>
-
-                                <!-- SMALL SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Small
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-sm"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-sm"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-sm"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-sm"><span>Neutral</span></div>
-                                    </div>
-                                </div>
-
-                                <!-- DOT INDICATOR -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Dot
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-dot"></div>
-                                        <div class="badge badge-success badge-dot"></div>
-                                        <div class="badge badge-danger badge-dot"></div>
-                                        <div class="badge badge-neutral badge-dot"></div>
-                                    </div>
-                                </div>
-
                             </div>
 
+                            <!-- MEDIUM SIZE -->
+                            <div class="flex items-center gap-24">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Medium
+                                </h3>
+                                <div class="flex items-center gap-16">
+                                    <div class="badge badge-primary badge-md"><span>Primary</span></div>
+                                    <div class="badge badge-success badge-md"><span>Success</span></div>
+                                    <div class="badge badge-danger badge-md"><span>Danger</span></div>
+                                    <div class="badge badge-neutral badge-md"><span>Neutral</span></div>
+                                </div>
+                            </div>
+
+                            <!-- SMALL SIZE -->
+                            <div class="flex items-center gap-24">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Small
+                                </h3>
+                                <div class="flex items-center gap-16">
+                                    <div class="badge badge-primary badge-sm"><span>Primary</span></div>
+                                    <div class="badge badge-success badge-sm"><span>Success</span></div>
+                                    <div class="badge badge-danger badge-sm"><span>Danger</span></div>
+                                    <div class="badge badge-neutral badge-sm"><span>Neutral</span></div>
+                                </div>
+                            </div>
+
+                            <!-- DOT INDICATOR -->
+                            <div class="flex items-center gap-24">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Dot
+                                </h3>
+                                <div class="flex items-center gap-16">
+                                    <div class="badge badge-primary badge-dot"></div>
+                                    <div class="badge badge-success badge-dot"></div>
+                                    <div class="badge badge-danger badge-dot"></div>
+                                    <div class="badge badge-neutral badge-dot"></div>
+                                </div>
+                            </div>
 
                         </div>
 
+
                     </div>
+
                 </div>
 
                 <div class="code-snippet">
@@ -584,123 +547,121 @@
                     <h2 class="text-h2 font-semibold">Checkboxes</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-4 gap-40 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+                <div
+                    class="glass-panel p-32 mb-24 grid grid-cols-1 md:grid-cols-4 gap-40 p-40 border border-grey-secondary rounded-lg bg-white">
 
-                        <!-- Large Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="checkbox-wrapper checkbox-lg">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-lg">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-lg">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
-                        </div>
-
-                        <!-- Medium Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                        </div>
-
-                        <!-- Small Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="checkbox-wrapper checkbox-sm">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-sm">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-sm">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 m-auto text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                        </div>
-
-                        <!-- Indeterminate Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer">
-                                    <i
-                                        class="ri-subtract-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer">
-                                    <i
-                                        class="ri-subtract-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer">
-                                    <i
-                                        class="ri-subtract-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                        </div>
-
+                    <!-- Large Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="checkbox-wrapper checkbox-lg">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body">Large</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-lg">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body">Large</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-lg" aria-disabled="true">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer" disabled checked>
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body">Large</span>
+                        </label>
                     </div>
+
+                    <!-- Medium Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="checkbox-wrapper checkbox-md">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-md">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-md" aria-disabled="true">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer" disabled checked>
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                    </div>
+
+                    <!-- Small Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="checkbox-wrapper checkbox-sm">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-sm">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer">
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-sm" aria-disabled="true">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" class="peer" disabled checked>
+                                <i
+                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                    </div>
+
+                    <!-- Indeterminate Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="checkbox-wrapper checkbox-md">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" data-state="indeterminate" class="peer">
+                                <i
+                                    class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Indeterminate</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-md">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" data-state="indeterminate" class="peer">
+                                <i
+                                    class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Indeterminate</span>
+                        </label>
+                        <label class="checkbox-wrapper checkbox-md" aria-disabled="true">
+                            <span class="relative inline-flex items-center justify-center">
+                                <input type="checkbox" data-state="indeterminate" class="peer" disabled checked>
+                                <i
+                                    class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+                            </span>
+                            <span class="text-body-sm">Indeterminate</span>
+                        </label>
+                    </div>
+
                 </div>
 
                 <div class="code-snippet">
@@ -711,7 +672,7 @@
                     <pre><code id="snippet-checkbox">&lt;label class="checkbox-wrapper checkbox-lg"&gt;
   &lt;span class="relative inline-flex items-center justify-center"&gt;
     &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 m-auto text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
+    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
   &lt;/span&gt;
   &lt;span class="text-body"&gt;Large&lt;/span&gt;
 &lt;/label&gt;
@@ -719,7 +680,7 @@
 &lt;label class="checkbox-wrapper checkbox-md"&gt;
   &lt;span class="relative inline-flex items-center justify-center"&gt;
     &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
+    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
   &lt;/span&gt;
   &lt;span class="text-body-sm"&gt;Medium&lt;/span&gt;
 &lt;/label&gt;
@@ -727,7 +688,7 @@
 &lt;label class="checkbox-wrapper checkbox-sm"&gt;
   &lt;span class="relative inline-flex items-center justify-center"&gt;
     &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 m-auto text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
+    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
   &lt;/span&gt;
   &lt;span class="text-body-xs"&gt;Small&lt;/span&gt;
 &lt;/label&gt;
@@ -735,7 +696,7 @@
 &lt;label class="checkbox-wrapper checkbox-md"&gt;
   &lt;span class="relative inline-flex items-center justify-center"&gt;
     &lt;input type="checkbox" data-state="indeterminate" class="peer"&gt;
-    &lt;i class="ri-subtract-line absolute inset-0 m-auto text-white text-icon-sm opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
+    &lt;i class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
   &lt;/span&gt;
   &lt;span class="text-body-sm"&gt;Indeterminate&lt;/span&gt;
 &lt;/label&gt;</code></pre>
@@ -747,68 +708,57 @@
                     <h2 class="text-h2 font-semibold">Radio Button</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-3 gap-40 p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+                <div
+                    class="glass-panel p-32 mb-24 grid grid-cols-1 md:grid-cols-3 gap-40 p-40 border border-grey-secondary rounded-lg bg-white">
 
-                        <!-- Large Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="radio-wrapper radio-lg">
-                                <input type="radio" name="radio-lg">
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="radio-wrapper radio-lg">
-                                <input type="radio" name="radio-lg">
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="radio-wrapper radio-lg">
-                                <input type="radio" name="radio-lg">
-                                <span class="text-body">Large</span>
-                            </label>
-                        </div>
-
-                        <!-- Medium Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="radio-wrapper radio-md">
-                                <input type="radio" name="radio-md">
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="radio-wrapper radio-md">
-                                <input type="radio" name="radio-md">
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="radio-wrapper radio-md">
-                                <input type="radio" name="radio-md">
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                        </div>
-
-                        <!-- Small Column -->
-                        <div class="flex flex-col gap-6">
-                            <label class="radio-wrapper radio-sm">
-                                <input type="radio" name="radio-sm">
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="radio-wrapper radio-sm">
-                                <input type="radio" name="radio-sm">
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="radio-wrapper radio-sm">
-                                <input type="radio" name="radio-sm">
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                        </div>
-
-
-
-
-
-
-
-
-
-
+                    <!-- Large Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="radio-wrapper radio-lg">
+                            <input type="radio" name="radio-lg">
+                            <span class="text-body">Large</span>
+                        </label>
+                        <label class="radio-wrapper radio-lg">
+                            <input type="radio" name="radio-lg">
+                            <span class="text-body">Large</span>
+                        </label>
+                        <label class="radio-wrapper radio-lg" aria-disabled="true">
+                            <input type="radio" name="radio-lg" disabled checked>
+                            <span class="text-body">Large</span>
+                        </label>
                     </div>
+
+                    <!-- Medium Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="radio-wrapper radio-md">
+                            <input type="radio" name="radio-md">
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                        <label class="radio-wrapper radio-md">
+                            <input type="radio" name="radio-md">
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                        <label class="radio-wrapper radio-md" aria-disabled="true">
+                            <input type="radio" name="radio-md" disabled checked>
+                            <span class="text-body-sm">Medium</span>
+                        </label>
+                    </div>
+
+                    <!-- Small Column -->
+                    <div class="flex flex-col gap-6">
+                        <label class="radio-wrapper radio-sm">
+                            <input type="radio" name="radio-sm">
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                        <label class="radio-wrapper radio-sm">
+                            <input type="radio" name="radio-sm">
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                        <label class="radio-wrapper radio-sm" aria-disabled="true">
+                            <input type="radio" name="radio-sm" disabled checked>
+                            <span class="text-body-xs">Small</span>
+                        </label>
+                    </div>
+
                 </div>
 
                 <div class="code-snippet">
@@ -839,59 +789,57 @@
                     <h2 class="text-h2 font-semibold">Hyperlinks</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div class="space-y-16 pb-20">
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div class="space-y-16 pb-20">
 
-                            <!-- Live Variants -->
-                            <div class="flex flex-col gap-10">
-                                <h3 class="text-sm text-grey-primary uppercase tracking-widest">Live Variants</h3>
-                                <div class="flex flex-wrap items-center gap-icon-xs">
+                        <!-- Live Variants -->
+                        <div class="flex flex-col gap-10">
+                            <h3 class="text-sm text-grey-primary uppercase tracking-widest">Live Variants</h3>
+                            <div class="flex flex-wrap items-center gap-icon-xs">
 
-                                    <!-- Standalone Live -->
-                                    <a href="#" class="link">
-                                        Standalone Live
-                                    </a>
+                                <!-- Standalone Live -->
+                                <a href="#" class="link">
+                                    Standalone Live
+                                </a>
 
-                                    <!-- Link + Icon Live -->
-                                    <a href="#" class="link group no-underline">
-                                        <i class="ri-delete-bin-2-line"></i>
-                                        <span>Explore System</span>
-                                        <i
-                                            class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
-                                    </a>
+                                <!-- Link + Icon Live -->
+                                <a href="#" class="link group no-underline">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                    <span>Explore System</span>
+                                    <i
+                                        class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
+                                </a>
 
-                                    <!-- Navigation Live -->
-                                    <a href="#" class="link-nav">
-                                        Navigation Live
-                                    </a>
+                                <!-- Navigation Live -->
+                                <a href="#" class="link-nav">
+                                    Navigation Live
+                                </a>
 
-                                    <!-- Subtle Live -->
-                                    <a href="#" class="link-subtle">
-                                        Subtle Live
-                                    </a>
+                                <!-- Subtle Live -->
+                                <a href="#" class="link-subtle">
+                                    Subtle Live
+                                </a>
 
-                                </div>
                             </div>
-
-                            <!-- Inline Context Live -->
-                            <div class="bg-white p-12 rounded-btn border border-grey-tertiary">
-                                <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-6">Inline context
-                                    example</h3>
-                                <p class="text-h3 leading-relaxed text-black">
-                                    Our design system is built on <a href="#" class="link">Atomic Principles</a>,
-                                    ensuring that every <a href="#" class="link">component</a>
-                                    scales perfectly from <a href="#" class="link-nav text-green-secondary">Mobile</a>
-                                    to <a href="#" class="link-nav text-green-secondary">Wide
-                                        Desktop</a>
-                                    without losing <a href="#"
-                                        class="text-grey-secondary no-underline cursor-not-allowed">Visual
-                                        Integrity</a>.
-                                </p>
-                            </div>
-
                         </div>
+
+                        <!-- Inline Context Live -->
+                        <div class="bg-white p-12 rounded-btn border border-grey-tertiary">
+                            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-6">Inline context
+                                example</h3>
+                            <p class="text-h3 leading-relaxed text-black">
+                                Our design system is built on <a href="#" class="link">Atomic Principles</a>,
+                                ensuring that every <a href="#" class="link">component</a>
+                                scales perfectly from <a href="#" class="link-nav text-green-secondary">Mobile</a>
+                                to <a href="#" class="link-nav text-green-secondary">Wide
+                                    Desktop</a>
+                                without losing <a href="#"
+                                    class="text-grey-secondary no-underline cursor-not-allowed">Visual
+                                    Integrity</a>.
+                            </p>
+                        </div>
+
                     </div>
                 </div>
 
@@ -918,68 +866,64 @@
                     <h2 class="text-h2 font-semibold">loading</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div>
-                            <!-- 1. REFERENCES & SIZES -->
-                            <h2
-                                class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
-                                References & Sizes</h2>
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div>
 
-                            <div class="grid grid-cols-3 gap-24 mb-20 bg-grey-tertiary/faint p-40 rounded-lg">
-                                <!-- Default Row -->
-                                <h3 class="col-span-3 text-grey-primary font-light text-body-xs uppercase mb-[-12px]">
-                                    Brand Variants (Normal
-                                    Context)</h3>
 
-                                <div class="flex flex-col items-center gap-12">
-                                    <h4 class="text-grey-primary font-light text-[10px] uppercase">Small (32px)</h4>
-                                    <div
-                                        class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                        <div class="spinner w-32 h-32">
-                                            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 100 100">
-                                                <path class="spinner-track"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                                <path class="spinner-anim"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                            </svg>
-                                        </div>
+
+                        <div class="grid grid-cols-3 gap-24 mb-20 bg-grey-tertiary/faint p-40 rounded-lg">
+                            <!-- Default Row -->
+                            <h3 class="col-span-3 text-grey-primary font-light text-body-xs uppercase mb-[-12px]">
+                                Brand Variants (Normal
+                                Context)</h3>
+
+                            <div class="flex flex-col items-center gap-12">
+                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Small (32px)</h4>
+                                <div
+                                    class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
+                                    <div class="spinner w-32 h-32">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Medium -->
-                                <div class="flex flex-col items-center gap-12">
-                                    <h4 class="text-grey-primary font-light text-[10px] uppercase">Medium (48px)</h4>
-                                    <div
-                                        class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                        <div class="spinner w-48 h-48">
-                                            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 100 100">
-                                                <path class="spinner-track"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                                <path class="spinner-anim"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                            </svg>
-                                        </div>
+                            <!-- Medium -->
+                            <div class="flex flex-col items-center gap-12">
+                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Medium (48px)</h4>
+                                <div
+                                    class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
+                                    <div class="spinner w-48 h-48">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!-- Large -->
-                                <div class="flex flex-col items-center gap-12">
-                                    <h4 class="text-grey-primary font-light text-[10px] uppercase">Large (94px)</h4>
-                                    <div
-                                        class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                        <div class="spinner w-btn-icon-lg h-btn-icon-lg">
-                                            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 100 100">
-                                                <path class="spinner-track"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                                <path class="spinner-anim"
-                                                    d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                            </svg>
-                                        </div>
+                            <!-- Large -->
+                            <div class="flex flex-col items-center gap-12">
+                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Large (94px)</h4>
+                                <div
+                                    class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
+                                    <div class="spinner w-btn-icon-lg h-btn-icon-lg">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
                                     </div>
                                 </div>
 
@@ -1039,9 +983,7 @@
                             </div>
 
                             <!-- 2. LIVE CONTEXTUAL DEMOS -->
-                            <h2
-                                class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
-                                Live Contextual Demos</h2>
+
 
                             <div class="flex flex-wrap gap-48 items-start bg-grey-tertiary/faint p-40 rounded-lg">
                                 <!-- Inside Button Demo (Primary) -->
@@ -1124,39 +1066,35 @@
                     <h2 class="text-h2 font-semibold">Scroll Bar</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
 
-                        <div>
-                            <h2
-                                class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
-                                Live Contextual Demos</h2>
+                    <div>
 
-                            <div class="flex flex-wrap gap-48 items-center bg-grey-tertiary/faint p-40 rounded-lg">
-                                <!-- Demo Card 1 -->
+
+                        <div class="flex flex-wrap gap-48 items-center bg-grey-tertiary/faint p-40 rounded-lg">
+                            <!-- Demo Card 1 -->
+                            <div
+                                class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4">
                                 <div
-                                    class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4">
+                                    class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12">
+                                    <h2 class="text-body font-semibold mb-16 text-black">Interface Scroll</h2>
+                                    <p class="text-body-sm text-grey-primary mb-16 leading-relaxed">
+                                        This scrollbar uses the brand's green palette to provide high recognition
+                                        while maintaining
+                                        structural elegance.
+                                    </p>
                                     <div
-                                        class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12">
-                                        <h2 class="text-body font-semibold mb-16 text-black">Interface Scroll</h2>
-                                        <p class="text-body-sm text-grey-primary mb-16 leading-relaxed">
-                                            This scrollbar uses the brand's green palette to provide high recognition
-                                            while maintaining
-                                            structural elegance.
-                                        </p>
-                                        <div
-                                            class="h-[600px] rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-20">
-                                        </div>
-                                        <p class="text-body-xs text-grey-primary text-center">End of content.</p>
+                                        class="h-[600px] rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-20">
                                     </div>
+                                    <p class="text-body-xs text-grey-primary text-center">End of content.</p>
                                 </div>
 
                                 <!-- Demo Card 2 -->
                                 <div
                                     class="w-btn-lg h-[300px] bg-black border border-white/faint shadow-btn-default rounded-xl overflow-hidden pr-4">
                                     <div
-                                        class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12 text-white">
+                                        class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12 text-white">
                                         <h2 class="text-body font-semibold mb-16 text-white">Dark Context</h2>
                                         <p class="text-body-sm text-grey-primary mb-16 leading-relaxed opacity-muted">
                                             In dark environments, the green thumb remains visible and provides a premium
@@ -1182,7 +1120,7 @@
                         <button type="button" class="copy-snippet-btn" data-copy-target="snippet-scroll">Copy</button>
                     </div>
                     <pre><code id="snippet-scroll">&lt;div class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4"&gt;
-  &lt;div class="custom-scrollbar h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12"&gt;
+  &lt;div class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12"&gt;
     &lt;h2 class="text-body font-semibold mb-16 text-black"&gt;Interface Scroll&lt;/h2&gt;
     &lt;p class="text-body-sm text-grey-primary mb-16 leading-relaxed"&gt;...&lt;/p&gt;
   &lt;/div&gt;
@@ -1195,49 +1133,44 @@
                     <h2 class="text-h2 font-semibold">Tooltip</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-wrap gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div>
-                            <!-- 1. REFERENCES SECTION -->
-                            <h2
-                                class="text-xl font-semibold mb-10 text-grey-primary uppercase tracking-widest text-sm border-b border-grey-tertiary pb-4">
-                                References & Sizes</h2>
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div>
 
-                            <div class="grid grid-cols-4 gap-24 mb-20 items-end">
 
-                                <!-- Small Reference -->
-                                <div class="flex flex-col gap-4">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase">Small (XS)</h3>
-                                    <div
-                                        class="inline-flex self-start bg-black text-white px-8 py-4 rounded-xs shadow-btn-default min-w-max">
-                                        <span class="text-body-xs">Small Tooltip Content</span>
-                                    </div>
-                                    <p class="text-grey-primary text-[10px] italic">px-8 py-4 | body-xs | rounded-xs
-                                        (6px)</p>
+                        <div class="grid grid-cols-4 gap-24 mb-20 items-end">
+
+                            <!-- Small Reference -->
+                            <div class="flex flex-col gap-4">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase">Small (XS)</h3>
+                                <div
+                                    class="inline-flex self-start bg-black text-white px-8 py-4 rounded-xs shadow-btn-default min-w-max">
+                                    <span class="text-body-xs">Small Tooltip Content</span>
                                 </div>
+                                <p class="text-grey-primary text-[10px] italic">px-8 py-4 | body-xs | rounded-xs
+                                    (6px)</p>
+                            </div>
 
-                                <!-- Medium Reference -->
-                                <div class="flex flex-col gap-4">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase">Medium (SM)</h3>
-                                    <div
-                                        class="inline-flex self-start bg-black text-white px-12 py-8 rounded-xs shadow-btn-default min-w-max">
-                                        <span class="text-body-sm">Medium Tooltip Content</span>
-                                    </div>
-                                    <p class="text-grey-primary text-[10px] italic">px-12 py-8 | body-sm | rounded-xs
-                                        (6px)</p>
+                            <!-- Medium Reference -->
+                            <div class="flex flex-col gap-4">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase">Medium (SM)</h3>
+                                <div
+                                    class="inline-flex self-start bg-black text-white px-12 py-8 rounded-xs shadow-btn-default min-w-max">
+                                    <span class="text-body-sm">Medium Tooltip Content</span>
                                 </div>
+                                <p class="text-grey-primary text-[10px] italic">px-12 py-8 | body-sm | rounded-xs
+                                    (6px)</p>
+                            </div>
 
-                                <!-- Large Reference -->
-                                <div class="flex flex-col gap-4">
-                                    <h3 class="text-grey-primary font-light text-body-xs uppercase">Large (MD)</h3>
-                                    <div
-                                        class="inline-flex self-start bg-black text-white px-16 py-12 rounded-sm shadow-btn-default min-w-max">
-                                        <span class="text-body font-medium">Large Tooltip Content</span>
-                                    </div>
-                                    <p class="text-grey-primary text-[10px] italic">px-16 py-12 | body | rounded-sm
-                                        (8px)</p>
+                            <!-- Large Reference -->
+                            <div class="flex flex-col gap-4">
+                                <h3 class="text-grey-primary font-light text-body-xs uppercase">Large (MD)</h3>
+                                <div
+                                    class="inline-flex self-start bg-black text-white px-16 py-12 rounded-sm shadow-btn-default min-w-max">
+                                    <span class="text-body font-medium">Large Tooltip Content</span>
                                 </div>
+                                <p class="text-grey-primary text-[10px] italic">px-16 py-12 | body | rounded-sm
+                                    (8px)</p>
 
                                 <!-- Rich / With Title Reference -->
                                 <div class="flex flex-col gap-4">
@@ -1256,10 +1189,7 @@
 
                             </div>
 
-                            <!-- 2. LIVE INTERACTIVE DEMO -->
-                            <h2
-                                class="text-xl font-semibold mb-10 pt-10 border-t border-grey-tertiary text-grey-primary uppercase tracking-widest text-sm">
-                                Live Interactive Demos</h2>
+
 
                             <div class="flex flex-wrap gap-48 items-center bg-grey-tertiary/20 p-40 rounded-lg">
 
@@ -1337,72 +1267,70 @@
                     <h2 class="text-h2 font-semibold">Text Styles</h2>
                 </div>
 
-                <div class="glass-panel p-32 mb-24">
-                    <div
-                        class="flex flex-col gap-32 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-grey-tertiary/5">
-                        <div class="w-full flex flex-col items-center text-center py-40 px-64 gap-24">
-                            <!-- Title: Urbanist Medium 50px -->
-                            <h2 class="text-hero-title font-medium text-black">
-                                Suport Nexled
-                            </h2>
-                            <!-- Subtitle: Urbanist Light 22px -->
-                            <p class="text-hero-subtitle font-light text-black max-w-readable">
-                                Here you will find a complete collection of support materials, including procedural
-                                guides, product datasheets, and relevant warnings. These resources are designed to
-                                assist in understanding system features, ensuring proper handling of product
-                                information, and maintaining compliance with required standards.
-                            </p>
-                        </div>
+                <div
+                    class="glass-panel p-32 mb-24 flex flex-col gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div class="w-full flex flex-col items-center text-center py-40 px-64 gap-24">
+                        <!-- Title: Urbanist Medium 50px -->
+                        <h2 class="text-hero-title font-medium text-black">
+                            Suport Nexled
+                        </h2>
+                        <!-- Subtitle: Urbanist Light 22px -->
+                        <p class="text-hero-subtitle font-light text-black max-w-readable">
+                            Here you will find a complete collection of support materials, including procedural
+                            guides, product datasheets, and relevant warnings. These resources are designed to
+                            assist in understanding system features, ensuring proper handling of product
+                            information, and maintaining compliance with required standards.
+                        </p>
+                    </div>
 
-                        <div class="w-full flex flex-col items-center text-center py-40 px-64 gap-24">
-                            <h2 class="text-45px font-medium text-black">
-                                FAQ &amp; Main Questions
-                            </h2>
-                            <p class="text-body-xl font-light text-black max-w-standard">
-                                Below is Frequently Asked Questions, along with clear and concise answers. It provides
-                                quick access to essential information, helping clarify common doubts and offering
-                                straightforward guidance on the most important topics.
-                            </p>
+                    <div class="w-full flex flex-col items-center text-center py-40 px-64 gap-24">
+                        <h2 class="text-45px font-medium text-black">
+                            FAQ &amp; Main Questions
+                        </h2>
+                        <p class="text-body-xl font-light text-black max-w-standard">
+                            Below is Frequently Asked Questions, along with clear and concise answers. It provides
+                            quick access to essential information, helping clarify common doubts and offering
+                            straightforward guidance on the most important topics.
+                        </p>
 
-                            <ul class="w-full max-w-standard flex flex-col gap-40 text-left pt-16">
-                                <li class="flex gap-16">
-                                    <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
-                                    <div class="flex flex-col gap-8">
-                                        <h3 class="text-nav-bar-h1 font-regular text-black">How do I start a support
-                                            request?</h3>
-                                        <p class="text-25px font-light text-black">Visit the contact page or use the
-                                            scheduling option to book a session.</p>
-                                    </div>
-                                </li>
-                                <li class="flex gap-16">
-                                    <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
-                                    <div class="flex flex-col gap-8">
-                                        <h3 class="text-nav-bar-h1 font-regular text-black">How long does a repair take?
-                                        </h3>
-                                        <p class="text-25px font-light text-black">The time depends on the type of
-                                            repair. See the repair article for estimates.</p>
-                                    </div>
-                                </li>
-                                <li class="flex gap-16">
-                                    <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
-                                    <div class="flex flex-col gap-8">
-                                        <h3 class="text-nav-bar-h1 font-regular text-black">Where can I get manuals?
-                                        </h3>
-                                        <p class="text-25px font-light text-black">Manuals are available in the
-                                            Downloads/Manuals section.</p>
-                                    </div>
-                                </li>
-                                <li class="flex gap-16">
-                                    <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
-                                    <div class="flex flex-col gap-8">
-                                        <h3 class="text-nav-bar-h1 font-regular text-black">Do Nexled products include a
-                                            warranty?</h3>
-                                        <p class="text-25px font-light text-black">Yes, warranty details are listed in
-                                            each product's documentation.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="w-full max-w-standard flex flex-col gap-40 text-left pt-16">
+                            <li class="flex gap-16">
+                                <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
+                                <div class="flex flex-col gap-8">
+                                    <h3 class="text-nav-bar-h1 font-regular text-black">How do I start a support
+                                        request?</h3>
+                                    <p class="text-25px font-light text-black">Visit the contact page or use the
+                                        scheduling option to book a session.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-16">
+                                <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
+                                <div class="flex flex-col gap-8">
+                                    <h3 class="text-nav-bar-h1 font-regular text-black">How long does a repair take?
+                                    </h3>
+                                    <p class="text-25px font-light text-black">The time depends on the type of
+                                        repair. See the repair article for estimates.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-16">
+                                <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
+                                <div class="flex flex-col gap-8">
+                                    <h3 class="text-nav-bar-h1 font-regular text-black">Where can I get manuals?
+                                    </h3>
+                                    <p class="text-25px font-light text-black">Manuals are available in the
+                                        Downloads/Manuals section.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-16">
+                                <span class="text-nav-bar-h1 font-regular text-black">&bull;</span>
+                                <div class="flex flex-col gap-8">
+                                    <h3 class="text-nav-bar-h1 font-regular text-black">Do Nexled products include a
+                                        warranty?</h3>
+                                    <p class="text-25px font-light text-black">Yes, warranty details are listed in
+                                        each product's documentation.</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 

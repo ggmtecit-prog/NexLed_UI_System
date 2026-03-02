@@ -149,29 +149,91 @@ body {
 }
 
 /* SCROLLBAR */
-* {
+/* Intentionally no global scrollbar theming.
+   Scrollbar styling is scoped to .custom-scrollbar only. */
+
+/* CUSTOM SCROLLBAR */
+.custom-scrollbar {
+  overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-green-primary) var(--color-grey-tertiary);
+  scrollbar-color: var(--color-grey-secondary) transparent;
 }
 
-*::-webkit-scrollbar {
-  width: var(--space-12);
-  height: var(--space-12);
+.custom-scrollbar::-webkit-scrollbar {
+  width: var(--space-8);
+  height: var(--space-8);
 }
 
-*::-webkit-scrollbar-track {
-  background: var(--color-grey-tertiary);
-  border-radius: var(--radius-btn);
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
+  border: none !important;
 }
 
-*::-webkit-scrollbar-thumb {
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:vertical:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:vertical:increment,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:horizontal:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:horizontal:increment,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:increment,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:increment,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:start:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:end:increment,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:start:decrement,
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment,
+.custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment,
+.custom-scrollbar::-webkit-scrollbar-button:vertical:start:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:vertical:end:increment,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:start:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-grey-secondary);
+  border-radius: var(--radius-full);
+  transition: background-color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+.custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
   background: var(--color-green-primary);
-  border-radius: var(--radius-btn);
-  border: var(--border-thin) solid var(--color-grey-tertiary);
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--color-green-secondary);
 }
 
 /* TYPOGRAPHY */
@@ -401,18 +463,6 @@ body {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-medium);
   text-transform: none;
-  box-shadow: var(--shadow-btn-default);
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
-}
-
-.badge:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
-  box-shadow: var(--shadow-btn-hover);
-}
-
-.badge:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
 }
 
 .badge:focus-visible {
@@ -583,12 +633,12 @@ textarea {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.checkbox-wrapper:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
+.checkbox-wrapper:not([aria-disabled="true"]):hover {
+  color: var(--color-black);
 }
 
-.checkbox-wrapper:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
+.checkbox-wrapper:has(input[type="checkbox"]:checked:not(:disabled)) {
+  color: var(--color-black);
 }
 
 .checkbox-wrapper input[type="checkbox"] {
@@ -602,42 +652,27 @@ textarea {
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: var(--shadow-btn-default);
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
-}
-
-.checkbox-wrapper input[type="checkbox"]::after {
-  content: "";
-  width: calc(var(--size-checkbox-sm) - var(--space-4));
-  height: calc(var(--size-checkbox-sm) - var(--space-4));
-  transform: scale(0);
-  border-radius: var(--radius-3xs);
-  background: var(--color-white);
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .checkbox-wrapper input[type="checkbox"]:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
+  background: var(--color-grey-tertiary);
   border-color: var(--color-green-secondary);
   box-shadow: var(--shadow-btn-hover);
 }
 
-.checkbox-wrapper input[type="checkbox"]:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
-}
-
 .checkbox-wrapper input[type="checkbox"]:checked {
   background: var(--color-green-primary);
-  border-color: var(--color-green-primary);
+  border: none;
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked::after {
-  transform: scale(1);
+.checkbox-wrapper input[type="checkbox"]:checked:hover {
+  background: var(--color-green-secondary);
+  border: none;
 }
 
 .checkbox-wrapper input[type="checkbox"]:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline: var(--border-standard) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
 
@@ -648,6 +683,12 @@ textarea {
   cursor: not-allowed;
 }
 
+.checkbox-wrapper input[type="checkbox"]:disabled,
+.checkbox-wrapper[aria-disabled="true"] input[type="checkbox"] {
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  background: var(--color-green-primary);
+}
+
 .checkbox-sm input[type="checkbox"] {
   width: var(--size-checkbox-sm);
   height: var(--size-checkbox-sm);
@@ -656,11 +697,13 @@ textarea {
 .checkbox-md input[type="checkbox"] {
   width: var(--size-checkbox-md);
   height: var(--size-checkbox-md);
+  border-radius: var(--radius-xs);
 }
 
 .checkbox-lg input[type="checkbox"] {
   width: var(--size-checkbox-lg);
   height: var(--size-checkbox-lg);
+  border-radius: var(--radius-sm);
 }
 
 /* RADIO BUTTONS */
@@ -670,15 +713,14 @@ textarea {
   gap: var(--space-8);
   color: var(--color-grey-primary);
   font-family: var(--font-family-base);
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.radio-wrapper:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
+.radio-wrapper:not([aria-disabled="true"]):hover {
+  color: var(--color-black);
 }
 
-.radio-wrapper:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
+.radio-wrapper:has(input[type="radio"]:checked:not(:disabled)) {
+  color: var(--color-black);
 }
 
 .radio-wrapper input[type="radio"] {
@@ -690,29 +732,26 @@ textarea {
   border-radius: var(--radius-full);
   background: var(--color-white);
   cursor: pointer;
-  box-shadow: var(--shadow-btn-default);
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .radio-wrapper input[type="radio"]:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
+  background: var(--color-grey-tertiary);
   border-color: var(--color-green-secondary);
   box-shadow: var(--shadow-btn-hover);
 }
 
-.radio-wrapper input[type="radio"]:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
-}
-
 .radio-wrapper input[type="radio"]:checked {
   background: var(--color-green-primary);
-  border-color: var(--color-green-primary);
-  box-shadow: inset 0 0 0 var(--border-standard) var(--color-white), var(--shadow-btn-default);
+  border: none;
+}
+
+.radio-wrapper input[type="radio"]:checked:hover {
+  background: var(--color-green-secondary);
+  border: none;
 }
 
 .radio-wrapper input[type="radio"]:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline: var(--border-standard) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
 
@@ -721,6 +760,12 @@ textarea {
   opacity: var(--opacity-semi);
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.radio-wrapper input[type="radio"]:disabled,
+.radio-wrapper[aria-disabled="true"] input[type="radio"] {
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  background: var(--color-green-primary);
 }
 
 .radio-sm input[type="radio"] {

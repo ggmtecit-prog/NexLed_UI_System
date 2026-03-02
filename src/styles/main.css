@@ -190,38 +190,6 @@ section {
 }
 
 
-/* Custom Scrollbar */
-@layer components {
-    .custom-scrollbar {
-        @apply overflow-y-auto;
-    }
-
-    /* Custom Scrollbar Styles using Tokens */
-    .custom-scrollbar::-webkit-scrollbar {
-        @apply w-8;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-button {
-        @apply hidden;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-track {
-        @apply bg-transparent;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        @apply bg-grey-secondary rounded-full border-thin border-white bg-clip-padding transition-colors duration-default ease-premium;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-    .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
-        @apply bg-green-primary;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:active {
-        @apply bg-green-secondary;
-    }
-}
 
 /* Dedicated Breadcrumb Link Style */
 .breadcrumb-link {
@@ -313,37 +281,6 @@ section {
     -moz-appearance: none;
 }
 
-
-@layer components {
-
-    /* Custom Scrollbar Styles using Tokens */
-    .custom-scrollbar::-webkit-scrollbar {
-        @apply w-8;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-button {
-        @apply hidden;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-track {
-        @apply bg-transparent;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        @apply bg-grey-secondary rounded-full border-thin border-white;
-        background-clip: padding-box;
-        @apply transition-colors duration-400 ease-premium;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-    .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
-        @apply bg-green-primary;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:active {
-        @apply bg-green-secondary;
-    }
-}
 
 .dropdown__menu {
     transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1), visibility 400ms cubic-bezier(0.16, 1, 0.3, 1);
