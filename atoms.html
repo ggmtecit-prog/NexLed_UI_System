@@ -131,7 +131,6 @@
             line-height: var(--line-height-body-sm);
             white-space: pre;
         }
-
     </style>
 
 
@@ -800,31 +799,77 @@
                                     Reset Link State
                                 </button>
                             </div>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
+                            <div class="flex flex-col gap-16">
+                                <div class="flex flex-wrap items-center gap-16">
+                                    <!-- Inline Live -->
+                                    <a href="#" class="link-inline" data-demo-link>
+                                        <span class="link-label">Inline Link</span>
+                                    </a>
 
-                                <!-- Standalone Live -->
-                                <a href="#" class="link" data-demo-link>
-                                    Standalone Live
-                                </a>
+                                    <!-- Inline Disabled -->
+                                    <a href="#" class="link-inline is-disabled" aria-disabled="true" tabindex="-1">
+                                        <span class="link-label">Inline Disabled</span>
+                                    </a>
+                                </div>
 
-                                <!-- Link + Icon Live -->
-                                <a href="#" class="link group no-underline" data-demo-link>
-                                    <i class="ri-delete-bin-2-line"></i>
-                                    <span>Explore System</span>
-                                    <i
-                                        class="ri-arrow-right-line transition-transform duration-400 group-hover:translate-x-2"></i>
-                                </a>
+                                <div class="flex flex-wrap items-center gap-16">
+                                    <!-- Standalone Live -->
+                                    <a href="#" class="link" data-demo-link>
+                                        <span class="link-label">Standalone Link</span>
+                                    </a>
 
-                                <!-- Navigation Live -->
-                                <a href="#" class="link-nav" data-demo-link>
-                                    Navigation Live
-                                </a>
+                                    <!-- Standalone Disabled -->
+                                    <a href="#" class="link is-disabled" aria-disabled="true" tabindex="-1">
+                                        <span class="link-label">Standalone Disabled</span>
+                                    </a>
+                                </div>
 
-                                <!-- Subtle Live -->
-                                <a href="#" class="link-subtle" data-demo-link>
-                                    Subtle Live
-                                </a>
 
+
+                                <div class="flex flex-wrap items-center gap-16">
+                                    <!-- Text + Icons Live -->
+                                    <a href="#" class="link-text-icon" data-demo-link>
+                                        <i class="ri-delete-bin-2-line"></i>
+                                        <span class="link-label">Text + Icons Link</span>
+                                        <i class="ri-arrow-right-line"></i>
+                                    </a>
+
+                                    <!-- Text + Icons Disabled -->
+                                    <a href="#" class="link-text-icon is-disabled" aria-disabled="true" tabindex="-1">
+                                        <i class="ri-delete-bin-2-line"></i>
+                                        <span class="link-label">Text + Icons Disabled</span>
+                                        <i class="ri-arrow-right-line"></i>
+                                    </a>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-16">
+                                    <!-- Subtle Live -->
+                                    <a href="#" class="link-subtle" data-demo-link>
+                                        <span class="link-label">Subtle Link</span>
+                                    </a>
+
+                                    <!-- Subtle Disabled -->
+                                    <a href="#" class="link-subtle is-disabled" aria-disabled="true" tabindex="-1">
+                                        <span class="link-label">Subtle Disabled</span>
+                                    </a>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-16">
+                                    <!-- Navigation Live -->
+                                    <a href="#" class="link-navigation" data-demo-link>
+                                        <span class="link-label">Navigation Link</span>
+                                    </a>
+
+                                    <!-- Navigation Disabled -->
+                                    <a href="#" class="link-navigation is-disabled" aria-disabled="true" tabindex="-1">
+                                        <span class="link-label">Navigation Link Disabled</span>
+                                    </a>
+
+                                    <!-- Navigation Active -->
+                                    <a href="#" class="link-navigation is-active" aria-current="page">
+                                        <span class="link-label">Navigation Link Active</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -842,16 +887,54 @@
   Reset Link State
 &lt;/button&gt;
 
-&lt;a href="#" class="link" data-demo-link&gt;Standalone Live&lt;/a&gt;
+&lt;a href="#" class="link-inline" data-demo-link&gt;
+  &lt;span class="link-label"&gt;Inline Link&lt;/span&gt;
+&lt;/a&gt;
 
-&lt;a href="#" class="link group no-underline" data-demo-link&gt;
+&lt;a href="#" class="link-inline is-disabled" aria-disabled="true" tabindex="-1"&gt;
+  &lt;span class="link-label"&gt;Inline Disabled&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link" data-demo-link&gt;
+  &lt;span class="link-label"&gt;Standalone Link&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link is-disabled" aria-disabled="true" tabindex="-1"&gt;
+  &lt;span class="link-label"&gt;Standalone Disabled&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-subtle" data-demo-link&gt;
+  &lt;span class="link-label"&gt;Subtle Link&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-subtle is-disabled" aria-disabled="true" tabindex="-1"&gt;
+  &lt;span class="link-label"&gt;Subtle Disabled&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-text-icon" data-demo-link&gt;
   &lt;i class="ri-delete-bin-2-line"&gt;&lt;/i&gt;
-  &lt;span&gt;Explore System&lt;/span&gt;
+  &lt;span class="link-label"&gt;Text + Icons Link&lt;/span&gt;
   &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
 &lt;/a&gt;
 
-&lt;a href="#" class="link-nav" data-demo-link&gt;Navigation Live&lt;/a&gt;
-&lt;a href="#" class="link-subtle" data-demo-link&gt;Subtle Live&lt;/a&gt;</code></pre>
+&lt;a href="#" class="link-text-icon is-disabled" aria-disabled="true" tabindex="-1"&gt;
+  &lt;i class="ri-delete-bin-2-line"&gt;&lt;/i&gt;
+  &lt;span class="link-label"&gt;Text + Icons Disabled&lt;/span&gt;
+  &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-navigation" data-demo-link&gt;
+  &lt;span class="link-label"&gt;Navigation Link&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-navigation is-disabled" aria-disabled="true" tabindex="-1"&gt;
+  &lt;span class="link-label"&gt;Navigation Link Disabled&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;a href="#" class="link-navigation is-active" aria-current="page"&gt;
+  &lt;span class="link-label"&gt;Navigation Link Active&lt;/span&gt;
+&lt;/a&gt;
+</code></pre>
                 </div>
             </section>
 
