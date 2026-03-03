@@ -131,6 +131,7 @@
             line-height: var(--line-height-body-sm);
             white-space: pre;
         }
+
     </style>
 
 
@@ -789,21 +790,25 @@
                 </div>
 
                 <div
-                    class="glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
-                    <div class="space-y-16 pb-20">
+                    class="hyperlinks-demo glass-panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
+                    <div class="space-y-16 pb-20 w-full">
 
                         <!-- Live Variants -->
-                        <div class="flex flex-col gap-10">
-                            <h3 class="text-sm text-grey-primary uppercase tracking-widest">Live Variants</h3>
-                            <div class="flex flex-wrap items-center gap-icon-xs">
+                        <div class="flex flex-col gap-16">
+                            <div class="flex items-center justify-between gap-12 flex-wrap">
+                                <button type="button" id="reset-hyperlinks-state" class="btn btn-secondary btn-sm">
+                                    Reset Link State
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
 
                                 <!-- Standalone Live -->
-                                <a href="#" class="link">
+                                <a href="#" class="link" data-demo-link>
                                     Standalone Live
                                 </a>
 
                                 <!-- Link + Icon Live -->
-                                <a href="#" class="link group no-underline">
+                                <a href="#" class="link group no-underline" data-demo-link>
                                     <i class="ri-delete-bin-2-line"></i>
                                     <span>Explore System</span>
                                     <i
@@ -811,33 +816,19 @@
                                 </a>
 
                                 <!-- Navigation Live -->
-                                <a href="#" class="link-nav">
+                                <a href="#" class="link-nav" data-demo-link>
                                     Navigation Live
                                 </a>
 
                                 <!-- Subtle Live -->
-                                <a href="#" class="link-subtle">
+                                <a href="#" class="link-subtle" data-demo-link>
                                     Subtle Live
                                 </a>
 
                             </div>
                         </div>
 
-                        <!-- Inline Context Live -->
-                        <div class="bg-white p-12 rounded-btn border border-grey-tertiary">
-                            <h3 class="text-sm text-grey-primary uppercase tracking-widest mb-6">Inline context
-                                example</h3>
-                            <p class="text-h3 leading-relaxed text-black">
-                                Our design system is built on <a href="#" class="link">Atomic Principles</a>,
-                                ensuring that every <a href="#" class="link">component</a>
-                                scales perfectly from <a href="#" class="link-nav text-green-secondary">Mobile</a>
-                                to <a href="#" class="link-nav text-green-secondary">Wide
-                                    Desktop</a>
-                                without losing <a href="#"
-                                    class="text-grey-secondary no-underline cursor-not-allowed">Visual
-                                    Integrity</a>.
-                            </p>
-                        </div>
+
 
                     </div>
                 </div>
@@ -847,22 +838,26 @@
                         <p class="code-snippet-label">HTML</p>
                         <button type="button" class="copy-snippet-btn" data-copy-target="snippet-links">Copy</button>
                     </div>
-                    <pre><code id="snippet-links">&lt;a href="#" class="link"&gt;Standalone Live&lt;/a&gt;
+                    <pre><code id="snippet-links">&lt;button type="button" id="reset-hyperlinks-state" class="btn btn-secondary btn-sm"&gt;
+  Reset Link State
+&lt;/button&gt;
 
-&lt;a href="#" class="link group no-underline"&gt;
+&lt;a href="#" class="link" data-demo-link&gt;Standalone Live&lt;/a&gt;
+
+&lt;a href="#" class="link group no-underline" data-demo-link&gt;
   &lt;i class="ri-delete-bin-2-line"&gt;&lt;/i&gt;
   &lt;span&gt;Explore System&lt;/span&gt;
   &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
 &lt;/a&gt;
 
-&lt;a href="#" class="link-nav"&gt;Navigation Live&lt;/a&gt;
-&lt;a href="#" class="link-subtle"&gt;Subtle Live&lt;/a&gt;</code></pre>
+&lt;a href="#" class="link-nav" data-demo-link&gt;Navigation Live&lt;/a&gt;
+&lt;a href="#" class="link-subtle" data-demo-link&gt;Subtle Live&lt;/a&gt;</code></pre>
                 </div>
             </section>
 
             <section id="loading">
                 <div class="flex items-center gap-12 mb-24">
-                    <h2 class="text-h2 font-semibold">loading</h2>
+                    <h2 class="text-h2 font-semibold">Loading</h2>
                 </div>
 
                 <div
@@ -1331,6 +1326,91 @@
                             </li>
                         </ul>
                     </div>
+
+                    <div class="w-full flex flex-col items-center py-40 px-64">
+                        <div class="w-full max-w-standard flex flex-col gap-48 text-left">
+                            <article class="flex flex-col gap-12">
+                                <h3 class="text-nav-bar-h1 font-regular text-black">What are cookies?</h3>
+                                <p class="text-25px font-light text-black pl-32">
+                                    Cookies are small text files placed on the user's equipment or mobile device
+                                    (henceforth collectively referred to as "devices"), via a browser. The placement
+                                    of cookies allows the website to recognize your device on a next visit. When we
+                                    use the term cookies in this policy we refer to all files that collect
+                                    information in this way. Depending on the type of cookies, the refusal to install
+                                    them may result in the impossibility of accessing some of their areas or
+                                    receiving personalized information. At any time, through your browser, you can
+                                    decide to be notified of the receipt of cookies, as well as block their
+                                    installation on your devices.
+                                </p>
+                            </article>
+
+                            <article class="flex flex-col gap-12">
+                                <h3 class="text-nav-bar-h1 font-regular text-black">What are cookies?</h3>
+                                <p class="text-25px font-light text-black pl-32">
+                                    Cookies are small text files placed on the user's equipment or mobile device
+                                    (henceforth collectively referred to as "devices"), via a browser. The placement
+                                    of cookies allows the website to recognize your device on a next visit. When we
+                                    use the term cookies in this policy we refer to all files that collect
+                                    information in this way. Depending on the type of cookies, the refusal to install
+                                    them may result in the impossibility of accessing some of their areas or
+                                    receiving personalized information. At any time, through your browser, you can
+                                    decide to be notified of the receipt of cookies, as well as block their
+                                    installation on your devices.
+                                </p>
+                            </article>
+
+                            <article class="flex flex-col gap-12">
+                                <h3 class="text-nav-bar-h1 font-regular text-black">What are cookies?</h3>
+                                <p class="text-25px font-light text-black pl-32">
+                                    Cookies are small text files placed on the user's equipment or mobile device
+                                    (henceforth collectively referred to as "devices"), via a browser. The placement
+                                    of cookies allows the website to recognize your device on a next visit. When we
+                                    use the term cookies in this policy we refer to all files that collect
+                                    information in this way. Depending on the type of cookies, the refusal to install
+                                    them may result in the impossibility of accessing some of their areas or
+                                    receiving personalized information. At any time, through your browser, you can
+                                    decide to be notified of the receipt of cookies, as well as block their
+                                    installation on your devices.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="w-full py-40 px-64">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-32 items-start">
+                            <div class="md:col-span-5">
+                                <div class="p-12 border border-grey-secondary rounded-md shadow-btn-default bg-white">
+                                    <img src="public/product-slide-1.png"
+                                        alt="Nexled product visual supporting FAQ and main questions content"
+                                        class="w-full object-cover rounded-md">
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-7 flex flex-col gap-24 text-left">
+                                <h2 class="text-nav-bar-h1 font-medium text-black">
+                                    FAQ &amp; Main Questions
+                                </h2>
+                                <p class="text-body-xl font-light text-black max-w-standard">
+                                    Below is Frequently Asked Questions, along with clear and concise answers. It
+                                    provides quick access to essential information, helping clarify common doubts and
+                                    offering straightforward guidance on the most important topics.
+                                </p>
+
+                                <ul class="w-full max-w-standard flex flex-col gap-40 text-left pt-16">
+                                    <li class="flex gap-16">
+                                        <span class="text-38px font-regular text-black">&bull;</span>
+                                        <div class="flex flex-col gap-8">
+                                            <h3 class="text-38px font-regular text-black">How do I start a start</h3>
+                                            <p class="text-25px font-light text-black">Visit the contact page or use
+                                                the
+                                                scheduling option to book a session.</p>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="code-snippet">
@@ -1415,6 +1495,29 @@
                 }
             });
         });
+
+        const hyperlinksDemo = document.querySelector('#hyperlinks .hyperlinks-demo');
+        const resetHyperlinksStateButton = document.getElementById('reset-hyperlinks-state');
+
+        if (hyperlinksDemo) {
+            const demoLinks = hyperlinksDemo.querySelectorAll('[data-demo-link]');
+
+            demoLinks.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    link.classList.add('is-visited');
+                });
+            });
+
+            if (resetHyperlinksStateButton) {
+                resetHyperlinksStateButton.addEventListener('click', () => {
+                    demoLinks.forEach((link) => {
+                        link.classList.remove('is-visited');
+                        link.blur();
+                    });
+                });
+            }
+        }
     </script>
 </body>
 

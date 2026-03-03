@@ -859,6 +859,69 @@ textarea {
   outline-offset: var(--focus-ring-offset);
 }
 
+/* Hyperlinks demo overrides (Atoms page) */
+.hyperlinks-demo .link,
+.hyperlinks-demo .link-nav,
+.hyperlinks-demo .link-subtle {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.hyperlinks-demo .link:hover,
+.hyperlinks-demo .link-nav:hover,
+.hyperlinks-demo .link-subtle:hover,
+.hyperlinks-demo .link:active,
+.hyperlinks-demo .link-nav:active,
+.hyperlinks-demo .link-subtle:active {
+  transform: none;
+  box-shadow: none;
+}
+
+.hyperlinks-demo .link:visited {
+  color: var(--color-green-primary);
+}
+
+.hyperlinks-demo .link-nav:visited {
+  color: var(--color-black);
+}
+
+.hyperlinks-demo .link-subtle:visited {
+  color: var(--color-grey-primary);
+  text-decoration-color: var(--color-grey-secondary);
+}
+
+.hyperlinks-demo .link.is-visited,
+.hyperlinks-demo .link-nav.is-visited {
+  color: var(--color-link-visited);
+}
+
+.hyperlinks-demo .link-subtle.is-visited {
+  color: var(--color-link-visited);
+  text-decoration-color: var(--color-link-visited);
+}
+
+.hyperlinks-demo .inline-link {
+  color: var(--color-green-primary);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-thin);
+  text-underline-offset: var(--space-4);
+  transition: color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.hyperlinks-demo .inline-link:hover {
+  color: var(--color-green-secondary);
+}
+
+.hyperlinks-demo .inline-link:visited {
+  color: var(--color-green-primary);
+}
+
+.hyperlinks-demo .inline-link.is-visited {
+  color: var(--color-link-visited);
+  text-decoration-color: var(--color-link-visited);
+}
+
 /* TOOLTIPS */
 .tooltip-wrapper {
   position: relative;

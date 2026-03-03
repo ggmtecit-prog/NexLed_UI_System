@@ -1,5 +1,8 @@
 export const fontSizes = {
   'display': '48px',
+  '38px': '38px',
+  '45px': '45px',
+  '25px': '25px',
   'button-lg': '32px',
   'h1': '36px',
   'h2': '30px',
