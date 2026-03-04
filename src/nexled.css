@@ -161,12 +161,35 @@ body {
   scrollbar-color: var(--color-grey-secondary) transparent;
 }
 
+/* Firefox fallback: approximate interaction states with container state selectors. */
+.custom-scrollbar:hover,
+.custom-scrollbar.is-scrolling {
+  scrollbar-color: var(--color-green-secondary) transparent;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: var(--space-8);
   height: var(--space-8);
 }
 
 .custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-button:increment,
+.custom-scrollbar::-webkit-scrollbar-button:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:single-button,
+.custom-scrollbar::-webkit-scrollbar-button:double-button,
+.custom-scrollbar::-webkit-scrollbar-button:single-button:increment,
+.custom-scrollbar::-webkit-scrollbar-button:single-button:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:double-button:increment,
+.custom-scrollbar::-webkit-scrollbar-button:double-button:decrement {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -233,9 +256,12 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-.custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
+.custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb {
+  background: var(--color-green-secondary);
+}
+
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
-  background: var(--color-green-primary);
+  background: var(--color-green-secondary);
 }
 
 /* TYPOGRAPHY */
@@ -1843,6 +1869,89 @@ textarea {
 .divider-brand {
   height: var(--border-thick);
   background: var(--color-green-primary);
+}
+
+/* PAGE HEADER */
+.page-header-hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-40) var(--space-64);
+  gap: var(--space-24);
+  margin-bottom: var(--space-48);
+}
+
+/* LOADING */
+.loading-grid {
+  width: 100%;
+  max-width: var(--layout-standard);
+}
+
+.loading-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.loading-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.loading-variant-title {
+  margin: 0;
+  color: var(--color-black);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-semibold);
+}
+
+.loading-size-label {
+  margin: 0;
+  color: var(--color-grey-primary);
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+}
+
+.loading-surface-light,
+.loading-surface-dark {
+  width: 100%;
+  min-height: calc(var(--size-btn-icon-lg) + var(--space-24));
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-surface-light {
+  background: var(--color-white);
+  border: var(--border-thin) solid var(--color-grey-secondary);
+}
+
+.loading-surface-dark {
+  background: var(--color-black);
+  border: var(--border-thin) solid var(--color-grey-primary);
+}
+
+.spinner-sm {
+  width: calc(var(--space-16) * 2);
+  height: calc(var(--space-16) * 2);
+}
+
+.spinner-md {
+  width: var(--space-48);
+  height: var(--space-48);
+}
+
+.spinner-lg {
+  width: var(--size-btn-icon-lg);
+  height: var(--size-btn-icon-lg);
 }
 
 /* SPINNER */

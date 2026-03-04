@@ -22,49 +22,6 @@
 
     <link rel="stylesheet" href="src/nexled.css">
 
-    <style type="text/tailwindcss">
-        @layer components {
-            .spinner-container {
-                @apply flex items-center justify-center;
-            }
-
-            .spinner svg path {
-                fill: transparent;
-                stroke-width: 8;
-                stroke-linecap: round;
-                transform-origin: center;
-            }
-
-            .spinner-track {
-                @apply stroke-grey-tertiary;
-            }
-
-            .spinner-anim {
-                @apply stroke-green-secondary;
-                stroke-dasharray: 100, 226;
-                animation: rotate-path 2s linear infinite;
-            }
-
-            /* White Variant */
-            .spinner-white .spinner-track {
-                @apply stroke-white/20;
-            }
-
-            .spinner-white .spinner-anim {
-                @apply stroke-white;
-            }
-        }
-
-        @keyframes rotate-path {
-            0% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -326; }
-        }
-
-    </style>
-
-
-
-
 </head>
 
 <body class="bg-grey-tertiary text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
@@ -161,9 +118,9 @@
     <main class="flex-1 mt-[160px] px-32 pb-64 max-w-standard mx-auto w-full">
 
         <!-- PAGE HEADER -->
-        <header class="mb-48">
-            <h1 class="text-display font-semibold mb-12">Atoms</h1>
-            <p class="text-body-lg text-grey-primary max-w-readable font-light">
+        <header class="page-header-hero">
+            <h1 class="text-hero-title font-medium text-black">Atoms</h1>
+            <p class="text-hero-subtitle font-light text-black max-w-readable">
                 Fundamental elements that cannot be broken down further.
             </p>
         </header>
@@ -682,71 +639,15 @@
 
                 <div
                     class="panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
-                    <div>
+                    <div
+                        class="w-full max-w-standard grid grid-cols-1 md:grid-cols-2 gap-24 mb-20 items-start loading-grid">
+                        <div class="loading-column">
+                            <h3 class="loading-variant-title">Light Variant</h3>
 
-
-
-                        <!-- Default Row -->
-                        <h3 class="col-span-3 text-grey-primary font-light text-body-xs uppercase mb-[-12px]">
-                            Brand Variants (Normal
-                            Context)</h3>
-
-                        <div class="flex flex-col items-center gap-12">
-                            <h4 class="text-grey-primary font-light text-[10px] uppercase">Small (32px)</h4>
-                            <div
-                                class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                <div class="spinner w-32 h-32">
-                                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                        <path class="spinner-track"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                        <path class="spinner-anim"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Medium -->
-                        <div class="flex flex-col items-center gap-12">
-                            <h4 class="text-grey-primary font-light text-[10px] uppercase">Medium (48px)</h4>
-                            <div
-                                class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                <div class="spinner w-48 h-48">
-                                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                        <path class="spinner-track"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                        <path class="spinner-anim"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Large -->
-                        <div class="flex flex-col items-center gap-12">
-                            <h4 class="text-grey-primary font-light text-[10px] uppercase">Large (94px)</h4>
-                            <div
-                                class="bg-white p-24 rounded-lg border border-grey-secondary flex items-center justify-center min-h-[120px] w-full">
-                                <div class="spinner w-btn-icon-lg h-btn-icon-lg">
-                                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                        <path class="spinner-track"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                        <path class="spinner-anim"
-                                            d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <!-- White Variant Row -->
-                            <h3 class="col-span-3 text-grey-primary font-light text-body-xs uppercase mb-[-12px] mt-12">
-                                White Variants (Dark
-                                Context)</h3>
-
-                            <div class="flex flex-col items-center gap-12">
-                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Small (32px)</h4>
-                                <div
-                                    class="bg-black p-24 rounded-lg border border-white/10 flex items-center justify-center min-h-[120px] w-full">
-                                    <div class="spinner spinner-white w-32 h-32">
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Small (32px)</h4>
+                                <div class="loading-surface-light">
+                                    <div class="spinner spinner-sm">
                                         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 100 100">
                                             <path class="spinner-track"
@@ -758,11 +659,10 @@
                                 </div>
                             </div>
 
-                            <div class="flex flex-col items-center gap-12">
-                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Medium (48px)</h4>
-                                <div
-                                    class="bg-black p-24 rounded-lg border border-white/10 flex items-center justify-center min-h-[120px] w-full">
-                                    <div class="spinner spinner-white w-48 h-48">
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Medium (48px)</h4>
+                                <div class="loading-surface-light">
+                                    <div class="spinner spinner-md">
                                         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 100 100">
                                             <path class="spinner-track"
@@ -774,11 +674,10 @@
                                 </div>
                             </div>
 
-                            <div class="flex flex-col items-center gap-12">
-                                <h4 class="text-grey-primary font-light text-[10px] uppercase">Large (94px)</h4>
-                                <div
-                                    class="bg-black p-24 rounded-lg border border-white/10 flex items-center justify-center min-h-[120px] w-full">
-                                    <div class="spinner spinner-white w-btn-icon-lg h-btn-icon-lg">
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Large (94px)</h4>
+                                <div class="loading-surface-light">
+                                    <div class="spinner spinner-lg">
                                         <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 100 100">
                                             <path class="spinner-track"
@@ -791,12 +690,54 @@
                             </div>
                         </div>
 
-                        <!-- 2. LIVE CONTEXTUAL DEMOS -->
+                        <div class="loading-column">
+                            <h3 class="loading-variant-title">Dark Variant</h3>
 
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Small (32px)</h4>
+                                <div class="loading-surface-dark">
+                                    <div class="spinner spinner-white spinner-sm">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Medium (48px)</h4>
+                                <div class="loading-surface-dark">
+                                    <div class="spinner spinner-white spinner-md">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
 
-
-
+                            <div class="loading-row">
+                                <h4 class="loading-size-label">Large (94px)</h4>
+                                <div class="loading-surface-dark">
+                                    <div class="spinner spinner-white spinner-lg">
+                                        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 100 100">
+                                            <path class="spinner-track"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                            <path class="spinner-anim"
+                                                d="M 50 5 L 75 5 A 20 20 0 0 1 95 25 L 95 75 A 20 20 0 0 1 75 95 L 25 95 A 20 20 0 0 1 5 75 L 5 25 A 20 20 0 0 1 25 5 L 50 5 Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -809,46 +750,25 @@
 
                 <div
                     class="panel p-32 mb-24 flex flex-wrap gap-32 items-center justify-center p-40 border rounded-lg bg-white border-grey-secondary">
-
-                    <div>
-
-
-                        <!-- Demo Card 1 -->
-                        <div
-                            class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4">
-                            <div
-                                class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12">
-                                <h2 class="text-body font-semibold mb-16 text-black">Interface Scroll</h2>
+                    <div class="card w-btn-lg overflow-hidden">
+                        <div class="custom-scrollbar scrollbar-demo h-thumb-md overflow-y-auto">
+                            <div class="p-24 pr-16">
+                                <h3 class="card-title">Interface Scroll</h3>
+                                <p class="card-text mb-16">
+                                    This scrollbar turns green-secondary while hovering, scrolling, and dragging.
+                                </p>
                                 <p class="text-body-sm text-grey-primary mb-16 leading-relaxed">
-                                    This scrollbar uses the brand's green palette to provide high recognition
-                                    while maintaining
-                                    structural elegance.
+                                    Scroll this area to verify interaction states and right-side spacing.
                                 </p>
                                 <div
-                                    class="h-[600px] rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-20">
+                                    class="h-btn-xl rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-16">
+                                </div>
+                                <div
+                                    class="h-btn-lg rounded-sm bg-gradient-to-b from-green-hover-text to-grey-tertiary mb-20">
                                 </div>
                                 <p class="text-body-xs text-grey-primary text-center">End of content.</p>
                             </div>
                         </div>
-                        <!-- Demo Card 2 -->
-                        <div
-                            class="w-btn-lg h-[300px] bg-black border border-white/faint shadow-btn-default rounded-xl overflow-hidden pr-4">
-                            <div
-                                class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12 text-white">
-                                <h2 class="text-body font-semibold mb-16 text-white">Dark Context</h2>
-                                <p class="text-body-sm text-grey-primary mb-16 leading-relaxed opacity-muted">
-                                    In dark environments, the green thumb remains visible and provides a premium
-                                    architectural accent.
-                                </p>
-                                <div class="h-[600px] rounded-sm bg-gradient-to-b from-white/5 to-white/10 mb-20">
-                                </div>
-                                <p class="text-body-xs text-grey-primary text-center opacity-semi">End of
-                                    content.</p>
-                            </div>
-                        </div>
-
-
-
                     </div>
                 </div>
 
