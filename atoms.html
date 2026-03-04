@@ -459,7 +459,7 @@
 
                             <!-- LARGE SIZE -->
                             <div class="flex items-center gap-24">
-                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Large
+                                <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Large
                                 </h3>
                                 <div class="flex items-center gap-16">
                                     <div class="badge badge-primary badge-lg"><span>Primary</span></div>
@@ -471,7 +471,7 @@
 
                             <!-- MEDIUM SIZE -->
                             <div class="flex items-center gap-24">
-                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Medium
+                                <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Medium
                                 </h3>
                                 <div class="flex items-center gap-16">
                                     <div class="badge badge-primary badge-md"><span>Primary</span></div>
@@ -483,7 +483,7 @@
 
                             <!-- SMALL SIZE -->
                             <div class="flex items-center gap-24">
-                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Small
+                                <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Small
                                 </h3>
                                 <div class="flex items-center gap-16">
                                     <div class="badge badge-primary badge-sm"><span>Primary</span></div>
@@ -495,7 +495,7 @@
 
                             <!-- DOT INDICATOR -->
                             <div class="flex items-center gap-24">
-                                <h3 class="text-grey-primary font-light text-body-xs uppercase w-32 shrink-0">Dot
+                                <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Dot
                                 </h3>
                                 <div class="flex items-center gap-16">
                                     <div class="badge badge-primary badge-dot"></div>
@@ -567,11 +567,9 @@
                             </span>
                             <span class="text-body">Large</span>
                         </label>
-                        <label class="checkbox-wrapper checkbox-lg" aria-disabled="true">
+                        <label class="checkbox-wrapper checkbox-lg is-disabled" aria-disabled="true">
                             <span class="relative inline-flex items-center justify-center">
                                 <input type="checkbox" class="peer" disabled checked>
-                                <i
-                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
                             </span>
                             <span class="text-body">Large</span>
                         </label>
@@ -595,11 +593,9 @@
                             </span>
                             <span class="text-body-sm">Medium</span>
                         </label>
-                        <label class="checkbox-wrapper checkbox-md" aria-disabled="true">
+                        <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
                             <span class="relative inline-flex items-center justify-center">
                                 <input type="checkbox" class="peer" disabled checked>
-                                <i
-                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
                             </span>
                             <span class="text-body-sm">Medium</span>
                         </label>
@@ -623,11 +619,9 @@
                             </span>
                             <span class="text-body-xs">Small</span>
                         </label>
-                        <label class="checkbox-wrapper checkbox-sm" aria-disabled="true">
+                        <label class="checkbox-wrapper checkbox-sm is-disabled" aria-disabled="true">
                             <span class="relative inline-flex items-center justify-center">
                                 <input type="checkbox" class="peer" disabled checked>
-                                <i
-                                    class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
                             </span>
                             <span class="text-body-xs">Small</span>
                         </label>
@@ -651,11 +645,10 @@
                             </span>
                             <span class="text-body-sm">Indeterminate</span>
                         </label>
-                        <label class="checkbox-wrapper checkbox-md" aria-disabled="true">
+                        <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
                             <span class="relative inline-flex items-center justify-center">
                                 <input type="checkbox" data-state="indeterminate" class="peer" disabled checked>
-                                <i
-                                    class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
+
                             </span>
                             <span class="text-body-sm">Indeterminate</span>
                         </label>
@@ -720,7 +713,7 @@
                             <input type="radio" name="radio-lg">
                             <span class="text-body">Large</span>
                         </label>
-                        <label class="radio-wrapper radio-lg" aria-disabled="true">
+                        <label class="radio-wrapper radio-lg is-disabled" aria-disabled="true">
                             <input type="radio" name="radio-lg" disabled checked>
                             <span class="text-body">Large</span>
                         </label>
@@ -736,7 +729,7 @@
                             <input type="radio" name="radio-md">
                             <span class="text-body-sm">Medium</span>
                         </label>
-                        <label class="radio-wrapper radio-md" aria-disabled="true">
+                        <label class="radio-wrapper radio-md is-disabled" aria-disabled="true">
                             <input type="radio" name="radio-md" disabled checked>
                             <span class="text-body-sm">Medium</span>
                         </label>
@@ -752,7 +745,7 @@
                             <input type="radio" name="radio-sm">
                             <span class="text-body-xs">Small</span>
                         </label>
-                        <label class="radio-wrapper radio-sm" aria-disabled="true">
+                        <label class="radio-wrapper radio-sm is-disabled" aria-disabled="true">
                             <input type="radio" name="radio-sm" disabled checked>
                             <span class="text-body-xs">Small</span>
                         </label>
@@ -856,18 +849,13 @@
 
                                 <div class="flex flex-wrap items-center gap-16">
                                     <!-- Navigation Live -->
-                                    <a href="#" class="link-navigation" data-demo-link>
+                                    <a href="#" class="link-navigation">
                                         <span class="link-label">Navigation Link</span>
                                     </a>
 
                                     <!-- Navigation Disabled -->
                                     <a href="#" class="link-navigation is-disabled" aria-disabled="true" tabindex="-1">
                                         <span class="link-label">Navigation Link Disabled</span>
-                                    </a>
-
-                                    <!-- Navigation Active -->
-                                    <a href="#" class="link-navigation is-active" aria-current="page">
-                                        <span class="link-label">Navigation Link Active</span>
                                     </a>
                                 </div>
                             </div>
@@ -923,16 +911,12 @@
   &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
 &lt;/a&gt;
 
-&lt;a href="#" class="link-navigation" data-demo-link&gt;
+&lt;a href="#" class="link-navigation"&gt;
   &lt;span class="link-label"&gt;Navigation Link&lt;/span&gt;
 &lt;/a&gt;
 
 &lt;a href="#" class="link-navigation is-disabled" aria-disabled="true" tabindex="-1"&gt;
   &lt;span class="link-label"&gt;Navigation Link Disabled&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-navigation is-active" aria-current="page"&gt;
-  &lt;span class="link-label"&gt;Navigation Link Active&lt;/span&gt;
 &lt;/a&gt;
 </code></pre>
                 </div>
@@ -1525,21 +1509,8 @@
 
 
 
+    <script src="src/nexled.js"></script>
     <script>
-        // Add .is-scrolling class when user scrolls with mouse wheel
-        const scrollContainers = document.querySelectorAll('.custom-scrollbar');
-
-        scrollContainers.forEach(container => {
-            let scrollTimeout;
-            container.addEventListener('scroll', () => {
-                container.classList.add('is-scrolling');
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    container.classList.remove('is-scrolling');
-                }, 1000);
-            });
-        });
-
         const copySnippetButtons = document.querySelectorAll('.copy-snippet-btn');
 
         copySnippetButtons.forEach((button) => {
@@ -1579,28 +1550,6 @@
             });
         });
 
-        const hyperlinksDemo = document.querySelector('#hyperlinks .hyperlinks-demo');
-        const resetHyperlinksStateButton = document.getElementById('reset-hyperlinks-state');
-
-        if (hyperlinksDemo) {
-            const demoLinks = hyperlinksDemo.querySelectorAll('[data-demo-link]');
-
-            demoLinks.forEach((link) => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    link.classList.add('is-visited');
-                });
-            });
-
-            if (resetHyperlinksStateButton) {
-                resetHyperlinksStateButton.addEventListener('click', () => {
-                    demoLinks.forEach((link) => {
-                        link.classList.remove('is-visited');
-                        link.blur();
-                    });
-                });
-            }
-        }
     </script>
 </body>
 

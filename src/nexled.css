@@ -520,7 +520,6 @@ body {
   border-radius: var(--radius-xs);
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-overline);
-  text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
@@ -637,11 +636,11 @@ textarea {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.checkbox-wrapper:not([aria-disabled="true"]):hover {
+.checkbox-wrapper:not([aria-disabled="true"]):not(.is-disabled):hover {
   color: var(--color-black);
 }
 
-.checkbox-wrapper:has(input[type="checkbox"]:checked:not(:disabled)) {
+.checkbox-wrapper:not(.is-disabled):has(input[type="checkbox"]:checked:not(:disabled)) {
   color: var(--color-black);
 }
 
@@ -681,16 +680,18 @@ textarea {
 }
 
 .checkbox-wrapper input[type="checkbox"]:disabled,
-.checkbox-wrapper[aria-disabled="true"] {
+.checkbox-wrapper[aria-disabled="true"],
+.checkbox-wrapper.is-disabled {
   opacity: var(--opacity-semi);
   pointer-events: none;
   cursor: not-allowed;
 }
 
 .checkbox-wrapper input[type="checkbox"]:disabled,
-.checkbox-wrapper[aria-disabled="true"] input[type="checkbox"] {
+.checkbox-wrapper[aria-disabled="true"] input[type="checkbox"],
+.checkbox-wrapper.is-disabled input[type="checkbox"] {
   border: var(--border-thin) solid var(--color-grey-secondary);
-  background: var(--color-green-primary);
+  background: var(--color-grey-tertiary);
 }
 
 .checkbox-sm input[type="checkbox"] {
@@ -719,11 +720,11 @@ textarea {
   font-family: var(--font-family-base);
 }
 
-.radio-wrapper:not([aria-disabled="true"]):hover {
+.radio-wrapper:not([aria-disabled="true"]):not(.is-disabled):hover {
   color: var(--color-black);
 }
 
-.radio-wrapper:has(input[type="radio"]:checked:not(:disabled)) {
+.radio-wrapper:not(.is-disabled):has(input[type="radio"]:checked:not(:disabled)) {
   color: var(--color-black);
 }
 
@@ -760,16 +761,18 @@ textarea {
 }
 
 .radio-wrapper input[type="radio"]:disabled,
-.radio-wrapper[aria-disabled="true"] {
+.radio-wrapper[aria-disabled="true"],
+.radio-wrapper.is-disabled {
   opacity: var(--opacity-semi);
   pointer-events: none;
   cursor: not-allowed;
 }
 
 .radio-wrapper input[type="radio"]:disabled,
-.radio-wrapper[aria-disabled="true"] input[type="radio"] {
+.radio-wrapper[aria-disabled="true"] input[type="radio"],
+.radio-wrapper.is-disabled input[type="radio"] {
   border: var(--border-thin) solid var(--color-grey-secondary);
-  background: var(--color-green-primary);
+  background: var(--color-grey-tertiary);
 }
 
 .radio-sm input[type="radio"] {
@@ -865,6 +868,11 @@ textarea {
   transition: transform var(--motion-duration-default) var(--motion-ease-premium);
 }
 
+.link-text-icon i {
+  transform: translateY(0);
+  transition: transform var(--motion-duration-default) var(--motion-ease-premium);
+}
+
 .link:hover,
 .link-inline:hover,
 .link-subtle:hover,
@@ -886,6 +894,10 @@ textarea {
   transform: translateY(calc(var(--press-offset) * -1));
 }
 
+.link-text-icon:hover i {
+  transform: translateY(calc(var(--press-offset) * -1));
+}
+
 .link:hover::after,
 .link-inline:hover::after,
 .link-subtle:hover::after,
@@ -895,47 +907,51 @@ textarea {
   background: var(--color-green-secondary);
 }
 
-.link:visited,
-.link-inline:visited,
-.link-text-icon:visited {
+.link:visited:not(:hover),
+.link-inline:visited:not(:hover),
+.link-text-icon:visited:not(:hover) {
   color: var(--color-green-primary);
 }
 
-.link-subtle:visited {
+.link-subtle:visited:not(:hover) {
   color: var(--color-grey-primary);
 }
 
-.link-navigation:visited,
-.link-navigation.is-visited {
+.link-navigation:visited:not(:hover),
+.link-navigation.is-visited:not(:hover) {
   color: var(--color-grey-primary);
 }
 
-.link-navigation:active,
 .link-navigation.is-active {
   color: var(--color-black);
 }
 
-.link:visited::after,
-.link-inline:visited::after,
-.link-text-icon:visited::after {
+.link-navigation:hover,
+.link-navigation.is-active:hover {
+  color: var(--color-green-secondary);
+}
+
+.link:visited:not(:hover)::after,
+.link-inline:visited:not(:hover)::after,
+.link-text-icon:visited:not(:hover)::after {
   background: var(--color-green-hover-icons);
 }
 
-.link-subtle:visited::after {
+.link-subtle:visited:not(:hover)::after {
   background: var(--color-grey-primary);
 }
 
-.link.is-visited,
-.link-inline.is-visited,
-.link-subtle.is-visited,
-.link-text-icon.is-visited {
+.link.is-visited:not(:hover),
+.link-inline.is-visited:not(:hover),
+.link-subtle.is-visited:not(:hover),
+.link-text-icon.is-visited:not(:hover) {
   color: var(--color-link-visited);
 }
 
-.link.is-visited::after,
-.link-inline.is-visited::after,
-.link-subtle.is-visited::after,
-.link-text-icon.is-visited::after {
+.link.is-visited:not(:hover)::after,
+.link-inline.is-visited:not(:hover)::after,
+.link-subtle.is-visited:not(:hover)::after,
+.link-text-icon.is-visited:not(:hover)::after {
   background: var(--color-link-visited);
 }
 
@@ -960,6 +976,21 @@ textarea {
   color: var(--color-grey-secondary);
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.link.is-disabled .link-label,
+.link[aria-disabled="true"] .link-label,
+.link-inline.is-disabled .link-label,
+.link-inline[aria-disabled="true"] .link-label,
+.link-subtle.is-disabled .link-label,
+.link-subtle[aria-disabled="true"] .link-label,
+.link-text-icon.is-disabled .link-label,
+.link-text-icon[aria-disabled="true"] .link-label,
+.link-text-icon.is-disabled i,
+.link-text-icon[aria-disabled="true"] i,
+.link-navigation.is-disabled .link-label,
+.link-navigation[aria-disabled="true"] .link-label {
+  color: var(--color-grey-secondary);
 }
 
 .link.is-disabled::after,
