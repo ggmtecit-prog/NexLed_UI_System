@@ -358,19 +358,20 @@ body {
 
 .btn-secondary:hover {
   color: var(--color-green-secondary);
-  border-color: var(--color-green-secondary);
+  border-color: var(--color-green-hover-icons);
 }
 
 .btn-ghost {
   background: transparent;
   color: var(--color-grey-primary);
   border-color: transparent;
-  box-shadow: transparent;
+  box-shadow: none;
 }
 
 .btn-ghost:hover {
   background: var(--color-grey-tertiary);
   color: var(--color-green-secondary);
+  box-shadow: none;
 }
 
 .btn-danger {
@@ -917,12 +918,12 @@ textarea {
   color: var(--color-grey-primary);
 }
 
-.link-navigation:visited:not(:hover),
-.link-navigation.is-visited:not(:hover) {
+.link-navigation:visited:not(:hover):not(.is-active),
+.link-navigation.is-visited:not(:hover):not(.is-active) {
   color: var(--color-grey-primary);
 }
 
-.link-navigation.is-active {
+.link-navigation.is-active:not(:hover) {
   color: var(--color-black);
 }
 
