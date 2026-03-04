@@ -59,79 +59,10 @@
             0% { stroke-dashoffset: 0; }
             100% { stroke-dashoffset: -326; }
         }
-        
+
     </style>
 
-    <style>
-        .code-snippet {
-            margin-top: var(--space-24);
-            border: var(--border-thin) solid var(--color-grey-secondary);
-            border-radius: var(--radius-lg);
-            background: var(--color-white);
-            box-shadow: var(--shadow-btn-default);
-            overflow: hidden;
-        }
 
-        .code-snippet-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--space-12) var(--space-16);
-            background: var(--color-grey-tertiary);
-            border-bottom: var(--border-thin) solid var(--color-grey-secondary);
-        }
-
-        .code-snippet-label {
-            margin: 0;
-            color: var(--color-grey-primary);
-            font-family: var(--font-family-base);
-            font-size: var(--font-size-body-sm);
-            font-weight: var(--font-weight-semibold);
-            line-height: var(--line-height-body-sm);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .copy-snippet-btn {
-            border: var(--border-thin) solid var(--color-green-primary);
-            border-radius: var(--radius-xs);
-            background: var(--color-green-primary);
-            color: var(--color-white);
-            padding: var(--space-4) var(--space-12);
-            font-family: var(--font-family-base);
-            font-size: var(--font-size-body-xs);
-            font-weight: var(--font-weight-medium);
-            line-height: var(--line-height-body-xs);
-            cursor: pointer;
-            transition: all var(--motion-duration-default) var(--motion-ease-premium);
-        }
-
-        .copy-snippet-btn:hover {
-            background: var(--color-green-secondary);
-            border-color: var(--color-green-secondary);
-        }
-
-        .copy-snippet-btn:focus-visible {
-            outline: var(--focus-ring-width) solid var(--focus-ring-color);
-            outline-offset: var(--focus-ring-offset);
-        }
-
-        .code-snippet pre {
-            margin: 0;
-            padding: var(--space-16);
-            background: var(--color-black);
-            color: var(--color-white);
-            overflow-x: auto;
-        }
-
-        .code-snippet code {
-            display: block;
-            font-family: "Courier New", monospace;
-            font-size: var(--font-size-body-xs);
-            line-height: var(--line-height-body-sm);
-            white-space: pre;
-        }
-    </style>
 
 
 </head>
@@ -404,44 +335,6 @@
 
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="btn btn-secondary btn-sm copy-snippet-btn"
-                            data-copy-target="snippet-buttons">Copy</button>
-                    </div>
-                    <pre><code id="snippet-buttons">&lt;!-- XL --&gt;
-&lt;button class="btn btn-primary btn-lg"&gt;Primary XL&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-lg"&gt;Secondary XL&lt;/button&gt;
-&lt;button class="btn btn-ghost btn-lg"&gt;Ghost XL&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-icon btn-lg" aria-pressed="false"&gt;
-  &lt;i class="ri-delete-bin-2-line text-icon-xxl"&gt;&lt;/i&gt;
-&lt;/button&gt;
-
-&lt;!-- L --&gt;
-&lt;button class="btn btn-primary btn-md"&gt;Primary L&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-md"&gt;Secondary L&lt;/button&gt;
-&lt;button class="btn btn-ghost btn-md"&gt;Ghost L&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-icon btn-md" aria-pressed="false"&gt;
-  &lt;i class="ri-delete-bin-2-line text-icon-xxl"&gt;&lt;/i&gt;
-&lt;/button&gt;
-
-&lt;!-- M --&gt;
-&lt;button class="btn btn-primary btn-sm"&gt;Primary M&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-sm"&gt;Secondary M&lt;/button&gt;
-&lt;button class="btn btn-ghost btn-sm"&gt;Ghost M&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-icon btn-sm" aria-pressed="false"&gt;
-  &lt;i class="ri-delete-bin-2-line text-icon-xl"&gt;&lt;/i&gt;
-&lt;/button&gt;
-
-&lt;!-- S --&gt;
-&lt;button class="btn btn-primary btn-sm"&gt;Primary S&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-sm"&gt;Secondary S&lt;/button&gt;
-&lt;button class="btn btn-ghost btn-sm"&gt;Ghost S&lt;/button&gt;
-&lt;button class="btn btn-secondary btn-icon btn-sm" aria-pressed="false"&gt;
-  &lt;i class="ri-delete-bin-2-line text-icon-lg"&gt;&lt;/i&gt;
-&lt;/button&gt;</code></pre>
-                </div>
             </section>
 
             <!-- 2. BADGES -->
@@ -513,32 +406,6 @@
 
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-badges">Copy</button>
-                    </div>
-                    <pre><code id="snippet-badges">&lt;!-- Large --&gt;
-&lt;div class="badge badge-primary badge-lg"&gt;Primary&lt;/div&gt;
-&lt;div class="badge badge-success badge-lg"&gt;Success&lt;/div&gt;
-&lt;div class="badge badge-danger badge-lg"&gt;Danger&lt;/div&gt;
-&lt;div class="badge badge-neutral badge-lg"&gt;Neutral&lt;/div&gt;
-
-&lt;!-- Medium --&gt;
-&lt;div class="badge badge-primary badge-md"&gt;Primary&lt;/div&gt;
-&lt;div class="badge badge-success badge-md"&gt;Success&lt;/div&gt;
-&lt;div class="badge badge-danger badge-md"&gt;Danger&lt;/div&gt;
-&lt;div class="badge badge-neutral badge-md"&gt;Neutral&lt;/div&gt;
-
-&lt;!-- Small --&gt;
-&lt;div class="badge badge-primary badge-sm"&gt;Primary&lt;/div&gt;
-&lt;div class="badge badge-success badge-sm"&gt;Success&lt;/div&gt;
-&lt;div class="badge badge-danger badge-sm"&gt;Danger&lt;/div&gt;
-&lt;div class="badge badge-neutral badge-sm"&gt;Neutral&lt;/div&gt;
-
-&lt;!-- Dot --&gt;
-&lt;div class="badge badge-primary badge-dot"&gt;&lt;/div&gt;</code></pre>
-                </div>
             </section>
 
             <!-- 3. INPUTS & CONTROLS -->
@@ -657,43 +524,6 @@
 
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-checkbox">Copy</button>
-                    </div>
-                    <pre><code id="snippet-checkbox">&lt;label class="checkbox-wrapper checkbox-lg"&gt;
-  &lt;span class="relative inline-flex items-center justify-center"&gt;
-    &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
-  &lt;/span&gt;
-  &lt;span class="text-body"&gt;Large&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label class="checkbox-wrapper checkbox-md"&gt;
-  &lt;span class="relative inline-flex items-center justify-center"&gt;
-    &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
-  &lt;/span&gt;
-  &lt;span class="text-body-sm"&gt;Medium&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label class="checkbox-wrapper checkbox-sm"&gt;
-  &lt;span class="relative inline-flex items-center justify-center"&gt;
-    &lt;input type="checkbox" class="peer"&gt;
-    &lt;i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
-  &lt;/span&gt;
-  &lt;span class="text-body-xs"&gt;Small&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label class="checkbox-wrapper checkbox-md"&gt;
-  &lt;span class="relative inline-flex items-center justify-center"&gt;
-    &lt;input type="checkbox" data-state="indeterminate" class="peer"&gt;
-    &lt;i class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"&gt;&lt;/i&gt;
-  &lt;/span&gt;
-  &lt;span class="text-body-sm"&gt;Indeterminate&lt;/span&gt;
-&lt;/label&gt;</code></pre>
-                </div>
             </section>
 
             <section id="radio-buttons">
@@ -754,26 +584,6 @@
 
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-radio">Copy</button>
-                    </div>
-                    <pre><code id="snippet-radio">&lt;label class="radio-wrapper radio-lg"&gt;
-  &lt;input type="radio" name="radio-lg"&gt;
-  &lt;span class="text-body"&gt;Large&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label class="radio-wrapper radio-md"&gt;
-  &lt;input type="radio" name="radio-md"&gt;
-  &lt;span class="text-body-sm"&gt;Medium&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label class="radio-wrapper radio-sm"&gt;
-  &lt;input type="radio" name="radio-sm"&gt;
-  &lt;span class="text-body-xs"&gt;Small&lt;/span&gt;
-&lt;/label&gt;</code></pre>
-                </div>
             </section>
 
             <!-- 4. Hyperlinks -->
@@ -867,60 +677,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-links">Copy</button>
-                    </div>
-                    <pre><code id="snippet-links">&lt;button type="button" id="reset-hyperlinks-state" class="btn btn-secondary btn-sm"&gt;
-  Reset Link State
-&lt;/button&gt;
-
-&lt;a href="#" class="link-inline" data-demo-link&gt;
-  &lt;span class="link-label"&gt;Inline Link&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-inline is-disabled" aria-disabled="true" tabindex="-1"&gt;
-  &lt;span class="link-label"&gt;Inline Disabled&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link" data-demo-link&gt;
-  &lt;span class="link-label"&gt;Standalone Link&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link is-disabled" aria-disabled="true" tabindex="-1"&gt;
-  &lt;span class="link-label"&gt;Standalone Disabled&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-subtle" data-demo-link&gt;
-  &lt;span class="link-label"&gt;Subtle Link&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-subtle is-disabled" aria-disabled="true" tabindex="-1"&gt;
-  &lt;span class="link-label"&gt;Subtle Disabled&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-text-icon" data-demo-link&gt;
-  &lt;i class="ri-delete-bin-2-line"&gt;&lt;/i&gt;
-  &lt;span class="link-label"&gt;Text + Icons Link&lt;/span&gt;
-  &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-text-icon is-disabled" aria-disabled="true" tabindex="-1"&gt;
-  &lt;i class="ri-delete-bin-2-line"&gt;&lt;/i&gt;
-  &lt;span class="link-label"&gt;Text + Icons Disabled&lt;/span&gt;
-  &lt;i class="ri-arrow-right-line"&gt;&lt;/i&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-navigation"&gt;
-  &lt;span class="link-label"&gt;Navigation Link&lt;/span&gt;
-&lt;/a&gt;
-
-&lt;a href="#" class="link-navigation is-disabled" aria-disabled="true" tabindex="-1"&gt;
-  &lt;span class="link-label"&gt;Navigation Link Disabled&lt;/span&gt;
-&lt;/a&gt;
-</code></pre>
-                </div>
             </section>
 
             <section id="loading">
@@ -1106,21 +862,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-loading">Copy</button>
-                    </div>
-                    <pre><code id="snippet-loading">&lt;button class="btn btn-primary h-48 px-24 rounded-xs"&gt;
-  &lt;div class="spinner spinner-white w-16 h-16"&gt;...&lt;/div&gt;
-  &lt;span&gt;Submitting...&lt;/span&gt;
-&lt;/button&gt;
-
-&lt;button class="btn btn-secondary h-48 px-24 rounded-xs"&gt;
-  &lt;div class="spinner w-16 h-16"&gt;...&lt;/div&gt;
-  &lt;span&gt;Processing...&lt;/span&gt;
-&lt;/button&gt;</code></pre>
-                </div>
             </section>
 
             <section id="scroll">
@@ -1176,18 +917,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-scroll">Copy</button>
-                    </div>
-                    <pre><code id="snippet-scroll">&lt;div class="w-btn-lg h-[300px] bg-white border border-grey-secondary shadow-btn-default rounded-xl overflow-hidden pr-4"&gt;
-  &lt;div class="custom-scrollbar scrollbar-demo h-[calc(100%-24px)] overflow-y-auto pl-24 pr-20 py-16 my-12"&gt;
-    &lt;h2 class="text-body font-semibold mb-16 text-black"&gt;Interface Scroll&lt;/h2&gt;
-    &lt;p class="text-body-sm text-grey-primary mb-16 leading-relaxed"&gt;...&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
             </section>
 
             <section id="tooltip">
@@ -1289,35 +1018,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-tooltip">Copy</button>
-                    </div>
-                    <pre><code id="snippet-tooltip">&lt;div class="tooltip-wrapper"&gt;
-  &lt;button class="btn btn-secondary btn-sm"&gt;Hover for Small&lt;/button&gt;
-  &lt;div class="tooltip tooltip-xs"&gt;
-    &lt;span class="text-body-xs"&gt;Quick helper info&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="tooltip-wrapper"&gt;
-  &lt;button class="btn btn-secondary btn-sm"&gt;Standard Hover&lt;/button&gt;
-  &lt;div class="tooltip tooltip-sm"&gt;
-    &lt;span class="text-body-sm"&gt;Standard component tooltip&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="tooltip-wrapper"&gt;
-  &lt;button class="btn btn-primary btn-icon btn-sm"&gt;
-    &lt;i class="ri-information-line text-icon-md"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-  &lt;div class="tooltip tooltip-md min-w-[200px] text-center"&gt;
-    &lt;span class="text-body font-semibold block mb-2"&gt;Detailed View&lt;/span&gt;
-    &lt;span class="text-body-xs opacity-80"&gt;Detailed description.&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
             </section>
 
             <section id="text">
@@ -1477,21 +1177,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn" data-copy-target="snippet-text">Copy</button>
-                    </div>
-                    <pre><code id="snippet-text">&lt;h2 class="text-hero-title font-medium text-black"&gt;Suport Nexled&lt;/h2&gt;
-&lt;p class="text-hero-subtitle font-light text-black max-w-readable"&gt;
-  Here you will find a complete collection of support materials...
-&lt;/p&gt;
-
-&lt;h2 class="text-45px font-medium text-black"&gt;FAQ &amp;amp; Main Questions&lt;/h2&gt;
-&lt;p class="text-body-xl font-light text-black max-w-standard"&gt;
-  Below is Frequently Asked Questions...
-&lt;/p&gt;</code></pre>
-                </div>
             </section>
 
         </div>
@@ -1507,47 +1192,6 @@
 
 
     <script src="src/nexled.js"></script>
-    <script>
-        const copySnippetButtons = document.querySelectorAll('.copy-snippet-btn');
-
-        copySnippetButtons.forEach((button) => {
-            button.addEventListener('click', async () => {
-                const targetId = button.getAttribute('data-copy-target');
-                const snippetCode = document.getElementById(targetId);
-
-                if (!snippetCode) {
-                    return;
-                }
-
-                const snippetText = snippetCode.textContent;
-                const originalLabel = button.textContent;
-
-                try {
-                    await navigator.clipboard.writeText(snippetText);
-                    button.textContent = 'Copied!';
-                    setTimeout(() => {
-                        button.textContent = originalLabel;
-                    }, 2000);
-                } catch (error) {
-                    const fallbackInput = document.createElement('textarea');
-                    fallbackInput.value = snippetText;
-                    fallbackInput.setAttribute('readonly', '');
-                    fallbackInput.style.position = 'absolute';
-                    fallbackInput.style.left = '-9999px';
-                    document.body.appendChild(fallbackInput);
-                    fallbackInput.select();
-                    const copied = document.execCommand('copy');
-                    document.body.removeChild(fallbackInput);
-
-                    button.textContent = copied ? 'Copied!' : 'Copy failed';
-                    setTimeout(() => {
-                        button.textContent = originalLabel;
-                    }, 2000);
-                }
-            });
-        });
-
-    </script>
 </body>
 
 </html>

@@ -21,76 +21,7 @@
     <script src="src/config-cdn.js"></script>
     <link rel="stylesheet" href="src/nexled.css">
 
-    <style>
-        .code-snippet {
-            margin-top: var(--space-24);
-            border: var(--border-thin) solid var(--color-grey-secondary);
-            border-radius: var(--radius-lg);
-            background: var(--color-white);
-            box-shadow: var(--shadow-btn-default);
-            overflow: hidden;
-        }
 
-        .code-snippet-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--space-12) var(--space-16);
-            background: var(--color-grey-tertiary);
-            border-bottom: var(--border-thin) solid var(--color-grey-secondary);
-        }
-
-        .code-snippet-label {
-            margin: 0;
-            color: var(--color-grey-primary);
-            font-family: var(--font-family-base);
-            font-size: var(--font-size-body-sm);
-            font-weight: var(--font-weight-semibold);
-            line-height: var(--line-height-body-sm);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .copy-snippet-btn {
-            border: var(--border-thin) solid var(--color-green-primary);
-            border-radius: var(--radius-xs);
-            background: var(--color-green-primary);
-            color: var(--color-white);
-            padding: var(--space-4) var(--space-12);
-            font-family: var(--font-family-base);
-            font-size: var(--font-size-body-xs);
-            font-weight: var(--font-weight-medium);
-            line-height: var(--line-height-body-xs);
-            cursor: pointer;
-            transition: all var(--motion-duration-default) var(--motion-ease-premium);
-        }
-
-        .copy-snippet-btn:hover {
-            background: var(--color-green-secondary);
-            border-color: var(--color-green-secondary);
-        }
-
-        .copy-snippet-btn:focus-visible {
-            outline: var(--focus-ring-width) solid var(--focus-ring-color);
-            outline-offset: var(--focus-ring-offset);
-        }
-
-        .code-snippet pre {
-            margin: 0;
-            padding: var(--space-16);
-            background: var(--color-black);
-            color: var(--color-white);
-            overflow-x: auto;
-        }
-
-        .code-snippet code {
-            display: block;
-            font-family: "Courier New", monospace;
-            font-size: var(--font-size-body-xs);
-            line-height: var(--line-height-body-sm);
-            white-space: pre;
-        }
-    </style>
 
     <!-- 4. Components Logic -->
     <script src="nexled.js"></script>
@@ -278,27 +209,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn"
-                            data-copy-target="snippet-accordion">Copy</button>
-                    </div>
-                    <pre><code id="snippet-accordion">&lt;div class="accordion accordion-md"&gt;
-  &lt;div class="accordion-item"&gt;
-    &lt;button class="accordion-trigger" aria-expanded="false"&gt;
-      &lt;span class="text-grey-primary"&gt;Medium Accordion&lt;/span&gt;
-      &lt;i class="chevron-icon ri-arrow-down-s-line text-icon-md text-grey-primary"&gt;&lt;/i&gt;
-    &lt;/button&gt;
-    &lt;div class="accordion-content"&gt;
-      &lt;div class="accordion-body"&gt;
-        Medium variant content description.
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-
             </section>
 
             <!-- 3. ANNOUNCEMENT BAR -->
@@ -352,19 +262,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn"
-                            data-copy-target="snippet-announcement">Copy</button>
-                    </div>
-                    <pre><code id="snippet-announcement">&lt;div class="announcement-bar announcement-bar-floating"&gt;
-  &lt;p class="text-h2 font-medium"&gt;Live Demo: Floating Green Bar.&lt;/p&gt;
-  &lt;button class="modal-close text-white/60 hover:text-white" aria-label="Close"&gt;
-    &lt;i class="ri-close-line text-icon-md"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</code></pre>
-                </div>
             </section>
 
             <!-- 3. breadcrumbs -->
@@ -420,22 +317,6 @@
                     </div>
                 </div>
 
-                <div class="code-snippet">
-                    <div class="code-snippet-header">
-                        <p class="code-snippet-label">HTML</p>
-                        <button type="button" class="copy-snippet-btn"
-                            data-copy-target="snippet-breadcrumb">Copy</button>
-                    </div>
-                    <pre><code id="snippet-breadcrumb">&lt;nav aria-label="Breadcrumb Example"&gt;
-  &lt;ol class="breadcrumb"&gt;
-    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="breadcrumb-separator"&gt;&lt;i class="ri-arrow-right-s-line text-icon-md"&gt;&lt;/i&gt;&lt;/li&gt;
-    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Projects&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="breadcrumb-separator"&gt;&lt;i class="ri-arrow-right-s-line text-icon-md"&gt;&lt;/i&gt;&lt;/li&gt;
-    &lt;li class="breadcrumb-item" aria-current="page"&gt;UI System&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
             </section>
 
             <section id="dropdown">
@@ -801,23 +682,7 @@
                 </div>
         </div>
 
-        <div class="code-snippet">
-            <div class="code-snippet-header">
-                <p class="code-snippet-label">HTML</p>
-                <button type="button" class="copy-snippet-btn" data-copy-target="snippet-dropdown">Copy</button>
-            </div>
-            <pre><code id="snippet-dropdown">&lt;div class="dropdown dropdown-md"&gt;
-  &lt;button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox" aria-expanded="false"&gt;
-    &lt;span class="dropdown__value text-grey-primary"&gt;Select an option&lt;/span&gt;
-    &lt;i class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-  &lt;ul class="dropdown-menu dropdown__menu custom-scrollbar opacity-0 invisible -translate-y-2" role="listbox"&gt;
-    &lt;li class="dropdown-item dropdown__item" role="option" data-value="option1"&gt;Option 1&lt;/li&gt;
-    &lt;li class="dropdown-item dropdown__item" role="option" data-value="option2"&gt;Option 2&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-        </div>
-        </section>
+            </section>
 
         <section id="file-uploader">
             <div class="flex items-center gap-12 mb-24">
@@ -903,25 +768,7 @@
                 </div>
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn"
-                        data-copy-target="snippet-file-uploader">Copy</button>
-                </div>
-                <pre><code id="snippet-file-uploader">&lt;div id="fileDropZone"
-  class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer
-         transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5"&gt;
-  &lt;input type="file" id="fileInput" class="hidden" multiple&gt;
-  &lt;div class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary"&gt;
-    &lt;i class="ri-file-add-line"&gt;&lt;/i&gt;
-  &lt;/div&gt;
-  &lt;div class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary"&gt;
-    Drag &amp;amp; Drop files here
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="language-selector">
             <div class="flex items-center gap-12 mb-24">
@@ -1042,24 +889,7 @@
 
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn"
-                        data-copy-target="snippet-language-selector">Copy</button>
-                </div>
-                <pre><code id="snippet-language-selector">&lt;div class="dropdown dropdown-sm language-selector-root w-btn-sm"&gt;
-  &lt;button type="button" class="dropdown-trigger dropdown__trigger justify-center gap-8" aria-haspopup="listbox" aria-expanded="false"&gt;
-    &lt;img class="current-lang-flag w-6 h-6 rounded-md object-cover" src="https://flagcdn.com/w40/gb.png" alt="English"&gt;
-    &lt;i class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-  &lt;ul class="dropdown-menu dropdown__menu custom-scrollbar opacity-0 invisible -translate-y-2" role="menu"&gt;
-    &lt;li class="dropdown-item dropdown__item" role="option" data-lang="English" data-code="gb"&gt;English&lt;/li&gt;
-    &lt;li class="dropdown-item dropdown__item" role="option" data-lang="Português" data-code="pt"&gt;Português&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="List">
             <div class="flex items-center gap-12 mb-24">
@@ -1118,23 +948,7 @@
                 </div>
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-spec-list">Copy</button>
-                </div>
-                <pre><code id="snippet-spec-list">&lt;div class="spec-list"&gt;
-  &lt;div class="spec-row"&gt;
-    &lt;span class="spec-key"&gt;Brand&lt;/span&gt;
-    &lt;span class="spec-value"&gt;NEXLED&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="spec-row"&gt;
-    &lt;span class="spec-key"&gt;Model&lt;/span&gt;
-    &lt;span class="spec-value"&gt;NX-2024-PRO&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="material-selector">
             <div class="flex items-center gap-12 mb-24">
@@ -1219,20 +1033,7 @@
             </div>
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn"
-                        data-copy-target="snippet-material-selector">Copy</button>
-                </div>
-                <pre><code id="snippet-material-selector">&lt;button class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none" onclick="selectMaterial(this)"&gt;
-  &lt;div class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md"&gt;
-    &lt;img src="public/material-wood.png" alt="Wood" class="material-img w-full h-full object-cover"&gt;
-  &lt;/div&gt;
-  &lt;span class="material-label text-base font-medium text-grey-primary"&gt;Wood&lt;/span&gt;
-&lt;/button&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="quantity-selector">
             <div class="flex items-center gap-12 mb-24">
@@ -1281,22 +1082,7 @@
 
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-quantity">Copy</button>
-                </div>
-                <pre><code id="snippet-quantity">&lt;div class="quantity-wrapper inline-flex items-center gap-icon-md" data-min="0" data-max="10"&gt;
-  &lt;button class="qty-btn" aria-label="Decrease quantity"&gt;
-    &lt;i class="ri-subtract-line text-icon-lg"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-  &lt;input type="number" class="qty-input text-h3 font-semibold text-center" value="0" readonly aria-label="Quantity"&gt;
-  &lt;button class="qty-btn" aria-label="Increase quantity"&gt;
-    &lt;i class="ri-add-line text-icon-lg"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="stepper">
             <div class="flex items-center gap-12 mb-24">
@@ -1353,23 +1139,7 @@
 
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-stepper">Copy</button>
-                </div>
-                <pre><code id="snippet-stepper">&lt;div class="stepper"&gt;
-  &lt;button class="step-item stepper-step is-active" aria-pressed="true"&gt;
-    &lt;div class="step-circle stepper-number"&gt;1&lt;/div&gt;
-    &lt;a href="#" class="step-link text-body-lg text-green-primary font-semibold no-underline"&gt;Order Details&lt;/a&gt;
-  &lt;/button&gt;
-  &lt;button class="step-item stepper-step" aria-pressed="false"&gt;
-    &lt;div class="step-circle stepper-number"&gt;2&lt;/div&gt;
-    &lt;a href="#" class="step-link text-body-lg text-black font-medium no-underline"&gt;Shipping Info&lt;/a&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="text-field">
             <div class="flex items-center gap-12 mb-24">
@@ -1484,19 +1254,7 @@
 
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-text-field">Copy</button>
-                </div>
-                <pre><code id="snippet-text-field">&lt;label for="standardInput" class="input-label"&gt;Full Name&lt;/label&gt;
-&lt;input type="text" id="standardInput" placeholder="Enter your name" class="input"&gt;
-&lt;p class="input-hint"&gt;Example of a standard descriptive input.&lt;/p&gt;
-
-&lt;label for="successInput" class="input-label"&gt;Success State&lt;/label&gt;
-&lt;input type="text" id="successInput" value="Valid input data" class="input input-success"&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="image-carousel">
             <div class="flex items-center gap-12 mb-24">
@@ -1672,19 +1430,7 @@
 
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-carousel">Copy</button>
-                </div>
-                <pre><code id="snippet-carousel">&lt;div class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary"&gt;
-  &lt;div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');"&gt;&lt;/div&gt;
-  &lt;button class="absolute left-32 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-white/10 text-white/60" aria-label="Previous slide"&gt;
-    &lt;i class="ri-arrow-left-s-line text-icon-xl"&gt;&lt;/i&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="drop-full">
             <div class="flex items-center gap-12 mb-24">
@@ -1893,21 +1639,7 @@
             </div>
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-drop-full">Copy</button>
-                </div>
-                <pre><code id="snippet-drop-full">&lt;div class="w-full max-w-4xl bg-white rounded-xl shadow-btn-glow overflow-hidden"&gt;
-  &lt;div class="flex"&gt;
-    &lt;div class="w-[200px] bg-grey-tertiary/10 p-16 flex flex-col gap-8"&gt;
-      &lt;button class="w-full px-16 py-12 rounded-md text-body text-left"&gt;Dignissim Turpis&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="flex-1 p-24"&gt;...&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         <section id="card">
             <div class="flex items-center gap-12 mb-24">
@@ -2048,24 +1780,7 @@
                 </div>
             </div>
 
-            <div class="code-snippet">
-                <div class="code-snippet-header">
-                    <p class="code-snippet-label">HTML</p>
-                    <button type="button" class="copy-snippet-btn" data-copy-target="snippet-card">Copy</button>
-                </div>
-                <pre><code id="snippet-card">&lt;div class="card p-24 max-w-sm"&gt;
-  &lt;h3 class="card-title"&gt;Maecenas pharetra&lt;/h3&gt;
-  &lt;p class="card-text"&gt;
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="card-product max-w-sm"&gt;
-  &lt;span class="card-product-badge"&gt;Best Seller&lt;/span&gt;
-  &lt;img src="public/product-slide-1.png" alt="24V LED Bar product image" class="card-product-image"&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </section>
+            </section>
 
         </div>
     </main>
@@ -2075,47 +1790,6 @@
             <p>© 2026 NexLed UI Systems</p>
         </div>
     </footer>
-
-    <script>
-        const copySnippetButtons = document.querySelectorAll('.copy-snippet-btn');
-
-        copySnippetButtons.forEach((button) => {
-            button.addEventListener('click', async () => {
-                const targetId = button.getAttribute('data-copy-target');
-                const snippetCode = document.getElementById(targetId);
-
-                if (!snippetCode) {
-                    return;
-                }
-
-                const snippetText = snippetCode.textContent;
-                const originalLabel = button.textContent;
-
-                try {
-                    await navigator.clipboard.writeText(snippetText);
-                    button.textContent = 'Copied!';
-                    setTimeout(() => {
-                        button.textContent = originalLabel;
-                    }, 2000);
-                } catch (error) {
-                    const fallbackInput = document.createElement('textarea');
-                    fallbackInput.value = snippetText;
-                    fallbackInput.setAttribute('readonly', '');
-                    fallbackInput.style.position = 'absolute';
-                    fallbackInput.style.left = '-9999px';
-                    document.body.appendChild(fallbackInput);
-                    fallbackInput.select();
-                    const copied = document.execCommand('copy');
-                    document.body.removeChild(fallbackInput);
-
-                    button.textContent = copied ? 'Copied!' : 'Copy failed';
-                    setTimeout(() => {
-                        button.textContent = originalLabel;
-                    }, 2000);
-                }
-            });
-        });
-    </script>
 
 </body>
 
