@@ -1996,13 +1996,46 @@ textarea {
   }
 }
 
-/* GLASS panelL */
+/* panel */
 .panel {
   background: color-mix(in srgb, var(--color-white) 70%, transparent);
   backdrop-filter: blur(var(--space-16));
   border: var(--border-thin) solid color-mix(in srgb, var(--color-white) 40%, transparent);
   box-shadow: var(--shadow-btn-default);
   border-radius: var(--radius-md);
+}
+
+/* PANEL WRAPPERS */
+.panel-wrap-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-24);
+  padding-left: var(--space-32);
+}
+
+.panel-wrap-title {
+  margin: var(--radius-none);
+}
+
+.panel-wrap-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-40);
+  margin-bottom: var(--space-24);
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+
+.panel-wrap-body-gap-24 {
+  gap: var(--space-24);
+}
+
+.panel-wrap-body-gap-32 {
+  gap: var(--space-32);
 }
 
 /* BREADCRUMB LINK */
