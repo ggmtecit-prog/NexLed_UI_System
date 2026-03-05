@@ -700,12 +700,16 @@ if (document.readyState === 'loading') {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const wrappers = document.querySelectorAll('.quantity-wrapper');
+    const wrappers = document.querySelectorAll('#quantity-selector .quantity-wrapper');
 
     wrappers.forEach(wrapper => {
         const input = wrapper.querySelector('.qty-input');
-        const decreaseBtn = wrapper.querySelector('.qty-btn[aria-label="Decrease quantity"]');
-        const increaseBtn = wrapper.querySelector('.qty-btn[aria-label="Increase quantity"]');
+        const decreaseBtn = wrapper.querySelector('button[aria-label="Decrease quantity"]');
+        const increaseBtn = wrapper.querySelector('button[aria-label="Increase quantity"]');
+
+        if (!input || !decreaseBtn || !increaseBtn) {
+            return;
+        }
 
         // Settings
         const min = parseInt(wrapper.dataset.min) || 0;
