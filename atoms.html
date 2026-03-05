@@ -495,78 +495,222 @@
                 <div class="hyperlinks-demo panel panel-wrap-body panel-wrap-body-gap-32">
                     <div class="space-y-16 pb-20 w-full">
 
-                        <!-- Live Variants -->
-                        <div class="flex flex-col gap-16">
-                            <div class="flex items-center justify-between gap-12 flex-wrap">
-                                <button type="button" id="reset-hyperlinks-state" class="btn btn-secondary btn-sm">
-                                    Reset Link State
-                                </button>
+                        <div class="flex items-center justify-between gap-12 flex-wrap">
+                            <button type="button" id="reset-hyperlinks-state" class="btn btn-secondary btn-sm">
+                                Reset Link State
+                            </button>
+                        </div>
+
+                        <div class="size-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-24 items-start w-full max-w-standard mb-20">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Inline</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-inline link-sm" data-demo-link>
+                                            <span class="link-label">Inline Link</span>
+                                        </a>
+                                        <a href="#" class="link-inline link-sm is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Inline Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-inline link-md" data-demo-link>
+                                            <span class="link-label">Inline Link</span>
+                                        </a>
+                                        <a href="#" class="link-inline link-md is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Inline Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-inline link-lg" data-demo-link>
+                                            <span class="link-label">Inline Link</span>
+                                        </a>
+                                        <a href="#" class="link-inline link-lg is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Inline Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex flex-col gap-16">
-                                <div class="flex flex-wrap items-center gap-16">
-                                    <!-- Inline Live -->
-                                    <a href="#" class="link-inline link-sm" data-demo-link>
-                                        <span class="link-label">Inline Link</span>
-                                    </a>
 
-                                    <!-- Inline Disabled -->
-                                    <a href="#" class="link-inline link-sm is-disabled" aria-disabled="true" tabindex="-1">
-                                        <span class="link-label">Inline Disabled</span>
-                                    </a>
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Standalone</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link link-sm" data-demo-link>
+                                            <span class="link-label">Standalone Link</span>
+                                        </a>
+                                        <a href="#" class="link link-sm is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Standalone Disabled</span>
+                                        </a>
+                                    </div>
                                 </div>
 
-                                <div class="flex flex-wrap items-center gap-16">
-                                    <!-- Standalone Live -->
-                                    <a href="#" class="link link-sm" data-demo-link>
-                                        <span class="link-label">Standalone Link</span>
-                                    </a>
-
-                                    <!-- Standalone Disabled -->
-                                    <a href="#" class="link link-sm is-disabled" aria-disabled="true" tabindex="-1">
-                                        <span class="link-label">Standalone Disabled</span>
-                                    </a>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link link-md" data-demo-link>
+                                            <span class="link-label">Standalone Link</span>
+                                        </a>
+                                        <a href="#" class="link link-md is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Standalone Disabled</span>
+                                        </a>
+                                    </div>
                                 </div>
 
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link link-lg" data-demo-link>
+                                            <span class="link-label">Standalone Link</span>
+                                        </a>
+                                        <a href="#" class="link link-lg is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Standalone Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Text + Icons</h3>
 
-                                <div class="flex flex-wrap items-center gap-16">
-                                    <!-- Text + Icons Live -->
-                                    <a href="#" class="link-text-icon link-sm" data-demo-link>
-                                        <i class="ri-delete-bin-2-line"></i>
-                                        <span class="link-label">Text + Icons Link</span>
-                                        <i class="ri-arrow-right-line"></i>
-                                    </a>
-
-                                    <!-- Text + Icons Disabled -->
-                                    <a href="#" class="link-text-icon link-sm is-disabled" aria-disabled="true" tabindex="-1">
-                                        <i class="ri-delete-bin-2-line"></i>
-                                        <span class="link-label">Text + Icons Disabled</span>
-                                        <i class="ri-arrow-right-line"></i>
-                                    </a>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-text-icon link-sm" data-demo-link>
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Link</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                        <a href="#" class="link-text-icon link-sm is-disabled" aria-disabled="true" tabindex="-1">
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Disabled</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
                                 </div>
 
-                                <div class="flex flex-wrap items-center gap-16">
-                                    <!-- Subtle Live -->
-                                    <a href="#" class="link-subtle link-sm" data-demo-link>
-                                        <span class="link-label">Subtle Link</span>
-                                    </a>
-
-                                    <!-- Subtle Disabled -->
-                                    <a href="#" class="link-subtle link-sm is-disabled" aria-disabled="true" tabindex="-1">
-                                        <span class="link-label">Subtle Disabled</span>
-                                    </a>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-text-icon link-md" data-demo-link>
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Link</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                        <a href="#" class="link-text-icon link-md is-disabled" aria-disabled="true" tabindex="-1">
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Disabled</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
                                 </div>
 
-                                <div class="flex flex-wrap items-center gap-16">
-                                    <!-- Navigation Live -->
-                                    <a href="#" class="link-navigation link-sm">
-                                        <span class="link-label">Navigation Link</span>
-                                    </a>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-text-icon link-lg" data-demo-link>
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Link</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                        <a href="#" class="link-text-icon link-lg is-disabled" aria-disabled="true" tabindex="-1">
+                                            <i class="ri-delete-bin-2-line"></i>
+                                            <span class="link-label">Text + Icons Disabled</span>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <!-- Navigation Disabled -->
-                                    <a href="#" class="link-navigation link-sm is-disabled" aria-disabled="true" tabindex="-1">
-                                        <span class="link-label">Navigation Link Disabled</span>
-                                    </a>
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Subtle</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-subtle link-sm" data-demo-link>
+                                            <span class="link-label">Subtle Link</span>
+                                        </a>
+                                        <a href="#" class="link-subtle link-sm is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Subtle Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-subtle link-md" data-demo-link>
+                                            <span class="link-label">Subtle Link</span>
+                                        </a>
+                                        <a href="#" class="link-subtle link-md is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Subtle Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-subtle link-lg" data-demo-link>
+                                            <span class="link-label">Subtle Link</span>
+                                        </a>
+                                        <a href="#" class="link-subtle link-lg is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Subtle Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Navigation</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-navigation link-sm">
+                                            <span class="link-label">Navigation Link</span>
+                                        </a>
+                                        <a href="#" class="link-navigation link-sm is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Navigation Link Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-navigation link-md">
+                                            <span class="link-label">Navigation Link</span>
+                                        </a>
+                                        <a href="#" class="link-navigation link-md is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Navigation Link Disabled</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <a href="#" class="link-navigation link-lg">
+                                            <span class="link-label">Navigation Link</span>
+                                        </a>
+                                        <a href="#" class="link-navigation link-lg is-disabled" aria-disabled="true" tabindex="-1">
+                                            <span class="link-label">Navigation Link Disabled</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
