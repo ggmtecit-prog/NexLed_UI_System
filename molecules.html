@@ -21,10 +21,8 @@
     <script src="src/config-cdn.js"></script>
     <link rel="stylesheet" href="src/nexled.css">
 
-
-
     <!-- 4. Components Logic -->
-    <script src="nexled.js"></script>
+    <script src="src/nexled.js"></script>
 
 
 </head>
@@ -212,47 +210,47 @@
 
             <!-- 3. ANNOUNCEMENT BAR -->
             <section id="announcement-bar">
-                <div class="flex items-center gap-12 mb-24 pl-32">
-                    <h2 class="text-nav-bar-h1 font-medium text-black">Announcement Bar</h2>
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Announcement Bar</h2>
                 </div>
 
-                <div class="panel p-32 mb-24">
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                    <div class="space-y-12 w-full">
+                    <div class="announcement-bar-list">
                         <div class="announcement-bar announcement-bar-standard" id="announcement-bar-1">
                             <div class="hidden sm:block w-40"></div>
-                            <p class="text-h2 font-medium text-center flex-1">
-                                <span class="inline-flex items-center gap-8">
+                            <p class="announcement-bar-text">
+                                <span class="announcement-bar-text-inline">
                                     <i class="ri-rocket-2-line text-icon-xl"></i>
-                                    Live Demo: Standard Top Bar. Check this out!
+                                    Live Demo: Full Page Announcement Bar.
                                 </span>
                             </p>
-                            <button class="modal-close text-white/60 hover:text-white" aria-label="Close"
+                            <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
                                 onclick="closeBar('announcement-bar-1')">
-                                <i class="ri-close-line text-icon-md"></i>
+                                <i class="ri-close-line text-icon-lg"></i>
                             </button>
                         </div>
 
                         <div class="announcement-bar announcement-bar-floating" id="announcement-bar-2">
                             <div class="hidden sm:block w-40"></div>
-                            <p class="text-h2 font-medium text-center flex-1">
+                            <p class="announcement-bar-text">
                                 Live Demo: Floating Green Bar.
                             </p>
-                            <button class="modal-close text-white/60 hover:text-white" aria-label="Close"
+                            <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
                                 onclick="closeBar('announcement-bar-2')">
-                                <i class="ri-close-line text-icon-md"></i>
+                                <i class="ri-close-line text-icon-lg"></i>
                             </button>
                         </div>
 
-                        <div class="announcement-bar announcement-bar-floating bg-white text-black border border-grey-tertiary"
+                        <div class="announcement-bar announcement-bar-floating announcement-bar-light"
                             id="announcement-bar-3">
                             <div class="hidden sm:block w-40"></div>
-                            <p class="text-h2 font-medium text-center flex-1">
+                            <p class="announcement-bar-text">
                                 Live Demo: Floating White Bar.
                             </p>
-                            <button class="modal-close text-grey-primary hover:text-green-secondary" aria-label="Close"
+                            <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
                                 onclick="closeBar('announcement-bar-3')">
-                                <i class="ri-close-line text-icon-md"></i>
+                                <i class="ri-close-line text-icon-lg"></i>
                             </button>
                         </div>
                     </div>
@@ -267,41 +265,45 @@
                     <h2 class="text-nav-bar-h1 font-medium text-black">Breadcrumbs</h2>
                 </div>
 
-                <div class="panel p-32 mb-24">
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
                     <div class="w-full max-w-4xl space-y-12">
-                        <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+                        <section class="p-8 rounded-2xl ">
                             <nav aria-label="Breadcrumb Example">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label">Home</span></a></li>
                                     <li class="breadcrumb-separator"><i class="ri-arrow-right-s-line text-icon-md"></i>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Projects</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label">Projects</span></a></li>
                                     <li class="breadcrumb-separator"><i class="ri-arrow-right-s-line text-icon-md"></i>
                                     </li>
-                                    <li class="breadcrumb-item" aria-current="page">UI System</li>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label">UI-System</span></a></li>
                                 </ol>
                             </nav>
                         </section>
 
-                        <section class="bg-white p-8 rounded-2xl border border-grey-tertiary">
+                        <section class="p-8 rounded-2xl ">
                             <nav aria-label="Breadcrumb Condensed">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label">Home</span></a></li>
                                     <li class="breadcrumb-separator"><i class="ri-arrow-right-s-line text-icon-md"></i>
                                     </li>
-                                    <li class="breadcrumb-item">
-                                        <button aria-label="More"
-                                            class="flex items-center justify-center w-icon-md h-icon-md rounded-sm bg-transparent text-grey-primary transition-colors duration-400 hover:bg-grey-tertiary hover:text-black focus-visible:outline-none focus-visible:ring">
-                                            <i class="ri-more-line text-icon-md"></i>
-                                        </button>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label"><i class="ri-more-fill"></i></span></a>
                                     </li>
                                     <li class="breadcrumb-separator"><i class="ri-arrow-right-s-line text-icon-md"></i>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Design System</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="link-navigation link-sm"><span
+                                                class="link-label">Design System</span></a></li>
                                     <li class="breadcrumb-separator"><i class="ri-arrow-right-s-line text-icon-md"></i>
                                     </li>
-                                    <li class="breadcrumb-item" aria-current="page">Components</li>
+                                    <li class="breadcrumb-item"><a href="#"
+                                            class="link-navigation link-sm link-active"><span
+                                                class="link-label">Components</span></a></li>
                                 </ol>
                             </nav>
                         </section>
@@ -889,57 +891,51 @@
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                <div class="w-full max-w-4xl">
-                    <div class="spec-list">
+                <div class="w-full max-w-narrow">
+                    <dl class="list list-spec list-md">
 
-                        <div class="spec-row">
-                            <span class="spec-key">Brand</span>
-                            <span class="spec-value">NEXLED</span>
+                        <div class="list-item">
+                            <dt class="list-key">Brand</dt>
+                            <dd class="list-value">NEXLED</dd>
                         </div>
 
-                        <div class="spec-row">
-                            <span class="spec-key">Model</span>
-                            <span class="spec-value">NX-2024-PRO</span>
+                        <div class="list-item">
+                            <dt class="list-key">Model</dt>
+                            <dd class="list-value">NX-2024-PRO</dd>
                         </div>
 
-                        <div class="spec-row">
-                            <span class="spec-key">Category</span>
-                            <span class="spec-value">Electronics</span>
+                        <div class="list-item">
+                            <dt class="list-key">Category</dt>
+                            <dd class="list-value">Electronics</dd>
                         </div>
 
-                        <div class="spec-row">
-                            <span class="spec-key">Weight</span>
-                            <span class="spec-value">2.5 kg</span>
+                        <div class="list-item">
+                            <dt class="list-key">Weight</dt>
+                            <dd class="list-value">2.5 kg</dd>
                         </div>
 
                         <!-- List Row 5 -->
-                        <div class="spec-row">
-                            <span class="spec-key">Dimensions</span>
-                            <span class="spec-value">30
-                                × 20 × 10 cm</span>
+                        <div class="list-item">
+                            <dt class="list-key">Dimensions</dt>
+                            <dd class="list-value">30 x 20 x 10 cm</dd>
                         </div>
 
-                        <div class="spec-row">
-                            <span class="spec-key">Color</span>
-                            <span class="spec-value">Matte Black</span>
+                        <div class="list-item">
+                            <dt class="list-key">Color</dt>
+                            <dd class="list-value">Matte Black</dd>
                         </div>
 
-                        <div class="spec-row">
-                            <span class="spec-key">Warranty</span>
-                            <span class="spec-value">2 Years</span>
+                        <div class="list-item">
+                            <dt class="list-key">Warranty</dt>
+                            <dd class="list-value">2 Years</dd>
                         </div>
 
-
-
-
-                    </div>
-
+                    </dl>
 
                 </div>
             </div>
 
         </section>
-
         <section id="material-selector">
             <div class="panel-wrap-head">
                 <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Material Selector</h2>

@@ -319,11 +319,29 @@ scrollContainers.forEach(container => {
 document.addEventListener('DOMContentLoaded', () => {
     const hyperlinksDemo = document.querySelector('#hyperlinks .hyperlinks-demo');
     const resetHyperlinksStateButton = document.getElementById('reset-hyperlinks-state');
+    const demoLinks = hyperlinksDemo ? hyperlinksDemo.querySelectorAll('[data-demo-link]') : [];
+    const demoNavigationLinks = hyperlinksDemo ? hyperlinksDemo.querySelectorAll('.link-navigation:not(.is-disabled)') : [];
+    const globalNavigationLinks = document.querySelectorAll('.link-navigation:not(.is-disabled)');
 
-    if (!hyperlinksDemo) return;
+    const bindNavigationLinkBehavior = (links) => {
+        links.forEach((link) => {
+            if (link.dataset.navigationBound === 'true') return;
+            link.dataset.navigationBound = 'true';
 
-    const demoLinks = hyperlinksDemo.querySelectorAll('[data-demo-link]');
-    const navigationLinks = hyperlinksDemo.querySelectorAll('.link-navigation:not(.is-disabled)');
+            link.addEventListener('click', (event) => {
+                const href = (link.getAttribute('href') || '').trim();
+                if (!href.startsWith('#')) return;
+
+                event.preventDefault();
+                const isActive = link.classList.toggle('is-active');
+                if (isActive) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        });
+    };
 
     demoLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -332,17 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    navigationLinks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const isActive = link.classList.toggle('is-active');
-            if (isActive) {
-                link.setAttribute('aria-current', 'page');
-            } else {
-                link.removeAttribute('aria-current');
-            }
-        });
-    });
+    bindNavigationLinkBehavior(demoNavigationLinks);
+    bindNavigationLinkBehavior(globalNavigationLinks);
 
     if (resetHyperlinksStateButton) {
         resetHyperlinksStateButton.addEventListener('click', () => {
@@ -350,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.remove('is-visited');
                 link.blur();
             });
-            navigationLinks.forEach((link) => {
+            demoNavigationLinks.forEach((link) => {
                 link.classList.remove('is-active');
                 link.removeAttribute('aria-current');
                 link.blur();
