@@ -88,7 +88,7 @@
   --shadow-btn-default: 0 6px 14px rgba(135, 135, 135, 0.20);
   --shadow-btn-hover: 0 18px 36px rgba(190, 224, 210, 0.40), 0 6px 18px rgba(135, 135, 135, 0.15);
   --shadow-btn-active: 0 4px 10px rgba(0, 0, 0, 0.2);
-  --shadow-btn-glow: 0 20px 40px rgba(16, 185, 129, 0.22);
+  --shadow-btn-glow: 0 20px 40px rgba(16, 185, 129, 0.35);
   --shadow-btn-hover-active: 0 18px 36px rgba(5, 140, 83, 0.35);
 
   --size-btn-xl-w: 420px;
@@ -2686,23 +2686,69 @@ textarea {
 
 /* MATERIAL SELECTOR */
 .material-selector {
+  --material-selector-gap: var(--space-24);
+  --material-selector-list-gap: var(--space-24);
+  --material-selector-item-gap: var(--space-12);
+  --material-selector-thumb-size: calc(var(--space-64) + var(--space-56));
+  --material-selector-thumb-radius: var(--radius-btn);
+  --material-selector-title-size: var(--font-size-h2);
+  --material-selector-title-line-height: var(--line-height-h1);
+  --material-selector-label-size: var(--font-size-body-xl);
+  --material-selector-label-line-height: var(--line-height-body-lg);
+
   display: flex;
   flex-direction: column;
-  gap: var(--space-24);
+  gap: var(--material-selector-gap);
+}
+
+.material-selector-sm {
+  --material-selector-gap: var(--space-16);
+  --material-selector-list-gap: var(--space-16);
+  --material-selector-item-gap: var(--space-8);
+  --material-selector-thumb-size: calc(var(--space-48) + var(--space-48));
+  --material-selector-thumb-radius: var(--radius-lg);
+  --material-selector-title-size: var(--font-size-h3);
+  --material-selector-title-line-height: var(--line-height-h3);
+  --material-selector-label-size: var(--font-size-body);
+  --material-selector-label-line-height: var(--line-height-body);
+}
+
+.material-selector-md {
+  --material-selector-gap: var(--space-24);
+  --material-selector-list-gap: var(--space-24);
+  --material-selector-item-gap: var(--space-12);
+  --material-selector-thumb-size: calc(var(--space-64) + var(--space-56));
+  --material-selector-thumb-radius: var(--radius-btn);
+  --material-selector-title-size: var(--font-size-h2);
+  --material-selector-title-line-height: var(--line-height-h1);
+  --material-selector-label-size: var(--font-size-body-xl);
+  --material-selector-label-line-height: var(--line-height-body-lg);
+}
+
+.material-selector-lg {
+  --material-selector-gap: var(--space-32);
+  --material-selector-list-gap: var(--space-32);
+  --material-selector-item-gap: var(--space-16);
+  --material-selector-thumb-size: calc(var(--space-56) + var(--space-56) + var(--space-32));
+  --material-selector-thumb-radius: var(--radius-xl);
+  --material-selector-title-size: var(--font-size-nav-bar-h1);
+  --material-selector-title-line-height: var(--line-height-h1);
+  --material-selector-label-size: var(--font-size-h3);
+  --material-selector-label-line-height: var(--line-height-h3);
 }
 
 .material-selector-title {
   margin: 0;
   color: var(--color-grey-primary);
-  font-size: var(--font-size-h2);
-  line-height: var(--line-height-h1);
+  font-size: var(--material-selector-title-size);
+  line-height: var(--material-selector-title-line-height);
   font-weight: var(--font-weight-regular);
 }
 
 .material-selector-list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-24);
+  gap: var(--material-selector-list-gap);
   align-items: flex-start;
 }
 
@@ -2710,14 +2756,13 @@ textarea {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-12);
+  gap: var(--material-selector-item-gap);
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
   font: inherit;
   text-align: center;
-  transition: transform var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .material-item:focus-visible {
@@ -2729,48 +2774,45 @@ textarea {
 .material-thumb {
   position: relative;
   display: block;
-  width: calc(var(--space-64) + var(--space-56));
-  height: calc(var(--space-64) + var(--space-56));
+  width: var(--material-selector-thumb-size);
+  height: var(--material-selector-thumb-size);
   overflow: hidden;
-  border-radius: var(--radius-btn);
+  border-radius: var(--material-selector-thumb-radius);
   background: var(--color-white);
   box-shadow: var(--shadow-btn-default);
   transition:
     transform var(--motion-duration-default) var(--motion-ease-premium),
-    box-shadow var(--motion-duration-default) var(--motion-ease-premium),
-    border-color var(--motion-duration-default) var(--motion-ease-premium);
+    box-shadow var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .material-img {
-  border: var(--border-standard) solid var(--color-grey-secondary);
-
   display: block;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border: var(--border-thin) solid var(--color-grey-secondary);
+  border: var(--border-standard) solid var(--color-grey-secondary);
   border-radius: inherit;
-  transition: transform var(--motion-duration-default) var(--motion-ease-premium);
+  transition:
+    transform var(--motion-duration-default) var(--motion-ease-premium),
+    border-color var(--motion-duration-default) var(--motion-ease-premium),
+    border-width var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .material-label {
   color: var(--color-grey-primary);
-  font-size: var(--font-size-body-xl);
-  line-height: var(--line-height-body-lg);
+  font-size: var(--material-selector-label-size);
+  line-height: var(--material-selector-label-line-height);
   font-weight: var(--font-weight-regular);
   transition:
     color var(--motion-duration-default) var(--motion-ease-premium),
     font-weight var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-
-
 .material-item:hover .material-thumb {
   transform: translateY(var(--lift-standard));
   box-shadow: var(--shadow-btn-hover);
-  border: var(--border-standard) solid var(--color-green-secondary);
-
 }
 
 .material-item:hover .material-img,
@@ -2779,36 +2821,25 @@ textarea {
   transform: scale(var(--scale-hover));
 }
 
+.material-item:hover .material-img {
+  border: var(--border-thick) solid var(--color-green-secondary);
+}
+
 .material-item:hover .material-label {
   color: var(--color-green-secondary);
 }
 
-.material-item.is-selected .material-thumb,
-.material-item[aria-selected="true"] .material-thumb {
-  border: var(--border-standard) solid var(--color-green-primary);
+.material-item.is-selected .material-img,
+.material-item[aria-selected="true"] .material-img {
+  border: var(--border-thick) solid var(--color-green-primary);
 }
 
 .material-item.is-selected .material-label,
-.material-item[aria-selected="true"] .material-label {
-  color: var(--color-green-primary);
-  font-weight: var(--font-weight-semibold);
-}
-
-.material-item.is-selected .material-label,
-.material-item[aria-selected="true"] .material-label:hover {
+.material-item[aria-selected="true"] .material-label,
+.material-item.is-selected:hover .material-label,
+.material-item[aria-selected="true"]:hover .material-label {
   color: var(--color-green-secondary);
   font-weight: var(--font-weight-semibold);
-}
-
-.material-item:not(.is-selected) .label-check,
-.material-item[aria-selected="false"] .label-check {
-  opacity: var(--radius-none);
-}
-
-.material-item.is-selected .label-check,
-.material-item[aria-selected="true"] .label-check {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /* NUMBER INPUT */

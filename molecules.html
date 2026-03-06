@@ -949,42 +949,158 @@
             </div>
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                <div class="material-selector">
-                    <h3 class="material-selector-title">Materials</h3>
+                <div class="size-grid-stack size-grid-stack-gap-24">
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Small</h3>
+                        <div class="size-grid-content">
+                            <div class="material-selector material-selector-sm">
+                                <h3 class="material-selector-title">Materials</h3>
 
-                    <div class="material-selector-list" role="listbox" aria-label="Material selector">
-                        <button type="button" class="material-item material-item-dark" onclick="selectMaterial(this)"
-                            role="option" aria-selected="false" aria-label="Volutpat option 1">
-                            <span class="material-thumb">
-                                <img src="materials/wood.webp" alt="Volutpat wood sample" class="material-img">
+                                <div class="material-selector-list" role="listbox" aria-label="Small material selector">
+                                    <button type="button" class="material-item material-item-dark"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Wood material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/wood.webp" alt="Wood material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Wood</span>
+                                    </button>
 
-                            </span>
-                            <span class="material-label">Wood</span>
-                        </button>
+                                    <button type="button" class="material-item material-item-cool"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Metal material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/metal.webp" alt="Metal material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Metal</span>
+                                    </button>
 
-                        <button type="button" class="material-item material-item-cool" onclick="selectMaterial(this)"
-                            role="option" aria-selected="false" aria-label="Volutpat option 2">
-                            <span class="material-thumb">
-                                <img src="materials/metal.webp" alt="Volutpat metal sample" class="material-img">
-                            </span>
-                            <span class="material-label">Metal</span>
-                        </button>
+                                    <button type="button" class="material-item material-item-stone"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Stone material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/stone.webp" alt="Stone material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Stone</span>
+                                    </button>
 
-                        <button type="button" class="material-item material-item-stone" onclick="selectMaterial(this)"
-                            role="option" aria-selected="false" aria-label="Volutpat option 3">
-                            <span class="material-thumb">
-                                <img src="materials/stone.webp" alt="Volutpat stone sample" class="material-img">
-                            </span>
-                            <span class="material-label">Stone</span>
-                        </button>
+                                    <button type="button" class="material-item material-item-light"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Tiles material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Tiles</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <button type="button" class="material-item material-item-light" onclick="selectMaterial(this)"
-                            role="option" aria-selected="false" aria-label="Volutpat option 4">
-                            <span class="material-thumb">
-                                <img src="materials/tiles.webp" alt="Volutpat tile sample" class="material-img">
-                            </span>
-                            <span class="material-label">Tiles</span>
-                        </button>
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Medium</h3>
+                        <div class="size-grid-content">
+                            <div class="material-selector material-selector-md">
+                                <h3 class="material-selector-title">Materials</h3>
+
+                                <div class="material-selector-list" role="listbox" aria-label="Medium material selector">
+                                    <button type="button" class="material-item material-item-dark"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Wood material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/wood.webp" alt="Wood material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Wood</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-cool"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Metal material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/metal.webp" alt="Metal material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Metal</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-stone"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Stone material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/stone.webp" alt="Stone material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Stone</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-light"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Tiles material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Tiles</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Large</h3>
+                        <div class="size-grid-content">
+                            <div class="material-selector material-selector-lg">
+                                <h3 class="material-selector-title">Materials</h3>
+
+                                <div class="material-selector-list" role="listbox" aria-label="Large material selector">
+                                    <button type="button" class="material-item material-item-dark"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Wood material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/wood.webp" alt="Wood material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Wood</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-cool"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Metal material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/metal.webp" alt="Metal material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Metal</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-stone"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Stone material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/stone.webp" alt="Stone material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Stone</span>
+                                    </button>
+
+                                    <button type="button" class="material-item material-item-light"
+                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                        aria-label="Tiles material option">
+                                        <span class="material-thumb">
+                                            <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                class="material-img">
+                                        </span>
+                                        <span class="material-label">Tiles</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1489,105 +1605,102 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Variation 2: Feature List -->
-                <div class="w-full max-w-4xl bg-white rounded-xl shadow-btn-glow overflow-hidden">
-                    <div class="flex">
+            <div class="w-full max-w-4xl bg-white rounded-xl shadow-btn-glow overflow-hidden">
+                <div class="flex">
 
 
-                        <!-- Right panell: Feature List -->
-                        <div class="flex-1 p-24">
-                            <div class="grid grid-cols-2 gap-16">
-                                <!-- Feature Item -->
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4
-                                            class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                            Curabitur maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4
-                                            class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                            Curabitur maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-green-tertiary/20 rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-green-secondary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4 class="text-body font-medium text-green-secondary mb-4">Curabitur
-                                            maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4
-                                            class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                            Curabitur maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4
-                                            class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                            Curabitur maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                        <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h4
-                                            class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                            Curabitur maximus</h4>
-                                        <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                            tincidunt non fermentum ac, accumsan eget eros</p>
-                                    </div>
-                                </a>
-                            </div>
+                    <!-- Right panell: Feature List -->
+                    <div class="flex-1 p-24">
+                        <div class="grid grid-cols-2 gap-16">
+                            <!-- Feature Item -->
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
+                                        Curabitur maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
+                                        Curabitur maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-green-tertiary/20 rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-green-secondary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-body font-medium text-green-secondary mb-4">Curabitur
+                                        maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
+                                        Curabitur maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
+                                        Curabitur maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
+                                <div
+                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
+                                        Curabitur maximus</h4>
+                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
+                                        tincidunt non fermentum ac, accumsan eget eros</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             </div>
 
