@@ -689,59 +689,71 @@
                 <div class="w-full max-w-2xl space-y-8">
 
                     <!-- Folder Upload -->
-                    <div>
-                        <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Folder
-                            Upload</label>
-                        <div id="folderDropZone"
-                            class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
-                            <input type="file" id="folderInput" class="hidden" webkitdirectory directory multiple>
-                            <div
-                                class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
+                    <div class="uploader uploader-folder is-default" data-uploader>
+                        <label class="uploader-label" for="folderInput">Folder Upload</label>
+                        <div id="folderDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                            aria-describedby="folderUploaderNote">
+                            <input type="file" id="folderInput" class="uploader-input" data-uploader-input
+                                webkitdirectory directory multiple>
+                            <div class="uploader-icon" aria-hidden="true">
                                 <i class="ri-folder-add-line"></i>
                             </div>
-                            <div
-                                class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
-                                Drag & Drop folder here
+                            <div class="uploader-text" data-uploader-text
+                                data-uploader-idle-text="Drag &amp; Drop folder here" aria-live="polite">
+                                Drag &amp; Drop folder here
                             </div>
-                            <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                            <div class="uploader-subtext">
                                 or click to browse your computer
                             </div>
                         </div>
-                        <p class="text-xs text-grey-primary mt-2 ml-3">Supports bulk uploads with preserved
-                            structure.</p>
+                        <p id="folderUploaderNote" class="uploader-note">
+                            Supports bulk uploads with preserved structure.
+                        </p>
                     </div>
 
-
-
-
-
-
-                    <!-- Folder Upload -->
-
-
-
-
-                    <!-- Image Upload Only -->
-                    <div>
-                        <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Image
-                            Upload</label>
-                        <div id="imageDropZone"
-                            class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
-                            <input type="file" id="imageInput" class="hidden" accept="image/*" multiple>
-                            <div
-                                class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
-                                <i class="ri-image-add-line"></i>
+                    <!-- File Upload -->
+                    <div class="uploader uploader-file is-default" data-uploader>
+                        <label class="uploader-label" for="fileInput">File Upload</label>
+                        <div id="fileDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                            aria-describedby="fileUploaderNote">
+                            <input type="file" id="fileInput" class="uploader-input" data-uploader-input multiple>
+                            <div class="uploader-icon" aria-hidden="true">
+                                <i class="ri-file-add-line"></i>
                             </div>
-                            <div
-                                class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
-                                Drag & Drop images here
+                            <div class="uploader-text" data-uploader-text
+                                data-uploader-idle-text="Drag &amp; Drop files here" aria-live="polite">
+                                Drag &amp; Drop files here
                             </div>
-                            <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                            <div class="uploader-subtext">
                                 or click to browse your computer
                             </div>
                         </div>
-                        <p class="text-xs text-grey-primary mt-2 ml-3">Accepts image files only (jpg, png,
-                            gif, etc.).</p>
+                        <p id="fileUploaderNote" class="uploader-note">
+                            Supports multiple file selection.
+                        </p>
+                    </div>
+
+                    <!-- Image Upload Only -->
+                    <div class="uploader uploader-image is-default" data-uploader>
+                        <label class="uploader-label" for="imageInput">Image Upload</label>
+                        <div id="imageDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                            aria-describedby="imageUploaderNote">
+                            <input type="file" id="imageInput" class="uploader-input" data-uploader-input
+                                accept="image/*" multiple>
+                            <div class="uploader-icon" aria-hidden="true">
+                                <i class="ri-image-add-line"></i>
+                            </div>
+                            <div class="uploader-text" data-uploader-text
+                                data-uploader-idle-text="Drag &amp; Drop images here" aria-live="polite">
+                                Drag &amp; Drop images here
+                            </div>
+                            <div class="uploader-subtext">
+                                or click to browse your computer
+                            </div>
+                        </div>
+                        <p id="imageUploaderNote" class="uploader-note">
+                            Accepts image files only (jpg, png, gif, etc.).
+                        </p>
                     </div>
 
 

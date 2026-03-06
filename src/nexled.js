@@ -373,94 +373,100 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Setup for Folder Upload
-    setupDropZone('folderDropZone', 'folderInput');
-
-    // Setup for File Upload
-    setupDropZone('fileDropZone', 'fileInput');
-
-    // Setup for Image Upload
-    setupDropZone('imageDropZone', 'imageInput');
+    initUploaders();
 });
 
-function setupDropZone(dropZoneId, inputId) {
-    const dropZone = document.getElementById(dropZoneId);
-    const fileInput = document.getElementById(inputId);
-
-    if (!dropZone || !fileInput) return;
-
-    // Trigger input on click
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    // Handle drag enter and drag over
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropZone.addEventListener(eventName, (e) => {
-            e.preventDefault();
-            dropZone.classList.add('!border-green-secondary', '!bg-green-secondary/10');
-        });
-    });
-
-    // Handle drag leave and drop
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropZone.addEventListener(eventName, (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('!border-green-secondary', '!bg-green-secondary/10');
-        });
-    });
-
-    // Handle drop event
-    dropZone.addEventListener('drop', (e) => {
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            // You can manually set the files to the input if needed
-            // Note: Setting files programmatically has limitations in some browsers
-            handleFiles(files, dropZone);
-        }
-    });
-
-    // Handle file selection via input
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-            handleFiles(fileInput.files, dropZone);
-        }
-    });
-
-    // Hover effect for icon
-    dropZone.addEventListener('mouseenter', () => {
-        const icon = dropZone.querySelector('.drop-zone__icon');
-        if (icon) {
-            icon.style.transform = 'translateY(-5px)';
-        }
-    });
-
-    dropZone.addEventListener('mouseleave', () => {
-        const icon = dropZone.querySelector('.drop-zone__icon');
-        if (icon) {
-            icon.style.transform = 'translateY(0)';
-        }
+function initUploaders() {
+    const uploaders = document.querySelectorAll('#file-uploader [data-uploader]');
+    uploaders.forEach((uploader) => {
+        setupUploader(uploader);
     });
 }
 
-function handleFiles(files, dropZone) {
-    const text = dropZone.querySelector('.drop-zone__text');
-    const container = dropZone.parentElement;
-    const label = container ? container.querySelector('label') : null;
+function setupUploader(uploader) {
+    const dropZone = uploader.querySelector('[data-uploader-zone]');
+    const fileInput = uploader.querySelector('[data-uploader-input]');
 
-    if (label) {
-        label.classList.remove('text-grey-primary');
-        label.classList.add('text-black');
+    if (!dropZone || !fileInput) return;
+
+    let dragDepth = 0;
+
+    const openFilePicker = () => {
+        fileInput.click();
+    };
+
+    dropZone.addEventListener('click', () => {
+        openFilePicker();
+    });
+
+    dropZone.addEventListener('keydown', (event) => {
+        const isEnter = event.key === 'Enter';
+        const isSpace = event.key === ' ' || event.key === 'Spacebar';
+
+        if (!isEnter && !isSpace) return;
+
+        event.preventDefault();
+        openFilePicker();
+    });
+
+    dropZone.addEventListener('dragenter', (event) => {
+        event.preventDefault();
+        dragDepth += 1;
+        uploader.classList.add('is-dragover');
+    });
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        uploader.classList.add('is-dragover');
+    });
+
+    dropZone.addEventListener('dragleave', (event) => {
+        event.preventDefault();
+        dragDepth = Math.max(0, dragDepth - 1);
+
+        if (dragDepth === 0) {
+            uploader.classList.remove('is-dragover');
+        }
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dragDepth = 0;
+        uploader.classList.remove('is-dragover');
+
+        const files = event.dataTransfer ? event.dataTransfer.files : null;
+        handleUploaderFiles(files || [], uploader);
+    });
+
+    fileInput.addEventListener('change', () => {
+        handleUploaderFiles(fileInput.files, uploader);
+    });
+
+    handleUploaderFiles(fileInput.files, uploader);
+}
+
+function handleUploaderFiles(files, uploader) {
+    const text = uploader.querySelector('[data-uploader-text]');
+
+    if (!text) return;
+
+    const idleText = text.dataset.uploaderIdleText || text.textContent.trim();
+    const fileCount = files ? files.length : 0;
+
+    uploader.classList.remove('is-dragover');
+
+    if (fileCount > 0) {
+        const itemWord = fileCount === 1 ? 'item' : 'items';
+        uploader.classList.remove('is-default');
+        uploader.classList.add('has-files');
+        text.textContent = `${fileCount} ${itemWord} ready to upload`;
+        console.log('Files selected:', files);
+        return;
     }
 
-    if (text) {
-        const count = files.length;
-        const itemWord = count === 1 ? 'item' : 'items';
-        text.textContent = `${count} ${itemWord} ready to upload`;
-        text.classList.remove('text-black', 'text-green-secondary');
-        text.classList.add('text-green-primary', 'group-hover:text-green-secondary');
-    }
-
-    console.log('Files selected:', files);
-    // Here you would typically handle the file upload to your server
+    uploader.classList.remove('has-files');
+    uploader.classList.add('is-default');
+    text.textContent = idleText;
 }
 
 
