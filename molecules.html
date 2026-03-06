@@ -139,14 +139,16 @@
 
                     <!-- Accordion Molecule -->
                     <div class="w-full">
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-20 items-start">
                             <div class="accordion accordion-sm">
                                 <div class="accordion-item">
-                                    <button class="accordion-trigger" aria-expanded="false">
-                                        <span class="text-grey-primary">Small Accordion</span>
-                                        <i class="chevron-icon ri-arrow-down-s-line text-icon-sm text-grey-primary"></i>
+                                    <button id="accordion-sm-trigger" class="accordion-trigger" aria-expanded="false"
+                                        aria-controls="accordion-sm-panel">
+                                        <span class="accordion-label">Small Accordion</span>
+                                        <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div id="accordion-sm-panel" class="accordion-content" role="region"
+                                        aria-labelledby="accordion-sm-trigger">
                                         <div class="accordion-body">
                                             Small variant content description.
                                         </div>
@@ -156,11 +158,13 @@
 
                             <div class="accordion accordion-md">
                                 <div class="accordion-item">
-                                    <button class="accordion-trigger" aria-expanded="false">
-                                        <span class="text-grey-primary">Medium Accordion</span>
-                                        <i class="chevron-icon ri-arrow-down-s-line text-icon-md text-grey-primary"></i>
+                                    <button id="accordion-md-trigger" class="accordion-trigger" aria-expanded="false"
+                                        aria-controls="accordion-md-panel">
+                                        <span class="accordion-label">Medium Accordion</span>
+                                        <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div id="accordion-md-panel" class="accordion-content" role="region"
+                                        aria-labelledby="accordion-md-trigger">
                                         <div class="accordion-body">
                                             Medium variant content description.
                                         </div>
@@ -170,13 +174,32 @@
 
                             <div class="accordion accordion-lg">
                                 <div class="accordion-item">
-                                    <button class="accordion-trigger" aria-expanded="false">
-                                        <span class="text-grey-primary">Big Accordion</span>
-                                        <i class="chevron-icon ri-arrow-down-s-line text-icon-lg text-grey-primary"></i>
+                                    <button id="accordion-lg-trigger" class="accordion-trigger" aria-expanded="false"
+                                        aria-controls="accordion-lg-panel">
+                                        <span class="accordion-label">Big Accordion</span>
+                                        <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div id="accordion-lg-panel" class="accordion-content" role="region"
+                                        aria-labelledby="accordion-lg-trigger">
                                         <div class="accordion-body">
                                             Big variant content description.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion accordion-md">
+                                <div class="accordion-item is-disabled">
+                                    <button id="accordion-disabled-trigger" class="accordion-trigger"
+                                        aria-expanded="false" aria-controls="accordion-disabled-panel"
+                                        aria-disabled="true" disabled>
+                                        <span class="accordion-label">Disabled Accordion</span>
+                                        <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                    </button>
+                                    <div id="accordion-disabled-panel" class="accordion-content" role="region"
+                                        aria-labelledby="accordion-disabled-trigger">
+                                        <div class="accordion-body">
+                                            Disabled variant content description.
                                         </div>
                                     </div>
                                 </div>
