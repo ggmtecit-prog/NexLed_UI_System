@@ -1441,10 +1441,14 @@ textarea {
 .accordion {
   background: var(--color-white);
   overflow: hidden;
+  justify-self: start;
+  inline-size: max-content;
+  max-inline-size: 100%;
 }
 
 .accordion-trigger {
-  width: 100%;
+  width: auto;
+  max-inline-size: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1520,7 +1524,12 @@ textarea {
   cursor: not-allowed;
 }
 
+.accordion-item {
+  inline-size: 100%;
+}
+
 .accordion-content {
+  inline-size: 100%;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -1539,8 +1548,6 @@ textarea {
   overflow-wrap: anywhere;
   white-space: normal;
   color: var(--color-grey-primary);
-  font-size: var(--font-size-body-sm);
-  line-height: var(--line-height-body-sm);
 }
 
 .accordion-sm .accordion-trigger {
@@ -1552,6 +1559,9 @@ textarea {
 
 .accordion-sm .accordion-body {
   padding: 0 var(--space-12) var(--space-12);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  max-inline-size: calc(var(--space-56) + var(--space-56) + var(--space-24));
 }
 
 .accordion-sm .accordion-icon {
@@ -1567,6 +1577,13 @@ textarea {
 
 .accordion-md .accordion-body {
   padding: 0 var(--space-16) var(--space-16);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.accordion-md .accordion-body,
+.accordion-lg .accordion-body {
+  max-inline-size: none;
 }
 
 .accordion-md .accordion-icon {
@@ -1582,6 +1599,8 @@ textarea {
 
 .accordion-lg .accordion-body {
   padding: 0 var(--space-24) var(--space-24);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
 }
 
 .accordion-lg .accordion-icon {
