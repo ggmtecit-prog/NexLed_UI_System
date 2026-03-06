@@ -1007,7 +1007,8 @@
                             <div class="material-selector material-selector-md">
                                 <h3 class="material-selector-title">Materials</h3>
 
-                                <div class="material-selector-list" role="listbox" aria-label="Medium material selector">
+                                <div class="material-selector-list" role="listbox"
+                                    aria-label="Medium material selector">
                                     <button type="button" class="material-item material-item-dark"
                                         onclick="selectMaterial(this)" role="option" aria-selected="false"
                                         aria-label="Wood material option">
@@ -1501,207 +1502,154 @@
 
         </section>
 
-        <section id="drop-full">
+        <section id="flyout">
             <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Drop Full</h2>
+                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Fly-out</h2>
             </div>
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
+                <!-- Variant 1: Product Grid -->
+                <div class="flyout flyout-products">
+                    <div class="flyout-body">
+                        <nav class="flyout-nav" aria-label="Fly-out categories">
+                            <button type="button" class="flyout-nav-item">
+                                <span>Dignissim Turpis</span>
+                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="flyout-nav-item is-active">
+                                <span>Dignissim Turpis</span>
+                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="flyout-nav-item">
+                                <span>Dignissim Turpis</span>
+                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="flyout-nav-item">
+                                <span>Dignissim Turpis</span>
+                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                            </button>
+                        </nav>
 
-                <!-- Variation 1: Product Grid -->
-                <div class="w-full max-w-4xl bg-white rounded-xl shadow-btn-glow overflow-hidden">
-                    <div class="flex">
-                        <!-- Left Sidebar Navigation -->
-                        <div class="w-[200px] bg-grey-tertiary/10 p-16 flex flex-col gap-8">
-                            <button
-                                class="w-full px-16 py-12 rounded-md text-body text-left flex items-center justify-between transition-all duration-400 hover:bg-grey-tertiary/30 hover:text-green-secondary">
-                                <span>Dignissim Turpis</span>
-                                <i class="ri-arrow-right-s-line text-icon-md"></i>
-                            </button>
-                            <button
-                                class="w-full px-16 py-12 rounded-md text-body text-left flex items-center justify-between transition-all duration-400 bg-grey-tertiary/30 text-green-secondary">
-                                <span>Dignissim Turpis</span>
-                                <i class="ri-arrow-right-s-line text-icon-md"></i>
-                            </button>
-                            <button
-                                class="w-full px-16 py-12 rounded-md text-body text-left flex items-center justify-between transition-all duration-400 hover:bg-grey-tertiary/30 hover:text-green-secondary">
-                                <span>Dignissim Turpis</span>
-                                <i class="ri-arrow-right-s-line text-icon-md"></i>
-                            </button>
-                            <button
-                                class="w-full px-16 py-12 rounded-md text-body text-left flex items-center justify-between transition-all duration-400 hover:bg-grey-tertiary/30 hover:text-green-secondary">
-                                <span>Dignissim Turpis</span>
-                                <i class="ri-arrow-right-s-line text-icon-md"></i>
-                            </button>
-                        </div>
-
-                        <!-- Right panell: Product Grid -->
-                        <div class="flex-1 p-24">
-                            <div class="grid grid-cols-2 gap-16">
-                                <!-- Product Item -->
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                        <div class="flyout-copy">
+                            <div class="flyout-grid">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                    <span
-                                        class="text-body text-black group-hover:text-green-secondary transition-colors">Curabitur
-                                        maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                    <span
-                                        class="text-body text-black group-hover:text-green-secondary transition-colors">Curabitur
-                                        maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                    <span class="text-body text-black">Curabitur maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                                <a href="#" class="flyout-link is-active">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                    <span class="text-body text-green-secondary">Curabitur maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                        <span
-                                            class="text-body text-black group-hover:text-green-secondary transition-colors">Curabitur
-                                            maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
-                                <a href="#"
-                                    class="flex items-center gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                    <div
-                                        class="w-64 h-64 bg-grey-tertiary rounded-md flex items-center justify-center overflow-hidden">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
                                         <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                            alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                    <span
-                                        class="text-body text-black group-hover:text-green-secondary transition-colors">Curabitur
-                                        maximus</span>
+                                            alt="Curabitur maximus product image">
+                                    </span>
+                                    <span class="flyout-label">Curabitur maximus</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="w-full max-w-4xl bg-white rounded-xl shadow-btn-glow overflow-hidden">
-                <div class="flex">
-
-
-                    <!-- Right panell: Feature List -->
-                    <div class="flex-1 p-24">
-                        <div class="grid grid-cols-2 gap-16">
-                            <!-- Feature Item -->
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4
-                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                        Curabitur maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4
-                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                        Curabitur maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-green-tertiary/20 rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-green-secondary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="text-body font-medium text-green-secondary mb-4">Curabitur
-                                        maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4
-                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                        Curabitur maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4
-                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                        Curabitur maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
-                            <a href="#"
-                                class="flex items-start gap-12 p-12 rounded-md transition-all duration-400 hover:bg-grey-tertiary/20 group">
-                                <div
-                                    class="w-48 h-48 bg-grey-tertiary rounded-md flex items-center justify-center flex-shrink-0">
-                                    <i class="ri-archive-line text-icon-lg text-grey-primary"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h4
-                                        class="text-body font-medium text-black group-hover:text-green-secondary transition-colors mb-4">
-                                        Curabitur maximus</h4>
-                                    <p class="text-body-sm text-grey-primary">Aliquam sapien felis,
-                                        tincidunt non fermentum ac, accumsan eget eros</p>
-                                </div>
-                            </a>
+                <!-- Variant 2: Feature List -->
+                <div class="flyout flyout-features">
+                    <div class="flyout-body">
+                        <div class="flyout-copy">
+                            <div class="flyout-grid">
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flyout-link is-active">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flyout-link">
+                                    <span class="flyout-media">
+                                        <i class="ri-archive-line" aria-hidden="true"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="flyout-title">Curabitur maximus</h4>
+                                        <p class="flyout-text">Aliquam sapien felis, tincidunt non fermentum ac,
+                                            accumsan eget eros</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
             </div>
 
         </section>
