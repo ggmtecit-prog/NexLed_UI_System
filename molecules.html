@@ -688,78 +688,67 @@
 
                 <div class="w-full max-w-2xl space-y-8">
 
-                    <div class="bg-white p-6 rounded-2xl border border-grey-tertiary space-y-8">
-                        <!-- Folder Upload -->
-                        <div>
-                            <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Folder
-                                Upload</label>
-                            <div id="folderDropZone"
-                                class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
-                                <input type="file" id="folderInput" class="hidden" webkitdirectory directory multiple>
-                                <div
-                                    class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
-                                    <i class="ri-folder-add-line"></i>
-                                </div>
-                                <div
-                                    class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
-                                    Drag & Drop folder here
-                                </div>
-                                <div class="drop-zone__subtext text-sm text-grey-primary font-light">
-                                    or click to browse your computer
-                                </div>
+                    <!-- Folder Upload -->
+                    <div>
+                        <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Folder
+                            Upload</label>
+                        <div id="folderDropZone"
+                            class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                            <input type="file" id="folderInput" class="hidden" webkitdirectory directory multiple>
+                            <div
+                                class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
+                                <i class="ri-folder-add-line"></i>
                             </div>
-                            <p class="text-xs text-grey-primary mt-2 ml-3">Supports bulk uploads with preserved
-                                structure.</p>
-                        </div>
-
-                        <!-- File Upload (Single or Multiple Files) -->
-                        <div>
-                            <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">File
-                                Upload</label>
-                            <div id="fileDropZone"
-                                class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
-                                <input type="file" id="fileInput" class="hidden" multiple>
-                                <div
-                                    class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
-                                    <i class="ri-file-add-line"></i>
-                                </div>
-                                <div
-                                    class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
-                                    Drag & Drop files here
-                                </div>
-                                <div class="drop-zone__subtext text-sm text-grey-primary font-light">
-                                    or click to browse your computer
-                                </div>
-                                <p class="text-xs text-grey-primary mt-2 ml-3">Supports multiple file selection.</p>
+                            <div
+                                class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
+                                Drag & Drop folder here
                             </div>
-
-                            <!-- Image Upload Only -->
-                            <div>
-                                <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Image
-                                    Upload</label>
-                                <div id="imageDropZone"
-                                    class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
-                                    <input type="file" id="imageInput" class="hidden" accept="image/*" multiple>
-                                    <div
-                                        class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
-                                        <i class="ri-image-add-line"></i>
-                                    </div>
-                                    <div
-                                        class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
-                                        Drag & Drop images here
-                                    </div>
-                                    <div class="drop-zone__subtext text-sm text-grey-primary font-light">
-                                        or click to browse your computer
-                                    </div>
-                                </div>
-                                <p class="text-xs text-grey-primary mt-2 ml-3">Accepts image files only (jpg, png,
-                                    gif, etc.).</p>
+                            <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                                or click to browse your computer
                             </div>
                         </div>
-
+                        <p class="text-xs text-grey-primary mt-2 ml-3">Supports bulk uploads with preserved
+                            structure.</p>
                     </div>
 
+
+
+
+
+
+                    <!-- Folder Upload -->
+
+
+
+
+                    <!-- Image Upload Only -->
+                    <div>
+                        <label class="block text-sm font-normal text-grey-primary mb-2 ml-3">Image
+                            Upload</label>
+                        <div id="imageDropZone"
+                            class="group relative w-full min-h-[180px] p-8 border-2 border-dashed border-black/10 rounded-2xl bg-white text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-3 hover:border-green-secondary hover:bg-green-secondary/5">
+                            <input type="file" id="imageInput" class="hidden" accept="image/*" multiple>
+                            <div
+                                class="drop-zone__icon text-green-primary text-5xl transition-all duration-300 group-hover:text-green-secondary">
+                                <i class="ri-image-add-line"></i>
+                            </div>
+                            <div
+                                class="drop-zone__text text-base font-medium text-black transition-colors duration-300 group-hover:text-green-secondary">
+                                Drag & Drop images here
+                            </div>
+                            <div class="drop-zone__subtext text-sm text-grey-primary font-light">
+                                or click to browse your computer
+                            </div>
+                        </div>
+                        <p class="text-xs text-grey-primary mt-2 ml-3">Accepts image files only (jpg, png,
+                            gif, etc.).</p>
+                    </div>
+
+
                 </div>
+
+
+
             </div>
 
         </section>
