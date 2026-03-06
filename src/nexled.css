@@ -1853,10 +1853,14 @@ textarea {
   border-radius: var(--radius-lg);
 }
 
-.list-item:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
+.list-item:hover .list-key {
+  color: var(--color-black);
 }
+
+.list-item:hover .list-value {
+  color: var(--color-green-secondary);
+}
+
 
 .list-item:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
