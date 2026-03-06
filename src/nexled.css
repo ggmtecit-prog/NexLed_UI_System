@@ -1758,19 +1758,12 @@ textarea {
   border-radius: var(--radius-md);
   color: var(--color-black);
   text-decoration: none;
-  box-shadow: var(--shadow-btn-default);
   cursor: pointer;
 }
 
-.stepper-step:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
-  box-shadow: var(--shadow-btn-hover);
-}
 
-.stepper-step:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
-}
+
+
 
 .stepper-step:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
