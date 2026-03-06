@@ -1026,37 +1026,57 @@
             </div>
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                <div class="w-full max-w-md">
-
-
-
-
-
-                    <div class="quantity-wrapper inline-flex items-center gap-icon-md bg-grey-tertiary rounded-[8px]">
-                        <!-- Decrease (ghost icon button) -->
-                        <button class="btn btn-ghost btn-icon btn-sm" aria-label="Decrease quantity">
-                            <i class="ri-subtract-line text-icon-lg"></i>
-                        </button>
-
-                        <!-- Value (tokenized typography) -->
-                        <input type="number"
-                            class="qty-input w-16 h-icon-xl leading-h1 text-center text-h3 font-semibold bg-transparent border-none outline-none p-0 m-0 cursor-default focus:ring-0"
-                            value="0" readonly aria-label="Quantity">
-
-                        <!-- Increase (ghost icon button) -->
-                        <button class="btn btn-ghost btn-icon btn-sm" aria-label="Increase quantity">
-                            <i class="ri-add-line text-icon-lg"></i>
-                        </button>
+                <div
+                    class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Small</h3>
+                        <div class="size-grid-content">
+                            <div class="quantity-selector quantity-selector-sm">
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Decrease quantity">
+                                    <i class="ri-subtract-line text-icon-lg"></i>
+                                </button>
+                                <input type="number" class="quantity-selector-value" value="0" readonly
+                                    aria-label="Quantity">
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Increase quantity">
+                                    <i class="ri-add-line text-icon-lg"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Medium</h3>
+                        <div class="size-grid-content">
+                            <div class="quantity-selector quantity-selector-md">
+                                <button class="btn btn-ghost btn-icon btn-md" aria-label="Decrease quantity">
+                                    <i class="ri-subtract-line text-icon-lg"></i>
+                                </button>
+                                <input type="number" class="quantity-selector-value" value="0" readonly
+                                    aria-label="Quantity">
+                                <button class="btn btn-ghost btn-icon btn-md" aria-label="Increase quantity">
+                                    <i class="ri-add-line text-icon-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-
-
+                    <div class="size-grid-column">
+                        <h3 class="size-grid-column-title">Large</h3>
+                        <div class="size-grid-content">
+                            <div class="quantity-selector quantity-selector-lg">
+                                <button class="btn btn-ghost btn-icon btn-lg" aria-label="Decrease quantity">
+                                    <i class="ri-subtract-line text-icon-lg"></i>
+                                </button>
+                                <input type="number" class="quantity-selector-value" value="0" readonly
+                                    aria-label="Quantity">
+                                <button class="btn btn-ghost btn-icon btn-lg" aria-label="Increase quantity">
+                                    <i class="ri-add-line text-icon-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </section>
 
         <section id="stepper">

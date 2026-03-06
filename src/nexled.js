@@ -700,10 +700,10 @@ if (document.readyState === 'loading') {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const wrappers = document.querySelectorAll('#quantity-selector .quantity-wrapper');
+    const wrappers = document.querySelectorAll('#quantity-selector .quantity-selector');
 
     wrappers.forEach(wrapper => {
-        const input = wrapper.querySelector('.qty-input');
+        const input = wrapper.querySelector('.quantity-selector-value');
         const decreaseBtn = wrapper.querySelector('button[aria-label="Decrease quantity"]');
         const increaseBtn = wrapper.querySelector('button[aria-label="Increase quantity"]');
 
