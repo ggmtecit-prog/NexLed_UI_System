@@ -648,42 +648,30 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 
 function setActiveStep(stepNumber) {
-    // Get all step circle elements
-    const allCircles = document.querySelectorAll('.step-circle');
+    const allItems = document.querySelectorAll('#stepper [data-stepper-item]');
 
-    allCircles.forEach((circle, index) => {
-        const stepIndex = index + 1;
-        const parentBtn = circle.closest('.step-item');
+    allItems.forEach((item) => {
+        const isActive = Number(item.dataset.step) === stepNumber;
+        const button = item.querySelector('[data-stepper-button]');
+        const label = item.querySelector('[data-stepper-label]');
 
-        if (stepIndex === stepNumber) {
-            // Set as active
-            circle.classList.remove('bg-grey-tertiary', 'text-black');
-            circle.classList.add('bg-green-primary', 'text-white', 'shadow-btn-glow');
-            if (parentBtn) {
-                parentBtn.setAttribute('aria-pressed', 'true');
-                parentBtn.setAttribute('aria-current', 'step');
-                const label = parentBtn.querySelector('.step-link');
-                if (label) {
-                    label.classList.add('text-green-primary', 'font-semibold');
-                    label.classList.remove('text-black', 'font-medium');
-                }
-            }
-        } else {
-            // Set as inactive
-            circle.classList.remove('bg-green-primary', 'text-white', 'shadow-btn-glow');
-            circle.classList.add('bg-grey-tertiary', 'text-black', 'shadow-btn-default');
-            if (parentBtn) {
-                parentBtn.setAttribute('aria-pressed', 'false');
-                parentBtn.removeAttribute('aria-current');
-                const label = parentBtn.querySelector('.step-link');
-                if (label) {
-                    label.classList.add('text-black', 'font-medium');
-                    label.classList.remove('text-green-primary', 'font-semibold');
-                }
+        if (button) {
+            button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+            if (isActive) {
+                button.setAttribute('aria-current', 'step');
+            } else {
+                button.removeAttribute('aria-current');
             }
         }
-    });
 
+        if (label) {
+            label.classList.toggle('text-green-primary', isActive);
+            label.classList.toggle('font-semibold', isActive);
+            label.classList.toggle('text-black', !isActive);
+            label.classList.toggle('font-medium', !isActive);
+        }
+    });
 }
 
 // Initialize default active step on DOM ready

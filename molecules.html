@@ -1088,30 +1088,29 @@
 
 
                     <div class="mb-12">
-                        <div class="stepper flex-col md:flex-row">
-                            <button class="step-item stepper-step is-active" onclick="setActiveStep(1)"
-                                aria-pressed="false">
-                                <div class="step-circle stepper-number">
-                                    <span class="text-h3 font-bold">1</span>
-                                </div>
-                                <a href="#"
-                                    class="step-link text-body-lg text-green-primary font-semibold no-underline">Order
-                                    Details</a>
-                            </button>
-                            <button class="step-item stepper-step" onclick="setActiveStep(2)" aria-pressed="false">
-                                <div class="step-circle stepper-number">
-                                    <span class="text-h3 font-bold">2</span>
-                                </div>
-                                <a href="#" class="step-link text-body-lg text-black font-medium no-underline">Shipping
-                                    Info</a>
-                            </button>
-                            <button class="step-item stepper-step" onclick="setActiveStep(3)" aria-pressed="false">
-                                <div class="step-circle stepper-number">
-                                    <span class="text-h3 font-bold">3</span>
-                                </div>
-                                <a href="#"
-                                    class="step-link text-body-lg text-black font-medium no-underline">Payment</a>
-                            </button>
+                        <div class="flex flex-col gap-16 md:flex-row md:justify-center" role="group"
+                            aria-label="Checkout steps">
+                            <div class="flex items-center gap-12" data-stepper-item data-step="1">
+                                <button type="button" class="btn btn-secondary btn-icon btn-sm" data-stepper-button
+                                    onclick="setActiveStep(1)" aria-label="Step 1: Order Details" aria-pressed="true"
+                                    aria-current="step">1</button>
+                                <span class="step-link text-body-lg font-semibold text-green-primary"
+                                    data-stepper-label>Order Details</span>
+                            </div>
+                            <div class="flex items-center gap-12" data-stepper-item data-step="2">
+                                <button type="button" class="btn btn-secondary btn-icon btn-sm" data-stepper-button
+                                    onclick="setActiveStep(2)" aria-label="Step 2: Shipping Info"
+                                    aria-pressed="false">2</button>
+                                <span class="step-link text-body-lg font-medium text-black" data-stepper-label>Shipping
+                                    Info</span>
+                            </div>
+                            <div class="flex items-center gap-12" data-stepper-item data-step="3">
+                                <button type="button" class="btn btn-secondary btn-icon btn-sm" data-stepper-button
+                                    onclick="setActiveStep(3)" aria-label="Step 3: Payment"
+                                    aria-pressed="false">3</button>
+                                <span class="step-link text-body-lg font-medium text-black"
+                                    data-stepper-label>Payment</span>
+                            </div>
                         </div>
                     </div>
 
