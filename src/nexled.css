@@ -1782,6 +1782,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: var(--space-12);
+  cursor: pointer;
 }
 
 .stepper-label {
@@ -1801,6 +1802,10 @@ textarea {
   background-color: var(--color-grey-tertiary);
 }
 
+.stepper-step.is-default:hover .btn-stepper {
+  background-color: var(--color-grey-tertiary);
+}
+
 .stepper-step.is-default .stepper-label {
   color: var(--color-black);
   font-weight: var(--font-weight-regular);
@@ -1809,6 +1814,15 @@ textarea {
 .stepper-step.is-active .stepper-label {
   color: var(--color-black);
   font-weight: var(--font-weight-semibold);
+}
+
+.stepper-step.is-active:hover .btn-stepper[aria-pressed="true"] {
+  background-color: var(--color-green-secondary);
+}
+
+
+.stepper-step:not(.is-locked):hover .stepper-label {
+  color: var(--color-green-secondary);
 }
 
 .stepper-step.is-locked .btn-stepper {

@@ -689,11 +689,36 @@ function setActiveStep(stepNumber) {
     });
 }
 
+function initializeStepper() {
+    const stepperRoot = document.querySelector('#stepper .stepper');
+
+    setActiveStep(1);
+
+    if (!stepperRoot || stepperRoot.dataset.stepperClickBound === 'true') {
+        return;
+    }
+
+    stepperRoot.dataset.stepperClickBound = 'true';
+    stepperRoot.addEventListener('click', (event) => {
+        if (event.target.closest('[data-stepper-button]')) {
+            return;
+        }
+
+        const stepItem = event.target.closest('[data-stepper-item]');
+
+        if (!stepItem || !stepperRoot.contains(stepItem)) {
+            return;
+        }
+
+        setActiveStep(Number(stepItem.dataset.step) || 1);
+    });
+}
+
 // Initialize default active step on DOM ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setActiveStep(1));
+    document.addEventListener('DOMContentLoaded', initializeStepper);
 } else {
-    setActiveStep(1);
+    initializeStepper();
 }
 
 
