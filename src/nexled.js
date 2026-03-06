@@ -647,14 +647,35 @@ document.addEventListener('DOMContentLoaded', () => {
  * Stepper Component Logic
  */
 
+let maxUnlockedStep = 1;
+
 function setActiveStep(stepNumber) {
     const allItems = document.querySelectorAll('#stepper [data-stepper-item]');
 
+    if (!allItems.length) {
+        return;
+    }
+
+    const totalSteps = allItems.length;
+    const requestedStep = Math.min(Math.max(Number(stepNumber) || 1, 1), totalSteps);
+
+    maxUnlockedStep = Math.max(maxUnlockedStep, requestedStep);
+
     allItems.forEach((item) => {
-        const isActive = Number(item.dataset.step) === stepNumber;
+        const itemStep = Number(item.dataset.step) || 1;
+        const isActive = itemStep === requestedStep;
+        const isLocked = itemStep > maxUnlockedStep;
         const button = item.querySelector('[data-stepper-button]');
 
-        item.classList.toggle('is-active', isActive);
+        item.classList.remove('is-default', 'is-active', 'is-locked');
+
+        if (isActive) {
+            item.classList.add('is-active');
+        } else if (isLocked) {
+            item.classList.add('is-locked');
+        } else {
+            item.classList.add('is-default');
+        }
 
         if (button) {
             button.setAttribute('aria-pressed', isActive ? 'true' : 'false');

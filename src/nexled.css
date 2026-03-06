@@ -1747,17 +1747,23 @@ textarea {
   font-size: var(--font-size-h3);
   line-height: var(--line-height-h3);
   box-shadow: none;
-  background-color: var(--color-grey-secondary);
   border: 0;
 }
 
 .btn-stepper:hover {
   box-shadow: none;
   border: 0;
-  background-color: var(--color-grey-tertiary);
+}
+
+.btn-stepper[aria-pressed="true"] {
+  background-color: var(--color-green-primary);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .btn-stepper[aria-pressed="true"]:hover {
+  background-color: var(--color-green-secondary);
   box-shadow: none;
 }
 
@@ -1786,15 +1792,41 @@ textarea {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.stepper-step.is-active .stepper-label .btn-stepper:hover {
-  color: var(--color-green-primary);
-  font-weight: var(--font-weight-medium);
+.stepper-step.is-default .btn-stepper {
+  background-color: var(--color-grey-secondary);
+  color: var(--color-black);
+}
+
+.stepper-step.is-default .btn-stepper:hover {
+  background-color: var(--color-grey-tertiary);
+}
+
+.stepper-step.is-default .stepper-label {
+  color: var(--color-black);
+  font-weight: var(--font-weight-regular);
+}
+
+.stepper-step.is-active .stepper-label {
+  color: var(--color-black);
+  font-weight: var(--font-weight-semibold);
+}
+
+.stepper-step.is-locked .btn-stepper {
+  background-color: var(--color-grey-tertiary);
+  color: var(--color-grey-primary);
+  transform: none;
+  border-color: transparent;
+}
+
+.stepper-step.is-locked .btn-stepper:hover {
+  background-color: var(--color-grey-tertiary);
+  color: var(--color-grey-primary);
   box-shadow: none;
 }
 
-.stepper-step.is-active .stepper-label .btn-stepper:hover {
-  color: var(--color-green-secondary);
-  box-shadow: none;
+.stepper-step.is-locked .stepper-label {
+  color: var(--color-grey-primary);
+  font-weight: var(--font-weight-regular);
 }
 
 /* LIST */
