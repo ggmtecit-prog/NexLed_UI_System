@@ -653,7 +653,8 @@ function setActiveStep(stepNumber) {
     allItems.forEach((item) => {
         const isActive = Number(item.dataset.step) === stepNumber;
         const button = item.querySelector('[data-stepper-button]');
-        const label = item.querySelector('[data-stepper-label]');
+
+        item.classList.toggle('is-active', isActive);
 
         if (button) {
             button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
@@ -663,13 +664,6 @@ function setActiveStep(stepNumber) {
             } else {
                 button.removeAttribute('aria-current');
             }
-        }
-
-        if (label) {
-            label.classList.toggle('text-green-primary', isActive);
-            label.classList.toggle('font-semibold', isActive);
-            label.classList.toggle('text-black', !isActive);
-            label.classList.toggle('font-medium', !isActive);
         }
     });
 }
