@@ -1439,10 +1439,12 @@ textarea {
 
 /* ACCORDION */
 .accordion {
-  border: var(--border-thin) solid var(--color-grey-tertiary);
-  border-radius: var(--radius-lg);
   background: var(--color-white);
   overflow: hidden;
+}
+
+.accordion:hover {
+  color: var(--color-green-secondary);
 }
 
 .accordion-trigger {
@@ -1456,20 +1458,10 @@ textarea {
   background: var(--color-white);
   color: var(--color-grey-primary);
   text-align: left;
-  box-shadow: var(--shadow-btn-default);
   cursor: pointer;
 }
 
-.accordion-trigger:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
-  color: var(--color-green-secondary);
-  box-shadow: var(--shadow-btn-hover);
-}
 
-.accordion-trigger:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
-}
 
 .accordion-trigger:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
