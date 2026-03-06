@@ -1757,6 +1757,10 @@ textarea {
   background-color: var(--color-grey-tertiary);
 }
 
+.btn-stepper[aria-pressed="true"]:hover {
+  box-shadow: none;
+}
+
 .btn-stepper:active {
   color: var(--color-green-primary);
   box-shadow: none;
