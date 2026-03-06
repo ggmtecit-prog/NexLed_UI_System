@@ -1775,7 +1775,7 @@ textarea {
 .stepper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
+  gap: var(--space-40);
 }
 
 .stepper-step {
