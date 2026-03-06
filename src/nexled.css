@@ -2685,44 +2685,130 @@ textarea {
 }
 
 /* MATERIAL SELECTOR */
+.material-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.material-selector-title {
+  margin: 0;
+  color: var(--color-grey-primary);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-regular);
+}
+
+.material-selector-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+  align-items: flex-start;
+}
+
 .material-item {
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: center;
+  transition: transform var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.material-item:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--space-8);
+  border-radius: var(--radius-xl);
 }
 
 .material-thumb {
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
-}
-
-.material-item:hover .material-thumb {
-  transform: translateY(calc(var(--lift-standard) * 2));
-  box-shadow: var(--shadow-btn-hover);
-}
-
-.material-item:hover .material-img {
-  transform: scale(var(--scale-hover));
+  position: relative;
+  display: block;
+  width: calc(var(--space-64) + var(--space-56));
+  height: calc(var(--space-64) + var(--space-56));
+  overflow: hidden;
+  border-radius: var(--radius-btn);
+  background: var(--color-white);
+  box-shadow: var(--shadow-btn-default);
+  transition:
+    transform var(--motion-duration-default) var(--motion-ease-premium),
+    box-shadow var(--motion-duration-default) var(--motion-ease-premium),
+    border-color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .material-img {
-  transition: transform calc(var(--motion-duration-default) + (var(--motion-duration-default) / 2)) var(--motion-ease-premium);
+  border: var(--border-standard) solid var(--color-grey-secondary);
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  border-radius: inherit;
+  transition: transform var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.material-item.is-selected .material-thumb {
-  box-shadow: var(--radius-none) var(--radius-none) var(--radius-none) var(--border-standard) var(--color-green-secondary);
-  transform: translateY(calc(var(--lift-standard) * 2));
+.material-label {
+  color: var(--color-grey-primary);
+  font-size: var(--font-size-body-xl);
+  line-height: var(--line-height-body-lg);
+  font-weight: var(--font-weight-regular);
+  transition:
+    color var(--motion-duration-default) var(--motion-ease-premium),
+    font-weight var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.label-check {
-  transition: transform var(--motion-duration-default) var(--motion-ease-premium), opacity var(--motion-duration-default) var(--motion-ease-premium);
+
+
+.material-item:hover .material-thumb {
+  transform: translateY(var(--lift-standard));
+  box-shadow: var(--shadow-btn-hover);
+  border: var(--border-standard) solid var(--color-green-secondary);
+
 }
 
-.material-item:not(.is-selected) .label-check {
+.material-item:hover .material-img,
+.material-item.is-selected .material-img,
+.material-item[aria-selected="true"] .material-img {
+  transform: scale(var(--scale-hover));
+}
+
+.material-item:hover .material-label {
+  color: var(--color-green-secondary);
+}
+
+.material-item.is-selected .material-thumb,
+.material-item[aria-selected="true"] .material-thumb {
+  border: var(--border-standard) solid var(--color-green-primary);
+}
+
+.material-item.is-selected .material-label,
+.material-item[aria-selected="true"] .material-label {
+  color: var(--color-green-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.material-item.is-selected .material-label,
+.material-item[aria-selected="true"] .material-label:hover {
+  color: var(--color-green-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.material-item:not(.is-selected) .label-check,
+.material-item[aria-selected="false"] .label-check {
   opacity: var(--radius-none);
-  transform: scale(var(--opacity-semi));
 }
 
-.material-item.is-selected .label-check {
-  opacity: calc(var(--opacity-semi) / var(--opacity-semi));
-  transform: scale(calc(var(--opacity-semi) / var(--opacity-semi)));
+.material-item.is-selected .label-check,
+.material-item[aria-selected="true"] .label-check {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* NUMBER INPUT */

@@ -949,77 +949,43 @@
             </div>
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                <div class="material-selector">
+                    <h3 class="material-selector-title">Materials</h3>
 
-                <div class="w-full max-w-4xl bg-white p-12 rounded-[32px] shadow-sm border border-grey-tertiary">
+                    <div class="material-selector-list" role="listbox" aria-label="Material selector">
+                        <button type="button" class="material-item material-item-dark" onclick="selectMaterial(this)"
+                            role="option" aria-selected="false" aria-label="Volutpat option 1">
+                            <span class="material-thumb">
+                                <img src="materials/wood.webp" alt="Volutpat wood sample" class="material-img">
 
-
-                    <div class="flex flex-wrap gap-x-6 gap-y-10 justify-start">
-
-                        <!-- Item 1: Wood -->
-                        <button
-                            class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
-                            onclick="selectMaterial(this)">
-                            <div
-                                class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
-                                <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/wood_texture_1768407799802.png"
-                                    alt="Wood" class="material-img w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span
-                                    class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Wood</span>
-
-                            </div>
+                            </span>
+                            <span class="material-label">Wood</span>
                         </button>
 
-                        <!-- Item 2: Marble -->
-                        <button
-                            class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
-                            onclick="selectMaterial(this)">
-                            <div
-                                class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
-                                <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/marble_texture_1768407812732.png"
-                                    alt="Marble" class="material-img w-full h-full object-cover">
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Marble</span>
-
-                                </div>
+                        <button type="button" class="material-item material-item-cool" onclick="selectMaterial(this)"
+                            role="option" aria-selected="false" aria-label="Volutpat option 2">
+                            <span class="material-thumb">
+                                <img src="materials/metal.webp" alt="Volutpat metal sample" class="material-img">
+                            </span>
+                            <span class="material-label">Metal</span>
                         </button>
 
-                        <!-- Item 3: Leather -->
-                        <button
-                            class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
-                            onclick="selectMaterial(this)">
-                            <div
-                                class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
-                                <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/leather_texture_1768407824625.png"
-                                    alt="Leather" class="material-img w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span
-                                    class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Leather</span>
-
-                            </div>
+                        <button type="button" class="material-item material-item-stone" onclick="selectMaterial(this)"
+                            role="option" aria-selected="false" aria-label="Volutpat option 3">
+                            <span class="material-thumb">
+                                <img src="materials/stone.webp" alt="Volutpat stone sample" class="material-img">
+                            </span>
+                            <span class="material-label">Stone</span>
                         </button>
 
-                        <!-- Item 4: Fabric -->
-                        <button
-                            class="material-item flex flex-col items-center gap-[14px] bg-transparent border-none cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-green-secondary focus-visible:outline-offset-4 focus-visible:rounded-[24px]"
-                            onclick="selectMaterial(this)">
-                            <div
-                                class="material-thumb w-[120px] h-[120px] rounded-[20px] overflow-hidden bg-grey-tertiary/20 shadow-md">
-                                <img src="C:/Users/USER/.gemini/antigravity/brain/fc678fb1-8de9-4ef3-8b06-e01f401553c2/fabric_texture_1768407842425.png"
-                                    alt="Fabric" class="material-img w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span
-                                    class="material-label text-base font-medium text-grey-primary transition-colors group-hover:text-black">Fabric</span>
-
-                            </div>
+                        <button type="button" class="material-item material-item-light" onclick="selectMaterial(this)"
+                            role="option" aria-selected="false" aria-label="Volutpat option 4">
+                            <span class="material-thumb">
+                                <img src="materials/tiles.webp" alt="Volutpat tile sample" class="material-img">
+                            </span>
+                            <span class="material-label">Tiles</span>
                         </button>
-
                     </div>
-
                 </div>
 
             </div>
