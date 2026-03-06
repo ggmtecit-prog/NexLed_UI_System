@@ -714,42 +714,88 @@ document.addEventListener('DOMContentLoaded', () => {
         // Settings
         const min = parseInt(wrapper.dataset.min) || 0;
         const max = parseInt(wrapper.dataset.max) || 999;
+        let lastValidValue = min;
 
-        // Initial State Check
-        updateState();
+        commitTypedValue();
 
         // Event Listeners
         decreaseBtn.addEventListener('click', () => {
-            let currentValue = parseInt(input.value) || 0;
+            commitTypedValue();
+
+            let currentValue = parseInt(input.value, 10);
             if (currentValue > min) {
                 updateValue(currentValue - 1);
             }
         });
 
         increaseBtn.addEventListener('click', () => {
-            let currentValue = parseInt(input.value) || 0;
+            commitTypedValue();
+
+            let currentValue = parseInt(input.value, 10);
             if (currentValue < max) {
                 updateValue(currentValue + 1);
             }
         });
 
+        input.addEventListener('blur', () => {
+            commitTypedValue();
+        });
+
+        input.addEventListener('change', () => {
+            commitTypedValue();
+        });
+
         // Helper to update value and UI state
         function updateValue(newValue) {
+            setCommittedValue(newValue, true);
+        }
+
+        function commitTypedValue() {
+            const rawValue = input.value.trim();
+            let nextValue;
+
+            if (rawValue === '') {
+                nextValue = lastValidValue;
+            } else {
+                const parsedValue = parseInt(rawValue, 10);
+                nextValue = Number.isNaN(parsedValue) ? lastValidValue : parsedValue;
+            }
+
+            if (nextValue < min) {
+                nextValue = min;
+            }
+
+            if (nextValue > max) {
+                nextValue = max;
+            }
+
+            setCommittedValue(nextValue, false);
+        }
+
+        function setCommittedValue(newValue, dispatchChange) {
             input.value = newValue;
+            lastValidValue = newValue;
             updateState();
 
-            // Dispatch change event if other components need to know
-            input.dispatchEvent(new Event('change'));
+            if (dispatchChange) {
+                input.dispatchEvent(new Event('change'));
+            }
         }
 
         // Helper to disable buttons at limits
         function updateState() {
-            let currentValue = parseInt(input.value) || 0;
+            let currentValue = parseInt(input.value, 10);
+
+            if (Number.isNaN(currentValue)) {
+                currentValue = lastValidValue;
+                input.value = currentValue;
+            }
 
             // Check limits
             if (currentValue <= min) {
                 decreaseBtn.disabled = true;
                 input.value = min; // Enforce min
+                lastValidValue = min;
             } else {
                 decreaseBtn.disabled = false;
             }
@@ -757,6 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentValue >= max) {
                 increaseBtn.disabled = true;
                 input.value = max; // Enforce max
+                lastValidValue = max;
             } else {
                 increaseBtn.disabled = false;
             }
