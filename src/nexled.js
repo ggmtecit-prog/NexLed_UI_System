@@ -466,41 +466,8 @@ function handleUploaderFiles(files, uploader) {
  * Language Selector Logic
  */
 
-function toggleLangMenu(button) {
-    const container = button.closest('.language-selector-root');
-    const menu = container.querySelector('.dropdown__menu');
-    const arrow = button.querySelector('.arrow-icon');
 
-    // Check current state (menu hidden via 'invisible')
-    const isClosed = menu.classList.contains('invisible');
-
-    // Close all other menus first
-    closeAllLangMenus();
-
-    if (isClosed) {
-        // Open: remove hidden classes used by dropdown component and add visible ones
-        menu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
-        menu.classList.add('opacity-100', 'visible', 'translate-y-0');
-        if (arrow) {
-            arrow.classList.add('rotate-180', 'text-green-secondary');
-            arrow.classList.remove('text-grey-primary');
-        }
-        button.setAttribute('aria-expanded', 'true');
-    }
-}
-
-function selectLang(option, langName, countryCode) {
-    // 1. Find the Container
-    const container = option.closest('.language-selector-root');
-    const button = container.querySelector('button');
-
-    // 2. Update Label (if exists)
-    const label = button.querySelector('.current-lang-text');
-    if (label) {
-        label.textContent = langName;
-    }
-
-    // 3. Update Flag (if exists)
+/* Legacy language-selector hooks removed.
     const flagParams = {
         'gb': { src: 'https://flagcdn.com/w40/gb.png', srcset: 'https://flagcdn.com/w80/gb.png 2x', alt: 'English' },
         'pt': { src: 'https://flagcdn.com/w40/pt.png', srcset: 'https://flagcdn.com/w80/pt.png 2x', alt: 'Português' },
@@ -508,58 +475,211 @@ function selectLang(option, langName, countryCode) {
         'fr': { src: 'https://flagcdn.com/w40/fr.png', srcset: 'https://flagcdn.com/w80/fr.png 2x', alt: 'Français' },
     };
 
-    if (countryCode && flagParams[countryCode]) {
-        const flagImg = button.querySelector('.current-lang-flag');
-        if (flagImg) {
-            flagImg.src = flagParams[countryCode].src;
-            flagImg.srcset = flagParams[countryCode].srcset;
-            flagImg.alt = flagParams[countryCode].alt;
+}
+
+function legacyLanguageSelectorCloseShim() {
+    return;
+*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const languageSelectorSection = document.getElementById('language-selector');
+
+    if (!languageSelectorSection) {
+        return;
+    }
+
+    const languageMetadata = {
+        gb: { label: 'English' },
+        pt: { label: 'Portugu\u00EAs' },
+        es: { label: 'Espa\u00F1ol' },
+    };
+
+    const selectors = Array.from(languageSelectorSection.querySelectorAll('.language-selector'));
+    const enabledSelectors = selectors.filter(selector => {
+        const trigger = selector.querySelector('.language-selector-trigger');
+        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
+    });
+
+    enabledSelectors.forEach(selector => {
+        const trigger = selector.querySelector('.language-selector-trigger');
+        const options = Array.from(selector.querySelectorAll('.language-selector-option'));
+        const valueDisplay = selector.querySelector('.language-selector-value');
+
+        options.forEach(option => {
+            option.setAttribute('tabindex', '-1');
+
+            option.addEventListener('focus', () => {
+                option.scrollIntoView({ block: 'nearest' });
+            });
+
+            option.addEventListener('click', () => {
+                syncLanguageSelection(selector, option, valueDisplay, languageMetadata);
+                closeLanguageSelector(selector);
+                trigger.focus();
+            });
+        });
+
+        initializeLanguageSelector(selector, options, valueDisplay, languageMetadata);
+        bindLanguageTriggerKeyboard(selector, trigger, options);
+        bindLanguageOptionKeyboard(selector, trigger, options, valueDisplay, languageMetadata);
+
+        trigger.addEventListener('click', () => {
+            if (selector.classList.contains('is-open')) {
+                closeLanguageSelector(selector);
+                return;
+            }
+
+            openLanguageSelector(selector);
+        });
+    });
+
+    document.addEventListener('click', event => {
+        if (!event.target.closest('#language-selector .language-selector')) {
+            closeAllLanguageSelectors();
+        }
+    });
+
+    function initializeLanguageSelector(selector, options, valueDisplay, metadata) {
+        const selectedOption = options.find(option => option.getAttribute('aria-selected') === 'true')
+            || options.find(option => option.dataset.code === 'gb')
+            || options[0];
+
+        if (!selectedOption) {
+            return;
+        }
+
+        syncLanguageSelection(selector, selectedOption, valueDisplay, metadata);
+    }
+
+    function bindLanguageTriggerKeyboard(selector, trigger, options) {
+        trigger.addEventListener('keydown', event => {
+            const selectedOption = getSelectedLanguageOption(options);
+
+            if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                if (!selector.classList.contains('is-open')) {
+                    openLanguageSelector(selector);
+                }
+                (selectedOption || options[0])?.focus();
+            }
+
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (!selector.classList.contains('is-open')) {
+                    openLanguageSelector(selector);
+                }
+                (selectedOption || options[options.length - 1])?.focus();
+            }
+
+            if (event.key === 'Escape') {
+                closeLanguageSelector(selector);
+            }
+        });
+    }
+
+    function bindLanguageOptionKeyboard(selector, trigger, options, valueDisplay, metadata) {
+        options.forEach((option, index) => {
+            option.addEventListener('keydown', event => {
+                if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    options[(index + 1) % options.length]?.focus();
+                }
+
+                if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    options[(index - 1 + options.length) % options.length]?.focus();
+                }
+
+                if (event.key === 'Home') {
+                    event.preventDefault();
+                    options[0]?.focus();
+                }
+
+                if (event.key === 'End') {
+                    event.preventDefault();
+                    options[options.length - 1]?.focus();
+                }
+
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    syncLanguageSelection(selector, option, valueDisplay, metadata);
+                    closeLanguageSelector(selector);
+                    trigger.focus();
+                }
+
+                if (event.key === 'Escape') {
+                    closeLanguageSelector(selector);
+                    trigger.focus();
+                }
+            });
+        });
+    }
+
+    function getSelectedLanguageOption(options) {
+        return options.find(option => option.getAttribute('aria-selected') === 'true');
+    }
+
+    function syncLanguageSelection(selector, selectedOption, valueDisplay, metadata) {
+        const options = Array.from(selector.querySelectorAll('.language-selector-option'));
+
+        options.forEach(option => {
+            option.setAttribute('aria-selected', String(option === selectedOption));
+        });
+
+        const code = (selectedOption.dataset.code || 'gb').toLowerCase();
+        const language = metadata[code] || { label: getLanguageOptionLabel(selectedOption) };
+        updateLanguageSelectorTrigger(selector, code, language.label, valueDisplay);
+        selector.classList.add('has-value');
+    }
+
+    function updateLanguageSelectorTrigger(selector, code, label, valueDisplay) {
+        const trigger = selector.querySelector('.language-selector-trigger');
+        const triggerFlag = selector.querySelector('.language-selector-current .language-selector-flag');
+
+        if (trigger) {
+            trigger.setAttribute('aria-label', `Current language: ${label}`);
+        }
+
+        if (triggerFlag) {
+            triggerFlag.src = getLanguageFlagSrc(code);
+            triggerFlag.srcset = getLanguageFlagSrcSet(code);
+            triggerFlag.alt = '';
+        }
+
+        if (valueDisplay) {
+            valueDisplay.textContent = label;
         }
     }
 
-    // 4. Handle Checks (Visual Selection)
-    // partial reset for this menu only
-    const allChecks = container.querySelectorAll('.check-icon');
-    allChecks.forEach(icon => {
-        icon.classList.remove('opacity-100');
-        icon.classList.add('opacity-0');
-    });
-
-    // set active
-    const thisCheck = option.querySelector('.check-icon');
-    if (thisCheck) {
-        thisCheck.classList.remove('opacity-0');
-        thisCheck.classList.add('opacity-100');
+    function getLanguageOptionLabel(option) {
+        return option.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || '';
     }
 
-    // 5. Close Menu
-    closeAllLangMenus();
-}
+    function getLanguageFlagSrc(code) {
+        return `https://flagcdn.com/w40/${code}.png`;
+    }
 
-function closeAllLangMenus() {
-    document.querySelectorAll('.language-selector-root').forEach(container => {
-        const menu = container.querySelector('.dropdown__menu');
-        const arrow = container.querySelector('.arrow-icon');
-        const button = container.querySelector('button');
+    function getLanguageFlagSrcSet(code) {
+        return `https://flagcdn.com/w80/${code}.png 2x`;
+    }
 
-        if (menu) {
-            menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
-            menu.classList.remove('opacity-100', 'visible', 'translate-y-0');
-        }
-        if (arrow) {
-            arrow.classList.remove('rotate-180', 'text-green-secondary');
-            arrow.classList.add('text-grey-primary');
-        }
-        if (button) {
-            button.setAttribute('aria-expanded', 'false');
-        }
-    });
-}
+    function openLanguageSelector(selector) {
+        closeAllLanguageSelectors(selector);
+        selector.classList.add('is-open');
+        selector.querySelector('.language-selector-trigger')?.setAttribute('aria-expanded', 'true');
+    }
 
-// Close ALL menus when clicking outside
-document.addEventListener('click', function (event) {
-    if (!event.target.closest('.language-selector-root')) {
-        closeAllLangMenus();
+    function closeAllLanguageSelectors(exceptSelector = null) {
+        selectors.forEach(selector => {
+            if (selector !== exceptSelector) {
+                closeLanguageSelector(selector);
+            }
+        });
+    }
+
+    function closeLanguageSelector(selector) {
+        selector.classList.remove('is-open');
+        selector.querySelector('.language-selector-trigger')?.setAttribute('aria-expanded', 'false');
     }
 });
 
