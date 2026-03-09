@@ -1333,10 +1333,6 @@ textarea {
 
 
 
-.card:active {
-  box-shadow: var(--shadow-btn-active);
-}
-
 .card:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
@@ -2305,7 +2301,7 @@ textarea {
 
 .flyout-nav-item:hover,
 .flyout-nav-item.is-active {
-  background: var(--color-white);
+  background: var(--color-grey-secondary);
   color: var(--color-green-secondary);
 }
 
@@ -2338,9 +2334,6 @@ textarea {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.flyout-link:hover {
-  background: var(--color-grey-tertiary);
-}
 
 .flyout-media {
   width: var(--space-64);
