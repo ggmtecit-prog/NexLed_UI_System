@@ -467,8 +467,8 @@ function handleUploaderFiles(files, uploader) {
  */
 
 
-/* Legacy language-selector hooks removed.
-    const flagParams = {
+/* Legacy language-selector hooks removed. */
+/* legacy payload retained only as commented history
         'gb': { src: 'https://flagcdn.com/w40/gb.png', srcset: 'https://flagcdn.com/w80/gb.png 2x', alt: 'English' },
         'pt': { src: 'https://flagcdn.com/w40/pt.png', srcset: 'https://flagcdn.com/w80/pt.png 2x', alt: 'Português' },
         'es': { src: 'https://flagcdn.com/w40/es.png', srcset: 'https://flagcdn.com/w80/es.png 2x', alt: 'Español' },
