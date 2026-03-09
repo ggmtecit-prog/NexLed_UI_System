@@ -606,21 +606,27 @@ textarea::placeholder {
 
 .input:hover,
 textarea:hover {
-  transform: scale(var(--scale-hover)) translateY(var(--lift-standard));
   box-shadow: var(--shadow-btn-hover);
-  border-color: var(--color-green-secondary);
+  border-color: var(--color-green-hover-icons);
 }
 
 .input:active,
 textarea:active {
-  transform: scale(var(--scale-press)) translateY(var(--press-offset));
-  box-shadow: var(--shadow-btn-active);
+  border-color: var(--color-green-secondary);
 }
+
+.input:focus,
+textarea:focus {
+  border-color: var(--color-green-secondary);
+}
+
+
+
+
 
 .input:focus-visible,
 textarea:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  outline: none;
 }
 
 .input:disabled,
@@ -642,12 +648,12 @@ textarea:disabled,
 }
 
 .input-success {
-  border-color: var(--color-green-secondary);
+  border-color: var(--color-green-primary);
 }
 
 .input-success+.input-hint,
 .input-hint.input-success {
-  color: var(--color-green-secondary);
+  color: var(--color-green-primary);
 }
 
 .input-error {

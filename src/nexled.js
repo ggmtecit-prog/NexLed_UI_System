@@ -910,49 +910,109 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Toggle password visibility (uses atom ghost icon button)
-function togglePassword(inputId, button) {
-    const input = document.getElementById(inputId);
-    const icon = button.querySelector('i');
+function isLettersAndSpaces(value) {
+    const trimmedValue = value.trim();
 
-    if (input.type === 'password') {
-        input.type = 'text';
-        icon.className = 'ri-eye-off-line text-icon-sm';
-        button.setAttribute('aria-pressed', 'true');
-        button.setAttribute('aria-label', 'Hide password');
-    } else {
-        input.type = 'password';
-        icon.className = 'ri-eye-line text-icon-sm';
-        button.setAttribute('aria-pressed', 'false');
-        button.setAttribute('aria-label', 'Show password');
+    if (trimmedValue === '') {
+        return false;
     }
+
+    return /^[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)*$/u.test(trimmedValue);
 }
 
-// Toggle Short Bio expansion
-function toggleBioExpand() {
-    const ta = document.getElementById('bioInput');
-    const btn = document.getElementById('bioExpandBtn');
-    const icon = btn.querySelector('i');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-
-    if (!expanded) {
-        ta.rows = 8;
-        btn.setAttribute('aria-expanded', 'true');
-        icon.classList.add('rotate-45');
-        icon.classList.add('text-green-secondary');
-    } else {
-        ta.rows = 3;
-        btn.setAttribute('aria-expanded', 'false');
-        icon.classList.remove('rotate-45');
-        icon.classList.remove('text-green-secondary');
+function applyInputValidationState(input, hint, isValid) {
+    if (!input || !hint) {
+        return;
     }
+
+    const validMessage = input.dataset.validMessage || 'Looks great!';
+    const invalidMessage = input.dataset.invalidMessage || 'Please provide a valid entry.';
+
+    input.classList.toggle('input-success', isValid);
+    input.classList.toggle('input-error', !isValid);
+    input.setAttribute('aria-invalid', isValid ? 'false' : 'true');
+
+    hint.classList.toggle('input-success', isValid);
+    hint.classList.toggle('input-error', !isValid);
+
+    hint.textContent = isValid ? validMessage : invalidMessage;
 }
 
-// Update character count
-function updateCharCount(textarea) {
-    const count = textarea.value.length;
-    const max = textarea.maxLength;
-    document.getElementById('charCount').textContent = `${count}/${max}`;
+function initializeTextFieldDemo() {
+    const section = document.getElementById('text-field');
+
+    if (!section || section.dataset.textFieldInitialized === 'true') {
+        return;
+    }
+
+    section.dataset.textFieldInitialized = 'true';
+
+    const passwordInput = section.querySelector('#passwordInput');
+    const passwordToggle = section.querySelector('#passwordToggle');
+
+    if (passwordInput && passwordToggle) {
+        passwordToggle.addEventListener('click', () => {
+            const icon = passwordToggle.querySelector('i');
+            const isPassword = passwordInput.type === 'password';
+
+            passwordInput.type = isPassword ? 'text' : 'password';
+            passwordToggle.setAttribute('aria-pressed', isPassword ? 'true' : 'false');
+            passwordToggle.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+            if (icon) {
+                icon.className = isPassword ? 'ri-eye-off-line text-icon-sm' : 'ri-eye-line text-icon-sm';
+                icon.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    const passwordHintId = passwordInput ? passwordInput.getAttribute('aria-describedby') : null;
+    const passwordHint = passwordHintId ? document.getElementById(passwordHintId) : null;
+
+    if (passwordInput && passwordHint) {
+        const syncPasswordValidationState = () => {
+            applyInputValidationState(passwordInput, passwordHint, isLettersAndSpaces(passwordInput.value));
+        };
+
+        syncPasswordValidationState();
+        passwordInput.addEventListener('input', syncPasswordValidationState);
+        passwordInput.addEventListener('blur', syncPasswordValidationState);
+    }
+
+    const bioInput = section.querySelector('#bioInput');
+    const bioExpandBtn = section.querySelector('#bioExpandBtn');
+    const charCount = section.querySelector('#charCount');
+
+    if (bioInput && charCount) {
+        const syncCharCount = () => {
+            charCount.textContent = `${bioInput.value.length}/${bioInput.maxLength}`;
+        };
+
+        syncCharCount();
+        bioInput.addEventListener('input', syncCharCount);
+    }
+
+    if (bioInput && bioExpandBtn) {
+        bioExpandBtn.addEventListener('click', () => {
+            const icon = bioExpandBtn.querySelector('i');
+            const expanded = bioExpandBtn.getAttribute('aria-expanded') === 'true';
+
+            bioInput.rows = expanded ? 3 : 8;
+            bioExpandBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+
+            if (icon) {
+                icon.classList.toggle('rotate-45', !expanded);
+                icon.classList.toggle('text-green-secondary', !expanded);
+            }
+        });
+    }
+
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTextFieldDemo);
+} else {
+    initializeTextFieldDemo();
 }
 
 

@@ -1648,76 +1648,66 @@
 
             <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                    class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
 
                     <!-- Standard Input -->
                     <div class="p-24">
                         <label for="standardInput" class="input-label ml-12">Full Name</label>
-                        <input type="text" id="standardInput" placeholder="Enter your name" class="input">
-                        <p class="text-xs text-grey-primary mt-8 ml-12">Example of a standard descriptive input.
-                        </p>
+                        <input type="text" id="standardInput" placeholder="Enter your name" class="input"
+                            aria-describedby="standardInputHint">
+                        <p id="standardInputHint" class="input-hint ml-12">Example of a standard descriptive input.</p>
                     </div>
 
 
 
                     <!-- Password with Toggle -->
-                    <div class=" p-24">
+                    <div class="p-24">
                         <label for="passwordInput" class="input-label ml-12">Password</label>
                         <div class="relative">
                             <input type="password" id="passwordInput" placeholder="Create a password"
-                                class="input pr-48">
-                            <button id="passwordToggle" type="button" onclick="togglePassword('passwordInput', this)"
-                                aria-pressed="false" aria-label="Show password"
-                                class="absolute right-12 top-1/2 -translate-y-1/2 group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep focus-visible:outline-none focus-visible:ring transform-gpu scale-90">
-                                <i class="ri-eye-line text-icon-sm"></i>
-                            </button>
+                                class="input pr-48" aria-describedby="passwordInputHint" aria-invalid="true"
+                                data-text-validation="letters-spaces" data-valid-message="Looks great!"
+                                data-invalid-message="Please provide a valid entry.">
+                            <div class="absolute right-12 top-1/2 -translate-y-1/2">
+                                <button id="passwordToggle" type="button" aria-controls="passwordInput"
+                                    aria-pressed="false" aria-label="Show password"
+                                    class="btn btn-ghost btn-icon btn-sm">
+                                    <i class="ri-eye-line text-icon-sm" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
+                        <p id="passwordInputHint" class="input-hint input-error ml-12" aria-live="polite">Please
+                            provide a valid entry.</p>
                     </div>
 
                     <!-- Input with Icon -->
                     <div class="p-24">
                         <label for="urlInput" class="input-label ml-12">Website URL</label>
                         <div class="relative flex items-center">
-                            <span class="absolute left-16 text-grey-primary">
-                                <i class="ri-global-line text-xl"></i>
+                            <span class="absolute left-16 text-grey-primary" aria-hidden="true">
+                                <i class="ri-global-line text-icon-md"></i>
                             </span>
                             <input type="text" id="urlInput" placeholder="www.example.com" class="input pl-48 pr-24">
                         </div>
                     </div>
 
-                    <!-- Success State -->
-                    <div class="p-24">
-                        <label for="successInput" class="input-label ml-12">Success
-                            State</label>
-                        <input type="text" id="successInput" value="Valid input data" class="input input-success">
-                        <p class="text-xs text-green-secondary mt-8 ml-12 flex items-center gap-4">
-                            <i class="ri-checkbox-circle-fill"></i> Looks great!
-                        </p>
-                    </div>
-
-                    <!-- Error State -->
-                    <div class="p-24">
-                        <label for="errorInput" class="input-label ml-12">Error State</label>
-                        <input type="text" id="errorInput" placeholder="Wrong format" class="input input-error">
-                        <p class="text-xs text-red-500 mt-8 ml-12 flex items-center gap-4">
-                            <i class="ri-error-warning-fill"></i> Please provide a valid entry.
-                        </p>
-                    </div>
-
                     <!-- Textarea with Character Count -->
                     <div class="p-24 md:col-span-2">
-                        <div class="flex justify-between items-center mb-8 ml-12 mr-12">
-                            <label for="bioInput" class="input-label mb-0">Short
+                        <div class="flex justify-between items-start ml-12 mr-12">
+                            <label for="bioInput" class="input-label">Short
                                 Bio</label>
-                            <span class="text-xs text-grey-primary" id="charCount">0/100</span>
+                            <span class="text-body-xs text-grey-primary mt-8" id="charCount"
+                                aria-live="polite">0/100</span>
                         </div>
                         <div class="relative">
                             <textarea id="bioInput" rows="3" maxlength="100" placeholder="Tell us about yourself..."
-                                class="input resize" oninput="updateCharCount(this)"></textarea>
+                                class="input" aria-describedby="charCount"></textarea>
                             <button id="bioExpandBtn" type="button" aria-controls="bioInput" aria-expanded="false"
-                                aria-label="Expand bio" onclick="toggleBioExpand()"
-                                class="absolute right-12 bottom-12 group flex items-center justify-center w-btn-icon-sm h-btn-icon-sm rounded-md bg-transparent border-none text-grey-primary transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:text-green-secondary active:scale-press-deep focus-visible:outline-none focus-visible:ring transform-gpu scale-90">
-                                <i class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"></i>
+                                aria-label="Expand bio"
+                                class="btn btn-ghost btn-icon btn-sm absolute right-12 bottom-12">
+                                <i class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"
+                                    aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
