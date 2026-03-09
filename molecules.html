@@ -328,785 +328,547 @@
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                    <div>
-                        <!-- Size Variants - Single Select -->
+                    <div class="flex flex-col gap-16">
                         <section class="w-full max-w-4xl mb-12">
-                            <h2 class="text-xl font-bold mb-6">Size Variants</h2>
-                            <div class="flex gap-8">
-
-                                <!-- Large -->
-                                <div class="dropdown dropdown-lg dropdown--lg relative">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Large — Select an
-                                            option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Medium -->
-                                <div class="dropdown dropdown-md dropdown--md relative">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Medium — Select an
-                                            option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-12 pr-8 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Small -->
-                                <div class="dropdown dropdown-sm dropdown--sm relative w-btn-sm">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Small — Select an
-                                            option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-10 pr-8 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
+                            <h3 class="text-body-lg font-medium text-black mb-12">Standard</h3>
+                            <div class="dropdown w-btn-md">
+                                <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="dropdown-value">Select an option</span>
+                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Standard options">
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option1">
+                                        <span>Option 1</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option2">
+                                        <span>Option 2</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option3">
+                                        <span>Option 3</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option4">
+                                        <span>Option 4</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
                             </div>
                         </section>
 
-                        <!-- Minimal Variant -->
                         <section class="w-full max-w-4xl mb-12">
-                            <h2 class="text-xl font-bold mb-6">Minimal Variant</h2>
-                            <div class="flex gap-8">
-
-                                <!-- Minimal Large -->
-                                <div
-                                    class="dropdown dropdown-lg dropdown--lg dropdown-minimal dropdown--minimal relative w-btn-md">
-                                    <button class="dropdown-trigger dropdown__trigger dropdown__trigger--minimal"
-                                        aria-haspopup="listbox" aria-expanded="false">
-                                        <span class="dropdown__value">Select an option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Minimal Medium -->
-                                <div
-                                    class="dropdown dropdown-md dropdown--md dropdown-minimal dropdown--minimal relative w-btn-sm">
-                                    <button class="dropdown-trigger dropdown__trigger dropdown__trigger--minimal"
-                                        aria-haspopup="listbox" aria-expanded="false">
-                                        <span class="dropdown__value">Select an option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
-                                <!-- Minimal Small -->
-                                <div
-                                    class="dropdown dropdown-sm dropdown--sm dropdown-minimal dropdown--minimal relative w-btn-sm">
-                                    <button class="dropdown-trigger dropdown__trigger dropdown__trigger--minimal"
-                                        aria-haspopup="listbox" aria-expanded="false">
-                                        <span class="dropdown__value">Select an option</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option1">Option 1</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option2">Option 2</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option3">Option 3</li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm"
-                                            role="option" data-value="option4">Option 4</li>
-                                    </ul>
-                                </div>
-
+                            <h3 class="text-body-lg font-medium text-black mb-12">Minimal</h3>
+                            <div class="dropdown dropdown-minimal w-btn-md">
+                                <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="dropdown-value">Select an option</span>
+                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Minimal options">
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option1">
+                                        <span>Option 1</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option2">
+                                        <span>Option 2</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option3">
+                                        <span>Option 3</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option4">
+                                        <span>Option 4</span>
+                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
                             </div>
                         </section>
 
-                        <!-- Multi Select Dropdown (Size Variants) -->
                         <section class="w-full max-w-4xl">
-                            <h2 class="text-xl font-bold mb-6">Multi Select</h2>
-                            <div class="flex gap-8">
-
-                                <!-- Large Multi -->
-                                <div class="dropdown dropdown--multi dropdown-lg dropdown--lg relative">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Select options</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-multiselectable="true" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option1">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                1</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option2">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                2</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option3">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                3</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center pl-16 pr-8 py-12 text-body-lg font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option4">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                                <span class="group-hover:text-green-secondary transition-colors">Option
-                                                    4</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- Medium Multi -->
-                                <div class="dropdown dropdown--multi dropdown-md dropdown--md relative">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Select options</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-md text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-multiselectable="true" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option1">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                1</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option2">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                2</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option3">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                3</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-12 py-8 text-body font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option4">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                4</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- Small Multi -->
-                                <div class="dropdown dropdown--multi dropdown-sm dropdown--sm relative w-btn-sm">
-                                    <button class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                        aria-expanded="false">
-                                        <span class="dropdown__value text-grey-primary">Select options</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary transition-transform duration-400"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-4"
-                                        role="listbox" aria-multiselectable="true" aria-label="Options">
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option1">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                1</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option2">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                2</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option3">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                3</span>
-                                        </li>
-                                        <li class="dropdown-item dropdown__item flex items-center px-10 py-8 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary rounded-sm group"
-                                            role="option" data-value="option4">
-                                            <div
-                                                class="relative w-checkbox-sm h-checkbox-sm flex items-center justify-center mr-3 flex-shrink-0">
-                                                <input type="checkbox"
-                                                    class="peer absolute inset-0 w-checkbox-sm h-checkbox-sm rounded-2xs cursor-pointer border border-grey-secondary bg-white transition-all duration-400 ease-button-ease hover:bg-grey-tertiary hover:border-green-secondary hover:shadow-btn-glow checked:bg-green-primary checked:border-green-primary checked:hover:bg-green-secondary checked:hover:border-green-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black appearance-none">
-                                                <i
-                                                    class="ri-check-line relative z-10 text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none transition-all duration-default ease-premium"></i>
-                                            </div>
-                                            <span class="group-hover:text-green-secondary transition-colors">Option
-                                                4</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- Disabled Multi Dropdown -->
-                                <div class="dropdown dropdown--multi dropdown-lg dropdown--disabled relative w-btn-md">
-                                    <button
-                                        class="dropdown-trigger dropdown__trigger cursor-not-allowed text-grey-primary"
-                                        aria-haspopup="listbox" aria-expanded="false" disabled aria-disabled="true">
-                                        <span class="dropdown__value">Disabled</span>
-                                        <i
-                                            class="ri-arrow-down-s-line dropdown__arrow text-icon-lg text-grey-primary"></i>
-                                    </button>
-                                </div>
-
+                            <h3 class="text-body-lg font-medium text-black mb-12">Multi Select</h3>
+                            <div class="dropdown dropdown-multi w-btn-md">
+                                <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="dropdown-value">Select options</span>
+                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu custom-scrollbar" role="listbox" aria-multiselectable="true"
+                                    aria-label="Multi-select options">
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option1">
+                                        <label class="checkbox-wrapper checkbox-sm">
+                                            <span class="relative inline-flex items-center justify-center">
+                                                <input type="checkbox" class="peer">
+                                                <i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <span class="text-body-xs">Option 1</span>
+                                        </label>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option2">
+                                        <label class="checkbox-wrapper checkbox-sm">
+                                            <span class="relative inline-flex items-center justify-center">
+                                                <input type="checkbox" class="peer">
+                                                <i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <span class="text-body-xs">Option 2</span>
+                                        </label>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option3">
+                                        <label class="checkbox-wrapper checkbox-sm">
+                                            <span class="relative inline-flex items-center justify-center">
+                                                <input type="checkbox" class="peer">
+                                                <i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <span class="text-body-xs">Option 3</span>
+                                        </label>
+                                    </li>
+                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="option4">
+                                        <label class="checkbox-wrapper checkbox-sm">
+                                            <span class="relative inline-flex items-center justify-center">
+                                                <input type="checkbox" class="peer">
+                                                <i class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <span class="text-body-xs">Option 4</span>
+                                        </label>
+                                    </li>
+                                </ul>
                             </div>
                         </section>
 
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="file-uploader">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">File Uploader</h2>
+                </div>
+
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+
+                    <div class="w-full max-w-2xl space-y-8">
+
+                        <!-- Folder Upload -->
+                        <div class="uploader uploader-folder is-default" data-uploader>
+                            <label class="uploader-label" for="folderInput">Folder Upload</label>
+                            <div id="folderDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                                aria-describedby="folderUploaderNote">
+                                <input type="file" id="folderInput" class="uploader-input" data-uploader-input
+                                    webkitdirectory directory multiple>
+                                <div class="uploader-icon" aria-hidden="true">
+                                    <i class="ri-folder-add-line"></i>
+                                </div>
+                                <div class="uploader-text" data-uploader-text
+                                    data-uploader-idle-text="Drag &amp; Drop folder here" aria-live="polite">
+                                    Drag &amp; Drop folder here
+                                </div>
+                                <div class="uploader-subtext">
+                                    or click to browse your computer
+                                </div>
+                            </div>
+                            <p id="folderUploaderNote" class="uploader-note">
+                                Supports bulk uploads with preserved structure.
+                            </p>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="uploader uploader-file is-default" data-uploader>
+                            <label class="uploader-label" for="fileInput">File Upload</label>
+                            <div id="fileDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                                aria-describedby="fileUploaderNote">
+                                <input type="file" id="fileInput" class="uploader-input" data-uploader-input multiple>
+                                <div class="uploader-icon" aria-hidden="true">
+                                    <i class="ri-file-add-line"></i>
+                                </div>
+                                <div class="uploader-text" data-uploader-text
+                                    data-uploader-idle-text="Drag &amp; Drop files here" aria-live="polite">
+                                    Drag &amp; Drop files here
+                                </div>
+                                <div class="uploader-subtext">
+                                    or click to browse your computer
+                                </div>
+                            </div>
+                            <p id="fileUploaderNote" class="uploader-note">
+                                Supports multiple file selection.
+                            </p>
+                        </div>
+
+                        <!-- Image Upload Only -->
+                        <div class="uploader uploader-image is-default" data-uploader>
+                            <label class="uploader-label" for="imageInput">Image Upload</label>
+                            <div id="imageDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
+                                aria-describedby="imageUploaderNote">
+                                <input type="file" id="imageInput" class="uploader-input" data-uploader-input
+                                    accept="image/*" multiple>
+                                <div class="uploader-icon" aria-hidden="true">
+                                    <i class="ri-image-add-line"></i>
+                                </div>
+                                <div class="uploader-text" data-uploader-text
+                                    data-uploader-idle-text="Drag &amp; Drop images here" aria-live="polite">
+                                    Drag &amp; Drop images here
+                                </div>
+                                <div class="uploader-subtext">
+                                    or click to browse your computer
+                                </div>
+                            </div>
+                            <p id="imageUploaderNote" class="uploader-note">
+                                Accepts image files only (jpg, png, gif, etc.).
+                            </p>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+            </section>
+
+            <section id="language-selector">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Language Selector</h2>
+                </div>
+
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+
+                    <div class="w-full max-w-4xl flex flex-col md:flex-row justify-center gap-16">
+
+                        <!-- Variant 1: Standard (Text + Icon) -->
+                        <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
+                            <span class="text-sm font-medium text-grey-primary">Standard</span>
+
+                            <div class="dropdown dropdown-md dropdown--md relative language-selector-root w-btn-sm">
+                                <button type="button" onclick="toggleLangMenu(this)"
+                                    class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
+                                    aria-expanded="false">
+
+                                    <div class="flex items-center gap-3">
+                                        <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
+                                            src="https://flagcdn.com/w40/gb.png"
+                                            srcset="https://flagcdn.com/w80/gb.png 2x" width="24" height="24"
+                                            alt="English">
+                                        <span class="current-lang-text text-body-sm text-grey-primary">Select
+                                            language</span>
+                                    </div>
+
+                                    <i
+                                        class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon transition-transform duration-400"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 pr-4 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-64 overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
+                                    role="menu" aria-label="Language options">
+
+                                    <li role="option" data-lang="English" data-code="gb"
+                                        onclick="selectLang(this, 'English', 'gb')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>English</span>
+                                        <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                    </li>
+
+                                    <li role="option" data-lang="Português" data-code="pt"
+                                        onclick="selectLang(this, 'Português', 'pt')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>Português</span>
+                                        <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                    </li>
+
+                                    <li role="option" data-lang="Español" data-code="es"
+                                        onclick="selectLang(this, 'Español', 'es')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>Español</span>
+                                        <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Variant 2: Icon Only -->
+                        <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
+                            <span class="text-sm font-medium text-grey-primary">Icon Only</span>
+
+                            <div class="dropdown dropdown-sm dropdown--sm relative language-selector-root w-btn-sm">
+                                <button type="button" onclick="toggleLangMenu(this)"
+                                    class="dropdown-trigger dropdown__trigger justify-center gap-8"
+                                    aria-haspopup="listbox" aria-expanded="false">
+
+                                    <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
+                                        src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+                                        width="24" height="24" alt="English">
+                                    <i
+                                        class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon transition-transform duration-400"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
+                                    role="menu" aria-label="Language options">
+
+                                    <li role="option" data-lang="English" data-code="gb"
+                                        onclick="selectLang(this, 'English', 'gb')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>English</span>
+                                        <i
+                                            class="ri-check-line text-green-secondary ml-auto opacity-100 check-icon"></i>
+                                    </li>
+
+                                    <li role="option" data-lang="Português" data-code="pt"
+                                        onclick="selectLang(this, 'Português', 'pt')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>Português</span>
+                                        <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                    </li>
+
+                                    <li role="option" data-lang="Español" data-code="es"
+                                        onclick="selectLang(this, 'Español', 'es')"
+                                        class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
+                                        <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
+                                            class="w-5 h-5 rounded-[5px] object-cover">
+                                        <span>Español</span>
+                                        <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="List">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">List</h2>
+                </div>
+
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+
+                    <div class="w-full max-w-narrow">
+                        <dl class="list list-spec list-md">
+
+                            <div class="list-item">
+                                <dt class="list-key">Brand</dt>
+                                <dd class="list-value">NEXLED</dd>
+                            </div>
+
+                            <div class="list-item">
+                                <dt class="list-key">Model</dt>
+                                <dd class="list-value">NX-2024-PRO</dd>
+                            </div>
+
+                            <div class="list-item">
+                                <dt class="list-key">Category</dt>
+                                <dd class="list-value">Electronics</dd>
+                            </div>
+
+                            <div class="list-item">
+                                <dt class="list-key">Weight</dt>
+                                <dd class="list-value">2.5 kg</dd>
+                            </div>
+
+                            <!-- List Row 5 -->
+                            <div class="list-item">
+                                <dt class="list-key">Dimensions</dt>
+                                <dd class="list-value">30 x 20 x 10 cm</dd>
+                            </div>
+
+                            <div class="list-item">
+                                <dt class="list-key">Color</dt>
+                                <dd class="list-value">Matte Black</dd>
+                            </div>
+
+                            <div class="list-item">
+                                <dt class="list-key">Warranty</dt>
+                                <dd class="list-value">2 Years</dd>
+                            </div>
+
+                        </dl>
+
+                    </div>
+                </div>
+
+            </section>
+            <section id="material-selector">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Material Selector</h2>
+                </div>
+
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="size-grid-stack size-grid-stack-gap-24">
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Small</h3>
+                            <div class="size-grid-content">
+                                <div class="material-selector material-selector-sm">
+                                    <h3 class="material-selector-title">Materials</h3>
+
+                                    <div class="material-selector-list" role="listbox"
+                                        aria-label="Small material selector">
+                                        <button type="button" class="material-item material-item-dark"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Wood material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/wood.webp" alt="Wood material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Wood</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-cool"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Metal material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/metal.webp" alt="Metal material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Metal</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-stone"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Stone material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/stone.webp" alt="Stone material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Stone</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-light"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Tiles material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Tiles</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Medium</h3>
+                            <div class="size-grid-content">
+                                <div class="material-selector material-selector-md">
+                                    <h3 class="material-selector-title">Materials</h3>
+
+                                    <div class="material-selector-list" role="listbox"
+                                        aria-label="Medium material selector">
+                                        <button type="button" class="material-item material-item-dark"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Wood material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/wood.webp" alt="Wood material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Wood</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-cool"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Metal material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/metal.webp" alt="Metal material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Metal</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-stone"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Stone material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/stone.webp" alt="Stone material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Stone</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-light"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Tiles material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Tiles</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Large</h3>
+                            <div class="size-grid-content">
+                                <div class="material-selector material-selector-lg">
+                                    <h3 class="material-selector-title">Materials</h3>
+
+                                    <div class="material-selector-list" role="listbox"
+                                        aria-label="Large material selector">
+                                        <button type="button" class="material-item material-item-dark"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Wood material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/wood.webp" alt="Wood material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Wood</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-cool"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Metal material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/metal.webp" alt="Metal material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Metal</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-stone"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Stone material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/stone.webp" alt="Stone material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Stone</span>
+                                        </button>
+
+                                        <button type="button" class="material-item material-item-light"
+                                            onclick="selectMaterial(this)" role="option" aria-selected="false"
+                                            aria-label="Tiles material option">
+                                            <span class="material-thumb">
+                                                <img src="materials/tiles.webp" alt="Tiles material sample"
+                                                    class="material-img">
+                                            </span>
+                                            <span class="material-label">Tiles</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
         </div>
-
-        </section>
-
-        <section id="file-uploader">
-            <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">File Uploader</h2>
-            </div>
-
-            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                <div class="w-full max-w-2xl space-y-8">
-
-                    <!-- Folder Upload -->
-                    <div class="uploader uploader-folder is-default" data-uploader>
-                        <label class="uploader-label" for="folderInput">Folder Upload</label>
-                        <div id="folderDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
-                            aria-describedby="folderUploaderNote">
-                            <input type="file" id="folderInput" class="uploader-input" data-uploader-input
-                                webkitdirectory directory multiple>
-                            <div class="uploader-icon" aria-hidden="true">
-                                <i class="ri-folder-add-line"></i>
-                            </div>
-                            <div class="uploader-text" data-uploader-text
-                                data-uploader-idle-text="Drag &amp; Drop folder here" aria-live="polite">
-                                Drag &amp; Drop folder here
-                            </div>
-                            <div class="uploader-subtext">
-                                or click to browse your computer
-                            </div>
-                        </div>
-                        <p id="folderUploaderNote" class="uploader-note">
-                            Supports bulk uploads with preserved structure.
-                        </p>
-                    </div>
-
-                    <!-- File Upload -->
-                    <div class="uploader uploader-file is-default" data-uploader>
-                        <label class="uploader-label" for="fileInput">File Upload</label>
-                        <div id="fileDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
-                            aria-describedby="fileUploaderNote">
-                            <input type="file" id="fileInput" class="uploader-input" data-uploader-input multiple>
-                            <div class="uploader-icon" aria-hidden="true">
-                                <i class="ri-file-add-line"></i>
-                            </div>
-                            <div class="uploader-text" data-uploader-text
-                                data-uploader-idle-text="Drag &amp; Drop files here" aria-live="polite">
-                                Drag &amp; Drop files here
-                            </div>
-                            <div class="uploader-subtext">
-                                or click to browse your computer
-                            </div>
-                        </div>
-                        <p id="fileUploaderNote" class="uploader-note">
-                            Supports multiple file selection.
-                        </p>
-                    </div>
-
-                    <!-- Image Upload Only -->
-                    <div class="uploader uploader-image is-default" data-uploader>
-                        <label class="uploader-label" for="imageInput">Image Upload</label>
-                        <div id="imageDropZone" class="uploader-zone" data-uploader-zone role="button" tabindex="0"
-                            aria-describedby="imageUploaderNote">
-                            <input type="file" id="imageInput" class="uploader-input" data-uploader-input
-                                accept="image/*" multiple>
-                            <div class="uploader-icon" aria-hidden="true">
-                                <i class="ri-image-add-line"></i>
-                            </div>
-                            <div class="uploader-text" data-uploader-text
-                                data-uploader-idle-text="Drag &amp; Drop images here" aria-live="polite">
-                                Drag &amp; Drop images here
-                            </div>
-                            <div class="uploader-subtext">
-                                or click to browse your computer
-                            </div>
-                        </div>
-                        <p id="imageUploaderNote" class="uploader-note">
-                            Accepts image files only (jpg, png, gif, etc.).
-                        </p>
-                    </div>
-
-
-                </div>
-
-
-
-            </div>
-
-        </section>
-
-        <section id="language-selector">
-            <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Language Selector</h2>
-            </div>
-
-            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                <div class="w-full max-w-4xl flex flex-col md:flex-row justify-center gap-16">
-
-                    <!-- Variant 1: Standard (Text + Icon) -->
-                    <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
-                        <span class="text-sm font-medium text-grey-primary">Standard</span>
-
-                        <div class="dropdown dropdown-md dropdown--md relative language-selector-root w-btn-sm">
-                            <button type="button" onclick="toggleLangMenu(this)"
-                                class="dropdown-trigger dropdown__trigger" aria-haspopup="listbox"
-                                aria-expanded="false">
-
-                                <div class="flex items-center gap-3">
-                                    <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
-                                        src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
-                                        width="24" height="24" alt="English">
-                                    <span class="current-lang-text text-body-sm text-grey-primary">Select
-                                        language</span>
-                                </div>
-
-                                <i
-                                    class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon transition-transform duration-400"></i>
-                            </button>
-
-                            <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 pr-4 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-64 overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
-                                role="menu" aria-label="Language options">
-
-                                <li role="option" data-lang="English" data-code="gb"
-                                    onclick="selectLang(this, 'English', 'gb')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>English</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
-                                </li>
-
-                                <li role="option" data-lang="Português" data-code="pt"
-                                    onclick="selectLang(this, 'Português', 'pt')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>Português</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
-                                </li>
-
-                                <li role="option" data-lang="Español" data-code="es"
-                                    onclick="selectLang(this, 'Español', 'es')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>Español</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Variant 2: Icon Only -->
-                    <div class="flex flex-col items-center gap-4 w-full md:w-1/2">
-                        <span class="text-sm font-medium text-grey-primary">Icon Only</span>
-
-                        <div class="dropdown dropdown-sm dropdown--sm relative language-selector-root w-btn-sm">
-                            <button type="button" onclick="toggleLangMenu(this)"
-                                class="dropdown-trigger dropdown__trigger justify-center gap-8" aria-haspopup="listbox"
-                                aria-expanded="false">
-
-                                <img class="current-lang-flag w-6 h-6 rounded-md object-cover shadow-sm"
-                                    src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
-                                    width="24" height="24" alt="English">
-                                <i
-                                    class="ri-arrow-down-s-line dropdown__arrow text-icon-sm text-grey-primary arrow-icon transition-transform duration-400"></i>
-                            </button>
-
-                            <ul class="dropdown-menu dropdown__menu custom-scrollbar absolute top-[calc(100%+8px)] left-0 right-0 m-0 p-2 list-none bg-white border border-black/8 rounded-md shadow-btn-hover max-h-[200px] overflow-y-auto opacity-0 invisible -translate-y-2 z-dropdown flex flex-col gap-2"
-                                role="menu" aria-label="Language options">
-
-                                <li role="option" data-lang="English" data-code="gb"
-                                    onclick="selectLang(this, 'English', 'gb')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/gb.png" width="20" height="20" alt="GB"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>English</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-100 check-icon"></i>
-                                </li>
-
-                                <li role="option" data-lang="Português" data-code="pt"
-                                    onclick="selectLang(this, 'Português', 'pt')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/pt.png" width="20" height="20" alt="PT"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>Português</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
-                                </li>
-
-                                <li role="option" data-lang="Español" data-code="es"
-                                    onclick="selectLang(this, 'Español', 'es')"
-                                    class="dropdown-item dropdown__item flex items-center gap-3 px-4 py-2.5 text-body-sm font-medium cursor-pointer transition-all hover:bg-grey-tertiary hover:text-green-secondary rounded-sm">
-                                    <img src="https://flagcdn.com/w40/es.png" width="20" height="20" alt="ES"
-                                        class="w-5 h-5 rounded-[5px] object-cover">
-                                    <span>Español</span>
-                                    <i class="ri-check-line text-green-secondary ml-auto opacity-0 check-icon"></i>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section id="List">
-            <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">List</h2>
-            </div>
-
-            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                <div class="w-full max-w-narrow">
-                    <dl class="list list-spec list-md">
-
-                        <div class="list-item">
-                            <dt class="list-key">Brand</dt>
-                            <dd class="list-value">NEXLED</dd>
-                        </div>
-
-                        <div class="list-item">
-                            <dt class="list-key">Model</dt>
-                            <dd class="list-value">NX-2024-PRO</dd>
-                        </div>
-
-                        <div class="list-item">
-                            <dt class="list-key">Category</dt>
-                            <dd class="list-value">Electronics</dd>
-                        </div>
-
-                        <div class="list-item">
-                            <dt class="list-key">Weight</dt>
-                            <dd class="list-value">2.5 kg</dd>
-                        </div>
-
-                        <!-- List Row 5 -->
-                        <div class="list-item">
-                            <dt class="list-key">Dimensions</dt>
-                            <dd class="list-value">30 x 20 x 10 cm</dd>
-                        </div>
-
-                        <div class="list-item">
-                            <dt class="list-key">Color</dt>
-                            <dd class="list-value">Matte Black</dd>
-                        </div>
-
-                        <div class="list-item">
-                            <dt class="list-key">Warranty</dt>
-                            <dd class="list-value">2 Years</dd>
-                        </div>
-
-                    </dl>
-
-                </div>
-            </div>
-
-        </section>
-        <section id="material-selector">
-            <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Material Selector</h2>
-            </div>
-
-            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                <div class="size-grid-stack size-grid-stack-gap-24">
-                    <div class="size-grid-column">
-                        <h3 class="size-grid-column-title">Small</h3>
-                        <div class="size-grid-content">
-                            <div class="material-selector material-selector-sm">
-                                <h3 class="material-selector-title">Materials</h3>
-
-                                <div class="material-selector-list" role="listbox" aria-label="Small material selector">
-                                    <button type="button" class="material-item material-item-dark"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Wood material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/wood.webp" alt="Wood material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Wood</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-cool"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Metal material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/metal.webp" alt="Metal material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Metal</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-stone"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Stone material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/stone.webp" alt="Stone material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Stone</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-light"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Tiles material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/tiles.webp" alt="Tiles material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Tiles</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="size-grid-column">
-                        <h3 class="size-grid-column-title">Medium</h3>
-                        <div class="size-grid-content">
-                            <div class="material-selector material-selector-md">
-                                <h3 class="material-selector-title">Materials</h3>
-
-                                <div class="material-selector-list" role="listbox"
-                                    aria-label="Medium material selector">
-                                    <button type="button" class="material-item material-item-dark"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Wood material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/wood.webp" alt="Wood material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Wood</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-cool"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Metal material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/metal.webp" alt="Metal material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Metal</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-stone"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Stone material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/stone.webp" alt="Stone material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Stone</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-light"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Tiles material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/tiles.webp" alt="Tiles material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Tiles</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="size-grid-column">
-                        <h3 class="size-grid-column-title">Large</h3>
-                        <div class="size-grid-content">
-                            <div class="material-selector material-selector-lg">
-                                <h3 class="material-selector-title">Materials</h3>
-
-                                <div class="material-selector-list" role="listbox" aria-label="Large material selector">
-                                    <button type="button" class="material-item material-item-dark"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Wood material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/wood.webp" alt="Wood material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Wood</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-cool"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Metal material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/metal.webp" alt="Metal material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Metal</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-stone"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Stone material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/stone.webp" alt="Stone material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Stone</span>
-                                    </button>
-
-                                    <button type="button" class="material-item material-item-light"
-                                        onclick="selectMaterial(this)" role="option" aria-selected="false"
-                                        aria-label="Tiles material option">
-                                        <span class="material-thumb">
-                                            <img src="materials/tiles.webp" alt="Tiles material sample"
-                                                class="material-img">
-                                        </span>
-                                        <span class="material-label">Tiles</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </div>
 
         </section>
 
@@ -1778,8 +1540,8 @@
                         <div class="card-product-meta">
                             <p class="card-product-prefix">starting at</p>
                             <p class="card-product-price">00.00€</p>
-                        <span class="font-urbanist font-medium text-35px text-black">00.00€</span>
-                    </div>
+                            <span class="font-urbanist font-medium text-35px text-black">00.00€</span>
+                        </div>
 
                         <div class="card-product-actions">
                             <button class="btn btn-primary btn-sm">Add to Cart</button>

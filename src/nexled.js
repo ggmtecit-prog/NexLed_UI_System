@@ -59,196 +59,172 @@ function closeBar(id) {
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Single-select dropdowns
-    const singleDropdowns = document.querySelectorAll('.dropdown:not(.dropdown--disabled):not(.dropdown--multi)');
-    // Multi-select dropdowns
-    const multiDropdowns = document.querySelectorAll('.dropdown--multi:not(.dropdown--disabled)');
+    const dropdownSection = document.getElementById('dropdown');
 
-    // Single-select behavior
-    singleDropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('.dropdown__trigger');
-        const items = dropdown.querySelectorAll('.dropdown__item');
-        const valueDisplay = dropdown.querySelector('.dropdown__value');
-
-        trigger.addEventListener('click', () => {
-            const isOpen = dropdown.classList.contains('open');
-            closeAllDropdowns();
-            if (!isOpen) {
-                dropdown.classList.add('open');
-                trigger.setAttribute('aria-expanded', 'true');
-                dropdown.querySelector('.dropdown__menu').classList.remove('opacity-0', 'invisible', '-translate-y-2');
-                dropdown.querySelector('.dropdown__menu').classList.add('opacity-100', 'visible', 'translate-y-0');
-                dropdown.querySelector('.dropdown__arrow').classList.add('rotate-180');
-            }
-        });
-
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                items.forEach(i => {
-                    i.removeAttribute('aria-selected');
-                    i.classList.remove('text-green-secondary', 'font-semibold', 'bg-green-hover-text');
-                });
-                item.setAttribute('aria-selected', 'true');
-                item.classList.add('text-green-secondary', 'font-semibold', 'bg-green-hover-text');
-
-                // Add checkmark using Remix icon
-                items.forEach(i => {
-                    const existingCheck = i.querySelector('.ri-check-line');
-                    if (existingCheck) existingCheck.remove();
-                });
-                const checkmark = document.createElement('i');
-                checkmark.className = 'ri-check-line ml-auto text-lg';
-                item.appendChild(checkmark);
-
-                valueDisplay.textContent = item.textContent.replace('', '').trim();
-                valueDisplay.classList.remove('text-grey-primary');
-                valueDisplay.classList.add('text-black');
-                dropdown.classList.remove('open');
-                trigger.setAttribute('aria-expanded', 'false');
-                dropdown.querySelector('.dropdown__menu').classList.add('opacity-0', 'invisible', '-translate-y-2');
-                dropdown.querySelector('.dropdown__menu').classList.remove('opacity-100', 'visible', 'translate-y-0');
-                dropdown.querySelector('.dropdown__arrow').classList.remove('rotate-180');
-            });
-        });
-
-        setupKeyboardNav(dropdown, trigger, items);
-    });
-
-    // Multi-select behavior
-    multiDropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('.dropdown__trigger');
-        const items = dropdown.querySelectorAll('.dropdown__item');
-        const valueDisplay = dropdown.querySelector('.dropdown__value');
-
-        trigger.addEventListener('click', () => {
-            const isOpen = dropdown.classList.contains('open');
-            closeAllDropdowns();
-            if (!isOpen) {
-                dropdown.classList.add('open');
-                trigger.setAttribute('aria-expanded', 'true');
-                dropdown.querySelector('.dropdown__menu').classList.remove('opacity-0', 'invisible', '-translate-y-2');
-                dropdown.querySelector('.dropdown__menu').classList.add('opacity-100', 'visible', 'translate-y-0');
-                dropdown.querySelector('.dropdown__arrow').classList.add('rotate-180');
-            }
-        });
-
-        items.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.stopPropagation();
-
-                // Find the checkbox input within this item
-                const checkbox = item.querySelector('input[type="checkbox"]');
-                if (!checkbox) return;
-
-                // Toggle the checkbox
-                checkbox.checked = !checkbox.checked;
-
-                // Update aria-selected to match checkbox state
-                item.setAttribute('aria-selected', String(checkbox.checked));
-
-                // Add/remove selected styling to the item
-                if (checkbox.checked) {
-                    item.classList.add('bg-green-hover-text');
-                } else {
-                    item.classList.remove('bg-green-hover-text');
-                }
-
-                updateMultiValue(dropdown, valueDisplay);
-            });
-        });
-
-        setupKeyboardNav(dropdown, trigger, items, true);
-    });
-
-    function updateMultiValue(dropdown, valueDisplay) {
-        const selected = dropdown.querySelectorAll('.dropdown__item[aria-selected="true"]');
-        if (selected.length === 0) {
-            valueDisplay.textContent = 'Select options';
-            valueDisplay.classList.add('text-grey-primary');
-            valueDisplay.classList.remove('text-black');
-        } else if (selected.length === 1) {
-            valueDisplay.textContent = selected[0].textContent;
-            valueDisplay.classList.remove('text-grey-primary');
-            valueDisplay.classList.add('text-black');
-        } else {
-            valueDisplay.textContent = `${selected.length} selected`;
-            valueDisplay.classList.remove('text-grey-primary');
-            valueDisplay.classList.add('text-black');
-        }
+    if (!dropdownSection) {
+        return;
     }
 
-    function setupKeyboardNav(dropdown, trigger, items, isMulti = false) {
-        trigger.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (!dropdown.classList.contains('open')) {
-                    trigger.click();
-                    items[0]?.focus();
-                }
-            }
+    const dropdowns = Array.from(dropdownSection.querySelectorAll('.dropdown'));
+    const enabledDropdowns = dropdowns.filter(dropdown => {
+        const trigger = dropdown.querySelector('.dropdown-trigger');
+        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
+    });
 
-            // Open menu and focus last item on ArrowUp from trigger
-            if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (!dropdown.classList.contains('open')) {
-                    trigger.click();
-                    items[items.length - 1]?.focus();
-                }
-            }
+    enabledDropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('.dropdown-trigger');
+        const items = Array.from(dropdown.querySelectorAll('.dropdown-item'));
+        const valueDisplay = dropdown.querySelector('.dropdown-value');
+        const isMulti = dropdown.classList.contains('dropdown-multi');
 
-            if (e.key === 'Escape') {
-                closeDropdown(dropdown);
-            }
-        });
-
-        items.forEach((item, index) => {
+        items.forEach(item => {
             item.setAttribute('tabindex', '-1');
 
-            // Ensure focused item is visible (works across sizes)
             item.addEventListener('focus', () => {
                 item.scrollIntoView({ block: 'nearest' });
             });
+        });
 
-            item.addEventListener('keydown', (e) => {
-                // Wrap navigation: ArrowDown -> next (wrap to first), ArrowUp -> prev (wrap to last)
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    if (index === items.length - 1) {
-                        items[0]?.focus();
-                    } else {
-                        items[index + 1]?.focus();
-                    }
+        if (isMulti) {
+            bindMultiDropdown(dropdown, trigger, items, valueDisplay);
+            updateMultiValue(dropdown, valueDisplay);
+        } else {
+            bindSingleDropdown(dropdown, trigger, items, valueDisplay);
+            const selectedItem = items.find(item => item.getAttribute('aria-selected') === 'true');
+            if (selectedItem) {
+                updateValue(dropdown, valueDisplay, getItemLabel(selectedItem));
+            }
+        }
+
+        bindTriggerKeyboard(dropdown, trigger, items);
+        bindItemKeyboard(dropdown, trigger, items, isMulti);
+
+        trigger.addEventListener('click', () => {
+            if (dropdown.classList.contains('is-open')) {
+                closeDropdown(dropdown);
+                return;
+            }
+
+            openDropdown(dropdown);
+        });
+    });
+
+    document.addEventListener('click', event => {
+        if (!event.target.closest('#dropdown .dropdown')) {
+            closeAllDropdowns();
+        }
+    });
+
+    function bindSingleDropdown(dropdown, trigger, items, valueDisplay) {
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(option => {
+                    option.setAttribute('aria-selected', 'false');
+                });
+
+                item.setAttribute('aria-selected', 'true');
+                updateValue(dropdown, valueDisplay, getItemLabel(item));
+                closeDropdown(dropdown);
+                trigger.focus();
+            });
+        });
+    }
+
+    function bindMultiDropdown(dropdown, trigger, items, valueDisplay) {
+        items.forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+
+            if (!checkbox) {
+                return;
+            }
+
+            checkbox.tabIndex = -1;
+            item.setAttribute('aria-selected', String(checkbox.checked));
+
+            checkbox.addEventListener('click', event => {
+                event.stopPropagation();
+            });
+
+            checkbox.addEventListener('change', () => {
+                syncMultiItem(item, checkbox.checked);
+                updateMultiValue(dropdown, valueDisplay);
+            });
+
+            item.addEventListener('click', event => {
+                if (event.target.closest('.checkbox-wrapper')) {
+                    return;
                 }
 
-                if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    if (index === 0) {
-                        items[items.length - 1]?.focus();
-                    } else {
-                        items[index - 1]?.focus();
-                    }
+                event.preventDefault();
+                checkbox.checked = !checkbox.checked;
+                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+        });
+    }
+
+    function bindTriggerKeyboard(dropdown, trigger, items) {
+        trigger.addEventListener('keydown', event => {
+            if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                if (!dropdown.classList.contains('is-open')) {
+                    openDropdown(dropdown);
+                }
+                items[0]?.focus();
+            }
+
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (!dropdown.classList.contains('is-open')) {
+                    openDropdown(dropdown);
+                }
+                items[items.length - 1]?.focus();
+            }
+
+            if (event.key === 'Escape') {
+                closeDropdown(dropdown);
+            }
+        });
+    }
+
+    function bindItemKeyboard(dropdown, trigger, items, isMulti) {
+        items.forEach((item, index) => {
+            item.addEventListener('keydown', event => {
+                if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    items[(index + 1) % items.length]?.focus();
                 }
 
-                // Home/End support for quick navigation
-                if (e.key === 'Home') {
-                    e.preventDefault();
+                if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    items[(index - 1 + items.length) % items.length]?.focus();
+                }
+
+                if (event.key === 'Home') {
+                    event.preventDefault();
                     items[0]?.focus();
                 }
 
-                if (e.key === 'End') {
-                    e.preventDefault();
+                if (event.key === 'End') {
+                    event.preventDefault();
                     items[items.length - 1]?.focus();
                 }
 
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    item.click();
-                    if (!isMulti) {
-                        trigger.focus();
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    if (isMulti) {
+                        const checkbox = item.querySelector('input[type="checkbox"]');
+                        if (checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            syncMultiItem(item, checkbox.checked);
+                            updateMultiValue(dropdown, dropdown.querySelector('.dropdown-value'));
+                        }
+                        return;
                     }
+
+                    item.click();
                 }
 
-                if (e.key === 'Escape') {
+                if (event.key === 'Escape') {
                     closeDropdown(dropdown);
                     trigger.focus();
                 }
@@ -256,29 +232,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            closeAllDropdowns();
-        }
-    });
+    function getItemLabel(item) {
+        return item.textContent.replace(/\s+/g, ' ').trim();
+    }
 
-    function closeAllDropdowns() {
-        document.querySelectorAll('.dropdown.open').forEach(d => {
-            closeDropdown(d);
+    function updateValue(dropdown, valueDisplay, value) {
+        if (!valueDisplay) {
+            return;
+        }
+
+        valueDisplay.textContent = value;
+        dropdown.classList.add('has-value');
+    }
+
+    function updateMultiValue(dropdown, valueDisplay) {
+        if (!valueDisplay) {
+            return;
+        }
+
+        const selectedItems = Array.from(dropdown.querySelectorAll('.dropdown-item[aria-selected="true"]'));
+
+        if (selectedItems.length === 0) {
+            valueDisplay.textContent = 'Select options';
+            dropdown.classList.remove('has-value');
+            return;
+        }
+
+        if (selectedItems.length === 1) {
+            updateValue(dropdown, valueDisplay, getItemLabel(selectedItems[0]));
+            return;
+        }
+
+        updateValue(dropdown, valueDisplay, `${selectedItems.length} selected`);
+    }
+
+    function syncMultiItem(item, isSelected) {
+        item.setAttribute('aria-selected', String(isSelected));
+    }
+
+    function openDropdown(dropdown) {
+        closeAllDropdowns(dropdown);
+        dropdown.classList.add('is-open');
+        dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeAllDropdowns(exceptDropdown = null) {
+        dropdowns.forEach(dropdown => {
+            if (dropdown !== exceptDropdown) {
+                closeDropdown(dropdown);
+            }
         });
     }
 
     function closeDropdown(dropdown) {
-        dropdown.classList.remove('open');
-        const trigger = dropdown.querySelector('.dropdown__trigger');
-        const menu = dropdown.querySelector('.dropdown__menu');
-        const arrow = dropdown.querySelector('.dropdown__arrow');
-
-        trigger?.setAttribute('aria-expanded', 'false');
-        menu?.classList.add('opacity-0', 'invisible', '-translate-y-2');
-        menu?.classList.remove('opacity-100', 'visible', 'translate-y-0');
-        arrow?.classList.remove('rotate-180');
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
     }
 });
 
