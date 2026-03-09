@@ -1689,14 +1689,9 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-12);
-  height: var(--size-btn-sm-h);
-  padding: var(--space-12) var(--space-16);
   font-family: var(--font-family-base);
-  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-body);
   border: var(--border-thin) solid var(--color-grey-secondary);
-  border-radius: var(--radius-btn);
   background: var(--color-white);
   color: var(--color-black);
   box-shadow: var(--shadow-btn-default);
@@ -1736,7 +1731,6 @@ textarea {
 
 .dropdown-arrow {
   flex-shrink: 0;
-  font-size: var(--space-20);
   color: var(--color-grey-primary);
   transition:
     transform var(--motion-duration-default) var(--motion-ease-premium),
@@ -1749,16 +1743,13 @@ textarea {
   left: 0;
   right: 0;
   margin: 0;
-  padding: var(--space-8);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
   list-style: none;
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-md);
   background: var(--color-white);
   box-shadow: var(--shadow-btn-hover);
-  max-height: calc(var(--space-64) * 4);
   overflow-y: auto;
   visibility: hidden;
   opacity: 0;
@@ -1783,12 +1774,8 @@ textarea {
   display: flex;
   align-items: center;
   width: 100%;
-  gap: var(--space-12);
-  padding: var(--space-8) var(--space-12);
   border-radius: var(--radius-sm);
-  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-body);
   color: var(--color-grey-primary);
   background: transparent;
   text-decoration: none;
@@ -1827,13 +1814,102 @@ textarea {
 
 .dropdown-item-check {
   margin-left: auto;
-  font-size: var(--space-20);
   opacity: 0;
   transition: opacity var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .dropdown-item[aria-selected="true"] .dropdown-item-check {
   opacity: 1;
+}
+
+.dropdown-sm .dropdown-trigger {
+  height: var(--size-btn-sm-h);
+  padding-block: var(--space-12);
+  padding-inline: var(--space-16);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+  border-radius: var(--radius-md);
+}
+
+.dropdown-md .dropdown-trigger {
+  height: var(--size-btn-md-h);
+  padding-block: var(--space-12);
+  padding-inline: var(--space-24);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  border-radius: var(--radius-lg);
+}
+
+.dropdown-lg .dropdown-trigger {
+  height: var(--size-btn-lg-h);
+  padding-block: var(--space-12);
+  padding-inline: var(--space-32);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  border-radius: var(--radius-btn);
+}
+
+.dropdown-sm .dropdown-arrow {
+  font-size: var(--space-16);
+}
+
+.dropdown-md .dropdown-arrow {
+  font-size: var(--space-20);
+}
+
+.dropdown-lg .dropdown-arrow {
+  font-size: var(--space-24);
+}
+
+.dropdown-sm .dropdown-menu {
+  padding: var(--space-8);
+  gap: var(--space-4);
+  max-height: calc(var(--size-btn-sm-h) * 4);
+}
+
+.dropdown-md .dropdown-menu {
+  padding: var(--space-8);
+  gap: var(--space-4);
+  max-height: calc(var(--size-btn-md-h) * 4);
+}
+
+.dropdown-lg .dropdown-menu {
+  padding: var(--space-12);
+  gap: var(--space-8);
+  max-height: calc(var(--size-btn-lg-h) * 4);
+}
+
+.dropdown-sm .dropdown-item {
+  gap: var(--space-10);
+  padding: var(--space-8) var(--space-10);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+}
+
+.dropdown-md .dropdown-item {
+  gap: var(--space-12);
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.dropdown-lg .dropdown-item {
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+.dropdown-sm .dropdown-item-check {
+  font-size: var(--space-16);
+}
+
+.dropdown-md .dropdown-item-check {
+  font-size: var(--space-20);
+}
+
+.dropdown-lg .dropdown-item-check {
+  font-size: var(--space-24);
 }
 
 .dropdown-trigger:hover .dropdown-value,
@@ -1868,11 +1944,6 @@ textarea {
 
 .dropdown-multi .dropdown-item .checkbox-wrapper:hover {
   color: inherit;
-}
-
-.dropdown-multi .dropdown-item .checkbox-wrapper>span:last-child {
-  font-size: inherit;
-  line-height: inherit;
 }
 
 /* FLYOUT */
