@@ -601,8 +601,10 @@ textarea {
 
 .input::placeholder,
 textarea::placeholder {
-  color: var(--color-grey-primary);
+  color: var(--color-grey-secondary);
 }
+
+
 
 .input:hover,
 textarea:hover {
