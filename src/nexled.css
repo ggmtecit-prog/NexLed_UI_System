@@ -680,6 +680,7 @@ textarea:disabled,
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }
+
 .input-senior,
 .input-lg {
   min-height: var(--size-btn-md-h);
@@ -1805,7 +1806,7 @@ textarea:hover::placeholder {
 
 .dropdown-value,
 .language-selector-value {
-  color: var(--color-grey-primary);
+  color: var(--color-grery-re);
 }
 
 .dropdown.has-value .dropdown-value,
