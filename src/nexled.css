@@ -1,4 +1,4 @@
-﻿/*
+/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -667,7 +667,21 @@ textarea:disabled,
   color: var(--color-red-primary);
 }
 
-.input-senior {
+.input-sm {
+  min-height: var(--size-btn-sm-h);
+  padding: var(--space-8) var(--space-16);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+}
+
+.input-md {
+  min-height: var(--size-btn-sm-h);
+  padding: var(--space-12) var(--space-24);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+.input-senior,
+.input-lg {
   min-height: var(--size-btn-md-h);
   font-size: var(--font-size-body-lg);
   line-height: var(--line-height-body-lg);
