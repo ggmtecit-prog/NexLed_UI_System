@@ -1805,7 +1805,7 @@ textarea:hover::placeholder {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-12);
+  gap: var(--space-8);
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-medium);
   border: var(--border-thin) solid var(--color-grey-secondary);
