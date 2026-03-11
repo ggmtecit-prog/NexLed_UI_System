@@ -103,6 +103,9 @@
   --size-btn-icon-lg: 94px;
   --size-btn-icon-md: 72px;
   --size-btn-icon-sm: 56px;
+  --size-btn-icon-xs: 40px;
+  --size-btn-xs-w: 200px;
+  --size-btn-xs-h: 40px;
   --size-checkbox-sm: 16px;
   --size-checkbox-md: 22px;
   --size-checkbox-lg: 28px;
@@ -448,6 +451,14 @@ body {
   border-radius: var(--radius-md);
 }
 
+.btn-xs {
+  height: var(--size-btn-xs-h);
+  padding-inline: var(--space-12);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  border-radius: var(--radius-sm);
+}
+
 .btn-icon {
   padding: 0;
   width: var(--size-btn-icon-lg);
@@ -472,6 +483,11 @@ body {
 .btn-icon.btn-sm {
   width: var(--size-btn-icon-sm);
   height: var(--size-btn-icon-sm);
+}
+
+.btn-icon.btn-xs {
+  width: var(--size-btn-icon-xs);
+  height: var(--size-btn-icon-xs);
 }
 
 
