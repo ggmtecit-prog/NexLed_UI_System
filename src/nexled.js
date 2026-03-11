@@ -1085,3 +1085,91 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 });
+
+
+/**
+ * Carousel Component Logic
+ * Handles slide transitions, dot/arrow navigation, and keyboard support.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('[data-carousel]');
+
+    carousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        if (!track) return;
+
+        const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+        const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+
+        if (slides.length === 0) return;
+
+        let currentIndex = slides.findIndex(slide => slide.classList.contains('is-active'));
+        if (currentIndex === -1) currentIndex = 0;
+
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            slides.forEach((slide, i) => {
+                const isTarget = i === index;
+                slide.classList.toggle('is-active', isTarget);
+            });
+
+            dots.forEach((dot, i) => {
+                const isTarget = i === index;
+                dot.classList.toggle('is-active', isTarget);
+
+                if (isTarget) {
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
+            });
+
+            currentIndex = index;
+        }
+
+        // Arrow navigation
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+        }
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Keyboard navigation
+        carousel.setAttribute('tabindex', '0');
+        carousel.setAttribute('role', 'region');
+        carousel.setAttribute('aria-roledescription', 'carousel');
+
+        carousel.addEventListener('keydown', event => {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                goToSlide(currentIndex - 1);
+            }
+
+            if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                goToSlide(currentIndex + 1);
+            }
+        });
+
+        // Ensure initial state is correct
+        goToSlide(currentIndex);
+    });
+});

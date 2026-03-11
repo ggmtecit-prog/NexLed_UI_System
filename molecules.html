@@ -1770,171 +1770,177 @@
         </section>
 
         <section id="image-carousel">
-            <div class="flex items-center gap-12 mb-24 pl-32">
-                <h2 class="text-nav-bar-h1 font-medium text-black">Image Carousel</h2>
+            <div class="panel-wrap-head">
+                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Image Carousel</h2>
             </div>
 
-            <div
-                class="flex flex-wrap gap-24 items-center justify-center p-40 border border-dashed border-grey-secondary/50 rounded-lg bg-white">
+            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
                 <!-- Image Carousel Component -->
                 <div class="w-full max-w-4xl space-y-24">
 
-                    <!-- State 1: With Navigation Arrows -->
-                    <div
-                        class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
-                        <!-- Background Image with Gradient Overlay -->
-                        <div class="absolute inset-0 bg-cover bg-center"
-                            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
-                        </div>
-
-                        <!-- Navigation Arrows -->
-                        <button
-                            class="absolute left-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                            aria-label="Previous slide">
-                            <i class="ri-arrow-left-s-line text-icon-xl"></i>
-                        </button>
-
-                        <button
-                            class="absolute right-32 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                            aria-label="Next slide">
-                            <i class="ri-arrow-right-s-line text-icon-xl"></i>
-                        </button>
-
-                        <!-- Text Overlay with Link -->
-                        <div class="absolute bottom-32 left-32">
-                            <a href="#"
-                                class="inline-flex items-center gap-8 text-white font-semibold text-h3 transition-all duration-400 hover:text-green-hover-text group">
-                                <span>Curabitur faucibus</span>
-                                <i
-                                    class="ri-arrow-right-up-line text-icon-lg transition-transform duration-400 group-hover:translate-x-4 group-hover:-translate-y-4"></i>
-                            </a>
-                        </div>
-
-                        <!-- Navigation Dots -->
-                        <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 1"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 2"></button>
-                            <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
-                                aria-label="Slide 3" aria-current="true"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 4"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 5"></button>
-                        </div>
-                    </div>
-
-                    <!-- State 2: With Subtitle (No Arrows) -->
-                    <div
-                        class="carousel-container relative w-full h-[380px] rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
-                        <!-- Background Image with Gradient Overlay -->
-                        <div class="absolute inset-0 bg-cover bg-center"
-                            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=800');">
-                        </div>
-
-                        <!-- Text Overlay with Subtitle -->
-                        <div class="absolute bottom-32 left-32">
-                            <h3 class="text-white font-semibold text-h3 mb-8">Curabitur faucibus</h3>
-                            <p class="text-white/80 font-normal text-body">Lorem ipsum dolor sit</p>
-                        </div>
-
-                        <!-- Navigation Dots -->
-                        <div class="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-8">
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 1"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 2"></button>
-                            <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
-                                aria-label="Slide 3" aria-current="true"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 4"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 5"></button>
-                        </div>
-                    </div>
-
-                    <!-- State 3: 4:3 Variation -->
-                    <div
-                        class="carousel-container relative w-full max-w-narrow mx-auto rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary">
-                        <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=1200&h=900&fit=crop"
-                            alt="Carousel slide" class="w-full h-auto block">
-
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/20"></div>
-
-                        <!-- Navigation Arrows -->
-                        <button
-                            class="absolute left-24 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                            aria-label="Previous slide">
-                            <i class="ri-arrow-left-s-line text-icon-xl"></i>
-                        </button>
-                        <button
-                            class="absolute right-24 top-1/2 -translate-y-1/2 w-48 h-48 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm text-white/60 transition-all duration-400 ease-premium hover:bg-white/20 hover:text-white hover:shadow-btn-hover active:scale-press focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
-                            aria-label="Next slide">
-                            <i class="ri-arrow-right-s-line text-icon-xl"></i>
-                        </button>
-
-                        <!-- Navigation Dots -->
-                        <div class="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-8">
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 1"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 2"></button>
-                            <button class="w-10 h-10 rounded-full bg-green-primary transition-all duration-400"
-                                aria-label="Slide 3" aria-current="true"></button>
-                            <button
-                                class="w-8 h-8 rounded-full bg-white/40 transition-all duration-400 hover:bg-white/60"
-                                aria-label="Slide 4"></button>
-                        </div>
-                    </div>
-
-                    <!-- State 4: 4 Cards With Text -->
-                    <div class="carousel-container w-full">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-24">
-                            <a href="#"
-                                class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
-                                <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
-                                    alt="Indoor" class="w-full h-auto block">
-                                <div class="absolute inset-0 bg-black/20"></div>
-                                <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Indoor</div>
-                            </a>
-
-                            <a href="#"
-                                class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
-                                <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
-                                    alt="Retail" class="w-full h-auto block">
-                                <div class="absolute inset-0 bg-black/20"></div>
-                                <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Retail</div>
-                            </a>
-
-                            <a href="#"
-                                class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
-                                <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
-                                    alt="Industrial" class="w-full h-auto block">
-                                <div class="absolute inset-0 bg-black/20"></div>
-                                <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Industrial
+                    <!-- Variant 1: Landscape with Navigation Arrows + Link -->
+                    <div class="carousel carousel-landscape" data-carousel>
+                        <div class="carousel-track">
+                            <div class="carousel-slide is-active">
+                                <img src="image_slides/img_lights_wide (1).webp"
+                                    alt="Carousel slide 1" class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <a href="#" class="carousel-link">
+                                        <span>Curabitur faucibus</span>
+                                        <i class="ri-arrow-right-up-line text-icon-lg carousel-link-icon"
+                                            aria-hidden="true"></i>
+                                    </a>
                                 </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_mountains_wide.webp"
+                                    alt="Carousel slide 2" class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <a href="#" class="carousel-link">
+                                        <span>Vestibulum ante</span>
+                                        <i class="ri-arrow-right-up-line text-icon-lg carousel-link-icon"
+                                            aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_nature_wide.webp"
+                                    alt="Carousel slide 3" class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <a href="#" class="carousel-link">
+                                        <span>Pellentesque habitant</span>
+                                        <i class="ri-arrow-right-up-line text-icon-lg carousel-link-icon"
+                                            aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button class="btn btn-ghost btn-icon btn-sm carousel-prev" aria-label="Previous slide">
+                            <i class="ri-arrow-left-s-line text-icon-lg" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-ghost btn-icon btn-sm carousel-next" aria-label="Next slide">
+                            <i class="ri-arrow-right-s-line text-icon-lg" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- Navigation Dots -->
+                        <div class="carousel-nav">
+                            <button class="carousel-dot is-active" aria-label="Slide 1" aria-current="true"></button>
+                            <button class="carousel-dot" aria-label="Slide 2"></button>
+                            <button class="carousel-dot" aria-label="Slide 3"></button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 2: Landscape Minimal (No Arrows, Subtitle) -->
+                    <div class="carousel carousel-landscape" data-carousel>
+                        <div class="carousel-track">
+                            <div class="carousel-slide is-active">
+                                <img src="image_slides/img_lights_wide (1).webp" alt="Carousel slide 1"
+                                    class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <h3 class="carousel-title mb-8">Curabitur faucibus</h3>
+                                    <p class="carousel-subtitle">Lorem ipsum dolor sit</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_mountains_wide.webp" alt="Carousel slide 2"
+                                    class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <h3 class="carousel-title mb-8">Vestibulum ante</h3>
+                                    <p class="carousel-subtitle">Sed bibendum eu augue</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_nature_wide.webp" alt="Carousel slide 3"
+                                    class="carousel-image">
+                                <div class="carousel-overlay"></div>
+                                <div class="carousel-content">
+                                    <h3 class="carousel-title mb-8">Pellentesque habitant</h3>
+                                    <p class="carousel-subtitle">Maecenas pharetra ligula</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Dots -->
+                        <div class="carousel-nav">
+                            <button class="carousel-dot is-active" aria-label="Slide 1" aria-current="true"></button>
+                            <button class="carousel-dot" aria-label="Slide 2"></button>
+                            <button class="carousel-dot" aria-label="Slide 3"></button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 3: Square (4:3) with Arrows -->
+                    <div class="carousel carousel-square" data-carousel>
+                        <div class="carousel-track">
+                            <div class="carousel-slide is-active">
+                                <img src="image_slides/img_lights_wide (1).webp"
+                                    alt="Carousel slide 1" class="carousel-image">
+                                <div class="carousel-overlay-flat"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_mountains_wide.webp"
+                                    alt="Carousel slide 2" class="carousel-image">
+                                <div class="carousel-overlay-flat"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="image_slides/img_nature_wide.webp"
+                                    alt="Carousel slide 3" class="carousel-image">
+                                <div class="carousel-overlay-flat"></div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button class="btn btn-ghost btn-icon btn-sm carousel-prev" aria-label="Previous slide">
+                            <i class="ri-arrow-left-s-line text-icon-lg" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-ghost btn-icon btn-sm carousel-next" aria-label="Next slide">
+                            <i class="ri-arrow-right-s-line text-icon-lg" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- Navigation Dots -->
+                        <div class="carousel-nav">
+                            <button class="carousel-dot is-active" aria-label="Slide 1" aria-current="true"></button>
+                            <button class="carousel-dot" aria-label="Slide 2"></button>
+                            <button class="carousel-dot" aria-label="Slide 3"></button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 4: Grid Cards -->
+                    <div class="carousel carousel-grid">
+                        <div class="carousel-grid-container">
+                            <a href="#" class="carousel-card">
+                                <img src="image_slides/img_lights_wide (1).webp"
+                                    alt="Indoor">
+                                <div class="carousel-overlay-flat"></div>
+                                <div class="carousel-card-label">Indoor</div>
                             </a>
 
-                            <a href="#"
-                                class="relative rounded-xl overflow-hidden shadow-btn-default border border-standard border-grey-secondary block">
-                                <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=600&h=760&fit=crop"
-                                    alt="Power Supplies" class="w-full h-auto block">
-                                <div class="absolute inset-0 bg-black/20"></div>
-                                <div class="absolute left-16 bottom-16 text-white text-h3 font-medium">Power
-                                    Supplies</div>
+                            <a href="#" class="carousel-card">
+                                <img src="image_slides/img_mountains_wide.webp"
+                                    alt="Retail">
+                                <div class="carousel-overlay-flat"></div>
+                                <div class="carousel-card-label">Retail</div>
+                            </a>
+
+                            <a href="#" class="carousel-card">
+                                <img src="image_slides/img_nature_wide.webp"
+                                    alt="Industrial">
+                                <div class="carousel-overlay-flat"></div>
+                                <div class="carousel-card-label">Industrial</div>
+                            </a>
+
+                            <a href="#" class="carousel-card">
+                                <img src="image_slides/img_snow_wide.webp"
+                                    alt="Power Supplies">
+                                <div class="carousel-overlay-flat"></div>
+                                <div class="carousel-card-label">Power Supplies</div>
                             </a>
                         </div>
                     </div>
@@ -1944,6 +1950,7 @@
             </div>
 
         </section>
+
 
         <section id="flyout">
             <div class="panel-wrap-head">
