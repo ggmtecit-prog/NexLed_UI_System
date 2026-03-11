@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,17 +21,8 @@
     <script src="src/config-cdn.js"></script>
     <link rel="stylesheet" href="src/nexled.css">
 
-
-
-    <style>
-        .modal-overlay.is-visible {
-            pointer-events: auto;
-        }
-    </style>
-
     <!-- 4. Components Logic -->
-    <script src="nexled.js"></script>
-
+    <script src="src/nexled.js"></script>
 
 </head>
 
@@ -126,7 +117,7 @@
     </header>
 
     <!-- CONTENT -->
-    <main class="flex-1 mt-[160px] px-32 pb-64 max-w-standard mx-auto w-full">
+    <main class="flex-1 mt-[160px] px-32 pb-64 max-w-wide mx-auto w-full">
 
         <header class="page-header-hero">
             <h1 class="text-hero-title font-medium text-black">Organisms</h1>
@@ -137,8 +128,6 @@
 
         <div class="space-y-64">
 
-
-
             <section id="footer">
                 <div class="panel-wrap-head">
                     <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Footer</h2>
@@ -147,7 +136,7 @@
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
                     <!-- Accordion Molecule -->
-                    <div class="w-full max-w-[1800px] mx-auto">
+                    <div class="w-full max-w-wide mx-auto">
                         <footer
                             class="bg-white rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] overflow-hidden w-full">
 
@@ -158,8 +147,7 @@
 
                                     <!-- Column 1: Logo (Tagline Moved) -->
                                     <div class="flex flex-col items-center lg:items-center text-center">
-                                        <img src="../../../../public/nexled-logo.svg" alt="NexLed Logo"
-                                            class="w-[180px] h-[180px] mb-2">
+                                        <img src="nexled_logo.svg" alt="NexLed Logo" class="w-[180px] h-[180px] mb-2">
                                     </div>
 
                                     <!-- Column 2: Brand Nav and Socials -->
@@ -305,164 +293,293 @@
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                    <div class="w-full max-w-[1800px] mx-auto">
+
+                    <!-- Variant 1 -->
+                    <div class="w-full max-w-wide mx-auto">
                         <header
                             class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex flex-wrap xl:flex-nowrap items-center justify-between gap-24 px-24 py-20">
+
+                            <!-- Logo -->
                             <a href="#" class="flex items-center gap-12 group">
-                                <div
-                                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
-                                    <i class="ri-code-s-slash-line text-h3"></i>
-                                </div>
+                                <img src="nexled_logo.svg" alt="NexLed" class="w-56 h-56">
                                 <div class="flex flex-col">
                                     <span
-                                        class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                                        class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                                    <span class="font-regular text-body-sm text-black tracking-wider">Store</span>
+                                </div>
+                            </a>
+
+                            <!-- Navigation Dropdowns -->
+                            <nav class="hidden md:flex items-center gap-24 h-full">
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Components</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Components navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="atoms">
+                                            <span>Atoms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="molecules">
+                                            <span>Molecules</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="organisms">
+                                            <span>Organisms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Resources</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Resources navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="tokens">
+                                            <span>Design Tokens</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                            <!-- Right Actions -->
+                            <div class="flex items-center gap-12">
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Search">
+                                    <i class="ri-search-line text-icon-md"></i>
+                                </button>
+                                <a href="#" class="btn btn-ghost btn-icon btn-sm" aria-label="GitHub">
+                                    <i class="ri-github-fill text-icon-lg"></i>
+                                </a>
+                                <button class="btn btn-primary btn-sm">Get in touch</button>
+                            </div>
+                        </header>
+                    </div>
+
+                    <!-- Variant 2 -->
+                    <div class="w-full max-w-wide mx-auto">
+                        <header
+                            class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex flex-wrap xl:flex-nowrap items-center justify-between gap-24 px-24 py-20">
+
+                            <!-- Logo -->
+                            <a href="#" class="flex items-center gap-12 group">
+                                <img src="2favicon.svg" alt="NexLed" class="w-56 h-56">
+                                <div class="flex flex-col">
                                     <span
-                                        class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System
+                                        class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                                    <span class="font-regular text-body-sm text-black tracking-wider">System
                                         v1.2</span>
                                 </div>
                             </a>
 
+                            <!-- Navigation Dropdowns -->
                             <nav class="hidden md:flex items-center gap-24 h-full">
-                                <div class="relative group h-full flex items-center">
-                                    <button
-                                        class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full">
-                                        <span>Components</span>
-                                        <i
-                                            class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Components</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                     </button>
-                                    <div
-                                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                                        <div
-                                            class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                                            <div class="p-8 flex flex-col gap-4">
-                                                <a href="#"
-                                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                                    <i class="ri-box-1-line"></i> Atoms
-                                                </a>
-                                                <a href="#"
-                                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                                    <i class="ri-hexagon-line"></i> Molecules
-                                                </a>
-                                                <a href="#"
-                                                    class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-red-primary font-bold">
-                                                    <i class="ri-layout-3-line"></i> Organisms
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Components navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="atoms">
+                                            <span>Atoms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="molecules">
+                                            <span>Molecules</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="organisms">
+                                            <span>Organisms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                    <div class="relative group h-full flex items-center">
-                                        <button
-                                            class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full">
-                                            <span>Resources</span>
-                                            <i
-                                                class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
-                                        </button>
-                                        <div
-                                            class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                                            <div
-                                                class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                                                <div class="p-8 flex flex-col gap-4">
-                                                    <a href="#"
-                                                        class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                                        <i class="ri-palette-line"></i> Design Tokens
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Resources</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Resources navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="tokens">
+                                            <span>Design Tokens</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
                             </nav>
 
+                            <!-- Right Actions -->
                             <div class="flex items-center gap-12">
-                                <button
-                                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Search">
                                     <i class="ri-search-line text-icon-md"></i>
                                 </button>
-                                <a href="#"
-                                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
+                                <a href="#" class="btn btn-ghost btn-icon btn-sm" aria-label="GitHub">
                                     <i class="ri-github-fill text-icon-lg"></i>
                                 </a>
-                                <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm">
-                                    Get in touch
-                                </button>
+                                <button class="btn btn-primary btn-sm">Get in touch</button>
                             </div>
                         </header>
                     </div>
-                </div>
-        </div>
 
-        </section>
+                    <!-- Variant 3 -->
+                    <div class="w-full max-w-wide mx-auto">
+                        <header
+                            class="bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex flex-wrap xl:flex-nowrap items-center justify-between gap-24 px-24 py-20">
 
-        <section id="modal">
-            <div class="panel-wrap-head">
-                <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Modal</h2>
-            </div>
+                            <!-- Logo -->
+                            <a href="#" class="flex items-center gap-12 group">
+                                <img src="3favicon.svg" alt="NexLed" class="w-56 h-56">
+                                <div class="flex flex-col">
+                                    <span
+                                        class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                                    <span class="font-regular text-body-sm text-black tracking-wider">System
+                                        v1.2</span>
+                                </div>
+                            </a>
 
-            <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                <div class="w-full">
-                    <div class="flex flex-wrap gap-12 justify-center mb-8">
-                        <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"
-                            data-modal-target="modalStandard">
-                            Standard Modal
-                        </button>
+                            <!-- Navigation Dropdowns -->
+                            <nav class="hidden md:flex items-center gap-24 h-full">
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Components</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Components navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="atoms">
+                                            <span>Atoms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="molecules">
+                                            <span>Molecules</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="organisms">
+                                            <span>Organisms</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                        <button class="btn btn-danger h-btn-sm w-auto px-24 text-body-sm"
-                            data-modal-target="modalDestructive">
-                            Destructive Modal
-                        </button>
-                    </div>
+                                <div class="dropdown dropdown-minimal dropdown-sm w-btn-sm">
+                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="dropdown-value">Resources</span>
+                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                        aria-label="Resources navigation">
+                                        <li class="dropdown-item" role="option" aria-selected="false"
+                                            data-value="tokens">
+                                            <span>Design Tokens</span>
+                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
 
-                    <div class="modal-overlay" id="modalStandard" aria-hidden="true">
-                        <div class="modal modal-container max-w-[500px]" role="dialog" aria-modal="true"
-                            aria-labelledby="modalTitle1">
-                            <div class="modal-header">
-                                <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
-                                <button class="modal-close" aria-label="Close modal" data-close-modal>
-                                    <i class="ri-close-line text-icon-md"></i>
+                            <!-- Right Actions -->
+                            <div class="flex items-center gap-12">
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Search">
+                                    <i class="ri-search-line text-icon-md"></i>
                                 </button>
+                                <a href="#" class="btn btn-ghost btn-icon btn-sm" aria-label="GitHub">
+                                    <i class="ri-github-fill text-icon-lg"></i>
+                                </a>
+                                <button class="btn btn-primary btn-sm">Get in touch</button>
                             </div>
-
-                            <div class="modal-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                    consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                    augue suscipit imperdiet.</p>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
-                                <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
-                        <div class="modal modal-container modal-destructive max-w-[500px] text-center" role="dialog"
-                            aria-modal="true" aria-labelledby="modalTitle3">
-
-                            <div class="mb-16">
-                                <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
-                            </div>
-
-                            <div class="modal-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                    consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                    augue suscipit imperdiet.</p>
-                            </div>
-
-                            <div class="modal-footer justify-center">
-                                <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
-                                <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
-                            </div>
-                        </div>
+                        </header>
                     </div>
 
                 </div>
 
+            </section>
 
-            </div>
+            <section id="modal">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Modal</h2>
+                </div>
 
-        </section>
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="w-full">
+                        <div class="flex flex-wrap gap-12 justify-center mb-8">
+                            <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"
+                                data-modal-target="modalStandard">
+                                Standard Modal
+                            </button>
 
+                            <button class="btn btn-danger h-btn-sm w-auto px-24 text-body-sm"
+                                data-modal-target="modalDestructive">
+                                Destructive Modal
+                            </button>
+                        </div>
+
+                        <div class="modal-overlay" id="modalStandard" aria-hidden="true">
+                            <div class="modal modal-container max-w-[500px]" role="dialog" aria-modal="true"
+                                aria-labelledby="modalTitle1">
+                                <div class="modal-header">
+                                    <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
+                                    <button class="modal-close" aria-label="Close modal" data-close-modal>
+                                        <i class="ri-close-line text-icon-md"></i>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                        consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                        augue suscipit imperdiet.</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                    <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
+                            <div class="modal modal-container modal-destructive max-w-[500px] text-center" role="dialog"
+                                aria-modal="true" aria-labelledby="modalTitle3">
+
+                                <div class="mb-16">
+                                    <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                        consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                        augue suscipit imperdiet.</p>
+                                </div>
+
+                                <div class="modal-footer justify-center">
+                                    <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                    <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
 
         </div>
     </main>
