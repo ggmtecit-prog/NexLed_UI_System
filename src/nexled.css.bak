@@ -2557,34 +2557,6 @@ textarea:hover::placeholder {
   color: var(--color-green-secondary);
 }
 
-/* DROPDOWN — FLYOUT PANEL MODIFIER */
-/* Used when the dropdown panel is a flyout component instead of a list */
-.dropdown-flyout .dropdown-menu {
-  right: auto;
-  min-width: 0;
-  max-height: none;
-  padding: 0;
-  overflow: visible;
-  width: calc(var(--space-64) * 14);
-}
-
-/* DROPDOWN — FLYOUT PANEL MODIFIER */
-/* dropdown-flyout-modifier */
-.dropdown-flyout .dropdown-menu {
-  right: auto;
-  min-width: 0;
-  max-height: none;
-  padding: 0;
-  overflow: visible;
-  width: calc(var(--space-64) * 14);
-  left: 50%;
-  transform: translateX(-50%) translateY(var(--press-offset));
-}
-
-.dropdown-flyout.is-open .dropdown-menu {
-  transform: translateX(-50%) translateY(var(--radius-none));
-}
-
 /* BREADCRUMBS */
 .breadcrumb {
   display: flex;
