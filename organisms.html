@@ -702,44 +702,158 @@
 
                             <!-- Navigation Dropdowns -->
                             <nav class="hidden md:flex items-center gap-24 h-full">
-                                <div class="dropdown dropdown-minimal dropdown-xs w-btn-xs">
-                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                <!-- Components — Flyout Product Grid -->
+                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout">
+                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
                                         <span class="dropdown-value">Components</span>
                                         <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                     </button>
-                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                    <div class="dropdown-menu flyout flyout-products" role="dialog"
                                         aria-label="Components navigation">
-                                        <li class="dropdown-item" role="option" aria-selected="false"
-                                            data-value="atoms">
-                                            <span>Atoms</span>
-                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
-                                        </li>
-                                        <li class="dropdown-item" role="option" aria-selected="false"
-                                            data-value="molecules">
-                                            <span>Molecules</span>
-                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
-                                        </li>
-                                        <li class="dropdown-item" role="option" aria-selected="false"
-                                            data-value="organisms">
-                                            <span>Organisms</span>
-                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
-                                        </li>
-                                    </ul>
+                                        <div class="flyout-body">
+                                            <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item is-active">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                            </nav>
+                                            <div class="flyout-copy">
+                                                <div class="flyout-grid">
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link is-active">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="dropdown dropdown-minimal dropdown-xs w-btn-xs">
-                                    <button class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                <!-- Resources — Flyout Product Grid -->
+                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout">
+                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
                                         <span class="dropdown-value">Resources</span>
                                         <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                     </button>
-                                    <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                    <div class="dropdown-menu flyout flyout-products" role="dialog"
                                         aria-label="Resources navigation">
-                                        <li class="dropdown-item" role="option" aria-selected="false"
-                                            data-value="tokens">
-                                            <span>Design Tokens</span>
-                                            <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
-                                        </li>
-                                    </ul>
+                                        <div class="flyout-body">
+                                            <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item is-active">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <button type="button" class="flyout-nav-item">
+                                                    <span>Dignissim Turpis</span>
+                                                    <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                </button>
+                                            </nav>
+                                            <div class="flyout-copy">
+                                                <div class="flyout-grid">
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link is-active">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                    <a href="#" class="flyout-link">
+                                                        <span class="flyout-media">
+                                                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                alt="Curabitur maximus product image">
+                                                        </span>
+                                                        <span class="flyout-label">Curabitur maximus</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </nav>
 
