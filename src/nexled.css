@@ -2387,6 +2387,66 @@ textarea:hover::placeholder {
   font-size: var(--space-24);
 }
 
+/* LANGUAGE SELECTOR — XS SIZE */
+/* language-selector-xs-css */
+.language-selector-xs .language-selector-trigger {
+  height: var(--size-btn-xs-h);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+}
+
+.language-selector-xs .language-selector-current {
+  gap: var(--space-8);
+}
+
+.language-selector-icon.language-selector-xs .language-selector-trigger {
+  gap: var(--space-8);
+}
+
+.language-selector-xs .language-selector-value {
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+}
+
+.language-selector-xs .language-selector-flag {
+  width: var(--space-20);
+  height: var(--space-20);
+}
+
+.language-selector-xs .language-selector-arrow {
+  font-size: var(--space-12);
+}
+
+.language-selector-xs .language-selector-menu {
+  padding: var(--space-4);
+  gap: var(--space-4);
+  max-height: calc(var(--size-btn-xs-h) * 4);
+}
+
+.language-selector-xs .language-selector-option {
+  gap: var(--space-8);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+}
+
+.language-selector-xs .language-selector-check {
+  font-size: var(--space-12);
+}
+
+.language-selector-standard.language-selector-xs {
+  --language-selector-trigger-width: var(--size-btn-xs-w);
+  --language-selector-menu-width: var(--size-btn-xs-w);
+}
+
+.language-selector-icon.language-selector-xs {
+  --language-selector-trigger-width: calc((var(--space-8) * 2) + var(--space-20) + var(--space-8) + var(--space-12));
+  --language-selector-menu-width: var(--size-btn-xs-w);
+}
+
 /* FLYOUT */
 .flyout {
   width: 100%;
