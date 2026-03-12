@@ -59,13 +59,11 @@ function closeBar(id) {
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const dropdownSection = document.getElementById('dropdown');
+    const dropdowns = Array.from(document.querySelectorAll('.dropdown'));
 
-    if (!dropdownSection) {
+    if (dropdowns.length === 0) {
         return;
     }
-
-    const dropdowns = Array.from(dropdownSection.querySelectorAll('.dropdown'));
     const enabledDropdowns = dropdowns.filter(dropdown => {
         const trigger = dropdown.querySelector('.dropdown-trigger');
         return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', event => {
-        if (!event.target.closest('#dropdown .dropdown')) {
+        if (!event.target.closest('.dropdown')) {
             closeAllDropdowns();
         }
     });
