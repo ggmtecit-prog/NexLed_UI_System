@@ -26,875 +26,414 @@
 
 </head>
 
-<body class="bg-grey-tertiary text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
+<body class="bg-grey-tertiary text-black selection:bg-green-primary/10 flex min-h-screen">
 
-    <!-- TOP NAVIGATION -->
-    <header class="fixed top-0 left-0 w-full z-sticky px-32 py-24 pointer-events-none">
-        <div
-            class="nav-bar max-w-wide mx-auto px-32 py-24 pointer-events-auto transition-all duration-default ease-premium hover:shadow-btn-hover">
+    <aside class="shrink-0">
+        <div class="sidebar w-sidebar h-sidebar">
 
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-12 group">
-                <div
-                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
-                    <i class="ri-code-s-slash-line text-h3"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
-                    <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
-                </div>
-            </a>
-
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-32 h-full">
-
-                <!-- Components Dropdown (ACTIVE) -->
-                <div class="relative group h-full flex items-center">
-                    <button
-                        class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full z-overlay">
-                        <span>Components</span>
-                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    <!-- Dropdown Bridge -->
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                        <!-- Visual Dropdown -->
-                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                            <div class="p-8 flex flex-col gap-4">
-                                <a href="atoms.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-box-1-line"></i> Atoms
-                                </a>
-                                <a href="molecules.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-hexagon-line"></i> Molecules
-                                </a>
-                                <a href="organisms.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-red-primary font-bold">
-                                    <i class="ri-layout-3-line"></i> Organisms
-                                </a>
-                            </div>
-                        </div>
+            <!-- Logo section ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â replicates header nav Logo section -->
+            <div class="flex flex-col h-full gap-16 p-32">
+                <a href="#" class="flex items-center justify-center gap-12 group">
+                    <img src="public/logos/support_logo.svg" alt="NexLed" class="w-64 h-64">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-h3 leading-none tracking-tight text-black">Nexled</span>
+                        <span class="font-regular text-body-sm text-black tracking-wider">EPREL Tool</span>
                     </div>
-                </div>
-
-                <!-- Resources Dropdown -->
-                <div class="relative group h-full flex items-center">
-                    <button
-                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
-                        <span>Resources</span>
-                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                            <div class="p-8 flex flex-col gap-4">
-                                <a href="tokens.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-palette-line"></i> Design Tokens
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Right Actions -->
-            <div class="flex items-center gap-16">
-                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Search">
-                    <i class="ri-search-line text-icon-md"></i>
-                </button>
-                <div class="w-standard h-24 bg-grey-tertiary hidden md:block"></div>
-                <a href="#" class="btn btn-ghost btn-icon btn-sm" aria-label="GitHub">
-                    <i class="ri-github-fill text-icon-lg"></i>
                 </a>
+
+                <!-- Vertical Navigation ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 4ÃƒÆ’Ã¢â‚¬â€ dropdown-minimal (sidebar-only instances) -->
+                <nav class="flex flex-col gap-40 flex-1 justify-center">
+
+                    <div class="dropdown dropdown-minimal dropdown-lg">
+                        <a href="#" class="dropdown-trigger">
+                            <span class="dropdown-value">Atoms</span>
+                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-lg">
+                        <a href="#" class="dropdown-trigger">
+                            <span class="dropdown-value">Molcules</span>
+                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-lg">
+                        <a href="#" class="dropdown-trigger">
+                            <span class="dropdown-value">Organisms</span>
+                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-lg">
+                        <a href="#" class="dropdown-trigger">
+                            <span class="dropdown-value">Design Tokens</span>
+                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-lg">
+                        <a href="#" class="dropdown-trigger">
+                            <span class="dropdown-value">Figma Design</span>
+                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                </nav>
             </div>
 
         </div>
-    </header>
+    </aside>
 
-    <!-- CONTENT -->
-    <main class="flex-1 mt-[160px] px-32 pb-64 max-w-wide mx-auto w-full">
+    <div class="flex-1 min-w-0 flex flex-col">
 
-        <header class="page-header-hero">
-            <h1 class="text-hero-title font-medium text-black">Organisms</h1>
-            <p class="text-hero-subtitle font-light text-black max-w-readable">
-                Complex UI sections composed of multiple molecules and atoms.
-            </p>
-        </header>
+        <!-- CONTENT -->
+        <main class="flex-1 px-32 pt-32 pb-64 max-w-wide mx-auto w-full">
 
-        <div class="space-y-64">
+            <header class="page-header-hero">
+                <h1 class="text-hero-title font-medium text-black">Organisms</h1>
+                <p class="text-hero-subtitle font-light text-black max-w-readable">
+                    Complex UI sections composed of multiple molecules and atoms.
+                </p>
+            </header>
 
-            <section id="footer">
-                <div class="panel-wrap-head">
-                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Footer</h2>
-                </div>
+            <div class="space-y-64">
 
-                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                <section id="footer">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Footer</h2>
+                    </div>
 
-                    <!-- Footer Variants -->
-                    <div class="flex flex-col gap-24 w-full max-w-wide mx-auto">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                        <!-- Variant 1: Footer without bottom bar -->
-                        <footer class="footer">
-                            <div class="footer-body">
-                                <div class="footer-grid">
+                        <!-- Footer Variants -->
+                        <div class="flex flex-col gap-24 w-full max-w-wide mx-auto">
 
-                                    <!-- Column 1: Logo -->
-                                    <div class="flex flex-col items-center text-center">
-                                        <img src="public/logos/nexled_logo.svg" alt="NexLed Logo"
-                                            class="w-thumb-md h-thumb-md mb-8">
-                                    </div>
+                            <!-- Variant 1: Footer without bottom bar -->
+                            <footer class="footer">
+                                <div class="footer-body">
+                                    <div class="footer-grid">
 
-                                    <!-- Column 2: Brand Nav and Socials -->
-                                    <div class="flex flex-col">
-                                        <h3 class="footer-brand-title">NexLed</h3>
-                                        <ul class="footer-links flex-1 mb-16">
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span class="link-label">Sobre
-                                                        Nós</span></a></li>
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span
-                                                        class="link-label">Carrinho</span></a></li>
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span class="link-label">Subscrever
-                                                        Newsletter</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- Column 3: Categorias -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Categorias</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Retalho</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Interior</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Industrial</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span class="link-label">Fontes
-                                                        de Alimentação</span></a></li>
-                                        </ul>
-                                    </div>
+                                        <!-- Column 1: Logo -->
+                                        <div class="flex flex-col items-center text-center">
+                                            <img src="public/logos/nexled_logo.svg" alt="NexLed Logo"
+                                                class="w-thumb-md h-thumb-md mb-8">
+                                        </div>
 
-                                    <!-- Column 4: Contactos -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Contactos</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="mailto:comercial@tecit.pt" class="link-subtle link-sm"><span
-                                                        class="link-label">comercial@tecit.pt</span></a></li>
-                                            <li><a href="tel:+351229999230" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 229 999 230</span></a>
-                                            </li>
-                                            <li><a href="tel:+351919989354" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 919 989 354</span></a>
-                                            </li>
-                                            <li><a href="tel:+351917321988" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 917 321 988</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        <!-- Column 2: Brand Nav and Socials -->
+                                        <div class="flex flex-col">
+                                            <h3 class="footer-brand-title">NexLed</h3>
+                                            <ul class="footer-links flex-1 mb-16">
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span class="link-label">Sobre
+                                                            NÃƒÆ’Ã‚Â³s</span></a></li>
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span
+                                                            class="link-label">Carrinho</span></a></li>
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span
+                                                            class="link-label">Subscrever
+                                                            Newsletter</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Column 3: Categorias -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Categorias</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Retalho</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Interior</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Industrial</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Fontes
+                                                            de AlimentaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span></a></li>
+                                            </ul>
+                                        </div>
 
-                                    <!-- Column 5: Localização -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Localização</span>
-                                            </a>
-                                        </h4>
-                                        <address class="footer-links not-italic mb-16">
-                                            <p>Travessa Cabo do Mundo, 681</p>
-                                            <p>4455-427 Perafita,</p>
-                                            <p>Matosinhos - Portugal</p>
-                                        </address>
-                                        <h4 class="text-body-lg font-normal text-black mb-4">Horário</h4>
-                                        <p class="text-body-sm font-light text-black">09:00h às 18:00h Dias úteis</p>
-                                    </div>
+                                        <!-- Column 4: Contactos -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Contactos</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="mailto:comercial@tecit.pt"
+                                                        class="link-subtle link-sm"><span
+                                                            class="link-label">comercial@tecit.pt</span></a></li>
+                                                <li><a href="tel:+351229999230" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 229 999 230</span></a>
+                                                </li>
+                                                <li><a href="tel:+351919989354" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 919 989 354</span></a>
+                                                </li>
+                                                <li><a href="tel:+351917321988" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 917 321 988</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                    <!-- Column 6: Suporte -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Suporte</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="#" class="link-subtle link-sm"><span class="link-label">FAQ
-                                                        &amp; Garantia</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Download's</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Instruções Reparação</span></a></li>
-                                        </ul>
-                                    </div>
+                                        <!-- Column 5: LocalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">LocalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span>
+                                                </a>
+                                            </h4>
+                                            <address class="footer-links not-italic mb-16">
+                                                <p>Travessa Cabo do Mundo, 681</p>
+                                                <p>4455-427 Perafita,</p>
+                                                <p>Matosinhos - Portugal</p>
+                                            </address>
+                                            <h4 class="text-body-lg font-normal text-black mb-4">HorÃƒÆ’Ã‚Â¡rio</h4>
+                                            <p class="text-body-sm font-light text-black">09:00h ÃƒÆ’Ã‚Â s 18:00h Dias
+                                                ÃƒÆ’Ã‚Âºteis</p>
+                                        </div>
 
-                                </div>
-                            </div>
-                        </footer>
+                                        <!-- Column 6: Suporte -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Suporte</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">FAQ
+                                                            &amp; Garantia</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Download's</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">InstruÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes
+                                                            ReparaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span></a></li>
+                                            </ul>
+                                        </div>
 
-                        <!-- Variant 2: Footer with bottom bar -->
-                        <footer class="footer relative z-dropdown">
-                            <div class="footer-body">
-                                <div class="footer-grid">
-
-                                    <!-- Column 1: Logo -->
-                                    <div class="flex flex-col items-center text-center">
-                                        <img src="public/logos/nexled_logo.svg" alt="NexLed Logo"
-                                            class="w-thumb-md h-thumb-md mb-8">
-                                    </div>
-
-                                    <!-- Column 2: Brand Nav and Socials -->
-                                    <div class="flex flex-col">
-                                        <h3 class="footer-brand-title">NexLed</h3>
-                                        <ul class="footer-links flex-1 mb-16">
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span class="link-label">Sobre
-                                                        Nós</span></a></li>
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span
-                                                        class="link-label">Carrinho</span></a></li>
-                                            <li><a href="#" class="link-text-icon link-sm"><i
-                                                        class="ri-linkedin-fill"></i><span class="link-label">Subscrever
-                                                        Newsletter</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- Column 3: Categorias -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Categorias</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Retalho</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Interior</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Industrial</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span class="link-label">Fontes
-                                                        de Alimentação</span></a></li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Column 4: Contactos -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Contactos</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="mailto:comercial@tecit.pt" class="link-subtle link-sm"><span
-                                                        class="link-label">comercial@tecit.pt</span></a></li>
-                                            <li><a href="tel:+351229999230" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 229 999 230</span></a>
-                                            </li>
-                                            <li><a href="tel:+351919989354" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 919 989 354</span></a>
-                                            </li>
-                                            <li><a href="tel:+351917321988" class="link-subtle link-sm"><span
-                                                        class="link-label">+351 917 321 988</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Column 5: Localização -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Localização</span>
-                                            </a>
-                                        </h4>
-                                        <address class="footer-links not-italic mb-16">
-                                            <p>Travessa Cabo do Mundo, 681</p>
-                                            <p>4455-427 Perafita,</p>
-                                            <p>Matosinhos - Portugal</p>
-                                        </address>
-                                        <h4 class="text-body-lg font-normal text-black mb-4">Horário</h4>
-                                        <p class="text-body-sm font-light text-black">09:00h às 18:00h Dias úteis</p>
-                                    </div>
-
-                                    <!-- Column 6: Suporte -->
-                                    <div class="footer-col">
-                                        <h4 class="mb-12">
-                                            <a href="#" class="link-navigation link-lg">
-                                                <span class="link-label">Suporte</span>
-                                            </a>
-                                        </h4>
-                                        <ul class="footer-links">
-                                            <li><a href="#" class="link-subtle link-sm"><span class="link-label">FAQ
-                                                        &amp; Garantia</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Download's</span></a></li>
-                                            <li><a href="#" class="link-subtle link-sm"><span
-                                                        class="link-label">Instruções Reparação</span></a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </footer>
-                        <div class="relative z-base -mt-32">
-                            <!-- Bottom Bar -->
-                            <div class="footer-bottom footer-bottom-bar footer-bottom-floating">
-                                <div class="footer-bottom-inner">
-                                    <div
-                                        class="w-full max-w-wide mx-auto flex flex-wrap items-center justify-center gap-24">
-                                        <a href="#" class="link-subtle link-sm"><span class="link-label">Termos e
-                                                CondiÃ§Ãµes</span></a>
-                                        <a href="#" class="link-subtle link-sm"><span class="link-label">PolÃ­tica de
-                                                Privacidade</span></a>
-                                        <a href="#" class="link-subtle link-sm"><span class="link-label">PolÃ­tica de
-                                                Cookies</span></a>
-                                        <a href="#" class="link-subtle link-sm"><span class="link-label">ResoluÃ§Ã£o
-                                                Alternativa de LitÃ­gios de
-                                                Consumo</span></a>
-                                        <a href="#" class="link-subtle link-sm"><span class="link-label">Livro de
-                                                ReclamaÃ§Ãµes</span></a>
                                     </div>
                                 </div>
+                            </footer>
+
+                            <!-- Variant 2: Footer with bottom bar -->
+                            <footer class="footer relative z-dropdown">
+                                <div class="footer-body">
+                                    <div class="footer-grid">
+
+                                        <!-- Column 1: Logo -->
+                                        <div class="flex flex-col items-center text-center">
+                                            <img src="public/logos/nexled_logo.svg" alt="NexLed Logo"
+                                                class="w-thumb-md h-thumb-md mb-8">
+                                        </div>
+
+                                        <!-- Column 2: Brand Nav and Socials -->
+                                        <div class="flex flex-col">
+                                            <h3 class="footer-brand-title">NexLed</h3>
+                                            <ul class="footer-links flex-1 mb-16">
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span class="link-label">Sobre
+                                                            NÃƒÆ’Ã‚Â³s</span></a></li>
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span
+                                                            class="link-label">Carrinho</span></a></li>
+                                                <li><a href="#" class="link-text-icon link-sm"><i
+                                                            class="ri-linkedin-fill"></i><span
+                                                            class="link-label">Subscrever
+                                                            Newsletter</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Column 3: Categorias -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Categorias</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Retalho</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Interior</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Industrial</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Fontes
+                                                            de AlimentaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Column 4: Contactos -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Contactos</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="mailto:comercial@tecit.pt"
+                                                        class="link-subtle link-sm"><span
+                                                            class="link-label">comercial@tecit.pt</span></a></li>
+                                                <li><a href="tel:+351229999230" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 229 999 230</span></a>
+                                                </li>
+                                                <li><a href="tel:+351919989354" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 919 989 354</span></a>
+                                                </li>
+                                                <li><a href="tel:+351917321988" class="link-subtle link-sm"><span
+                                                            class="link-label">+351 917 321 988</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Column 5: LocalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">LocalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span>
+                                                </a>
+                                            </h4>
+                                            <address class="footer-links not-italic mb-16">
+                                                <p>Travessa Cabo do Mundo, 681</p>
+                                                <p>4455-427 Perafita,</p>
+                                                <p>Matosinhos - Portugal</p>
+                                            </address>
+                                            <h4 class="text-body-lg font-normal text-black mb-4">HorÃƒÆ’Ã‚Â¡rio</h4>
+                                            <p class="text-body-sm font-light text-black">09:00h ÃƒÆ’Ã‚Â s 18:00h Dias
+                                                ÃƒÆ’Ã‚Âºteis</p>
+                                        </div>
+
+                                        <!-- Column 6: Suporte -->
+                                        <div class="footer-col">
+                                            <h4 class="mb-12">
+                                                <a href="#" class="link-navigation link-lg">
+                                                    <span class="link-label">Suporte</span>
+                                                </a>
+                                            </h4>
+                                            <ul class="footer-links">
+                                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">FAQ
+                                                            &amp; Garantia</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">Download's</span></a></li>
+                                                <li><a href="#" class="link-subtle link-sm"><span
+                                                            class="link-label">InstruÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes
+                                                            ReparaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o</span></a></li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </footer>
+                            <div class="relative z-base -mt-32">
+                                <!-- Bottom Bar -->
+                                <div class="footer-bottom footer-bottom-bar footer-bottom-floating">
+                                    <div class="footer-bottom-inner">
+                                        <div
+                                            class="w-full max-w-wide mx-auto flex flex-wrap items-center justify-center gap-24">
+                                            <a href="#" class="link-subtle link-sm"><span class="link-label">Termos e
+                                                    CondiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes</span></a>
+                                            <a href="#" class="link-subtle link-sm"><span
+                                                    class="link-label">PolÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tica de
+                                                    Privacidade</span></a>
+                                            <a href="#" class="link-subtle link-sm"><span
+                                                    class="link-label">PolÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­tica de
+                                                    Cookies</span></a>
+                                            <a href="#" class="link-subtle link-sm"><span
+                                                    class="link-label">ResoluÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o
+                                                    Alternativa de LitÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­gios de
+                                                    Consumo</span></a>
+                                            <a href="#" class="link-subtle link-sm"><span class="link-label">Livro de
+                                                    ReclamaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes</span></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
-
-                    </div>
-                </div>
-
-            </section>
-
-
-            <section id="header">
-                <div class="panel-wrap-head">
-                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Header / Nav</h2>
-                </div>
-
-                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                    <!-- Variant 1 -->
-                    <div class="w-full max-w-wide mx-auto">
-                        <header class="nav-bar">
-
-                            <!-- Logo -->
-                            <a href="#" class="flex items-center gap-12 group">
-                                <img src="public/logos/support_logo.svg" alt="NexLed" class="w-56 h-56">
-                                <div class="flex flex-col">
-                                    <span
-                                        class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
-                                    <span class="font-regular text-body-sm text-black tracking-wider">Support Page
-                                    </span>
-                                </div>
-                            </a>
-
-                            <!-- Navigation Dropdowns — variant2-nav-flyout-features -->
-                            <nav class="hidden md:flex items-center gap-24 h-full">
-
-                                <!-- Components — Flyout Features Panel -->
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Resources — Flyout Features Panel -->
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Resources navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </nav>
-
-                            <!-- Right Actions -->
-                            <div class="flex items-center gap-12">
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
-                                    <i class="ri-search-line text-icon-md"></i>
-                                </button>
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
-                                    <i class="ri-shopping-cart-2-line text-icon-md"></i>
-                                </button>
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
-                                    <i class="ri-user-line text-icon-md"></i>
-                                </button>
-
-                            </div>
-                        </header>
                     </div>
 
-                    <!-- Variant 2 -->
-                    <div class="w-full max-w-wide mx-auto">
-                        <header class="nav-bar">
+                </section>
 
-                            <!-- Logo -->
-                            <a href="#" class="flex items-center gap-12 group">
-                                <img src="public/logos/design_logo.svg" alt="NexLed" class="w-56 h-56">
-                                <div class="flex flex-col">
-                                    <span
-                                        class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
-                                    <span class="font-regular text-body-sm text-black tracking-wider">UI System</span>
-                                </div>
-                            </a>
 
-                            <!-- Navigation Dropdowns -->
-                            <!-- Navigation Dropdowns -->
-                            <nav class="hidden md:flex items-center gap-24 h-full">
-
-                                <!-- Components — Flyout Features Panel -->
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Repair Guides</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Resources — Flyout Features Panel -->
-                                <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Download Files</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Resources navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media">
-                                                            <i class="ri-archive-line" aria-hidden="true"></i>
-                                                        </span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </nav>
-
-                            <!-- Right Actions -->
-                            <div class="flex items-center gap-12">
-
-                                <button class="btn btn-secondary btn-xs">Get in touch</button>
-                                <button class="btn btn-primary btn-xs">
-                                    <i class="ri-store-line text-icon-md" aria-hidden="true"></i>
-                                    Store
-                                </button>
-                                <div class="language-selector language-selector-icon language-selector-xs has-value">
-                                    <button type="button" class="language-selector-trigger" aria-haspopup="listbox"
-                                        aria-expanded="false" aria-label="Current language: English">
-                                        <span class="language-selector-current">
-                                            <img class="language-selector-flag" src="https://flagcdn.com/w40/gb.png"
-                                                srcset="https://flagcdn.com/w80/gb.png 2x" width="20" height="20"
-                                                alt="">
-                                        </span>
-                                        <i class="ri-arrow-down-s-line language-selector-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <ul class="language-selector-menu custom-scrollbar" role="listbox"
-                                        aria-label="Icon-only extra small language options">
-                                        <li class="language-selector-option" role="option" aria-selected="true"
-                                            data-code="gb">
-                                            <img class="language-selector-flag" src="https://flagcdn.com/w40/gb.png"
-                                                srcset="https://flagcdn.com/w80/gb.png 2x" width="20" height="20"
-                                                alt="">
-                                            <span>English</span>
-                                            <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
-                                        </li>
-                                        <li class="language-selector-option" role="option" aria-selected="false"
-                                            data-code="pt">
-                                            <img class="language-selector-flag" src="https://flagcdn.com/w40/pt.png"
-                                                srcset="https://flagcdn.com/w80/pt.png 2x" width="20" height="20"
-                                                alt="">
-                                            <span>Portugu&#234;s</span>
-                                            <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
-                                        </li>
-                                        <li class="language-selector-option" role="option" aria-selected="false"
-                                            data-code="es">
-                                            <img class="language-selector-flag" src="https://flagcdn.com/w40/es.png"
-                                                srcset="https://flagcdn.com/w80/es.png 2x" width="20" height="20"
-                                                alt="">
-                                            <span>Espa&#241;ol</span>
-                                            <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </header>
+                <section id="header">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Header / Nav</h2>
                     </div>
 
-                    <!-- Variant 3 -->
-                    <div class="w-full max-w-wide mx-auto">
-                        <div class="announcement-bar announcement-bar-floating" id="announcement-bar-2">
-                            <div class="hidden sm:block w-40"></div>
-                            <p class="announcement-bar-text">
-                                Live Demo: Floating Green Bar.
-                            </p>
-                            <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
-                                onclick="closeBar('announcement-bar-2')">
-                                <i class="ri-close-line text-icon-lg"></i>
-                            </button>
-                        </div>
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
-                        <div class="-mt-12">
+                        <!-- Variant 1 -->
+                        <div class="w-full max-w-wide mx-auto">
                             <header class="nav-bar">
 
                                 <!-- Logo -->
                                 <a href="#" class="flex items-center gap-12 group">
-                                    <img src="public/logos/nexled_logo.svg" alt="NexLed" class="w-56 h-56">
+                                    <img src="public/logos/support_logo.svg" alt="NexLed" class="w-56 h-56">
                                     <div class="flex flex-col">
                                         <span
                                             class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
-                                        <span class="font-regular text-body-sm text-black tracking-wider">Official Store
+                                        <span class="font-regular text-body-sm text-black tracking-wider">Support Page
                                         </span>
                                     </div>
                                 </a>
 
-                                <!-- Navigation Dropdowns -->
+                                <!-- Navigation Dropdowns ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â variant2-nav-flyout-features -->
                                 <nav class="hidden md:flex items-center gap-24 h-full">
-                                    <!-- Components — Flyout Product Grid -->
+
+                                    <!-- Components ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Features Panel -->
                                     <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
                                         data-dropdown-trigger="hover">
                                         <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                            <span class="dropdown-value">Indoor</span>
+                                            <span class="dropdown-value">Lorem Ipsum</span>
                                             <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                         </button>
-                                        <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
                                             aria-label="Components navigation">
                                             <div class="flyout-body">
-                                                <nav class="flyout-nav" aria-label="Fly-out categories">
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item is-active">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                </nav>
                                                 <div class="flyout-copy">
                                                     <div class="flyout-grid">
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link is-active">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -905,73 +444,53 @@
                                     <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
                                         data-dropdown-trigger="hover">
                                         <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                            <span class="dropdown-value">Retail</span>
+                                            <span class="dropdown-value">Lorem Ipsum</span>
                                             <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                         </button>
-                                        <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
                                             aria-label="Components navigation">
                                             <div class="flyout-body">
-                                                <nav class="flyout-nav" aria-label="Fly-out categories">
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item is-active">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                </nav>
                                                 <div class="flyout-copy">
                                                     <div class="flyout-grid">
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link is-active">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -982,73 +501,53 @@
                                     <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
                                         data-dropdown-trigger="hover">
                                         <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                            <span class="dropdown-value">Industrial</span>
+                                            <span class="dropdown-value">Lorem Ipsum</span>
                                             <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                         </button>
-                                        <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
                                             aria-label="Components navigation">
                                             <div class="flyout-body">
-                                                <nav class="flyout-nav" aria-label="Fly-out categories">
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item is-active">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                </nav>
                                                 <div class="flyout-copy">
                                                     <div class="flyout-grid">
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link is-active">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -1056,83 +555,54 @@
                                         </div>
                                     </div>
 
-                                    <!-- Resources — Flyout Product Grid -->
+                                    <!-- Resources ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Features Panel -->
                                     <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
                                         data-dropdown-trigger="hover">
                                         <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                            <span class="dropdown-value">Power Supplies</span>
+                                            <span class="dropdown-value">Lorem Ipsum</span>
                                             <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
                                         </button>
-                                        <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
                                             aria-label="Resources navigation">
                                             <div class="flyout-body">
-                                                <nav class="flyout-nav" aria-label="Fly-out categories">
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item is-active">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button type="button" class="flyout-nav-item">
-                                                        <span>Dignissim Turpis</span>
-                                                        <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                                                    </button>
-                                                </nav>
                                                 <div class="flyout-copy">
                                                     <div class="flyout-grid">
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                         <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link is-active">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
-                                                        </a>
-                                                        <a href="#" class="flyout-link">
-                                                            <span class="flyout-media">
-                                                                <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
-                                                                    alt="Curabitur maximus product image">
-                                                            </span>
-                                                            <span class="flyout-label">Curabitur maximus</span>
+                                                            <span class="flyout-media"><i class="ri-archive-line"
+                                                                    aria-hidden="true"></i></span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </nav>
 
                                 <!-- Right Actions -->
@@ -1140,10 +610,159 @@
                                     <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
                                         <i class="ri-search-line text-icon-md"></i>
                                     </button>
-                                    <a href="#" class="btn btn-ghost btn-icon btn-xs" aria-label="GitHub">
+                                    <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
                                         <i class="ri-shopping-cart-2-line text-icon-md"></i>
-                                    </a>
-                                    <!-- Lang selector here-->
+                                    </button>
+                                    <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
+                                        <i class="ri-user-line text-icon-md"></i>
+                                    </button>
+
+                                </div>
+                            </header>
+                        </div>
+
+                        <!-- Variant 2 -->
+                        <div class="w-full max-w-wide mx-auto">
+                            <header class="nav-bar">
+
+                                <!-- Logo -->
+                                <a href="#" class="flex items-center gap-12 group">
+                                    <img src="public/logos/design_logo.svg" alt="NexLed" class="w-56 h-56">
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                                        <span class="font-regular text-body-sm text-black tracking-wider">UI
+                                            System</span>
+                                    </div>
+                                </a>
+
+                                <!-- Navigation Dropdowns -->
+                                <!-- Navigation Dropdowns -->
+                                <nav class="hidden md:flex items-center gap-24 h-full">
+
+                                    <!-- Components ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Features Panel -->
+                                    <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                        data-dropdown-trigger="hover">
+                                        <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
+                                            <span class="dropdown-value">Repair Guides</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
+                                            aria-label="Components navigation">
+                                            <div class="flyout-body">
+                                                <div class="flyout-copy">
+                                                    <div class="flyout-grid">
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Resources ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Features Panel -->
+                                    <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                        data-dropdown-trigger="hover">
+                                        <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
+                                            <span class="dropdown-value">Download Files</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="dropdown-menu flyout flyout-features" role="dialog"
+                                            aria-label="Resources navigation">
+                                            <div class="flyout-body">
+                                                <div class="flyout-copy">
+                                                    <div class="flyout-grid">
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                        <a href="#" class="flyout-link">
+                                                            <span class="flyout-media">
+                                                                <i class="ri-archive-line" aria-hidden="true"></i>
+                                                            </span>
+                                                            <div>
+                                                                <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                <p class="flyout-text">Aliquam sapien felis, tincidunt
+                                                                    non
+                                                                    fermentum ac, accumsan eget eros</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </nav>
+
+                                <!-- Right Actions -->
+                                <div class="flex items-center gap-12">
+
+                                    <button class="btn btn-secondary btn-xs">Get in touch</button>
+                                    <button class="btn btn-primary btn-xs">
+                                        <i class="ri-store-line text-icon-md" aria-hidden="true"></i>
+                                        Store
+                                    </button>
                                     <div
                                         class="language-selector language-selector-icon language-selector-xs has-value">
                                         <button type="button" class="language-selector-trigger" aria-haspopup="listbox"
@@ -1187,322 +806,564 @@
                                 </div>
                             </header>
                         </div>
-                    </div>
 
-                </div>
+                        <!-- Variant 3 -->
+                        <div class="w-full max-w-wide mx-auto">
+                            <div class="announcement-bar announcement-bar-floating" id="announcement-bar-2">
+                                <div class="hidden sm:block w-40"></div>
+                                <p class="announcement-bar-text">
+                                    Live Demo: Floating Green Bar.
+                                </p>
+                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
+                                    onclick="closeBar('announcement-bar-2')">
+                                    <i class="ri-close-line text-icon-lg"></i>
+                                </button>
+                            </div>
 
-            </section>
+                            <div class="-mt-12">
+                                <header class="nav-bar">
 
-            <section id="modal">
-                <div class="panel-wrap-head">
-                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Modal</h2>
-                </div>
+                                    <!-- Logo -->
+                                    <a href="#" class="flex items-center gap-12 group">
+                                        <img src="public/logos/nexled_logo.svg" alt="NexLed" class="w-56 h-56">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                                            <span class="font-regular text-body-sm text-black tracking-wider">Official
+                                                Store
+                                            </span>
+                                        </div>
+                                    </a>
 
-                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                    <div class="w-full">
-                        <div class="flex flex-wrap gap-12 justify-center mb-8">
-                            <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"
-                                data-modal-target="modalStandard">
-                                Standard Modal
-                            </button>
+                                    <!-- Navigation Dropdowns -->
+                                    <nav class="hidden md:flex items-center gap-24 h-full">
+                                        <!-- Components ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Product Grid -->
+                                        <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                            data-dropdown-trigger="hover">
+                                            <button class="dropdown-trigger" aria-haspopup="dialog"
+                                                aria-expanded="false">
+                                                <span class="dropdown-value">Indoor</span>
+                                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                            </button>
+                                            <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                                aria-label="Components navigation">
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item is-active">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <button class="btn btn-danger h-btn-sm w-auto px-24 text-body-sm"
-                                data-modal-target="modalDestructive">
-                                Destructive Modal
-                            </button>
-                        </div>
+                                        <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                            data-dropdown-trigger="hover">
+                                            <button class="dropdown-trigger" aria-haspopup="dialog"
+                                                aria-expanded="false">
+                                                <span class="dropdown-value">Retail</span>
+                                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                            </button>
+                                            <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                                aria-label="Components navigation">
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item is-active">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="modal-overlay" id="modalStandard" aria-hidden="true">
-                            <div class="modal modal-container max-w-[500px]" role="dialog" aria-modal="true"
-                                aria-labelledby="modalTitle1">
-                                <div class="modal-header">
-                                    <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
-                                    <button class="modal-close" aria-label="Close modal" data-close-modal>
-                                        <i class="ri-close-line text-icon-md"></i>
-                                    </button>
-                                </div>
+                                        <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                            data-dropdown-trigger="hover">
+                                            <button class="dropdown-trigger" aria-haspopup="dialog"
+                                                aria-expanded="false">
+                                                <span class="dropdown-value">Industrial</span>
+                                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                            </button>
+                                            <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                                aria-label="Components navigation">
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item is-active">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <div class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                        consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                        augue suscipit imperdiet.</p>
-                                </div>
+                                        <!-- Resources ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Flyout Product Grid -->
+                                        <div class="dropdown dropdown-minimal dropdown-xs dropdown-flyout"
+                                            data-dropdown-trigger="hover">
+                                            <button class="dropdown-trigger" aria-haspopup="dialog"
+                                                aria-expanded="false">
+                                                <span class="dropdown-value">Power Supplies</span>
+                                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                            </button>
+                                            <div class="dropdown-menu flyout flyout-products" role="dialog"
+                                                aria-label="Resources navigation">
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories">
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item is-active">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item">
+                                                            <span>Dignissim Turpis</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=100"
+                                                                        alt="Curabitur maximus product image">
+                                                                </span>
+                                                                <span class="flyout-label">Curabitur maximus</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
 
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
-                                    <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
-                                </div>
+                                    <!-- Right Actions -->
+                                    <div class="flex items-center gap-12">
+                                        <button class="btn btn-ghost btn-icon btn-xs" aria-label="Search">
+                                            <i class="ri-search-line text-icon-md"></i>
+                                        </button>
+                                        <a href="#" class="btn btn-ghost btn-icon btn-xs" aria-label="GitHub">
+                                            <i class="ri-shopping-cart-2-line text-icon-md"></i>
+                                        </a>
+                                        <!-- Lang selector here-->
+                                        <div
+                                            class="language-selector language-selector-icon language-selector-xs has-value">
+                                            <button type="button" class="language-selector-trigger"
+                                                aria-haspopup="listbox" aria-expanded="false"
+                                                aria-label="Current language: English">
+                                                <span class="language-selector-current">
+                                                    <img class="language-selector-flag"
+                                                        src="https://flagcdn.com/w40/gb.png"
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" width="20"
+                                                        height="20" alt="">
+                                                </span>
+                                                <i class="ri-arrow-down-s-line language-selector-arrow"
+                                                    aria-hidden="true"></i>
+                                            </button>
+                                            <ul class="language-selector-menu custom-scrollbar" role="listbox"
+                                                aria-label="Icon-only extra small language options">
+                                                <li class="language-selector-option" role="option" aria-selected="true"
+                                                    data-code="gb">
+                                                    <img class="language-selector-flag"
+                                                        src="https://flagcdn.com/w40/gb.png"
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" width="20"
+                                                        height="20" alt="">
+                                                    <span>English</span>
+                                                    <i class="ri-check-line language-selector-check"
+                                                        aria-hidden="true"></i>
+                                                </li>
+                                                <li class="language-selector-option" role="option" aria-selected="false"
+                                                    data-code="pt">
+                                                    <img class="language-selector-flag"
+                                                        src="https://flagcdn.com/w40/pt.png"
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" width="20"
+                                                        height="20" alt="">
+                                                    <span>Portugu&#234;s</span>
+                                                    <i class="ri-check-line language-selector-check"
+                                                        aria-hidden="true"></i>
+                                                </li>
+                                                <li class="language-selector-option" role="option" aria-selected="false"
+                                                    data-code="es">
+                                                    <img class="language-selector-flag"
+                                                        src="https://flagcdn.com/w40/es.png"
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" width="20"
+                                                        height="20" alt="">
+                                                    <span>Espa&#241;ol</span>
+                                                    <i class="ri-check-line language-selector-check"
+                                                        aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </header>
                             </div>
                         </div>
 
-                        <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
-                            <div class="modal modal-container modal-destructive max-w-[500px] text-center" role="dialog"
-                                aria-modal="true" aria-labelledby="modalTitle3">
+                    </div>
 
-                                <div class="mb-16">
-                                    <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
-                                </div>
+                </section>
 
-                                <div class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                        consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                        augue suscipit imperdiet.</p>
-                                </div>
+                <section id="modal">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Modal</h2>
+                    </div>
 
-                                <div class="modal-footer justify-center">
-                                    <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
-                                    <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="w-full">
+                            <div class="flex flex-wrap gap-12 justify-center mb-8">
+                                <button class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm"
+                                    data-modal-target="modalStandard">
+                                    Standard Modal
+                                </button>
+
+                                <button class="btn btn-danger h-btn-sm w-auto px-24 text-body-sm"
+                                    data-modal-target="modalDestructive">
+                                    Destructive Modal
+                                </button>
+                            </div>
+
+                            <div class="modal-overlay" id="modalStandard" aria-hidden="true">
+                                <div class="modal modal-container max-w-[500px]" role="dialog" aria-modal="true"
+                                    aria-labelledby="modalTitle1">
+                                    <div class="modal-header">
+                                        <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
+                                        <button class="modal-close" aria-label="Close modal" data-close-modal>
+                                            <i class="ri-close-line text-icon-md"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                            augue suscipit imperdiet.</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                        <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
+                                <div class="modal modal-container modal-destructive max-w-[500px] text-center"
+                                    role="dialog" aria-modal="true" aria-labelledby="modalTitle3">
+
+                                    <div class="mb-16">
+                                        <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
+                                            augue suscipit imperdiet.</p>
+                                    </div>
+
+                                    <div class="modal-footer justify-center">
+                                        <button class="btn btn-primary" data-close-modal>Lorem ipsum</button>
+                                        <button class="btn btn-secondary" data-close-modal>Lorem ipsum</button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-            </section>
+                </section>
 
-            <section id="Sidebar">
-                <div class="panel-wrap-head">
-                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Sidebar</h2>
-                </div>
+                <section id="Sidebar">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Sidebar</h2>
+                    </div>
 
-                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                    <!-- Sidebar Component -->
-                    <div class="sidebar w-sidebar h-sidebar">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <!-- Sidebar Component -->
+                        <div class="sidebar w-sidebar h-sidebar">
 
-                        <!-- Logo section — replicates header nav Logo section -->
-                        <div class="flex flex-col gap-24 p-24">
-                            <a href="#" class="flex items-center gap-12 group">
-                                <img src="public/logos/support_logo.svg" alt="NexLed" class="w-56 h-56">
-                                <div class="flex flex-col">
-                                    <span
-                                        class="font-semibold text-h3 leading-none tracking-tight text-black">Nexled</span>
-                                    <span class="font-regular text-body-sm text-black tracking-wider">EPREL Tool</span>
-                                </div>
-                            </a>
-
-                            <!-- Vertical Navigation — 4× dropdown-minimal (sidebar-only instances) -->
-                            <nav class="flex flex-col gap-8">
-
-                                <div class="dropdown dropdown-minimal dropdown-sm dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <!-- Logo section ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â replicates header nav Logo section -->
+                            <div class="flex flex-col h-full gap-16 p-32">
+                                <a href="#" class="flex items-center justify-center gap-12 group">
+                                    <img src="public/logos/support_logo.svg" alt="NexLed" class="w-64 h-64">
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="font-semibold text-h3 leading-none tracking-tight text-black">Nexled</span>
+                                        <span class="font-regular text-body-sm text-black tracking-wider">EPREL
+                                            Tool</span>
                                     </div>
-                                </div>
+                                </a>
 
-                                <div class="dropdown dropdown-minimal dropdown-sm dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <!-- Vertical Navigation ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â 4ÃƒÆ’Ã¢â‚¬â€ dropdown-minimal (sidebar-only instances) -->
+                                <nav class="flex flex-col gap-40 flex-1 justify-center">
+
+                                    <div class="dropdown dropdown-minimal dropdown-lg">
+                                        <a href="#" class="dropdown-trigger">
+                                            <span class="dropdown-value">Atoms</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </a>
                                     </div>
-                                </div>
 
-                                <div class="dropdown dropdown-minimal dropdown-sm dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Components navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="dropdown dropdown-minimal dropdown-lg">
+                                        <a href="#" class="dropdown-trigger">
+                                            <span class="dropdown-value">Molcules</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </a>
+
                                     </div>
-                                </div>
 
-                                <div class="dropdown dropdown-minimal dropdown-sm dropdown-flyout"
-                                    data-dropdown-trigger="hover">
-                                    <button class="dropdown-trigger" aria-haspopup="dialog" aria-expanded="false">
-                                        <span class="dropdown-value">Lorem Ipsum</span>
-                                        <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu flyout flyout-features" role="dialog"
-                                        aria-label="Resources navigation">
-                                        <div class="flyout-body">
-                                            <div class="flyout-copy">
-                                                <div class="flyout-grid">
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="flyout-link">
-                                                        <span class="flyout-media"><i class="ri-archive-line"
-                                                                aria-hidden="true"></i></span>
-                                                        <div>
-                                                            <h4 class="flyout-title">Curabitur maximus</h4>
-                                                            <p class="flyout-text">Aliquam sapien felis, tincidunt non
-                                                                fermentum ac, accumsan eget eros</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="dropdown dropdown-minimal dropdown-lg">
+                                        <a href="#" class="dropdown-trigger">
+                                            <span class="dropdown-value">Organisms</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </a>
                                     </div>
-                                </div>
 
-                            </nav>
+                                    <div class="dropdown dropdown-minimal dropdown-lg">
+                                        <a href="#" class="dropdown-trigger">
+                                            <span class="dropdown-value">Design Tokens</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+
+                                    <div class="dropdown dropdown-minimal dropdown-lg">
+                                        <a href="#" class="dropdown-trigger">
+                                            <span class="dropdown-value">Figma Design</span>
+                                            <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+
+                                </nav>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-            </section>
+                </section>
 
-        </div>
-    </main>
+            </div>
+        </main>
 
-    <footer class="mt-auto border-t border-grey-tertiary px-32 py-32">
-        <div class="max-w-standard mx-auto flex justify-between items-center text-body-xs text-grey-primary">
-            <p>© 2026 NexLed UI Systems</p>
-        </div>
-    </footer>
+        <footer class="mt-auto border-t border-grey-tertiary px-32 py-32">
+            <div class="max-w-standard mx-auto flex justify-between items-center text-body-xs text-grey-primary">
+                <p>Ãƒâ€šÃ‚Â© 2026 NexLed UI Systems</p>
+            </div>
+        </footer>
+
+    </div>
 
 </body>
 
