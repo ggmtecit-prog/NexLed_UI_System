@@ -69,6 +69,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
     });
 
+    // Hover-trigger dropdowns (data-dropdown-trigger="hover")
+    // Add data-dropdown-trigger="hover" to a .dropdown wrapper to open on mouseenter/mouseleave.
+    // To switch to click: remove the attribute. To switch to JS hover: add it back.
+    dropdowns
+        .filter(d => d.dataset.dropdownTrigger === 'hover')
+        .forEach(dropdown => {
+            const idx = enabledDropdowns.indexOf(dropdown);
+            if (idx !== -1) enabledDropdowns.splice(idx, 1);
+            let closeTimer;
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(closeTimer);
+                openDropdown(dropdown);
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                closeTimer = setTimeout(() => closeDropdown(dropdown), 150);
+            });
+        });
+
     enabledDropdowns.forEach(dropdown => {
         const trigger = dropdown.querySelector('.dropdown-trigger');
         const items = Array.from(dropdown.querySelectorAll('.dropdown-item'));
