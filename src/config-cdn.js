@@ -164,7 +164,7 @@ const DESIGN_TOKENS = {
         'checkbox-md': '22px',
         'checkbox-lg': '28px',
         'sidebar-w': '311px',
-        'sidebar-h': '1073px',
+        'sidebar-h': '900px',
     },
     breakpoints: {
         'mobile': '480px',
