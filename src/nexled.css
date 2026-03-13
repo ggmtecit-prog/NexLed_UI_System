@@ -1444,6 +1444,17 @@ textarea:hover::placeholder {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
+/* SIDEBAR */
+.sidebar {
+  background: var(--color-white);
+  border: var(--border-thin) solid var(--color-grey-tertiary);
+  border-radius: 0;
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  box-shadow: var(--shadow-btn-default);
+  transition: all var(--motion-duration-default) var(--motion-ease-premium);
+}
+
 
 
 .card:focus-visible {

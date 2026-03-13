@@ -163,6 +163,8 @@ const DESIGN_TOKENS = {
         'checkbox-sm': '16px',
         'checkbox-md': '22px',
         'checkbox-lg': '28px',
+        'sidebar-w': '311px',
+        'sidebar-h': '1073px',
     },
     breakpoints: {
         'mobile': '480px',
@@ -317,6 +319,7 @@ tailwind.config = {
                 'checkbox-sm': DESIGN_TOKENS.sizing['checkbox-sm'],
                 'checkbox-md': DESIGN_TOKENS.sizing['checkbox-md'],
                 'checkbox-lg': DESIGN_TOKENS.sizing['checkbox-lg'],
+                'sidebar': DESIGN_TOKENS.sizing['sidebar-w'],
             },
             height: {
                 'btn-xl': DESIGN_TOKENS.sizing['btn-xl-h'],
@@ -340,6 +343,7 @@ tailwind.config = {
                 'checkbox-sm': DESIGN_TOKENS.sizing['checkbox-sm'],
                 'checkbox-md': DESIGN_TOKENS.sizing['checkbox-md'],
                 'checkbox-lg': DESIGN_TOKENS.sizing['checkbox-lg'],
+                'sidebar': DESIGN_TOKENS.sizing['sidebar-h'],
             },
             ringWidth: {
                 'DEFAULT': DESIGN_TOKENS.focus['ring-width'],
