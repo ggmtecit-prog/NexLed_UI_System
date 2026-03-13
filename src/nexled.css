@@ -4116,7 +4116,7 @@ input[type=number]::-webkit-outer-spin-button {
 .footer-bottom-inner {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   column-gap: var(--space-24);
   row-gap: var(--space-8);

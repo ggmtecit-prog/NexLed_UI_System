@@ -25,6 +25,9 @@ node_modules/
 Thumbs.db
 desktop.ini
 
+# Claude Code worktrees
+.claude/worktrees/
+
 # Temporary files
 *.tmp
 *.temp
