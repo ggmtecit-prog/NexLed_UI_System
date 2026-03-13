@@ -1448,7 +1448,6 @@ textarea:hover::placeholder {
 .sidebar {
   background: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-tertiary);
-  border-radius: 0;
   border-top-right-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
   box-shadow: var(--shadow-btn-default);
