@@ -2703,7 +2703,10 @@ textarea:hover::placeholder {
 }
 
 .announcement-bar-floating {
-  border-radius: var(--radius-xl);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .announcement-bar-list {
