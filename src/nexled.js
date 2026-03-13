@@ -480,19 +480,17 @@ function legacyLanguageSelectorCloseShim() {
 */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const languageSelectorSection = document.getElementById('language-selector');
-
-    if (!languageSelectorSection) {
-        return;
-    }
-
     const languageMetadata = {
         gb: { label: 'English' },
         pt: { label: 'Portugu\u00EAs' },
         es: { label: 'Espa\u00F1ol' },
     };
 
-    const selectors = Array.from(languageSelectorSection.querySelectorAll('.language-selector'));
+    const selectors = Array.from(document.querySelectorAll('.language-selector'));
+
+    if (selectors.length === 0) {
+        return;
+    }
     const enabledSelectors = selectors.filter(selector => {
         const trigger = selector.querySelector('.language-selector-trigger');
         return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
@@ -532,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', event => {
-        if (!event.target.closest('#language-selector .language-selector')) {
+        if (!event.target.closest('.language-selector')) {
             closeAllLanguageSelectors();
         }
     });
