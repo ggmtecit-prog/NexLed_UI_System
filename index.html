@@ -86,157 +86,140 @@
 
     <div class="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto">
 
-    <!-- LANDING CONTENT -->
-    <main class="flex-1 px-32 pt-32 pb-64 max-w-standard mx-auto w-full">
+        <!-- LANDING CONTENT -->
+        <main class="flex-1 px-32 pt-32 pb-64 max-w-standard mx-auto w-full">
 
-        <!-- DEVELOPMENT ALERT -->
-        <section class="mt-48 mb-24">
-            <div class="panel p-20 flex items-start gap-16">
-                <div
-                    class="w-40 h-40 rounded-full bg-blue-primary/10 text-blue-primary flex items-center justify-center shrink-0">
-                    <i class="ri-tools-line text-h3"></i>
+            <!-- DEVELOPMENT ALERT -->
+            <section class="mt-48 mb-24">
+                <div class="card card-primary">
+                    <div class="card-body">
+                        <h3 class="card-title">Under Construction</h3>
+                        <p class="card-text">
+                            The NexLed UI System is currently under active development. We are constantly refining our
+                            components, documentation, and token architecture to ensure a premium experience. Things may
+                            change as we improve!
+                        </p>
+                    </div>
                 </div>
-                <div class="flex-1 pt-4">
-                    <h4 class="text-body-sm font-bold text-black uppercase tracking-wider mb-4">Under Construction</h4>
-                    <p class="text-body-sm text-grey-primary leading-relaxed">
-                        The NexLed UI System is currently under active development. We are constantly refining our
-                        components, documentation, and token architecture to ensure a premium experience. Things may
-                        change as we improve!
-                    </p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- HERO -->
-        <header class="py-64 mb-48 text-center max-w-readable mx-auto">
-            <h1 class="text-display font-semibold mb-24">NexLed Design System</h1>
-            <p class="text-body-lg text-grey-primary font-light leading-relaxed mb-40">
-                A high-fidelity, atomic design system for building premium electrical interfaces.
-                Strictly enforced tokens, glassmorphic aesthetics, and accessibility-first.
-            </p>
-            <div class="flex flex-wrap justify-center gap-16">
-                <a href="https://www.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?m=auto&t=6d5XpsBQMEoPibU5-1"
-                    target="_blank" class="btn btn-primary h-btn-sm w-auto px-24 text-body-sm">
-                    <i class="ri-figma-fill text-icon-md"></i>
-                    <span class="font-medium">Open in Figma</span>
-                </a>
-                <a href="#" class="btn btn-secondary h-btn-sm w-auto px-24 text-body-sm">
-                    <i class="ri-book-open-line text-icon-md"></i>
-                    <span class="font-medium">Read Guidelines</span>
-                </a>
-            </div>
-        </header>
-
-        <!-- NAVIGATION CARDS -->
-        <section class="mb-64">
-            <h2 class="text-h2 font-semibold mb-32 text-center">Structure</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24">
-
-                <a href="atoms.html" class="card p-24 group block">
-                    <div
-                        class="w-48 h-48 rounded-full bg-green-primary/10 flex items-center justify-center text-green-primary mb-20 group-hover:scale-hover transition-transform duration-default">
-                        <i class="ri-box-1-line text-h3"></i>
-                    </div>
-                    <h3 class="card-title mb-8 group-hover:text-green-primary transition-colors">Atoms</h3>
-                    <p class="card-text">Fundamental elements: buttons, inputs, labels, and badges.
-                    </p>
-                </a>
-
-                <a href="molecules.html" class="card p-24 group block">
-                    <div
-                        class="w-48 h-48 rounded-full bg-blue-primary/10 flex items-center justify-center text-blue-primary mb-20 group-hover:scale-hover transition-transform duration-default">
-                        <i class="ri-hexagon-line text-h3"></i>
-                    </div>
-                    <h3 class="card-title mb-8 group-hover:text-blue-primary transition-colors">Molecules
-                    </h3>
-                    <p class="card-text">Aura combinations: search bars, alerts, and form groups.
-                    </p>
-                </a>
-
-                <a href="organisms.html" class="card p-24 group block">
-                    <div
-                        class="w-48 h-48 rounded-full bg-red-primary/10 flex items-center justify-center text-red-primary mb-20 group-hover:scale-hover transition-transform duration-default">
-                        <i class="ri-layout-3-line text-h3"></i>
-                    </div>
-                    <h3 class="card-title mb-8 group-hover:text-red-primary transition-colors">Organisms</h3>
-                    <p class="card-text">Composite structures: navbars, accordions, and modals.</p>
-                </a>
-
-                <a href="tokens.html" class="card p-24 group block">
-                    <div
-                        class="w-48 h-48 rounded-full bg-grey-primary/10 flex items-center justify-center text-grey-primary mb-20 group-hover:scale-hover transition-transform duration-default">
-                        <i class="ri-palette-line text-h3"></i>
-                    </div>
-                    <h3 class="card-title mb-8 group-hover:text-black transition-colors">Tokens</h3>
-                    <p class="card-text">The engine: colors, spacing, radius, and motion values.
-                    </p>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- FIGMA SHOWCASE -->
-        <section class="mb-64">
-            <div class="panel overflow-hidden border border-grey-tertiary">
-                <div class="p-32 border-b border-grey-tertiary bg-white/50 flex items-center justify-between">
-                    <div class="flex items-center gap-16">
-                        <div
-                            class="w-40 h-40 rounded-full bg-red-primary/10 text-red-primary flex items-center justify-center">
-                            <i class="ri-figma-line text-h3"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-body-lg font-semibold text-black">Master Design File</h2>
-                            <p class="text-body-xs text-grey-primary uppercase tracking-wider">Live Figma Preview</p>
-                        </div>
-                    </div>
+            <!-- HERO -->
+            <header class="page-header-hero">
+                <h1 class="text-hero-title font-medium text-black">NexLed Design System</h1>
+                <p class="text-hero-subtitle font-light text-black max-w-readable">
+                    A high-fidelity, atomic design system for building premium electrical interfaces.
+                    Strictly enforced tokens, glassmorphic aesthetics, and accessibility-first.
+                </p>
+                <div class="flex flex-wrap justify-center gap-16">
                     <a href="https://www.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?m=auto&t=6d5XpsBQMEoPibU5-1"
-                        target="_blank" class="link-text-icon flex items-center gap-4 text-body-sm font-medium">
-                        <span class="link-label">View Full Browser</span>
-                        <i class="ri-external-link-line"></i>
+                        target="_blank" class="btn btn-primary btn-sm">
+                        <i class="ri-figma-fill text-icon-lg"></i>
+                        Open in Figma
+                    </a>
+                    <a href="#" class="btn btn-secondary btn-sm">
+                        <i class="ri-book-open-line text-icon-lg"></i>
+                        Read Guidelines
                     </a>
                 </div>
-                <div class="aspect-video w-full bg-grey-tertiary/20">
-                    <iframe class="border-0" width="100%" height="100%"
-                        src="https://embed.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?embed-host=share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </section>
+            </header>
 
-        <!-- GETTING STARTED -->
-        <section class="max-w-standard mx-auto">
-            <div class="panel p-40">
-                <div class="flex items-center gap-16 mb-24">
-                    <div class="w-40 h-40 rounded-full bg-black text-white flex items-center justify-center">
-                        <i class="ri-terminal-box-line text-h3"></i>
-                    </div>
-                    <h2 class="text-h2 font-semibold">Integration</h2>
-                </div>
+            <!-- NAVIGATION CARDS -->
+            <section class="mb-64">
+                <h2 class="text-h2 font-medium mb-32 text-center">Structure</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24">
 
-                <div class="space-y-24 text-body text-grey-primary">
-                    <p>
-                        Import the NexLed configuration to your global Tailwind environment to unlock the premium token
-                        sets.
-                    </p>
-
-                    <div class="bg-black/95 rounded-lg p-24 overflow-x-auto border border-white/10">
-                        <pre
-                            class="text-body-xs font-mono text-grey-secondary leading-relaxed"><span class="text-grey-primary">// index.html</span>
-<span class="text-blue-400">&lt;script</span> <span class="text-sky-300">src</span>=<span class="text-orange-300">"https://cdn.tailwindcss.com"</span><span class="text-blue-400">&gt;&lt;/script&gt;</span>
-<span class="text-blue-400">&lt;script</span> <span class="text-sky-300">src</span>=<span class="text-orange-300">"src/config-cdn.js"</span><span class="text-blue-400">&gt;&lt;/script&gt;</span></pre>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-box-1-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Atoms</h3>
+                            </div>
+                            <p class="card-text">Fundamental elements: buttons, inputs, labels, and badges.</p>
+                            <a href="atoms.html" class="link link-md">
+                                <span class="link-label">Explore Atoms</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <p class="leading-relaxed">
-                        Follow the <strong class="text-black">Atomic Methodology</strong>. Use Atoms for basic tasks,
-                        and never hardcode shadow or radius values. Always reference tokens like <code
-                            class="bg-grey-tertiary px-4 py-2 rounded text-black text-body-xs">shadow-btn-default</code>.
-                    </p>
-                </div>
-            </div>
-        </section>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-hexagon-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Molecules</h3>
+                            </div>
+                            <p class="card-text">Aura combinations: search bars, alerts, and form groups.</p>
+                            <a href="molecules.html" class="link link-md">
+                                <span class="link-label">Explore Molecules</span>
+                            </a>
+                        </div>
+                    </div>
 
-    </main>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-layout-3-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Organisms</h3>
+                            </div>
+                            <p class="card-text">Composite structures: navbars, accordions, and modals.</p>
+                            <a href="organisms.html" class="link link-md">
+                                <span class="link-label">Explore Organisms</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-palette-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Tokens</h3>
+                            </div>
+                            <p class="card-text">The engine: colors, spacing, radius, and motion values.</p>
+                            <a href="tokens.html" class="link link-md">
+                                <span class="link-label">Explore Tokens</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- FIGMA SHOWCASE -->
+            <section class="mb-64">
+                <div class="panel overflow-hidden">
+                    <div class="p-32 border-b border-grey-tertiary bg-white/50 flex items-center justify-between">
+                        <div class="flex items-center gap-16">
+                            <div>
+                                <h2 class="text-body-lg font-semibold text-black">Master Design File</h2>
+                                <p class="text-body-xs text-grey-primary uppercase tracking-wider">Live Figma Preview
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://www.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?m=auto&t=6d5XpsBQMEoPibU5-1"
+                            target="_blank" class="link-text-icon text-body-sm">
+                            <span class="link-label">View Full Browser</span>
+                            <i class="ri-external-link-line"></i>
+                        </a>
+                    </div>
+                    <div class="aspect-video w-full bg-grey-tertiary/20">
+                        <iframe class="border-0" width="100%" height="100%"
+                            src="https://embed.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?embed-host=share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
 
     </div>
 

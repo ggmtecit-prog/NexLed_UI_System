@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:impeccable.style)",
+      "Bash(npx skills:*)",
+      "Read(//c/Users/USER/.claude/projects/g--O-meu-disco-Gon-alo-Mendon-a-01-Projetos-UI-SYSTEM/tool-results/**)",
+      "Read(//c/Users/USER/.claude/**)",
+      "Bash(find ~/.claude -name *impeccable* -o -name *polish* -o -name *audit*)"
+    ]
+  }
+}
