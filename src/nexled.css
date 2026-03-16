@@ -1853,7 +1853,7 @@ textarea:hover::placeholder {
 
 .dropdown-value,
 .language-selector-value {
-  color: var(--color-grery-re);
+  color: var(--color-grey-primary);
 }
 
 .dropdown.has-value .dropdown-value,
