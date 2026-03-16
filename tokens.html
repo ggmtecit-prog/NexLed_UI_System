@@ -19,131 +19,80 @@
 
     <!-- 3. Configure Tailwind -->
     <script src="src/config-cdn.js"></script>
+    <link rel="stylesheet" href="src/nexled.css">
 
-    <style>
-        body {
-            font-family: 'Urbanist', sans-serif;
-            background-color: var(--colors-white, #FCFCFC);
-            scroll-behavior: smooth;
-        }
+    <!-- 4. Components Logic -->
+    <script src="src/nexled.js"></script>
 
-        .token-swatch {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-xs);
-            border: 1px solid var(--colors-grey-tertiary);
-        }
-
-        .token-row {
-            display: grid;
-            grid-template-columns: 160px 1fr 120px;
-            gap: 24px;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--colors-grey-tertiary);
-        }
-
-        .token-row:hover {
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-    </style>
 </head>
 
-<body class="bg-grey-tertiary text-black selection:bg-green-primary/10 flex min-h-screen flex-col">
+<body class="bg-grey-tertiary text-black selection:bg-green-primary/10 flex h-screen overflow-hidden">
 
-    <header class="fixed top-0 left-0 w-full z-sticky px-32 py-24 pointer-events-none">
-        <div
-            class="max-w-wide mx-auto bg-white/80 backdrop-blur-xl border border-white/40 shadow-btn-default rounded-2xl flex items-center justify-between px-32 py-24 pointer-events-auto transition-all duration-default ease-premium hover:shadow-btn-hover">
+    <aside class="shrink-0 sticky top-0 self-center">
+        <div class="sidebar w-sidebar h-sidebar">
 
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-12 group">
-                <div
-                    class="w-40 h-40 bg-green-primary rounded-xs flex items-center justify-center text-white shadow-sm group-hover:scale-hover transition-transform">
-                    <i class="ri-code-s-slash-line text-h3"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
-                    <span class="text-body-xs font-mono text-grey-primary uppercase tracking-wider">System v1.2</span>
-                </div>
-            </a>
-
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-32 h-full">
-
-                <!-- Components Dropdown -->
-                <div class="relative group h-full flex items-center">
-                    <button
-                        class="flex items-center gap-8 text-body-sm font-medium text-black transition-colors py-8 h-full z-overlay">
-                        <span>Components</span>
-                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    <!-- Dropdown Bridge -->
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                        <!-- Visual Dropdown -->
-                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                            <div class="p-8 flex flex-col gap-4">
-                                <a href="atoms.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-box-1-line"></i> Atoms
-                                </a>
-                                <a href="molecules.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-hexagon-line"></i> Molecules
-                                </a>
-                                <a href="organisms.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg bg-grey-tertiary/30 text-red-primary font-bold">
-                                    <i class="ri-layout-3-line"></i> Organisms
-                                </a>
-                            </div>
-                        </div>
+            <!-- Logo section — replicates header nav Logo section -->
+            <div class="flex flex-col h-full gap-16 p-48">
+                <a href="index.html" class="flex items-center justify-center gap-12 group">
+                    <img src="favicon.svg" alt="NexLed" class="w-64 h-64">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-h3 leading-none tracking-tight text-black">Nexled</span>
+                        <span class="font-regular text-body-sm text-black tracking-wider">Design System</span>
                     </div>
-                </div>
-
-                <!-- Resources Dropdown (ACTIVE) -->
-                <div class="relative group h-full flex items-center">
-                    <button
-                        class="flex items-center gap-8 text-body-sm font-medium text-grey-primary hover:text-black transition-colors py-8 h-full z-overlay">
-                        <span>Resources</span>
-                        <i class="ri-arrow-down-s-line transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    <div
-                        class="absolute top-full left-1/2 -translate-x-1/2 w-btn-sm pt-24 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-premium z-dropdown translate-y-8 group-hover:translate-y-0">
-                        <div class="bg-white border border-grey-tertiary shadow-btn-glow rounded-xl overflow-hidden">
-                            <div class="p-8 flex flex-col gap-4">
-                                <a href="tokens.html"
-                                    class="flex items-center gap-12 px-16 py-12 rounded-lg hover:bg-grey-tertiary/50 transition-colors text-body-sm text-grey-primary hover:text-green-primary">
-                                    <i class="ri-palette-line"></i> Design Tokens
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Right Actions -->
-            <div class="flex items-center gap-16">
-                <button
-                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
-                    <i class="ri-search-line text-icon-md"></i>
-                </button>
-                <div class="w-standard h-24 bg-grey-tertiary hidden md:block"></div>
-                <a href="#"
-                    class="w-40 h-40 flex items-center justify-center rounded-full hover:bg-grey-tertiary text-grey-primary hover:text-black transition-all">
-                    <i class="ri-github-fill text-icon-lg"></i>
                 </a>
+
+                <!-- Vertical Navigation — dropdown-minimal (sidebar-only instances) -->
+                <nav class="flex flex-col gap-32 flex-1 justify-center">
+
+                    <div class="dropdown dropdown-minimal dropdown-sm">
+                        <a href="atoms.html" class="dropdown-trigger">
+                            <span class="dropdown-value">Atoms</span>
+                            <i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-sm">
+                        <a href="molecules.html" class="dropdown-trigger">
+                            <span class="dropdown-value">Molecules</span>
+                            <i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-sm">
+                        <a href="organisms.html" class="dropdown-trigger">
+                            <span class="dropdown-value">Organisms</span>
+                            <i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-sm">
+                        <a href="tokens.html" class="dropdown-trigger">
+                            <span class="dropdown-value">Design Tokens</span>
+                            <i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="dropdown dropdown-minimal dropdown-sm">
+                        <a href="" class="dropdown-trigger">
+                            <span class="dropdown-value">Figma Design</span>
+                            <i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                </nav>
             </div>
 
         </div>
-    </header>
+    </aside>
 
-    <!-- CONTENT -->
-    <main class="flex-1 mt-[160px] px-32 pb-64 max-w-standard mx-auto w-full">
+    <div class="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto scroll-smooth">
 
-        <header class="mb-48">
-            <h1 class="text-display font-semibold mb-12">Design Tokens</h1>
-            <p class="text-body-lg text-grey-primary max-w-readable font-light">The core values that power the design
+        <!-- CONTENT -->
+        <main class="flex-1 px-32 pt-32 pb-64 max-w-wide mx-auto w-full">
+
+        <header class="page-header-hero">
+            <h1 class="text-hero-title font-medium text-black">Design Tokens</h1>
+            <p class="text-hero-subtitle font-light text-black max-w-readable">The core values that power the design
                 system.</p>
         </header>
 
@@ -156,126 +105,126 @@
                 <div class="bg-white rounded-xl border border-grey-tertiary overflow-hidden">
 
                     <div
-                        class="token-row font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
+                        class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5 font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
                         <span>Name</span>
                         <span>Preview</span>
                         <span>Value</span>
                     </div>
 
                     <!-- Brand Colors -->
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold text-green-primary">green-primary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-green-primary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-green-primary"></div>
                             <div class="h-2 bg-green-primary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#03683D</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">green-secondary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-green-secondary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-green-secondary"></div>
                             <div class="h-2 bg-green-secondary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#058C53</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">green-hover-icons</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-green-hover-icons"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-green-hover-icons"></div>
                             <div class="h-2 bg-green-hover-icons flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#BEE0D2</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">green-hover-text</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-green-hover-text border border-grey-tertiary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-green-hover-text"></div>
                             <div class="h-2 bg-green-hover-text flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#E3F1EB</span>
                     </div>
 
                     <!-- UI Colors -->
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">black</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-black"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-black"></div>
                             <div class="h-2 bg-black flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#121212</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">white</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-white border border-grey-tertiary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-white"></div>
                             <div class="h-2 bg-grey-tertiary flex-1 opacity-50"></div>
                         </div>
                         <span class="text-body-xs font-mono">#FCFCFC</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">grey-primary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-grey-primary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-grey-primary"></div>
                             <div class="h-2 bg-grey-primary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#878787</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">grey-secondary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-grey-secondary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-grey-secondary"></div>
                             <div class="h-2 bg-grey-secondary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#D9D9D9</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs">grey-tertiary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-grey-tertiary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-grey-tertiary"></div>
                             <div class="h-2 bg-grey-tertiary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#EDEDED</span>
                     </div>
 
                     <!-- Semantic -->
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs text-blue-primary">blue-primary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-blue-primary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-blue-primary"></div>
                             <div class="h-2 bg-blue-primary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#386789</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs text-blue-secondary">blue-secondary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-blue-secondary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-blue-secondary"></div>
                             <div class="h-2 bg-blue-secondary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#5B8BAA</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs text-link-visited">link-visited</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-link-visited"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-link-visited"></div>
                             <div class="h-2 bg-link-visited flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono text-link-visited">#4C1D95</span>
                     </div>
 
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs text-red-primary">red-primary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-red-primary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-red-primary"></div>
                             <div class="h-2 bg-red-primary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#B1242F</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs text-red-secondary">red-secondary</span>
                         <div class="flex items-center gap-12">
-                            <div class="token-swatch bg-red-secondary"></div>
+                            <div class="w-48 h-48 rounded-xs border border-grey-tertiary bg-red-secondary"></div>
                             <div class="h-2 bg-red-secondary flex-1 opacity-20"></div>
                         </div>
                         <span class="text-body-xs font-mono">#C94A55</span>
@@ -344,47 +293,47 @@
             <section id="spacing">
                 <h2 class="text-h2 font-semibold mb-24 border-b-2 border-black pb-8 inline-block">Spacing</h2>
                 <div class="bg-white rounded-xl border border-grey-tertiary overflow-hidden">
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-4</span>
                         <div class="h-24 bg-green-primary rounded-sm w-4"></div>
                         <span class="text-body-xs font-mono">4px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-8</span>
                         <div class="h-24 bg-green-primary rounded-sm w-8"></div>
                         <span class="text-body-xs font-mono">8px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-12</span>
                         <div class="h-24 bg-green-primary rounded-sm w-12"></div>
                         <span class="text-body-xs font-mono">12px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-16</span>
                         <div class="h-24 bg-green-primary rounded-sm w-16"></div>
                         <span class="text-body-xs font-mono">16px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-24</span>
                         <div class="h-24 bg-green-primary rounded-sm w-24"></div>
                         <span class="text-body-xs font-mono">24px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-32</span>
                         <div class="h-24 bg-green-primary rounded-sm w-32"></div>
                         <span class="text-body-xs font-mono">32px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-40</span>
                         <div class="h-24 bg-green-primary rounded-sm w-40"></div>
                         <span class="text-body-xs font-mono">40px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-48</span>
                         <div class="h-24 bg-green-primary rounded-sm w-48"></div>
                         <span class="text-body-xs font-mono">48px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">spacing-64</span>
                         <div class="h-24 bg-green-primary rounded-sm w-64"></div>
                         <span class="text-body-xs font-mono">64px</span>
@@ -456,27 +405,27 @@
                 <h2 class="text-h2 font-semibold mb-24 border-b-2 border-black pb-8 inline-block">Breakpoints</h2>
                 <div class="bg-white rounded-xl border border-grey-tertiary overflow-hidden">
                     <div
-                        class="token-row font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
+                        class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5 font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
                         <span>Name</span>
                         <span>Usage</span>
                         <span>Value</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">mobile</span>
                         <span class="text-body-sm text-grey-primary">Phone (Portrait)</span>
                         <span class="text-body-xs font-mono">480px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">tablet</span>
                         <span class="text-body-sm text-grey-primary">Tablet (Portrait)</span>
                         <span class="text-body-xs font-mono">768px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">desktop-sm</span>
                         <span class="text-body-sm text-grey-primary">Laptops</span>
                         <span class="text-body-xs font-mono">1024px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">desktop-lg</span>
                         <span class="text-body-sm text-grey-primary">Desktop Monitors</span>
                         <span class="text-body-xs font-mono">1440px</span>
@@ -580,27 +529,27 @@
                 <h2 class="text-h2 font-semibold mb-24 border-b-2 border-black pb-8 inline-block">Layout</h2>
                 <div class="bg-white rounded-xl border border-grey-tertiary overflow-hidden">
                     <div
-                        class="token-row font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
+                        class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5 font-bold text-body-xs text-grey-primary uppercase tracking-widest bg-grey-tertiary/10">
                         <span>Name</span>
                         <span>Description</span>
                         <span>Value</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">standard</span>
                         <span class="text-body-sm text-grey-primary">Default Page Width</span>
                         <span class="text-body-xs font-mono">1280px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">wide</span>
                         <span class="text-body-sm text-grey-primary">Full-width Containers</span>
                         <span class="text-body-xs font-mono">1440px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">narrow</span>
                         <span class="text-body-sm text-grey-primary">Blog / Asides</span>
                         <span class="text-body-xs font-mono">768px</span>
                     </div>
-                    <div class="token-row">
+                    <div class="flex items-center gap-24 py-16 px-24 border-b border-grey-tertiary hover:bg-black/5">
                         <span class="font-mono text-body-xs font-bold">readable</span>
                         <span class="text-body-sm text-grey-primary">Optimal Line Length</span>
                         <span class="text-body-xs font-mono">65ch</span>
@@ -639,7 +588,7 @@
         </div>
     </main>
 
-
+    </div>
 
 </body>
 

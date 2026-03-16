@@ -5,7 +5,9 @@
       "Bash(npx skills:*)",
       "Read(//c/Users/USER/.claude/projects/g--O-meu-disco-Gon-alo-Mendon-a-01-Projetos-UI-SYSTEM/tool-results/**)",
       "Read(//c/Users/USER/.claude/**)",
-      "Bash(find ~/.claude -name *impeccable* -o -name *polish* -o -name *audit*)"
+      "Bash(find ~/.claude -name *impeccable* -o -name *polish* -o -name *audit*)",
+      "Bash(curl -s \"https://ggmtecit-prog.github.io/NexLed_UI_System/src/config-cdn.js?v=1.3\")",
+      "Bash(curl -s \"https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.css?v=1.3\")"
     ]
   }
 }
