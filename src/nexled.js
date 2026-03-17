@@ -1187,3 +1187,65 @@ document.addEventListener('DOMContentLoaded', () => {
         goToSlide(currentIndex);
     });
 });
+
+
+/* ============================================================
+   Tabs Component Logic
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tab-bar[data-tabs]').forEach(tabBar => {
+        let tabCounter = tabBar.querySelectorAll('.tab-item').length;
+
+        // Activate tab on click (skip if close button is the target)
+        tabBar.addEventListener('click', e => {
+            if (e.target.closest('.tab-close')) return;
+            const item = e.target.closest('.tab-item');
+            if (!item) return;
+
+            tabBar.querySelectorAll('.tab-item').forEach(t => t.classList.remove('is-active'));
+            item.classList.add('is-active');
+        });
+
+        // Close tab on × click
+        tabBar.addEventListener('click', e => {
+            const closeBtn = e.target.closest('.tab-close');
+            if (!closeBtn) return;
+
+            const item = closeBtn.closest('.tab-item');
+            const wasActive = item.classList.contains('is-active');
+            const allItems = [...tabBar.querySelectorAll('.tab-item')];
+            const idx = allItems.indexOf(item);
+
+            item.remove();
+
+            // If removed tab was active, activate the nearest remaining tab
+            if (wasActive) {
+                const remaining = [...tabBar.querySelectorAll('.tab-item')];
+                if (remaining.length > 0) {
+                    remaining[Math.min(idx, remaining.length - 1)].classList.add('is-active');
+                }
+            }
+        });
+
+        // Add new tab on + click
+        const addWrapper = tabBar.querySelector('.tab-add');
+        if (addWrapper) {
+            addWrapper.querySelector('button').addEventListener('click', () => {
+                tabCounter++;
+                const label = `Form ${tabCounter}`;
+                const tab = document.createElement('div');
+                tab.className = 'tab-item';
+                tab.setAttribute('role', 'tab');
+                tab.setAttribute('tabindex', '0');
+                tab.innerHTML = `
+                    <span class="tab-label">${label}</span>
+                    <button type="button" class="tab-close" aria-label="Close ${label}">
+                        <i class="ri-close-line" aria-hidden="true"></i>
+                    </button>
+                `;
+                tabBar.insertBefore(tab, addWrapper);
+            });
+        }
+    });
+});

@@ -4166,3 +4166,104 @@ input[type=number]::-webkit-outer-spin-button {
   line-height: var(--line-height-h3);
   font-weight: var(--font-weight-medium);
 }
+
+/* ============================================================
+   Tabs
+   ============================================================ */
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--color-white);
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--shadow-btn-default);
+  padding: var(--space-8);
+  width: 100%;
+}
+
+.tab-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-grey-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-duration-default) var(--motion-ease-premium),
+    color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.tab-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-16);
+  height: var(--space-16);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-grey-primary);
+  font-size: var(--space-16);
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.tab-item:hover,
+.tab-item.is-hover {
+  background: var(--color-green-hover-text);
+  color: var(--color-green-secondary);
+}
+
+.tab-item:hover .tab-close,
+.tab-item.is-hover .tab-close {
+  color: var(--color-red-primary);
+}
+
+.tab-item.is-active {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+}
+
+.tab-item.is-active .tab-close {
+  color: var(--color-white);
+}
+
+.tab-item.is-active:hover,
+.tab-item.is-active.is-hover {
+  background: var(--color-green-secondary);
+  color: var(--color-white);
+}
+
+.tab-item.is-active:hover .tab-close,
+.tab-item.is-active.is-hover .tab-close {
+  color: var(--color-white);
+}
+
+.tab-item:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+.tab-close:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+.tab-add {
+  margin-left: var(--space-4);
+  flex-shrink: 0;
+}

@@ -201,7 +201,7 @@
                                         Live Demo: Full Page Announcement Bar.
                                     </span>
                                 </p>
-                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
+                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
                                     onclick="closeBar('announcement-bar-1')">
                                     <i class="ri-close-line text-icon-lg"></i>
                                 </button>
@@ -212,7 +212,7 @@
                                 <p class="announcement-bar-text">
                                     Live Demo: Floating Green Bar.
                                 </p>
-                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
+                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
                                     onclick="closeBar('announcement-bar-2')">
                                     <i class="ri-close-line text-icon-lg"></i>
                                 </button>
@@ -224,7 +224,7 @@
                                 <p class="announcement-bar-text">
                                     Live Demo: Floating White Bar.
                                 </p>
-                                <button class="btn btn-ghost btn-icon btn-sm" aria-label="Close"
+                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
                                     onclick="closeBar('announcement-bar-3')">
                                     <i class="ri-close-line text-icon-lg"></i>
                                 </button>
@@ -2514,8 +2514,159 @@
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
 
+                    <div class="flex flex-col gap-32 w-full">
 
+                        <!-- State: Default -->
+                        <div class="flex flex-col gap-12">
+                            <h3 class="text-body-lg font-medium text-black">Default</h3>
+                            <div class="tab-bar">
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 1</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 1">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 2</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 2">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 3</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 3">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-add">
+                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
+                                        <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- State: Hover -->
+                        <div class="flex flex-col gap-12">
+                            <h3 class="text-body-lg font-medium text-black">Hover</h3>
+                            <div class="tab-bar">
+                                <div class="tab-item is-hover">
+                                    <span class="tab-label">Form 1</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 1">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 2</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 2">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 3</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 3">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-add">
+                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
+                                        <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- State: Active -->
+                        <div class="flex flex-col gap-12">
+                            <h3 class="text-body-lg font-medium text-black">Active</h3>
+                            <div class="tab-bar">
+                                <div class="tab-item is-active">
+                                    <span class="tab-label">Form 1</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 1">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 2</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 2">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 3</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 3">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-add">
+                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
+                                        <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- State: Hover Active -->
+                        <div class="flex flex-col gap-12">
+                            <h3 class="text-body-lg font-medium text-black">Hover Active</h3>
+                            <div class="tab-bar">
+                                <div class="tab-item is-active is-hover">
+                                    <span class="tab-label">Form 1</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 1">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 2</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 2">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item">
+                                    <span class="tab-label">Form 3</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 3">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-add">
+                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
+                                        <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Interactive Demo -->
+                        <div class="flex flex-col gap-12">
+                            <h3 class="text-body-lg font-medium text-black">Interactive</h3>
+                            <div class="tab-bar" data-tabs role="tablist">
+                                <div class="tab-item is-active" role="tab" tabindex="0">
+                                    <span class="tab-label">Form 1</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 1">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item" role="tab" tabindex="0">
+                                    <span class="tab-label">Form 2</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 2">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-item" role="tab" tabindex="0">
+                                    <span class="tab-label">Form 3</span>
+                                    <button type="button" class="tab-close" aria-label="Close Form 3">
+                                        <i class="ri-close-line" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="tab-add">
+                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
+                                        <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
 
