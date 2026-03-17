@@ -605,7 +605,7 @@ body {
 textarea {
   width: 100%;
   min-height: var(--size-btn-sm-h);
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-md);
   background: var(--color-white);
@@ -694,7 +694,7 @@ textarea:disabled,
 
 .input-md {
   min-height: var(--size-btn-sm-h);
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }
@@ -753,7 +753,7 @@ textarea:hover::placeholder {
   min-width: 0;
   border: 0;
   background: transparent;
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   color: var(--color-black);
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
@@ -2673,7 +2673,7 @@ textarea:hover::placeholder {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-16);
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   background: var(--color-green-primary);
   color: var(--color-white);
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
@@ -2968,7 +2968,7 @@ textarea:hover::placeholder {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-16);
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   border-bottom: var(--border-thin) solid var(--color-grey-tertiary);
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
@@ -4095,7 +4095,7 @@ input[type=number]::-webkit-outer-spin-button {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-16);
-  padding: var(--space-12) var(--space-24);
+  padding: var(--space-12) var(--space-24) var(--space-20);
   padding-top: var(--space-20);
   background: var(--color-green-primary);
   color: var(--color-white);
@@ -4257,4 +4257,5 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
 

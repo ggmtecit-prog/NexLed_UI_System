@@ -44,7 +44,7 @@ function closeBar(id) {
     // Smooth collapse animation
     // Note: CSS classes handle ease-premium, JS triggers the state change
     bar.style.opacity = "0";
-    bar.style.transform = "translateY(-100%)";
+    bar.style.transform = "translateY(var(--space-12))";
     bar.style.marginTop = `-${bar.offsetHeight}px`;
 
     // Remove from DOM after animation (400ms match)
@@ -1249,3 +1249,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
