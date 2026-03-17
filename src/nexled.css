@@ -4189,7 +4189,7 @@ input[type=number]::-webkit-outer-spin-button {
   gap: var(--space-8);
   padding-block: var(--space-8);
   padding-inline: var(--space-12);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   font-family: var(--font-family-base);
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-medium);
@@ -4222,14 +4222,22 @@ input[type=number]::-webkit-outer-spin-button {
   transition: color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.tab-item:hover,
-.tab-item.is-hover {
+.tab-label {
+  transition: color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+/* Hover: background on any hover within the item */
+.tab-item:hover {
   background: var(--color-green-hover-text);
+}
+
+/* Hover: label turns green only when NOT hovering the close button */
+.tab-item:not(.is-active):hover:not(:has(.tab-close:hover)) .tab-label {
   color: var(--color-green-secondary);
 }
 
-.tab-item:hover .tab-close,
-.tab-item.is-hover .tab-close {
+/* Hover: × turns red only when directly hovering it */
+.tab-close:hover {
   color: var(--color-red-primary);
 }
 
@@ -4242,15 +4250,12 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-white);
 }
 
-.tab-item.is-active:hover,
-.tab-item.is-active.is-hover {
+.tab-item.is-active:hover {
   background: var(--color-green-secondary);
-  color: var(--color-white);
 }
 
-.tab-item.is-active:hover .tab-close,
-.tab-item.is-active.is-hover .tab-close {
-  color: var(--color-white);
+.tab-item.is-active .tab-close:hover {
+  color: var(--color-red-primary);
 }
 
 .tab-item:focus-visible {
