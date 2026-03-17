@@ -2543,7 +2543,7 @@ textarea:hover::placeholder {
   overflow: hidden;
   border-radius: var(--radius-md);
   background: var(--color-grey-tertiary);
-  color: var(--color-grey-primary);
+  color: var(--color-black);
 }
 
 .flyout-media img {
@@ -2950,6 +2950,39 @@ textarea:hover::placeholder {
 .uploader.has-files .uploader-zone:hover .uploader-text,
 .uploader.has-files.is-dragover .uploader-text {
   color: var(--color-green-secondary);
+}
+
+.uploader.is-error .uploader-zone {
+  border-color: var(--color-red-secondary);
+}
+
+.uploader.is-error .uploader-icon {
+  color: var(--color-red-primary);
+}
+
+.uploader.is-error .uploader-text {
+  color: var(--color-red-primary);
+}
+
+.uploader.is-error .uploader-zone:hover,
+.uploader.is-error.is-dragover .uploader-zone {
+  border-color: var(--color-red-secondary);
+  background: var(--color-red-secondary);
+}
+
+.uploader.is-error .uploader-zone:hover .uploader-icon,
+.uploader.is-error.is-dragover .uploader-icon {
+  color: var(--color-red-primary);
+  transform: translateY(var(--lift-standard));
+}
+
+.uploader.is-error .uploader-zone:hover .uploader-text,
+.uploader.is-error.is-dragover .uploader-text {
+  color: var(--color-red-primary);
+}
+
+.uploader.is-error .uploader-note {
+  color: var(--color-red-secondary);
 }
 
 /* LIST */

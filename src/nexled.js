@@ -453,17 +453,65 @@ function setupUploader(uploader) {
     handleUploaderFiles(fileInput.files, uploader);
 }
 
+function isPdfFile(file) {
+    if (!file) return false;
+    const name = (file.name || '').toLowerCase();
+    const type = (file.type || '').toLowerCase();
+    return type === 'application/pdf' || name.endsWith('.pdf');
+}
+
 function handleUploaderFiles(files, uploader) {
     const text = uploader.querySelector('[data-uploader-text]');
+    const note = uploader.querySelector('.uploader-note');
+    const fileInput = uploader.querySelector('[data-uploader-input]');
 
     if (!text) return;
 
     const idleText = text.dataset.uploaderIdleText || text.textContent.trim();
+    const idleNote = note ? (note.dataset.uploaderIdleNote || note.textContent.trim()) : '';
+
+    if (note && !note.dataset.uploaderIdleNote) {
+        note.dataset.uploaderIdleNote = idleNote;
+    }
+
     const fileCount = files ? files.length : 0;
 
     uploader.classList.remove('is-dragover');
 
     if (fileCount > 0) {
+        const isPdfOnly = uploader.classList.contains('uploader-file');
+
+        if (isPdfOnly) {
+            const hasInvalidFile = Array.from(files).some((file) => !isPdfFile(file));
+
+            if (hasInvalidFile) {
+                uploader.classList.remove('has-files');
+                uploader.classList.remove('is-default');
+                uploader.classList.add('is-error');
+                text.textContent = text.dataset.uploaderErrorText || 'Only PDF files are allowed.';
+
+                if (note) {
+                    note.textContent = note.dataset.uploaderErrorNote || 'Please upload a PDF file.';
+                }
+
+                if (fileInput) {
+                    fileInput.setAttribute('aria-invalid', 'true');
+                }
+
+                return;
+            }
+        }
+
+        uploader.classList.remove('is-error');
+
+        if (fileInput) {
+            fileInput.removeAttribute('aria-invalid');
+        }
+
+        if (note && note.dataset.uploaderIdleNote) {
+            note.textContent = note.dataset.uploaderIdleNote;
+        }
+
         const itemWord = fileCount === 1 ? 'item' : 'items';
         uploader.classList.remove('is-default');
         uploader.classList.add('has-files');
@@ -473,11 +521,18 @@ function handleUploaderFiles(files, uploader) {
     }
 
     uploader.classList.remove('has-files');
+    uploader.classList.remove('is-error');
     uploader.classList.add('is-default');
     text.textContent = idleText;
+
+    if (note && note.dataset.uploaderIdleNote) {
+        note.textContent = note.dataset.uploaderIdleNote;
+    }
+
+    if (fileInput) {
+        fileInput.removeAttribute('aria-invalid');
+    }
 }
-
-
 /**
  * Language Selector Logic
  */
@@ -1249,5 +1304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
 
 
