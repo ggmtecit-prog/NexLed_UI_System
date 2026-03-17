@@ -2673,7 +2673,7 @@ textarea:hover::placeholder {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-16);
-  padding: var(--space-12) var(--space-24) var(--space-20);
+  padding: var(--space-12) var(--space-24) var(--space-40);
   background: var(--color-green-primary);
   color: var(--color-white);
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
@@ -4257,5 +4257,3 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
-
-

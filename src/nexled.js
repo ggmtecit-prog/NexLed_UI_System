@@ -45,7 +45,7 @@ function closeBar(id) {
     // Note: CSS classes handle ease-premium, JS triggers the state change
     bar.style.opacity = "0";
     bar.style.transform = "translateY(var(--space-12))";
-    bar.style.marginTop = `-${bar.offsetHeight}px`;
+    bar.style.marginBottom = `-${bar.offsetHeight}px`;
 
     // Remove from DOM after animation (400ms match)
     setTimeout(() => {
@@ -1249,4 +1249,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
