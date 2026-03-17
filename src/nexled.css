@@ -189,7 +189,9 @@ body {
   -webkit-appearance: none;
   appearance: none;
   background: transparent !important;
+  background-image: none !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar-button:increment,
@@ -200,29 +202,6 @@ body {
 .custom-scrollbar::-webkit-scrollbar-button:single-button:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:double-button:increment,
 .custom-scrollbar::-webkit-scrollbar-button:double-button:decrement {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent !important;
-  border: none !important;
-}
-
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:vertical:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:vertical:increment,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:horizontal:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:single-button:horizontal:increment,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:increment,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:increment,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:start:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:vertical:end:increment,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:start:decrement,
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-button:horizontal:end:increment {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -248,10 +227,12 @@ body {
   -webkit-appearance: none;
   appearance: none;
   background: transparent !important;
+  background-image: none !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
-.custom-scrollbar.scrollbar-demo::-webkit-scrollbar-corner {
+.custom-scrollbar::-webkit-scrollbar-corner {
   background: transparent !important;
 }
 
@@ -4272,3 +4253,4 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
