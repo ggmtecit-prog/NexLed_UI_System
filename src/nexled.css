@@ -1043,7 +1043,7 @@ textarea:hover::placeholder {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  background: var(--color-grey-secondary);
+  background: var(--color-grey-tertiary);
 }
 
 .quantity-selector-sm {
@@ -1059,6 +1059,10 @@ textarea:hover::placeholder {
 .quantity-selector-lg {
   gap: var(--space-12);
   border-radius: var(--radius-lg);
+}
+
+.quantity-selector .btn:hover {
+  background: var(--color-grey-secondary);
 }
 
 .quantity-selector-value {
@@ -4253,3 +4257,4 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
