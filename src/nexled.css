@@ -2607,6 +2607,11 @@ textarea:hover::placeholder {
 .flyout-features .flyout-media {
   width: var(--space-48);
   height: var(--space-48);
+  box-sizing: border-box;
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  transition: border-color var(--motion-duration-default) var(--motion-ease-premium),
+    background-color var(--motion-duration-default) var(--motion-ease-premium),
+    color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .flyout-features .flyout-media i {
@@ -2632,6 +2637,7 @@ textarea:hover::placeholder {
 
 .flyout-features .flyout-link:hover .flyout-media,
 .flyout-features .flyout-link.is-active .flyout-media {
+  border-color: var(--color-green-hover-icons);
   background: var(--color-green-hover-text);
   color: var(--color-green-secondary);
 }
@@ -2663,6 +2669,7 @@ textarea:hover::placeholder {
   padding: 0;
   overflow: visible;
   width: calc(var(--space-64) * 14);
+  z-index: var(--z-overlay);
   left: 50%;
   transform: translateX(-50%) translateY(var(--press-offset));
 }
@@ -4330,5 +4337,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
+
+
 
 
