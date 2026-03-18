@@ -394,6 +394,8 @@ function initUploaders() {
 function setupUploader(uploader) {
     const dropZone = uploader.querySelector('[data-uploader-zone]');
     const fileInput = uploader.querySelector('[data-uploader-input]');
+    const text = uploader.querySelector('[data-uploader-text]');
+    const note = uploader.querySelector('.uploader-note');
 
     if (!dropZone || !fileInput) return;
 
@@ -449,6 +451,18 @@ function setupUploader(uploader) {
     fileInput.addEventListener('change', () => {
         handleUploaderFiles(fileInput.files, uploader);
     });
+
+    if (uploader.classList.contains('is-error') && text) {
+        setUploaderErrorState(
+            uploader,
+            text,
+            note,
+            fileInput,
+            text.textContent.trim(),
+            note ? note.textContent.trim() : ''
+        );
+        return;
+    }
 
     handleUploaderFiles(fileInput.files, uploader);
 }

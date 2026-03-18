@@ -2922,20 +2922,20 @@ textarea:hover::placeholder {
   color: var(--color-black);
 }
 
-.uploader-zone:hover,
-.uploader.is-dragover .uploader-zone {
+.uploader:not(.is-error) .uploader-zone:hover,
+.uploader:not(.is-error).is-dragover .uploader-zone {
   border-color: var(--color-green-secondary);
   background: var(--color-green-hover-text);
 }
 
-.uploader-zone:hover .uploader-icon,
-.uploader.is-dragover .uploader-icon {
+.uploader:not(.is-error) .uploader-zone:hover .uploader-icon,
+.uploader:not(.is-error).is-dragover .uploader-icon {
   color: var(--color-green-secondary);
   transform: translateY(var(--lift-standard));
 }
 
-.uploader-zone:hover .uploader-text,
-.uploader.is-dragover .uploader-text {
+.uploader:not(.is-error) .uploader-zone:hover .uploader-text,
+.uploader:not(.is-error).is-dragover .uploader-text {
   color: var(--color-green-secondary);
 }
 
@@ -2977,6 +2977,11 @@ textarea:hover::placeholder {
 }
 
 
+
+.uploader.is-error .uploader-zone:hover .uploader-text,
+.uploader.is-error.is-dragover .uploader-text {
+  color: var(--color-red-primary);
+}
 
 .uploader.is-error .uploader-note {
   color: var(--color-red-secondary);

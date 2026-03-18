@@ -1052,25 +1052,26 @@
                             </div>
 
                             <!-- File Upload -->
-                            <div class="uploader uploader-file is-default" data-uploader data-uploader-max-size-mb="10">
+                            <div class="uploader uploader-file is-error" data-uploader data-uploader-max-size-mb="10">
                                 <label class="uploader-label" for="fileInput">File Upload</label>
                                 <div id="fileDropZone" class="uploader-zone" data-uploader-zone role="button"
                                     tabindex="0" aria-describedby="fileUploaderNote">
-                                    <input type="file" id="fileInput" class="uploader-input" data-uploader-input accept="application/pdf,.pdf"
-                                        multiple>
+                                    <input type="file" id="fileInput" class="uploader-input" data-uploader-input
+                                        accept="application/pdf,.pdf" aria-invalid="true" multiple>
                                     <div class="uploader-icon" aria-hidden="true">
                                         <i class="ri-file-add-line"></i>
                                     </div>
                                     <div class="uploader-text" data-uploader-text
                                         data-uploader-idle-text="Drag &amp; Drop files here" aria-live="polite">
-                                        Drag &amp; Drop files here
+                                        Only PDF files are allowed.
                                     </div>
                                     <div class="uploader-subtext">
                                         or click to browse your computer
                                     </div>
                                 </div>
-                                <p id="fileUploaderNote" class="uploader-note">
-                                    Supports multiple PDF files up to 10 MB each.
+                                <p id="fileUploaderNote" class="uploader-note"
+                                    data-uploader-idle-note="Supports multiple PDF files up to 10 MB each.">
+                                    Please upload a PDF file.
                                 </p>
                             </div>
 
@@ -1131,8 +1132,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span class="language-selector-value">English</span>
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
@@ -1144,8 +1144,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1154,8 +1153,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1164,8 +1162,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1186,8 +1183,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span class="language-selector-value">English</span>
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
@@ -1200,8 +1196,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1210,8 +1205,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1220,8 +1214,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1242,8 +1235,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span class="language-selector-value">English</span>
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
@@ -1256,8 +1248,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1266,8 +1257,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1276,8 +1266,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1298,8 +1287,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span class="language-selector-value">English</span>
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
@@ -1312,8 +1300,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1322,8 +1309,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1332,8 +1318,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1359,8 +1344,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
                                                     aria-hidden="true"></i>
@@ -1371,8 +1355,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1381,8 +1364,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1391,8 +1373,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1413,8 +1394,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
                                                     aria-hidden="true"></i>
@@ -1426,8 +1406,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1436,8 +1415,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1446,8 +1424,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1468,8 +1445,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
                                                     aria-hidden="true"></i>
@@ -1481,8 +1457,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1491,8 +1466,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1501,8 +1475,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1523,8 +1496,7 @@
                                                 <span class="language-selector-current">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                 </span>
                                                 <i class="ri-arrow-down-s-line language-selector-arrow"
                                                     aria-hidden="true"></i>
@@ -1536,8 +1508,7 @@
                                                     data-code="gb">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/gb.png"
-                                                        srcset="https://flagcdn.com/w80/gb.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
                                                     <span>English</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1546,8 +1517,7 @@
                                                     data-code="pt">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/pt.png"
-                                                        srcset="https://flagcdn.com/w80/pt.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
                                                     <span>Portugu&#234;s</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -1556,8 +1526,7 @@
                                                     data-code="es">
                                                     <img class="language-selector-flag"
                                                         src="https://flagcdn.com/w40/es.png"
-                                                        srcset="https://flagcdn.com/w80/es.png 2x"
-                                                        alt="">
+                                                        srcset="https://flagcdn.com/w80/es.png 2x" alt="">
                                                     <span>Espa&#241;ol</span>
                                                     <i class="ri-check-line language-selector-check"
                                                         aria-hidden="true"></i>
@@ -2044,8 +2013,8 @@
                         <div class="carousel carousel-landscape" data-carousel>
                             <div class="carousel-track">
                                 <div class="carousel-slide is-active">
-                                    <img src="public/images/slides/img_lights_wide.webp"
-                                        alt="Carousel slide 1" class="carousel-image">
+                                    <img src="public/images/slides/img_lights_wide.webp" alt="Carousel slide 1"
+                                        class="carousel-image">
                                     <div class="carousel-overlay"></div>
                                     <div class="carousel-content">
                                         <a href="#" class="carousel-link">
@@ -2056,8 +2025,8 @@
                                     </div>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="public/images/slides/img_mountains_wide.webp"
-                                        alt="Carousel slide 2" class="carousel-image">
+                                    <img src="public/images/slides/img_mountains_wide.webp" alt="Carousel slide 2"
+                                        class="carousel-image">
                                     <div class="carousel-overlay"></div>
                                     <div class="carousel-content">
                                         <a href="#" class="carousel-link">
@@ -2130,8 +2099,8 @@
                                     <div class="carousel-overlay-flat"></div>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="public/images/products/product-slide-1.png"
-                                        alt="Carousel slide 3" class="carousel-image">
+                                    <img src="public/images/products/product-slide-1.png" alt="Carousel slide 3"
+                                        class="carousel-image">
                                     <div class="carousel-overlay-flat"></div>
                                 </div>
                             </div>
@@ -2205,19 +2174,19 @@
                         <div class="flyout-body">
                             <nav class="flyout-nav" aria-label="Fly-out categories">
                                 <button type="button" class="flyout-nav-item">
-                                    <span>Dignissim Turpis</span>
+                                    <span>Dignissim</span>
                                     <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
                                 </button>
                                 <button type="button" class="flyout-nav-item is-active">
-                                    <span>Dignissim Turpis</span>
+                                    <span>Dignissim </span>
                                     <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
                                 </button>
                                 <button type="button" class="flyout-nav-item">
-                                    <span>Dignissim Turpis</span>
+                                    <span>Dignissim </span>
                                     <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
                                 </button>
                                 <button type="button" class="flyout-nav-item">
-                                    <span>Dignissim Turpis</span>
+                                    <span>Dignissim</span>
                                     <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
                                 </button>
                             </nav>
@@ -2529,4 +2498,3 @@
 </body>
 
 </html>
-
