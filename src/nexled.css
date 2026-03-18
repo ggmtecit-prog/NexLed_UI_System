@@ -2528,7 +2528,7 @@ textarea:hover::placeholder {
 .flyout-products .flyout-media {
   width: calc(var(--space-64) + var(--space-48));
   height: calc(var(--space-64) + var(--space-48));
-  padding: var(--space-4);
+  padding: 0;
   box-sizing: border-box;
   border: var(--border-thin) solid var(--color-grey-secondary);
   background: var(--color-grey-tertiary);
@@ -4322,3 +4322,4 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
