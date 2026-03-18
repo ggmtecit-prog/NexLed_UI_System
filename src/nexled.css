@@ -605,7 +605,7 @@ body {
 textarea {
   width: 100%;
   min-height: var(--size-btn-sm-h);
-  padding: var(--space-12) var(--space-24) var(--space-20);
+  padding: var(--space-12) var(--space-24);
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-md);
   background: var(--color-white);
@@ -694,7 +694,7 @@ textarea:disabled,
 
 .input-md {
   min-height: var(--size-btn-sm-h);
-  padding: var(--space-12) var(--space-24) var(--space-20);
+  padding: var(--space-12) var(--space-24);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }
@@ -753,7 +753,7 @@ textarea:hover::placeholder {
   min-width: 0;
   border: 0;
   background: transparent;
-  padding: var(--space-12) var(--space-24) var(--space-20);
+  padding: var(--space-12) var(--space-24);
   color: var(--color-black);
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
@@ -2382,7 +2382,7 @@ textarea:hover::placeholder {
   font-size: var(--space-24);
 }
 
-/* LANGUAGE SELECTOR Ã¢â‚¬â€ XS SIZE */
+/* LANGUAGE SELECTOR - XS SIZE */
 /* language-selector-xs-css */
 .language-selector-xs .language-selector-trigger {
   height: var(--size-btn-xs-h);
@@ -2612,7 +2612,7 @@ textarea:hover::placeholder {
   color: var(--color-green-secondary);
 }
 
-/* DROPDOWN Ã¢â‚¬â€ FLYOUT PANEL MODIFIER */
+/* DROPDOWN - FLYOUT PANEL MODIFIER */
 /* Used when the dropdown panel is a flyout component instead of a list */
 .dropdown-flyout .dropdown-menu {
   right: auto;
@@ -2623,7 +2623,7 @@ textarea:hover::placeholder {
   width: calc(var(--space-64) * 14);
 }
 
-/* DROPDOWN Ã¢â‚¬â€ FLYOUT PANEL MODIFIER */
+/* DROPDOWN - FLYOUT PANEL MODIFIER */
 /* dropdown-flyout-modifier */
 .dropdown-flyout .dropdown-menu {
   right: auto;
@@ -4254,7 +4254,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-green-secondary);
 }
 
-/* Hover: Ãƒ— turns red only when directly hovering it */
+/* Hover: close icon turns red only when directly hovering it */
 .tab-close:hover {
   color: var(--color-red-primary);
 }
