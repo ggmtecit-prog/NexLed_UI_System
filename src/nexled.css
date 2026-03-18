@@ -2531,8 +2531,11 @@ textarea:hover::placeholder {
   padding: var(--space-4);
   box-sizing: border-box;
   border: var(--border-thin) solid var(--color-grey-secondary);
-  background: var(--color-green-hover-text);
-  box-shadow: var(--shadow-glow), var(--shadow-glow);
+  background: var(--color-grey-tertiary);
+  box-shadow: none;
+  transition: border-color var(--motion-duration-default) var(--motion-ease-premium),
+    box-shadow var(--motion-duration-default) var(--motion-ease-premium),
+    background-color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .flyout-link {
@@ -2581,6 +2584,12 @@ textarea:hover::placeholder {
 .flyout-link:hover .flyout-label,
 .flyout-link.is-active .flyout-label {
   color: var(--color-green-secondary);
+}
+.flyout-products .flyout-link:hover .flyout-media,
+.flyout-products .flyout-link.is-active .flyout-media {
+  border-color: var(--color-green-hover-icons);
+  background: var(--color-green-hover-text);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .flyout-features .flyout-body {
