@@ -41,8 +41,6 @@ function closeBar(id) {
     const bar = document.getElementById(id);
     if (!bar) return;
 
-    bar.classList.add('is-closing');
-
     // Smooth collapse animation
     // Note: CSS classes handle ease-premium, JS triggers the state change
     bar.style.opacity = "0";
@@ -1438,4 +1436,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 

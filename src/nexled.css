@@ -134,8 +134,6 @@
   --border-thin: 1px;
   --border-standard: 2px;
   --border-thick: 4px;
-
-  --z-base: 0;
   --z-dropdown: 1000;
   --z-sticky: 1100;
   --z-overlay: 2000;
@@ -2710,7 +2708,6 @@ textarea:hover::placeholder {
 
 /* ANNOUNCEMENT BAR */
 .announcement-bar {
-  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -2721,13 +2718,6 @@ textarea:hover::placeholder {
   color: var(--color-white);
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
-
-.announcement-bar.is-closing {
-  z-index: var(--z-base);
-  pointer-events: none;
-}
-
-
 
 .announcement-bar:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
@@ -4347,4 +4337,5 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
 
