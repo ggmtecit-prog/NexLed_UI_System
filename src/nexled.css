@@ -2605,8 +2605,10 @@ textarea:hover::placeholder {
 }
 
 .flyout-features .flyout-media {
-  width: var(--space-48);
-  height: var(--space-48);
+  width: auto;
+  min-width: var(--space-48);
+  min-height: var(--space-48);
+  align-self: stretch;
   aspect-ratio: 1 / 1;
   box-sizing: border-box;
   border: var(--border-thin) solid var(--color-grey-secondary);
@@ -4338,6 +4340,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
 
 
 
