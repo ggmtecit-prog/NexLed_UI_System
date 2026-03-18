@@ -476,10 +476,33 @@ function formatUploaderMaxSize(maxBytes) {
     return Number.isInteger(maxSizeMb) ? `${maxSizeMb} MB` : `${maxSizeMb.toFixed(1)} MB`;
 }
 
+function setUploaderIcon(uploader, iconClass) {
+    const icon = uploader.querySelector('.uploader-icon i');
+    if (!icon) return;
+
+    if (!icon.dataset.uploaderIdleIcon) {
+        icon.dataset.uploaderIdleIcon = icon.className;
+    }
+
+    icon.className = iconClass;
+}
+
+function resetUploaderIcon(uploader) {
+    const icon = uploader.querySelector('.uploader-icon i');
+    if (!icon) return;
+
+    if (!icon.dataset.uploaderIdleIcon) {
+        icon.dataset.uploaderIdleIcon = icon.className;
+    }
+
+    icon.className = icon.dataset.uploaderIdleIcon;
+}
+
 function setUploaderErrorState(uploader, text, note, fileInput, errorText, errorNote) {
     uploader.classList.remove('has-files');
     uploader.classList.remove('is-default');
     uploader.classList.add('is-error');
+    setUploaderIcon(uploader, 'ri-close-line');
     text.textContent = errorText;
 
     if (note) {
@@ -538,6 +561,7 @@ function handleUploaderFiles(files, uploader) {
         }
 
         uploader.classList.remove('is-error');
+        resetUploaderIcon(uploader);
 
         if (fileInput) {
             fileInput.removeAttribute('aria-invalid');
@@ -558,6 +582,7 @@ function handleUploaderFiles(files, uploader) {
     uploader.classList.remove('has-files');
     uploader.classList.remove('is-error');
     uploader.classList.add('is-default');
+    resetUploaderIcon(uploader);
     text.textContent = idleText;
 
     if (note && note.dataset.uploaderIdleNote) {
