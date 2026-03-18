@@ -2956,32 +2956,21 @@ textarea:hover::placeholder {
   color: var(--color-green-secondary);
 }
 
-.uploader.is-error .uploader-zone {
-  border-color: var(--color-red-secondary);
-}
-
-.uploader.is-error .uploader-icon {
-  color: var(--color-red-primary);
-}
-
-.uploader.is-error .uploader-text {
-  color: var(--color-red-primary);
-}
-
+.uploader.is-error .uploader-zone,
 .uploader.is-error .uploader-zone:hover,
 .uploader.is-error.is-dragover .uploader-zone {
   border-color: var(--color-red-secondary);
-  background: var(--color-red-secondary);
+  background: var(--color-white);
 }
 
+.uploader.is-error .uploader-icon,
 .uploader.is-error .uploader-zone:hover .uploader-icon,
 .uploader.is-error.is-dragover .uploader-icon {
   color: var(--color-red-primary);
-  transform: translateY(var(--lift-standard));
+  transform: none;
 }
 
-
-
+.uploader.is-error .uploader-text,
 .uploader.is-error .uploader-zone:hover .uploader-text,
 .uploader.is-error.is-dragover .uploader-text {
   color: var(--color-red-primary);
