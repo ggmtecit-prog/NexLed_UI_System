@@ -2601,14 +2601,13 @@ textarea:hover::placeholder {
 }
 
 .flyout-features .flyout-link {
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .flyout-features .flyout-media {
   width: var(--space-48);
-  height: auto;
-  min-height: var(--space-48);
-  align-self: stretch;
+  height: var(--space-48);
+  aspect-ratio: 1 / 1;
   box-sizing: border-box;
   border: var(--border-thin) solid var(--color-grey-secondary);
   transition: border-color var(--motion-duration-default) var(--motion-ease-premium),
@@ -4339,6 +4338,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
 
 
 
