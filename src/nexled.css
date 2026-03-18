@@ -2525,6 +2525,13 @@ textarea:hover::placeholder {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.flyout-products .flyout-media {
+  width: calc(var(--space-64) * 2);
+  height: calc(var(--space-64) * 2);
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  box-shadow: var(--shadow-glow);
+}
+
 .flyout-link {
   display: flex;
   align-items: center;
