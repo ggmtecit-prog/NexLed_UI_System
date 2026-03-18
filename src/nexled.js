@@ -1318,6 +1318,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================================
+   Flyout Products Logic
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-flyout-products]').forEach(flyout => {
+        const tabs = Array.from(flyout.querySelectorAll('[data-flyout-category]'));
+        const panels = Array.from(flyout.querySelectorAll('[data-flyout-panel]'));
+        if (tabs.length === 0 || panels.length === 0) return;
+
+        const activateCategory = category => {
+            tabs.forEach(tab => {
+                const isActive = tab.dataset.flyoutCategory === category;
+                tab.classList.toggle('is-active', isActive);
+                tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                tab.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            panels.forEach(panel => {
+                panel.hidden = panel.dataset.flyoutPanel !== category;
+            });
+        };
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                activateCategory(tab.dataset.flyoutCategory);
+            });
+
+            tab.addEventListener('keydown', event => {
+                let nextIndex = index;
+
+                if (event.key === 'ArrowDown') {
+                    nextIndex = (index + 1) % tabs.length;
+                } else if (event.key === 'ArrowUp') {
+                    nextIndex = (index - 1 + tabs.length) % tabs.length;
+                } else if (event.key === 'Home') {
+                    nextIndex = 0;
+                } else if (event.key === 'End') {
+                    nextIndex = tabs.length - 1;
+                } else {
+                    return;
+                }
+
+                event.preventDefault();
+                const nextTab = tabs[nextIndex];
+                activateCategory(nextTab.dataset.flyoutCategory);
+                nextTab.focus();
+            });
+        });
+
+        const initialCategory =
+            tabs.find(tab => tab.classList.contains('is-active'))?.dataset.flyoutCategory ||
+            tabs[0].dataset.flyoutCategory;
+
+        activateCategory(initialCategory);
+    });
+});
+/* ============================================================
    Tabs Component Logic
    ============================================================ */
 

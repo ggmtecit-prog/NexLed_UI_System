@@ -2521,6 +2521,10 @@ textarea:hover::placeholder {
   gap: var(--space-16);
 }
 
+.flyout-products .flyout-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flyout-link {
   display: flex;
   align-items: center;
