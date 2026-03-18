@@ -1200,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close on Escape Key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            const openModal = document.querySelector('.modal-overlay.is-visible');
+            const openModal = document.querySelector('.modal-overlay.is-open, .modal-overlay.is-visible');
             if (openModal) {
                 closeModal(openModal);
             }
@@ -1211,7 +1211,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModal(modal) {
         if (!modal) return;
-        modal.classList.add('is-visible');
+        modal.classList.add('is-open');
+        modal.classList.remove('is-visible');
         modal.setAttribute('aria-hidden', 'false');
 
         // Disable page scroll
@@ -1220,6 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeModal(modal) {
         if (!modal) return;
+        modal.classList.remove('is-open');
         modal.classList.remove('is-visible');
         modal.setAttribute('aria-hidden', 'true');
 
@@ -1434,7 +1436,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-
 
