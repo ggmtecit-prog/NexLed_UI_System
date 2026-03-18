@@ -3907,6 +3907,16 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 1;
 }
 
+.carousel-prev.btn:hover,
+.carousel-next.btn:hover {
+  transform: translateY(calc(-50% + var(--lift-standard)));
+}
+
+.carousel-prev.btn:active,
+.carousel-next.btn:active {
+  transform: translateY(calc(-50% + var(--press-offset)));
+}
+
 .carousel-prev {
   left: var(--space-32);
 }
