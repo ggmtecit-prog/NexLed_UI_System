@@ -460,6 +460,38 @@ function isPdfFile(file) {
     return type === 'application/pdf' || name.endsWith('.pdf');
 }
 
+function getUploaderMaxBytes(uploader) {
+    const rawMaxSizeMb = uploader.dataset.uploaderMaxSizeMb;
+    const maxSizeMb = Number(rawMaxSizeMb);
+
+    if (!Number.isFinite(maxSizeMb) || maxSizeMb <= 0) {
+        return null;
+    }
+
+    return maxSizeMb * 1024 * 1024;
+}
+
+function formatUploaderMaxSize(maxBytes) {
+    const maxSizeMb = maxBytes / (1024 * 1024);
+    return Number.isInteger(maxSizeMb) ? `${maxSizeMb} MB` : `${maxSizeMb.toFixed(1)} MB`;
+}
+
+function setUploaderErrorState(uploader, text, note, fileInput, errorText, errorNote) {
+    uploader.classList.remove('has-files');
+    uploader.classList.remove('is-default');
+    uploader.classList.add('is-error');
+    text.textContent = errorText;
+
+    if (note) {
+        note.textContent = errorNote;
+    }
+
+    if (fileInput) {
+        fileInput.setAttribute('aria-invalid', 'true');
+        fileInput.value = '';
+    }
+}
+
 function handleUploaderFiles(files, uploader) {
     const text = uploader.querySelector('[data-uploader-text]');
     const note = uploader.querySelector('.uploader-note');
@@ -475,31 +507,34 @@ function handleUploaderFiles(files, uploader) {
     }
 
     const fileCount = files ? files.length : 0;
+    const maxBytes = getUploaderMaxBytes(uploader);
 
     uploader.classList.remove('is-dragover');
 
     if (fileCount > 0) {
+        const selectedFiles = Array.from(files);
         const isPdfOnly = uploader.classList.contains('uploader-file');
+        const hasInvalidFileType = isPdfOnly && selectedFiles.some((file) => !isPdfFile(file));
+        const hasOversizedFile = maxBytes !== null && selectedFiles.some((file) => file.size > maxBytes);
 
-        if (isPdfOnly) {
-            const hasInvalidFile = Array.from(files).some((file) => !isPdfFile(file));
+        if (hasInvalidFileType || hasOversizedFile) {
+            const maxSizeLabel = maxBytes === null ? '' : formatUploaderMaxSize(maxBytes);
+            let errorText = 'Please upload a valid file.';
+            let errorNote = idleNote;
 
-            if (hasInvalidFile) {
-                uploader.classList.remove('has-files');
-                uploader.classList.remove('is-default');
-                uploader.classList.add('is-error');
-                text.textContent = text.dataset.uploaderErrorText || 'Only PDF files are allowed.';
-
-                if (note) {
-                    note.textContent = note.dataset.uploaderErrorNote || 'Please upload a PDF file.';
-                }
-
-                if (fileInput) {
-                    fileInput.setAttribute('aria-invalid', 'true');
-                }
-
-                return;
+            if (hasInvalidFileType && hasOversizedFile) {
+                errorText = `Only PDF files up to ${maxSizeLabel} are allowed.`;
+                errorNote = `Please upload PDF files that are ${maxSizeLabel} or smaller.`;
+            } else if (hasInvalidFileType) {
+                errorText = 'Only PDF files are allowed.';
+                errorNote = 'Please upload a PDF file.';
+            } else if (hasOversizedFile) {
+                errorText = `Files must be ${maxSizeLabel} or smaller.`;
+                errorNote = `Please upload files that are ${maxSizeLabel} or smaller.`;
             }
+
+            setUploaderErrorState(uploader, text, note, fileInput, errorText, errorNote);
+            return;
         }
 
         uploader.classList.remove('is-error');
@@ -540,10 +575,9 @@ function handleUploaderFiles(files, uploader) {
 
 /* Legacy language-selector hooks removed. */
 /* legacy payload retained only as commented history
-        'gb': { src: 'https://flagcdn.com/w40/gb.png', srcset: 'https://flagcdn.com/w80/gb.png 2x', alt: 'English' },
-        'pt': { src: 'https://flagcdn.com/w40/pt.png', srcset: 'https://flagcdn.com/w80/pt.png 2x', alt: 'Português' },
-        'es': { src: 'https://flagcdn.com/w40/es.png', srcset: 'https://flagcdn.com/w80/es.png 2x', alt: 'Español' },
-        'fr': { src: 'https://flagcdn.com/w40/fr.png', srcset: 'https://flagcdn.com/w80/fr.png 2x', alt: 'Français' },
+        'pt': { src: 'https://flagcdn.com/w40/pt.png', srcset: 'https://flagcdn.com/w80/pt.png 2x', alt: 'Portuguese' },
+        'es': { src: 'https://flagcdn.com/w40/es.png', srcset: 'https://flagcdn.com/w80/es.png 2x', alt: 'Spanish' },
+        'fr': { src: 'https://flagcdn.com/w40/fr.png', srcset: 'https://flagcdn.com/w80/fr.png 2x', alt: 'French' },
     };
 
 }
@@ -1262,7 +1296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('is-active');
         });
 
-        // Close tab on × click
+        // Close tab on close button click
         tabBar.addEventListener('click', e => {
             const closeBtn = e.target.closest('.tab-close');
             if (!closeBtn) return;

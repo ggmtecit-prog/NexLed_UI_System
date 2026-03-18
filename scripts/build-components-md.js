@@ -19,7 +19,7 @@ const OUTPUT_PATH = path.join(ROOT, 'COMPONENTS.md');
 
 /**
  * Extract component class selectors from nexled.css
- * Groups them by section comments (/* SECTION_NAME *​/)
+ * Groups them by section comments such as SECTION_NAME.
  */
 function extractCSSComponents(cssContent) {
     const components = {};
@@ -28,7 +28,7 @@ function extractCSSComponents(cssContent) {
     const lines = cssContent.split('\n');
     for (const line of lines) {
         // Detect section headers like /* BUTTONS */ or /* ACCORDION */
-        const sectionMatch = line.match(/^\/\*\s*([A-Z][A-Z\s/&-]+)\s*\*\/\s*$/);
+        const sectionMatch = line.match(/^\/\*\s*([A-Z][A-Z\s/&]+)\s*\*\/\s*$/);
         if (sectionMatch) {
             currentSection = sectionMatch[1].trim();
             if (!components[currentSection]) {
@@ -48,10 +48,10 @@ function extractCSSComponents(cssContent) {
         }
 
         // Detect state patterns
-        if (line.includes('.is-open')) components[currentSection]?.states?.add('.is-open');
-        if (line.includes('.is-active')) components[currentSection]?.states?.add('.is-active');
-        if (line.includes('.is-selected')) components[currentSection]?.states?.add('.is-selected');
-        if (line.includes('.is-disabled')) components[currentSection]?.states?.add('.is-disabled');
+        const classStateMatches = line.match(/\.(?:is|has)-[\w-]+/g) || [];
+        for (const state of classStateMatches) {
+            components[currentSection]?.states?.add(state);
+        }
         if (line.includes('aria-expanded')) components[currentSection]?.states?.add('[aria-expanded]');
         if (line.includes('aria-selected')) components[currentSection]?.states?.add('[aria-selected]');
         if (line.includes('aria-pressed')) components[currentSection]?.states?.add('[aria-pressed]');
