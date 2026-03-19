@@ -2077,6 +2077,7 @@ textarea:hover::placeholder {
 }
 
 .dropdown-minimal .dropdown-trigger {
+  background: transparent;
   border-color: transparent;
   box-shadow: none;
 }
