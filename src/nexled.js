@@ -1521,11 +1521,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryFormatter = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
     const ariaFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     const weekdayLabels = createWeekdayLabels(locale);
+    const presetLabels = {
+        week: 'This Week',
+        'next-7-days': 'Next 7 Days',
+        month: 'This Month',
+    };
     let openPicker = null;
 
     datePickers.forEach((picker, index) => {
         const input = picker.querySelector('[data-date-picker-input]');
-        const valueField = picker.querySelector('[data-date-picker-value]');
+        const singleValueField = picker.querySelector('[data-date-picker-value]');
+        const rangeStartField = picker.querySelector('[data-date-picker-range-start-value]');
+        const rangeEndField = picker.querySelector('[data-date-picker-range-end-value]');
         const trigger = picker.querySelector('[data-date-picker-trigger]');
         const panel = picker.querySelector('[data-date-picker-panel]');
         const monthLabel = picker.querySelector('[data-date-picker-month]');
@@ -1535,18 +1542,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevButton = picker.querySelector('[data-date-picker-prev]');
         const nextButton = picker.querySelector('[data-date-picker-next]');
         const todayButton = picker.querySelector('[data-date-picker-today]');
+        const clearButton = picker.querySelector('[data-date-picker-clear]');
+        const presetButtons = Array.from(picker.querySelectorAll('[data-date-picker-preset]'));
 
-        if (!input || !valueField || !trigger || !panel || !monthLabel || !weekdayRow || !daysGrid || !summary || !prevButton || !nextButton || !todayButton) {
+        if (!input || !trigger || !panel || !monthLabel || !weekdayRow || !daysGrid || !summary || !prevButton || !nextButton) {
             return;
         }
 
+        const mode = picker.dataset.datePickerMode === 'range' ? 'range' : 'single';
         const defaultDate = parseISODate(picker.dataset.datePickerDefault);
-        const viewDate = defaultDate || stripTime(new Date());
+        const defaultRangeStart = parseISODate(picker.dataset.datePickerRangeStart);
+        const defaultRangeEnd = parseISODate(picker.dataset.datePickerRangeEnd);
+        const anchorDate = mode === 'range' ? (defaultRangeStart || defaultDate) : defaultDate;
+        const viewDate = anchorDate || stripTime(new Date());
         const panelIdBase = input.id || 'datePicker' + String(index + 1);
+
         panel.id = panel.id || `${panelIdBase}-panel`;
 
         picker._datePickerState = {
+            mode,
             selectedDate: defaultDate,
+            rangeStart: defaultRangeStart,
+            rangeEnd: defaultRangeEnd,
+            activePreset: mode === 'range' ? (picker.dataset.datePickerPreset || '') : '',
             viewYear: viewDate.getFullYear(),
             viewMonth: viewDate.getMonth(),
         };
@@ -1592,8 +1610,23 @@ document.addEventListener('DOMContentLoaded', () => {
             shiftViewMonth(picker, 1);
         });
 
-        todayButton.addEventListener('click', () => {
+        todayButton?.addEventListener('click', () => {
             selectDate(picker, stripTime(new Date()), true);
+        });
+
+        clearButton?.addEventListener('click', () => {
+            clearSelection(picker);
+        });
+
+        presetButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const preset = button.dataset.datePickerPreset;
+                if (!preset) {
+                    return;
+                }
+
+                applyPreset(picker, preset);
+            });
         });
 
         daysGrid.addEventListener('click', event => {
@@ -1650,16 +1683,306 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             buttons[nextIndex].focus();
         });
+
+        function renderWeekdays(weekdayContainer) {
+            const labels = weekdayLabels.map(label => {
+                const element = document.createElement('span');
+                element.textContent = label;
+                return element;
+            });
+
+            weekdayContainer.replaceChildren(...labels);
+        }
+
+        function renderDatePicker(currentPicker) {
+            const state = currentPicker._datePickerState;
+            const monthTarget = currentPicker.querySelector('[data-date-picker-month]');
+            const daysTarget = currentPicker.querySelector('[data-date-picker-days]');
+            const summaryTarget = currentPicker.querySelector('[data-date-picker-summary]');
+            const visibleMonth = new Date(state.viewYear, state.viewMonth, 1);
+            const today = stripTime(new Date());
+
+            monthTarget.textContent = monthFormatter.format(visibleMonth);
+
+            if (state.mode === 'range') {
+                input.value = formatRangeInput(state.rangeStart, state.rangeEnd);
+                if (singleValueField) {
+                    singleValueField.value = '';
+                }
+                if (rangeStartField) {
+                    rangeStartField.value = state.rangeStart ? toISODate(state.rangeStart) : '';
+                }
+                if (rangeEndField) {
+                    rangeEndField.value = state.rangeEnd ? toISODate(state.rangeEnd) : '';
+                }
+                summaryTarget.textContent = formatRangeSummary(state);
+                syncPresetButtons(currentPicker);
+            } else {
+                input.value = state.selectedDate ? inputFormatter.format(state.selectedDate) : '';
+                if (singleValueField) {
+                    singleValueField.value = state.selectedDate ? toISODate(state.selectedDate) : '';
+                }
+                if (rangeStartField) {
+                    rangeStartField.value = '';
+                }
+                if (rangeEndField) {
+                    rangeEndField.value = '';
+                }
+                summaryTarget.textContent = state.selectedDate ? summaryFormatter.format(state.selectedDate) : 'No date selected';
+            }
+
+            const firstVisibleDay = new Date(state.viewYear, state.viewMonth, 1);
+            const offset = (firstVisibleDay.getDay() + 6) % 7;
+            firstVisibleDay.setDate(firstVisibleDay.getDate() - offset);
+
+            const buttons = [];
+
+            for (let dayIndex = 0; dayIndex < 42; dayIndex += 1) {
+                const dayDate = new Date(firstVisibleDay);
+                dayDate.setDate(firstVisibleDay.getDate() + dayIndex);
+
+                const dayButton = document.createElement('button');
+                const classNames = ['date-picker-day'];
+                const isSelected = state.mode === 'single' && state.selectedDate && isSameDay(dayDate, state.selectedDate);
+                const isRangeStart = state.mode === 'range' && state.rangeStart && isSameDay(dayDate, state.rangeStart);
+                const isRangeEnd = state.mode === 'range' && state.rangeEnd && isSameDay(dayDate, state.rangeEnd);
+                const isInRange = state.mode === 'range' && isDateInRange(dayDate, state.rangeStart, state.rangeEnd);
+                const isPressed = Boolean(isSelected || isRangeStart || isRangeEnd || isInRange);
+
+                dayButton.type = 'button';
+                dayButton.dataset.datePickerDay = toISODate(dayDate);
+                dayButton.textContent = String(dayDate.getDate());
+                dayButton.setAttribute('aria-label', ariaFormatter.format(dayDate));
+                dayButton.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+
+                if (dayDate.getMonth() !== state.viewMonth) {
+                    classNames.push('is-outside');
+                }
+
+                if (isSameDay(dayDate, today)) {
+                    classNames.push('is-today');
+                    dayButton.setAttribute('aria-current', 'date');
+                }
+
+                if (isInRange) {
+                    classNames.push('is-in-range');
+                }
+
+                if (isSelected) {
+                    classNames.push('is-selected');
+                }
+
+                if (isRangeStart) {
+                    classNames.push('is-range-start', 'is-selected');
+                }
+
+                if (isRangeEnd) {
+                    classNames.push('is-range-end', 'is-selected');
+                }
+
+                dayButton.className = classNames.join(' ');
+                buttons.push(dayButton);
+            }
+
+            daysTarget.replaceChildren(...buttons);
+        }
+
+        function openDatePicker(currentPicker, focusSelectedDay) {
+            datePickers.forEach(otherPicker => {
+                if (otherPicker === currentPicker || isStickyPicker(otherPicker)) {
+                    return;
+                }
+
+                otherPicker.classList.remove('is-open');
+                const otherPanel = otherPicker.querySelector('[data-date-picker-panel]');
+                if (otherPanel) {
+                    otherPanel.hidden = true;
+                }
+                otherPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
+                otherPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
+            });
+
+            currentPicker.classList.add('is-open');
+            panel.hidden = false;
+            setExpandedState(currentPicker, true);
+            openPicker = currentPicker;
+
+            if (focusSelectedDay) {
+                requestAnimationFrame(() => {
+                    focusPreferredDay(currentPicker);
+                });
+            }
+        }
+
+        function closeDatePicker(currentPicker, restoreFocus) {
+            currentPicker.classList.remove('is-open');
+            panel.hidden = true;
+            setExpandedState(currentPicker, false);
+
+            if (openPicker === currentPicker) {
+                openPicker = null;
+            }
+
+            if (restoreFocus) {
+                currentPicker.querySelector('[data-date-picker-trigger]')?.focus();
+            }
+        }
+
+        function setExpandedState(currentPicker, isOpen) {
+            const nextValue = isOpen ? 'true' : 'false';
+            currentPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', nextValue);
+            currentPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', nextValue);
+        }
+
+        function shiftViewMonth(currentPicker, direction) {
+            const state = currentPicker._datePickerState;
+            const nextDate = new Date(state.viewYear, state.viewMonth + direction, 1);
+
+            state.viewYear = nextDate.getFullYear();
+            state.viewMonth = nextDate.getMonth();
+            renderDatePicker(currentPicker);
+
+            requestAnimationFrame(() => {
+                focusPreferredDay(currentPicker);
+            });
+        }
+
+        function selectDate(currentPicker, date, closeAfterSelect) {
+            const normalizedDate = stripTime(date);
+            const state = currentPicker._datePickerState;
+
+            if (state.mode === 'range') {
+                state.activePreset = '';
+
+                if (!state.rangeStart || (state.rangeStart && state.rangeEnd)) {
+                    state.rangeStart = normalizedDate;
+                    state.rangeEnd = null;
+                } else if (normalizedDate.getTime() < state.rangeStart.getTime()) {
+                    state.rangeEnd = state.rangeStart;
+                    state.rangeStart = normalizedDate;
+                } else {
+                    state.rangeEnd = normalizedDate;
+                }
+
+                state.selectedDate = normalizedDate;
+                state.viewYear = normalizedDate.getFullYear();
+                state.viewMonth = normalizedDate.getMonth();
+                renderDatePicker(currentPicker);
+
+                if (closeAfterSelect && state.rangeStart && state.rangeEnd && !isStickyPicker(currentPicker)) {
+                    closeDatePicker(currentPicker, true);
+                }
+
+                return;
+            }
+
+            state.selectedDate = normalizedDate;
+            state.viewYear = normalizedDate.getFullYear();
+            state.viewMonth = normalizedDate.getMonth();
+            renderDatePicker(currentPicker);
+
+            if (closeAfterSelect && !isStickyPicker(currentPicker)) {
+                closeDatePicker(currentPicker, true);
+            }
+        }
+
+        function applyPreset(currentPicker, preset) {
+            const state = currentPicker._datePickerState;
+            if (state.mode !== 'range') {
+                return;
+            }
+
+            const today = stripTime(new Date());
+            let nextStart = null;
+            let nextEnd = null;
+
+            switch (preset) {
+                case 'week':
+                    nextStart = startOfWeek(today);
+                    nextEnd = endOfWeek(today);
+                    break;
+                case 'next-7-days':
+                    nextStart = today;
+                    nextEnd = addDays(today, 6);
+                    break;
+                case 'month':
+                    nextStart = startOfMonth(today);
+                    nextEnd = endOfMonth(today);
+                    break;
+                default:
+                    clearSelection(currentPicker);
+                    return;
+            }
+
+            state.rangeStart = nextStart;
+            state.rangeEnd = nextEnd;
+            state.selectedDate = nextStart;
+            state.activePreset = preset;
+            state.viewYear = nextStart.getFullYear();
+            state.viewMonth = nextStart.getMonth();
+            renderDatePicker(currentPicker);
+            openDatePicker(currentPicker, false);
+
+            requestAnimationFrame(() => {
+                focusPreferredDay(currentPicker);
+            });
+        }
+
+        function clearSelection(currentPicker) {
+            const state = currentPicker._datePickerState;
+
+            if (state.mode === 'range') {
+                state.rangeStart = null;
+                state.rangeEnd = null;
+                state.selectedDate = null;
+                state.activePreset = '';
+            } else {
+                state.selectedDate = null;
+            }
+
+            renderDatePicker(currentPicker);
+        }
+
+        function syncPresetButtons(currentPicker) {
+            const state = currentPicker._datePickerState;
+
+            presetButtons.forEach(button => {
+                const isActive = button.dataset.datePickerPreset === state.activePreset;
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+        }
+
+        function focusPreferredDay(currentPicker) {
+            const daysTarget = currentPicker.querySelector('[data-date-picker-days]');
+            if (!daysTarget) {
+                return;
+            }
+
+            const preferredButton =
+                daysTarget.querySelector('.is-range-end') ||
+                daysTarget.querySelector('.is-range-start') ||
+                daysTarget.querySelector('.is-selected') ||
+                daysTarget.querySelector('.is-today:not(.is-outside)') ||
+                daysTarget.querySelector('[data-date-picker-day]');
+
+            preferredButton?.focus();
+        }
     });
 
     document.addEventListener('click', event => {
         datePickers.forEach(picker => {
-            if (picker.contains(event.target)) {
+            if (picker.contains(event.target) || isStickyPicker(picker)) {
                 return;
             }
 
-            closeDatePicker(picker, false);
+            picker.classList.remove('is-open');
+            const panel = picker.querySelector('[data-date-picker-panel]');
+            panel.hidden = true;
+            picker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
+            picker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
         });
+
+        openPicker = datePickers.find(picker => picker.classList.contains('is-open')) || null;
     });
 
     document.addEventListener('keydown', event => {
@@ -1667,165 +1990,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        closeDatePicker(openPicker, true);
-    });
-
-    function renderWeekdays(weekdayRow) {
-        const labels = weekdayLabels.map(label => {
-            const element = document.createElement('span');
-            element.textContent = label;
-            return element;
-        });
-
-        weekdayRow.replaceChildren(...labels);
-    }
-
-    function renderDatePicker(picker) {
-        const state = picker._datePickerState;
-        const input = picker.querySelector('[data-date-picker-input]');
-        const valueField = picker.querySelector('[data-date-picker-value]');
-        const monthLabel = picker.querySelector('[data-date-picker-month]');
-        const daysGrid = picker.querySelector('[data-date-picker-days]');
-        const summary = picker.querySelector('[data-date-picker-summary]');
-        const visibleMonth = new Date(state.viewYear, state.viewMonth, 1);
-        const today = stripTime(new Date());
-
-        monthLabel.textContent = monthFormatter.format(visibleMonth);
-        input.value = state.selectedDate ? inputFormatter.format(state.selectedDate) : '';
-        valueField.value = state.selectedDate ? toISODate(state.selectedDate) : '';
-        summary.textContent = state.selectedDate ? summaryFormatter.format(state.selectedDate) : 'No date selected';
-
-        const firstVisibleDay = new Date(state.viewYear, state.viewMonth, 1);
-        const offset = (firstVisibleDay.getDay() + 6) % 7;
-        firstVisibleDay.setDate(firstVisibleDay.getDate() - offset);
-
-        const buttons = [];
-
-        for (let index = 0; index < 42; index += 1) {
-            const dayDate = new Date(firstVisibleDay);
-            dayDate.setDate(firstVisibleDay.getDate() + index);
-
-            const dayButton = document.createElement('button');
-            const classNames = ['date-picker-day'];
-
-            dayButton.type = 'button';
-            dayButton.dataset.datePickerDay = toISODate(dayDate);
-            dayButton.textContent = String(dayDate.getDate());
-            dayButton.setAttribute('aria-label', ariaFormatter.format(dayDate));
-            dayButton.setAttribute('aria-pressed', state.selectedDate && isSameDay(dayDate, state.selectedDate) ? 'true' : 'false');
-
-            if (dayDate.getMonth() !== state.viewMonth) {
-                classNames.push('is-outside');
-            }
-
-            if (isSameDay(dayDate, today)) {
-                classNames.push('is-today');
-                dayButton.setAttribute('aria-current', 'date');
-            }
-
-            if (state.selectedDate && isSameDay(dayDate, state.selectedDate)) {
-                classNames.push('is-selected');
-            }
-
-            dayButton.className = classNames.join(' ');
-            buttons.push(dayButton);
-        }
-
-        daysGrid.replaceChildren(...buttons);
-    }
-
-    function openDatePicker(picker, focusSelectedDay) {
-        datePickers.forEach(otherPicker => {
-            if (otherPicker !== picker) {
-                closeDatePicker(otherPicker, false);
-            }
-        });
-
-        const panel = picker.querySelector('[data-date-picker-panel]');
-        if (!panel) {
-            return;
-        }
-
-        picker.classList.add('is-open');
-        panel.hidden = false;
-        setExpandedState(picker, true);
-        openPicker = picker;
-
-        if (focusSelectedDay) {
-            requestAnimationFrame(() => {
-                focusPreferredDay(picker);
-            });
-        }
-    }
-
-    function closeDatePicker(picker, restoreFocus) {
-        const panel = picker.querySelector('[data-date-picker-panel]');
-        if (!panel) {
-            return;
-        }
-
-        picker.classList.remove('is-open');
+        openPicker.classList.remove('is-open');
+        const panel = openPicker.querySelector('[data-date-picker-panel]');
         panel.hidden = true;
-        setExpandedState(picker, false);
-
-        if (openPicker === picker) {
-            openPicker = null;
-        }
-
-        if (restoreFocus) {
-            picker.querySelector('[data-date-picker-trigger]')?.focus();
-        }
-    }
-
-    function setExpandedState(picker, isOpen) {
-        const trigger = picker.querySelector('[data-date-picker-trigger]');
-        const input = picker.querySelector('[data-date-picker-input]');
-        const value = isOpen ? 'true' : 'false';
-
-        trigger?.setAttribute('aria-expanded', value);
-        input?.setAttribute('aria-expanded', value);
-    }
-
-    function shiftViewMonth(picker, direction) {
-        const state = picker._datePickerState;
-        const nextDate = new Date(state.viewYear, state.viewMonth + direction, 1);
-
-        state.viewYear = nextDate.getFullYear();
-        state.viewMonth = nextDate.getMonth();
-        renderDatePicker(picker);
-
-        requestAnimationFrame(() => {
-            focusPreferredDay(picker);
-        });
-    }
-
-    function selectDate(picker, date, closeAfterSelect) {
-        const normalizedDate = stripTime(date);
-        const state = picker._datePickerState;
-
-        state.selectedDate = normalizedDate;
-        state.viewYear = normalizedDate.getFullYear();
-        state.viewMonth = normalizedDate.getMonth();
-        renderDatePicker(picker);
-
-        if (closeAfterSelect) {
-            closeDatePicker(picker, true);
-        }
-    }
-
-    function focusPreferredDay(picker) {
-        const daysGrid = picker.querySelector('[data-date-picker-days]');
-        if (!daysGrid) {
-            return;
-        }
-
-        const preferredButton =
-            daysGrid.querySelector('.is-selected') ||
-            daysGrid.querySelector('.is-today:not(.is-outside)') ||
-            daysGrid.querySelector('[data-date-picker-day]');
-
-        preferredButton?.focus();
-    }
+        openPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
+        openPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
+        openPicker.querySelector('[data-date-picker-trigger]')?.focus();
+        openPicker = null;
+    });
 
     function createWeekdayLabels(localeValue) {
         const formatter = new Intl.DateTimeFormat(localeValue, { weekday: 'short' });
@@ -1836,6 +2008,33 @@ document.addEventListener('DOMContentLoaded', () => {
             weekday.setDate(mondayStart.getDate() + index);
             return formatter.format(weekday).replace('.', '');
         });
+    }
+
+    function formatRangeInput(startDate, endDate) {
+        if (!startDate && !endDate) {
+            return '';
+        }
+
+        if (startDate && endDate) {
+            return `${inputFormatter.format(startDate)} - ${inputFormatter.format(endDate)}`;
+        }
+
+        return `${inputFormatter.format(startDate)} -`;
+    }
+
+    function formatRangeSummary(state) {
+        const presetLabel = presetLabels[state.activePreset];
+
+        if (state.rangeStart && state.rangeEnd) {
+            const rangeLabel = `${summaryFormatter.format(state.rangeStart)} - ${summaryFormatter.format(state.rangeEnd)}`;
+            return presetLabel ? `${presetLabel} · ${rangeLabel}` : `Selected range: ${rangeLabel}`;
+        }
+
+        if (state.rangeStart) {
+            return `Start date selected: ${summaryFormatter.format(state.rangeStart)}. Choose an end date.`;
+        }
+
+        return 'Choose a preset or pick a start and end date.';
     }
 
     function parseISODate(value) {
@@ -1869,7 +2068,46 @@ document.addEventListener('DOMContentLoaded', () => {
             && firstDate.getMonth() === secondDate.getMonth()
             && firstDate.getDate() === secondDate.getDate();
     }
+
+    function isDateInRange(date, startDate, endDate) {
+        if (!startDate || !endDate) {
+            return false;
+        }
+
+        const currentTime = stripTime(date).getTime();
+        return currentTime >= startDate.getTime() && currentTime <= endDate.getTime();
+    }
+
+    function addDays(date, amount) {
+        const nextDate = stripTime(date);
+        nextDate.setDate(nextDate.getDate() + amount);
+        return nextDate;
+    }
+
+    function startOfWeek(date) {
+        const nextDate = stripTime(date);
+        const offset = (nextDate.getDay() + 6) % 7;
+        nextDate.setDate(nextDate.getDate() - offset);
+        return nextDate;
+    }
+
+    function endOfWeek(date) {
+        return addDays(startOfWeek(date), 6);
+    }
+
+    function startOfMonth(date) {
+        return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function endOfMonth(date) {
+        return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    }
+
+    function isStickyPicker(picker) {
+        return picker.dataset.datePickerSticky === 'true';
+    }
 });
+
 /**
  * Search Overlay Component Logic
  */
@@ -2056,6 +2294,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
 
 
 

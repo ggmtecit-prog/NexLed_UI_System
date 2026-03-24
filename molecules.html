@@ -2313,6 +2313,74 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="w-full max-w-4xl p-24">
+                        <div class="date-picker date-picker-md date-picker-inline" data-date-picker
+                            data-date-picker-mode="range" data-date-picker-range-start="2026-04-21"
+                            data-date-picker-range-end="2026-04-27" data-date-picker-preset="week"
+                            data-date-picker-open="true" data-date-picker-sticky="true">
+                            <div class="flex flex-wrap items-start justify-between gap-12">
+                                <div>
+                                    <label for="datePickerRangeInput" class="input-label ml-12">Service Window</label>
+                                    <p id="datePickerRangeHint" class="input-hint ml-12">Choose a quick timeframe or define a manual start and end date.</p>
+                                </div>
+                                <span class="badge badge-neutral badge-md">Range + Presets</span>
+                            </div>
+
+                            <div class="date-picker-presets" role="group" aria-label="Quick time frames">
+                                <button type="button" class="btn btn-ghost btn-sm date-picker-preset"
+                                    data-date-picker-preset="week" aria-pressed="true">This Week</button>
+                                <button type="button" class="btn btn-ghost btn-sm date-picker-preset"
+                                    data-date-picker-preset="next-7-days" aria-pressed="false">Next 7 Days</button>
+                                <button type="button" class="btn btn-ghost btn-sm date-picker-preset"
+                                    data-date-picker-preset="month" aria-pressed="false">This Month</button>
+                            </div>
+
+                            <div class="date-picker-control">
+                                <span class="date-picker-leading" aria-hidden="true">
+                                    <i class="ri-calendar-schedule-line text-icon-md"></i>
+                                </span>
+                                <input type="text" id="datePickerRangeInput" class="date-picker-input"
+                                    placeholder="Select a time frame" readonly data-date-picker-input aria-describedby="datePickerRangeHint"
+                                    aria-haspopup="dialog">
+                                <input type="hidden" name="serviceWindowStart" data-date-picker-range-start-value>
+                                <input type="hidden" name="serviceWindowEnd" data-date-picker-range-end-value>
+                                <button type="button" class="date-picker-trigger" data-date-picker-trigger
+                                    aria-label="Open service window calendar" aria-haspopup="dialog">
+                                    <i class="ri-arrow-down-s-line text-icon-md" aria-hidden="true"></i>
+                                </button>
+                            </div>
+
+                            <div class="date-picker-panel" data-date-picker-panel hidden role="dialog"
+                                aria-modal="false" aria-labelledby="datePickerRangeTitle">
+                                <div class="date-picker-head">
+                                    <div class="date-picker-meta">
+                                        <p class="text-body-xs text-grey-primary">Time Frames</p>
+                                        <h3 class="date-picker-month" id="datePickerRangeTitle" data-date-picker-month></h3>
+                                    </div>
+                                    <div class="date-picker-nav">
+                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-prev
+                                            aria-label="Show previous month">
+                                            <i class="ri-arrow-left-s-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-next
+                                            aria-label="Show next month">
+                                            <i class="ri-arrow-right-s-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="date-picker-weekdays" data-date-picker-weekdays aria-hidden="true"></div>
+                                <div class="date-picker-days" data-date-picker-days role="grid"
+                                    aria-labelledby="datePickerRangeTitle"></div>
+
+                                <div class="date-picker-footer">
+                                    <button type="button" class="btn btn-ghost btn-sm" data-date-picker-clear>Clear</button>
+                                    <p class="date-picker-summary text-body-xs" data-date-picker-summary aria-live="polite">Selected range updates here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </section>
@@ -2900,3 +2968,4 @@
 </body>
 
 </html>
+

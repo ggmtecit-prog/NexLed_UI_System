@@ -960,6 +960,25 @@ textarea:hover::placeholder {
   cursor: not-allowed;
 }
 
+.date-picker-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.date-picker-preset[aria-pressed="true"] {
+  background: var(--color-green-primary);
+  border-color: var(--color-green-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-btn-active);
+}
+
+.date-picker-preset[aria-pressed="true"]:hover {
+  background: var(--color-green-secondary);
+  border-color: var(--color-green-secondary);
+  color: var(--color-white);
+}
+
 .date-picker-panel {
   position: absolute;
   top: calc(100% + var(--space-12));
@@ -1084,14 +1103,31 @@ textarea:hover::placeholder {
   background: color-mix(in srgb, var(--color-green-hover-text) 72%, var(--color-white));
 }
 
-.date-picker-day.is-selected {
+.date-picker-day.is-in-range {
+  background: color-mix(in srgb, var(--color-green-hover-text) 88%, var(--color-white));
+  border-color: var(--color-green-hover-icons);
+  color: var(--color-green-primary);
+  box-shadow: none;
+}
+
+.date-picker-day.is-in-range:hover {
+  transform: translateY(var(--radius-none));
+  border-color: var(--color-green-primary);
+  box-shadow: none;
+}
+
+.date-picker-day.is-selected,
+.date-picker-day.is-range-start,
+.date-picker-day.is-range-end {
   background: var(--color-green-primary);
   border-color: var(--color-green-primary);
   color: var(--color-white);
   box-shadow: none;
 }
 
-.date-picker-day.is-selected:hover {
+.date-picker-day.is-selected:hover,
+.date-picker-day.is-range-start:hover,
+.date-picker-day.is-range-end:hover {
   background: var(--color-green-secondary);
   border-color: var(--color-green-secondary);
 }
@@ -4465,7 +4501,8 @@ body.search-overlay-open {
   .date-picker-control,
   .date-picker-panel,
   .date-picker-day,
-  .date-picker-trigger {
+  .date-picker-trigger,
+  .date-picker-preset {
     transition-duration: var(--motion-duration-fast);
   }
 }
@@ -5422,6 +5459,9 @@ body.search-overlay-open {
   margin-left: var(--space-4);
   flex-shrink: 0;
 }
+
+
+
 
 
 

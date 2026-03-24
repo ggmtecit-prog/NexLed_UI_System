@@ -27,7 +27,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **BADGES** (9 classes)
 - **AVATAR** (9 classes)
 - **INPUTS** (13 classes)
-- **DATE PICKER** (19 classes)
+- **DATE PICKER** (21 classes)
 - **CHECKBOXES** (4 classes)
 - **RADIO BUTTONS** (4 classes)
 - **TOGGLE** (8 classes)
@@ -240,6 +240,8 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.date-picker-month`
 - `.date-picker-nav`
 - `.date-picker-panel`
+- `.date-picker-preset`
+- `.date-picker-presets`
 - `.date-picker-sm`
 - `.date-picker-summary`
 - `.date-picker-trigger`
@@ -251,9 +253,13 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.is-open`
 - `:focus-visible`
 - `:disabled`
+- `[aria-pressed]`
 - `.is-outside`
 - `.is-today`
+- `.is-in-range`
 - `.is-selected`
+- `.is-range-start`
+- `.is-range-end`
 
 ---
 
