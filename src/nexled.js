@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Accordion Component Logic
  */
 
@@ -1440,6 +1440,376 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /**
+ * Range Slider Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-range-slider]').forEach(slider => {
+        if (slider.dataset.rangeSliderBound === 'true') {
+            return;
+        }
+
+        slider.dataset.rangeSliderBound = 'true';
+
+        const startInput = slider.querySelector('[data-range-slider-start]');
+        const endInput = slider.querySelector('[data-range-slider-end]');
+        const startOutput = slider.querySelector('[data-range-slider-start-output]');
+        const endOutput = slider.querySelector('[data-range-slider-end-output]');
+
+        if (!startInput || !endInput) {
+            return;
+        }
+
+        const syncRange = changedInput => {
+            const min = Math.min(Number(startInput.min || 0), Number(endInput.min || 0));
+            const max = Math.max(Number(startInput.max || 100), Number(endInput.max || 100));
+            let nextStart = clampRangeValue(Number(startInput.value), min, max);
+            let nextEnd = clampRangeValue(Number(endInput.value), min, max);
+
+            if (changedInput === startInput && nextStart > nextEnd) {
+                nextEnd = nextStart;
+            }
+
+            if (changedInput === endInput && nextEnd < nextStart) {
+                nextStart = nextEnd;
+            }
+
+            startInput.value = String(nextStart);
+            endInput.value = String(nextEnd);
+
+            if (startOutput) {
+                startOutput.textContent = String(nextStart);
+            }
+
+            if (endOutput) {
+                endOutput.textContent = String(nextEnd);
+            }
+
+            slider.style.setProperty('--range-slider-start-percent', `${toRangePercent(nextStart, min, max)}%`);
+            slider.style.setProperty('--range-slider-end-percent', `${toRangePercent(nextEnd, min, max)}%`);
+            startInput.setAttribute('aria-valuetext', String(nextStart));
+            endInput.setAttribute('aria-valuetext', String(nextEnd));
+        };
+
+        startInput.addEventListener('input', () => {
+            syncRange(startInput);
+        });
+
+        endInput.addEventListener('input', () => {
+            syncRange(endInput);
+        });
+
+        startInput.addEventListener('change', () => {
+            syncRange(startInput);
+        });
+
+        endInput.addEventListener('change', () => {
+            syncRange(endInput);
+        });
+
+        syncRange(startInput);
+    });
+
+    function clampRangeValue(value, min, max) {
+        if (Number.isNaN(value)) {
+            return min;
+        }
+
+        return Math.min(Math.max(value, min), max);
+    }
+
+    function toRangePercent(value, min, max) {
+        if (max === min) {
+            return 0;
+        }
+
+        return Number((((value - min) / (max - min)) * 100).toFixed(4));
+    }
+});
+/**
+ * Combobox Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const comboboxes = Array.from(document.querySelectorAll('[data-combobox]'));
+
+    if (comboboxes.length === 0) {
+        return;
+    }
+
+    let openCombobox = null;
+
+    comboboxes.forEach((combobox, index) => {
+        if (combobox.dataset.comboboxBound === 'true') {
+            return;
+        }
+
+        combobox.dataset.comboboxBound = 'true';
+
+        const input = combobox.querySelector('[data-combobox-input]');
+        const panel = combobox.querySelector('[data-combobox-panel]');
+        const list = panel?.querySelector('.combobox-list');
+        const valueField = combobox.querySelector('[data-combobox-value]');
+        const clearButton = combobox.querySelector('[data-combobox-clear]');
+        const emptyState = combobox.querySelector('.combobox-empty');
+        const options = Array.from(combobox.querySelectorAll('[data-combobox-option]'));
+
+        if (!input || !panel || !list || !clearButton || options.length === 0) {
+            return;
+        }
+
+        const listId = list.id || `comboboxList${index + 1}`;
+        let selectedOption = options.find(option => option.getAttribute('aria-selected') === 'true') || null;
+        let activeOption = selectedOption;
+
+        list.id = listId;
+        list.setAttribute('role', 'listbox');
+        input.setAttribute('role', 'combobox');
+        input.setAttribute('aria-controls', listId);
+        input.setAttribute('aria-expanded', 'false');
+        input.setAttribute('aria-autocomplete', 'list');
+        input.setAttribute('autocomplete', 'off');
+
+        options.forEach((option, optionIndex) => {
+            option.id = option.id || `${listId}-option-${optionIndex + 1}`;
+            option.addEventListener('click', () => {
+                selectOption(option);
+                closeComboboxPanel(combobox, false);
+                input.focus();
+            });
+        });
+
+        combobox._closeCombobox = restoreSelection => {
+            closeComboboxPanel(combobox, restoreSelection);
+        };
+
+        syncSelectedOption(true);
+        updateFilter('');
+
+        input.addEventListener('focus', () => {
+            openComboboxPanel(combobox, false);
+        });
+
+        input.addEventListener('click', () => {
+            openComboboxPanel(combobox, false);
+        });
+
+        input.addEventListener('input', () => {
+            selectedOption = null;
+            syncSelectedOption(false);
+            openComboboxPanel(combobox, false);
+            updateFilter(input.value.trim());
+        });
+
+        input.addEventListener('keydown', event => {
+            const visibleOptions = getVisibleOptions();
+
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                openComboboxPanel(combobox, false);
+                if (visibleOptions.length === 0) {
+                    return;
+                }
+                const currentIndex = visibleOptions.indexOf(activeOption);
+                const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % visibleOptions.length;
+                setActiveOption(visibleOptions[nextIndex]);
+            }
+
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                openComboboxPanel(combobox, false);
+                if (visibleOptions.length === 0) {
+                    return;
+                }
+                const currentIndex = visibleOptions.indexOf(activeOption);
+                const nextIndex = currentIndex === -1 ? visibleOptions.length - 1 : (currentIndex - 1 + visibleOptions.length) % visibleOptions.length;
+                setActiveOption(visibleOptions[nextIndex]);
+            }
+
+            if (event.key === 'Home') {
+                if (!combobox.classList.contains('is-open')) {
+                    return;
+                }
+                event.preventDefault();
+                setActiveOption(visibleOptions[0] || null);
+            }
+
+            if (event.key === 'End') {
+                if (!combobox.classList.contains('is-open')) {
+                    return;
+                }
+                event.preventDefault();
+                setActiveOption(visibleOptions[visibleOptions.length - 1] || null);
+            }
+
+            if (event.key === 'Enter') {
+                if (!combobox.classList.contains('is-open') || !activeOption) {
+                    return;
+                }
+                event.preventDefault();
+                selectOption(activeOption);
+                closeComboboxPanel(combobox, false);
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeComboboxPanel(combobox, true);
+            }
+
+            if (event.key === 'Tab') {
+                closeComboboxPanel(combobox, true);
+            }
+        });
+
+        clearButton.addEventListener('click', event => {
+            event.preventDefault();
+            clearSelection(true);
+            openComboboxPanel(combobox, false);
+            input.focus();
+        });
+
+        function openComboboxPanel(currentCombobox, focusFirstOption) {
+            if (openCombobox && openCombobox !== currentCombobox) {
+                openCombobox._closeCombobox?.(true);
+            }
+
+            currentCombobox.classList.add('is-open');
+            panel.hidden = false;
+            input.setAttribute('aria-expanded', 'true');
+            openCombobox = currentCombobox;
+            updateFilter(input.value.trim());
+
+            if (focusFirstOption) {
+                setActiveOption(getVisibleOptions()[0] || null);
+            }
+        }
+
+        function closeComboboxPanel(currentCombobox, restoreSelection) {
+            currentCombobox.classList.remove('is-open');
+            panel.hidden = true;
+            input.setAttribute('aria-expanded', 'false');
+            setActiveOption(null);
+            updateFilter('');
+
+            if (restoreSelection) {
+                input.value = selectedOption ? getOptionLabel(selectedOption) : '';
+            }
+
+            updateClearState();
+
+            if (openCombobox === currentCombobox) {
+                openCombobox = null;
+            }
+        }
+
+        function selectOption(option) {
+            selectedOption = option;
+            input.value = getOptionLabel(option);
+            syncSelectedOption(false);
+        }
+
+        function clearSelection(clearInput) {
+            selectedOption = null;
+            activeOption = null;
+            options.forEach(option => {
+                option.setAttribute('aria-selected', 'false');
+            });
+            if (valueField) {
+                valueField.value = '';
+            }
+            combobox.classList.remove('has-value');
+            if (clearInput) {
+                input.value = '';
+            }
+            updateClearState();
+            updateFilter(input.value.trim());
+        }
+
+        function syncSelectedOption(restoreInput) {
+            options.forEach(option => {
+                option.setAttribute('aria-selected', option === selectedOption ? 'true' : 'false');
+            });
+
+            if (valueField) {
+                valueField.value = selectedOption ? (selectedOption.dataset.value || getOptionLabel(selectedOption)) : '';
+            }
+
+            combobox.classList.toggle('has-value', Boolean(selectedOption));
+
+            if (restoreInput) {
+                input.value = selectedOption ? getOptionLabel(selectedOption) : '';
+            }
+
+            updateClearState();
+        }
+
+        function updateFilter(query) {
+            const normalizedQuery = query.trim().toLowerCase();
+
+            options.forEach(option => {
+                const matches = normalizedQuery === '' || getOptionLabel(option).toLowerCase().includes(normalizedQuery);
+                option.hidden = !matches;
+            });
+
+            const visibleOptions = getVisibleOptions();
+            if (emptyState) {
+                emptyState.hidden = visibleOptions.length !== 0;
+            }
+
+            const nextActiveOption = visibleOptions.includes(activeOption)
+                ? activeOption
+                : (visibleOptions.includes(selectedOption) ? selectedOption : (visibleOptions[0] || null));
+
+            setActiveOption(nextActiveOption);
+        }
+
+        function updateClearState() {
+            clearButton.disabled = input.value.trim() === '' && (!valueField || valueField.value === '');
+        }
+
+        function setActiveOption(option) {
+            activeOption = option;
+
+            options.forEach(currentOption => {
+                currentOption.classList.toggle('is-active', currentOption === option && !currentOption.hidden);
+            });
+
+            if (option && !option.hidden) {
+                input.setAttribute('aria-activedescendant', option.id);
+                option.scrollIntoView({ block: 'nearest' });
+                return;
+            }
+
+            input.removeAttribute('aria-activedescendant');
+        }
+
+        function getVisibleOptions() {
+            return options.filter(option => !option.hidden && option.getAttribute('aria-disabled') !== 'true');
+        }
+
+        function getOptionLabel(option) {
+            return option.textContent.replace(/\s+/g, ' ').trim();
+        }
+    });
+
+    document.addEventListener('click', event => {
+        if (!openCombobox || openCombobox.contains(event.target)) {
+            return;
+        }
+
+        openCombobox._closeCombobox?.(true);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !openCombobox) {
+            return;
+        }
+
+        openCombobox._closeCombobox?.(true);
+        openCombobox.querySelector('[data-combobox-input]')?.focus();
+    });
+});
+/**
  * Pagination Component Logic
  */
 
@@ -1504,6 +1874,103 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+/**
+ * Data Table Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-table]').forEach(tableWrapper => {
+        if (tableWrapper.dataset.tableBound === 'true') {
+            return;
+        }
+
+        tableWrapper.dataset.tableBound = 'true';
+
+        const table = tableWrapper.querySelector('.data-table-table');
+        const tableBody = table?.tBodies?.[0];
+        const sortButtons = Array.from(tableWrapper.querySelectorAll('[data-table-sort]'));
+
+        if (!table || !tableBody || sortButtons.length === 0) {
+            return;
+        }
+
+        sortButtons.forEach(button => {
+            const heading = button.closest('.data-table-heading');
+            if (heading && !heading.hasAttribute('aria-sort')) {
+                heading.setAttribute('aria-sort', 'none');
+            }
+
+            button.addEventListener('click', () => {
+                const currentHeading = button.closest('.data-table-heading');
+                if (!currentHeading) {
+                    return;
+                }
+
+                const currentDirection = currentHeading.getAttribute('aria-sort') === 'ascending' ? 'ascending' : 'descending';
+                const nextDirection = currentDirection === 'ascending' ? 'descending' : 'ascending';
+                sortRows(currentHeading, nextDirection);
+            });
+        });
+
+        const activeHeading = sortButtons
+            .map(button => button.closest('.data-table-heading'))
+            .find(heading => heading && heading.getAttribute('aria-sort') && heading.getAttribute('aria-sort') !== 'none');
+
+        if (activeHeading) {
+            sortRows(activeHeading, activeHeading.getAttribute('aria-sort'));
+        }
+
+        function sortRows(activeHeading, direction) {
+            const columnIndex = activeHeading.cellIndex;
+            const rows = Array.from(tableBody.rows);
+
+            rows.sort((firstRow, secondRow) => {
+                const firstValue = getCellValue(firstRow, columnIndex);
+                const secondValue = getCellValue(secondRow, columnIndex);
+                return compareCellValues(firstValue, secondValue, direction);
+            });
+
+            rows.forEach(row => {
+                tableBody.appendChild(row);
+            });
+
+            sortButtons.forEach(button => {
+                const heading = button.closest('.data-table-heading');
+                if (!heading) {
+                    return;
+                }
+
+                heading.setAttribute('aria-sort', heading === activeHeading ? direction : 'none');
+            });
+        }
+
+        function getCellValue(row, columnIndex) {
+            const cell = row.cells[columnIndex];
+            if (!cell) {
+                return '';
+            }
+
+            return (cell.dataset.sortValue || cell.textContent || '').replace(/\s+/g, ' ').trim();
+        }
+
+        function compareCellValues(firstValue, secondValue, direction) {
+            const firstNumeric = Number(firstValue.replace(/[^0-9.-]/g, ''));
+            const secondNumeric = Number(secondValue.replace(/[^0-9.-]/g, ''));
+            const bothNumeric = !Number.isNaN(firstNumeric)
+                && !Number.isNaN(secondNumeric)
+                && /[0-9]/.test(firstValue)
+                && /[0-9]/.test(secondValue);
+
+            if (bothNumeric) {
+                return direction === 'ascending' ? firstNumeric - secondNumeric : secondNumeric - firstNumeric;
+            }
+
+            return direction === 'ascending'
+                ? firstValue.localeCompare(secondValue, undefined, { numeric: true, sensitivity: 'base' })
+                : secondValue.localeCompare(firstValue, undefined, { numeric: true, sensitivity: 'base' });
+        }
+    });
+});
 /**
  * Date Picker Component Logic
  */
@@ -2027,7 +2494,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (state.rangeStart && state.rangeEnd) {
             const rangeLabel = `${summaryFormatter.format(state.rangeStart)} - ${summaryFormatter.format(state.rangeEnd)}`;
-            return presetLabel ? `${presetLabel} · ${rangeLabel}` : `Selected range: ${rangeLabel}`;
+            return presetLabel ? `${presetLabel} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· ${rangeLabel}` : `Selected range: ${rangeLabel}`;
         }
 
         if (state.rangeStart) {
@@ -2108,6 +2575,114 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+/**
+ * Drawer Sheet Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const triggers = Array.from(document.querySelectorAll('[data-drawer-target]'));
+    const drawers = Array.from(document.querySelectorAll('.drawer-sheet'));
+
+    if (triggers.length === 0 || drawers.length === 0) {
+        return;
+    }
+
+    let openDrawer = null;
+
+    triggers.forEach(trigger => {
+        const targetId = trigger.dataset.drawerTarget;
+        if (!targetId) {
+            return;
+        }
+
+        trigger.setAttribute('aria-controls', targetId);
+        trigger.setAttribute('aria-expanded', 'false');
+
+        trigger.addEventListener('click', () => {
+            const drawer = drawers.find(item => item.id === targetId);
+            if (!drawer) {
+                return;
+            }
+
+            openDrawerSheet(drawer, trigger);
+        });
+    });
+
+    drawers.forEach(drawer => {
+        drawer.querySelectorAll('[data-drawer-close]').forEach(button => {
+            button.addEventListener('click', () => {
+                closeDrawerSheet(drawer, true);
+            });
+        });
+
+        drawer.addEventListener('click', event => {
+            if (event.target === drawer) {
+                closeDrawerSheet(drawer, true);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !openDrawer) {
+            return;
+        }
+
+        closeDrawerSheet(openDrawer, true);
+    });
+
+    function syncTriggerState(targetId, isOpen) {
+        triggers
+            .filter(trigger => trigger.dataset.drawerTarget === targetId)
+            .forEach(trigger => {
+                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+    }
+
+    function syncBodyLock() {
+        document.body.classList.toggle('drawer-sheet-open', drawers.some(drawer => drawer.classList.contains('is-open')));
+    }
+
+    function openDrawerSheet(drawer, trigger) {
+        drawers.forEach(otherDrawer => {
+            if (otherDrawer !== drawer) {
+                closeDrawerSheet(otherDrawer, false);
+            }
+        });
+
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawer._lastTrigger = trigger;
+        openDrawer = drawer;
+        syncTriggerState(drawer.id, true);
+        syncBodyLock();
+
+        requestAnimationFrame(() => {
+            const initialFocus = drawer.querySelector('[data-drawer-initial-focus]')
+                || drawer.querySelector('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+
+            initialFocus?.focus();
+        });
+    }
+
+    function closeDrawerSheet(drawer, restoreFocus) {
+        if (!drawer) {
+            return;
+        }
+
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        syncTriggerState(drawer.id, false);
+        syncBodyLock();
+
+        if (openDrawer === drawer) {
+            openDrawer = drawers.find(item => item.classList.contains('is-open')) || null;
+        }
+
+        if (restoreFocus && drawer._lastTrigger) {
+            drawer._lastTrigger.focus();
+        }
+    }
+});
 /**
  * Search Overlay Component Logic
  */

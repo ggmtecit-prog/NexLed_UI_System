@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2039,7 +2039,110 @@
 
                 </section>
 
-                                <section id="toast">
+                                                <section id="drawer-sheet">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Drawer Sheet</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="w-full max-w-4xl mx-auto space-y-24">
+                            <div class="flex flex-wrap items-center justify-center gap-12">
+                                <button type="button" class="btn btn-primary btn-sm" data-drawer-target="drawerSheetFilters">
+                                    <i class="ri-sliders-line text-icon-lg" aria-hidden="true"></i>
+                                    Open Filter Sheet
+                                </button>
+                            </div>
+                            <p class="text-body-sm text-grey-primary text-center">Use a right-side sheet for transient filters and settings without replacing the persistent sidebar pattern.</p>
+                        </div>
+
+                        <div class="drawer-sheet drawer-sheet-right drawer-sheet-md" id="drawerSheetFilters" aria-hidden="true">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetFiltersTitle">
+                                <div class="drawer-sheet-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary mb-8">Workspace Filters</p>
+                                        <h2 id="drawerSheetFiltersTitle" class="modal-title">Refine live inventory</h2>
+                                    </div>
+                                    <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close filter sheet">
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div class="drawer-sheet-body custom-scrollbar">
+                                    <div class="space-y-12">
+                                        <label for="drawerFilterSearch" class="input-label">Search inventory</label>
+                                        <div class="input-icon-wrapper">
+                                            <span class="input-icon-area" aria-hidden="true">
+                                                <i class="ri-search-line text-icon-md"></i>
+                                            </span>
+                                            <input type="search" id="drawerFilterSearch" class="input-icon-field"
+                                                placeholder="Search a product, SKU, or profile" data-drawer-initial-focus>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-12">
+                                        <p class="input-label">View mode</p>
+                                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Drawer view mode">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="drawerSheetView" checked>
+                                                <span class="segmented-control-icon"><i class="ri-layout-grid-line text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">Grid</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="drawerSheetView">
+                                                <span class="segmented-control-icon"><i class="ri-list-check-2 text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">List</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="drawerSheetView">
+                                                <span class="segmented-control-icon"><i class="ri-layout-masonry-line text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">Board</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-16">
+                                        <p class="input-label">Quick filters</p>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch" checked>
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Only active references</span>
+                                        </label>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch">
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Show low stock items</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="space-y-12">
+                                        <p class="input-label">Current summary</p>
+                                        <dl class="list list-spec list-md">
+                                            <div class="list-item">
+                                                <dt class="list-key">Region</dt>
+                                                <dd class="list-value">EU Warehouse</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Priority</dt>
+                                                <dd class="list-value">Fast movers</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Window</dt>
+                                                <dd class="list-value">3 to 12 days</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="drawer-sheet-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-drawer-close>Cancel</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-drawer-close>Apply filters</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+<section id="toast">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Toast</h2>
                     </div>

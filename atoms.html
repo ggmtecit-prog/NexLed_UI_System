@@ -686,6 +686,108 @@
 
                 </section>
 
+                <section id="range-slider">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Range Slider</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Small</h3>
+                                <div class="range-slider range-slider-sm" data-range-slider>
+                                    <div class="range-slider-values">
+                                        <span class="text-body-xs text-grey-primary">Min <strong data-range-slider-start-output>12</strong>V</span>
+                                        <span class="text-body-xs text-grey-primary">Max <strong data-range-slider-end-output>36</strong>V</span>
+                                    </div>
+                                    <div class="range-slider-track">
+                                        <span class="range-slider-selection" aria-hidden="true"></span>
+                                        <input type="range" class="range-slider-input" min="0" max="60" value="12"
+                                            data-range-slider-start aria-label="Small minimum voltage">
+                                        <input type="range" class="range-slider-input" min="0" max="60" value="36"
+                                            data-range-slider-end aria-label="Small maximum voltage">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Medium</h3>
+                                <div class="range-slider range-slider-md" data-range-slider>
+                                    <div class="range-slider-values">
+                                        <span class="text-body-sm text-grey-primary">Min <strong data-range-slider-start-output>180</strong>W</span>
+                                        <span class="text-body-sm text-grey-primary">Max <strong data-range-slider-end-output>620</strong>W</span>
+                                    </div>
+                                    <div class="range-slider-track">
+                                        <span class="range-slider-selection" aria-hidden="true"></span>
+                                        <input type="range" class="range-slider-input" min="0" max="900" value="180"
+                                            data-range-slider-start aria-label="Medium minimum wattage">
+                                        <input type="range" class="range-slider-input" min="0" max="900" value="620"
+                                            data-range-slider-end aria-label="Medium maximum wattage">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Large</h3>
+                                <div class="range-slider range-slider-lg" data-range-slider>
+                                    <div class="range-slider-values">
+                                        <span class="text-body text-grey-primary">Min <strong data-range-slider-start-output>4</strong>d</span>
+                                        <span class="text-body text-grey-primary">Max <strong data-range-slider-end-output>18</strong>d</span>
+                                    </div>
+                                    <div class="range-slider-track">
+                                        <span class="range-slider-selection" aria-hidden="true"></span>
+                                        <input type="range" class="range-slider-input" min="0" max="30" value="4"
+                                            data-range-slider-start aria-label="Large minimum lead time">
+                                        <input type="range" class="range-slider-input" min="0" max="30" value="18"
+                                            data-range-slider-end aria-label="Large maximum lead time">
+                                    </div>
+                                </div>
+
+                                <div class="range-slider range-slider-lg" data-range-slider>
+                                    <div class="range-slider-values">
+                                        <span class="text-body text-grey-primary">Locked <strong data-range-slider-start-output>6</strong>d</span>
+                                        <span class="text-body text-grey-primary">Window <strong data-range-slider-end-output>12</strong>d</span>
+                                    </div>
+                                    <div class="range-slider-track">
+                                        <span class="range-slider-selection" aria-hidden="true"></span>
+                                        <input type="range" class="range-slider-input" min="0" max="30" value="6"
+                                            data-range-slider-start aria-label="Locked minimum lead time" disabled>
+                                        <input type="range" class="range-slider-input" min="0" max="30" value="12"
+                                            data-range-slider-end aria-label="Locked maximum lead time" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-4xl p-24">
+                            <div class="range-slider range-slider-md" data-range-slider>
+                                <div class="flex flex-wrap items-start justify-between gap-12">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary uppercase">Live Filter</p>
+                                        <h3 class="text-body-lg font-semibold text-black">Project budget window</h3>
+                                    </div>
+                                    <span class="badge badge-primary badge-md">Dual range</span>
+                                </div>
+
+                                <div class="range-slider-values">
+                                    <span class="text-body-sm text-grey-primary">Minimum <strong data-range-slider-start-output>250</strong> EUR</span>
+                                    <span class="text-body-sm text-grey-primary">Maximum <strong data-range-slider-end-output>900</strong> EUR</span>
+                                </div>
+
+                                <div class="range-slider-track">
+                                    <span class="range-slider-selection" aria-hidden="true"></span>
+                                    <input type="range" class="range-slider-input" min="0" max="1200" value="250"
+                                        data-range-slider-start aria-label="Minimum project budget">
+                                    <input type="range" class="range-slider-input" min="0" max="1200" value="900"
+                                        data-range-slider-end aria-label="Maximum project budget">
+                                </div>
+
+                                <p class="text-body-sm text-grey-primary">Use a dual-thumb window to narrow budgets, wattage, or delivery thresholds without leaving the current screen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
 <section id="hyperlinks">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Hyperlinks</h2>

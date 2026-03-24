@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1135,7 +1135,118 @@
                     </div>
                 </section>
 
-                <section id="file-uploader">
+                                <section id="combobox">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Combobox</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Small</h3>
+                                <div class="combobox combobox-sm w-full" data-combobox>
+                                    <div class="combobox-control">
+                                        <span class="input-icon-area" aria-hidden="true"><i class="ri-search-line text-icon-md"></i></span>
+                                        <input type="text" id="comboboxFinishInput" class="combobox-input" data-combobox-input placeholder="Search a finish" role="combobox" aria-autocomplete="list" aria-expanded="false">
+                                        <input type="hidden" name="finishFamily" data-combobox-value>
+                                        <button type="button" class="combobox-clear" data-combobox-clear aria-label="Clear finish selection" disabled>
+                                            <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="combobox-panel" data-combobox-panel hidden>
+                                        <div id="comboboxFinishList" class="combobox-list custom-scrollbar" role="listbox" aria-label="Finish options">
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="matte-black">Matte Black</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="satin-white">Satin White</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="brushed-steel">Brushed Steel</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="warm-sand">Warm Sand</button>
+                                        </div>
+                                        <p class="combobox-empty text-body-xs" hidden>No matching finishes found.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Medium</h3>
+                                <div class="combobox combobox-md w-full" data-combobox>
+                                    <div class="combobox-control">
+                                        <span class="input-icon-area" aria-hidden="true"><i class="ri-search-line text-icon-md"></i></span>
+                                        <input type="text" id="comboboxChannelInput" class="combobox-input" data-combobox-input placeholder="Search a channel" role="combobox" aria-autocomplete="list" aria-expanded="false">
+                                        <input type="hidden" name="channelFamily" data-combobox-value>
+                                        <button type="button" class="combobox-clear" data-combobox-clear aria-label="Clear channel selection" disabled>
+                                            <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="combobox-panel" data-combobox-panel hidden>
+                                        <div id="comboboxChannelList" class="combobox-list custom-scrollbar" role="listbox" aria-label="Channel options">
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="indoor">Indoor</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="retail">Retail</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="industrial">Industrial</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="outdoor">Outdoor</button>
+                                        </div>
+                                        <p class="combobox-empty text-body-xs" hidden>No matching channels found.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Large</h3>
+                                <div class="combobox combobox-lg w-full" data-combobox>
+                                    <div class="combobox-control">
+                                        <span class="input-icon-area" aria-hidden="true"><i class="ri-search-line text-icon-md"></i></span>
+                                        <input type="text" id="comboboxDocsInput" class="combobox-input" data-combobox-input placeholder="Search a resource" role="combobox" aria-autocomplete="list" aria-expanded="false">
+                                        <input type="hidden" name="resourceFamily" data-combobox-value>
+                                        <button type="button" class="combobox-clear" data-combobox-clear aria-label="Clear resource selection" disabled>
+                                            <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="combobox-panel" data-combobox-panel hidden>
+                                        <div id="comboboxDocsList" class="combobox-list custom-scrollbar" role="listbox" aria-label="Documentation options">
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="technical-guides">Technical Guides</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="design-files">Design Files</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="warranty-kits">Warranty Kits</button>
+                                            <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="downloads">Downloads</button>
+                                        </div>
+                                        <p class="combobox-empty text-body-xs" hidden>No matching resources found.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-4xl p-24">
+                            <div class="combobox combobox-md" data-combobox>
+                                <div class="flex flex-wrap items-start justify-between gap-12">
+                                    <div>
+                                        <label for="comboboxLiveInput" class="input-label ml-12">Live Product Finder</label>
+                                        <p class="input-hint ml-12">Type a few letters to filter the static options and confirm a single result.</p>
+                                    </div>
+                                    <span class="badge badge-primary badge-md">Single select</span>
+                                </div>
+
+                                <div class="combobox-control">
+                                    <span class="input-icon-area" aria-hidden="true"><i class="ri-search-line text-icon-md"></i></span>
+                                    <input type="text" id="comboboxLiveInput" class="combobox-input" data-combobox-input placeholder="Search a product family" role="combobox" aria-autocomplete="list" aria-expanded="false">
+                                    <input type="hidden" name="productFamily" data-combobox-value>
+                                    <button type="button" class="combobox-clear" data-combobox-clear aria-label="Clear product family selection" disabled>
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div class="combobox-panel" data-combobox-panel hidden>
+                                    <div id="comboboxLiveList" class="combobox-list custom-scrollbar" role="listbox" aria-label="Product family options">
+                                        <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="profile-24-slim">Profile 24 Slim</button>
+                                        <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="wall-washer-pro">Wall Washer Pro</button>
+                                        <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="cabinet-mini">Cabinet Mini</button>
+                                        <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="outdoor-guard">Outdoor Guard</button>
+                                        <button type="button" class="combobox-option" role="option" aria-selected="false" data-combobox-option data-value="recessed-frame">Recessed Frame</button>
+                                    </div>
+                                    <p class="combobox-empty text-body-xs" hidden>No matching product families found.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+<section id="file-uploader">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">File Uploader</h2>
                     </div>
@@ -1711,7 +1822,189 @@
                     </div>
 
                 </section>
-                                <section id="pagination">
+                                                <section id="data-table">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Data Table</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="data-table data-table-md w-full max-w-6xl mx-auto" data-table>
+                            <div class="flex flex-wrap items-start justify-between gap-12">
+                                <div>
+                                    <p class="text-body-xs text-grey-primary uppercase">Sortable inventory</p>
+                                    <h3 class="text-body-lg font-semibold text-black">NexLed reference products</h3>
+                                </div>
+                                <span class="badge badge-neutral badge-md">Based on list rhythm</span>
+                            </div>
+
+                            <div class="data-table-wrap custom-scrollbar">
+                                <table class="data-table-table">
+                                    <thead class="data-table-head">
+                                        <tr class="data-table-row">
+                                            <th class="data-table-heading" scope="col" aria-sort="ascending">
+                                                <button type="button" class="data-table-sort" data-table-sort="product">
+                                                    <span>Product</span>
+                                                    <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                            <th class="data-table-heading" scope="col" aria-sort="none">
+                                                <button type="button" class="data-table-sort" data-table-sort="category">
+                                                    <span>Category</span>
+                                                    <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                            <th class="data-table-heading" scope="col" aria-sort="none">
+                                                <button type="button" class="data-table-sort" data-table-sort="lead-time">
+                                                    <span>Lead Time</span>
+                                                    <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                            <th class="data-table-heading" scope="col" aria-sort="none">
+                                                <button type="button" class="data-table-sort" data-table-sort="stock">
+                                                    <span>Stock</span>
+                                                    <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                            <th class="data-table-heading" scope="col" aria-sort="none">
+                                                <button type="button" class="data-table-sort" data-table-sort="status">
+                                                    <span>Status</span>
+                                                    <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                            <th class="data-table-heading" scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="NX Guide Mini">
+                                                <div class="space-y-4">
+                                                    <p class="text-body-sm font-semibold text-black">NX Guide Mini</p>
+                                                    <p class="text-body-xs text-grey-primary">SKU NX-GM-240</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Indoor Profile</td>
+                                            <td class="data-table-cell">3 days</td>
+                                            <td class="data-table-cell">48 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview NX Guide Mini">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Strip 24 Flex">
+                                                <div class="space-y-4">
+                                                    <p class="text-body-sm font-semibold text-black">Strip 24 Flex</p>
+                                                    <p class="text-body-xs text-grey-primary">SKU ST-24-FLX</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Linear Tape</td>
+                                            <td class="data-table-cell">12 days</td>
+                                            <td class="data-table-cell">16 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-warning badge-md">Limited</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Strip 24 Flex">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Wall Washer Pro">
+                                                <div class="space-y-4">
+                                                    <p class="text-body-sm font-semibold text-black">Wall Washer Pro</p>
+                                                    <p class="text-body-xs text-grey-primary">SKU WW-PRO-90</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Architectural</td>
+                                            <td class="data-table-cell">7 days</td>
+                                            <td class="data-table-cell">31 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-info badge-md">Review</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Wall Washer Pro">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Outdoor Guard">
+                                                <div class="space-y-4">
+                                                    <p class="text-body-sm font-semibold text-black">Outdoor Guard</p>
+                                                    <p class="text-body-xs text-grey-primary">SKU OG-67-EXT</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Exterior Kit</td>
+                                            <td class="data-table-cell">18 days</td>
+                                            <td class="data-table-cell">9 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-danger badge-md">Low</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Outdoor Guard">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-sm">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="text-body-sm text-grey-primary">The table keeps semantic markup, sortable headers, and horizontal overflow instead of collapsing into cards on smaller screens.</p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="empty-state">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Empty State</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="empty-state empty-state-lg w-full max-w-4xl mx-auto">
+                            <span class="empty-state-icon">
+                                <i class="ri-inbox-archive-line text-icon-lg" aria-hidden="true"></i>
+                            </span>
+                            <div class="empty-state-copy">
+                                <h3 class="empty-state-title">No items are ready for review</h3>
+                                <p class="empty-state-text">Create a new import, assign a product family, or search the documentation to seed this workspace with a first result.</p>
+                            </div>
+                            <div class="empty-state-actions">
+                                <button type="button" class="btn btn-primary btn-sm">Create Import</button>
+                                <button type="button" class="btn btn-secondary btn-sm">Browse Docs</button>
+                            </div>
+                        </div>
+
+                        <div class="card max-w-2xl">
+                            <div class="card-body">
+                                <div class="empty-state empty-state-compact empty-state-sm">
+                                    <span class="empty-state-icon">
+                                        <i class="ri-search-eye-line text-icon-lg" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="empty-state-copy">
+                                        <h3 class="empty-state-title">No saved searches yet</h3>
+                                        <p class="empty-state-text">Start a filtered search to pin frequent combinations for indoor, retail, and exterior projects.</p>
+                                    </div>
+                                    <div class="empty-state-actions">
+                                        <button type="button" class="btn btn-secondary btn-sm">Start Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+<section id="pagination">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Pagination</h2>
                     </div>
@@ -2923,7 +3216,99 @@
 
             </section>
 
-            <section id="tabs">
+                        <section id="segmented-control">
+                <div class="panel-wrap-head">
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Segmented Control</h2>
+                </div>
+
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Small</h3>
+                            <div class="segmented-control segmented-control-sm" role="radiogroup" aria-label="Small workspace mode">
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode" checked>
+                                    <span class="segmented-control-label">Overview</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
+                                    <span class="segmented-control-label">Specs</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
+                                    <span class="segmented-control-label">Files</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Medium</h3>
+                            <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Medium workspace mode">
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
+                                    <span class="segmented-control-label">Overview</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode" checked>
+                                    <span class="segmented-control-label">Pricing</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
+                                    <span class="segmented-control-label">Shipping</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="size-grid-column">
+                            <h3 class="size-grid-column-title">Large</h3>
+                            <div class="segmented-control segmented-control-lg" role="radiogroup" aria-label="Large workspace mode">
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode">
+                                    <span class="segmented-control-label">Overview</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode" checked>
+                                    <span class="segmented-control-label">Variants</span>
+                                </label>
+                                <label class="segmented-control-option">
+                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode" disabled>
+                                    <span class="segmented-control-label">Archived</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl p-24">
+                        <div class="flex flex-wrap items-center justify-between gap-16 mb-16">
+                            <div>
+                                <p class="text-body-xs text-grey-primary uppercase">Icon + text</p>
+                                <h3 class="text-body-lg font-semibold text-black">Channel switcher</h3>
+                            </div>
+                            <span class="badge badge-neutral badge-md">Radio driven</span>
+                        </div>
+
+                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Channel switcher">
+                            <label class="segmented-control-option">
+                                <input class="segmented-control-input" type="radio" name="segmentedChannel" checked>
+                                <span class="segmented-control-icon"><i class="ri-layout-grid-line text-icon-md" aria-hidden="true"></i></span>
+                                <span class="segmented-control-label">Grid</span>
+                            </label>
+                            <label class="segmented-control-option">
+                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
+                                <span class="segmented-control-icon"><i class="ri-list-check-2 text-icon-md" aria-hidden="true"></i></span>
+                                <span class="segmented-control-label">List</span>
+                            </label>
+                            <label class="segmented-control-option">
+                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
+                                <span class="segmented-control-icon"><i class="ri-timeline-view text-icon-md" aria-hidden="true"></i></span>
+                                <span class="segmented-control-label">Timeline</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+<section id="tabs">
                 <div class="panel-wrap-head">
                     <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Tabs</h2>
                 </div>

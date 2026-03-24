@@ -31,6 +31,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **CHECKBOXES** (4 classes)
 - **RADIO BUTTONS** (4 classes)
 - **TOGGLE** (8 classes)
+- **RANGE SLIDER** (8 classes)
 - **REUSABLE SIZE GRID** (20 classes)
 - **QUANTITY SELECTOR** (5 classes)
 - **HYPERLINKS** (9 classes)
@@ -38,6 +39,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **CARDS** (18 classes)
 - **SIDEBAR** (1 classes)
 - **ACCORDION** (10 classes)
+- **COMBOBOX** (11 classes)
 - **DROPDOWN** (28 classes)
 - **FLYOUT** (14 classes)
 - **BREADCRUMBS** (3 classes)
@@ -46,7 +48,10 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **STEPPER** (4 classes)
 - **UPLOADER** (8 classes)
 - **LIST** (6 classes)
+- **DATA TABLE** (12 classes)
+- **EMPTY STATE** (10 classes)
 - **PAGINATION** (6 classes)
+- **DRAWER SHEET** (10 classes)
 - **MODAL** (8 classes)
 - **SEARCH OVERLAY** (10 classes)
 - **TOAST** (13 classes)
@@ -63,6 +68,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **MATERIAL SELECTOR** (10 classes)
 - **CAROUSEL** (21 classes)
 - **FOOTER** (17 classes)
+- **SEGMENTED CONTROL** (8 classes)
 - **TABS** (5 classes)
 
 ---
@@ -322,6 +328,27 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ---
 
+## RANGE SLIDER
+
+### Classes
+
+- `.range-slider`
+- `.range-slider-input`
+- `.range-slider-lg`
+- `.range-slider-md`
+- `.range-slider-selection`
+- `.range-slider-sm`
+- `.range-slider-track`
+- `.range-slider-values`
+
+### States
+
+- `:hover`
+- `:focus-visible`
+- `:disabled`
+
+---
+
 ## REUSABLE SIZE GRID
 
 ### Classes
@@ -468,6 +495,33 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:disabled`
 - `[aria-disabled]`
 - `[aria-expanded]`
+
+---
+
+## COMBOBOX
+
+### Classes
+
+- `.combobox`
+- `.combobox-clear`
+- `.combobox-control`
+- `.combobox-empty`
+- `.combobox-input`
+- `.combobox-lg`
+- `.combobox-list`
+- `.combobox-md`
+- `.combobox-option`
+- `.combobox-panel`
+- `.combobox-sm`
+
+### States
+
+- `:hover`
+- `.is-open`
+- `:focus-visible`
+- `:disabled`
+- `.is-active`
+- `[aria-selected]`
 
 ---
 
@@ -661,6 +715,47 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ---
 
+## DATA TABLE
+
+### Classes
+
+- `.data-table`
+- `.data-table-actions`
+- `.data-table-cell`
+- `.data-table-head`
+- `.data-table-heading`
+- `.data-table-lg`
+- `.data-table-md`
+- `.data-table-row`
+- `.data-table-sm`
+- `.data-table-sort`
+- `.data-table-table`
+- `.data-table-wrap`
+
+### States
+
+- `:hover`
+- `:focus-visible`
+
+---
+
+## EMPTY STATE
+
+### Classes
+
+- `.empty-state`
+- `.empty-state-actions`
+- `.empty-state-compact`
+- `.empty-state-copy`
+- `.empty-state-icon`
+- `.empty-state-lg`
+- `.empty-state-md`
+- `.empty-state-sm`
+- `.empty-state-text`
+- `.empty-state-title`
+
+---
+
 ## PAGINATION
 
 ### Classes
@@ -678,6 +773,27 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:focus-visible`
 - `:disabled`
 - `[aria-disabled]`
+
+---
+
+## DRAWER SHEET
+
+### Classes
+
+- `.drawer-sheet`
+- `.drawer-sheet-body`
+- `.drawer-sheet-close`
+- `.drawer-sheet-footer`
+- `.drawer-sheet-header`
+- `.drawer-sheet-lg`
+- `.drawer-sheet-md`
+- `.drawer-sheet-panel`
+- `.drawer-sheet-right`
+- `.drawer-sheet-sm`
+
+### States
+
+- `.is-open`
 
 ---
 
@@ -983,6 +1099,27 @@ Every component follows the pattern: `[component] [variant] [size]`
 ### States
 
 - `:hover`
+
+---
+
+## SEGMENTED CONTROL
+
+### Classes
+
+- `.segmented-control`
+- `.segmented-control-icon`
+- `.segmented-control-input`
+- `.segmented-control-label`
+- `.segmented-control-lg`
+- `.segmented-control-md`
+- `.segmented-control-option`
+- `.segmented-control-sm`
+
+### States
+
+- `:hover`
+- `:focus-visible`
+- `:disabled`
 
 ---
 
