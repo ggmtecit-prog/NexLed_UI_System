@@ -25,9 +25,11 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **BUTTONS** (19 classes)
 - **NAVIGATION BAR** (3 classes)
 - **BADGES** (9 classes)
+- **AVATAR** (9 classes)
 - **INPUTS** (13 classes)
 - **CHECKBOXES** (4 classes)
 - **RADIO BUTTONS** (4 classes)
+- **TOGGLE** (8 classes)
 - **REUSABLE SIZE GRID** (20 classes)
 - **QUANTITY SELECTOR** (5 classes)
 - **HYPERLINKS** (9 classes)
@@ -39,14 +41,20 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **FLYOUT** (14 classes)
 - **BREADCRUMBS** (3 classes)
 - **ANNOUNCEMENT BAR** (7 classes)
+- **ALERTS** (13 classes)
 - **STEPPER** (4 classes)
 - **UPLOADER** (8 classes)
 - **LIST** (6 classes)
+- **PAGINATION** (6 classes)
 - **MODAL** (8 classes)
+- **SEARCH OVERLAY** (8 classes)
+- **TOAST** (13 classes)
 - **LAYOUT** (4 classes)
 - **UTILITIES** (3 classes)
 - **PAGE HEADER** (1 classes)
 - **LOADING** (10 classes)
+- **PROGRESS** (8 classes)
+- **SKELETON** (9 classes)
 - **SPINNER** (6 classes)
 - **PANEL WRAPPERS** (6 classes)
 - **TEXT STYLE COMPONENT** (27 classes)
@@ -170,6 +178,22 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ---
 
+## AVATAR
+
+### Classes
+
+- `.avatar`
+- `.avatar-fallback`
+- `.avatar-lg`
+- `.avatar-md`
+- `.avatar-media`
+- `.avatar-neutral`
+- `.avatar-primary`
+- `.avatar-sm`
+- `.avatar-xl`
+
+---
+
 ## INPUTS
 
 ### Classes
@@ -231,6 +255,27 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:hover`
 - `:disabled`
 - `:focus-visible`
+
+---
+
+## TOGGLE
+
+### Classes
+
+- `.toggle`
+- `.toggle-input`
+- `.toggle-label`
+- `.toggle-lg`
+- `.toggle-md`
+- `.toggle-sm`
+- `.toggle-thumb`
+- `.toggle-track`
+
+### States
+
+- `:hover`
+- `:focus-visible`
+- `:disabled`
 
 ---
 
@@ -486,6 +531,30 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ---
 
+## ALERTS
+
+### Classes
+
+- `.alert`
+- `.alert-actions`
+- `.alert-copy`
+- `.alert-danger`
+- `.alert-icon`
+- `.alert-info`
+- `.alert-lg`
+- `.alert-md`
+- `.alert-sm`
+- `.alert-success`
+- `.alert-text`
+- `.alert-title`
+- `.alert-warning`
+
+### States
+
+- `:hover`
+
+---
+
 ## STEPPER
 
 ### Classes
@@ -549,6 +618,26 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ---
 
+## PAGINATION
+
+### Classes
+
+- `.pagination`
+- `.pagination-item`
+- `.pagination-link`
+- `.pagination-list`
+- `.pagination-next`
+- `.pagination-prev`
+
+### States
+
+- `:hover`
+- `:focus-visible`
+- `:disabled`
+- `[aria-disabled]`
+
+---
+
 ## MODAL
 
 ### Classes
@@ -568,6 +657,51 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:hover`
 - `:focus-visible`
 - `:disabled`
+
+---
+
+## SEARCH OVERLAY
+
+### Classes
+
+- `.search-overlay`
+- `.search-overlay-empty`
+- `.search-overlay-footer`
+- `.search-overlay-group`
+- `.search-overlay-header`
+- `.search-overlay-item`
+- `.search-overlay-panel`
+- `.search-overlay-results`
+
+### States
+
+- `.is-open`
+- `:hover`
+- `:focus-visible`
+
+---
+
+## TOAST
+
+### Classes
+
+- `.toast`
+- `.toast-actions`
+- `.toast-copy`
+- `.toast-danger`
+- `.toast-icon`
+- `.toast-info`
+- `.toast-md`
+- `.toast-sm`
+- `.toast-success`
+- `.toast-text`
+- `.toast-title`
+- `.toast-viewport`
+- `.toast-warning`
+
+### States
+
+- `.is-visible`
 
 ---
 
@@ -614,6 +748,37 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.spinner-lg`
 - `.spinner-md`
 - `.spinner-sm`
+
+---
+
+## PROGRESS
+
+### Classes
+
+- `.progress`
+- `.progress-danger`
+- `.progress-lg`
+- `.progress-md`
+- `.progress-primary`
+- `.progress-sm`
+- `.progress-success`
+- `.progress-warning`
+
+---
+
+## SKELETON
+
+### Classes
+
+- `.skeleton`
+- `.skeleton-avatar`
+- `.skeleton-block`
+- `.skeleton-button`
+- `.skeleton-lg`
+- `.skeleton-md`
+- `.skeleton-sm`
+- `.skeleton-text`
+- `.skeleton-title`
 
 ---
 

@@ -1438,3 +1438,252 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+/**
+ * Pagination Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-pagination]').forEach(pagination => {
+        if (pagination.dataset.paginationBound === 'true') {
+            return;
+        }
+
+        pagination.dataset.paginationBound = 'true';
+
+        const pageButtons = Array.from(pagination.querySelectorAll('[data-page]'));
+        const prevBtn = pagination.querySelector('[data-pagination-prev]');
+        const nextBtn = pagination.querySelector('[data-pagination-next]');
+
+        if (pageButtons.length === 0) {
+            return;
+        }
+
+        const getActiveIndex = () => {
+            const activeIndex = pageButtons.findIndex(button => button.getAttribute('aria-current') === 'page');
+            return activeIndex === -1 ? 0 : activeIndex;
+        };
+
+        const syncState = nextIndex => {
+            const safeIndex = Math.min(Math.max(nextIndex, 0), pageButtons.length - 1);
+
+            pageButtons.forEach((button, index) => {
+                if (index === safeIndex) {
+                    button.setAttribute('aria-current', 'page');
+                } else {
+                    button.removeAttribute('aria-current');
+                }
+            });
+
+            if (prevBtn) {
+                prevBtn.disabled = safeIndex === 0;
+                prevBtn.setAttribute('aria-disabled', safeIndex === 0 ? 'true' : 'false');
+            }
+
+            if (nextBtn) {
+                nextBtn.disabled = safeIndex === pageButtons.length - 1;
+                nextBtn.setAttribute('aria-disabled', safeIndex === pageButtons.length - 1 ? 'true' : 'false');
+            }
+        };
+
+        pageButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                syncState(index);
+            });
+        });
+
+        prevBtn?.addEventListener('click', () => {
+            syncState(getActiveIndex() - 1);
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            syncState(getActiveIndex() + 1);
+        });
+
+        syncState(getActiveIndex());
+    });
+});
+
+/**
+ * Search Overlay Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const triggers = Array.from(document.querySelectorAll('[data-search-overlay-target]'));
+    const overlays = Array.from(document.querySelectorAll('.search-overlay'));
+
+    if (triggers.length === 0 || overlays.length === 0) {
+        return;
+    }
+
+    triggers.forEach(trigger => {
+        const targetId = trigger.dataset.searchOverlayTarget;
+        if (!targetId) {
+            return;
+        }
+
+        trigger.setAttribute('aria-controls', targetId);
+        trigger.setAttribute('aria-expanded', 'false');
+
+        trigger.addEventListener('click', () => {
+            const overlay = document.getElementById(targetId);
+            if (!overlay) {
+                return;
+            }
+
+            openSearchOverlay(overlay, trigger);
+        });
+    });
+
+    overlays.forEach(overlay => {
+        overlay.querySelectorAll('[data-search-overlay-close]').forEach(button => {
+            button.addEventListener('click', () => {
+                closeSearchOverlay(overlay, true);
+            });
+        });
+
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay) {
+                closeSearchOverlay(overlay, true);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        const openOverlay = document.querySelector('.search-overlay.is-open');
+        if (!openOverlay) {
+            return;
+        }
+
+        closeSearchOverlay(openOverlay, true);
+    });
+
+    function syncTriggerState(targetId, isOpen) {
+        triggers
+            .filter(trigger => trigger.dataset.searchOverlayTarget === targetId)
+            .forEach(trigger => {
+                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+    }
+
+    function openSearchOverlay(overlay, trigger) {
+        const targetId = overlay.id;
+
+        overlays.forEach(otherOverlay => {
+            if (otherOverlay !== overlay) {
+                closeSearchOverlay(otherOverlay, false);
+            }
+        });
+
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay._lastTrigger = trigger;
+        document.body.style.overflow = 'hidden';
+        syncTriggerState(targetId, true);
+
+        requestAnimationFrame(() => {
+            overlay.querySelector('[data-search-overlay-input]')?.focus();
+        });
+    }
+
+    function closeSearchOverlay(overlay, restoreFocus) {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        syncTriggerState(overlay.id, false);
+
+        if (restoreFocus && overlay._lastTrigger) {
+            overlay._lastTrigger.focus();
+        }
+    }
+});
+
+/**
+ * Toast Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const triggers = Array.from(document.querySelectorAll('[data-toast-target]'));
+    const toasts = Array.from(document.querySelectorAll('.toast'));
+    const dismissDelay = 4000;
+    const hideDelay = 400;
+    const toastTimers = new Map();
+
+    if (triggers.length === 0 || toasts.length === 0) {
+        return;
+    }
+
+    toasts.forEach(toast => {
+        toast.hidden = true;
+    });
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const toast = document.getElementById(trigger.dataset.toastTarget || '');
+            if (!toast) {
+                return;
+            }
+
+            showToast(toast);
+        });
+    });
+
+    document.querySelectorAll('[data-toast-close]').forEach(button => {
+        button.addEventListener('click', () => {
+            const toast = button.closest('.toast');
+            if (!toast) {
+                return;
+            }
+
+            hideToast(toast);
+        });
+    });
+
+    function showToast(toast) {
+        clearToastTimers(toast);
+        toast.hidden = false;
+        toast.setAttribute('aria-hidden', 'false');
+
+        requestAnimationFrame(() => {
+            toast.classList.add('is-visible');
+        });
+
+        const dismissTimer = setTimeout(() => {
+            hideToast(toast);
+        }, dismissDelay);
+
+        toastTimers.set(toast, { dismissTimer, hideTimer: null });
+    }
+
+    function hideToast(toast) {
+        clearToastTimers(toast);
+        toast.classList.remove('is-visible');
+        toast.setAttribute('aria-hidden', 'true');
+
+        const hideTimer = setTimeout(() => {
+            toast.hidden = true;
+            toastTimers.delete(toast);
+        }, hideDelay);
+
+        toastTimers.set(toast, { dismissTimer: null, hideTimer });
+    }
+
+    function clearToastTimers(toast) {
+        const timers = toastTimers.get(toast);
+        if (!timers) {
+            return;
+        }
+
+        if (timers.dismissTimer) {
+            clearTimeout(timers.dismissTimer);
+        }
+
+        if (timers.hideTimer) {
+            clearTimeout(timers.hideTimer);
+        }
+    }
+});
