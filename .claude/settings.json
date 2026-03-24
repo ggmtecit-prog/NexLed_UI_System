@@ -12,7 +12,8 @@
       "Bash(xargs wc:*)",
       "Bash(xargs grep:*)",
       "Bash(node scripts/build-components-md.js)",
-      "Read(//g/O/ meu/ disco/Gonçalo/ Mendonça/01_Projetos/UI_SYSTEM/src/**)"
+      "Read(//g/O/ meu/ disco/Gonçalo/ Mendonça/01_Projetos/UI_SYSTEM/src/**)",
+      "Bash(grep -oE \"\\\\..[^{]*\\\\{[^}]*var\\\\\\(--[^}]*\\\\\\)\" \"/g/O meu disco/Gonçalo Mendonça/01_Projetos/UI_SYSTEM/src/nexled.css\")"
     ]
   }
 }

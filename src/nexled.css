@@ -26,6 +26,10 @@
   --color-link-visited: #4C1D95;
   --color-red-primary: #B1242F;
   --color-red-secondary: #C94A55;
+  --color-yellow-primary: #D97706;
+  --color-yellow-secondary: #F59E0B;
+  --color-info-primary: #2563EB;
+  --color-info-secondary: #3B82F6;
 
   --space-4: 4px;
   --space-8: 8px;
@@ -49,10 +53,10 @@
   --font-size-hero-title: 50px;
   --font-size-hero-subtitle: 22px;
   --font-size-nav-bar-h1: 40px;
-  --font-size-45px: 45px;
-  --font-size-38px: 38px;
-  --font-size-25px: 25px;
-  --font-size-35px: 35px;
+  --font-size-section-title: 45px;
+  --font-size-content-question: 38px;
+  --font-size-content-answer: 25px;
+  --font-size-card-title: 35px;
   --font-size-body-lg: 18px;
   --font-size-body: 16px;
   --font-size-body-sm: 14px;
@@ -73,6 +77,9 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --letter-spacing-wide: 0.04em;
+  --letter-spacing-tight: -0.02em;
 
   --radius-none: 0;
   --radius-3xs: 2px;
@@ -88,7 +95,7 @@
   --shadow-btn-default: 0 6px 14px rgba(135, 135, 135, 0.20);
   --shadow-btn-hover: 0 18px 36px rgba(190, 224, 210, 0.40), 0 6px 18px rgba(135, 135, 135, 0.15);
   --shadow-btn-active: 0 4px 10px rgba(0, 0, 0, 0.2);
-  --shadow-btn-glow: 0 20px 40px rgba(16, 185, 129, 0.35);
+  --shadow-btn-glow: 0 20px 40px rgba(5, 140, 83, 0.22);
   --shadow-btn-hover-active: 0 18px 36px rgba(5, 140, 83, 0.35);
 
   --size-btn-xl-w: 420px;
@@ -113,7 +120,9 @@
 
   --scale-hover: 1.02;
   --scale-press: 0.98;
+  --scale-press-deep: 0.92;
   --lift-standard: -3px;
+  --lift-subtle: -1px;
   --press-offset: 1px;
 
   --layout-standard: 1280px;
@@ -121,11 +130,17 @@
   --layout-narrow: 768px;
   --layout-readable: 65ch;
 
+  --motion-duration-fast: 150ms;
   --motion-duration-default: 400ms;
+  --motion-duration-slow: 500ms;
+  --motion-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --motion-ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
 
   --opacity-muted: 0.80;
   --opacity-semi: 0.50;
+  --opacity-faint: 0.10;
 
   --focus-ring-width: 4px;
   --focus-ring-color: #121212;
@@ -581,7 +596,7 @@ body {
   border-radius: var(--radius-xs);
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-overline);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .badge-dot {
@@ -1569,7 +1584,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .card-product-name {
   margin: 0 0 var(--space-16);
-  font-size: var(--font-size-35px);
+  font-size: var(--font-size-card-title);
   line-height: var(--line-height-h1);
   color: var(--color-black);
   font-weight: var(--font-weight-medium);
@@ -1584,7 +1599,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .card-product-price {
   margin: 0;
-  font-size: var(--font-size-35px);
+  font-size: var(--font-size-card-title);
   line-height: var(--line-height-h1);
   color: var(--color-black);
   font-weight: var(--font-weight-medium);
@@ -3469,7 +3484,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .text-style-faq .text-style-title {
-  font-size: var(--font-size-45px);
+  font-size: var(--font-size-section-title);
   font-weight: var(--font-weight-medium);
 }
 
@@ -3517,7 +3532,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .text-style-faq-answer {
   margin: var(--radius-none);
-  font-size: var(--font-size-25px);
+  font-size: var(--font-size-content-answer);
   font-weight: var(--font-weight-light);
   color: var(--color-black);
 }
@@ -3553,7 +3568,7 @@ input[type=number]::-webkit-outer-spin-button {
 .text-style-article-answer {
   margin: var(--radius-none);
   padding-left: var(--space-32);
-  font-size: var(--font-size-25px);
+  font-size: var(--font-size-content-answer);
   font-weight: var(--font-weight-light);
   color: var(--color-black);
 }
@@ -3614,7 +3629,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .text-style-media-bullet {
-  font-size: var(--font-size-38px);
+  font-size: var(--font-size-content-question);
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
 }
@@ -3627,14 +3642,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 .text-style-media-question {
   margin: var(--radius-none);
-  font-size: var(--font-size-38px);
+  font-size: var(--font-size-content-question);
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
 }
 
 .text-style-media-answer {
   margin: var(--radius-none);
-  font-size: var(--font-size-25px);
+  font-size: var(--font-size-content-answer);
   font-weight: var(--font-weight-light);
   color: var(--color-black);
 }
@@ -4110,9 +4125,9 @@ input[type=number]::-webkit-outer-spin-button {
 .footer-brand-title {
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   color: var(--color-black);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-12);
 }
 

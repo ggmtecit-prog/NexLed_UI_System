@@ -19,6 +19,11 @@ const DESIGN_TOKENS = {
         'link-visited': '#4C1D95',
         'red-primary': '#B1242F',
         'red-secondary': '#C94A55',
+        'yellow-primary': '#D97706',
+        'yellow-secondary': '#F59E0B',
+        'info-primary': '#2563EB',
+        'info-secondary': '#3B82F6',
+        'success-primary': '#03683D',
     },
     spacing: {
         '4': '4px',
@@ -45,10 +50,10 @@ const DESIGN_TOKENS = {
             'button-lg': '32px',
             'nav-bar-h1': '40px',
             'h1': '36px',
-            '35px': '35px',
-            '38px': '38px',
-            '45px': '45px',
-            '25px': '25px',
+            'section-title': '45px',
+            'content-question': '38px',
+            'card-title': '35px',
+            'content-answer': '25px',
             'h2': '30px',
             'h3': '24px',
             'body-xl': '20px',
@@ -87,6 +92,7 @@ const DESIGN_TOKENS = {
             'regular': '400',
             'medium': '500',
             'semibold': '600',
+            'bold': '700',
         },
         spacing: {
             'heading-top': '32px',
@@ -110,7 +116,7 @@ const DESIGN_TOKENS = {
         'default': '0 6px 14px rgba(135, 135, 135, 0.20)',
         'hover': '0 18px 36px rgba(190, 224, 210, 0.40), 0 6px 18px rgba(135, 135, 135, 0.15)',
         'active': '0 4px 10px rgba(0, 0, 0, 0.2)',
-        'glow': '0 20px 40px rgba(16, 185, 129, 0.22)',
+        'glow': '0 20px 40px rgba(5, 140, 83, 0.22)',
         'hover-active': '0 18px 36px rgba(5, 140, 83, 0.35)',
     },
     icons: {
@@ -127,19 +133,21 @@ const DESIGN_TOKENS = {
             'default': '1.5px',
             'bold': '2px',
         },
+        // Semantic aliases — values intentionally match main colors for icon-specific Tailwind utilities
         colors: {
-            'primary': '#03683D',
-            'secondary': '#878787',
-            'muted': '#D9D9D9',
-            'danger': '#B1242F',
-            'success': '#03683D',
-            'on-dark': '#FCFCFC',
+            'primary': '#03683D',    // = colors.green-primary
+            'secondary': '#878787',  // = colors.grey-primary
+            'muted': '#D9D9D9',      // = colors.grey-secondary
+            'danger': '#B1242F',     // = colors.red-primary
+            'success': '#03683D',    // = colors.green-primary (same as primary)
+            'on-dark': '#FCFCFC',    // = colors.white
         },
+        // Semantic aliases — values intentionally match main spacing for icon-specific gap utilities
         gaps: {
-            'xs': '4px',
-            'sm': '8px',
-            'md': '12px',
-            'lg': '20px',
+            'xs': '4px',   // = spacing.4
+            'sm': '8px',   // = spacing.8
+            'md': '12px',  // = spacing.12
+            'lg': '20px',  // = spacing.20
         }
     },
     sizing: {
@@ -187,7 +195,12 @@ const DESIGN_TOKENS = {
         'readable': '65ch',
     },
     motion: {
+        'duration-fast': '150ms',
         'duration-default': '400ms',
+        'duration-slow': '500ms',
+        'ease-out': 'cubic-bezier(0.33, 1, 0.68, 1)',
+        'ease-in': 'cubic-bezier(0.32, 0, 0.67, 0)',
+        'ease-in-out': 'cubic-bezier(0.65, 0, 0.35, 1)',
         'ease-premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
     },
     opacity: {
@@ -285,10 +298,15 @@ tailwind.config = {
                 'icon-stroke-bold': DESIGN_TOKENS.icons.strokes.bold,
             },
             transitionDuration: {
+                'fast': DESIGN_TOKENS.motion['duration-fast'],
                 'default': DESIGN_TOKENS.motion['duration-default'],
                 '400': DESIGN_TOKENS.motion['duration-default'],
+                'slow': DESIGN_TOKENS.motion['duration-slow'],
             },
             transitionTimingFunction: {
+                'out': DESIGN_TOKENS.motion['ease-out'],
+                'in': DESIGN_TOKENS.motion['ease-in'],
+                'in-out': DESIGN_TOKENS.motion['ease-in-out'],
                 'premium': DESIGN_TOKENS.motion['ease-premium'],
                 'button-ease': DESIGN_TOKENS.motion['ease-premium'],
             },
