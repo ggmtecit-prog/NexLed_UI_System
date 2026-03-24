@@ -4,6 +4,26 @@ All installed skills for this project, organized by category with usage guidance
 
 ---
 
+## Installation
+
+Run these four commands to install all 25 skills:
+
+```bash
+npx skills add pbakaus/impeccable
+npx skills add nextlevelbuilder/ui-ux-pro-max-skill
+npx skills add wshobson/agents
+npx skills add figma/mcp-server-guide
+```
+
+| Source | Skills installed |
+|--------|-----------------|
+| `pbakaus/impeccable` | adapt, animate, arrange, audit, bolder, clarify, colorize, critique, delight, distill, extract, frontend-design, harden, normalize, onboard, optimize, overdrive, polish, quieter, teach-impeccable, typeset |
+| `nextlevelbuilder/ui-ux-pro-max-skill` | ckm-design-system, ui-ux-pro-max |
+| `wshobson/agents` | design-system-patterns |
+| `figma/mcp-server-guide` | create-design-system-rules |
+
+---
+
 ## How to Invoke a Skill
 
 Type `/skill-name` in Claude Code. Some skills accept an optional argument:
@@ -304,6 +324,32 @@ It scans the codebase, asks focused questions about users, brand personality, an
 
 ---
 
+### `typeset`
+
+**What it does:** Improves typography — font choices, hierarchy, sizing, weight consistency, and readability. Turns default-looking text into intentional, polished type.
+
+**When to use:** When text feels generic, uses system defaults (Inter/Roboto/Arial), has muddy hierarchy, or inconsistent sizing.
+
+---
+
+### `arrange`
+
+**What it does:** Improves layout, spacing, and visual rhythm. Fixes monotonous card grids, arbitrary spacing, and weak hierarchy through intentional composition.
+
+**When to use:** When the layout feels "off" despite correct colors/fonts — cramped, too sparse, too repetitive, or lacking visual rhythm.
+
+---
+
+### `overdrive`
+
+**What it does:** Pushes interfaces past conventional limits with technically ambitious implementations — View Transitions, scroll-driven animation, WebGL shaders, virtual scrolling, spring physics, Web Workers, WASM.
+
+**When to use:** When you want to make users ask "how did they do that?" — for a specific feature or interaction that should feel extraordinary.
+
+> **Note:** Always proposes 2-3 directions before building. Requires browser automation for visual iteration.
+
+---
+
 ## Category 5 — Visual Direction Adjustments
 
 These skills shift the visual direction of an existing design. All require `teach-impeccable` first.
@@ -397,6 +443,9 @@ These skills shift the visual direction of an existing design. All require `teac
 | Design drifted from the system | `normalize` |
 | Desktop design needs mobile/tablet support | `adapt` |
 | UI feels static, needs motion | `animate` |
+| Typography feels generic or inconsistent | `typeset` |
+| Layout feels off, crowded, or monotonous | `arrange` |
+| Push a feature past conventional browser limits | `overdrive` |
 | Honest UX feedback on a feature | `critique` |
 | Consolidate repeated patterns into system | `extract` |
 | New users are confused / drop off | `onboard` |

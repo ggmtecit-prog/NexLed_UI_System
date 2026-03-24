@@ -106,6 +106,21 @@
       "sourceType": "github",
       "computedHash": "759bfe9a53d48b87d60352db3403b62a0663e5187b2a2bd61d43657ac48d1a11"
     },
+    "arrange": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "computedHash": "93ee286d64e27b6bf8567aad645f507791ea4577962006782e7bc658ccae2493"
+    },
+    "overdrive": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "computedHash": "51b09fdf34a8a959bead76ec7548502dad729357d606c5e963c30f3377589a8b"
+    },
+    "typeset": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "computedHash": "bfc0da9ec435b5a43f5ed0e305022b6efc981a45924298d339f16ab90780a7b3"
+    },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
       "sourceType": "github",

@@ -34,4 +34,4 @@ Format follows [Semantic Versioning](https://semver.org/).
 - Tailwind CDN integration via config-cdn.js
 - Interactive component logic via nexled.js (accordion, dropdown, modal, stepper)
 - CLAUDE.md implementation rules for AI-assisted development
-- Skills system for Claude Code, Cursor, Windsurf, Continue, Qwen
+- Skills system for Claude Code (22 skills across 4 sources)

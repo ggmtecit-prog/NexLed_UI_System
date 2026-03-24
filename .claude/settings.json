@@ -13,7 +13,12 @@
       "Bash(xargs grep:*)",
       "Bash(node scripts/build-components-md.js)",
       "Read(//g/O/ meu/ disco/Gonçalo/ Mendonça/01_Projetos/UI_SYSTEM/src/**)",
-      "Bash(grep -oE \"\\\\..[^{]*\\\\{[^}]*var\\\\\\(--[^}]*\\\\\\)\" \"/g/O meu disco/Gonçalo Mendonça/01_Projetos/UI_SYSTEM/src/nexled.css\")"
+      "Bash(grep -oE \"\\\\..[^{]*\\\\{[^}]*var\\\\\\(--[^}]*\\\\\\)\" \"/g/O meu disco/Gonçalo Mendonça/01_Projetos/UI_SYSTEM/src/nexled.css\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/source/skills\")",
+      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/typeset\")",
+      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/arrange\")",
+      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/overdrive\")"
     ]
   }
 }
