@@ -769,6 +769,13 @@ textarea:hover::placeholder {
   color: var(--color-green-secondary);
 }
 
+/* Number input spinner reset */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: var(--radius-none);
+}
+
 /* CHECKBOXES */
 .checkbox-wrapper {
   display: inline-flex;
@@ -1428,18 +1435,6 @@ textarea:hover::placeholder {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-/* SIDEBAR */
-.sidebar {
-  background: var(--color-white);
-  border: var(--border-thin) solid var(--color-grey-tertiary);
-  border-top-right-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
-  box-shadow: var(--shadow-btn-default);
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
-}
-
-
-
 .card:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
@@ -1537,7 +1532,6 @@ textarea:hover::placeholder {
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-
 .card-product-badge {
   position: absolute;
   top: 0;
@@ -1615,6 +1609,16 @@ textarea:hover::placeholder {
   flex: 1 1 0;
   font-size: var(--font-size-h3);
   line-height: var(--line-height-h3);
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: var(--color-white);
+  border: var(--border-thin) solid var(--color-grey-tertiary);
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  box-shadow: var(--shadow-btn-default);
+  transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 /* ACCORDION */
@@ -3807,13 +3811,6 @@ textarea:hover::placeholder {
   font-weight: var(--font-weight-semibold);
 }
 
-/* NUMBER INPUT */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: var(--radius-none);
-}
-
 /* CAROUSEL */
 .carousel {
   position: relative;
@@ -4057,9 +4054,17 @@ input[type=number]::-webkit-outer-spin-button {
   display: block;
 }
 
-/* ============================================================
-   Footer Component
-   ============================================================ */
+.carousel-card-label {
+  position: absolute;
+  left: var(--space-16);
+  bottom: var(--space-16);
+  color: var(--color-white);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-medium);
+}
+
+/* FOOTER */
 
 .footer {
   background-color: var(--color-white);
@@ -4219,23 +4224,7 @@ input[type=number]::-webkit-outer-spin-button {
   text-decoration: underline;
 }
 
-/* ============================================================
-   Carousel Card
-   ============================================================ */
-
-.carousel-card-label {
-  position: absolute;
-  left: var(--space-16);
-  bottom: var(--space-16);
-  color: var(--color-white);
-  font-size: var(--font-size-h3);
-  line-height: var(--line-height-h3);
-  font-weight: var(--font-weight-medium);
-}
-
-/* ============================================================
-   Tabs
-   ============================================================ */
+/* TABS */
 
 .tab-bar {
   display: flex;
