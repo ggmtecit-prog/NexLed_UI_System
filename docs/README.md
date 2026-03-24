@@ -5,10 +5,10 @@
 These paths intentionally stay at the project root because they are public entry points or CDN-linked assets:
 
 - index.html
-- toms.html
+- atoms.html
 - molecules.html
 - organisms.html
-- 	okens.html
+- tokens.html
 - pages.html
 - page-demos/
 - src/config-cdn.js
