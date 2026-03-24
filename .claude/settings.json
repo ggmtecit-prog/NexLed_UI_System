@@ -18,7 +18,8 @@
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/source/skills\")",
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/typeset\")",
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/arrange\")",
-      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/overdrive\")"
+      "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/overdrive\")",
+      "Bash(rtk git:*)"
     ]
   }
 }
