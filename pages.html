@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Pages - NexLed UI System</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. NexLed Design System -->
+    <script src="https://ggmtecit-prog.github.io/NexLed_UI_System/src/config-cdn.js?v=1.3"></script>
+    <link rel="stylesheet" href="https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.css?v=1.3">
+
+    <!-- 4. Interactive Components (include if using accordion, dropdown, modal, stepper) -->
+    <script src="https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.js?v=1.3"></script>
+</head>
+
+<body class="bg-grey-tertiary text-black selection:bg-green-primary/10 min-h-screen lg:flex">
+
+    <header class="lg:hidden sticky top-0 z-sticky">
+        <div class="panel rounded-none border-x-0 border-t-0">
+            <div class="container-standard flex items-center justify-between gap-16 py-16">
+                <a href="index.html" class="flex items-center gap-12">
+                    <img src="favicon.svg" alt="NexLed" class="w-40 h-40">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                        <span class="font-regular text-body-xs uppercase tracking-wider text-grey-primary">Design System</span>
+                    </div>
+                </a>
+                <button type="button" class="btn btn-secondary btn-icon btn-xs" data-drawer-target="docs-nav-drawer" aria-label="Open navigation"><i class="ri-menu-3-line text-icon-md" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="docs-nav-drawer" class="drawer-sheet drawer-sheet-sm lg:hidden" aria-hidden="true">
+        <div class="drawer-sheet-panel">
+            <div class="drawer-sheet-header">
+                <div class="flex items-center gap-12">
+                    <img src="favicon.svg" alt="NexLed" class="w-40 h-40">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
+                        <span class="font-regular text-body-xs uppercase tracking-wider text-grey-primary">Design System</span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-icon btn-xs drawer-sheet-close" data-drawer-close data-drawer-initial-focus aria-label="Close navigation"><i class="ri-close-line text-icon-md" aria-hidden="true"></i></button>
+            </div>
+            <div class="drawer-sheet-body">
+                <nav class="flex flex-col gap-12">
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="index.html" class="dropdown-trigger"><span class="dropdown-value">Overview</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="atoms.html" class="dropdown-trigger"><span class="dropdown-value">Atoms</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="molecules.html" class="dropdown-trigger"><span class="dropdown-value">Molecules</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="organisms.html" class="dropdown-trigger"><span class="dropdown-value">Organisms</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="pages.html" class="dropdown-trigger"><span class="dropdown-value">Pages</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="tokens.html" class="dropdown-trigger"><span class="dropdown-value">Design Tokens</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-md"><a href="https://www.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?m=auto&t=6d5XpsBQMEoPibU5-1" target="_blank" rel="noreferrer" class="dropdown-trigger"><span class="dropdown-value">Figma Design</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <aside class="hidden lg:block shrink-0 sticky top-0 h-screen px-24 py-24">
+        <div class="sidebar w-sidebar h-full">
+            <div class="flex flex-col h-full gap-16 p-48">
+                <a href="index.html" class="flex items-center justify-center gap-12 group">
+                    <img src="favicon.svg" alt="NexLed" class="w-64 h-64">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                        <span class="font-regular text-body-sm text-black tracking-wider">Design System</span>
+                    </div>
+                </a>
+                <nav class="flex flex-col gap-24 flex-1 justify-center">
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="index.html" class="dropdown-trigger"><span class="dropdown-value">Overview</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="atoms.html" class="dropdown-trigger"><span class="dropdown-value">Atoms</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="molecules.html" class="dropdown-trigger"><span class="dropdown-value">Molecules</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="organisms.html" class="dropdown-trigger"><span class="dropdown-value">Organisms</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="pages.html" class="dropdown-trigger"><span class="dropdown-value">Pages</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="tokens.html" class="dropdown-trigger"><span class="dropdown-value">Design Tokens</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                    <div class="dropdown dropdown-minimal dropdown-sm"><a href="https://www.figma.com/design/BSSIlslSgNwV1J1dYspXpJ/NexLed_UI_System?m=auto&t=6d5XpsBQMEoPibU5-1" target="_blank" rel="noreferrer" class="dropdown-trigger"><span class="dropdown-value">Figma Design</span><i class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
+                </nav>
+            </div>
+        </div>
+    </aside>
+
+    <div class="min-w-0 flex-1 flex flex-col">
+
+        <!-- LANDING CONTENT -->
+        <main class="docs-main container-standard flex-1">
+            <header class="page-header-hero">
+                <h1 class="text-hero-title font-medium text-black">Page Demos</h1>
+                <p class="text-hero-subtitle font-light text-black max-w-readable">Responsive page recipes built from the current NexLed CDN, component APIs, and token rules. Start here before expanding into a store, product detail, content, or contact flow.</p>
+            </header>
+
+            <section class="mb-64">
+                <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-24 w-full">
+                        <div class="card"><div class="card-body"><h2 class="card-title">Responsive Contract</h2><p class="card-text">Use only 480, 768, 1024, and 1440, keep everything mobile-first, and scale through the existing token set.</p></div></div>
+                        <div class="card"><div class="card-body"><h2 class="card-title">Component Rules</h2><p class="card-text">Buttons, inputs, selectors, overlays, tables, tabs, and pagination now adapt as responsive tiers instead of fixed desktop outputs.</p></div></div>
+                        <div class="card"><div class="card-body"><h2 class="card-title">Consumer Safety</h2><p class="card-text">The live demos, starter example, and markdown guides now share the same shell, typography logic, and build rules.</p></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-64">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-24">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header"><div class="card-icon"><i class="ri-layout-top-2-line text-icon-lg" aria-hidden="true"></i></div><h2 class="card-title">Simple Brand Page</h2></div>
+                            <p class="card-text">The first live page demo. It shows a responsive header, hero, feature grid, explanatory panel, CTA, and footer using only published NexLed classes.</p>
+                            <div class="card-actions">
+                                <a href="page-demos/simple-brand.html" class="btn btn-primary btn-sm">Open Demo</a>
+                                <a href="starter-kit/examples/simple-brand-page.html" class="btn btn-secondary btn-sm">Open Starter Copy</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header"><div class="card-icon"><i class="ri-file-list-3-line text-icon-lg" aria-hidden="true"></i></div><h2 class="card-title">Next Recipes</h2></div>
+                            <p class="card-text">Store catalog, product detail, content/help, and contact flows are documented now and should be built after the simple brand page proves the new responsive foundation.</p>
+                            <a href="PAGE_RECIPES.md" class="link link-md"><span class="link-label">Read Page Recipes</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-64">
+                <div class="panel overflow-hidden">
+                    <div class="p-24 border-b border-grey-tertiary bg-white/50 flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <h2 class="text-body-lg font-semibold text-black">Documentation</h2>
+                            <p class="text-body-sm text-grey-primary">Use these files to build responsive pages without improvising.</p>
+                        </div>
+                        <a href="CONSUMER_BUILD_GUIDE.md" class="link-text-icon link-md"><span class="link-label">Open consumer build guide</span><i class="ri-arrow-right-up-line"></i></a>
+                    </div>
+                    <div class="p-24 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-24 bg-white">
+                        <div class="card"><div class="card-body"><h3 class="card-title">Responsive Rules</h3><p class="card-text">Breakpoints, container rhythm, typography scaling, and component-family behavior.</p><a href="RESPONSIVE_RULES.md" class="link link-md"><span class="link-label">Read rules</span></a></div></div>
+                        <div class="card"><div class="card-body"><h3 class="card-title">Page Recipes</h3><p class="card-text">Canonical section order and allowed component combinations for the main page types.</p><a href="PAGE_RECIPES.md" class="link link-md"><span class="link-label">Read recipes</span></a></div></div>
+                        <div class="card"><div class="card-body"><h3 class="card-title">Consumer Build Guide</h3><p class="card-text">Head block, formatting rules, and starter expectations for downstream projects.</p><a href="CONSUMER_BUILD_GUIDE.md" class="link link-md"><span class="link-label">Read guide</span></a></div></div>
+                        <div class="card"><div class="card-body"><h3 class="card-title">Demo Checklist</h3><p class="card-text">Viewport, state, accessibility, and compliance checks for every page demo.</p><a href="DEMO_CHECKLIST.md" class="link link-md"><span class="link-label">Open checklist</span></a></div></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+
+</html>

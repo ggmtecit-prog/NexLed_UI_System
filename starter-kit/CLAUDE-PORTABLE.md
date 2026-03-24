@@ -1,4 +1,4 @@
-# NexLed Design System — Implementation Rules
+# NexLed Design System â€” Implementation Rules
 
 > Drop this file as `CLAUDE.md` in any project that uses the NexLed Design System.
 > It gives Claude (or any AI agent) the full context to build compliant pages.
@@ -10,7 +10,7 @@
 - Act as a strict NexLed implementation agent.
 - Implement only what exists in the current NexLed system.
 - Never invent values, classes, variants, sizes, tokens, or components.
-- If a component or token doesn't exist — STOP. Report it. Do not invent a fix.
+- If a component or token doesn't exist â€” STOP. Report it. Do not invent a fix.
 
 ---
 
@@ -48,7 +48,7 @@ Do not start implementation until all three are read.
 
 ---
 
-## CSS Rules (Absolute — No Exceptions)
+## CSS Rules (Absolute â€” No Exceptions)
 
 - NEVER use `<style>` blocks
 - NEVER use inline `style=""` attributes
@@ -58,22 +58,58 @@ Do not start implementation until all three are read.
 - ALL component styling must come from `nexled.css` classes
 - ALL values must come from token names defined in `config-cdn.js`
 - Tailwind utility classes are ONLY allowed for layout (flex, grid, gap, padding on wrappers)
-- If a component style is missing from nexled.css — STOP. Report it.
-- If a token name is not in config-cdn.js — STOP. Report it.
+- If a component style is missing from nexled.css â€” STOP. Report it.
+- If a token name is not in config-cdn.js â€” STOP. Report it.
 
 ---
 
+## Responsive Contract (Mandatory)
+
+- Use only the published NexLed breakpoints: sm 480, md 768, lg 1024, xl 1440
+- Build mobile-first
+- Keep container padding on the sequence 16 / 20 / 24 / 32 / 40
+- Treat size classes as semantic responsive tiers instead of fixed desktop outputs
+- Use only the current NexLed token set for responsive typography:
+  - meta: 12 -> 14
+  - body: 14 -> 16
+  - component subheads: 16 -> 18 -> 24
+  - component heading tier: 22 / 24 / 30
+  - section title tier: 26 / 30 / 35 / 40
+  - page title tier: 30 / 36 / 40 / 45
+  - hero tier: 30 / 36 / 45 / 48
+- On phone, allow buttons, inputs, dropdowns, and selectors to use stacked or full-width layouts when space is tight
+- Keep popovers, drawers, modals, and tables free from desktop-only width assumptions
+
+## Page Recipes (Starter Summary)
+
+Simple brand page order:
+
+1. Header / nav
+2. Hero intro
+3. Feature grid
+4. One explanatory panel block
+5. Primary CTA
+6. Footer
+
+Future recipes after the foundation is stable:
+
+- Store / catalog page
+- Product detail page
+- Content / help page
+- Contact / lead page
+
+Always read the live NexLed page demo and the markdown guides before expanding into a new page type.
 ## Common Mistakes (NEVER DO THESE)
 
 ```
-WRONG: class="bg-[#03683D]"          → RIGHT: class="bg-green-primary"
-WRONG: style="padding: 16px"         → RIGHT: class="p-16"
-WRONG: class="text-[35px]"           → RIGHT: class="text-35px" (it's a token)
-WRONG: class="rounded-lg"            → RIGHT: class="rounded-lg" (OK — lg is a token)
-WRONG: class="shadow-lg"             → RIGHT: class="shadow-btn-default" (use NexLed shadow tokens)
-WRONG: <style>.custom { ... }</style> → NEVER. Use nexled.css classes only.
-WRONG: class="font-urbanist"         → Already set by nexled.css on body. Redundant.
-WRONG: class="text-green-500"        → RIGHT: class="text-green-primary" (use NexLed color names)
+WRONG: class="bg-[#03683D]"          â†’ RIGHT: class="bg-green-primary"
+WRONG: style="padding: 16px"         â†’ RIGHT: class="p-16"
+WRONG: class="text-[35px]"           â†’ RIGHT: class="text-35px" (it's a token)
+WRONG: class="rounded-lg"            â†’ RIGHT: class="rounded-lg" (OK â€” lg is a token)
+WRONG: class="shadow-lg"             â†’ RIGHT: class="shadow-btn-default" (use NexLed shadow tokens)
+WRONG: <style>.custom { ... }</style> â†’ NEVER. Use nexled.css classes only.
+WRONG: class="font-urbanist"         â†’ Already set by nexled.css on body. Redundant.
+WRONG: class="text-green-500"        â†’ RIGHT: class="text-green-primary" (use NexLed color names)
 ```
 
 ---
@@ -103,46 +139,46 @@ Every component follows: `[component] [variant] [size]`
 |-----------|-----------|----------|-------|
 | Button | `btn` | `btn-primary`, `btn-secondary`, `btn-ghost`, `btn-danger` | `btn-xl`, `btn-lg`, `btn-md`, `btn-sm`, `btn-xs` |
 | Button Icon | `btn btn-icon` | Same as button | Same as button |
-| Button Toggle | `btn btn-toggle` | — | Same as button |
+| Button Toggle | `btn btn-toggle` | â€” | Same as button |
 | Badge | `badge` | `badge-primary`, `badge-success`, `badge-danger`, `badge-neutral` | `badge-lg`, `badge-md`, `badge-sm` |
 | Badge Dot | `badge badge-dot` | Same as badge | Same as badge |
 | Input | `input` | `input-error`, `input-success` | `input-sm`, `input-md`, `input-lg` |
-| Checkbox | `checkbox-wrapper` | — | `checkbox-sm`, `checkbox-md`, `checkbox-lg` |
-| Radio | `radio-wrapper` | — | `radio-sm`, `radio-md`, `radio-lg` |
+| Checkbox | `checkbox-wrapper` | â€” | `checkbox-sm`, `checkbox-md`, `checkbox-lg` |
+| Radio | `radio-wrapper` | â€” | `radio-sm`, `radio-md`, `radio-lg` |
 | Link | `link` | `link-inline`, `link-subtle`, `link-text-icon`, `link-navigation` | `link-sm`, `link-md`, `link-lg` |
-| Divider | `divider` | `divider-bold`, `divider-brand` | — |
+| Divider | `divider` | `divider-bold`, `divider-brand` | â€” |
 | Tooltip | `tooltip` | `tooltip-black`, `tooltip-white`, `tooltip-rich` | `tooltip-xs`, `tooltip-sm`, `tooltip-md` |
 
 ### Molecules
 
 | Component | Core Class | Variants | Sizes |
 |-----------|-----------|----------|-------|
-| Card | `card` | `card-primary` | — |
-| Card Product | `card-product` | — | — |
-| Accordion | `accordion` | — | `accordion-sm`, `accordion-md`, `accordion-lg` |
+| Card | `card` | `card-primary` | â€” |
+| Card Product | `card-product` | â€” | â€” |
+| Accordion | `accordion` | â€” | `accordion-sm`, `accordion-md`, `accordion-lg` |
 | Dropdown | `dropdown` | `dropdown-minimal`, `dropdown-multi`, `dropdown-flyout` | `dropdown-xs`, `dropdown-sm`, `dropdown-md`, `dropdown-lg` |
-| Breadcrumb | `breadcrumb` | — | — |
-| Announcement Bar | `announcement-bar` | `announcement-bar-standard`, `announcement-bar-floating`, `announcement-bar-light` | — |
-| Carousel | `carousel` | `carousel-landscape`, `carousel-square` | — |
+| Breadcrumb | `breadcrumb` | â€” | â€” |
+| Announcement Bar | `announcement-bar` | `announcement-bar-standard`, `announcement-bar-floating`, `announcement-bar-light` | â€” |
+| Carousel | `carousel` | `carousel-landscape`, `carousel-square` | â€” |
 | Spinner | `spinner` | `spinner-white` | `spinner-sm`, `spinner-md`, `spinner-lg` |
-| Quantity Selector | `quantity-selector` | — | `quantity-selector-sm`, `quantity-selector-md`, `quantity-selector-lg` |
-| Uploader | `uploader` | — | — |
+| Quantity Selector | `quantity-selector` | â€” | `quantity-selector-sm`, `quantity-selector-md`, `quantity-selector-lg` |
+| Uploader | `uploader` | â€” | â€” |
 | Language Selector | `language-selector` | `language-selector-standard`, `language-selector-icon` | `language-selector-xs`, `language-selector-sm`, `language-selector-md`, `language-selector-lg` |
-| Material Selector | `material-selector` | — | `material-selector-sm`, `material-selector-md`, `material-selector-lg` |
-| Stepper | `stepper` | — | — |
+| Material Selector | `material-selector` | â€” | `material-selector-sm`, `material-selector-md`, `material-selector-lg` |
+| Stepper | `stepper` | â€” | â€” |
 | List | `list` | `list-spec` | `list-md` |
 
 ### Organisms
 
 | Component | Core Class | Variants | Sizes |
 |-----------|-----------|----------|-------|
-| Modal | `modal` | `modal-destructive` | — |
-| Modal Overlay | `modal-overlay` | — | — |
-| Footer | `footer` | — | — |
-| Sidebar | `sidebar` | — | — |
-| Navbar | `nav-bar` | — | — |
-| Flyout | `flyout` | — | — |
-| Panel | `panel` | — | — |
+| Modal | `modal` | `modal-destructive` | â€” |
+| Modal Overlay | `modal-overlay` | â€” | â€” |
+| Footer | `footer` | â€” | â€” |
+| Sidebar | `sidebar` | â€” | â€” |
+| Navbar | `nav-bar` | â€” | â€” |
+| Flyout | `flyout` | â€” | â€” |
+| Panel | `panel` | â€” | â€” |
 
 ---
 
@@ -202,7 +238,7 @@ Easing: `ease-premium`, `ease-button-ease`
 
 ## Hard Constraints
 
-- Stack: HTML + Tailwind CDN + `config-cdn.js` + `nexled.css` + Remix Icons — nothing else
+- Stack: HTML + Tailwind CDN + `config-cdn.js` + `nexled.css` + Remix Icons â€” nothing else
 - Use component JS (`nexled.js`) only when interaction is required
 - Do not migrate to another framework
 - Do not substitute CSS framework or token system
@@ -252,7 +288,7 @@ Run this checklist before delivering:
 ## Output Format
 
 Deliver in this order:
-1. Understanding summary — components identified and classes to be used
-2. Complete file(s) — HTML only, no embedded CSS
-3. What could not be converted — list anything with no nexled.css class
+1. Understanding summary â€” components identified and classes to be used
+2. Complete file(s) â€” HTML only, no embedded CSS
+3. What could not be converted â€” list anything with no nexled.css class
 4. Validation checklist result
