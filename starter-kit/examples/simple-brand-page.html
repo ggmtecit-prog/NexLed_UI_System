@@ -26,82 +26,140 @@
 <body class="bg-grey-tertiary text-black selection:bg-green-primary/10">
     <main class="container-wide py-24 md:py-40 lg:py-48 xl:py-64">
         <section class="mb-32 md:mb-40 lg:mb-48">
-            <div class="nav-bar">
-                <a href="#hero" class="flex items-center gap-12 text-black no-underline">
-                    <div class="w-48 h-48 rounded-full bg-green-primary text-white flex items-center justify-center"><i class="ri-flashlight-line text-icon-md"></i></div>
+            <header class="nav-bar">
+                <a href="#hero" class="flex items-center gap-12 no-underline text-black">
+                    <img src="../../public/logos/nexled_logo.svg" alt="NexLed" class="w-56 h-56">
                     <div class="flex flex-col">
-                        <span class="font-semibold text-body-lg leading-none tracking-tight text-black">NexLed</span>
-                        <span class="text-body-xs uppercase tracking-wider text-grey-primary">Simple Brand Page</span>
+                        <span class="font-semibold text-h3 leading-none tracking-tight text-black">NexLed</span>
+                        <span class="font-regular text-body-sm text-black tracking-wider">Simple Brand Page</span>
                     </div>
                 </a>
-                <div class="flex flex-1 flex-wrap items-center justify-center gap-12">
+                <nav class="hidden md:flex items-center gap-24 h-full">
                     <a href="#platform" class="link-navigation link-md"><span class="link-label">Platform</span></a>
                     <a href="#workflow" class="link-navigation link-md"><span class="link-label">Workflow</span></a>
                     <a href="#contact" class="link-navigation link-md"><span class="link-label">Contact</span></a>
-                </div>
+                </nav>
                 <div class="flex flex-wrap items-center gap-12">
                     <a href="#contact" class="btn btn-secondary btn-xs">Talk to sales</a>
                     <a href="#cta" class="btn btn-primary btn-xs">Request a demo</a>
                 </div>
-            </div>
+            </header>
         </section>
 
-        <section id="hero" class="mb-64">
-            <div class="panel overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-stretch p-24 md:p-32 lg:p-40">
-                    <div class="flex flex-col justify-center gap-24">
-                        <div class="flex flex-wrap items-center gap-12">
-                            <span class="badge badge-primary badge-md">Published NexLed</span>
-                            <span class="badge badge-neutral badge-md">Responsive</span>
+        <header id="hero" class="page-header-hero">
+            <div class="flex flex-wrap justify-center gap-12">
+                <span class="badge badge-primary badge-md">Published NexLed</span>
+                <span class="badge badge-neutral badge-md">Responsive Contract</span>
+            </div>
+            <h1 class="text-hero-title font-medium text-black">Control-grade brand pages built from the current NexLed system.</h1>
+            <p class="text-hero-subtitle font-light text-black max-w-readable">Use the existing logo assets, the current component classes, and the published token rhythm to ship premium electrical interfaces without inventing new visual rules.</p>
+            <div class="flex flex-wrap justify-center gap-12">
+                <a href="#platform" class="btn btn-primary btn-sm">Explore the platform</a>
+                <a href="#workflow" class="btn btn-secondary btn-sm">Review the workflow</a>
+            </div>
+        </header>
+
+        <section id="platform" class="mb-64">
+            <div class="panel-wrap-head">
+                <div>
+                    <p class="text-body-xs uppercase tracking-wider text-grey-primary mb-8">Capability Grid</p>
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Built from the approved NexLed surface language</h2>
+                </div>
+            </div>
+            <div class="panel panel-wrap-body panel-wrap-body-grid panel-wrap-body-gap-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-24 w-full">
+                    <article class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-dashboard-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Operations</h3>
+                            </div>
+                            <p class="card-text">Compose dashboards, status sections, and commercial landing pages with the same panel, card, and typography system.</p>
                         </div>
-                        <div class="space-y-16">
-                            <h1 class="text-hero-title font-medium text-black">Control-grade interfaces for electrical teams that move fast.</h1>
-                            <p class="text-hero-subtitle font-light text-black max-w-readable">Use the current NexLed tokens, typography, and component APIs to build premium pages without inventing new breakpoints or visual values.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-layout-masonry-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Stable Layout</h3>
+                            </div>
+                            <p class="card-text">The responsive foundation compresses the page cleanly across phone, tablet, desktop, and xl without changing the component API.</p>
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-12">
-                            <a href="#cta" class="btn btn-primary btn-md">See the workflow</a>
-                            <a href="#workflow" class="btn btn-secondary btn-md">Review layout rules</a>
+                    </article>
+                    <article class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-text-spacing text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="card-title">Scaled Typography</h3>
+                            </div>
+                            <p class="card-text">Hero, section, and supporting copy stay on the current NexLed type ladder instead of freezing at desktop proportions.</p>
                         </div>
-                    </div>
-                    <div class="grid gap-16 content-start">
-                        <div class="card"><div class="card-body"><div class="card-header"><div class="card-icon"><i class="ri-layout-masonry-line text-icon-lg"></i></div><h2 class="card-title">Stable layout</h2></div><p class="card-text">The hero, feature grid, and CTA blocks compress cleanly across phone, tablet, desktop, and xl screens.</p></div></div>
-                        <div class="card"><div class="card-body"><div class="card-header"><div class="card-icon"><i class="ri-text-spacing text-icon-lg"></i></div><h2 class="card-title">Scaled type</h2></div><p class="card-text">Headlines move through the existing NexLed token set instead of staying frozen at desktop sizes.</p></div></div>
-                        <div class="alert alert-success alert-md"><div class="alert-icon"><i class="ri-check-line text-icon-md"></i></div><div class="alert-copy"><h2 class="alert-title">System-first</h2><p class="alert-text">Every visual decision on this page is derived from the published CDN config and the current NexLed component classes.</p></div></div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="platform" class="mb-64">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-24">
-                <div class="card"><div class="card-body"><div class="card-header"><div class="card-icon"><i class="ri-dashboard-line text-icon-lg"></i></div><h2 class="card-title">Dashboards</h2></div><p class="card-text">Panel-driven layout for operational overviews and monitoring screens.</p></div></div>
-                <div class="card"><div class="card-body"><div class="card-header"><div class="card-icon"><i class="ri-shopping-bag-3-line text-icon-lg"></i></div><h2 class="card-title">Catalogs</h2></div><p class="card-text">A clean foundation for store and product detail pages once the responsive shell is validated.</p></div></div>
-                <div class="card"><div class="card-body"><div class="card-header"><div class="card-icon"><i class="ri-book-open-line text-icon-lg"></i></div><h2 class="card-title">Documentation</h2></div><p class="card-text">Longer-form content can inherit the same spacing rhythm and control language.</p></div></div>
-            </div>
-        </section>
-
         <section id="workflow" class="mb-64">
-            <div class="panel p-24 md:p-32 lg:p-40">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
-                    <div>
-                        <p class="text-body-xs uppercase tracking-wider text-grey-primary mb-8">Recipe</p>
-                        <h2 class="text-h1 font-medium text-black mb-16">Recommended section order</h2>
+            <div class="panel-wrap-head">
+                <div>
+                    <p class="text-body-xs uppercase tracking-wider text-grey-primary mb-8">Recipe</p>
+                    <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Recommended build order for a simple brand page</h2>
+                </div>
+            </div>
+            <div class="panel panel-wrap-body panel-wrap-body-grid panel-wrap-body-gap-32">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 w-full items-start">
+                    <div class="w-full">
                         <dl class="list list-spec list-md w-full">
-                            <div class="list-item"><dt class="list-key">1. Header</dt><dd class="list-value">Use 
-av-bar with wrap-safe links and actions.</dd></div>
-                            <div class="list-item"><dt class="list-key">2. Hero</dt><dd class="list-value">One strong headline, one supporting paragraph, two actions.</dd></div>
-                            <div class="list-item"><dt class="list-key">3. Features</dt><dd class="list-value">Short cards for benefits and panels for denser content.</dd></div>
-                            <div class="list-item"><dt class="list-key">4. CTA + Footer</dt><dd class="list-value">Close decisively, then support trust with a full footer.</dd></div>
+                            <div class="list-item">
+                                <dt class="list-key">1. Header</dt>
+                                <dd class="list-value">Use nav-bar with the published logo asset, wrap-safe navigation, and compact actions.</dd>
+                            </div>
+                            <div class="list-item">
+                                <dt class="list-key">2. Hero</dt>
+                                <dd class="list-value">Use page-header-hero for the main statement, supporting copy, badges, and the primary actions.</dd>
+                            </div>
+                            <div class="list-item">
+                                <dt class="list-key">3. Features</dt>
+                                <dd class="list-value">Use card groups inside panel-wrap sections for capability summaries and supporting proof points.</dd>
+                            </div>
+                            <div class="list-item">
+                                <dt class="list-key">4. CTA + Footer</dt>
+                                <dd class="list-value">Close with one decisive CTA, then support trust with the documented footer structure.</dd>
+                            </div>
                         </dl>
                     </div>
-                    <div class="card card-primary">
-                        <div class="card-body flex flex-col gap-20">
-                            <h2 class="card-title">Responsive reminders</h2>
-                            <p class="card-text">Stick to the published breakpoints, the published tokens, and the current component classes. Let the system adapt through the responsive tier mapping instead of inventing one-off sizes.</p>
-                            <div class="segmented-control segmented-control-md">
-                                <label class="segmented-control-option"><input class="segmented-control-input" type="radio" checked><span class="segmented-control-label">Phone</span></label>
-                                <label class="segmented-control-option"><input class="segmented-control-input" type="radio"><span class="segmented-control-label">Tablet</span></label>
-                                <label class="segmented-control-option"><input class="segmented-control-input" type="radio"><span class="segmented-control-label">Desktop</span></label>
+                    <div class="flex flex-col gap-24 w-full">
+                        <article class="card card-primary">
+                            <div class="card-body flex flex-col gap-20">
+                                <h3 class="card-title">System-first reminders</h3>
+                                <p class="card-text">Keep the NexLed head block intact, keep the published token rhythm, and use documented components before reaching for one-off layout patterns.</p>
+                                <div class="segmented-control segmented-control-md" aria-label="Responsive tiers preview">
+                                    <label class="segmented-control-option">
+                                        <input class="segmented-control-input" type="radio" name="brand-page-tier" checked>
+                                        <span class="segmented-control-label">Phone</span>
+                                    </label>
+                                    <label class="segmented-control-option">
+                                        <input class="segmented-control-input" type="radio" name="brand-page-tier">
+                                        <span class="segmented-control-label">Tablet</span>
+                                    </label>
+                                    <label class="segmented-control-option">
+                                        <input class="segmented-control-input" type="radio" name="brand-page-tier">
+                                        <span class="segmented-control-label">Desktop</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </article>
+                        <div class="alert alert-success alert-md">
+                            <div class="alert-icon"><i class="ri-check-line text-icon-md" aria-hidden="true"></i></div>
+                            <div class="alert-copy">
+                                <h3 class="alert-title">Brand-safe composition</h3>
+                                <p class="alert-text">This starter uses the existing NexLed logo asset, documented section order, and published component families instead of utility-made branding.</p>
                             </div>
                         </div>
                     </div>
@@ -110,26 +168,33 @@ av-bar with wrap-safe links and actions.</dd></div>
         </section>
 
         <section id="cta" class="mb-64">
-            <div class="card card-primary">
+            <article class="card card-primary">
                 <div class="card-body flex flex-col gap-24 lg:flex-row lg:items-center lg:justify-between">
                     <div class="max-w-readable">
-                        <h2 class="card-title">Ready to extend this into a store or a support hub?</h2>
-                        <p class="card-text">Use this page as a strict starter. Keep the NexLed head block, keep the published tokens, and expand the page recipes instead of replacing the system.</p>
+                        <h2 class="card-title">Ready to turn this starter into a catalog, support, or contact page?</h2>
+                        <p class="card-text">Keep the header, hero, feature grid, explanatory panel, CTA, and footer structure intact. Expand the recipe with current NexLed components instead of replacing the system.</p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-12">
                         <a href="#hero" class="btn btn-secondary btn-sm">Back to top</a>
                         <a href="#contact" class="btn btn-primary btn-sm">Contact the team</a>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <footer id="contact" class="footer">
             <div class="footer-body">
                 <div class="footer-grid">
-                    <div class="footer-col">
-                        <h3 class="footer-brand-title">NexLed</h3>
-                        <p class="text-body-sm text-grey-primary">Premium electrical interfaces unified through one responsive system.</p>
+                    <div class="flex flex-col gap-16">
+                        <img src="../../public/logos/nexled_logo.svg" alt="NexLed" class="w-64 h-64">
+                        <div>
+                            <h3 class="footer-brand-title">NexLed</h3>
+                            <p class="text-body-sm text-grey-primary">Premium electrical interfaces unified through one responsive design system.</p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#hero" class="footer-social-link" aria-label="Back to hero"><i class="ri-flashlight-line" aria-hidden="true"></i></a>
+                            <a href="#workflow" class="footer-social-link" aria-label="Jump to workflow"><i class="ri-layout-grid-line" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                     <div class="footer-col">
                         <h4 class="footer-heading">Sections</h4>
@@ -147,10 +212,10 @@ av-bar with wrap-safe links and actions.</dd></div>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4 class="footer-heading">Follow</h4>
-                        <div class="footer-social">
-                            <a href="#hero" class="footer-social-link"><i class="ri-flashlight-line"></i></a>
-                            <a href="#workflow" class="footer-social-link"><i class="ri-layout-grid-line"></i></a>
+                        <h4 class="footer-heading">System</h4>
+                        <div class="footer-links">
+                            <a href="#platform" class="link-text-icon link-sm"><i class="ri-layout-masonry-line" aria-hidden="true"></i><span class="link-label">Capability Grid</span></a>
+                            <a href="#workflow" class="link-text-icon link-sm"><i class="ri-ruler-line" aria-hidden="true"></i><span class="link-label">Build Recipe</span></a>
                         </div>
                     </div>
                 </div>

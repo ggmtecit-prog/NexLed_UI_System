@@ -18,8 +18,8 @@ Format follows [Semantic Versioning](https://semver.org/).
 - `starter.html` — canonical boilerplate for new projects consuming NexLed via CDN
 - `CLAUDE-PORTABLE.md` — drop-in AI implementation rules for external projects
 - `version.json` — machine-readable version metadata
-- `CHANGELOG.md` — version history (this file)
-- `CONSUMERS.md` — registry of projects using NexLed
+- `docs/CHANGELOG.md` — version history (this file)
+- `docs/CONSUMERS.md` — registry of projects using NexLed
 - `scripts/audit-compliance.js` — HTML linting tool for NexLed compliance
 - `scripts/build-components-md.js` — auto-generates COMPONENTS.md from source files
 - Rebuilt `COMPONENTS.md` with complete component reference and HTML snippets
@@ -34,4 +34,4 @@ Format follows [Semantic Versioning](https://semver.org/).
 - Tailwind CDN integration via config-cdn.js
 - Interactive component logic via nexled.js (accordion, dropdown, modal, stepper)
 - CLAUDE.md implementation rules for AI-assisted development
-- Skills system for Claude Code (22 skills across 4 sources)
+- Skills system for Claude Code, Cursor, Windsurf, Continue, Qwen

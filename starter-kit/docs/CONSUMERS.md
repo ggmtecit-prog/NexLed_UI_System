@@ -20,7 +20,7 @@ When a new project adopts NexLed, add a row to the table above with:
 ## Updating Projects
 
 When NexLed releases a new version:
-1. Check `CHANGELOG.md` for breaking changes
+1. Check `docs/CHANGELOG.md` for breaking changes
 2. Update the `?v=` parameter in the project's `<head>` block
 3. Run `scripts/audit-compliance.js` against the project's HTML files
 4. Update the registry table above
