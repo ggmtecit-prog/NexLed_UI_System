@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Accordion Component Logic
  */
 
@@ -1505,12 +1505,378 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
+ * Date Picker Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const datePickers = Array.from(document.querySelectorAll('[data-date-picker]'));
+
+    if (datePickers.length === 0) {
+        return;
+    }
+
+    const locale = document.documentElement.lang || navigator.language || 'en-US';
+    const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' });
+    const inputFormatter = new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric' });
+    const summaryFormatter = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+    const ariaFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const weekdayLabels = createWeekdayLabels(locale);
+    let openPicker = null;
+
+    datePickers.forEach((picker, index) => {
+        const input = picker.querySelector('[data-date-picker-input]');
+        const valueField = picker.querySelector('[data-date-picker-value]');
+        const trigger = picker.querySelector('[data-date-picker-trigger]');
+        const panel = picker.querySelector('[data-date-picker-panel]');
+        const monthLabel = picker.querySelector('[data-date-picker-month]');
+        const weekdayRow = picker.querySelector('[data-date-picker-weekdays]');
+        const daysGrid = picker.querySelector('[data-date-picker-days]');
+        const summary = picker.querySelector('[data-date-picker-summary]');
+        const prevButton = picker.querySelector('[data-date-picker-prev]');
+        const nextButton = picker.querySelector('[data-date-picker-next]');
+        const todayButton = picker.querySelector('[data-date-picker-today]');
+
+        if (!input || !valueField || !trigger || !panel || !monthLabel || !weekdayRow || !daysGrid || !summary || !prevButton || !nextButton || !todayButton) {
+            return;
+        }
+
+        const defaultDate = parseISODate(picker.dataset.datePickerDefault);
+        const viewDate = defaultDate || stripTime(new Date());
+        const panelIdBase = input.id || 'datePicker' + String(index + 1);
+        panel.id = panel.id || `${panelIdBase}-panel`;
+
+        picker._datePickerState = {
+            selectedDate: defaultDate,
+            viewYear: viewDate.getFullYear(),
+            viewMonth: viewDate.getMonth(),
+        };
+
+        trigger.setAttribute('aria-controls', panel.id);
+        trigger.setAttribute('aria-expanded', 'false');
+        input.setAttribute('aria-controls', panel.id);
+        input.setAttribute('aria-expanded', 'false');
+
+        renderWeekdays(weekdayRow);
+        renderDatePicker(picker);
+
+        if (picker.dataset.datePickerOpen === 'true') {
+            openDatePicker(picker, false);
+        }
+
+        trigger.addEventListener('click', () => {
+            if (picker.classList.contains('is-open')) {
+                closeDatePicker(picker, true);
+                return;
+            }
+
+            openDatePicker(picker, true);
+        });
+
+        input.addEventListener('click', () => openDatePicker(picker, true));
+        input.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+                event.preventDefault();
+                openDatePicker(picker, true);
+            }
+
+            if (event.key === 'Escape') {
+                closeDatePicker(picker, false);
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            shiftViewMonth(picker, -1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            shiftViewMonth(picker, 1);
+        });
+
+        todayButton.addEventListener('click', () => {
+            selectDate(picker, stripTime(new Date()), true);
+        });
+
+        daysGrid.addEventListener('click', event => {
+            const dayButton = event.target.closest('[data-date-picker-day]');
+            if (!dayButton) {
+                return;
+            }
+
+            const selectedDate = parseISODate(dayButton.dataset.datePickerDay);
+            if (!selectedDate) {
+                return;
+            }
+
+            selectDate(picker, selectedDate, true);
+        });
+
+        daysGrid.addEventListener('keydown', event => {
+            const currentButton = event.target.closest('[data-date-picker-day]');
+            if (!currentButton) {
+                return;
+            }
+
+            const buttons = Array.from(daysGrid.querySelectorAll('[data-date-picker-day]'));
+            const currentIndex = buttons.indexOf(currentButton);
+            let nextIndex = currentIndex;
+
+            switch (event.key) {
+                case 'ArrowRight':
+                    nextIndex = currentIndex + 1;
+                    break;
+                case 'ArrowLeft':
+                    nextIndex = currentIndex - 1;
+                    break;
+                case 'ArrowDown':
+                    nextIndex = currentIndex + 7;
+                    break;
+                case 'ArrowUp':
+                    nextIndex = currentIndex - 7;
+                    break;
+                case 'Home':
+                    nextIndex = currentIndex - (currentIndex % 7);
+                    break;
+                case 'End':
+                    nextIndex = currentIndex + (6 - (currentIndex % 7));
+                    break;
+                default:
+                    return;
+            }
+
+            if (nextIndex < 0 || nextIndex >= buttons.length) {
+                return;
+            }
+
+            event.preventDefault();
+            buttons[nextIndex].focus();
+        });
+    });
+
+    document.addEventListener('click', event => {
+        datePickers.forEach(picker => {
+            if (picker.contains(event.target)) {
+                return;
+            }
+
+            closeDatePicker(picker, false);
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !openPicker) {
+            return;
+        }
+
+        closeDatePicker(openPicker, true);
+    });
+
+    function renderWeekdays(weekdayRow) {
+        const labels = weekdayLabels.map(label => {
+            const element = document.createElement('span');
+            element.textContent = label;
+            return element;
+        });
+
+        weekdayRow.replaceChildren(...labels);
+    }
+
+    function renderDatePicker(picker) {
+        const state = picker._datePickerState;
+        const input = picker.querySelector('[data-date-picker-input]');
+        const valueField = picker.querySelector('[data-date-picker-value]');
+        const monthLabel = picker.querySelector('[data-date-picker-month]');
+        const daysGrid = picker.querySelector('[data-date-picker-days]');
+        const summary = picker.querySelector('[data-date-picker-summary]');
+        const visibleMonth = new Date(state.viewYear, state.viewMonth, 1);
+        const today = stripTime(new Date());
+
+        monthLabel.textContent = monthFormatter.format(visibleMonth);
+        input.value = state.selectedDate ? inputFormatter.format(state.selectedDate) : '';
+        valueField.value = state.selectedDate ? toISODate(state.selectedDate) : '';
+        summary.textContent = state.selectedDate ? summaryFormatter.format(state.selectedDate) : 'No date selected';
+
+        const firstVisibleDay = new Date(state.viewYear, state.viewMonth, 1);
+        const offset = (firstVisibleDay.getDay() + 6) % 7;
+        firstVisibleDay.setDate(firstVisibleDay.getDate() - offset);
+
+        const buttons = [];
+
+        for (let index = 0; index < 42; index += 1) {
+            const dayDate = new Date(firstVisibleDay);
+            dayDate.setDate(firstVisibleDay.getDate() + index);
+
+            const dayButton = document.createElement('button');
+            const classNames = ['date-picker-day'];
+
+            dayButton.type = 'button';
+            dayButton.dataset.datePickerDay = toISODate(dayDate);
+            dayButton.textContent = String(dayDate.getDate());
+            dayButton.setAttribute('aria-label', ariaFormatter.format(dayDate));
+            dayButton.setAttribute('aria-pressed', state.selectedDate && isSameDay(dayDate, state.selectedDate) ? 'true' : 'false');
+
+            if (dayDate.getMonth() !== state.viewMonth) {
+                classNames.push('is-outside');
+            }
+
+            if (isSameDay(dayDate, today)) {
+                classNames.push('is-today');
+                dayButton.setAttribute('aria-current', 'date');
+            }
+
+            if (state.selectedDate && isSameDay(dayDate, state.selectedDate)) {
+                classNames.push('is-selected');
+            }
+
+            dayButton.className = classNames.join(' ');
+            buttons.push(dayButton);
+        }
+
+        daysGrid.replaceChildren(...buttons);
+    }
+
+    function openDatePicker(picker, focusSelectedDay) {
+        datePickers.forEach(otherPicker => {
+            if (otherPicker !== picker) {
+                closeDatePicker(otherPicker, false);
+            }
+        });
+
+        const panel = picker.querySelector('[data-date-picker-panel]');
+        if (!panel) {
+            return;
+        }
+
+        picker.classList.add('is-open');
+        panel.hidden = false;
+        setExpandedState(picker, true);
+        openPicker = picker;
+
+        if (focusSelectedDay) {
+            requestAnimationFrame(() => {
+                focusPreferredDay(picker);
+            });
+        }
+    }
+
+    function closeDatePicker(picker, restoreFocus) {
+        const panel = picker.querySelector('[data-date-picker-panel]');
+        if (!panel) {
+            return;
+        }
+
+        picker.classList.remove('is-open');
+        panel.hidden = true;
+        setExpandedState(picker, false);
+
+        if (openPicker === picker) {
+            openPicker = null;
+        }
+
+        if (restoreFocus) {
+            picker.querySelector('[data-date-picker-trigger]')?.focus();
+        }
+    }
+
+    function setExpandedState(picker, isOpen) {
+        const trigger = picker.querySelector('[data-date-picker-trigger]');
+        const input = picker.querySelector('[data-date-picker-input]');
+        const value = isOpen ? 'true' : 'false';
+
+        trigger?.setAttribute('aria-expanded', value);
+        input?.setAttribute('aria-expanded', value);
+    }
+
+    function shiftViewMonth(picker, direction) {
+        const state = picker._datePickerState;
+        const nextDate = new Date(state.viewYear, state.viewMonth + direction, 1);
+
+        state.viewYear = nextDate.getFullYear();
+        state.viewMonth = nextDate.getMonth();
+        renderDatePicker(picker);
+
+        requestAnimationFrame(() => {
+            focusPreferredDay(picker);
+        });
+    }
+
+    function selectDate(picker, date, closeAfterSelect) {
+        const normalizedDate = stripTime(date);
+        const state = picker._datePickerState;
+
+        state.selectedDate = normalizedDate;
+        state.viewYear = normalizedDate.getFullYear();
+        state.viewMonth = normalizedDate.getMonth();
+        renderDatePicker(picker);
+
+        if (closeAfterSelect) {
+            closeDatePicker(picker, true);
+        }
+    }
+
+    function focusPreferredDay(picker) {
+        const daysGrid = picker.querySelector('[data-date-picker-days]');
+        if (!daysGrid) {
+            return;
+        }
+
+        const preferredButton =
+            daysGrid.querySelector('.is-selected') ||
+            daysGrid.querySelector('.is-today:not(.is-outside)') ||
+            daysGrid.querySelector('[data-date-picker-day]');
+
+        preferredButton?.focus();
+    }
+
+    function createWeekdayLabels(localeValue) {
+        const formatter = new Intl.DateTimeFormat(localeValue, { weekday: 'short' });
+        const mondayStart = new Date(2024, 0, 1);
+
+        return Array.from({ length: 7 }, (_, index) => {
+            const weekday = new Date(mondayStart);
+            weekday.setDate(mondayStart.getDate() + index);
+            return formatter.format(weekday).replace('.', '');
+        });
+    }
+
+    function parseISODate(value) {
+        if (!value) {
+            return null;
+        }
+
+        const parts = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!parts) {
+            return null;
+        }
+
+        const parsedDate = new Date(Number(parts[1]), Number(parts[2]) - 1, Number(parts[3]));
+        return Number.isNaN(parsedDate.getTime()) ? null : stripTime(parsedDate);
+    }
+
+    function stripTime(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    function toISODate(date) {
+        const year = String(date.getFullYear());
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
+    }
+
+    function isSameDay(firstDate, secondDate) {
+        return firstDate.getFullYear() === secondDate.getFullYear()
+            && firstDate.getMonth() === secondDate.getMonth()
+            && firstDate.getDate() === secondDate.getDate();
+    }
+});
+/**
  * Search Overlay Component Logic
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     const triggers = Array.from(document.querySelectorAll('[data-search-overlay-target]'));
-    const overlays = Array.from(document.querySelectorAll('.search-overlay'));
+    const overlays = Array.from(document.querySelectorAll('.search-overlay[data-search-overlay-modal="true"]'));
 
     if (triggers.length === 0 || overlays.length === 0) {
         return;
@@ -1526,7 +1892,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger.setAttribute('aria-expanded', 'false');
 
         trigger.addEventListener('click', () => {
-            const overlay = document.getElementById(targetId);
+            const overlay = overlays.find(item => item.id === targetId);
             if (!overlay) {
                 return;
             }
@@ -1554,7 +1920,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const openOverlay = document.querySelector('.search-overlay.is-open');
+        const openOverlay = overlays.find(overlay => overlay.classList.contains('is-open'));
         if (!openOverlay) {
             return;
         }
@@ -1570,6 +1936,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    function syncBodyLock() {
+        document.body.classList.toggle('search-overlay-open', overlays.some(overlay => overlay.classList.contains('is-open')));
+    }
+
     function openSearchOverlay(overlay, trigger) {
         const targetId = overlay.id;
 
@@ -1582,8 +1952,8 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
         overlay._lastTrigger = trigger;
-        document.body.style.overflow = 'hidden';
         syncTriggerState(targetId, true);
+        syncBodyLock();
 
         requestAnimationFrame(() => {
             overlay.querySelector('[data-search-overlay-input]')?.focus();
@@ -1593,15 +1963,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeSearchOverlay(overlay, restoreFocus) {
         overlay.classList.remove('is-open');
         overlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
         syncTriggerState(overlay.id, false);
+        syncBodyLock();
 
         if (restoreFocus && overlay._lastTrigger) {
             overlay._lastTrigger.focus();
         }
     }
 });
-
 /**
  * Toast Component Logic
  */
@@ -1687,3 +2056,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+

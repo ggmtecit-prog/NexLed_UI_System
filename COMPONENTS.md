@@ -27,6 +27,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **BADGES** (9 classes)
 - **AVATAR** (9 classes)
 - **INPUTS** (13 classes)
+- **DATE PICKER** (19 classes)
 - **CHECKBOXES** (4 classes)
 - **RADIO BUTTONS** (4 classes)
 - **TOGGLE** (8 classes)
@@ -47,7 +48,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **LIST** (6 classes)
 - **PAGINATION** (6 classes)
 - **MODAL** (8 classes)
-- **SEARCH OVERLAY** (8 classes)
+- **SEARCH OVERLAY** (10 classes)
 - **TOAST** (13 classes)
 - **LAYOUT** (4 classes)
 - **UTILITIES** (3 classes)
@@ -217,6 +218,42 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:hover`
 - `:focus-visible`
 - `:disabled`
+
+---
+
+## DATE PICKER
+
+### Classes
+
+- `.date-picker`
+- `.date-picker-control`
+- `.date-picker-day`
+- `.date-picker-days`
+- `.date-picker-footer`
+- `.date-picker-head`
+- `.date-picker-inline`
+- `.date-picker-input`
+- `.date-picker-leading`
+- `.date-picker-lg`
+- `.date-picker-md`
+- `.date-picker-meta`
+- `.date-picker-month`
+- `.date-picker-nav`
+- `.date-picker-panel`
+- `.date-picker-sm`
+- `.date-picker-summary`
+- `.date-picker-trigger`
+- `.date-picker-weekdays`
+
+### States
+
+- `:hover`
+- `.is-open`
+- `:focus-visible`
+- `:disabled`
+- `.is-outside`
+- `.is-today`
+- `.is-selected`
 
 ---
 
@@ -669,8 +706,10 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.search-overlay-footer`
 - `.search-overlay-group`
 - `.search-overlay-header`
+- `.search-overlay-inline`
 - `.search-overlay-item`
 - `.search-overlay-panel`
+- `.search-overlay-preview`
 - `.search-overlay-results`
 
 ### States
