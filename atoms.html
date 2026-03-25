@@ -706,118 +706,213 @@
                 </section>
                 <!-- 4. INPUTS & CONTROLS -->
                 <section id="checkboxes">
-                    <div class="flex items-center gap-12 mb-24 pl-32">
-                        <h2 class="text-nav-bar-h1 font-medium text-black">Checkboxes</h2>
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Checkboxes</h2>
                     </div>
 
-                    <div
-                        class="panel panel-wrap-body panel-wrap-body-grid size-grid size-grid-layout size-grid-gap-40 grid-cols-1 md:grid-cols-4">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                        <!-- Large Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="checkbox-wrapper checkbox-lg">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-lg">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-lg is-disabled" aria-disabled="true">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer" disabled checked>
-                                </span>
-                                <span class="text-body">Large</span>
-                            </label>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-lg">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer">
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body">Unchecked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-lg">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body">Checked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-lg is-disabled" aria-disabled="true">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" disabled checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-md">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer">
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Unchecked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-md">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Checked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" disabled checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-sm">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer">
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-xs">Unchecked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-sm">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-xs">Checked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-sm is-disabled" aria-disabled="true">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" disabled checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-xs">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Focusable</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-lg">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer">
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-lg opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body">Newsletter</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-md">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Product alerts</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-sm">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer">
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-xs">SMS updates</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Indeterminate</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-md">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" data-state="indeterminate" class="peer">
+                                                    <i
+                                                        class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Mixed selection</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" data-state="indeterminate" class="peer" disabled>
+                                                    <i
+                                                        class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">Mixed disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="checkbox-wrapper checkbox-md is-disabled">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" disabled>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">System locked</span>
+                                            </label>
+                                            <label class="checkbox-wrapper checkbox-md" aria-disabled="true">
+                                                <span class="relative inline-flex items-center justify-center">
+                                                    <input type="checkbox" class="peer" disabled checked>
+                                                    <i
+                                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"
+                                                        aria-hidden="true"></i>
+                                                </span>
+                                                <span class="text-body-sm">ARIA disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Medium Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer" disabled checked>
-                                </span>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                        </div>
-
-                        <!-- Small Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="checkbox-wrapper checkbox-sm">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-sm">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer">
-                                    <i
-                                        class="ri-check-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-xs opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-sm is-disabled" aria-disabled="true">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" class="peer" disabled checked>
-                                </span>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                        </div>
-
-                        <!-- Indeterminate Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer">
-                                    <i
-                                        class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer">
-                                    <i
-                                        class="ri-subtract-line absolute inset-0 flex items-center justify-center leading-none text-white text-icon-md opacity-0 peer-checked:opacity-100 pointer-events-none"></i>
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                            <label class="checkbox-wrapper checkbox-md is-disabled" aria-disabled="true">
-                                <span class="relative inline-flex items-center justify-center">
-                                    <input type="checkbox" data-state="indeterminate" class="peer" disabled checked>
-
-                                </span>
-                                <span class="text-body-sm">Indeterminate</span>
-                            </label>
-                        </div>
-
                     </div>
 
                 </section>

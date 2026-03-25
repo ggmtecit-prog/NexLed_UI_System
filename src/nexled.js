@@ -53,6 +53,26 @@ function closeBar(id) {
     }, 400);
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type="checkbox"][data-state="indeterminate"]').forEach(checkbox => {
+        checkbox.indeterminate = true;
+        syncIndeterminateCheckbox(checkbox);
+
+        checkbox.addEventListener('change', () => {
+            syncIndeterminateCheckbox(checkbox);
+        });
+    });
+});
+
+function syncIndeterminateCheckbox(checkbox) {
+    if (checkbox.indeterminate) {
+        checkbox.setAttribute('aria-checked', 'mixed');
+        return;
+    }
+
+    checkbox.removeAttribute('aria-checked');
+}
+
 
 /* ============================================================
    Dropdown Menu Component Scripts
@@ -2869,7 +2889,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
 
 
 
