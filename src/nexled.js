@@ -1475,6 +1475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const endInput = slider.querySelector('[data-range-slider-end]');
         const startOutput = slider.querySelector('[data-range-slider-start-output]');
         const endOutput = slider.querySelector('[data-range-slider-end-output]');
+        const unit = (slider.dataset.rangeSliderUnit || '').trim();
 
         if (!startInput || !endInput) {
             return;
@@ -1505,10 +1506,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 endOutput.textContent = String(nextEnd);
             }
 
-            slider.style.setProperty('--range-slider-start-percent', `${toRangePercent(nextStart, min, max)}%`);
-            slider.style.setProperty('--range-slider-end-percent', `${toRangePercent(nextEnd, min, max)}%`);
-            startInput.setAttribute('aria-valuetext', String(nextStart));
-            endInput.setAttribute('aria-valuetext', String(nextEnd));
+            const startPercent = toRangePercent(nextStart, min, max);
+            const endPercent = toRangePercent(nextEnd, min, max);
+            const selectionScale = Math.max((endPercent - startPercent) / 100, 0);
+            const formatValueText = value => unit ? `${value} ${unit}` : String(value);
+
+            slider.style.setProperty('--range-slider-start-percent', `${startPercent}%`);
+            slider.style.setProperty('--range-slider-end-percent', `${endPercent}%`);
+            slider.style.setProperty('--range-slider-selection-offset', `${startPercent}%`);
+            slider.style.setProperty('--range-slider-selection-scale', String(selectionScale));
+            startInput.setAttribute('aria-valuetext', formatValueText(nextStart));
+            endInput.setAttribute('aria-valuetext', formatValueText(nextEnd));
         };
 
         startInput.addEventListener('input', () => {
