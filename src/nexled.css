@@ -4606,8 +4606,7 @@ body.drawer-sheet-open {
 }
 
 .drawer-sheet-footer .btn {
-  width: auto;
-  min-width: var(--size-btn-sm-w);
+  min-width: 0;
 }
 
 .drawer-sheet-close {
@@ -4682,14 +4681,13 @@ body.drawer-sheet-open {
 
 .modal-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-16);
 }
 
 .modal-footer .btn {
-  width: auto;
-  min-width: var(--size-btn-sm-w);
-  height: var(--size-btn-sm-h);
+  min-width: 0;
 }
 
 .modal-close {
