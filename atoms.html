@@ -306,66 +306,94 @@
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Badges</h2>
                     </div>
 
-                    <div class="panel panel-wrap-body panel-wrap-body-gap-32">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                        <div>
-                            <!-- 1. REFERENCES SECTION -->
-
-                            <div class="space-y-24 mb-20">
-
-                                <!-- LARGE SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Large
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-lg"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-lg"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-lg"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-lg"><span>Neutral</span></div>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <span class="badge badge-primary badge-lg">Primary</span>
+                                            <span class="badge badge-success badge-lg">Success</span>
+                                            <span class="badge badge-danger badge-lg">Danger</span>
+                                            <span class="badge badge-neutral badge-lg">Neutral</span>
+                                            <span class="badge badge-warning badge-lg">Warning</span>
+                                            <span class="badge badge-info badge-lg">Info</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- MEDIUM SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Medium
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-md"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-md"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-md"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-md"><span>Neutral</span></div>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <span class="badge badge-primary badge-md">Primary</span>
+                                            <span class="badge badge-success badge-md">Success</span>
+                                            <span class="badge badge-danger badge-md">Danger</span>
+                                            <span class="badge badge-neutral badge-md">Neutral</span>
+                                            <span class="badge badge-warning badge-md">Warning</span>
+                                            <span class="badge badge-info badge-md">Info</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- SMALL SIZE -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Small
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-sm"><span>Primary</span></div>
-                                        <div class="badge badge-success badge-sm"><span>Success</span></div>
-                                        <div class="badge badge-danger badge-sm"><span>Danger</span></div>
-                                        <div class="badge badge-neutral badge-sm"><span>Neutral</span></div>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <span class="badge badge-primary badge-sm">Primary</span>
+                                            <span class="badge badge-success badge-sm">Success</span>
+                                            <span class="badge badge-danger badge-sm">Danger</span>
+                                            <span class="badge badge-neutral badge-sm">Neutral</span>
+                                            <span class="badge badge-warning badge-sm">Warning</span>
+                                            <span class="badge badge-info badge-sm">Info</span>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <!-- DOT INDICATOR -->
-                                <div class="flex items-center gap-24">
-                                    <h3 class="text-grey-primary font-light text-body-xs  w-32 shrink-0">Dot
-                                    </h3>
-                                    <div class="flex items-center gap-16">
-                                        <div class="badge badge-primary badge-dot"></div>
-                                        <div class="badge badge-success badge-dot"></div>
-                                        <div class="badge badge-danger badge-dot"></div>
-                                        <div class="badge badge-neutral badge-dot"></div>
-                                    </div>
-                                </div>
-
                             </div>
 
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">States & Indicator</h3>
 
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Focusable</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button type="button" class="badge badge-primary badge-md">Primary</button>
+                                            <button type="button" class="badge badge-warning badge-md">Warning</button>
+                                            <button type="button" class="badge badge-info badge-md">Info</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button type="button" class="badge badge-neutral badge-md" disabled>Disabled</button>
+                                            <button type="button" class="badge badge-success badge-md" aria-disabled="true">ARIA Disabled</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Dot</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <span class="badge badge-primary badge-dot" aria-label="Primary indicator"></span>
+                                            <span class="badge badge-success badge-dot" aria-label="Success indicator"></span>
+                                            <span class="badge badge-danger badge-dot" aria-label="Danger indicator"></span>
+                                            <span class="badge badge-neutral badge-dot" aria-label="Neutral indicator"></span>
+                                            <span class="badge badge-warning badge-dot" aria-label="Warning indicator"></span>
+                                            <span class="badge badge-info badge-dot" aria-label="Info indicator"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
 
                 </section>
