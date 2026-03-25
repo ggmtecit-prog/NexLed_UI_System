@@ -918,65 +918,143 @@
                 </section>
 
                 <section id="radio-buttons">
-                    <div class="flex items-center gap-12 mb-24 pl-32">
-                        <h2 class="text-nav-bar-h1 font-medium text-black">Radio Button</h2>
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Radio Buttons</h2>
                     </div>
 
-                    <div
-                        class="panel panel-wrap-body panel-wrap-body-grid size-grid size-grid-layout size-grid-gap-40 grid-cols-1 md:grid-cols-3">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                        <!-- Large Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="radio-wrapper radio-lg">
-                                <input type="radio" name="radio-lg">
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="radio-wrapper radio-lg">
-                                <input type="radio" name="radio-lg">
-                                <span class="text-body">Large</span>
-                            </label>
-                            <label class="radio-wrapper radio-lg is-disabled" aria-disabled="true">
-                                <input type="radio" name="radio-lg" disabled checked>
-                                <span class="text-body">Large</span>
-                            </label>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-lg">
+                                                <input type="radio" name="radio-lg-unchecked">
+                                                <span class="text-body">Unchecked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-lg">
+                                                <input type="radio" name="radio-lg-checked" checked>
+                                                <span class="text-body">Checked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-lg is-disabled" aria-disabled="true">
+                                                <input type="radio" name="radio-lg-disabled" disabled checked>
+                                                <span class="text-body">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-md">
+                                                <input type="radio" name="radio-md-unchecked">
+                                                <span class="text-body-sm">Unchecked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-md">
+                                                <input type="radio" name="radio-md-checked" checked>
+                                                <span class="text-body-sm">Checked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-md is-disabled" aria-disabled="true">
+                                                <input type="radio" name="radio-md-disabled" disabled checked>
+                                                <span class="text-body-sm">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-sm">
+                                                <input type="radio" name="radio-sm-unchecked">
+                                                <span class="text-body-xs">Unchecked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-sm">
+                                                <input type="radio" name="radio-sm-checked" checked>
+                                                <span class="text-body-xs">Checked</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-sm is-disabled" aria-disabled="true">
+                                                <input type="radio" name="radio-sm-disabled" disabled checked>
+                                                <span class="text-body-xs">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Focusable</h4>
+                                    <div class="size-grid-content">
+                                        <div role="radiogroup" aria-label="Notification channel options"
+                                            class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-md">
+                                                <input type="radio" name="radio-focusable-group" checked>
+                                                <span class="text-body-sm">Email</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-md">
+                                                <input type="radio" name="radio-focusable-group">
+                                                <span class="text-body-sm">SMS</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-md">
+                                                <input type="radio" name="radio-focusable-group">
+                                                <span class="text-body-sm">Push</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Grouped</h4>
+                                    <div class="size-grid-content">
+                                        <div role="radiogroup" aria-label="Shipping speed options"
+                                            class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-lg">
+                                                <input type="radio" name="radio-grouped-options">
+                                                <span class="text-body">Standard</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-lg">
+                                                <input type="radio" name="radio-grouped-options" checked>
+                                                <span class="text-body">Express</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-lg">
+                                                <input type="radio" name="radio-grouped-options">
+                                                <span class="text-body">Priority</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div role="radiogroup" aria-label="Disabled radio examples"
+                                            class="flex items-center gap-16 flex-wrap">
+                                            <label class="radio-wrapper radio-md is-disabled">
+                                                <input type="radio" name="radio-disabled-examples" disabled>
+                                                <span class="text-body-sm">Unavailable</span>
+                                            </label>
+                                            <label class="radio-wrapper radio-md is-disabled" aria-disabled="true">
+                                                <input type="radio" name="radio-disabled-examples" disabled checked>
+                                                <span class="text-body-sm">Selected lock</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Medium Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="radio-wrapper radio-md">
-                                <input type="radio" name="radio-md">
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="radio-wrapper radio-md">
-                                <input type="radio" name="radio-md">
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                            <label class="radio-wrapper radio-md is-disabled" aria-disabled="true">
-                                <input type="radio" name="radio-md" disabled checked>
-                                <span class="text-body-sm">Medium</span>
-                            </label>
-                        </div>
-
-                        <!-- Small Column -->
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <label class="radio-wrapper radio-sm">
-                                <input type="radio" name="radio-sm">
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="radio-wrapper radio-sm">
-                                <input type="radio" name="radio-sm">
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                            <label class="radio-wrapper radio-sm is-disabled" aria-disabled="true">
-                                <input type="radio" name="radio-sm" disabled checked>
-                                <span class="text-body-xs">Small</span>
-                            </label>
-                        </div>
-
                     </div>
 
                 </section>
-
                 <!-- 4. Hyperlinks -->
                 <section id="toggle">
                     <div class="panel-wrap-head">
