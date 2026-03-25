@@ -318,6 +318,108 @@ body {
   font-weight: var(--font-weight-regular);
 }
 
+/* ICONS */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  color: inherit;
+}
+
+.icon-xs {
+  font-size: var(--space-12);
+}
+
+.icon-sm {
+  font-size: var(--space-16);
+}
+
+.icon-md {
+  font-size: var(--space-20);
+}
+
+.icon-lg {
+  font-size: var(--space-24);
+}
+
+.icon-xl {
+  font-size: var(--space-32);
+}
+
+.icon-xxl {
+  font-size: var(--space-48);
+}
+
+.icon-primary {
+  color: var(--color-green-primary);
+}
+
+.icon-secondary {
+  color: var(--color-grey-primary);
+}
+
+.icon-muted {
+  color: var(--color-grey-secondary);
+}
+
+.icon-danger {
+  color: var(--color-red-primary);
+}
+
+.icon-success {
+  color: var(--color-green-primary);
+}
+
+.icon-on-dark {
+  color: var(--color-white);
+}
+
+.icon-box,
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: var(--radius-md);
+}
+
+.icon-box-sm {
+  width: var(--space-32);
+  height: var(--space-32);
+}
+
+.icon-box-md {
+  width: var(--space-40);
+  height: var(--space-40);
+}
+
+.icon-box-lg,
+.card-icon {
+  width: var(--space-40);
+  height: var(--space-40);
+}
+
+.icon-box-primary,
+.card-icon {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+}
+
+.icon-box-neutral {
+  background: var(--color-grey-tertiary);
+  color: var(--color-grey-primary);
+}
+
+.icon-box > .icon,
+.icon-box > i,
+.card-icon > .icon,
+.card-icon > i {
+  color: inherit;
+}
 /* BUTTONS */
 .btn,
 .dropdown-trigger,
@@ -355,6 +457,7 @@ body {
     opacity var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
+.btn > .icon,
 .btn > i {
   transition:
     transform var(--motion-duration-fast) var(--motion-ease-premium),
@@ -366,6 +469,7 @@ body {
   box-shadow: var(--shadow-btn-hover);
 }
 
+.btn:hover > .icon,
 .btn:hover > i {
   transform: scale(var(--scale-hover));
 }
@@ -375,6 +479,7 @@ body {
   box-shadow: var(--shadow-btn-active);
 }
 
+.btn:active > .icon,
 .btn:active > i {
   transform: scale(var(--scale-press));
 }
@@ -7095,6 +7200,12 @@ textarea,
     height: var(--space-64);
     font-size: var(--font-size-body-lg);
     line-height: var(--line-height-body-lg);
+  }
+
+  .icon-box-lg,
+  .card-icon {
+    width: var(--space-48);
+    height: var(--space-48);
   }
 
   .data-table-actions {

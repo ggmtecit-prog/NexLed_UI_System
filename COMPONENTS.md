@@ -22,6 +22,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **SCROLLBAR** (0 classes)
 - **CUSTOM SCROLLBAR** (1 classes)
 - **TYPOGRAPHY** (8 classes)
+- **ICONS** (20 classes)
 - **BUTTONS** (19 classes)
 - **NAVIGATION BAR** (3 classes)
 - **BADGES** (11 classes)
@@ -113,6 +114,33 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.text-h1`
 - `.text-h2`
 - `.text-h3`
+
+---
+
+## ICONS
+
+### Classes
+
+- `.card-icon`
+- `.icon`
+- `.icon-box`
+- `.icon-box-lg`
+- `.icon-box-md`
+- `.icon-box-neutral`
+- `.icon-box-primary`
+- `.icon-box-sm`
+- `.icon-danger`
+- `.icon-lg`
+- `.icon-md`
+- `.icon-muted`
+- `.icon-on-dark`
+- `.icon-primary`
+- `.icon-secondary`
+- `.icon-sm`
+- `.icon-success`
+- `.icon-xl`
+- `.icon-xs`
+- `.icon-xxl`
 
 ---
 
