@@ -686,6 +686,8 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  flex-shrink: 0;
+  padding: 0;
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-full);
   background: var(--color-white);
@@ -712,6 +714,28 @@ body {
   text-transform: uppercase;
 }
 
+.avatar-square.avatar-sm,
+.avatar-square.avatar-md {
+  border-radius: var(--radius-sm);
+}
+
+.avatar-square.avatar-lg,
+.avatar-square.avatar-xl {
+  border-radius: var(--radius-md);
+}
+
+.avatar:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.avatar:disabled,
+.avatar[aria-disabled="true"] {
+  opacity: var(--opacity-semi);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .avatar-primary {
   background: var(--color-green-hover-text);
   border-color: var(--color-green-hover-icons);
@@ -732,24 +756,24 @@ body {
 }
 
 .avatar-md {
+  width: var(--space-40);
+  height: var(--space-40);
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+}
+
+.avatar-lg {
   width: var(--space-48);
   height: var(--space-48);
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body-sm);
 }
 
-.avatar-lg {
+.avatar-xl {
   width: var(--space-56);
   height: var(--space-56);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
-}
-
-.avatar-xl {
-  width: var(--space-64);
-  height: var(--space-64);
-  font-size: var(--font-size-body-lg);
-  line-height: var(--line-height-body-lg);
 }
 
 /* INPUTS */
@@ -7043,6 +7067,34 @@ textarea,
   .badge-md {
     padding: var(--space-4) var(--space-12);
     border-radius: var(--radius-xs);
+  }
+
+  .avatar-sm {
+    width: var(--space-32);
+    height: var(--space-32);
+    font-size: var(--font-size-body-xs);
+    line-height: var(--line-height-body-xs);
+  }
+
+  .avatar-md {
+    width: var(--space-48);
+    height: var(--space-48);
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body-sm);
+  }
+
+  .avatar-lg {
+    width: var(--space-56);
+    height: var(--space-56);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .avatar-xl {
+    width: var(--space-64);
+    height: var(--space-64);
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-body-lg);
   }
 
   .data-table-actions {
