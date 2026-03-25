@@ -6910,27 +6910,27 @@ textarea,
 
   .btn-xl {
     width: auto;
-    min-width: var(--responsive-btn-xl-w);
+    min-width: var(--responsive-btn-xl-h);
   }
 
   .btn-lg {
     width: auto;
-    min-width: var(--responsive-btn-lg-w);
+    min-width: var(--responsive-btn-lg-h);
   }
 
   .btn-md {
     width: auto;
-    min-width: var(--responsive-btn-md-w);
+    min-width: var(--responsive-btn-md-h);
   }
 
   .btn-sm {
     width: auto;
-    min-width: var(--responsive-btn-sm-w);
+    min-width: var(--responsive-btn-sm-h);
   }
 
   .btn-xs {
     width: auto;
-    min-width: var(--responsive-btn-xs-w);
+    min-width: var(--responsive-btn-xs-h);
   }
 
   .data-table-actions {

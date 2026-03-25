@@ -113,138 +113,111 @@
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                        <div class="size-grid size-grid-stack size-grid-stack-gap-24 pb-20">
+                        <div class="size-grid size-grid-stack size-grid-stack-gap-24">
 
-                            <!-- LARGE (L) VARIATIONS - CURRENT -->
-                            <div class="size-grid-stack size-grid-stack-gap-12">
-                                <div class="size-grid-stack size-grid-stack-gap-12">
-                                    <div>
+                            <!-- VARIANTS -->
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                                        <div class="size-grid-inline size-grid-inline-gap-10">
-                                            <button class="btn btn-primary btn-lg">Primary L</button>
-                                            <button class="btn btn-secondary btn-lg">Secondary L</button>
-                                            <button class="btn btn-primary btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text
-                                                L</button>
-                                            <button class="btn btn-ghost btn-lg">Ghost L</button>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-10 flex-wrap">
+                                            <button class="btn btn-primary btn-lg">Primary</button>
+                                            <button class="btn btn-secondary btn-lg">Secondary</button>
+                                            <button class="btn btn-primary btn-lg"><i class="ri-delete-bin-2-line text-icon-xxl"></i>Icon + Text</button>
+                                            <button class="btn btn-ghost btn-lg">Ghost</button>
                                         </div>
                                     </div>
-                                    <div>
+                                </div>
 
-                                        <div class="size-grid-inline size-grid-inline-gap-48">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-lg"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-lg btn-toggle"><i
-                                                    class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle L</button>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-10 flex-wrap">
+                                            <button class="btn btn-primary btn-md">Primary</button>
+                                            <button class="btn btn-secondary btn-md">Secondary</button>
+                                            <button class="btn btn-primary btn-md"><i class="ri-delete-bin-2-line text-icon-xl"></i>Icon + Text</button>
+                                            <button class="btn btn-ghost btn-md">Ghost</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-10 flex-wrap">
+                                            <button class="btn btn-primary btn-sm">Primary</button>
+                                            <button class="btn btn-secondary btn-sm">Secondary</button>
+                                            <button class="btn btn-primary btn-sm"><i class="ri-delete-bin-2-line text-icon-lg"></i>Icon + Text</button>
+                                            <button class="btn btn-ghost btn-sm">Ghost</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Extra Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-10 flex-wrap">
+                                            <button class="btn btn-primary btn-xs">Primary</button>
+                                            <button class="btn btn-secondary btn-xs">Secondary</button>
+                                            <button class="btn btn-primary btn-xs"><i class="ri-delete-bin-2-line text-icon-md"></i>Icon + Text</button>
+                                            <button class="btn btn-ghost btn-xs">Ghost</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- MEDIUM (M) VARIATIONS -->
-                            <div class="size-grid-stack size-grid-stack-gap-12">
-                                <div class="size-grid-stack size-grid-stack-gap-12">
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-10">
-                                            <button class="btn btn-primary btn-md">Primary M</button>
-                                            <button class="btn btn-secondary btn-md">Secondary M</button>
-                                            <button class="btn btn-primary btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i>Icon + Text M</button>
-                                            <button class="btn btn-ghost btn-md">Ghost M</button>
+                            <!-- ICON & TOGGLE -->
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Icon & Toggle</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-icon btn-lg"><i class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-ghost btn-icon btn-lg"><i class="ri-delete-bin-2-line text-icon-xxl"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-lg btn-toggle"><i class="ri-delete-bin-2-line text-icon-xxl"></i>Toggle</button>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-48">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-md"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-md btn-toggle"><i
-                                                    class="ri-delete-bin-2-line text-icon-xl"></i>Toggle M</button>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-icon btn-md"><i class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-ghost btn-icon btn-md"><i class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-md btn-toggle"><i class="ri-delete-bin-2-line text-icon-xl"></i>Toggle</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-icon btn-sm"><i class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-ghost btn-icon btn-sm"><i class="ri-delete-bin-2-line text-icon-lg"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-sm btn-toggle"><i class="ri-delete-bin-2-line text-icon-lg"></i>Toggle</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Extra Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-icon btn-xs"><i class="ri-delete-bin-2-line text-icon-md"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-ghost btn-icon btn-xs"><i class="ri-delete-bin-2-line text-icon-md"></i></button>
+                                            <button onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')" aria-pressed="false" class="btn btn-secondary btn-xs btn-toggle"><i class="ri-delete-bin-2-line text-icon-md"></i>Toggle</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- SMALL (S) VARIATIONS -->
-                            <div class="size-grid-stack size-grid-stack-gap-12">
-                                <div class="size-grid-stack size-grid-stack-gap-12">
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-10">
-                                            <button class="btn btn-primary btn-sm">Primary S</button>
-                                            <button class="btn btn-secondary btn-sm">Secondary S</button>
-                                            <button class="btn btn-primary btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i>Icon + Text S</button>
-                                            <button class="btn btn-ghost btn-sm">Ghost S</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-48">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-sm"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-sm btn-toggle"><i
-                                                    class="ri-delete-bin-2-line text-icon-lg"></i>Toggle S</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- EXTRA SMALL (XS) VARIATIONS -->
-                            <div class="size-grid-stack size-grid-stack-gap-12">
-                                <div class="size-grid-stack size-grid-stack-gap-12">
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-10">
-                                            <button class="btn btn-primary btn-xs">Primary XS</button>
-                                            <button class="btn btn-secondary btn-xs">Secondary XS</button>
-                                            <button class="btn btn-primary btn-xs"><i
-                                                    class="ri-delete-bin-2-line text-icon-md"></i>Icon + Text
-                                                XS</button>
-                                            <button class="btn btn-ghost btn-xs">Ghost XS</button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="size-grid-inline size-grid-inline-gap-48">
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-icon btn-xs"><i
-                                                    class="ri-delete-bin-2-line text-icon-md"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-ghost btn-icon btn-xs"><i
-                                                    class="ri-delete-bin-2-line text-icon-md"></i></button>
-                                            <button
-                                                onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')"
-                                                aria-pressed="false" class="btn btn-secondary btn-xs btn-toggle"><i
-                                                    class="ri-delete-bin-2-line text-icon-md"></i>Toggle XS</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-
                     </div>
 
                 </section>
