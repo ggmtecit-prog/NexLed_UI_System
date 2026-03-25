@@ -32,7 +32,7 @@ Fix the token and responsive CSS layer before touching any component.
 
 Core interactive controls.
 
-**Components:** Buttons, Inputs, Dropdown, Accordion, Modal, Drawer Sheet
+**Components:** Buttons, Inputs, Dropdown, Accordion, Modal, Drawer Sheet, All of them
 
 ### Cycle per component
 

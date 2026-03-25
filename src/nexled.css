@@ -6378,6 +6378,21 @@ body.search-overlay-open {
   --responsive-btn-sm-h: var(--size-btn-xs-h);
   --responsive-btn-xs-w: var(--size-btn-xs-w);
   --responsive-btn-xs-h: var(--size-btn-xs-h);
+  --responsive-btn-xl-font: var(--font-size-h3);
+  --responsive-btn-xl-line: var(--line-height-h3);
+  --responsive-btn-xl-pad: var(--space-24);
+  --responsive-btn-lg-font: var(--font-size-body-lg);
+  --responsive-btn-lg-line: var(--line-height-body-lg);
+  --responsive-btn-lg-pad: var(--space-20);
+  --responsive-btn-md-font: var(--font-size-body-lg);
+  --responsive-btn-md-line: var(--line-height-body-lg);
+  --responsive-btn-md-pad: var(--space-16);
+  --responsive-btn-sm-font: var(--font-size-body-sm);
+  --responsive-btn-sm-line: var(--line-height-body-sm);
+  --responsive-btn-sm-pad: var(--space-16);
+  --responsive-btn-xs-font: var(--font-size-body-sm);
+  --responsive-btn-xs-line: var(--line-height-body-sm);
+  --responsive-btn-xs-pad: var(--space-12);
   --responsive-drawer-w: var(--layout-narrow);
   --responsive-modal-w: var(--layout-narrow);
   --responsive-search-w: var(--layout-standard);
@@ -6596,41 +6611,41 @@ textarea,
 .btn-xl {
   width: min(100%, var(--responsive-btn-xl-w));
   height: var(--responsive-btn-xl-h);
-  padding-inline: var(--space-24);
-  font-size: var(--responsive-component-title-size);
-  line-height: var(--responsive-component-title-line);
+  padding-inline: var(--responsive-btn-xl-pad);
+  font-size: var(--responsive-btn-xl-font);
+  line-height: var(--responsive-btn-xl-line);
 }
 
 .btn-lg {
   width: min(100%, var(--responsive-btn-lg-w));
   height: var(--responsive-btn-lg-h);
-  padding-inline: var(--space-20);
-  font-size: var(--responsive-subhead-size);
-  line-height: var(--responsive-subhead-line);
+  padding-inline: var(--responsive-btn-lg-pad);
+  font-size: var(--responsive-btn-lg-font);
+  line-height: var(--responsive-btn-lg-line);
 }
 
 .btn-md {
   width: min(100%, var(--responsive-btn-md-w));
   height: var(--responsive-btn-md-h);
-  padding-inline: var(--space-16);
-  font-size: var(--responsive-body-size);
-  line-height: var(--responsive-body-line);
+  padding-inline: var(--responsive-btn-md-pad);
+  font-size: var(--responsive-btn-md-font);
+  line-height: var(--responsive-btn-md-line);
 }
 
 .btn-sm {
   width: min(100%, var(--responsive-btn-sm-w));
   height: var(--responsive-btn-sm-h);
-  padding-inline: var(--space-16);
-  font-size: var(--responsive-meta-size);
-  line-height: var(--responsive-meta-line);
+  padding-inline: var(--responsive-btn-sm-pad);
+  font-size: var(--responsive-btn-sm-font);
+  line-height: var(--responsive-btn-sm-line);
 }
 
 .btn-xs {
   width: min(100%, var(--responsive-btn-xs-w));
   height: var(--responsive-btn-xs-h);
-  padding-inline: var(--space-12);
-  font-size: var(--responsive-meta-size);
-  line-height: var(--responsive-meta-line);
+  padding-inline: var(--responsive-btn-xs-pad);
+  font-size: var(--responsive-btn-xs-font);
+  line-height: var(--responsive-btn-xs-line);
 }
 
 .btn-icon.btn-xl,
@@ -6860,6 +6875,21 @@ textarea,
     --responsive-btn-md-h: var(--size-btn-sm-h);
     --responsive-btn-sm-w: var(--size-btn-sm-w);
     --responsive-btn-sm-h: var(--size-btn-sm-h);
+    --responsive-btn-xl-font: var(--font-size-h2);
+    --responsive-btn-xl-line: var(--line-height-h2);
+    --responsive-btn-xl-pad: var(--space-32);
+    --responsive-btn-lg-font: var(--font-size-h3);
+    --responsive-btn-lg-line: var(--line-height-h3);
+    --responsive-btn-lg-pad: var(--space-24);
+    --responsive-btn-md-font: var(--font-size-body-lg);
+    --responsive-btn-md-line: var(--line-height-body-lg);
+    --responsive-btn-md-pad: var(--space-16);
+    --responsive-btn-sm-font: var(--font-size-body-lg);
+    --responsive-btn-sm-line: var(--line-height-body-lg);
+    --responsive-btn-sm-pad: var(--space-16);
+    --responsive-btn-xs-font: var(--font-size-body-sm);
+    --responsive-btn-xs-line: var(--line-height-body-sm);
+    --responsive-btn-xs-pad: var(--space-12);
   }
 
   .nav-bar {
@@ -6912,6 +6942,21 @@ textarea,
     --responsive-btn-md-h: var(--size-btn-md-h);
     --responsive-btn-sm-w: var(--size-btn-sm-w);
     --responsive-btn-sm-h: var(--size-btn-sm-h);
+    --responsive-btn-xl-font: var(--font-size-button-lg);
+    --responsive-btn-xl-line: var(--line-height-button-lg);
+    --responsive-btn-xl-pad: var(--space-40);
+    --responsive-btn-lg-font: var(--font-size-h2);
+    --responsive-btn-lg-line: var(--line-height-h2);
+    --responsive-btn-lg-pad: var(--space-32);
+    --responsive-btn-md-font: var(--font-size-h3);
+    --responsive-btn-md-line: var(--line-height-h3);
+    --responsive-btn-md-pad: var(--space-24);
+    --responsive-btn-sm-font: var(--font-size-body-lg);
+    --responsive-btn-sm-line: var(--line-height-body-lg);
+    --responsive-btn-sm-pad: var(--space-16);
+    --responsive-btn-xs-font: var(--font-size-body-sm);
+    --responsive-btn-xs-line: var(--line-height-body-sm);
+    --responsive-btn-xs-pad: var(--space-12);
     --responsive-drawer-w: var(--layout-standard);
     --responsive-modal-w: var(--layout-narrow);
     --responsive-toast-w: var(--layout-narrow);
