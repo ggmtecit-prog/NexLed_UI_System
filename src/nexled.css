@@ -512,6 +512,21 @@ body {
   box-shadow: var(--shadow-btn-default);
 }
 
+.nav-bar .btn,
+.nav-bar .dropdown,
+.nav-bar .dropdown-trigger,
+.nav-bar .language-selector,
+.nav-bar .language-selector-trigger {
+  width: auto;
+  min-width: 0;
+}
+
+.nav-bar .btn,
+.nav-bar .dropdown,
+.nav-bar .language-selector {
+  flex: 0 0 auto;
+}
+
 @media (min-width: 1440px) {
   .nav-bar {
     flex-wrap: nowrap;
