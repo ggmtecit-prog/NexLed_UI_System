@@ -1061,79 +1061,149 @@
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Toggle</h2>
                     </div>
 
-                    <div
-                        class="panel panel-wrap-body panel-wrap-body-grid size-grid size-grid-layout size-grid-gap-40 grid-cols-1 md:grid-cols-3">
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
 
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <h3 class="size-grid-column-title">Small</h3>
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                            <label class="toggle toggle-sm">
-                                <input type="checkbox" class="toggle-input" role="switch" checked>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Email updates</span>
-                            </label>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-sm">
+                                                <input type="checkbox" class="toggle-input" role="switch">
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Off</span>
+                                            </label>
+                                            <label class="toggle toggle-sm">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">On</span>
+                                            </label>
+                                            <label class="toggle toggle-sm">
+                                                <input type="checkbox" class="toggle-input" role="switch" disabled checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <label class="toggle toggle-sm">
-                                <input type="checkbox" class="toggle-input" role="switch">
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Inventory sync</span>
-                            </label>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch">
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Off</span>
+                                            </label>
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">On</span>
+                                            </label>
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" disabled>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <label class="toggle toggle-sm">
-                                <input type="checkbox" class="toggle-input" role="switch" disabled checked>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Locked state</span>
-                            </label>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-lg">
+                                                <input type="checkbox" class="toggle-input" role="switch">
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Off</span>
+                                            </label>
+                                            <label class="toggle toggle-lg">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">On</span>
+                                            </label>
+                                            <label class="toggle toggle-lg">
+                                                <input type="checkbox" class="toggle-input" role="switch" disabled checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Disabled</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Focusable</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Email updates</span>
+                                            </label>
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch">
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Inventory sync</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Checked</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-sm">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Small on</span>
+                                            </label>
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Medium on</span>
+                                            </label>
+                                            <label class="toggle toggle-lg">
+                                                <input type="checkbox" class="toggle-input" role="switch" checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Large on</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap">
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" disabled>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Disabled off</span>
+                                            </label>
+                                            <label class="toggle toggle-md">
+                                                <input type="checkbox" class="toggle-input" role="switch" disabled checked>
+                                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                                <span class="toggle-label">Disabled on</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <h3 class="size-grid-column-title">Medium</h3>
-
-                            <label class="toggle toggle-md">
-                                <input type="checkbox" class="toggle-input" role="switch" checked>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Desktop alerts</span>
-                            </label>
-
-                            <label class="toggle toggle-md">
-                                <input type="checkbox" class="toggle-input" role="switch">
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Auto save</span>
-                            </label>
-
-                            <label class="toggle toggle-md">
-                                <input type="checkbox" class="toggle-input" role="switch" disabled>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Disabled state</span>
-                            </label>
-                        </div>
-
-                        <div class="size-grid-column size-grid-column-gap-24">
-                            <h3 class="size-grid-column-title">Large</h3>
-
-                            <label class="toggle toggle-lg">
-                                <input type="checkbox" class="toggle-input" role="switch" checked>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Global notifications</span>
-                            </label>
-
-                            <label class="toggle toggle-lg">
-                                <input type="checkbox" class="toggle-input" role="switch">
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Live collaboration</span>
-                            </label>
-
-                            <label class="toggle toggle-lg">
-                                <input type="checkbox" class="toggle-input" role="switch" disabled checked>
-                                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                                <span class="toggle-label">Review mode</span>
-                            </label>
-                        </div>
-
                     </div>
 
                 </section>
-
                 <section id="range-slider">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-nav-bar-h1 font-medium text-black">Range Slider</h2>
