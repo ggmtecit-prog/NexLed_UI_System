@@ -346,6 +346,19 @@ body {
   cursor: pointer;
   user-select: none;
   box-shadow: var(--shadow-btn-default);
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease-premium),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-premium),
+    background-color var(--motion-duration-fast) var(--motion-ease-premium),
+    border-color var(--motion-duration-fast) var(--motion-ease-premium),
+    color var(--motion-duration-fast) var(--motion-ease-premium),
+    opacity var(--motion-duration-fast) var(--motion-ease-premium);
+}
+
+.btn > i {
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease-premium),
+    color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
 .btn:hover {
@@ -353,9 +366,17 @@ body {
   box-shadow: var(--shadow-btn-hover);
 }
 
+.btn:hover > i {
+  transform: scale(var(--scale-hover));
+}
+
 .btn:active {
   transform: translateY(var(--press-offset));
   box-shadow: var(--shadow-btn-active);
+}
+
+.btn:active > i {
+  transform: scale(var(--scale-press));
 }
 
 .btn:focus-visible {
@@ -380,6 +401,11 @@ body {
   background: var(--color-green-secondary);
 }
 
+.btn-primary:active {
+  background: var(--color-green-secondary);
+  border-color: var(--color-green-secondary);
+}
+
 .btn-secondary {
   background: var(--color-white);
   color: var(--color-black);
@@ -389,6 +415,12 @@ body {
 .btn-secondary:hover {
   color: var(--color-green-secondary);
   border-color: var(--color-green-hover-icons);
+}
+
+.btn-secondary:active {
+  background: var(--color-green-hover-text);
+  color: var(--color-green-secondary);
+  border-color: var(--color-green-secondary);
 }
 
 .btn-ghost {
@@ -404,6 +436,13 @@ body {
   box-shadow: none;
 }
 
+.btn-ghost:active {
+  background: var(--color-green-hover-text);
+  color: var(--color-green-primary);
+  border-color: var(--color-green-hover-icons);
+  box-shadow: none;
+}
+
 .btn-danger {
   background: var(--color-red-primary);
   color: var(--color-white);
@@ -411,6 +450,11 @@ body {
 }
 
 .btn-danger:hover {
+  background: var(--color-red-secondary);
+  border-color: var(--color-red-secondary);
+}
+
+.btn-danger:active {
   background: var(--color-red-secondary);
   border-color: var(--color-red-secondary);
 }
@@ -512,6 +556,11 @@ body {
   color: var(--color-white);
   border-color: var(--color-green-primary);
   box-shadow: var(--shadow-btn-active);
+}
+
+.btn-icon[aria-pressed="true"] > i,
+.btn-toggle[aria-pressed="true"] > i {
+  transform: scale(var(--scale-hover));
 }
 
 .btn-icon[aria-pressed="true"]:hover {
@@ -5236,10 +5285,14 @@ body.search-overlay-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn > i,
   .skeleton {
     animation: none;
   }
 
+  .btn,
+  .btn > i,
   .toast,
   .drawer-sheet,
   .drawer-sheet-panel,
