@@ -1565,27 +1565,19 @@ input[type=number]::-webkit-outer-spin-button {
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-full);
   background-color: var(--color-white);
-  background-image: radial-gradient(circle, currentColor 0 32%, transparent 38%);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 0 0;
-  color: var(--color-green-primary);
   cursor: pointer;
   transform: scale(1);
   transition:
     background-color var(--motion-duration-fast) var(--motion-ease-premium),
-    background-size var(--motion-duration-fast) var(--motion-ease-premium),
     border-color var(--motion-duration-fast) var(--motion-ease-premium),
     box-shadow var(--motion-duration-fast) var(--motion-ease-premium),
-    color var(--motion-duration-fast) var(--motion-ease-premium),
     transform var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
 .radio-wrapper input[type="radio"]:hover {
-  background-color: var(--color-grey-tertiary);
+  background-color: var(--color-white);
   border-color: var(--color-green-secondary);
   box-shadow: var(--shadow-btn-hover);
-  color: var(--color-green-secondary);
   transform: scale(var(--scale-hover));
 }
 
@@ -1595,13 +1587,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .radio-wrapper input[type="radio"]:checked {
-  background-color: var(--color-white);
+  background-color: var(--color-green-primary);
   border-color: var(--color-green-primary);
-  background-size: 100% 100%;
 }
 
 .radio-wrapper input[type="radio"]:checked:hover {
-  background-color: var(--color-white);
+  background-color: var(--color-green-secondary);
   border-color: var(--color-green-secondary);
 }
 
@@ -1624,14 +1615,13 @@ input[type=number]::-webkit-outer-spin-button {
   border: var(--border-thin) solid var(--color-grey-secondary);
   background-color: var(--color-grey-tertiary);
   box-shadow: none;
-  color: var(--color-grey-primary);
 }
 
 .radio-wrapper input[type="radio"]:disabled:checked,
 .radio-wrapper[aria-disabled="true"] input[type="radio"]:checked,
 .radio-wrapper.is-disabled input[type="radio"]:checked {
-  border-color: var(--color-grey-primary);
-  background-size: 100% 100%;
+  border-color: var(--color-grey-secondary);
+  background-color: var(--color-grey-secondary);
 }
 
 .radio-sm input[type="radio"] {
