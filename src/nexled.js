@@ -327,20 +327,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Add .is-scrolling class when user scrolls with mouse wheel
-const scrollContainers = document.querySelectorAll('.custom-scrollbar');
+/**
+ * Custom Scrollbar Logic
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainerSelectors = [
+        '.custom-scrollbar',
+        '.dropdown-menu',
+        '.language-selector-menu',
+        '.combobox-list',
+        '.data-table-wrap',
+        '.drawer-sheet-body',
+        '.segmented-control',
+        '.tab-bar',
+        '.pagination-list'
+    ];
 
-scrollContainers.forEach(container => {
-    let scrollTimeout;
-    container.addEventListener('scroll', () => {
-        container.classList.add('is-scrolling');
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            container.classList.remove('is-scrolling');
-        }, 1000);
+    const scrollContainers = Array.from(document.querySelectorAll(scrollContainerSelectors.join(', ')))
+        .filter((container, index, collection) => collection.indexOf(container) === index)
+        .filter(container => container !== document.documentElement && container !== document.body);
+
+    scrollContainers.forEach(container => {
+        container.classList.add('custom-scrollbar');
+
+        if (container.dataset.scrollbarBound === 'true') {
+            return;
+        }
+
+        container.dataset.scrollbarBound = 'true';
+
+        let scrollTimeout;
+        container.addEventListener('scroll', () => {
+            container.classList.add('is-scrolling');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                container.classList.remove('is-scrolling');
+            }, 900);
+        });
     });
 });
-
 /**
  * Hyperlinks Demo Logic
  */
@@ -348,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hyperlinksDemo = document.querySelector('#hyperlinks .hyperlinks-demo');
     const resetHyperlinksStateButton = document.getElementById('reset-hyperlinks-state');
     const demoLinks = hyperlinksDemo ? hyperlinksDemo.querySelectorAll('[data-demo-link]') : [];
-    const demoNavigationLinks = hyperlinksDemo ? hyperlinksDemo.querySelectorAll('.link-navigation:not(.is-disabled)') : [];
-    const globalNavigationLinks = document.querySelectorAll('.link-navigation:not(.is-disabled)');
+    const demoNavigationLinks = hyperlinksDemo ? hyperlinksDemo.querySelectorAll('.link-navigation:not(.is-disabled):not([aria-disabled="true"])') : [];
+    const globalNavigationLinks = document.querySelectorAll('.link-navigation:not(.is-disabled):not([aria-disabled="true"])');
 
     const bindNavigationLinkBehavior = (links) => {
         links.forEach((link) => {
@@ -1554,6 +1579,118 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 /**
+ * Progress Bar Demo Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const progressSection = document.querySelector('#progress-bar');
+
+    if (!progressSection) {
+        return;
+    }
+
+    const progressMeters = Array.from(progressSection.querySelectorAll('[data-progress-meter]'));
+
+    if (progressMeters.length === 0) {
+        return;
+    }
+
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const animationFrames = new Map();
+
+    const formatPercent = value => `${Math.round(value)}%`;
+
+    const syncProgressMeter = meter => {
+        const progress = meter.querySelector('[data-progress-demo]');
+        const output = meter.querySelector('[data-progress-output]');
+
+        if (!progress) {
+            return;
+        }
+
+        const roundedValue = Math.round(Number(progress.value || 0));
+        progress.textContent = formatPercent(roundedValue);
+        progress.setAttribute('aria-valuetext', formatPercent(roundedValue));
+
+        if (output) {
+            output.textContent = formatPercent(roundedValue);
+        }
+    };
+
+    const stopProgressAnimation = meter => {
+        const frameId = animationFrames.get(meter);
+
+        if (typeof frameId === 'number') {
+            cancelAnimationFrame(frameId);
+            animationFrames.delete(meter);
+        }
+    };
+
+    const startProgressAnimation = meter => {
+        const progress = meter.querySelector('[data-progress-demo]');
+
+        if (!progress) {
+            return;
+        }
+
+        stopProgressAnimation(meter);
+        syncProgressMeter(meter);
+
+        if (reducedMotionQuery.matches) {
+            return;
+        }
+
+        const min = Number(progress.dataset.progressMin || 0);
+        const max = Number(progress.dataset.progressMax || progress.max || 100);
+        const duration = Math.max(Number(progress.dataset.progressDuration || 3200), 1200);
+        const travel = Math.max(max - min, 1);
+        let current = Number(progress.value || min);
+        let direction = 1;
+        let lastTime = 0;
+
+        const animate = time => {
+            if (!lastTime) {
+                lastTime = time;
+            }
+
+            const delta = time - lastTime;
+            lastTime = time;
+            current += ((travel / duration) * delta) * direction;
+
+            if (current >= max) {
+                current = max;
+                direction = -1;
+            } else if (current <= min) {
+                current = min;
+                direction = 1;
+            }
+
+            progress.value = String(current);
+            syncProgressMeter(meter);
+            animationFrames.set(meter, requestAnimationFrame(animate));
+        };
+
+        animationFrames.set(meter, requestAnimationFrame(animate));
+    };
+
+    const handleMotionChange = () => {
+        progressMeters.forEach(meter => {
+            startProgressAnimation(meter);
+        });
+    };
+
+    progressMeters.forEach(meter => {
+        startProgressAnimation(meter);
+    });
+
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', handleMotionChange);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+        reducedMotionQuery.addListener(handleMotionChange);
+    }
+});
+
+/**
  * Combobox Component Logic
  */
 
@@ -2521,7 +2658,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (state.rangeStart && state.rangeEnd) {
             const rangeLabel = `${summaryFormatter.format(state.rangeStart)} - ${summaryFormatter.format(state.rangeEnd)}`;
-            return presetLabel ? `${presetLabel} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· ${rangeLabel}` : `Selected range: ${rangeLabel}`;
+            return presetLabel ? `${presetLabel} - ${rangeLabel}` : `Selected range: ${rangeLabel}`;
         }
 
         if (state.rangeStart) {
@@ -2896,6 +3033,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
 
 
 

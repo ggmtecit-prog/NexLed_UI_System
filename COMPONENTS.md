@@ -35,7 +35,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **RANGE SLIDER** (8 classes)
 - **REUSABLE SIZE GRID** (20 classes)
 - **QUANTITY SELECTOR** (5 classes)
-- **HYPERLINKS** (9 classes)
+- **HYPERLINKS** (11 classes)
 - **TOOLTIPS** (9 classes)
 - **CARDS** (18 classes)
 - **SIDEBAR** (1 classes)
@@ -71,7 +71,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 - **FOOTER** (17 classes)
 - **SEGMENTED CONTROL** (8 classes)
 - **TABS** (5 classes)
-- **RESPONSIVE FOUNDATION** (139 classes)
+- **RESPONSIVE FOUNDATION** (144 classes)
 
 ---
 
@@ -361,8 +361,8 @@ Every component follows the pattern: `[component] [variant] [size]`
 ### States
 
 - `:hover`
-- `:focus-visible`
 - `:disabled`
+- `:focus-visible`
 
 ---
 
@@ -382,8 +382,8 @@ Every component follows the pattern: `[component] [variant] [size]`
 ### States
 
 - `:hover`
-- `:focus-visible`
 - `:disabled`
+- `:focus-visible`
 
 ---
 
@@ -443,10 +443,13 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.link-sm`
 - `.link-subtle`
 - `.link-text-icon`
+- `.link-xl`
+- `.link-xs`
 
 ### States
 
 - `:hover`
+- `:focus-visible`
 - `.is-active`
 - `.is-visited`
 - `.is-disabled`
@@ -992,6 +995,11 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.spinner-track`
 - `.spinner-white`
 
+### States
+
+- `:hover`
+- `:disabled`
+
 ---
 
 ## PANEL WRAPPERS
@@ -1273,9 +1281,14 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.language-selector-value`
 - `.link`
 - `.link-inline`
+- `.link-lg`
+- `.link-md`
 - `.link-navigation`
+- `.link-sm`
 - `.link-subtle`
 - `.link-text-icon`
+- `.link-xl`
+- `.link-xs`
 - `.list-item`
 - `.list-key`
 - `.list-value`
