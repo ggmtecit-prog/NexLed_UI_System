@@ -175,10 +175,11 @@ body {
 }
 
 /* SCROLLBAR */
-/* Intentionally no global scrollbar theming.
-   Scrollbar styling is scoped to .custom-scrollbar only so the browser page scrollbar stays native. */
+/* Root page scrollbars and internal .custom-scrollbar surfaces share the same treatment. */
 
 /* CUSTOM SCROLLBAR */
+html,
+body,
 .custom-scrollbar {
   --scrollbar-size: var(--space-12);
   --scrollbar-thumb-inset: calc(var(--space-4) / 2);
@@ -190,6 +191,10 @@ body {
   scrollbar-gutter: stable;
 }
 
+html:hover,
+body:hover,
+html.is-scrolling-root,
+body.is-scrolling-root,
 .custom-scrollbar:hover,
 .custom-scrollbar.is-scrolling,
 .custom-scrollbar:focus-visible,
@@ -202,69 +207,120 @@ body {
   outline-offset: var(--focus-ring-offset);
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
 .custom-scrollbar::-webkit-scrollbar {
   width: var(--scrollbar-size);
   height: var(--scrollbar-size);
 }
 
-.custom-scrollbar::-webkit-scrollbar-button {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+.custom-scrollbar::-webkit-scrollbar-button,
+html::-webkit-scrollbar-button:increment,
+body::-webkit-scrollbar-button:increment,
 .custom-scrollbar::-webkit-scrollbar-button:increment,
+html::-webkit-scrollbar-button:decrement,
+body::-webkit-scrollbar-button:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:decrement,
+html::-webkit-scrollbar-button:single-button,
+body::-webkit-scrollbar-button:single-button,
 .custom-scrollbar::-webkit-scrollbar-button:single-button,
+html::-webkit-scrollbar-button:double-button,
+body::-webkit-scrollbar-button:double-button,
 .custom-scrollbar::-webkit-scrollbar-button:double-button,
+html::-webkit-scrollbar-button:single-button:increment,
+body::-webkit-scrollbar-button:single-button:increment,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:increment,
+html::-webkit-scrollbar-button:single-button:decrement,
+body::-webkit-scrollbar-button:single-button:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:decrement,
+html::-webkit-scrollbar-button:double-button:increment,
+body::-webkit-scrollbar-button:double-button:increment,
 .custom-scrollbar::-webkit-scrollbar-button:double-button:increment,
-.custom-scrollbar::-webkit-scrollbar-button:double-button:decrement {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
+html::-webkit-scrollbar-button:double-button:decrement,
+body::-webkit-scrollbar-button:double-button:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:double-button:decrement,
+html::-webkit-scrollbar-button:single-button:vertical:decrement,
+body::-webkit-scrollbar-button:single-button:vertical:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement,
+html::-webkit-scrollbar-button:single-button:vertical:increment,
+body::-webkit-scrollbar-button:single-button:vertical:increment,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment,
+html::-webkit-scrollbar-button:single-button:horizontal:decrement,
+body::-webkit-scrollbar-button:single-button:horizontal:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement,
+html::-webkit-scrollbar-button:single-button:horizontal:increment,
+body::-webkit-scrollbar-button:single-button:horizontal:increment,
 .custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment,
+html::-webkit-scrollbar-button:vertical:start:decrement,
+body::-webkit-scrollbar-button:vertical:start:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:vertical:start:decrement,
+html::-webkit-scrollbar-button:vertical:start:increment,
+body::-webkit-scrollbar-button:vertical:start:increment,
+.custom-scrollbar::-webkit-scrollbar-button:vertical:start:increment,
+html::-webkit-scrollbar-button:vertical:end:decrement,
+body::-webkit-scrollbar-button:vertical:end:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:vertical:end:decrement,
+html::-webkit-scrollbar-button:vertical:end:increment,
+body::-webkit-scrollbar-button:vertical:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:vertical:end:increment,
+html::-webkit-scrollbar-button:horizontal:start:decrement,
+body::-webkit-scrollbar-button:horizontal:start:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:horizontal:start:decrement,
+html::-webkit-scrollbar-button:horizontal:start:increment,
+body::-webkit-scrollbar-button:horizontal:start:increment,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:start:increment,
+html::-webkit-scrollbar-button:horizontal:end:decrement,
+body::-webkit-scrollbar-button:horizontal:end:decrement,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:end:decrement,
+html::-webkit-scrollbar-button:horizontal:end:increment,
+body::-webkit-scrollbar-button:horizontal:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:horizontal:end:increment {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  color: transparent !important;
   -webkit-appearance: none;
   appearance: none;
   background: transparent !important;
+  background-color: transparent !important;
   background-image: none !important;
+  border: none !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+.custom-scrollbar::-webkit-scrollbar-corner,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track-piece,
+body::-webkit-scrollbar-track-piece,
+.custom-scrollbar::-webkit-scrollbar-track-piece,
+html::-webkit-scrollbar-track-piece:start,
+body::-webkit-scrollbar-track-piece:start,
+.custom-scrollbar::-webkit-scrollbar-track-piece:start,
+html::-webkit-scrollbar-track-piece:end,
+body::-webkit-scrollbar-track-piece:end,
+.custom-scrollbar::-webkit-scrollbar-track-piece:end {
+  background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-.custom-scrollbar::-webkit-scrollbar-corner {
-  background: transparent !important;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb-default);
   border-radius: var(--scrollbar-thumb-radius);
@@ -275,6 +331,10 @@ body {
   transition: background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
+html:hover::-webkit-scrollbar-thumb,
+body:hover::-webkit-scrollbar-thumb,
+html.is-scrolling-root::-webkit-scrollbar-thumb,
+body.is-scrolling-root::-webkit-scrollbar-thumb,
 .custom-scrollbar:hover::-webkit-scrollbar-thumb,
 .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
 .custom-scrollbar:focus-visible::-webkit-scrollbar-thumb,
@@ -282,11 +342,15 @@ body {
   background: var(--scrollbar-thumb-active);
 }
 
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active,
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
   background: var(--scrollbar-thumb-active);
 }
 
 @media (min-width: 768px) {
+  html,
+  body,
   .custom-scrollbar {
     --scrollbar-size: var(--space-16);
     --scrollbar-thumb-inset: var(--space-4);
@@ -7794,6 +7858,8 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+
 
 
 
