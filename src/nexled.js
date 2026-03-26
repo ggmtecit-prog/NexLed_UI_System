@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const enabledDropdowns = dropdowns.filter(dropdown => {
         const trigger = dropdown.querySelector('.dropdown-trigger');
-        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
+        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true' && selector.getAttribute('aria-disabled') !== 'true';
     });
 
     // Hover-trigger dropdowns (data-dropdown-trigger="hover")
@@ -750,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const enabledSelectors = selectors.filter(selector => {
         const trigger = selector.querySelector('.language-selector-trigger');
-        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true';
+        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true' && selector.getAttribute('aria-disabled') !== 'true';
     });
 
     enabledSelectors.forEach(selector => {
@@ -3099,6 +3099,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
