@@ -2052,8 +2052,10 @@ document.addEventListener('DOMContentLoaded', () => {
         pagination.dataset.paginationBound = 'true';
 
         const pageButtons = Array.from(pagination.querySelectorAll('[data-page]'));
+        const pageList = pagination.querySelector('.pagination-list');
         const prevBtn = pagination.querySelector('[data-pagination-prev]');
         const nextBtn = pagination.querySelector('[data-pagination-next]');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (pageButtons.length === 0) {
             return;
@@ -2062,6 +2064,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const getActiveIndex = () => {
             const activeIndex = pageButtons.findIndex(button => button.getAttribute('aria-current') === 'page');
             return activeIndex === -1 ? 0 : activeIndex;
+        };
+
+        const revealActivePage = activeButton => {
+            if (!pageList || !activeButton) {
+                return;
+            }
+
+            const listRect = pageList.getBoundingClientRect();
+            const buttonRect = activeButton.getBoundingClientRect();
+            const isOutOfView = buttonRect.left < listRect.left || buttonRect.right > listRect.right;
+
+            if (!isOutOfView) {
+                return;
+            }
+
+            const nextScrollLeft = activeButton.offsetLeft - ((pageList.clientWidth - activeButton.offsetWidth) / 2);
+            pageList.scrollTo({
+                left: Math.max(0, nextScrollLeft),
+                behavior: reduceMotion ? 'auto' : 'smooth'
+            });
         };
 
         const syncState = nextIndex => {
@@ -2084,6 +2106,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.disabled = safeIndex === pageButtons.length - 1;
                 nextBtn.setAttribute('aria-disabled', safeIndex === pageButtons.length - 1 ? 'true' : 'false');
             }
+
+            revealActivePage(pageButtons[safeIndex]);
         };
 
         pageButtons.forEach((button, index) => {

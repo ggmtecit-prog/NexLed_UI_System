@@ -5403,35 +5403,57 @@ button.language-selector-trigger .language-selector-value {
 
 /* PAGINATION */
 .pagination {
+  --pagination-gap: var(--space-8);
+  --pagination-list-gap: var(--space-8);
+  --pagination-link-min: var(--space-40);
+  --pagination-link-height: var(--space-40);
+  --pagination-link-padding-inline: var(--space-12);
   width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-12);
+  justify-content: flex-start;
+  gap: var(--pagination-gap);
   flex-wrap: wrap;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-grey-tertiary);
 }
 
 .pagination-list {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--pagination-list-gap);
+  flex: 1 1 100%;
+  order: 3;
+  min-width: 0;
   padding: 0;
   margin: 0;
   list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pagination-list::-webkit-scrollbar {
+  display: none;
 }
 
 .pagination-item {
   display: flex;
+  flex: 0 0 auto;
 }
 
 .pagination-link {
-  min-width: var(--space-40);
-  height: var(--space-40);
-  padding-inline: var(--space-12);
+  min-width: var(--pagination-link-min);
+  height: var(--pagination-link-height);
+  padding-inline: var(--pagination-link-padding-inline);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-8);
+  flex-shrink: 0;
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-md);
   background: var(--color-white);
@@ -5440,16 +5462,42 @@ button.language-selector-trigger .language-selector-value {
   line-height: var(--line-height-body-sm);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
+  white-space: nowrap;
   box-shadow: var(--shadow-btn-default);
   cursor: pointer;
   transition: all var(--motion-duration-default) var(--motion-ease-premium);
 }
 
+.pagination-list .pagination-link:not([aria-current="page"]) {
+  background: transparent;
+  color: var(--color-grey-primary);
+  border-color: transparent;
+  box-shadow: none;
+}
+
 .pagination-link:hover {
-  transform: translateY(var(--lift-subtle));
   border-color: var(--color-green-hover-icons);
   color: var(--color-green-secondary);
   box-shadow: var(--shadow-btn-hover);
+}
+
+.pagination-list .pagination-link:not([aria-current="page"]):hover {
+  background: var(--color-grey-secondary);
+  color: var(--color-green-secondary);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.pagination-link:active {
+  transform: translateY(var(--press-offset));
+  box-shadow: var(--shadow-btn-active);
+}
+
+.pagination-list .pagination-link:not([aria-current="page"]):active {
+  background: var(--color-green-hover-text);
+  color: var(--color-green-primary);
+  border-color: var(--color-green-hover-icons);
+  box-shadow: none;
 }
 
 .pagination-link:focus-visible {
@@ -5470,6 +5518,10 @@ button.language-selector-trigger .language-selector-value {
   color: var(--color-white);
 }
 
+.pagination-link[aria-current="page"]:active {
+  transform: none;
+}
+
 .pagination-link:disabled,
 .pagination-link[aria-disabled="true"] {
   opacity: var(--opacity-semi);
@@ -5482,6 +5534,51 @@ button.language-selector-trigger .language-selector-value {
 .pagination-prev,
 .pagination-next {
   min-width: auto;
+}
+
+.pagination-prev {
+  order: 1;
+}
+
+.pagination-next {
+  order: 2;
+  margin-inline-start: auto;
+}
+
+@media (min-width: 480px) {
+  .pagination {
+    --pagination-gap: var(--space-12);
+  }
+}
+
+@media (min-width: 768px) {
+  .pagination {
+    --pagination-link-min: var(--space-48);
+    --pagination-link-height: var(--space-48);
+    --pagination-link-padding-inline: var(--space-16);
+    width: fit-content;
+    flex-wrap: nowrap;
+  }
+
+  .pagination-list {
+    flex: 0 1 auto;
+    order: 0;
+    padding-bottom: 0;
+  }
+
+  .pagination-link {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .pagination-prev,
+  .pagination-next {
+    order: 0;
+  }
+
+  .pagination-next {
+    margin-inline-start: 0;
+  }
 }
 
 /* DRAWER SHEET */
