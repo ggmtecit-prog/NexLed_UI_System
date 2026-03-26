@@ -112,79 +112,142 @@
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">Sizes</h3>
 
-                        <!-- Accordion Molecule -->
-                        <div class="w-full">
-                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-20 items-start">
-                                <div class="accordion accordion-sm">
-                                    <div class="accordion-item">
-                                        <button id="accordion-sm-trigger" class="accordion-trigger"
-                                            aria-expanded="false" aria-controls="accordion-sm-panel">
-                                            <span class="accordion-label">Small Accordion</span>
-                                            <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
-                                        </button>
-                                        <div id="accordion-sm-panel" class="accordion-content" role="region"
-                                            aria-labelledby="accordion-sm-trigger">
-                                            <div class="accordion-body">
-                                                Small variant content description.
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-sm">
+                                            <div class="accordion-item">
+                                                <button type="button" id="accordion-sm-trigger" class="accordion-trigger"
+                                                    aria-expanded="false" aria-controls="accordion-sm-panel">
+                                                    <span class="accordion-label">Small Accordion</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-sm-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-sm-trigger">
+                                                    <div class="accordion-body">
+                                                        Compact spacing and short supporting copy for dense lists.
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="accordion accordion-md">
-                                    <div class="accordion-item">
-                                        <button id="accordion-md-trigger" class="accordion-trigger"
-                                            aria-expanded="false" aria-controls="accordion-md-panel">
-                                            <span class="accordion-label">Medium Accordion</span>
-                                            <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
-                                        </button>
-                                        <div id="accordion-md-panel" class="accordion-content" role="region"
-                                            aria-labelledby="accordion-md-trigger">
-                                            <div class="accordion-body">
-                                                Medium variant content description.
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-md">
+                                            <div class="accordion-item">
+                                                <button type="button" id="accordion-md-trigger" class="accordion-trigger"
+                                                    aria-expanded="false" aria-controls="accordion-md-panel">
+                                                    <span class="accordion-label">Medium Accordion</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-md-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-md-trigger">
+                                                    <div class="accordion-body">
+                                                        Standard layout for forms, FAQs, and layered content blocks.
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="accordion accordion-lg">
-                                    <div class="accordion-item">
-                                        <button id="accordion-lg-trigger" class="accordion-trigger"
-                                            aria-expanded="false" aria-controls="accordion-lg-panel">
-                                            <span class="accordion-label">Big Accordion</span>
-                                            <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
-                                        </button>
-                                        <div id="accordion-lg-panel" class="accordion-content" role="region"
-                                            aria-labelledby="accordion-lg-trigger">
-                                            <div class="accordion-body">
-                                                Big variant content description.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion accordion-md">
-                                    <div class="accordion-item is-disabled">
-                                        <button id="accordion-disabled-trigger" class="accordion-trigger"
-                                            aria-expanded="false" aria-controls="accordion-disabled-panel"
-                                            aria-disabled="true" disabled>
-                                            <span class="accordion-label">Disabled Accordion</span>
-                                            <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
-                                        </button>
-                                        <div id="accordion-disabled-panel" class="accordion-content" role="region"
-                                            aria-labelledby="accordion-disabled-trigger">
-                                            <div class="accordion-body">
-                                                Disabled variant content description.
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-lg">
+                                            <div class="accordion-item">
+                                                <button type="button" id="accordion-lg-trigger" class="accordion-trigger"
+                                                    aria-expanded="false" aria-controls="accordion-lg-panel">
+                                                    <span class="accordion-label">Large Accordion</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-lg-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-lg-trigger">
+                                                    <div class="accordion-body">
+                                                        Expanded typography for lead sections that need stronger hierarchy.
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="size-grid-column">
+                                <h3 class="size-grid-column-title">States</h3>
 
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Focusable</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-md">
+                                            <div class="accordion-item">
+                                                <button type="button" id="accordion-focus-trigger" class="accordion-trigger"
+                                                    aria-expanded="false" aria-controls="accordion-focus-panel">
+                                                    <span class="accordion-label">Keyboard Ready</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-focus-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-focus-trigger">
+                                                    <div class="accordion-body">
+                                                        Focus-visible and hover states follow the shared NexLed motion and ring tokens.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Open</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-md">
+                                            <div class="accordion-item is-open">
+                                                <button type="button" id="accordion-open-trigger" class="accordion-trigger"
+                                                    aria-expanded="true" aria-controls="accordion-open-panel">
+                                                    <span class="accordion-label">Open By Default</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-open-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-open-trigger">
+                                                    <div class="accordion-body">
+                                                        The open state keeps the trigger readable while revealing longer content without layout overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="accordion accordion-md">
+                                            <div class="accordion-item is-disabled">
+                                                <button type="button" id="accordion-disabled-trigger" class="accordion-trigger"
+                                                    aria-expanded="false" aria-controls="accordion-disabled-panel"
+                                                    aria-disabled="true" disabled>
+                                                    <span class="accordion-label">Disabled Accordion</span>
+                                                    <i class="accordion-icon ri-arrow-down-s-line" aria-hidden="true"></i>
+                                                </button>
+                                                <div id="accordion-disabled-panel" class="accordion-content" role="region"
+                                                    aria-labelledby="accordion-disabled-trigger">
+                                                    <div class="accordion-body">
+                                                        Disabled content stays collapsed and non-interactive.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -197,46 +260,88 @@
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Variants</h3>
+                                <div class="announcement-bar-list">
+                                    <div class="announcement-bar announcement-bar-standard" id="announcement-bar-standard-demo">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            <span class="announcement-bar-text-inline">
+                                                <i class="ri-rocket-2-line" aria-hidden="true"></i>
+                                                Standard announcement surface for broad product updates.
+                                            </span>
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                            onclick="closeBar('announcement-bar-standard-demo')">
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
 
-                        <div class="announcement-bar-list">
-                            <div class="announcement-bar announcement-bar-standard" id="announcement-bar-1">
-                                <div class="hidden sm:block w-40"></div>
-                                <p class="announcement-bar-text">
-                                    <span class="announcement-bar-text-inline">
-                                        <i class="ri-rocket-2-line text-icon-xl"></i>
-                                        Live Demo: Full Page Announcement Bar.
-                                    </span>
-                                </p>
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
-                                    onclick="closeBar('announcement-bar-1')">
-                                    <i class="ri-close-line text-icon-lg"></i>
-                                </button>
+                                    <div class="announcement-bar announcement-bar-floating" id="announcement-bar-floating-demo">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            Floating green bar for layered page headers and promo notices.
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                            onclick="closeBar('announcement-bar-floating-demo')">
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="announcement-bar announcement-bar-floating announcement-bar-light"
+                                        id="announcement-bar-light-demo">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            Floating light bar for quieter secondary announcements.
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                            onclick="closeBar('announcement-bar-light-demo')">
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="announcement-bar announcement-bar-floating" id="announcement-bar-2">
-                                <div class="hidden sm:block w-40"></div>
-                                <p class="announcement-bar-text">
-                                    Live Demo: Floating Green Bar.
-                                </p>
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
-                                    onclick="closeBar('announcement-bar-2')">
-                                    <i class="ri-close-line text-icon-lg"></i>
-                                </button>
-                            </div>
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">States</h3>
+                                <div class="announcement-bar-list">
+                                    <div class="announcement-bar announcement-bar-floating" tabindex="0">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            <span class="announcement-bar-text-inline">
+                                                <i class="ri-focus-3-line" aria-hidden="true"></i>
+                                                Keyboard-ready bar to preview the shared focus ring.
+                                            </span>
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close">
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
 
-                            <div class="announcement-bar announcement-bar-floating announcement-bar-light"
-                                id="announcement-bar-3">
-                                <div class="hidden sm:block w-40"></div>
-                                <p class="announcement-bar-text">
-                                    Live Demo: Floating White Bar.
-                                </p>
-                                <button class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
-                                    onclick="closeBar('announcement-bar-3')">
-                                    <i class="ri-close-line text-icon-lg"></i>
-                                </button>
+                                    <div class="announcement-bar announcement-bar-floating" id="announcement-bar-dismiss-demo">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            Dismissible state keeps the layered bottom padding while closing downward.
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                            onclick="closeBar('announcement-bar-dismiss-demo')">
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="announcement-bar announcement-bar-light" aria-disabled="true">
+                                        <div class="hidden sm:block w-40" aria-hidden="true"></div>
+                                        <p class="announcement-bar-text">
+                                            Disabled state keeps the content readable while removing interaction.
+                                        </p>
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close" disabled>
+                                            <i class="ri-close-line" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
                 </section>
@@ -3356,4 +3461,6 @@
 </body>
 
 </html>
+
+
 

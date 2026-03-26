@@ -39,20 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function closeBar(id) {
     const bar = document.getElementById(id);
-    if (!bar) return;
+    if (!bar || bar.hidden) return;
 
-    // Smooth collapse animation
-    // Note: CSS classes handle ease-premium, JS triggers the state change
-    bar.style.opacity = "0";
-    bar.style.transform = "translateY(var(--space-12))";
-    bar.style.marginBottom = `-${bar.offsetHeight}px`;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || typeof bar.animate !== 'function') {
+        bar.hidden = true;
+        return;
+    }
 
-    // Remove from DOM after animation (400ms match)
-    setTimeout(() => {
-        bar.style.display = 'none';
-    }, 400);
+    const styles = getComputedStyle(bar);
+    const duration = Number.parseFloat(styles.getPropertyValue('--motion-duration-default')) || 400;
+    const easing = styles.getPropertyValue('--motion-ease-premium').trim() || 'cubic-bezier(0.16, 1, 0.3, 1)';
+    const offset = styles.getPropertyValue('--space-12').trim() || '12px';
+
+    bar.setAttribute('aria-hidden', 'true');
+
+    const animation = bar.animate([
+        { opacity: 1, transform: 'translateY(0)' },
+        { opacity: 0, transform: `translateY(${offset})` }
+    ], {
+        duration,
+        easing,
+        fill: 'forwards'
+    });
+
+    animation.addEventListener('finish', () => {
+        bar.hidden = true;
+    }, { once: true });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="checkbox"][data-state="indeterminate"]').forEach(checkbox => {
         checkbox.indeterminate = true;
@@ -3050,6 +3064,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
