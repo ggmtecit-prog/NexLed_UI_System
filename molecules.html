@@ -347,112 +347,152 @@
                 </section>
 
                 <!-- 3. breadcrumbs -->
-                                <section id="alerts">
+                <section id="alerts">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">Alerts</h2>
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
                         <div
-                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
-                            <div class="size-grid-column">
-                                <h3 class="size-grid-column-title">Standard</h3>
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Success</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-success alert-md" role="status">
-                                            <span class="alert-icon"><i class="ri-checkbox-circle-line text-icon-lg"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">All changes were saved</p>
-                                                <p class="alert-text">Your product data is now synced across the NexLed
-                                                    workspace.</p>
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Default</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-md" role="status">
+                                                <span class="alert-icon"><i class="ri-information-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Draft saved locally</p>
+                                                    <p class="alert-text">Use the neutral alert when the message needs
+                                                        clarity without adding status color.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Warning</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-warning alert-md" role="status">
-                                            <span class="alert-icon"><i class="ri-alert-line text-icon-lg"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">Manual review recommended</p>
-                                                <p class="alert-text">One or more fields still need confirmation before
-                                                    publishing.</p>
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Success</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-success alert-md" role="status">
+                                                <span class="alert-icon"><i class="ri-checkbox-circle-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">All changes were saved</p>
+                                                    <p class="alert-text">Your product data is now synced across the
+                                                        NexLed workspace.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Info</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-info alert-md" role="status">
-                                            <span class="alert-icon"><i class="ri-information-line text-icon-lg"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">New import guide available</p>
-                                                <p class="alert-text">Learn how to structure supplier files before your
-                                                    next upload.</p>
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Warning</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-warning alert-md" role="status">
+                                                <span class="alert-icon"><i class="ri-alert-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Manual review recommended</p>
+                                                    <p class="alert-text">One or more fields still need confirmation
+                                                        before publishing.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Danger</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-danger alert-md" role="alert">
-                                            <span class="alert-icon"><i class="ri-close-circle-line text-icon-lg"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">Upload failed</p>
-                                                <p class="alert-text">The selected file does not match the expected
-                                                    product schema.</p>
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Info</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-info alert-md" role="status">
+                                                <span class="alert-icon"><i class="ri-information-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">New import guide available</p>
+                                                    <p class="alert-text">Learn how to structure supplier files before
+                                                        your next upload.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Danger</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-danger alert-md" role="alert">
+                                                <span class="alert-icon"><i class="ri-close-circle-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Upload failed</p>
+                                                    <p class="alert-text">The selected file does not match the expected
+                                                        product schema.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="size-grid-column">
-                                <h3 class="size-grid-column-title">With Actions</h3>
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">States</h3>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Large</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-success alert-lg" role="status">
-                                            <span class="alert-icon"><i class="ri-rocket-2-line text-icon-lg"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">Release notes are ready</p>
-                                                <p class="alert-text">Share the latest component updates with your team
-                                                    or jump back into the review queue.</p>
-                                                <div class="alert-actions">
-                                                    <button type="button" class="btn btn-primary btn-xs">Open notes</button>
-                                                    <button type="button" class="btn btn-ghost btn-xs">Dismiss</button>
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Large Actions</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-success alert-lg" role="status">
+                                                <span class="alert-icon"><i class="ri-rocket-2-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Release notes are ready</p>
+                                                    <p class="alert-text">Share the latest component updates with your
+                                                        team or jump back into the review queue.</p>
+                                                    <div class="alert-actions">
+                                                        <button type="button" class="btn btn-primary btn-xs">Open notes</button>
+                                                        <button type="button" class="btn btn-ghost btn-xs">Dismiss</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="size-grid-row size-grid-row-gap-12">
-                                    <h4 class="size-grid-label">Small</h4>
-                                    <div class="size-grid-content">
-                                        <div class="alert alert-info alert-sm" role="status">
-                                            <span class="alert-icon"><i class="ri-time-line text-icon-md"
-                                                    aria-hidden="true"></i></span>
-                                            <div class="alert-copy">
-                                                <p class="alert-title">Scheduled sync pending</p>
-                                                <p class="alert-text">The next update starts in 15 minutes.</p>
+                                    <div id="alert-dismiss-demo" class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Dismissible</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-info alert-md" role="status">
+                                                <span class="alert-icon"><i class="ri-time-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Scheduled sync pending</p>
+                                                    <p class="alert-text">This state closes downward so the content
+                                                        clears without a hover lift or bounce.</p>
+                                                    <div class="alert-actions">
+                                                        <button type="button" class="btn btn-ghost btn-xs"
+                                                            onclick="closeAlert('alert-dismiss-demo')">Dismiss</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="alert-actions">
-                                                <button type="button" class="btn btn-secondary btn-xs">View</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Disabled</h4>
+                                        <div class="size-grid-content">
+                                            <div class="alert alert-sm" role="status" aria-disabled="true">
+                                                <span class="alert-icon"><i class="ri-pause-circle-line"
+                                                        aria-hidden="true"></i></span>
+                                                <div class="alert-copy">
+                                                    <p class="alert-title">Notifications paused</p>
+                                                    <p class="alert-text">Disabled alerts keep the message visible while
+                                                        removing follow-up actions.</p>
+                                                    <div class="alert-actions">
+                                                        <button type="button" class="btn btn-secondary btn-xs"
+                                                            disabled>Retry later</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -3461,6 +3501,7 @@
 </body>
 
 </html>
+
 
 
 

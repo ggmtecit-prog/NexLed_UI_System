@@ -37,24 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
  * Announcement Bar Component Logic
  */
 
-function closeBar(id) {
-    const bar = document.getElementById(id);
-    if (!bar || bar.hidden) return;
+function dismissSurfaceById(id) {
+    const surface = document.getElementById(id);
+    if (!surface || surface.hidden) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || typeof bar.animate !== 'function') {
-        bar.hidden = true;
+    if (reduceMotion || typeof surface.animate !== 'function') {
+        surface.hidden = true;
         return;
     }
 
-    const styles = getComputedStyle(bar);
+    const styles = getComputedStyle(surface);
     const duration = Number.parseFloat(styles.getPropertyValue('--motion-duration-default')) || 400;
     const easing = styles.getPropertyValue('--motion-ease-premium').trim() || 'cubic-bezier(0.16, 1, 0.3, 1)';
     const offset = styles.getPropertyValue('--space-12').trim() || '12px';
 
-    bar.setAttribute('aria-hidden', 'true');
+    surface.setAttribute('aria-hidden', 'true');
 
-    const animation = bar.animate([
+    const animation = surface.animate([
         { opacity: 1, transform: 'translateY(0)' },
         { opacity: 0, transform: `translateY(${offset})` }
     ], {
@@ -64,9 +64,18 @@ function closeBar(id) {
     });
 
     animation.addEventListener('finish', () => {
-        bar.hidden = true;
+        surface.hidden = true;
     }, { once: true });
 }
+
+function closeBar(id) {
+    dismissSurfaceById(id);
+}
+
+function closeAlert(id) {
+    dismissSurfaceById(id);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="checkbox"][data-state="indeterminate"]').forEach(checkbox => {
         checkbox.indeterminate = true;
@@ -3064,6 +3073,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
