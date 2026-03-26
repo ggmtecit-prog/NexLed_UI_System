@@ -1862,7 +1862,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `;
                 tabBar.insertBefore(tab, addWrapper);
-                activateTab(tab, { focus: true });
+                window.requestAnimationFrame(() => {
+                    activateTab(tab, { focus: true, behavior: 'smooth' });
+                });
             });
         }
 
