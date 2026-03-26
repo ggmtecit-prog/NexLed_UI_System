@@ -942,10 +942,37 @@ document.addEventListener('DOMContentLoaded', () => {
  * Handles single-selection material buttons
  */
 
-function selectMaterial(element) {
+function getEnabledMaterialItems(list) {
+    return Array.from(list.querySelectorAll('.material-item')).filter(item => {
+        return !item.disabled && item.getAttribute('aria-disabled') !== 'true';
+    });
+}
+
+function syncMaterialSelectorState(list) {
+    const items = Array.from(list.querySelectorAll('.material-item'));
+
+    if (!items.length) {
+        return;
+    }
+
+    const enabledItems = getEnabledMaterialItems(list);
+    const selectedItem = items.find(item => {
+        return item.classList.contains('is-selected') || item.getAttribute('aria-selected') === 'true';
+    }) || null;
+    const focusItem = enabledItems.find(item => item === selectedItem) || enabledItems[0] || null;
+
+    items.forEach(item => {
+        const isSelected = item === selectedItem;
+        item.classList.toggle('is-selected', isSelected);
+        item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        item.tabIndex = item === focusItem ? 0 : -1;
+    });
+}
+
+function selectMaterial(element, options = {}) {
     const list = element.closest('.material-selector-list');
 
-    if (!list) {
+    if (!list || element.disabled || element.getAttribute('aria-disabled') === 'true') {
         return;
     }
 
@@ -954,16 +981,76 @@ function selectMaterial(element) {
     items.forEach(item => {
         item.classList.remove('is-selected');
         item.setAttribute('aria-selected', 'false');
+        item.tabIndex = -1;
     });
 
     element.classList.add('is-selected');
     element.setAttribute('aria-selected', 'true');
+    element.tabIndex = 0;
 
-    const label = element.querySelector('.material-label');
-    const materialName = label ? label.textContent : 'Unknown';
-    console.log('Selected material:', materialName);
+    if (options.focus) {
+        element.focus();
+    }
 }
 
+function initializeMaterialSelectors() {
+    const materialLists = document.querySelectorAll('.material-selector-list');
+
+    materialLists.forEach(list => {
+        syncMaterialSelectorState(list);
+
+        list.addEventListener('click', event => {
+            const item = event.target.closest('.material-item');
+
+            if (!item || !list.contains(item)) {
+                return;
+            }
+
+            selectMaterial(item);
+        });
+
+        list.addEventListener('keydown', event => {
+            const currentItem = event.target.closest('.material-item');
+
+            if (!currentItem || !list.contains(currentItem)) {
+                return;
+            }
+
+            const enabledItems = getEnabledMaterialItems(list);
+
+            if (!enabledItems.length) {
+                return;
+            }
+
+            const currentIndex = enabledItems.indexOf(currentItem);
+            let nextIndex = currentIndex;
+
+            switch (event.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % enabledItems.length;
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    nextIndex = currentIndex === -1 ? enabledItems.length - 1 : (currentIndex - 1 + enabledItems.length) % enabledItems.length;
+                    break;
+                case 'Home':
+                    nextIndex = 0;
+                    break;
+                case 'End':
+                    nextIndex = enabledItems.length - 1;
+                    break;
+                default:
+                    return;
+            }
+
+            event.preventDefault();
+            selectMaterial(enabledItems[nextIndex], { focus: true });
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeMaterialSelectors);
 
 /**
  * Stepper Component Logic
@@ -3123,6 +3210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
 
 
 
