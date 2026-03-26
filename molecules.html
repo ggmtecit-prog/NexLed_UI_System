@@ -3208,52 +3208,111 @@
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                    <div
-                        class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Small</h3>
-                            <div class="size-grid-content">
-                                <div class="quantity-selector quantity-selector-sm">
-                                    <button class="btn btn-ghost btn-icon btn-sm " aria-label="Decrease quantity">
-                                        <i class="ri-subtract-line text-icon-lg"></i>
-                                    </button>
-                                    <input type="number" class="quantity-selector-value" value="0"
-                                        aria-label="Quantity">
-                                    <button class="btn btn-ghost btn-icon btn-sm " aria-label="Increase quantity">
-                                        <i class="ri-add-line text-icon-lg"></i>
-                                    </button>
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">Sizes</h3>
+
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-sm" data-min="0" data-max="12">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Decrease quantity">
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="1" min="0" max="12"
+                                                inputmode="numeric" aria-label="Small quantity value">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Increase quantity">
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-md" data-min="0" data-max="24">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Decrease quantity">
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="4" min="0" max="24"
+                                                inputmode="numeric" aria-label="Medium quantity value">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Increase quantity">
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-lg" data-min="0" data-max="48">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-lg" aria-label="Decrease quantity">
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="8" min="0" max="48"
+                                                inputmode="numeric" aria-label="Large quantity value">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-lg" aria-label="Increase quantity">
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Medium</h3>
-                            <div class="size-grid-content">
-                                <div class="quantity-selector quantity-selector-md">
-                                    <button class="btn btn-ghost btn-icon btn-md" aria-label="Decrease quantity">
-                                        <i class="ri-subtract-line text-icon-lg"></i>
-                                    </button>
-                                    <input type="number" class="quantity-selector-value" value="0"
-                                        aria-label="Quantity">
-                                    <button class="btn btn-ghost btn-icon btn-md" aria-label="Increase quantity">
-                                        <i class="ri-add-line text-icon-lg"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">States</h3>
 
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Large</h3>
-                            <div class="size-grid-content">
-                                <div class="quantity-selector quantity-selector-lg">
-                                    <button class="btn btn-ghost btn-icon btn-lg" aria-label="Decrease quantity">
-                                        <i class="ri-subtract-line text-icon-lg"></i>
-                                    </button>
-                                    <input type="number" class="quantity-selector-value" value="0"
-                                        aria-label="Quantity">
-                                    <button class="btn btn-ghost btn-icon btn-lg" aria-label="Increase quantity">
-                                        <i class="ri-add-line text-icon-lg"></i>
-                                    </button>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Minimum</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-md" data-min="0" data-max="12">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Decrease quantity">
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="0" min="0" max="12"
+                                                inputmode="numeric" aria-label="Minimum quantity value">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Increase quantity">
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Maximum</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-lg" data-min="0" data-max="12">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-lg" aria-label="Decrease quantity">
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="12" min="0" max="12"
+                                                inputmode="numeric" aria-label="Maximum quantity value">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-lg" aria-label="Increase quantity">
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="quantity-selector quantity-selector-md" data-min="0" data-max="24" aria-disabled="true">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Decrease quantity" disabled>
+                                                <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="number" class="quantity-selector-value" value="6" min="0" max="24"
+                                                inputmode="numeric" aria-label="Disabled quantity value" disabled>
+                                            <button type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Increase quantity" disabled>
+                                                <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3267,43 +3326,139 @@
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">Sizes</h3>
 
-                    <div class="w-full max-w-4xl space-y-12">
-
-
-
-                        <div class="mb-12">
-                            <div class="stepper md:flex-row md:justify-center" role="group" aria-label="Checkout steps">
-                                <div class="stepper-step is-active" data-stepper-item data-step="1">
-                                    <button type="button" class="btn btn-secondary btn-icon btn-sm btn-stepper"
-                                        data-stepper-button onclick="setActiveStep(1)"
-                                        aria-label="Step 1: Order Details" aria-pressed="true"
-                                        aria-current="step">1</button>
-                                    <span class="stepper-label">Order Details</span>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Extra Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-xs" role="group" aria-label="Extra small stepper">
+                                            <div class="stepper-step is-default" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Overview" aria-pressed="false">1</button>
+                                                <span class="stepper-label">Overview</span>
+                                            </div>
+                                            <div class="stepper-step is-active" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Details" aria-pressed="true" aria-current="step">2</button>
+                                                <span class="stepper-label">Details</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Confirm" aria-pressed="false">3</button>
+                                                <span class="stepper-label">Confirm</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="stepper-step" data-stepper-item data-step="2">
-                                    <button type="button" class="btn btn-secondary btn-icon btn-sm btn-stepper"
-                                        data-stepper-button onclick="setActiveStep(2)"
-                                        aria-label="Step 2: Shipping Info" aria-pressed="false">2</button>
-                                    <span class="stepper-label">Shipping Info</span>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-sm" role="group" aria-label="Small stepper">
+                                            <div class="stepper-step is-default" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Overview" aria-pressed="false">1</button>
+                                                <span class="stepper-label">Overview</span>
+                                            </div>
+                                            <div class="stepper-step is-active" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Details" aria-pressed="true" aria-current="step">2</button>
+                                                <span class="stepper-label">Details</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Confirm" aria-pressed="false">3</button>
+                                                <span class="stepper-label">Confirm</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="stepper-step" data-stepper-item data-step="3">
-                                    <button type="button" class="btn btn-secondary btn-icon btn-sm btn-stepper"
-                                        data-stepper-button onclick="setActiveStep(3)" aria-label="Step 3: Payment"
-                                        aria-pressed="false">3</button>
-                                    <span class="stepper-label">Payment</span>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-md" role="group" aria-label="Medium stepper">
+                                            <div class="stepper-step is-default" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Overview" aria-pressed="false">1</button>
+                                                <span class="stepper-label">Overview</span>
+                                            </div>
+                                            <div class="stepper-step is-active" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Details" aria-pressed="true" aria-current="step">2</button>
+                                                <span class="stepper-label">Details</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Confirm" aria-pressed="false">3</button>
+                                                <span class="stepper-label">Confirm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-lg" role="group" aria-label="Large stepper">
+                                            <div class="stepper-step is-default" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Overview" aria-pressed="false">1</button>
+                                                <span class="stepper-label">Overview</span>
+                                            </div>
+                                            <div class="stepper-step is-active" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Details" aria-pressed="true" aria-current="step">2</button>
+                                                <span class="stepper-label">Details</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Confirm" aria-pressed="false">3</button>
+                                                <span class="stepper-label">Confirm</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">States</h3>
 
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Locked</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-md" role="group" aria-label="Locked stepper state">
+                                            <div class="stepper-step is-active" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Configure" aria-pressed="true" aria-current="step">1</button>
+                                                <span class="stepper-label">Configure</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Review" aria-pressed="false">2</button>
+                                                <span class="stepper-label">Review</span>
+                                            </div>
+                                            <div class="stepper-step is-locked" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Confirm" aria-pressed="false">3</button>
+                                                <span class="stepper-label">Confirm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-
-
-
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Final Step</h4>
+                                    <div class="size-grid-content">
+                                        <div class="stepper stepper-lg" role="group" aria-label="Final step state">
+                                            <div class="stepper-step is-default" data-stepper-item data-step="1">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 1: Brief" aria-pressed="false">1</button>
+                                                <span class="stepper-label">Brief</span>
+                                            </div>
+                                            <div class="stepper-step is-default" data-stepper-item data-step="2">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 2: Mockup" aria-pressed="false">2</button>
+                                                <span class="stepper-label">Mockup</span>
+                                            </div>
+                                            <div class="stepper-step is-active" data-stepper-item data-step="3">
+                                                <button type="button" class="btn btn-secondary btn-icon btn-stepper" data-stepper-button aria-label="Step 3: Delivery" aria-pressed="true" aria-current="step">3</button>
+                                                <span class="stepper-label">Delivery</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
 
             </section>
@@ -4314,6 +4469,11 @@
 </body>
 
 </html>
+
+
+
+
+
 
 
 

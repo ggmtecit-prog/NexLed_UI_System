@@ -1056,10 +1056,35 @@ document.addEventListener('DOMContentLoaded', initializeMaterialSelectors);
  * Stepper Component Logic
  */
 
-let maxUnlockedStep = 1;
+function getStepperItems(stepperRoot) {
+    return Array.from(stepperRoot.querySelectorAll('[data-stepper-item]'));
+}
 
-function setActiveStep(stepNumber) {
-    const allItems = document.querySelectorAll('#stepper [data-stepper-item]');
+function getInitialActiveStep(stepperRoot) {
+    const items = getStepperItems(stepperRoot);
+    const activeItem = items.find(item => item.classList.contains('is-active'))
+        || items.find(item => item.querySelector('[data-stepper-button][aria-pressed="true"]'))
+        || items[0];
+
+    return Number(activeItem?.dataset.step) || 1;
+}
+
+function getInitialUnlockedStep(stepperRoot) {
+    const unlockedSteps = getStepperItems(stepperRoot)
+        .filter(item => !item.classList.contains('is-locked'))
+        .map(item => Number(item.dataset.step) || 1);
+
+    return unlockedSteps.length ? Math.max(...unlockedSteps) : getInitialActiveStep(stepperRoot);
+}
+
+function setActiveStep(stepNumber, stepperRoot = null) {
+    const targetRoot = stepperRoot || document.querySelector('.stepper');
+
+    if (!targetRoot) {
+        return;
+    }
+
+    const allItems = getStepperItems(targetRoot);
 
     if (!allItems.length) {
         return;
@@ -1067,8 +1092,10 @@ function setActiveStep(stepNumber) {
 
     const totalSteps = allItems.length;
     const requestedStep = Math.min(Math.max(Number(stepNumber) || 1, 1), totalSteps);
+    const currentMaxUnlocked = Number(targetRoot.dataset.stepperMaxUnlocked) || 1;
+    const maxUnlockedStep = Math.max(currentMaxUnlocked, requestedStep);
 
-    maxUnlockedStep = Math.max(maxUnlockedStep, requestedStep);
+    targetRoot.dataset.stepperMaxUnlocked = String(maxUnlockedStep);
 
     allItems.forEach((item) => {
         const itemStep = Number(item.dataset.step) || 1;
@@ -1098,69 +1125,87 @@ function setActiveStep(stepNumber) {
     });
 }
 
-function initializeStepper() {
-    const stepperRoot = document.querySelector('#stepper .stepper');
+function initializeSteppers() {
+    const stepperRoots = Array.from(document.querySelectorAll('.stepper')).filter(stepperRoot => {
+        return stepperRoot.querySelector('[data-stepper-item]');
+    });
 
-    setActiveStep(1);
+    stepperRoots.forEach((stepperRoot) => {
+        const initialActiveStep = getInitialActiveStep(stepperRoot);
+        const initialUnlockedStep = Math.max(getInitialUnlockedStep(stepperRoot), initialActiveStep);
 
-    if (!stepperRoot || stepperRoot.dataset.stepperClickBound === 'true') {
-        return;
-    }
+        stepperRoot.dataset.stepperMaxUnlocked = String(initialUnlockedStep);
+        setActiveStep(initialActiveStep, stepperRoot);
 
-    stepperRoot.dataset.stepperClickBound = 'true';
-    stepperRoot.addEventListener('click', (event) => {
-        if (event.target.closest('[data-stepper-button]')) {
+        if (stepperRoot.dataset.stepperClickBound === 'true') {
             return;
         }
 
-        const stepItem = event.target.closest('[data-stepper-item]');
+        stepperRoot.dataset.stepperClickBound = 'true';
+        stepperRoot.addEventListener('click', (event) => {
+            const stepItem = event.target.closest('[data-stepper-item]');
 
-        if (!stepItem || !stepperRoot.contains(stepItem)) {
-            return;
-        }
+            if (!stepItem || !stepperRoot.contains(stepItem)) {
+                return;
+            }
 
-        setActiveStep(Number(stepItem.dataset.step) || 1);
+            setActiveStep(Number(stepItem.dataset.step) || 1, stepperRoot);
+        });
     });
 }
 
-// Initialize default active step on DOM ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeStepper);
+    document.addEventListener('DOMContentLoaded', initializeSteppers);
 } else {
-    initializeStepper();
+    initializeSteppers();
 }
-
 
 /**
  * Quantity Selector Logic
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const wrappers = document.querySelectorAll('#quantity-selector .quantity-selector');
+function initializeQuantitySelectors() {
+    const wrappers = document.querySelectorAll('.quantity-selector');
 
     wrappers.forEach(wrapper => {
         const input = wrapper.querySelector('.quantity-selector-value');
-        const decreaseBtn = wrapper.querySelector('button[aria-label="Decrease quantity"]');
-        const increaseBtn = wrapper.querySelector('button[aria-label="Increase quantity"]');
+        const buttons = wrapper.querySelectorAll('button');
+        const decreaseBtn = buttons[0];
+        const increaseBtn = buttons[buttons.length - 1];
 
-        if (!input || !decreaseBtn || !increaseBtn) {
+        if (!input || buttons.length < 2 || !decreaseBtn || !increaseBtn) {
             return;
         }
 
-        // Settings
-        const min = parseInt(wrapper.dataset.min) || 0;
-        const max = parseInt(wrapper.dataset.max) || 999;
-        let lastValidValue = min;
+        const min = parseInt(wrapper.dataset.min || input.min || '0', 10);
+        const max = parseInt(wrapper.dataset.max || input.max || '999', 10);
+        const resolvedMin = Number.isNaN(min) ? 0 : min;
+        const resolvedMax = Number.isNaN(max) ? 999 : max;
+        const isLocked = wrapper.getAttribute('aria-disabled') === 'true' || input.disabled;
+        let lastValidValue = resolvedMin;
 
-        commitTypedValue();
+        input.min = String(resolvedMin);
+        input.max = String(resolvedMax);
+        input.step = '1';
 
-        // Event Listeners
+        const initialValue = parseInt(input.value, 10);
+        const safeInitialValue = Number.isNaN(initialValue)
+            ? resolvedMin
+            : Math.min(resolvedMax, Math.max(resolvedMin, initialValue));
+
+        input.value = safeInitialValue;
+        lastValidValue = safeInitialValue;
+        updateState();
+
+        if (isLocked) {
+            return;
+        }
+
         decreaseBtn.addEventListener('click', () => {
             commitTypedValue();
 
-            let currentValue = parseInt(input.value, 10);
-            if (currentValue > min) {
+            const currentValue = parseInt(input.value, 10);
+            if (currentValue > resolvedMin) {
                 updateValue(currentValue - 1);
             }
         });
@@ -1168,8 +1213,8 @@ document.addEventListener('DOMContentLoaded', () => {
         increaseBtn.addEventListener('click', () => {
             commitTypedValue();
 
-            let currentValue = parseInt(input.value, 10);
-            if (currentValue < max) {
+            const currentValue = parseInt(input.value, 10);
+            if (currentValue < resolvedMax) {
                 updateValue(currentValue + 1);
             }
         });
@@ -1182,7 +1227,6 @@ document.addEventListener('DOMContentLoaded', () => {
             commitTypedValue();
         });
 
-        // Helper to update value and UI state
         function updateValue(newValue) {
             setCommittedValue(newValue, true);
         }
@@ -1198,12 +1242,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextValue = Number.isNaN(parsedValue) ? lastValidValue : parsedValue;
             }
 
-            if (nextValue < min) {
-                nextValue = min;
+            if (nextValue < resolvedMin) {
+                nextValue = resolvedMin;
             }
 
-            if (nextValue > max) {
-                nextValue = max;
+            if (nextValue > resolvedMax) {
+                nextValue = resolvedMax;
             }
 
             setCommittedValue(nextValue, false);
@@ -1219,7 +1263,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Helper to disable buttons at limits
         function updateState() {
             let currentValue = parseInt(input.value, 10);
 
@@ -1228,27 +1271,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.value = currentValue;
             }
 
-            // Check limits
-            if (currentValue <= min) {
+            if (isLocked) {
                 decreaseBtn.disabled = true;
-                input.value = min; // Enforce min
-                lastValidValue = min;
+                increaseBtn.disabled = true;
+                return;
+            }
+
+            if (currentValue <= resolvedMin) {
+                decreaseBtn.disabled = true;
+                input.value = resolvedMin;
+                lastValidValue = resolvedMin;
             } else {
                 decreaseBtn.disabled = false;
             }
 
-            if (currentValue >= max) {
+            if (currentValue >= resolvedMax) {
                 increaseBtn.disabled = true;
-                input.value = max; // Enforce max
-                lastValidValue = max;
+                input.value = resolvedMax;
+                lastValidValue = resolvedMax;
             } else {
                 increaseBtn.disabled = false;
             }
         }
     });
+}
 
-});
-
+document.addEventListener('DOMContentLoaded', initializeQuantitySelectors);
 
 function isLettersAndSpaces(value) {
     const trimmedValue = value.trim();
@@ -3210,6 +3258,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
+
+
+
 
 
 
