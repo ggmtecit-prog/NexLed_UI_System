@@ -1596,9 +1596,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.addEventListener('keydown', event => {
                 let nextIndex = index;
 
-                if (event.key === 'ArrowDown') {
+                if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
                     nextIndex = (index + 1) % tabs.length;
-                } else if (event.key === 'ArrowUp') {
+                } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
                     nextIndex = (index - 1 + tabs.length) % tabs.length;
                 } else if (event.key === 'Home') {
                     nextIndex = 0;
@@ -3258,6 +3258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
