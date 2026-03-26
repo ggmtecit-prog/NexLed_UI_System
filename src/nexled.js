@@ -1628,49 +1628,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.tab-bar[data-tabs]').forEach(tabBar => {
+        if (tabBar.dataset.tabsBound === 'true') {
+            return;
+        }
+
+        tabBar.dataset.tabsBound = 'true';
         let tabCounter = tabBar.querySelectorAll('.tab-item').length;
 
-        // Activate tab on click (skip if close button is the target)
-        tabBar.addEventListener('click', e => {
-            if (e.target.closest('.tab-close')) return;
-            const item = e.target.closest('.tab-item');
-            if (!item) return;
+        const getTabs = () => Array.from(tabBar.querySelectorAll('.tab-item'));
 
-            tabBar.querySelectorAll('.tab-item').forEach(t => t.classList.remove('is-active'));
-            item.classList.add('is-active');
+        const syncTabs = preferredActiveTab => {
+            const tabs = getTabs();
+            if (tabs.length === 0) {
+                return null;
+            }
+
+            const activeTab = preferredActiveTab && tabs.includes(preferredActiveTab)
+                ? preferredActiveTab
+                : tabs.find(tab => tab.classList.contains('is-active')) || tabs[0];
+
+            tabs.forEach(tab => {
+                const isActive = tab === activeTab;
+                tab.classList.toggle('is-active', isActive);
+                tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                tab.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            return activeTab;
+        };
+
+        const activateTab = (tab, options = {}) => {
+            const activeTab = syncTabs(tab);
+            if (options.focus && activeTab) {
+                activeTab.focus();
+            }
+        };
+
+        tabBar.addEventListener('click', event => {
+            if (event.target.closest('.tab-close')) {
+                return;
+            }
+
+            const item = event.target.closest('.tab-item');
+            if (!item || !tabBar.contains(item)) {
+                return;
+            }
+
+            activateTab(item);
         });
 
-        // Close tab on close button click
-        tabBar.addEventListener('click', e => {
-            const closeBtn = e.target.closest('.tab-close');
-            if (!closeBtn) return;
+        tabBar.addEventListener('keydown', event => {
+            if (event.target.closest('.tab-close')) {
+                return;
+            }
 
-            const item = closeBtn.closest('.tab-item');
+            const currentTab = event.target.closest('.tab-item');
+            if (!currentTab || !tabBar.contains(currentTab)) {
+                return;
+            }
+
+            const tabs = getTabs();
+            const currentIndex = tabs.indexOf(currentTab);
+            let nextIndex = currentIndex;
+
+            if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                nextIndex = (currentIndex + 1) % tabs.length;
+            } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+            } else if (event.key === 'Home') {
+                nextIndex = 0;
+            } else if (event.key === 'End') {
+                nextIndex = tabs.length - 1;
+            } else if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+                activateTab(currentTab);
+                return;
+            } else {
+                return;
+            }
+
+            event.preventDefault();
+            activateTab(tabs[nextIndex], { focus: true });
+        });
+
+        tabBar.addEventListener('click', event => {
+            const closeButton = event.target.closest('.tab-close');
+            if (!closeButton) {
+                return;
+            }
+
+            const item = closeButton.closest('.tab-item');
+            if (!item) {
+                return;
+            }
+
+            const tabs = getTabs();
+            const index = tabs.indexOf(item);
             const wasActive = item.classList.contains('is-active');
-            const allItems = [...tabBar.querySelectorAll('.tab-item')];
-            const idx = allItems.indexOf(item);
 
             item.remove();
 
-            // If removed tab was active, activate the nearest remaining tab
             if (wasActive) {
-                const remaining = [...tabBar.querySelectorAll('.tab-item')];
-                if (remaining.length > 0) {
-                    remaining[Math.min(idx, remaining.length - 1)].classList.add('is-active');
+                const remainingTabs = getTabs();
+                if (remainingTabs.length > 0) {
+                    activateTab(remainingTabs[Math.min(index, remainingTabs.length - 1)], { focus: true });
                 }
+            } else {
+                syncTabs();
             }
         });
 
-        // Add new tab on + click
         const addWrapper = tabBar.querySelector('.tab-add');
-        if (addWrapper) {
-            addWrapper.querySelector('button').addEventListener('click', () => {
-                tabCounter++;
+        const addButton = addWrapper ? addWrapper.querySelector('button') : null;
+        if (addButton) {
+            addButton.addEventListener('click', () => {
+                tabCounter += 1;
                 const label = `Form ${tabCounter}`;
                 const tab = document.createElement('div');
                 tab.className = 'tab-item';
                 tab.setAttribute('role', 'tab');
-                tab.setAttribute('tabindex', '0');
+                tab.setAttribute('aria-selected', 'false');
+                tab.setAttribute('tabindex', '-1');
                 tab.innerHTML = `
                     <span class="tab-label">${label}</span>
                     <button type="button" class="tab-close" aria-label="Close ${label}">
@@ -1678,17 +1756,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `;
                 tabBar.insertBefore(tab, addWrapper);
+                activateTab(tab, { focus: true });
             });
         }
+
+        syncTabs();
     });
 });
-
-
-
 /**
  * Range Slider Component Logic
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-range-slider]').forEach(slider => {
         if (slider.dataset.rangeSliderBound === 'true') {
@@ -3258,6 +3335,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
 
 
 

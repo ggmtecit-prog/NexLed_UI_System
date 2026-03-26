@@ -4536,135 +4536,293 @@
 
             </section>
 
-                        <section id="segmented-control">
+            <section id="segmented-control">
                 <div class="panel-wrap-head">
                     <h2 class="panel-wrap-title text-black">Segmented Control</h2>
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-3">
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Small</h3>
-                            <div class="segmented-control segmented-control-sm" role="radiogroup" aria-label="Small workspace mode">
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode" checked>
-                                    <span class="segmented-control-label">Overview</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
-                                    <span class="segmented-control-label">Specs</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
-                                    <span class="segmented-control-label">Files</span>
-                                </label>
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">Sizes</h3>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-sm" role="radiogroup" aria-label="Small workspace mode">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedSmallMode" checked>
+                                                <span class="segmented-control-label">Overview</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
+                                                <span class="segmented-control-label">Specs</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedSmallMode">
+                                                <span class="segmented-control-label">Files</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Medium workspace mode">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
+                                                <span class="segmented-control-label">Overview</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedMediumMode" checked>
+                                                <span class="segmented-control-label">Pricing</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
+                                                <span class="segmented-control-label">Shipping</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-lg" role="radiogroup" aria-label="Large workspace mode">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLargeMode">
+                                                <span class="segmented-control-label">Overview</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLargeMode" checked>
+                                                <span class="segmented-control-label">Variants</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLargeMode">
+                                                <span class="segmented-control-label">Archive</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Medium</h3>
-                            <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Medium workspace mode">
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
-                                    <span class="segmented-control-label">Overview</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode" checked>
-                                    <span class="segmented-control-label">Pricing</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedMediumMode">
-                                    <span class="segmented-control-label">Shipping</span>
-                                </label>
-                            </div>
-                        </div>
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">States</h3>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Icon + Text</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Channel switcher">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedChannel" checked>
+                                                <span class="segmented-control-icon"><i class="ri-layout-grid-line text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">Grid</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
+                                                <span class="segmented-control-icon"><i class="ri-list-check-2 text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">List</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
+                                                <span class="segmented-control-icon"><i class="ri-timeline-view text-icon-md" aria-hidden="true"></i></span>
+                                                <span class="segmented-control-label">Timeline</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Large</h3>
-                            <div class="segmented-control segmented-control-lg" role="radiogroup" aria-label="Large workspace mode">
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode">
-                                    <span class="segmented-control-label">Overview</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode" checked>
-                                    <span class="segmented-control-label">Variants</span>
-                                </label>
-                                <label class="segmented-control-option">
-                                    <input class="segmented-control-input" type="radio" name="segmentedLargeMode" disabled>
-                                    <span class="segmented-control-label">Archived</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Long Labels</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Long label content switcher">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLongLabels" checked>
+                                                <span class="segmented-control-label">Storefront Overview</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLongLabels">
+                                                <span class="segmented-control-label">Pricing Matrix</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLongLabels">
+                                                <span class="segmented-control-label">Shipping Rules</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedLongLabels">
+                                                <span class="segmented-control-label">Support Files</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="w-full max-w-4xl p-24">
-                        <div class="flex flex-wrap items-center justify-between gap-16 mb-16">
-                            <div>
-                                <p class="text-body-xs text-grey-primary uppercase">Icon + text</p>
-                                <h3 class="text-card-title text-black">Channel switcher</h3>
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="segmented-control segmented-control-lg" role="radiogroup" aria-label="Disabled archive switcher">
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedDisabledState">
+                                                <span class="segmented-control-label">Current</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedDisabledState" checked>
+                                                <span class="segmented-control-label">Planned</span>
+                                            </label>
+                                            <label class="segmented-control-option">
+                                                <input class="segmented-control-input" type="radio" name="segmentedDisabledState" disabled>
+                                                <span class="segmented-control-label">Archived</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="badge badge-neutral badge-md">Radio driven</span>
-                        </div>
-
-                        <div class="segmented-control segmented-control-md" role="radiogroup" aria-label="Channel switcher">
-                            <label class="segmented-control-option">
-                                <input class="segmented-control-input" type="radio" name="segmentedChannel" checked>
-                                <span class="segmented-control-icon"><i class="ri-layout-grid-line text-icon-md" aria-hidden="true"></i></span>
-                                <span class="segmented-control-label">Grid</span>
-                            </label>
-                            <label class="segmented-control-option">
-                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
-                                <span class="segmented-control-icon"><i class="ri-list-check-2 text-icon-md" aria-hidden="true"></i></span>
-                                <span class="segmented-control-label">List</span>
-                            </label>
-                            <label class="segmented-control-option">
-                                <input class="segmented-control-input" type="radio" name="segmentedChannel">
-                                <span class="segmented-control-icon"><i class="ri-timeline-view text-icon-md" aria-hidden="true"></i></span>
-                                <span class="segmented-control-label">Timeline</span>
-                            </label>
                         </div>
                     </div>
                 </div>
 
             </section>
-<section id="tabs">
+            <section id="tabs">
                 <div class="panel-wrap-head">
                     <h2 class="panel-wrap-title text-black">Tabs</h2>
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">Patterns</h3>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Standard</h4>
+                                    <div class="size-grid-content">
+                                        <div class="tab-bar" data-tabs role="tablist" aria-label="Project tabs">
+                                            <div class="tab-item is-active" role="tab" aria-selected="true" tabindex="0">
+                                                <span class="tab-label">Form 1</span>
+                                                <button type="button" class="tab-close" aria-label="Close Form 1">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Form 2</span>
+                                                <button type="button" class="tab-close" aria-label="Close Form 2">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Form 3</span>
+                                                <button type="button" class="tab-close" aria-label="Close Form 3">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-add">
+                                                <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add project tab">
+                                                    <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="tab-bar" data-tabs role="tablist">
-                        <div class="tab-item is-active" role="tab" tabindex="0">
-                            <span class="tab-label">Form 1</span>
-                            <button type="button" class="tab-close" aria-label="Close Form 1">
-                                <i class="ri-close-line" aria-hidden="true"></i>
-                            </button>
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Long Labels</h4>
+                                    <div class="size-grid-content">
+                                        <div class="tab-bar" data-tabs role="tablist" aria-label="Long label tabs">
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Storefront Overview</span>
+                                                <button type="button" class="tab-close" aria-label="Close Storefront Overview">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item is-active" role="tab" aria-selected="true" tabindex="0">
+                                                <span class="tab-label">Pricing Matrix</span>
+                                                <button type="button" class="tab-close" aria-label="Close Pricing Matrix">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Shipping Rules</span>
+                                                <button type="button" class="tab-close" aria-label="Close Shipping Rules">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Support Files</span>
+                                                <button type="button" class="tab-close" aria-label="Close Support Files">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="tab-item" role="tab" tabindex="0">
-                            <span class="tab-label">Form 2</span>
-                            <button type="button" class="tab-close" aria-label="Close Form 2">
-                                <i class="ri-close-line" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div class="tab-item" role="tab" tabindex="0">
-                            <span class="tab-label">Form 3</span>
-                            <button type="button" class="tab-close" aria-label="Close Form 3">
-                                <i class="ri-close-line" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div class="tab-add">
-                            <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add tab">
-                                <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
-                            </button>
+
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">States</h3>
+                            <div class="size-grid-stack size-grid-stack-gap-24">
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Active Tab</h4>
+                                    <div class="size-grid-content">
+                                        <div class="tab-bar" data-tabs role="tablist" aria-label="Active tab state">
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Overview</span>
+                                                <button type="button" class="tab-close" aria-label="Close Overview">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item is-active" role="tab" aria-selected="true" tabindex="0">
+                                                <span class="tab-label">Details</span>
+                                                <button type="button" class="tab-close" aria-label="Close Details">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">History</span>
+                                                <button type="button" class="tab-close" aria-label="Close History">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Add + Close</h4>
+                                    <div class="size-grid-content">
+                                        <div class="tab-bar" data-tabs role="tablist" aria-label="Workspace tabs">
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Campaign</span>
+                                                <button type="button" class="tab-close" aria-label="Close Campaign">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="tab-label">Assets</span>
+                                                <button type="button" class="tab-close" aria-label="Close Assets">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-item is-active" role="tab" aria-selected="true" tabindex="0">
+                                                <span class="tab-label">Notes</span>
+                                                <button type="button" class="tab-close" aria-label="Close Notes">
+                                                    <i class="ri-close-line" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="tab-add">
+                                                <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Add workspace tab">
+                                                    <i class="ri-add-line text-icon-sm" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
             </section>
-
     </div>
     </main>
 
@@ -4673,6 +4831,9 @@
 </body>
 
 </html>
+
+
+
 
 
 
