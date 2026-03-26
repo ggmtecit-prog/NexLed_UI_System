@@ -1634,8 +1634,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tabBar.dataset.tabsBound = 'true';
         let tabCounter = tabBar.querySelectorAll('.tab-item').length;
+        let isMouseDown = false;
+        let pointerStartX = 0;
+        let startScrollLeft = 0;
+        let isDraggingTabs = false;
+        let suppressTabClick = false;
 
+        const dragThreshold = 6;
         const getTabs = () => Array.from(tabBar.querySelectorAll('.tab-item'));
+        const canDragTabs = () => tabBar.scrollWidth > tabBar.clientWidth;
+
+        const finishTabDrag = () => {
+            tabBar.removeAttribute('data-dragging-tabs');
+            isMouseDown = false;
+            pointerStartX = 0;
+            startScrollLeft = 0;
+            isDraggingTabs = false;
+        };
+
+        const centerTabInView = (tab, behavior = 'smooth') => {
+            if (!tab) {
+                return;
+            }
+
+            const maxScrollLeft = tabBar.scrollWidth - tabBar.clientWidth;
+            if (maxScrollLeft <= 0) {
+                return;
+            }
+
+            const nextScrollLeft = Math.min(
+                Math.max(tab.offsetLeft - ((tabBar.clientWidth - tab.offsetWidth) / 2), 0),
+                maxScrollLeft
+            );
+
+            const motionBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                ? 'auto'
+                : behavior;
+
+            tabBar.scrollTo({
+                left: nextScrollLeft,
+                behavior: motionBehavior
+            });
+        };
 
         const syncTabs = preferredActiveTab => {
             const tabs = getTabs();
@@ -1659,10 +1699,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const activateTab = (tab, options = {}) => {
             const activeTab = syncTabs(tab);
+            centerTabInView(activeTab, options.behavior || 'smooth');
+
             if (options.focus && activeTab) {
                 activeTab.focus();
             }
         };
+
+        tabBar.addEventListener('mousedown', event => {
+            if (event.button !== 0 || !canDragTabs()) {
+                return;
+            }
+
+            if (event.target.closest('.tab-close, .tab-add')) {
+                return;
+            }
+
+            isMouseDown = true;
+            pointerStartX = event.clientX;
+            startScrollLeft = tabBar.scrollLeft;
+            isDraggingTabs = false;
+        });
+
+        window.addEventListener('mousemove', event => {
+            if (!isMouseDown) {
+                return;
+            }
+
+            const deltaX = event.clientX - pointerStartX;
+            if (!isDraggingTabs && Math.abs(deltaX) < dragThreshold) {
+                return;
+            }
+
+            if (!isDraggingTabs) {
+                isDraggingTabs = true;
+                tabBar.dataset.draggingTabs = 'true';
+            }
+
+            event.preventDefault();
+            tabBar.scrollLeft = startScrollLeft - deltaX;
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isMouseDown) {
+                return;
+            }
+
+            if (isDraggingTabs) {
+                suppressTabClick = true;
+                window.setTimeout(() => {
+                    suppressTabClick = false;
+                }, 0);
+            }
+
+            finishTabDrag();
+        });
+
+        window.addEventListener('blur', () => {
+            finishTabDrag();
+        });
+
+        tabBar.addEventListener('click', event => {
+            if (!suppressTabClick) {
+                return;
+            }
+
+            suppressTabClick = false;
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }, true);
 
         tabBar.addEventListener('click', event => {
             if (event.target.closest('.tab-close')) {
@@ -1734,7 +1839,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     activateTab(remainingTabs[Math.min(index, remainingTabs.length - 1)], { focus: true });
                 }
             } else {
-                syncTabs();
+                const initialActiveTab = syncTabs();
+                centerTabInView(initialActiveTab, 'auto');
             }
         });
 
@@ -1760,7 +1866,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        syncTabs();
+        const initialActiveTab = syncTabs();
+        centerTabInView(initialActiveTab, 'auto');
     });
 });
 /**
@@ -3335,28 +3442,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

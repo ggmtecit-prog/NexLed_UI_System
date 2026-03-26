@@ -7797,17 +7797,23 @@ body.search-overlay-open {
   padding: var(--tab-bar-padding);
   overflow-x: auto;
   overflow-y: hidden;
+  touch-action: pan-y;
   scrollbar-width: none;
   -ms-overflow-style: none;
   background: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-btn);
   box-shadow: var(--shadow-btn-default);
+  cursor: grab;
 }
 
 .tab-bar::-webkit-scrollbar {
   display: none;
 }
+.tab-bar[data-dragging-tabs="true"] {
+  cursor: grabbing;
+}
+
 
 .tab-item {
   position: relative;
@@ -8731,42 +8737,3 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
