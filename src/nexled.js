@@ -470,10 +470,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initUploaders() {
-    const uploaders = document.querySelectorAll('#file-uploader [data-uploader]');
+    const uploaders = document.querySelectorAll('[data-uploader]');
     uploaders.forEach((uploader) => {
         setupUploader(uploader);
     });
+}
+
+function syncUploaderDisabledState(uploader, dropZone, fileInput) {
+    const isDisabled = uploader.getAttribute('aria-disabled') === 'true' || (fileInput && fileInput.disabled);
+
+    if (!dropZone) {
+        return isDisabled;
+    }
+
+    if (isDisabled) {
+        dropZone.setAttribute('aria-disabled', 'true');
+        dropZone.setAttribute('tabindex', '-1');
+        return true;
+    }
+
+    dropZone.removeAttribute('aria-disabled');
+
+    if (!dropZone.hasAttribute('tabindex') || dropZone.getAttribute('tabindex') === '-1') {
+        dropZone.setAttribute('tabindex', '0');
+    }
+
+    return false;
 }
 
 function setupUploader(uploader) {
@@ -483,6 +505,11 @@ function setupUploader(uploader) {
     const note = uploader.querySelector('.uploader-note');
 
     if (!dropZone || !fileInput) return;
+
+    if (syncUploaderDisabledState(uploader, dropZone, fileInput)) {
+        uploader.classList.remove('is-dragover');
+        return;
+    }
 
     let dragDepth = 0;
 
@@ -674,7 +701,6 @@ function handleUploaderFiles(files, uploader) {
         uploader.classList.remove('is-default');
         uploader.classList.add('has-files');
         text.textContent = `${fileCount} ${itemWord} ready to upload`;
-        console.log('Files selected:', files);
         return;
     }
 
@@ -3073,6 +3099,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 

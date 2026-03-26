@@ -1792,90 +1792,201 @@
                     </div>
 
                 </section>
-<section id="file-uploader">
+                <section id="file-uploader">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">File Uploader</h2>
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Variants</h3>
 
-                        <div class="w-full max-w-2xl space-y-8">
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Folder</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-folder is-default" data-uploader>
+                                                <label class="uploader-label" for="folderVariantInput">Folder Upload</label>
+                                                <div id="folderVariantDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="0" aria-describedby="folderVariantUploaderNote">
+                                                    <input type="file" id="folderVariantInput" class="uploader-input"
+                                                        data-uploader-input webkitdirectory directory multiple>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-folder-add-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Drag &amp; Drop folder here"
+                                                        aria-live="polite">
+                                                        Drag &amp; Drop folder here
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        or click to browse your computer
+                                                    </div>
+                                                </div>
+                                                <p id="folderVariantUploaderNote" class="uploader-note">
+                                                    Supports bulk uploads with preserved structure.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <!-- Folder Upload -->
-                            <div class="uploader uploader-folder is-default" data-uploader>
-                                <label class="uploader-label" for="folderInput">Folder Upload</label>
-                                <div id="folderDropZone" class="uploader-zone" data-uploader-zone role="button"
-                                    tabindex="0" aria-describedby="folderUploaderNote">
-                                    <input type="file" id="folderInput" class="uploader-input" data-uploader-input
-                                        webkitdirectory directory multiple>
-                                    <div class="uploader-icon" aria-hidden="true">
-                                        <i class="ri-folder-add-line"></i>
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">File</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-file is-default" data-uploader
+                                                data-uploader-max-size-mb="10">
+                                                <label class="uploader-label" for="fileVariantInput">File Upload</label>
+                                                <div id="fileVariantDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="0" aria-describedby="fileVariantUploaderNote">
+                                                    <input type="file" id="fileVariantInput" class="uploader-input"
+                                                        data-uploader-input accept="application/pdf,.pdf" multiple>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-file-add-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Drag &amp; Drop PDF files here"
+                                                        aria-live="polite">
+                                                        Drag &amp; Drop PDF files here
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        or click to browse your computer
+                                                    </div>
+                                                </div>
+                                                <p id="fileVariantUploaderNote" class="uploader-note"
+                                                    data-uploader-idle-note="Supports multiple PDF files up to 10 MB each.">
+                                                    Supports multiple PDF files up to 10 MB each.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="uploader-text" data-uploader-text
-                                        data-uploader-idle-text="Drag &amp; Drop folder here" aria-live="polite">
-                                        Drag &amp; Drop folder here
-                                    </div>
-                                    <div class="uploader-subtext">
-                                        or click to browse your computer
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Image</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-image is-default" data-uploader>
+                                                <label class="uploader-label" for="imageVariantInput">Image Upload</label>
+                                                <div id="imageVariantDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="0" aria-describedby="imageVariantUploaderNote">
+                                                    <input type="file" id="imageVariantInput" class="uploader-input"
+                                                        data-uploader-input accept="image/*" multiple>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-image-add-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Drag &amp; Drop images here"
+                                                        aria-live="polite">
+                                                        Drag &amp; Drop images here
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        or click to browse your computer
+                                                    </div>
+                                                </div>
+                                                <p id="imageVariantUploaderNote" class="uploader-note">
+                                                    Accepts image files only (jpg, png, gif, etc.).
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <p id="folderUploaderNote" class="uploader-note">
-                                    Supports bulk uploads with preserved structure.
-                                </p>
                             </div>
 
-                            <!-- File Upload -->
-                            <div class="uploader uploader-file is-error" data-uploader data-uploader-max-size-mb="10">
-                                <label class="uploader-label" for="fileInput">File Upload</label>
-                                <div id="fileDropZone" class="uploader-zone" data-uploader-zone role="button"
-                                    tabindex="0" aria-describedby="fileUploaderNote">
-                                    <input type="file" id="fileInput" class="uploader-input" data-uploader-input
-                                        accept="application/pdf,.pdf" aria-invalid="true" multiple>
-                                    <div class="uploader-icon" aria-hidden="true">
-                                        <i class="ri-file-add-line"></i>
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Focusable</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-folder is-default" data-uploader>
+                                                <label class="uploader-label" for="uploaderFocusInput">Focusable Upload</label>
+                                                <div id="uploaderFocusDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="0" aria-describedby="uploaderFocusNote">
+                                                    <input type="file" id="uploaderFocusInput" class="uploader-input"
+                                                        data-uploader-input multiple>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-upload-cloud-2-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Tab to preview the shared focus ring"
+                                                        aria-live="polite">
+                                                        Tab to preview the shared focus ring
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        keyboard interaction mirrors the shared button family
+                                                    </div>
+                                                </div>
+                                                <p id="uploaderFocusNote" class="uploader-note">
+                                                    Press Enter or Space to open the file picker.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="uploader-text" data-uploader-text
-                                        data-uploader-idle-text="Drag &amp; Drop files here" aria-live="polite">
-                                        Only PDF files are allowed.
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Validation Error</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-file is-error" data-uploader
+                                                data-uploader-max-size-mb="10">
+                                                <label class="uploader-label" for="uploaderErrorInput">File Upload</label>
+                                                <div id="uploaderErrorDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="0" aria-describedby="uploaderErrorNote">
+                                                    <input type="file" id="uploaderErrorInput" class="uploader-input"
+                                                        data-uploader-input accept="application/pdf,.pdf"
+                                                        aria-invalid="true" multiple>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-file-add-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Drag &amp; Drop PDF files here"
+                                                        aria-live="polite">
+                                                        Only PDF files are allowed.
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        or click to browse your computer
+                                                    </div>
+                                                </div>
+                                                <p id="uploaderErrorNote" class="uploader-note"
+                                                    data-uploader-idle-note="Supports multiple PDF files up to 10 MB each.">
+                                                    Please upload a PDF file.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="uploader-subtext">
-                                        or click to browse your computer
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Disabled</h4>
+                                        <div class="size-grid-content">
+                                            <div class="uploader uploader-image is-default" data-uploader
+                                                aria-disabled="true">
+                                                <label class="uploader-label" for="uploaderDisabledInput">Image Upload</label>
+                                                <div id="uploaderDisabledDropZone" class="uploader-zone" data-uploader-zone
+                                                    role="button" tabindex="-1" aria-disabled="true"
+                                                    aria-describedby="uploaderDisabledNote">
+                                                    <input type="file" id="uploaderDisabledInput" class="uploader-input"
+                                                        data-uploader-input accept="image/*" multiple disabled>
+                                                    <div class="uploader-icon" aria-hidden="true">
+                                                        <i class="ri-image-add-line"></i>
+                                                    </div>
+                                                    <div class="uploader-text" data-uploader-text
+                                                        data-uploader-idle-text="Image uploads are currently unavailable"
+                                                        aria-live="polite">
+                                                        Image uploads are currently unavailable
+                                                    </div>
+                                                    <div class="uploader-subtext">
+                                                        this state removes drag and file selection
+                                                    </div>
+                                                </div>
+                                                <p id="uploaderDisabledNote" class="uploader-note">
+                                                    Disabled state preserves layout while removing interaction.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <p id="fileUploaderNote" class="uploader-note"
-                                    data-uploader-idle-note="Supports multiple PDF files up to 10 MB each.">
-                                    Please upload a PDF file.
-                                </p>
                             </div>
-
-                            <!-- Image Upload Only -->
-                            <div class="uploader uploader-image is-default" data-uploader>
-                                <label class="uploader-label" for="imageInput">Image Upload</label>
-                                <div id="imageDropZone" class="uploader-zone" data-uploader-zone role="button"
-                                    tabindex="0" aria-describedby="imageUploaderNote">
-                                    <input type="file" id="imageInput" class="uploader-input" data-uploader-input
-                                        accept="image/*" multiple>
-                                    <div class="uploader-icon" aria-hidden="true">
-                                        <i class="ri-image-add-line"></i>
-                                    </div>
-                                    <div class="uploader-text" data-uploader-text
-                                        data-uploader-idle-text="Drag &amp; Drop images here" aria-live="polite">
-                                        Drag &amp; Drop images here
-                                    </div>
-                                    <div class="uploader-subtext">
-                                        or click to browse your computer
-                                    </div>
-                                </div>
-                                <p id="imageUploaderNote" class="uploader-note">
-                                    Accepts image files only (jpg, png, gif, etc.).
-                                </p>
-                            </div>
-
-
                         </div>
-
-
-
                     </div>
 
                 </section>
@@ -3896,5 +4007,8 @@
 </body>
 
 </html>
+
+
+
 
 
