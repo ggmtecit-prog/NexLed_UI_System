@@ -1,4 +1,4 @@
-/*
+﻿/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -177,17 +177,16 @@ body {
 /* SCROLLBAR */
 /* Root page scrollbars and internal .custom-scrollbar surfaces share the same treatment. */
 
-/* CUSTOM SCROLLBAR */
 html,
 body,
 .custom-scrollbar {
   --scrollbar-size: var(--space-12);
-  --scrollbar-thumb-inset: calc(var(--space-4) / 2);
   --scrollbar-thumb-radius: var(--radius-sm);
   --scrollbar-thumb-default: var(--color-grey-secondary);
   --scrollbar-thumb-active: var(--color-green-secondary);
+  --scrollbar-track: transparent;
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb-default) transparent;
+  scrollbar-color: var(--scrollbar-thumb-default) var(--scrollbar-track);
   scrollbar-gutter: stable;
 }
 
@@ -199,7 +198,7 @@ body.is-scrolling-root,
 .custom-scrollbar.is-scrolling,
 .custom-scrollbar:focus-visible,
 .custom-scrollbar:focus-within {
-  scrollbar-color: var(--scrollbar-thumb-active) transparent;
+  scrollbar-color: var(--scrollbar-thumb-active) var(--scrollbar-track);
 }
 
 .custom-scrollbar:focus-visible {
@@ -212,119 +211,40 @@ body::-webkit-scrollbar,
 .custom-scrollbar::-webkit-scrollbar {
   width: var(--scrollbar-size);
   height: var(--scrollbar-size);
+  background-color: var(--scrollbar-track);
 }
 
-html::-webkit-scrollbar-button,
-body::-webkit-scrollbar-button,
-.custom-scrollbar::-webkit-scrollbar-button,
-html::-webkit-scrollbar-button:increment,
-body::-webkit-scrollbar-button:increment,
-.custom-scrollbar::-webkit-scrollbar-button:increment,
-html::-webkit-scrollbar-button:decrement,
-body::-webkit-scrollbar-button:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:decrement,
-html::-webkit-scrollbar-button:single-button,
-body::-webkit-scrollbar-button:single-button,
-.custom-scrollbar::-webkit-scrollbar-button:single-button,
-html::-webkit-scrollbar-button:double-button,
-body::-webkit-scrollbar-button:double-button,
-.custom-scrollbar::-webkit-scrollbar-button:double-button,
-html::-webkit-scrollbar-button:single-button:increment,
-body::-webkit-scrollbar-button:single-button:increment,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:increment,
-html::-webkit-scrollbar-button:single-button:decrement,
-body::-webkit-scrollbar-button:single-button:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:decrement,
-html::-webkit-scrollbar-button:double-button:increment,
-body::-webkit-scrollbar-button:double-button:increment,
-.custom-scrollbar::-webkit-scrollbar-button:double-button:increment,
-html::-webkit-scrollbar-button:double-button:decrement,
-body::-webkit-scrollbar-button:double-button:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:double-button:decrement,
-html::-webkit-scrollbar-button:single-button:vertical:decrement,
-body::-webkit-scrollbar-button:single-button:vertical:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:decrement,
-html::-webkit-scrollbar-button:single-button:vertical:increment,
-body::-webkit-scrollbar-button:single-button:vertical:increment,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:vertical:increment,
-html::-webkit-scrollbar-button:single-button:horizontal:decrement,
-body::-webkit-scrollbar-button:single-button:horizontal:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:decrement,
-html::-webkit-scrollbar-button:single-button:horizontal:increment,
-body::-webkit-scrollbar-button:single-button:horizontal:increment,
-.custom-scrollbar::-webkit-scrollbar-button:single-button:horizontal:increment,
-html::-webkit-scrollbar-button:vertical:start:decrement,
-body::-webkit-scrollbar-button:vertical:start:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:vertical:start:decrement,
-html::-webkit-scrollbar-button:vertical:start:increment,
-body::-webkit-scrollbar-button:vertical:start:increment,
-.custom-scrollbar::-webkit-scrollbar-button:vertical:start:increment,
-html::-webkit-scrollbar-button:vertical:end:decrement,
-body::-webkit-scrollbar-button:vertical:end:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:vertical:end:decrement,
-html::-webkit-scrollbar-button:vertical:end:increment,
-body::-webkit-scrollbar-button:vertical:end:increment,
-.custom-scrollbar::-webkit-scrollbar-button:vertical:end:increment,
-html::-webkit-scrollbar-button:horizontal:start:decrement,
-body::-webkit-scrollbar-button:horizontal:start:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:horizontal:start:decrement,
-html::-webkit-scrollbar-button:horizontal:start:increment,
-body::-webkit-scrollbar-button:horizontal:start:increment,
-.custom-scrollbar::-webkit-scrollbar-button:horizontal:start:increment,
-html::-webkit-scrollbar-button:horizontal:end:decrement,
-body::-webkit-scrollbar-button:horizontal:end:decrement,
-.custom-scrollbar::-webkit-scrollbar-button:horizontal:end:decrement,
-html::-webkit-scrollbar-button:horizontal:end:increment,
-body::-webkit-scrollbar-button:horizontal:end:increment,
-.custom-scrollbar::-webkit-scrollbar-button:horizontal:end:increment {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  opacity: 0 !important;
-  color: transparent !important;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  border-width: 0 !important;
-  box-shadow: none !important;
-  pointer-events: none !important;
-}
-
-html::-webkit-scrollbar-corner,
-body::-webkit-scrollbar-corner,
-.custom-scrollbar::-webkit-scrollbar-corner,
 html::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track,
 .custom-scrollbar::-webkit-scrollbar-track,
 html::-webkit-scrollbar-track-piece,
 body::-webkit-scrollbar-track-piece,
 .custom-scrollbar::-webkit-scrollbar-track-piece,
-html::-webkit-scrollbar-track-piece:start,
-body::-webkit-scrollbar-track-piece:start,
-.custom-scrollbar::-webkit-scrollbar-track-piece:start,
-html::-webkit-scrollbar-track-piece:end,
-body::-webkit-scrollbar-track-piece:end,
-.custom-scrollbar::-webkit-scrollbar-track-piece:end {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background-color: var(--scrollbar-track);
+  border: none;
+  box-shadow: none;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-default);
+  background-color: var(--scrollbar-thumb-default);
   border-radius: var(--scrollbar-thumb-radius);
-  border: var(--scrollbar-thumb-inset) solid transparent;
+  border: calc(var(--space-4) / 2) solid var(--scrollbar-track);
   background-clip: padding-box;
   min-height: var(--space-40);
   min-width: var(--space-40);
@@ -338,22 +258,22 @@ body.is-scrolling-root::-webkit-scrollbar-thumb,
 .custom-scrollbar:hover::-webkit-scrollbar-thumb,
 .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
 .custom-scrollbar:focus-visible::-webkit-scrollbar-thumb,
-.custom-scrollbar:focus-within::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-active);
-}
-
+.custom-scrollbar:focus-within::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
 html::-webkit-scrollbar-thumb:active,
 body::-webkit-scrollbar-thumb:active,
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
-  background: var(--scrollbar-thumb-active);
+  background-color: var(--scrollbar-thumb-active);
 }
 
 @media (min-width: 768px) {
+
   html,
   body,
   .custom-scrollbar {
     --scrollbar-size: var(--space-16);
-    --scrollbar-thumb-inset: var(--space-4);
   }
 }
 
@@ -502,12 +422,13 @@ body::-webkit-scrollbar-thumb:active,
   color: var(--color-grey-primary);
 }
 
-.icon-box > .icon,
-.icon-box > i,
-.card-icon > .icon,
-.card-icon > i {
+.icon-box>.icon,
+.icon-box>i,
+.card-icon>.icon,
+.card-icon>i {
   color: inherit;
 }
+
 /* BUTTONS */
 .btn,
 .dropdown-trigger,
@@ -545,8 +466,8 @@ body::-webkit-scrollbar-thumb:active,
     opacity var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-.btn > .icon,
-.btn > i {
+.btn>.icon,
+.btn>i {
   transition:
     transform var(--motion-duration-fast) var(--motion-ease-premium),
     color var(--motion-duration-fast) var(--motion-ease-premium);
@@ -557,8 +478,8 @@ body::-webkit-scrollbar-thumb:active,
   box-shadow: var(--shadow-btn-hover);
 }
 
-.btn:hover > .icon,
-.btn:hover > i {
+.btn:hover>.icon,
+.btn:hover>i {
   transform: scale(var(--scale-hover));
 }
 
@@ -567,8 +488,8 @@ body::-webkit-scrollbar-thumb:active,
   box-shadow: var(--shadow-btn-active);
 }
 
-.btn:active > .icon,
-.btn:active > i {
+.btn:active>.icon,
+.btn:active>i {
   transform: scale(var(--scale-press));
 }
 
@@ -766,8 +687,8 @@ body::-webkit-scrollbar-thumb:active,
   box-shadow: var(--shadow-btn-active);
 }
 
-.btn-icon[aria-pressed="true"] > i,
-.btn-toggle[aria-pressed="true"] > i {
+.btn-icon[aria-pressed="true"]>i,
+.btn-toggle[aria-pressed="true"]>i {
   transform: scale(var(--scale-hover));
 }
 
@@ -1482,7 +1403,7 @@ input[type=number]::-webkit-outer-spin-button {
   transition: color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-.checkbox-wrapper > span:first-child {
+.checkbox-wrapper>span:first-child {
   position: relative;
   flex: 0 0 auto;
   display: inline-flex;
@@ -1490,7 +1411,7 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: center;
 }
 
-.checkbox-wrapper > span:last-child {
+.checkbox-wrapper>span:last-child {
   min-width: 0;
 }
 
@@ -1522,7 +1443,7 @@ input[type=number]::-webkit-outer-spin-button {
     transform var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-.checkbox-wrapper input[type="checkbox"] + i {
+.checkbox-wrapper input[type="checkbox"]+i {
   color: var(--color-white);
   opacity: 0;
   transform: scale(var(--scale-press-deep));
@@ -1556,8 +1477,8 @@ input[type=number]::-webkit-outer-spin-button {
   border-color: var(--color-green-secondary);
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked + i,
-.checkbox-wrapper input[type="checkbox"]:indeterminate + i {
+.checkbox-wrapper input[type="checkbox"]:checked+i,
+.checkbox-wrapper input[type="checkbox"]:indeterminate+i {
   opacity: 1;
   transform: scale(1);
 }
@@ -1583,7 +1504,7 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: none;
 }
 
-.checkbox-wrapper input[type="checkbox"]:disabled + i {
+.checkbox-wrapper input[type="checkbox"]:disabled+i {
   color: var(--color-grey-primary);
 }
 
@@ -1633,7 +1554,7 @@ input[type=number]::-webkit-outer-spin-button {
   transition: color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-.radio-wrapper > span {
+.radio-wrapper>span {
   min-width: 0;
 }
 
@@ -1742,6 +1663,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: var(--size-checkbox-lg);
   }
 }
+
 /* TOGGLE */
 .toggle {
   --toggle-track-w: var(--space-40);
@@ -1837,22 +1759,22 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: var(--shadow-btn-active);
 }
 
-.toggle-input:focus-visible + .toggle-track {
+.toggle-input:focus-visible+.toggle-track {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
 
-.toggle-input:checked + .toggle-track {
+.toggle-input:checked+.toggle-track {
   background: var(--color-green-primary);
   border-color: var(--color-green-primary);
 }
 
-.toggle:not(:has(.toggle-input:disabled)) .toggle-input:checked + .toggle-track:hover {
+.toggle:not(:has(.toggle-input:disabled)) .toggle-input:checked+.toggle-track:hover {
   background: var(--color-green-secondary);
   border-color: var(--color-green-secondary);
 }
 
-.toggle-input:checked + .toggle-track .toggle-thumb {
+.toggle-input:checked+.toggle-track .toggle-thumb {
   transform: translateX(var(--toggle-thumb-shift)) scale(1);
 }
 
@@ -1953,6 +1875,7 @@ input[type=number]::-webkit-outer-spin-button {
     line-height: var(--line-height-body);
   }
 }
+
 /* RANGE SLIDER */
 .range-slider {
   --range-slider-track-h: var(--space-8);
@@ -1964,6 +1887,7 @@ input[type=number]::-webkit-outer-spin-button {
   gap: var(--space-12);
   width: 100%;
 }
+
 .range-slider-values {
   display: flex;
   flex-wrap: wrap;
@@ -1973,17 +1897,20 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-grey-primary);
   font-variant-numeric: tabular-nums;
 }
+
 .range-slider-values span {
   display: inline-flex;
   align-items: baseline;
   gap: var(--space-4);
   font-weight: var(--font-weight-medium);
 }
+
 .range-slider-values strong {
   color: var(--color-black);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-tight);
 }
+
 .range-slider-track {
   position: relative;
   display: flex;
@@ -1991,6 +1918,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   min-height: var(--range-slider-thumb-size);
 }
+
 .range-slider-track::before {
   content: "";
   position: absolute;
@@ -2007,6 +1935,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color var(--motion-duration-fast) var(--motion-ease-premium),
     border-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
+
 .range-slider-selection {
   position: absolute;
   top: 50%;
@@ -2020,6 +1949,7 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translateY(-50%);
   transition: background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
+
 .range-slider-input {
   -webkit-appearance: none;
   appearance: none;
@@ -2030,18 +1960,21 @@ input[type=number]::-webkit-outer-spin-button {
   background: transparent;
   pointer-events: none;
 }
+
 .range-slider-input::-webkit-slider-runnable-track {
   width: 100%;
   height: var(--range-slider-thumb-size);
   background: transparent;
   border: 0;
 }
+
 .range-slider-input::-moz-range-track {
   width: 100%;
   height: var(--range-slider-thumb-size);
   background: transparent;
   border: 0;
 }
+
 .range-slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -2059,6 +1992,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-color var(--motion-duration-fast) var(--motion-ease-premium),
     background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
+
 .range-slider-input::-moz-range-thumb {
   width: var(--range-slider-thumb-size);
   height: var(--range-slider-thumb-size);
@@ -2073,24 +2007,30 @@ input[type=number]::-webkit-outer-spin-button {
     border-color var(--motion-duration-fast) var(--motion-ease-premium),
     background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
+
 .range-slider:not(:has(.range-slider-input:disabled)):hover .range-slider-track::before {
   border-color: var(--color-green-hover-icons);
 }
+
 .range-slider:not(:has(.range-slider-input:disabled)):hover .range-slider-selection {
   background: var(--color-green-secondary);
 }
+
 .range-slider-input:hover::-webkit-slider-thumb,
 .range-slider-input:hover::-moz-range-thumb {
   border-color: var(--color-green-secondary);
   box-shadow: none;
   transform: scale(var(--scale-hover));
 }
+
 .range-slider:has(.range-slider-input:active) .range-slider-track::before {
   border-color: var(--color-green-secondary);
 }
+
 .range-slider:has(.range-slider-input:active) .range-slider-selection {
   background: var(--color-green-secondary);
 }
+
 .range-slider-input:active::-webkit-slider-thumb,
 .range-slider-input:active::-moz-range-thumb {
   background: var(--color-green-secondary);
@@ -2098,29 +2038,35 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: none;
   transform: scale(var(--scale-press));
 }
+
 .range-slider:has(.range-slider-input:focus-visible) .range-slider-track::before {
   border-color: var(--color-green-secondary);
   box-shadow: none;
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
+
 .range-slider:has(.range-slider-input:focus-visible) .range-slider-selection {
   background: var(--color-green-secondary);
   box-shadow: none;
 }
+
 .range-slider:has(.range-slider-input:disabled) .range-slider-track::before {
   background: color-mix(in srgb, var(--color-grey-tertiary) 80%, var(--color-white));
   border-color: var(--color-grey-secondary);
   box-shadow: none;
 }
+
 .range-slider:has(.range-slider-input:disabled) .range-slider-selection {
   background: color-mix(in srgb, var(--color-grey-primary) 24%, var(--color-grey-secondary));
   box-shadow: none;
 }
+
 .range-slider:has(.range-slider-input:disabled) .range-slider-values,
 .range-slider:has(.range-slider-input:disabled) .range-slider-values * {
   color: color-mix(in srgb, var(--color-grey-primary) 82%, var(--color-white));
 }
+
 .range-slider:has(.range-slider-input:disabled) .range-slider-input::-webkit-slider-thumb,
 .range-slider:has(.range-slider-input:disabled) .range-slider-input::-moz-range-thumb {
   background: var(--color-white);
@@ -2128,59 +2074,72 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: none;
   cursor: not-allowed;
 }
+
 .range-slider-sm {
   --range-slider-track-h: var(--space-4);
   --range-slider-thumb-size: var(--space-20);
   --range-slider-thumb-radius: var(--radius-2xs);
 }
+
 .range-slider-sm .range-slider-values {
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-body-xs);
 }
+
 .range-slider-md {
   --range-slider-track-h: var(--space-8);
   --range-slider-thumb-size: var(--space-20);
   --range-slider-thumb-radius: var(--radius-2xs);
 }
+
 .range-slider-md .range-slider-values {
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-body-xs);
 }
+
 .range-slider-lg {
   --range-slider-track-h: var(--space-8);
   --range-slider-thumb-size: var(--space-24);
   --range-slider-thumb-radius: var(--radius-xs);
 }
+
 .range-slider-lg .range-slider-values {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body-sm);
 }
+
 @media (min-width: 768px) {
   .range-slider {
     gap: var(--space-16);
   }
+
   .range-slider-values {
     gap: var(--space-12);
   }
+
   .range-slider-md {
     --range-slider-track-h: var(--space-8);
     --range-slider-thumb-size: var(--space-24);
     --range-slider-thumb-radius: var(--radius-xs);
   }
+
   .range-slider-md .range-slider-values {
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-body-sm);
   }
+
   .range-slider-lg {
     --range-slider-track-h: var(--space-12);
     --range-slider-thumb-size: var(--space-32);
     --range-slider-thumb-radius: var(--radius-xs);
   }
+
   .range-slider-lg .range-slider-values {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
   }
 }
+
 /* REUSABLE SIZE GRID */
 .size-grid {
   width: 100%;
@@ -2462,8 +2421,8 @@ input[type=number]::-webkit-outer-spin-button {
   transition: transform var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.link-text-icon > .icon,
-.link-text-icon > i {
+.link-text-icon>.icon,
+.link-text-icon>i {
   font-size: var(--link-icon-size);
   line-height: inherit;
   transform: translateY(0);
@@ -2512,10 +2471,10 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translateY(calc(var(--link-lift-distance) * -1));
 }
 
-.link-text-icon:hover > .icon,
-.link-text-icon:hover > i,
-.link-text-icon:active > .icon,
-.link-text-icon:active > i {
+.link-text-icon:hover>.icon,
+.link-text-icon:hover>i,
+.link-text-icon:active>.icon,
+.link-text-icon:active>i {
   transform: translateY(calc(var(--link-lift-distance) * -1));
 }
 
@@ -2620,10 +2579,10 @@ input[type=number]::-webkit-outer-spin-button {
 .link-subtle[aria-disabled="true"] .link-label,
 .link-text-icon.is-disabled .link-label,
 .link-text-icon[aria-disabled="true"] .link-label,
-.link-text-icon.is-disabled > .icon,
-.link-text-icon[aria-disabled="true"] > .icon,
-.link-text-icon.is-disabled > i,
-.link-text-icon[aria-disabled="true"] > i,
+.link-text-icon.is-disabled>.icon,
+.link-text-icon[aria-disabled="true"]>.icon,
+.link-text-icon.is-disabled>i,
+.link-text-icon[aria-disabled="true"]>i,
 .link-navigation.is-disabled .link-label,
 .link-navigation[aria-disabled="true"] .link-label {
   color: var(--color-grey-secondary);
@@ -4108,6 +4067,7 @@ input[type=number]::-webkit-outer-spin-button {
 .flyout-link.is-active .flyout-label {
   color: var(--color-green-secondary);
 }
+
 .flyout-products .flyout-link:hover .flyout-media,
 .flyout-products .flyout-link.is-active .flyout-media {
   border-color: var(--color-green-hover-icons);
@@ -5845,14 +5805,15 @@ body.search-overlay-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .btn,
-  .btn > i,
+  .btn>i,
   .skeleton {
     animation: none;
   }
 
   .btn,
-  .btn > i,
+  .btn>i,
   .toast,
   .drawer-sheet,
   .drawer-sheet-panel,
@@ -5874,7 +5835,7 @@ body.search-overlay-open {
   .segmented-control-option,
   .checkbox-wrapper,
   .checkbox-wrapper input[type="checkbox"],
-  .checkbox-wrapper input[type="checkbox"] + i,
+  .checkbox-wrapper input[type="checkbox"]+i,
   .radio-wrapper,
   .radio-wrapper input[type="radio"],
   .toggle,
@@ -5887,8 +5848,8 @@ body.search-overlay-open {
   .link-text-icon,
   .link-navigation,
   .link-label,
-  .link-text-icon > .icon,
-  .link-text-icon > i,
+  .link-text-icon>.icon,
+  .link-text-icon>i,
   .link::after,
   .link-inline::after,
   .link-subtle::after,
@@ -5909,9 +5870,9 @@ body.search-overlay-open {
   .checkbox-wrapper input[type="checkbox"],
   .checkbox-wrapper input[type="checkbox"]:hover,
   .checkbox-wrapper input[type="checkbox"]:active,
-  .checkbox-wrapper input[type="checkbox"] + i,
-  .checkbox-wrapper input[type="checkbox"]:checked + i,
-  .checkbox-wrapper input[type="checkbox"]:indeterminate + i,
+  .checkbox-wrapper input[type="checkbox"]+i,
+  .checkbox-wrapper input[type="checkbox"]:checked+i,
+  .checkbox-wrapper input[type="checkbox"]:indeterminate+i,
   .radio-wrapper input[type="radio"],
   .radio-wrapper input[type="radio"]:hover,
   .radio-wrapper input[type="radio"]:active,
@@ -5926,8 +5887,8 @@ body.search-overlay-open {
   .toggle:not(:has(.toggle-input:disabled)):hover .toggle-thumb,
   .toggle:not(:has(.toggle-input:disabled)):active .toggle-thumb,
   .link-label,
-  .link-text-icon > .icon,
-  .link-text-icon > i,
+  .link-text-icon>.icon,
+  .link-text-icon>i,
   .link::after,
   .link-inline::after,
   .link-subtle::after,
@@ -5936,7 +5897,7 @@ body.search-overlay-open {
     transform: none;
   }
 
-  .toggle-input:checked + .toggle-track .toggle-thumb,
+  .toggle-input:checked+.toggle-track .toggle-thumb,
   .toggle:has(.toggle-input:checked):not(:has(.toggle-input:disabled)):hover .toggle-thumb,
   .toggle:has(.toggle-input:checked):not(:has(.toggle-input:disabled)):active .toggle-thumb {
     transform: translateX(var(--toggle-thumb-shift)) scale(1);
@@ -5952,10 +5913,10 @@ body.search-overlay-open {
   .link-text-icon:active .link-label,
   .link-navigation:hover .link-label,
   .link-navigation:active .link-label,
-  .link-text-icon:hover > .icon,
-  .link-text-icon:hover > i,
-  .link-text-icon:active > .icon,
-  .link-text-icon:active > i,
+  .link-text-icon:hover>.icon,
+  .link-text-icon:hover>i,
+  .link-text-icon:active>.icon,
+  .link-text-icon:active>i,
   .link:hover::after,
   .link:active::after,
   .link-inline:hover::after,
@@ -7695,7 +7656,7 @@ textarea,
     min-width: var(--responsive-btn-sm-h);
   }
 
-    .btn-xs {
+  .btn-xs {
     width: auto;
     min-width: var(--responsive-btn-xs-h);
   }
@@ -7858,9 +7819,3 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-
-
-
-
-
