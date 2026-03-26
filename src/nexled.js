@@ -1657,6 +1657,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            const motionBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                ? 'auto'
+                : behavior;
+
+            if (typeof tab.scrollIntoView === 'function') {
+                tab.scrollIntoView({
+                    behavior: motionBehavior,
+                    block: 'nearest',
+                    inline: 'center'
+                });
+                return;
+            }
+
             const maxScrollLeft = tabBar.scrollWidth - tabBar.clientWidth;
             if (maxScrollLeft <= 0) {
                 return;
@@ -1666,10 +1679,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 Math.max(tab.offsetLeft - ((tabBar.clientWidth - tab.offsetWidth) / 2), 0),
                 maxScrollLeft
             );
-
-            const motionBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                ? 'auto'
-                : behavior;
 
             tabBar.scrollTo({
                 left: nextScrollLeft,
@@ -1699,11 +1708,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const activateTab = (tab, options = {}) => {
             const activeTab = syncTabs(tab);
-            centerTabInView(activeTab, options.behavior || 'smooth');
 
             if (options.focus && activeTab) {
-                activeTab.focus();
+                try {
+                    activeTab.focus({ preventScroll: true });
+                } catch (error) {
+                    activeTab.focus();
+                }
             }
+
+            window.requestAnimationFrame(() => {
+                centerTabInView(activeTab, options.behavior || 'smooth');
+            });
         };
 
         tabBar.addEventListener('mousedown', event => {
