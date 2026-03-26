@@ -1370,27 +1370,13 @@ function initializeTextFieldDemo() {
             passwordToggle.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
 
             if (icon) {
-                icon.className = isPassword ? 'ri-eye-off-line text-icon-sm' : 'ri-eye-line text-icon-sm';
+                icon.className = isPassword ? 'ri-eye-off-line text-icon-xs' : 'ri-eye-line text-icon-xs';
                 icon.setAttribute('aria-hidden', 'true');
             }
         });
     }
 
-    const passwordHintId = passwordInput ? passwordInput.getAttribute('aria-describedby') : null;
-    const passwordHint = passwordHintId ? document.getElementById(passwordHintId) : null;
-
-    if (passwordInput && passwordHint) {
-        const syncPasswordValidationState = () => {
-            applyInputValidationState(passwordInput, passwordHint, isValidTextFieldValue(passwordInput));
-        };
-
-        syncPasswordValidationState();
-        passwordInput.addEventListener('input', syncPasswordValidationState);
-        passwordInput.addEventListener('blur', syncPasswordValidationState);
-    }
-
     const bioInput = section.querySelector('#bioInput');
-    const bioExpandBtn = section.querySelector('#bioExpandBtn');
     const charCount = section.querySelector('#charCount');
 
     if (bioInput && charCount) {
@@ -1400,21 +1386,6 @@ function initializeTextFieldDemo() {
 
         syncCharCount();
         bioInput.addEventListener('input', syncCharCount);
-    }
-
-    if (bioInput && bioExpandBtn) {
-        bioExpandBtn.addEventListener('click', () => {
-            const icon = bioExpandBtn.querySelector('i');
-            const expanded = bioExpandBtn.getAttribute('aria-expanded') === 'true';
-
-            bioInput.rows = expanded ? 3 : 8;
-            bioExpandBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-
-            if (icon) {
-                icon.classList.toggle('rotate-45', !expanded);
-                icon.classList.toggle('text-green-secondary', !expanded);
-            }
-        });
     }
 
 }
@@ -3482,3 +3453,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+

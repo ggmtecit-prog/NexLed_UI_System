@@ -2723,7 +2723,7 @@
                                             <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
                                             <td class="data-table-cell">
                                                 <div class="data-table-actions">
-                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview NX Guide Mini">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview NX Guide Mini">
                                                         <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-secondary btn-sm">Details</button>
@@ -2743,7 +2743,7 @@
                                             <td class="data-table-cell"><span class="badge badge-warning badge-md">Limited</span></td>
                                             <td class="data-table-cell">
                                                 <div class="data-table-actions">
-                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Strip 24 Flex">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Strip 24 Flex">
                                                         <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-secondary btn-sm">Details</button>
@@ -2763,7 +2763,7 @@
                                             <td class="data-table-cell"><span class="badge badge-info badge-md">Review</span></td>
                                             <td class="data-table-cell">
                                                 <div class="data-table-actions">
-                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Wall Washer Pro">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Wall Washer Pro">
                                                         <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-secondary btn-sm">Details</button>
@@ -2783,7 +2783,7 @@
                                             <td class="data-table-cell"><span class="badge badge-danger badge-md">Low</span></td>
                                             <td class="data-table-cell">
                                                 <div class="data-table-actions">
-                                                    <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Preview Outdoor Guard">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Outdoor Guard">
                                                         <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-secondary btn-sm">Details</button>
@@ -3217,12 +3217,12 @@
                                     <h4 class="size-grid-label">Small</h4>
                                     <div class="size-grid-content">
                                         <div class="quantity-selector quantity-selector-sm" data-min="0" data-max="12">
-                                            <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Decrease quantity">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Decrease quantity">
                                                 <i class="ri-subtract-line text-icon-lg" aria-hidden="true"></i>
                                             </button>
                                             <input type="number" class="quantity-selector-value" value="1" min="0" max="12"
                                                 inputmode="numeric" aria-label="Small quantity value">
-                                            <button type="button" class="btn btn-ghost btn-icon btn-sm" aria-label="Increase quantity">
+                                            <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Increase quantity">
                                                 <i class="ri-add-line text-icon-lg" aria-hidden="true"></i>
                                             </button>
                                         </div>
@@ -3525,25 +3525,20 @@
                             </div>
 
                             <div class="size-grid-row">
-                                <h4 class="size-grid-label">Error + Toggle</h4>
+                                <h4 class="size-grid-label">With Ghost Button</h4>
                                 <div class="size-grid-content">
                                     <div class="p-24">
                                         <label for="passwordInput" class="input-label ml-12">Password</label>
-                                        <div class="input-icon-wrapper">
+                                        <div id="passwordInputShell">
                                             <input type="password" id="passwordInput" placeholder="Create a password"
-                                                class="input-icon-field" aria-describedby="passwordInputHint" aria-invalid="true"
-                                                data-text-validation="min-length" data-min-length="8"
-                                                data-valid-message="Password strength confirmed."
-                                                data-invalid-message="Use at least 8 characters.">
-                                            <span class="input-icon-area">
-                                                <button id="passwordToggle" type="button" aria-controls="passwordInput"
-                                                    aria-pressed="false" aria-label="Show password"
-                                                    class="btn btn-ghost btn-icon btn-sm">
-                                                    <i class="ri-eye-line text-icon-sm" aria-hidden="true"></i>
-                                                </button>
-                                            </span>
+                                                class="input input-lg" aria-describedby="passwordInputHint">
+                                            <button id="passwordToggle" type="button" aria-controls="passwordInput"
+                                                aria-pressed="false" aria-label="Show password"
+                                                class="btn btn-ghost btn-icon btn-xs">
+                                                <i class="ri-eye-line text-icon-xs" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                        <p id="passwordInputHint" class="input-hint input-error ml-12" aria-live="polite">Use at least 8 characters.</p>
+                                        <p id="passwordInputHint" class="input-hint ml-12">Extra-small ghost action inside the text field.</p>
                                     </div>
                                 </div>
                             </div>
@@ -3573,17 +3568,14 @@
                                             <label for="bioInput" class="input-label">Project Summary</label>
                                             <span class="text-body-xs text-grey-primary mt-8" id="charCount" aria-live="polite">0/100</span>
                                         </div>
-                                        <div class="relative">
+                                        <div id="bioInputShell">
                                             <textarea id="bioInput" rows="3" maxlength="100" placeholder="Summarize the request..."
                                                 class="input" aria-describedby="bioInputHint charCount"></textarea>
-                                            <button id="bioExpandBtn" type="button" aria-controls="bioInput" aria-expanded="false"
-                                                aria-label="Expand project summary"
-                                                class="btn btn-ghost btn-icon btn-sm absolute right-12 bottom-12">
-                                                <i class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"
-                                                    aria-hidden="true"></i>
-                                            </button>
+                                            <span id="bioInputResizeIcon" aria-hidden="true">
+                                                <i class="ri-expand-diagonal-s-2-fill text-icon-sm"></i>
+                                            </span>
                                         </div>
-                                        <p id="bioInputHint" class="input-hint ml-12">Long-form field with live character count and expandable space.</p>
+                                        <p id="bioInputHint" class="input-hint ml-12">Long-form field with live character count and resize control.</p>
                                     </div>
                                 </div>
                             </div>
@@ -3715,11 +3707,11 @@
                                         <h3 class="date-picker-month" id="datePickerDemoTitle" data-date-picker-month></h3>
                                     </div>
                                     <div class="date-picker-nav">
-                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-prev
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" data-date-picker-prev
                                             aria-label="Show previous month">
                                             <i class="ri-arrow-left-s-line text-icon-md" aria-hidden="true"></i>
                                         </button>
-                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-next
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" data-date-picker-next
                                             aria-label="Show next month">
                                             <i class="ri-arrow-right-s-line text-icon-md" aria-hidden="true"></i>
                                         </button>
@@ -3783,11 +3775,11 @@
                                         <h3 class="date-picker-month" id="datePickerRangeTitle" data-date-picker-month></h3>
                                     </div>
                                     <div class="date-picker-nav">
-                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-prev
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" data-date-picker-prev
                                             aria-label="Show previous month">
                                             <i class="ri-arrow-left-s-line text-icon-md" aria-hidden="true"></i>
                                         </button>
-                                        <button type="button" class="btn btn-ghost btn-icon btn-sm" data-date-picker-next
+                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" data-date-picker-next
                                             aria-label="Show next month">
                                             <i class="ri-arrow-right-s-line text-icon-md" aria-hidden="true"></i>
                                         </button>
@@ -4843,6 +4835,7 @@
 </body>
 
 </html>
+
 
 
 
