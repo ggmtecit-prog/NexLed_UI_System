@@ -880,12 +880,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const code = (selectedOption.dataset.code || 'gb').toLowerCase();
-        const language = metadata[code] || { label: getLanguageOptionLabel(selectedOption) };
-        updateLanguageSelectorTrigger(selector, code, language.label, valueDisplay);
+        const optionLabel = selectedOption.dataset.label || getLanguageOptionLabel(selectedOption);
+        const language = metadata[code] || { label: optionLabel };
+        updateLanguageSelectorTrigger(selector, code, selectedOption.dataset.label || language.label, valueDisplay, selectedOption);
         selector.classList.add('has-value');
     }
 
-    function updateLanguageSelectorTrigger(selector, code, label, valueDisplay) {
+    function updateLanguageSelectorTrigger(selector, code, label, valueDisplay, selectedOption = null) {
         const trigger = selector.querySelector('.language-selector-trigger');
         const triggerFlag = selector.querySelector('.language-selector-current .language-selector-flag');
 
@@ -900,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (valueDisplay) {
-            valueDisplay.textContent = label;
+            valueDisplay.textContent = selectedOption?.dataset.value || label;
         }
     }
 
@@ -3453,4 +3454,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 

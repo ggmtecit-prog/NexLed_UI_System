@@ -1241,6 +1241,43 @@ textarea {
     padding-inline: var(--space-32);
   }
 }
+/* TEXT FIELD PREFIX SELECTORS */
+
+.text-field-prefix-shell {
+  --text-field-prefix-control-width: var(--size-btn-xs-w);
+  position: relative;
+  width: 100%;
+}
+
+.text-field-prefix-control {
+  position: absolute;
+  inset-inline-start: var(--space-12);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.text-field-prefix-control.dropdown,
+.text-field-prefix-control.language-selector {
+  width: var(--text-field-prefix-control-width);
+}
+
+.text-field-prefix-control.language-selector {
+  --language-selector-trigger-width: var(--text-field-prefix-control-width);
+  --language-selector-menu-width: var(--text-field-prefix-control-width);
+}
+
+.text-field-prefix-control .dropdown-menu,
+.text-field-prefix-control .language-selector-menu {
+  width: var(--text-field-prefix-control-width);
+  min-width: 0;
+  left: 0;
+  right: auto;
+}
+
+.text-field-prefix-field {
+  padding-inline-start: calc(var(--space-12) + var(--text-field-prefix-control-width) + var(--space-12));
+}
 /* DATE PICKER */
 .date-picker {
   --date-picker-control-min-h: var(--size-btn-sm-h);

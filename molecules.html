@@ -3544,6 +3544,88 @@
                             </div>
 
                             <div class="size-grid-row">
+                                <h4 class="size-grid-label">With Dropdown (Icon + Text)</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="languagePrefixInput" class="input-label ml-12">Full Name</label>
+                                        <div class="text-field-prefix-shell">
+                                            <div class="language-selector language-selector-standard language-selector-xs has-value text-field-prefix-control">
+                                                <button type="button" class="language-selector-trigger" aria-haspopup="listbox" aria-expanded="false"
+                                                    aria-label="Current language: United Kingdom">
+                                                    <span class="language-selector-current">
+                                                        <img class="language-selector-flag" src="https://flagcdn.com/w40/gb.png"
+                                                            srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
+                                                        <span class="language-selector-value">+44</span>
+                                                    </span>
+                                                    <i class="ri-arrow-down-s-line language-selector-arrow" aria-hidden="true"></i>
+                                                </button>
+                                                <ul class="language-selector-menu custom-scrollbar" role="listbox"
+                                                    aria-label="Country calling code options with flag">
+                                                    <li class="language-selector-option" role="option" aria-selected="true" data-code="gb" data-label="United Kingdom" data-value="+44">
+                                                        <img class="language-selector-flag" src="https://flagcdn.com/w40/gb.png"
+                                                            srcset="https://flagcdn.com/w80/gb.png 2x" alt="">
+                                                        <span>+44</span>
+                                                        <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
+                                                    </li>
+                                                    <li class="language-selector-option" role="option" aria-selected="false" data-code="pt" data-label="Portugal" data-value="+351">
+                                                        <img class="language-selector-flag" src="https://flagcdn.com/w40/pt.png"
+                                                            srcset="https://flagcdn.com/w80/pt.png 2x" alt="">
+                                                        <span>+351</span>
+                                                        <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
+                                                    </li>
+                                                    <li class="language-selector-option" role="option" aria-selected="false" data-code="es" data-label="Spain" data-value="+34">
+                                                        <img class="language-selector-flag" src="https://flagcdn.com/w40/es.png"
+                                                            srcset="https://flagcdn.com/w80/es.png 2x" alt="">
+                                                        <span>+34</span>
+                                                        <i class="ri-check-line language-selector-check" aria-hidden="true"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" id="languagePrefixInput" placeholder="Enter your name"
+                                                class="input input-lg text-field-prefix-field" aria-describedby="languagePrefixInputHint">
+                                        </div>
+                                        <p id="languagePrefixInputHint" class="input-hint ml-12">Flag and dialing code stay anchored inside the field while the input grows.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">With Dropdown (Text)</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="dropdownPrefixInput" class="input-label ml-12">Full Name</label>
+                                        <div class="text-field-prefix-shell">
+                                            <div class="dropdown dropdown-xs text-field-prefix-control has-value">
+                                                <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"
+                                                    aria-label="Current dialing code: +44">
+                                                    <span class="dropdown-value">+44</span>
+                                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                                </button>
+                                                <ul class="dropdown-menu custom-scrollbar" role="listbox"
+                                                    aria-label="Text-only country calling code options">
+                                                    <li class="dropdown-item" role="option" aria-selected="true" data-value="+44">
+                                                        <span>+44</span>
+                                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                                    </li>
+                                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="+351">
+                                                        <span>+351</span>
+                                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                                    </li>
+                                                    <li class="dropdown-item" role="option" aria-selected="false" data-value="+34">
+                                                        <span>+34</span>
+                                                        <i class="ri-check-line dropdown-item-check" aria-hidden="true"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" id="dropdownPrefixInput" placeholder="Enter your name"
+                                                class="input input-lg text-field-prefix-field" aria-describedby="dropdownPrefixInputHint">
+                                        </div>
+                                        <p id="dropdownPrefixInputHint" class="input-hint ml-12">Text-only selector keeps short dialing choices compact inside the field.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
                                 <h4 class="size-grid-label">With Icon</h4>
                                 <div class="size-grid-content">
                                     <div class="p-24">
