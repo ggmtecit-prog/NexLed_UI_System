@@ -8894,4 +8894,52 @@ textarea,
   }
 }
 
+.text-field-prefix-shell {
+  --text-field-prefix-control-width: var(--size-btn-xs-w);
+}
 
+.text-field-prefix-shell.text-field-prefix-shell-language {
+  --text-field-prefix-control-width: calc((var(--space-8) * 2) + var(--space-20) + var(--space-8) + var(--space-32) + var(--space-16));
+}
+
+.text-field-prefix-shell.text-field-prefix-shell-text {
+  --text-field-prefix-control-width: calc((var(--space-8) * 2) + var(--space-32) + var(--space-16));
+}
+
+.text-field-prefix-shell > .dropdown.text-field-prefix-control,
+.text-field-prefix-shell > .language-selector.text-field-prefix-control {
+  position: absolute;
+  inset-inline-start: var(--space-8);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: var(--text-field-prefix-control-width);
+}
+
+.text-field-prefix-shell > .dropdown.text-field-prefix-control .dropdown-trigger,
+.text-field-prefix-shell > .language-selector.text-field-prefix-control .language-selector-trigger {
+  width: 100%;
+  padding-inline: var(--space-8) var(--space-10);
+  gap: var(--space-8);
+}
+
+.text-field-prefix-shell > .language-selector.text-field-prefix-control .language-selector-current {
+  gap: var(--space-8);
+}
+
+.text-field-prefix-shell > .language-selector.text-field-prefix-control {
+  --language-selector-trigger-width: var(--text-field-prefix-control-width);
+  --language-selector-menu-width: var(--text-field-prefix-control-width);
+}
+
+.text-field-prefix-shell > .dropdown.text-field-prefix-control .dropdown-menu,
+.text-field-prefix-shell > .language-selector.text-field-prefix-control .language-selector-menu {
+  width: var(--text-field-prefix-control-width);
+  min-width: 0;
+  left: 0;
+  right: auto;
+}
+
+.text-field-prefix-shell > .input.text-field-prefix-field {
+  padding-inline-start: calc(var(--space-8) + var(--text-field-prefix-control-width) + var(--space-12));
+}
