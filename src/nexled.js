@@ -1308,6 +1308,28 @@ function isLettersAndSpaces(value) {
     return /^[\p{L}\p{M}]+(?:\s+[\p{L}\p{M}]+)*$/u.test(trimmedValue);
 }
 
+function isMinLength(value, minimumLength) {
+    return value.trim().length >= minimumLength;
+}
+
+function isValidTextFieldValue(input) {
+    if (!input) {
+        return false;
+    }
+
+    const validationRule = input.dataset.textValidation || 'non-empty';
+
+    if (validationRule === 'letters-spaces') {
+        return isLettersAndSpaces(input.value);
+    }
+
+    if (validationRule === 'min-length') {
+        return isMinLength(input.value, Number(input.dataset.minLength || 1));
+    }
+
+    return input.value.trim() !== '';
+}
+
 function applyInputValidationState(input, hint, isValid) {
     if (!input || !hint) {
         return;
@@ -1359,7 +1381,7 @@ function initializeTextFieldDemo() {
 
     if (passwordInput && passwordHint) {
         const syncPasswordValidationState = () => {
-            applyInputValidationState(passwordInput, passwordHint, isLettersAndSpaces(passwordInput.value));
+            applyInputValidationState(passwordInput, passwordHint, isValidTextFieldValue(passwordInput));
         };
 
         syncPasswordValidationState();

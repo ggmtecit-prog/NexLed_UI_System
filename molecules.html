@@ -3468,10 +3468,9 @@
                 </div>
 
                 <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-
-                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1">
-                        <div class="size-grid-column">
-                            <h3 class="size-grid-column-title">Standard</h3>
+                    <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">Field Sizes</h3>
 
                             <div class="size-grid-row">
                                 <h4 class="size-grid-label">Small</h4>
@@ -3480,8 +3479,7 @@
                                         <label for="standardInputSm" class="input-label ml-12">Full Name</label>
                                         <input type="text" id="standardInputSm" placeholder="Enter your name"
                                             class="input input-sm" aria-describedby="standardInputSmHint">
-                                        <p id="standardInputSmHint" class="input-hint ml-12">Example of a standard
-                                            descriptive input.</p>
+                                        <p id="standardInputSmHint" class="input-hint ml-12">Compact field for dense sign-in and filter flows.</p>
                                     </div>
                                 </div>
                             </div>
@@ -3493,8 +3491,7 @@
                                         <label for="standardInputMd" class="input-label ml-12">Full Name</label>
                                         <input type="text" id="standardInputMd" placeholder="Enter your name"
                                             class="input input-md" aria-describedby="standardInputMdHint">
-                                        <p id="standardInputMdHint" class="input-hint ml-12">Example of a standard
-                                            descriptive input.</p>
+                                        <p id="standardInputMdHint" class="input-hint ml-12">Balanced field for everyday forms with supporting copy.</p>
                                     </div>
                                 </div>
                             </div>
@@ -3506,92 +3503,107 @@
                                         <label for="standardInputLg" class="input-label ml-12">Full Name</label>
                                         <input type="text" id="standardInputLg" placeholder="Enter your name"
                                             class="input input-lg" aria-describedby="standardInputLgHint">
-                                        <p id="standardInputLgHint" class="input-hint ml-12">Example of a standard
-                                            descriptive input.</p>
+                                        <p id="standardInputLgHint" class="input-hint ml-12">Expanded field for spacious onboarding and configuration layouts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="size-grid-column size-grid-column-gap-24">
+                            <h3 class="size-grid-column-title">States</h3>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">Success</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="successInput" class="input-label ml-12">Work Email</label>
+                                        <input type="email" id="successInput" value="nexled@ggmtec.pt"
+                                            class="input input-md input-success" aria-describedby="successInputHint" aria-invalid="false">
+                                        <p id="successInputHint" class="input-hint input-success ml-12">Validated state for completed form flows.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">Error + Toggle</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="passwordInput" class="input-label ml-12">Password</label>
+                                        <div class="input-icon-wrapper">
+                                            <input type="password" id="passwordInput" placeholder="Create a password"
+                                                class="input-icon-field" aria-describedby="passwordInputHint" aria-invalid="true"
+                                                data-text-validation="min-length" data-min-length="8"
+                                                data-valid-message="Password strength confirmed."
+                                                data-invalid-message="Use at least 8 characters.">
+                                            <span class="input-icon-area">
+                                                <button id="passwordToggle" type="button" aria-controls="passwordInput"
+                                                    aria-pressed="false" aria-label="Show password"
+                                                    class="btn btn-ghost btn-icon btn-sm">
+                                                    <i class="ri-eye-line text-icon-sm" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <p id="passwordInputHint" class="input-hint input-error ml-12" aria-live="polite">Use at least 8 characters.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">With Icon</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="urlInput" class="input-label ml-12">Website URL</label>
+                                        <div class="input-icon-wrapper">
+                                            <span class="input-icon-area" aria-hidden="true">
+                                                <i class="ri-global-line text-icon-md"></i>
+                                            </span>
+                                            <input type="text" id="urlInput" placeholder="www.example.com"
+                                                class="input-icon-field" aria-describedby="urlInputHint">
+                                        </div>
+                                        <p id="urlInputHint" class="input-hint ml-12">Leading icon stays aligned while the field grows responsively.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">Textarea</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <div class="flex justify-between items-start ml-12 mr-12">
+                                            <label for="bioInput" class="input-label">Project Summary</label>
+                                            <span class="text-body-xs text-grey-primary mt-8" id="charCount" aria-live="polite">0/100</span>
+                                        </div>
+                                        <div class="relative">
+                                            <textarea id="bioInput" rows="3" maxlength="100" placeholder="Summarize the request..."
+                                                class="input" aria-describedby="bioInputHint charCount"></textarea>
+                                            <button id="bioExpandBtn" type="button" aria-controls="bioInput" aria-expanded="false"
+                                                aria-label="Expand project summary"
+                                                class="btn btn-ghost btn-icon btn-sm absolute right-12 bottom-12">
+                                                <i class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"
+                                                    aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <p id="bioInputHint" class="input-hint ml-12">Long-form field with live character count and expandable space.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-row">
+                                <h4 class="size-grid-label">Disabled</h4>
+                                <div class="size-grid-content">
+                                    <div class="p-24">
+                                        <label for="disabledInput" class="input-label ml-12">Disabled Input</label>
+                                        <input type="text" id="disabledInput" value="Cannot edit this" disabled
+                                            class="input input-md input-disabled" aria-describedby="disabledInputHint">
+                                        <p id="disabledInputHint" class="input-hint ml-12">Locked state keeps hierarchy visible without inviting interaction.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div
-                        class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
-
-
-                        <!-- Standard Input -->
-                        <div class="p-24">
-                            <label for="standardInput" class="input-label ml-12">Full Name</label>
-                            <input type="text" id="standardInput" placeholder="Enter your name" class="input"
-                                aria-describedby="standardInputHint">
-                            <p id="standardInputHint" class="input-hint ml-12">Example of a standard descriptive input.
-                            </p>
-                        </div>
-
-                        <!-- Password with Toggle -->
-                        <div class="p-24">
-                            <label for="passwordInput" class="input-label ml-12">Password</label>
-                            <div class="relative">
-                                <input type="password" id="passwordInput" placeholder="Create a password"
-                                    class="input pr-48" aria-describedby="passwordInputHint" aria-invalid="true"
-                                    data-text-validation="letters-spaces" data-valid-message="Looks great!"
-                                    data-invalid-message="Please provide a valid entry.">
-                                <div class="absolute right-12 top-1/2 -translate-y-1/2">
-                                    <button id="passwordToggle" type="button" aria-controls="passwordInput"
-                                        aria-pressed="false" aria-label="Show password"
-                                        class="btn btn-ghost btn-icon btn-sm">
-                                        <i class="ri-eye-line text-icon-sm" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <p id="passwordInputHint" class="input-hint input-error ml-12" aria-live="polite">Please
-                                provide a valid entry.</p>
-                        </div>
-
-                        <!-- Input with Icon -->
-                        <div class="p-24">
-                            <label for="urlInput" class="input-label ml-12">Website URL</label>
-                            <div class="input-icon-wrapper">
-                                <span class="input-icon-area" aria-hidden="true">
-                                    <i class="ri-global-line text-icon-md"></i>
-                                </span>
-                                <input type="text" id="urlInput" placeholder="www.example.com" class="input-icon-field">
-                            </div>
-                        </div>
-
-                        <!-- Textarea with Character Count -->
-                        <div class="p-24 md:col-span-2">
-                            <div class="flex justify-between items-start ml-12 mr-12">
-                                <label for="bioInput" class="input-label">Short
-                                    Bio</label>
-                                <span class="text-body-xs text-grey-primary mt-8" id="charCount"
-                                    aria-live="polite">0/100</span>
-                            </div>
-                            <div class="relative">
-                                <textarea id="bioInput" rows="3" maxlength="100" placeholder="Tell us about yourself..."
-                                    class="input" aria-describedby="charCount"></textarea>
-                                <button id="bioExpandBtn" type="button" aria-controls="bioInput" aria-expanded="false"
-                                    aria-label="Expand bio"
-                                    class="btn btn-ghost btn-icon btn-sm absolute right-12 bottom-12">
-                                    <i class="ri-arrow-right-up-line text-icon-sm transition-transform duration-400"
-                                        aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Disabled State -->
-                        <div class="p-24">
-                            <label for="disabledInput" class="input-label ml-12">Disabled
-                                Input</label>
-                            <input type="text" id="disabledInput" value="Cannot edit this" disabled
-                                class="input input-disabled">
-                        </div>
-
-                    </div>
-
                 </div>
 
             </section>
-
             <section id="date-picker">
                 <div class="panel-wrap-head">
                     <h2 class="panel-wrap-title text-black">Date Picker</h2>
