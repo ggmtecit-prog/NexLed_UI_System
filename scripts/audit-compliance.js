@@ -56,6 +56,43 @@ function normalizeHrefTarget(href) {
     return href.split('#')[0].split('?')[0];
 }
 
+function stripHtmlCommentsFromLine(line, inComment) {
+    let visible = '';
+    let cursor = 0;
+    let commentState = inComment;
+
+    while (cursor < line.length) {
+        if (commentState) {
+            const commentEnd = line.indexOf('-->', cursor);
+            if (commentEnd === -1) {
+                return {
+                    visible,
+                    inComment: true,
+                };
+            }
+
+            cursor = commentEnd + 3;
+            commentState = false;
+            continue;
+        }
+
+        const commentStart = line.indexOf('<!--', cursor);
+        if (commentStart === -1) {
+            visible += line.slice(cursor);
+            break;
+        }
+
+        visible += line.slice(cursor, commentStart);
+        cursor = commentStart + 4;
+        commentState = true;
+    }
+
+    return {
+        visible,
+        inComment: commentState,
+    };
+}
+
 function auditFile(filePath) {
     const absolutePath = path.resolve(filePath);
     if (!fs.existsSync(absolutePath)) {
@@ -66,31 +103,39 @@ function auditFile(filePath) {
     const content = fs.readFileSync(absolutePath, 'utf-8');
     const lines = content.split('\n');
     const violations = [];
+    let inHtmlComment = false;
 
     lines.forEach((line, index) => {
         const lineNum = index + 1;
+        const commentState = stripHtmlCommentsFromLine(line, inHtmlComment);
+        const auditLine = commentState.visible;
+        inHtmlComment = commentState.inComment;
 
-        if (/<style[\s>]/i.test(line) && !line.trim().startsWith('<!--') && !line.trim().startsWith('*')) {
+        if (!auditLine.trim()) {
+            return;
+        }
+
+        if (/<style[\s>]/i.test(auditLine)) {
             violations.push({
                 type: VIOLATIONS.STYLE_BLOCK,
                 line: lineNum,
                 severity: 'CRITICAL',
                 message: '<style> block found - all styling must come from nexled.css',
-                content: line.trim(),
+                content: auditLine.trim(),
             });
         }
 
-        if (/\sstyle\s*=/i.test(line) && !/<svg/i.test(line) && !/<path/i.test(line) && !/<circle/i.test(line)) {
+        if (/\sstyle\s*=/i.test(auditLine) && !/<svg/i.test(auditLine) && !/<path/i.test(auditLine) && !/<circle/i.test(auditLine)) {
             violations.push({
                 type: VIOLATIONS.INLINE_STYLE,
                 line: lineNum,
                 severity: 'CRITICAL',
                 message: 'Inline style="" attribute found - use NexLed classes instead',
-                content: line.trim(),
+                content: auditLine.trim(),
             });
         }
 
-        const arbitraryMatch = line.match(/class="[^"]*\b\w+-\[[^\]]+\][^"]*"/g);
+        const arbitraryMatch = auditLine.match(/class="[^"]*\b\w+-\[[^\]]+\][^"]*"/g);
         if (arbitraryMatch) {
             arbitraryMatch.forEach(match => {
                 const arbitraries = match.match(/\b[\w-]+-\[[^\]]+\]/g);
@@ -101,25 +146,25 @@ function auditFile(filePath) {
                             line: lineNum,
                             severity: 'HIGH',
                             message: `Arbitrary Tailwind value "${arb}" found - use a config-cdn.js token instead`,
-                            content: line.trim(),
+                            content: auditLine.trim(),
                         });
                     });
                 }
             });
         }
 
-        const hexInClass = line.match(/class="[^"]*#[0-9a-fA-F]{3,8}[^"]*"/g);
+        const hexInClass = auditLine.match(/class="[^"]*#[0-9a-fA-F]{3,8}[^"]*"/g);
         if (hexInClass) {
             violations.push({
                 type: VIOLATIONS.HARDCODED_HEX,
                 line: lineNum,
                 severity: 'HIGH',
                 message: 'Hardcoded hex color in class attribute found - use NexLed color token names',
-                content: line.trim(),
+                content: auditLine.trim(),
             });
         }
 
-        const inlineHandlers = Array.from(line.matchAll(/\s(on[a-z]+)\s*=/gi));
+        const inlineHandlers = Array.from(auditLine.matchAll(/\s(on[a-z]+)\s*=/gi));
         inlineHandlers.forEach(match => {
             const handlerName = match[1].toLowerCase();
             if (handlerName === 'onerror') {
@@ -131,11 +176,11 @@ function auditFile(filePath) {
                 line: lineNum,
                 severity: 'HIGH',
                 message: `Inline event handler "${handlerName}" found - move behavior into shared JS`,
-                content: line.trim(),
+                content: auditLine.trim(),
             });
         });
 
-        const hrefMatches = Array.from(line.matchAll(/\shref\s*=\s*"([^"]+)"/gi));
+        const hrefMatches = Array.from(auditLine.matchAll(/\shref\s*=\s*"([^"]+)"/gi));
         hrefMatches.forEach(match => {
             const href = match[1].trim();
             if (!href || isExternalHref(href)) {
@@ -154,7 +199,7 @@ function auditFile(filePath) {
                     line: lineNum,
                     severity: 'MEDIUM',
                     message: `Local href "${href}" does not resolve with exact path casing`,
-                    content: line.trim(),
+                    content: auditLine.trim(),
                 });
             }
         });
