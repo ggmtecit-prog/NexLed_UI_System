@@ -667,7 +667,7 @@ function handleUploaderFiles(files, uploader) {
         const hasOversizedFile = maxBytes !== null && selectedFiles.some((file) => file.size > maxBytes);
 
         if (hasInvalidFileType || hasOversizedFile) {
-            const maxSizeLabel = maxBytes === null ? '' : formatUploaderMaxSize(maxBytes);
+            const maxSizeLabel = maxBytes === null ? ' : formatUploaderMaxSize(maxBytes);
             let errorText = 'Please upload a valid file.';
             let errorNote = idleNote;
 
@@ -906,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getLanguageOptionLabel(option) {
-        return option.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || '';
+        return option.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || ';
     }
 
     function getLanguageFlagSrc(code) {
@@ -1236,7 +1236,7 @@ function initializeQuantitySelectors() {
             const rawValue = input.value.trim();
             let nextValue;
 
-            if (rawValue === '') {
+            if (rawValue === ') {
                 nextValue = lastValidValue;
             } else {
                 const parsedValue = parseInt(rawValue, 10);
@@ -1302,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', initializeQuantitySelectors);
 function isLettersAndSpaces(value) {
     const trimmedValue = value.trim();
 
-    if (trimmedValue === '') {
+    if (trimmedValue === ') {
         return false;
     }
 
@@ -2177,7 +2177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         syncSelectedOption(true);
-        updateFilter('');
+        updateFilter(');
 
         if (isDisabled()) {
             combobox.setAttribute('aria-disabled', 'true');
@@ -2319,7 +2319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.setAttribute('aria-hidden', 'true');
             input.setAttribute('aria-expanded', 'false');
             setActiveOption(null);
-            updateFilter('');
+            updateFilter(');
 
             if (restoreSelection) {
                 input.value = selectedOption ? getOptionLabel(selectedOption) : '';
@@ -2377,7 +2377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const normalizedQuery = query.trim().toLowerCase();
 
             options.forEach(option => {
-                const matches = normalizedQuery === '' || getOptionLabel(option).toLowerCase().includes(normalizedQuery);
+                const matches = normalizedQuery === ' || getOptionLabel(option).toLowerCase().includes(normalizedQuery);
                 option.hidden = !matches;
             });
 
@@ -2394,7 +2394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateClearState() {
-            clearButton.disabled = isDisabled() || (input.value.trim() === '' && (!valueField || valueField.value === ''));
+            clearButton.disabled = isDisabled() || (input.value.trim() === ' && (!valueField || valueField.value === '));
         }
 
         function setActiveOption(option) {
@@ -3155,7 +3155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return Array.from({ length: 7 }, (_, index) => {
             const weekday = new Date(mondayStart);
             weekday.setDate(mondayStart.getDate() + index);
-            return formatter.format(weekday).replace('.', '');
+            return formatter.format(weekday).replace('.', ');
         });
     }
 
@@ -3377,6 +3377,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    overlays.forEach(overlay => {
+        overlay.inert = true;
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.querySelector('.search-overlay-panel')?.setAttribute('tabindex', '-1');
+    });
+
     triggers.forEach(trigger => {
         const targetId = trigger.dataset.searchOverlayTarget;
         if (!targetId) {
@@ -3385,6 +3391,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         trigger.setAttribute('aria-controls', targetId);
         trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-haspopup', 'dialog');
 
         trigger.addEventListener('click', () => {
             const overlay = overlays.find(item => item.id === targetId);
@@ -3411,17 +3418,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', event => {
-        if (event.key !== 'Escape') {
-            return;
-        }
-
         const openOverlay = overlays.find(overlay => overlay.classList.contains('is-open'));
         if (!openOverlay) {
             return;
         }
 
-        closeSearchOverlay(openOverlay, true);
+        if (event.key === 'Escape') {
+            closeSearchOverlay(openOverlay, true);
+            return;
+        }
+
+        if (event.key === 'Tab') {
+            trapSearchOverlayFocus(openOverlay, event);
+        }
     });
+
+    function getFocusableElements(root) {
+        return Array.from(root.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+    }
+
+    function trapSearchOverlayFocus(overlay, event) {
+        const panel = overlay.querySelector('.search-overlay-panel');
+        if (!panel) {
+            return;
+        }
+
+        const focusable = getFocusableElements(panel);
+        if (focusable.length === 0) {
+            event.preventDefault();
+            panel.focus({ preventScroll: true });
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus({ preventScroll: true });
+            return;
+        }
+
+        if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus({ preventScroll: true });
+        }
+    }
 
     function syncTriggerState(targetId, isOpen) {
         triggers
@@ -3444,6 +3487,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        overlay.inert = false;
         overlay.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
         overlay._lastTrigger = trigger;
@@ -3451,18 +3495,28 @@ document.addEventListener('DOMContentLoaded', () => {
         syncBodyLock();
 
         requestAnimationFrame(() => {
-            overlay.querySelector('[data-search-overlay-input]')?.focus();
+            const input = overlay.querySelector('[data-search-overlay-input]');
+            if (input) {
+                input.focus({ preventScroll: true });
+                if (typeof input.select === 'function') {
+                    input.select();
+                }
+                return;
+            }
+
+            overlay.querySelector('.search-overlay-panel')?.focus({ preventScroll: true });
         });
     }
 
     function closeSearchOverlay(overlay, restoreFocus) {
         overlay.classList.remove('is-open');
         overlay.setAttribute('aria-hidden', 'true');
+        overlay.inert = true;
         syncTriggerState(overlay.id, false);
         syncBodyLock();
 
         if (restoreFocus && overlay._lastTrigger) {
-            overlay._lastTrigger.focus();
+            overlay._lastTrigger.focus({ preventScroll: true });
         }
     }
 });
@@ -3551,6 +3605,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
+
+
 
 
 
