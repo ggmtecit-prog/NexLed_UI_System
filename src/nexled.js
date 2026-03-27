@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Accordion Component Logic
  */
 
@@ -3361,27 +3361,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let openDrawer = null;
 
-    triggers.forEach(trigger => {
-        const targetId = trigger.dataset.drawerTarget;
-        if (!targetId) {
-            return;
-        }
+    drawers.forEach(drawer => {
+        drawer.inert = true;
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.querySelector('.drawer-sheet-panel')?.setAttribute('tabindex', '-1');
 
-        trigger.setAttribute('aria-controls', targetId);
-        trigger.setAttribute('aria-expanded', 'false');
-
-        trigger.addEventListener('click', () => {
-            const drawer = drawers.find(item => item.id === targetId);
-            if (!drawer) {
-                return;
+        drawer.querySelectorAll('[data-drawer-close]').forEach(button => {
+            if (button.tagName === 'BUTTON') {
+                button.setAttribute('type', 'button');
             }
 
-            openDrawerSheet(drawer, trigger);
-        });
-    });
-
-    drawers.forEach(drawer => {
-        drawer.querySelectorAll('[data-drawer-close]').forEach(button => {
             button.addEventListener('click', () => {
                 closeDrawerSheet(drawer, true);
             });
@@ -3394,87 +3383,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.addEventListener('keydown', event => {
-        if (event.key !== 'Escape' || !openDrawer) {
-            return;
-        }
-
-        closeDrawerSheet(openDrawer, true);
-    });
-
-    function syncTriggerState(targetId, isOpen) {
-        triggers
-            .filter(trigger => trigger.dataset.drawerTarget === targetId)
-            .forEach(trigger => {
-                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            });
-    }
-
-    function syncBodyLock() {
-        document.body.classList.toggle('drawer-sheet-open', drawers.some(drawer => drawer.classList.contains('is-open')));
-    }
-
-    function openDrawerSheet(drawer, trigger) {
-        drawers.forEach(otherDrawer => {
-            if (otherDrawer !== drawer) {
-                closeDrawerSheet(otherDrawer, false);
-            }
-        });
-
-        drawer.classList.add('is-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        drawer._lastTrigger = trigger;
-        openDrawer = drawer;
-        syncTriggerState(drawer.id, true);
-        syncBodyLock();
-
-        requestAnimationFrame(() => {
-            const initialFocus = drawer.querySelector('[data-drawer-initial-focus]')
-                || drawer.querySelector('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
-
-            initialFocus?.focus();
-        });
-    }
-
-    function closeDrawerSheet(drawer, restoreFocus) {
-        if (!drawer) {
-            return;
-        }
-
-        drawer.classList.remove('is-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        syncTriggerState(drawer.id, false);
-        syncBodyLock();
-
-        if (openDrawer === drawer) {
-            openDrawer = drawers.find(item => item.classList.contains('is-open')) || null;
-        }
-
-        if (restoreFocus && drawer._lastTrigger) {
-            drawer._lastTrigger.focus();
-        }
-    }
-});
-/**
- * Search Overlay Component Logic
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    const triggers = Array.from(document.querySelectorAll('[data-search-overlay-target]'));
-    const overlays = Array.from(document.querySelectorAll('.search-overlay[data-search-overlay-modal="true"]'));
-
-    if (triggers.length === 0 || overlays.length === 0) {
-        return;
-    }
-
-    overlays.forEach(overlay => {
-        overlay.inert = true;
-        overlay.setAttribute('aria-hidden', 'true');
-        overlay.querySelector('.search-overlay-panel')?.setAttribute('tabindex', '-1');
-    });
-
     triggers.forEach(trigger => {
-        const targetId = trigger.dataset.searchOverlayTarget;
+        const targetId = trigger.dataset.drawerTarget;
         if (!targetId) {
             return;
         }
@@ -3484,42 +3394,27 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger.setAttribute('aria-haspopup', 'dialog');
 
         trigger.addEventListener('click', () => {
-            const overlay = overlays.find(item => item.id === targetId);
-            if (!overlay) {
+            const drawer = drawers.find(item => item.id === targetId);
+            if (!drawer) {
                 return;
             }
 
-            openSearchOverlay(overlay, trigger);
-        });
-    });
-
-    overlays.forEach(overlay => {
-        overlay.querySelectorAll('[data-search-overlay-close]').forEach(button => {
-            button.addEventListener('click', () => {
-                closeSearchOverlay(overlay, true);
-            });
-        });
-
-        overlay.addEventListener('click', event => {
-            if (event.target === overlay) {
-                closeSearchOverlay(overlay, true);
-            }
+            openDrawerSheet(drawer, trigger);
         });
     });
 
     document.addEventListener('keydown', event => {
-        const openOverlay = overlays.find(overlay => overlay.classList.contains('is-open'));
-        if (!openOverlay) {
+        if (!openDrawer) {
             return;
         }
 
         if (event.key === 'Escape') {
-            closeSearchOverlay(openOverlay, true);
+            closeDrawerSheet(openDrawer, true);
             return;
         }
 
         if (event.key === 'Tab') {
-            trapSearchOverlayFocus(openOverlay, event);
+            trapDrawerSheetFocus(openDrawer, event);
         }
     });
 
@@ -3528,8 +3423,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
     }
 
-    function trapSearchOverlayFocus(overlay, event) {
-        const panel = overlay.querySelector('.search-overlay-panel');
+    function trapDrawerSheetFocus(drawer, event) {
+        const panel = drawer.querySelector('.drawer-sheet-panel');
         if (!panel) {
             return;
         }
@@ -3558,59 +3453,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function syncTriggerState(targetId, isOpen) {
         triggers
-            .filter(trigger => trigger.dataset.searchOverlayTarget === targetId)
+            .filter(trigger => trigger.dataset.drawerTarget === targetId)
             .forEach(trigger => {
                 trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
     }
 
     function syncBodyLock() {
-        document.body.classList.toggle('search-overlay-open', overlays.some(overlay => overlay.classList.contains('is-open')));
+        document.body.classList.toggle('drawer-sheet-open', drawers.some(drawer => drawer.classList.contains('is-open')));
     }
 
-    function openSearchOverlay(overlay, trigger) {
-        const targetId = overlay.id;
-
-        overlays.forEach(otherOverlay => {
-            if (otherOverlay !== overlay) {
-                closeSearchOverlay(otherOverlay, false);
+    function openDrawerSheet(drawer, trigger) {
+        drawers.forEach(otherDrawer => {
+            if (otherDrawer !== drawer) {
+                closeDrawerSheet(otherDrawer, false);
             }
         });
 
-        overlay.inert = false;
-        overlay.classList.add('is-open');
-        overlay.setAttribute('aria-hidden', 'false');
-        overlay._lastTrigger = trigger;
-        syncTriggerState(targetId, true);
+        drawer.inert = false;
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        drawer._lastTrigger = trigger;
+        openDrawer = drawer;
+        syncTriggerState(drawer.id, true);
         syncBodyLock();
 
         requestAnimationFrame(() => {
-            const input = overlay.querySelector('[data-search-overlay-input]');
-            if (input) {
-                input.focus({ preventScroll: true });
-                if (typeof input.select === 'function') {
-                    input.select();
-                }
-                return;
-            }
+            const panel = drawer.querySelector('.drawer-sheet-panel');
+            const initialFocus = drawer.querySelector('[data-drawer-initial-focus]')
+                || (panel ? getFocusableElements(panel)[0] : null)
+                || panel;
 
-            overlay.querySelector('.search-overlay-panel')?.focus({ preventScroll: true });
+            initialFocus?.focus({ preventScroll: true });
         });
     }
 
-    function closeSearchOverlay(overlay, restoreFocus) {
-        overlay.classList.remove('is-open');
-        overlay.setAttribute('aria-hidden', 'true');
-        overlay.inert = true;
-        syncTriggerState(overlay.id, false);
+    function closeDrawerSheet(drawer, restoreFocus) {
+        if (!drawer) {
+            return;
+        }
+
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.inert = true;
+        syncTriggerState(drawer.id, false);
         syncBodyLock();
 
-        if (restoreFocus && overlay._lastTrigger) {
-            overlay._lastTrigger.focus({ preventScroll: true });
+        if (openDrawer === drawer) {
+            openDrawer = drawers.find(item => item.classList.contains('is-open')) || null;
+        }
+
+        if (restoreFocus && drawer._lastTrigger) {
+            drawer._lastTrigger.focus({ preventScroll: true });
         }
     }
-});
-/**
+});/**
  * Toast Component Logic
  */
 
@@ -3618,7 +3515,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const triggers = Array.from(document.querySelectorAll('[data-toast-target]'));
     const toasts = Array.from(document.querySelectorAll('.toast'));
     const dismissDelay = 4000;
-    const hideDelay = 400;
+    const hideDelay = 320;
     const toastTimers = new Map();
 
     if (triggers.length === 0 || toasts.length === 0) {
@@ -3627,20 +3524,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toasts.forEach(toast => {
         toast.hidden = true;
+        toast.inert = true;
+        toast.setAttribute('aria-hidden', 'true');
+        wireToastPauseState(toast);
     });
 
     triggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const toast = document.getElementById(trigger.dataset.toastTarget || '');
-            if (!toast) {
-                return;
-            }
+        const toastId = trigger.dataset.toastTarget || '';
+        const toast = document.getElementById(toastId);
 
+        trigger.type = 'button';
+
+        if (!toast) {
+            return;
+        }
+
+        trigger.setAttribute('aria-controls', toastId);
+        trigger.addEventListener('click', () => {
             showToast(toast);
         });
     });
 
     document.querySelectorAll('[data-toast-close]').forEach(button => {
+        button.type = 'button';
         button.addEventListener('click', () => {
             const toast = button.closest('.toast');
             if (!toast) {
@@ -3654,30 +3560,68 @@ document.addEventListener('DOMContentLoaded', () => {
     function showToast(toast) {
         clearToastTimers(toast);
         toast.hidden = false;
+        toast.inert = false;
         toast.setAttribute('aria-hidden', 'false');
+        syncTriggerState(toast.id, true);
 
         requestAnimationFrame(() => {
             toast.classList.add('is-visible');
         });
 
-        const dismissTimer = setTimeout(() => {
-            hideToast(toast);
-        }, dismissDelay);
-
-        toastTimers.set(toast, { dismissTimer, hideTimer: null });
+        scheduleDismiss(toast);
     }
 
     function hideToast(toast) {
         clearToastTimers(toast);
         toast.classList.remove('is-visible');
         toast.setAttribute('aria-hidden', 'true');
+        syncTriggerState(toast.id, false);
 
         const hideTimer = setTimeout(() => {
             toast.hidden = true;
+            toast.inert = true;
             toastTimers.delete(toast);
         }, hideDelay);
 
         toastTimers.set(toast, { dismissTimer: null, hideTimer });
+    }
+
+    function scheduleDismiss(toast) {
+        clearDismissTimer(toast);
+
+        const dismissTimer = setTimeout(() => {
+            hideToast(toast);
+        }, dismissDelay);
+
+        const timers = toastTimers.get(toast) || { dismissTimer: null, hideTimer: null };
+        toastTimers.set(toast, { ...timers, dismissTimer });
+    }
+
+    function pauseDismiss(toast) {
+        const timers = toastTimers.get(toast);
+        if (!timers || !timers.dismissTimer) {
+            return;
+        }
+
+        clearTimeout(timers.dismissTimer);
+        toastTimers.set(toast, { ...timers, dismissTimer: null });
+    }
+
+    function resumeDismiss(toast) {
+        if (toast.hidden || !toast.classList.contains('is-visible')) {
+            return;
+        }
+
+        scheduleDismiss(toast);
+    }
+
+    function clearDismissTimer(toast) {
+        const timers = toastTimers.get(toast);
+        if (!timers || !timers.dismissTimer) {
+            return;
+        }
+
+        clearTimeout(timers.dismissTimer);
     }
 
     function clearToastTimers(toast) {
@@ -3694,19 +3638,39 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTimeout(timers.hideTimer);
         }
     }
+
+    function syncTriggerState(toastId, isActive) {
+        triggers
+            .filter(trigger => (trigger.dataset.toastTarget || '') === toastId)
+            .forEach(trigger => {
+                if (isActive) {
+                    trigger.setAttribute('data-toast-active', 'true');
+                    return;
+                }
+
+                trigger.removeAttribute('data-toast-active');
+            });
+    }
+
+    function wireToastPauseState(toast) {
+        toast.addEventListener('mouseenter', () => {
+            pauseDismiss(toast);
+        });
+
+        toast.addEventListener('mouseleave', () => {
+            resumeDismiss(toast);
+        });
+
+        toast.addEventListener('focusin', () => {
+            pauseDismiss(toast);
+        });
+
+        toast.addEventListener('focusout', event => {
+            if (toast.contains(event.relatedTarget)) {
+                return;
+            }
+
+            resumeDismiss(toast);
+        });
+    }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
