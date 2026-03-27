@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const enabledDropdowns = dropdowns.filter(dropdown => {
         const trigger = dropdown.querySelector('.dropdown-trigger');
-        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true' && selector.getAttribute('aria-disabled') !== 'true';
+        return trigger && !trigger.disabled && trigger.getAttribute('aria-disabled') !== 'true' && dropdown.getAttribute('aria-disabled') !== 'true';
     });
 
     // Hover-trigger dropdowns (data-dropdown-trigger="hover")
@@ -1479,7 +1479,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const carousels = document.querySelectorAll('[data-carousel]');
 
-    carousels.forEach(carousel => {
+    carousels.forEach((carousel, carouselIndex) => {
         const track = carousel.querySelector('.carousel-track');
         if (!track) return;
 
@@ -1493,6 +1493,30 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = slides.findIndex(slide => slide.classList.contains('is-active'));
         if (currentIndex === -1) currentIndex = 0;
 
+        carousel.setAttribute('tabindex', '0');
+        carousel.setAttribute('role', 'region');
+        carousel.setAttribute('aria-roledescription', 'carousel');
+
+        if (!carousel.hasAttribute('aria-label')) {
+            carousel.setAttribute('aria-label', 'Image carousel ' + (carouselIndex + 1));
+        }
+
+        slides.forEach((slide, index) => {
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', 'slide');
+            slide.setAttribute('aria-label', 'Slide ' + (index + 1) + ' of ' + slides.length);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.setAttribute('type', 'button');
+            if (!dot.hasAttribute('aria-label')) {
+                dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
+            }
+        });
+
+        if (prevBtn) prevBtn.setAttribute('type', 'button');
+        if (nextBtn) nextBtn.setAttribute('type', 'button');
+
         function goToSlide(index) {
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
@@ -1500,11 +1524,14 @@ document.addEventListener('DOMContentLoaded', () => {
             slides.forEach((slide, i) => {
                 const isTarget = i === index;
                 slide.classList.toggle('is-active', isTarget);
+                slide.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+                slide.inert = !isTarget;
             });
 
             dots.forEach((dot, i) => {
                 const isTarget = i === index;
                 dot.classList.toggle('is-active', isTarget);
+                dot.setAttribute('aria-pressed', isTarget ? 'true' : 'false');
 
                 if (isTarget) {
                     dot.setAttribute('aria-current', 'true');
@@ -1537,10 +1564,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Keyboard navigation
-        carousel.setAttribute('tabindex', '0');
-        carousel.setAttribute('role', 'region');
-        carousel.setAttribute('aria-roledescription', 'carousel');
-
         carousel.addEventListener('keydown', event => {
             if (event.key === 'ArrowLeft') {
                 event.preventDefault();
@@ -2123,17 +2146,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let selectedOption = options.find(option => option.getAttribute('aria-selected') === 'true') || null;
         let activeOption = selectedOption;
 
+        const isDisabled = () => input.disabled || input.getAttribute('aria-disabled') === 'true' || combobox.getAttribute('aria-disabled') === 'true';
+
         list.id = listId;
         list.setAttribute('role', 'listbox');
+        panel.setAttribute('aria-hidden', 'true');
         input.setAttribute('role', 'combobox');
         input.setAttribute('aria-controls', listId);
         input.setAttribute('aria-expanded', 'false');
         input.setAttribute('aria-autocomplete', 'list');
         input.setAttribute('autocomplete', 'off');
+        clearButton.setAttribute('type', 'button');
 
         options.forEach((option, optionIndex) => {
             option.id = option.id || `${listId}-option-${optionIndex + 1}`;
+            option.setAttribute('type', 'button');
             option.addEventListener('click', () => {
+                if (isDisabled() || option.getAttribute('aria-disabled') === 'true') {
+                    return;
+                }
+
                 selectOption(option);
                 closeComboboxPanel(combobox, false);
                 input.focus();
@@ -2147,15 +2179,38 @@ document.addEventListener('DOMContentLoaded', () => {
         syncSelectedOption(true);
         updateFilter('');
 
+        if (isDisabled()) {
+            combobox.setAttribute('aria-disabled', 'true');
+            input.setAttribute('aria-disabled', 'true');
+            closeComboboxPanel(combobox, true);
+            return;
+        }
+
+        if (combobox.classList.contains('is-open')) {
+            openComboboxPanel(combobox, false);
+        }
+
         input.addEventListener('focus', () => {
+            if (isDisabled()) {
+                return;
+            }
+
             openComboboxPanel(combobox, false);
         });
 
         input.addEventListener('click', () => {
+            if (isDisabled()) {
+                return;
+            }
+
             openComboboxPanel(combobox, false);
         });
 
         input.addEventListener('input', () => {
+            if (isDisabled()) {
+                return;
+            }
+
             selectedOption = null;
             syncSelectedOption(false);
             openComboboxPanel(combobox, false);
@@ -2163,6 +2218,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         input.addEventListener('keydown', event => {
+            if (isDisabled()) {
+                return;
+            }
+
             const visibleOptions = getVisibleOptions();
 
             if (event.key === 'ArrowDown') {
@@ -2223,6 +2282,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         clearButton.addEventListener('click', event => {
+            if (isDisabled()) {
+                return;
+            }
+
             event.preventDefault();
             clearSelection(true);
             openComboboxPanel(combobox, false);
@@ -2230,12 +2293,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function openComboboxPanel(currentCombobox, focusFirstOption) {
+            if (isDisabled()) {
+                return;
+            }
+
             if (openCombobox && openCombobox !== currentCombobox) {
                 openCombobox._closeCombobox?.(true);
             }
 
             currentCombobox.classList.add('is-open');
             panel.hidden = false;
+            panel.setAttribute('aria-hidden', 'false');
             input.setAttribute('aria-expanded', 'true');
             openCombobox = currentCombobox;
             updateFilter(input.value.trim());
@@ -2248,6 +2316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeComboboxPanel(currentCombobox, restoreSelection) {
             currentCombobox.classList.remove('is-open');
             panel.hidden = true;
+            panel.setAttribute('aria-hidden', 'true');
             input.setAttribute('aria-expanded', 'false');
             setActiveOption(null);
             updateFilter('');
@@ -2325,7 +2394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateClearState() {
-            clearButton.disabled = input.value.trim() === '' && (!valueField || valueField.value === '');
+            clearButton.disabled = isDisabled() || (input.value.trim() === '' && (!valueField || valueField.value === ''));
         }
 
         function setActiveOption(option) {
@@ -2369,8 +2438,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openCombobox._closeCombobox?.(true);
         openCombobox.querySelector('[data-combobox-input]')?.focus();
     });
-});
-/**
+});/**
  * Pagination Component Logic
  */
 
@@ -2481,9 +2549,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortButtons.forEach(button => {
             const heading = button.closest('.data-table-heading');
+            const label = (button.textContent || '').replace(/\s+/g, ' ').trim();
+
+            button.setAttribute('type', 'button');
+
+            if (label && !button.hasAttribute('aria-label')) {
+                button.setAttribute('aria-label', 'Sort by ' + label);
+            }
+
             if (heading && !heading.hasAttribute('aria-sort')) {
                 heading.setAttribute('aria-sort', 'none');
             }
+
+            button.setAttribute('aria-pressed', heading && heading.getAttribute('aria-sort') !== 'none' ? 'true' : 'false');
 
             button.addEventListener('click', () => {
                 const currentHeading = button.closest('.data-table-heading');
@@ -2525,7 +2603,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                heading.setAttribute('aria-sort', heading === activeHeading ? direction : 'none');
+                const isActive = heading === activeHeading;
+                heading.setAttribute('aria-sort', isActive ? direction : 'none');
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
         }
 
@@ -2596,6 +2676,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const todayButton = picker.querySelector('[data-date-picker-today]');
         const clearButton = picker.querySelector('[data-date-picker-clear]');
         const presetButtons = Array.from(picker.querySelectorAll('[data-date-picker-preset]'));
+        const isDisabled = input?.disabled || trigger?.disabled || picker.getAttribute('aria-disabled') === 'true';
 
         if (!input || !trigger || !panel || !monthLabel || !weekdayRow || !daysGrid || !summary || !prevButton || !nextButton) {
             return;
@@ -2610,6 +2691,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const panelIdBase = input.id || 'datePicker' + String(index + 1);
 
         panel.id = panel.id || `${panelIdBase}-panel`;
+        panel.setAttribute('aria-hidden', 'true');
+        trigger.setAttribute('type', 'button');
+        prevButton.setAttribute('type', 'button');
+        nextButton.setAttribute('type', 'button');
+        todayButton?.setAttribute('type', 'button');
+        clearButton?.setAttribute('type', 'button');
+        presetButtons.forEach(button => button.setAttribute('type', 'button'));
 
         picker._datePickerState = {
             mode,
@@ -2840,6 +2928,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function openDatePicker(currentPicker, focusSelectedDay) {
+            if (isDisabled) {
+                return;
+            }
+
             datePickers.forEach(otherPicker => {
                 if (otherPicker === currentPicker || isStickyPicker(otherPicker)) {
                     return;
@@ -2849,6 +2941,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const otherPanel = otherPicker.querySelector('[data-date-picker-panel]');
                 if (otherPanel) {
                     otherPanel.hidden = true;
+                    otherPanel.setAttribute('aria-hidden', 'true');
                 }
                 otherPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
                 otherPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
@@ -2856,6 +2949,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentPicker.classList.add('is-open');
             panel.hidden = false;
+            panel.setAttribute('aria-hidden', 'false');
             setExpandedState(currentPicker, true);
             openPicker = currentPicker;
 
@@ -2869,6 +2963,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeDatePicker(currentPicker, restoreFocus) {
             currentPicker.classList.remove('is-open');
             panel.hidden = true;
+            panel.setAttribute('aria-hidden', 'true');
             setExpandedState(currentPicker, false);
 
             if (openPicker === currentPicker) {
@@ -3030,6 +3125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             picker.classList.remove('is-open');
             const panel = picker.querySelector('[data-date-picker-panel]');
             panel.hidden = true;
+            panel.setAttribute('aria-hidden', 'true');
             picker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
             picker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
         });
@@ -3045,6 +3141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openPicker.classList.remove('is-open');
         const panel = openPicker.querySelector('[data-date-picker-panel]');
         panel.hidden = true;
+        panel.setAttribute('aria-hidden', 'true');
         openPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', 'false');
         openPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', 'false');
         openPicker.querySelector('[data-date-picker-trigger]')?.focus();
@@ -3454,5 +3551,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+
+
+
+
+
+
+
 
 
