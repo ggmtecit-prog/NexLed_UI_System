@@ -1291,29 +1291,21 @@
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Focusable</h4>
                                     <div class="size-grid-content">
-                                        <div class="w-full flex flex-col gap-12" role="group" aria-labelledby="range-slider-focusable-title" aria-describedby="range-slider-focusable-note">
-                                            <div class="flex flex-wrap items-start justify-between gap-12">
-                                                <div class="flex flex-col gap-8">
-                                                    <p id="range-slider-focusable-title" class="text-body-sm text-black">Project budget range</p>
-                                                    <p id="range-slider-focusable-note" class="text-body-xs text-grey-primary">Move either handle to tighten the live budget window without leaving this view.</p>
-                                                </div>
-                                                <span class="badge badge-primary badge-md">Dual range</span>
-                                            </div>
-
-                                            <div class="range-slider range-slider-md" data-range-slider data-range-slider-unit="euros">
+                                        <div class="w-full" role="group" aria-label="Focusable range slider">
+                                            <div class="range-slider range-slider-md" data-range-slider data-range-slider-unit="watts">
                                                 <div class="range-slider-values">
                                                     <span class="text-body-sm text-grey-primary">Minimum <strong
-                                                            data-range-slider-start-output>250</strong> EUR</span>
+                                                            data-range-slider-start-output>250</strong> W</span>
                                                     <span class="text-body-sm text-grey-primary">Maximum <strong
-                                                            data-range-slider-end-output>900</strong> EUR</span>
+                                                            data-range-slider-end-output>900</strong> W</span>
                                                 </div>
 
                                                 <div class="range-slider-track">
                                                     <span class="range-slider-selection" aria-hidden="true"></span>
                                                     <input type="range" class="range-slider-input" min="0" max="1200" value="250"
-                                                        data-range-slider-start aria-label="Minimum project budget">
+                                                        data-range-slider-start aria-label="Focusable minimum value">
                                                     <input type="range" class="range-slider-input" min="0" max="1200" value="900"
-                                                        data-range-slider-end aria-label="Maximum project budget">
+                                                        data-range-slider-end aria-label="Focusable maximum value">
                                                 </div>
                                             </div>
                                         </div>
@@ -1323,20 +1315,20 @@
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Disabled</h4>
                                     <div class="size-grid-content">
-                                        <div class="w-full" role="group" aria-label="Locked lead-time window">
-                                            <div class="range-slider range-slider-lg" data-range-slider data-range-slider-unit="days">
+                                        <div class="w-full" role="group" aria-label="Disabled range slider">
+                                            <div class="range-slider range-slider-md" data-range-slider data-range-slider-unit="watts">
                                                 <div class="range-slider-values">
-                                                    <span class="text-body text-grey-primary">Minimum <strong
-                                                            data-range-slider-start-output>6</strong> d</span>
-                                                    <span class="text-body text-grey-primary">Maximum <strong
-                                                            data-range-slider-end-output>12</strong> d</span>
+                                                    <span class="text-body-sm text-grey-primary">Minimum <strong
+                                                            data-range-slider-start-output>320</strong> W</span>
+                                                    <span class="text-body-sm text-grey-primary">Maximum <strong
+                                                            data-range-slider-end-output>640</strong> W</span>
                                                 </div>
                                                 <div class="range-slider-track">
                                                     <span class="range-slider-selection" aria-hidden="true"></span>
-                                                    <input type="range" class="range-slider-input" min="0" max="30" value="6"
-                                                        data-range-slider-start aria-label="Locked minimum lead time" disabled>
-                                                    <input type="range" class="range-slider-input" min="0" max="30" value="12"
-                                                        data-range-slider-end aria-label="Locked maximum lead time" disabled>
+                                                    <input type="range" class="range-slider-input" min="0" max="900" value="320"
+                                                        data-range-slider-start aria-label="Disabled minimum value" disabled>
+                                                    <input type="range" class="range-slider-input" min="0" max="900" value="640"
+                                                        data-range-slider-end aria-label="Disabled maximum value" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -1344,14 +1336,9 @@
                                 </div>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Constrained</h4>
+                                    <h4 class="size-grid-label">Narrow Range</h4>
                                     <div class="size-grid-content">
-                                        <div class="w-full flex flex-col gap-12" role="group" aria-labelledby="range-slider-constrained-title" aria-describedby="range-slider-constrained-note">
-                                            <div class="flex flex-col gap-8">
-                                                <p id="range-slider-constrained-title" class="text-body-sm text-black">Tight procurement range</p>
-                                                <p id="range-slider-constrained-note" class="text-body-xs text-grey-primary">Check that the active range stays readable even when the selected band gets narrow.</p>
-                                            </div>
-
+                                        <div class="w-full" role="group" aria-label="Narrow range slider">
                                             <div class="range-slider range-slider-md" data-range-slider data-range-slider-unit="watts">
                                                 <div class="range-slider-values">
                                                     <span class="text-body-sm text-grey-primary">Minimum <strong
@@ -1363,9 +1350,9 @@
                                                 <div class="range-slider-track">
                                                     <span class="range-slider-selection" aria-hidden="true"></span>
                                                     <input type="range" class="range-slider-input" min="0" max="900" value="420"
-                                                        data-range-slider-start aria-label="Minimum procurement threshold">
+                                                        data-range-slider-start aria-label="Narrow range minimum value">
                                                     <input type="range" class="range-slider-input" min="0" max="900" value="480"
-                                                        data-range-slider-end aria-label="Maximum procurement threshold">
+                                                        data-range-slider-end aria-label="Narrow range maximum value">
                                                 </div>
                                             </div>
                                         </div>
