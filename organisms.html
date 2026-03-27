@@ -2049,93 +2049,359 @@
                     </div>
 
                 </section>
-<section id="modal"> 
+<section id="modal">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">Modal</h2>
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                        <div class="w-full">
-                            <div class="flex flex-wrap gap-12 justify-center mb-8">
-                                <button type="button" class="btn btn-primary btn-sm"
-                                    data-modal-target="modalStandard">
-                                    Standard Modal
-                                </button>
+                        <div class="size-grid size-grid-stack size-grid-stack-gap-24 size-grid-limit-standard mx-auto w-full">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Patterns &amp; States</h3>
 
-                                <button type="button" class="btn btn-danger btn-sm"
-                                    data-modal-target="modalDestructive">
-                                    Destructive Modal
-                                </button>
-                            </div>
-
-                            <div class="modal-overlay" id="modalStandard" aria-hidden="true">
-                                <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle1">
-                                    <div class="modal-header">
-                                        <h2 id="modalTitle1" class="modal-title">Lorem ipsum dolor</h2>
-                                        <button class="modal-close" aria-label="Close modal" data-close-modal>
-                                            <i class="ri-close-line text-icon-md"></i>
-                                        </button>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Standard</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Balanced confirmation flow</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Use the default modal for routine publishing, saving, and confirmation moments where the user needs context plus two clear actions.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Backdrop close</span>
+                                                <span class="badge badge-primary badge-md">Focus return</span>
+                                                <button type="button" class="btn btn-primary btn-sm" data-modal-target="modalStandard">
+                                                    Open Standard Modal
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="modal-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                            augue suscipit imperdiet.</p>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Destructive</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Escalated risk state</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Use the destructive tone only when the action cannot be reversed and the safer escape route must stay visible beside the danger action.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-danger badge-md">Irreversible</span>
+                                                <span class="badge badge-neutral badge-md">Secondary escape</span>
+                                                <button type="button" class="btn btn-danger btn-sm" data-modal-target="modalDestructive">
+                                                    Open Destructive Modal
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary btn-sm" data-close-modal>Lorem ipsum</button>
-                                        <button type="button" class="btn btn-secondary btn-sm" data-close-modal>Lorem ipsum</button>
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Long Content</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Readable and scroll-safe</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Longer support copy still stays readable on phone because the panel uses safe insets, full-width actions below tablet, and overlay scrolling instead of page overflow.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Mobile safe</span>
+                                                <span class="badge badge-primary badge-md">Long copy</span>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-modal-target="modalLongContent">
+                                                    Open Long Content Modal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled Action</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Blocked CTA state</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">A blocking action can stay visibly disabled while the modal remains dismissible through the secondary path, close button, Escape, or backdrop.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Disabled CTA</span>
+                                                <span class="badge badge-primary badge-md">Esc closes</span>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-modal-target="modalDisabledAction">
+                                                    Open Disabled Action Modal
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
-                                <div class="modal modal-destructive text-center" role="dialog" aria-modal="true"
-                                    aria-labelledby="modalTitle3">
-
-                                    <div class="mb-16">
-                                        <h2 id="modalTitle3" class="modal-title">Lorem ipsum dolor</h2>
+                        <div class="modal-overlay" id="modalStandard" aria-hidden="true">
+                            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalStandardTitle" aria-describedby="modalStandardBody">
+                                <div class="modal-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Publishing Flow</p>
+                                        <h2 id="modalStandardTitle" class="modal-title">Publish this support article?</h2>
                                     </div>
+                                    <button type="button" class="modal-close" aria-label="Close standard modal" data-close-modal>
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
 
-                                    <div class="modal-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                            consectetur nunc nulla, ac vulputate tortor ultricies et. Sed bibendum eu
-                                            augue suscipit imperdiet.</p>
-                                    </div>
+                                <div id="modalStandardBody" class="modal-body">
+                                    <p>The article is ready to go live in the public knowledge base.</p>
+                                    <p>Publishing now will make it visible to support teams and customers across the product catalog.</p>
+                                </div>
 
-                                    <div class="modal-footer justify-center">
-                                        <button type="button" class="btn btn-primary btn-sm" data-close-modal>Lorem ipsum</button>
-                                        <button type="button" class="btn btn-secondary btn-sm" data-close-modal>Lorem ipsum</button>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-close-modal>Review later</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-close-modal data-modal-initial-focus>Publish article</button>
                                 </div>
                             </div>
+                        </div>
 
+                        <div class="modal-overlay" id="modalDestructive" aria-hidden="true">
+                            <div class="modal modal-destructive" role="dialog" aria-modal="true" aria-labelledby="modalDestructiveTitle" aria-describedby="modalDestructiveBody">
+                                <div class="modal-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Danger Zone</p>
+                                        <h2 id="modalDestructiveTitle" class="modal-title">Delete this repair guide?</h2>
+                                    </div>
+                                    <button type="button" class="modal-close" aria-label="Close destructive modal" data-close-modal>
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="modalDestructiveBody" class="modal-body">
+                                    <p>This action will permanently remove the guide from the support library.</p>
+                                    <p>Any saved links will break immediately, and the content will need to be recreated if you change your mind later.</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-close-modal data-modal-initial-focus>Keep guide</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-close-modal>Delete guide</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-overlay" id="modalLongContent" aria-hidden="true">
+                            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalLongContentTitle" aria-describedby="modalLongContentBody">
+                                <div class="modal-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Migration Checklist</p>
+                                        <h2 id="modalLongContentTitle" class="modal-title">Review the rollout notes before continuing</h2>
+                                    </div>
+                                    <button type="button" class="modal-close" aria-label="Close long content modal" data-close-modal>
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="modalLongContentBody" class="modal-body">
+                                    <p>The new release updates how inventory, warranty claims, and live availability are synchronized across the store and service workspaces.</p>
+                                    <p>Before enabling the rollout, confirm that your regional price lists are up to date, all staff devices have downloaded the latest firmware package, and the repair center contact details are published in the customer help panel.</p>
+                                    <p>Once the rollout starts, any queued orders created with the legacy rules will continue processing normally, but new orders will follow the updated tax and availability logic immediately.</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-close-modal data-modal-initial-focus>Save draft</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-close-modal>Continue rollout</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-overlay" id="modalDisabledAction" aria-hidden="true">
+                            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalDisabledActionTitle" aria-describedby="modalDisabledActionBody">
+                                <div class="modal-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Permission Check</p>
+                                        <h2 id="modalDisabledActionTitle" class="modal-title">Finalize vendor access request</h2>
+                                    </div>
+                                    <button type="button" class="modal-close" aria-label="Close disabled action modal" data-close-modal>
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="modalDisabledActionBody" class="modal-body">
+                                    <p>The request is almost complete, but one required approval is still missing from the regional operations team.</p>
+                                    <p>The primary action remains disabled until the final approval arrives, while the user can still close the modal and return to the queue.</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-close-modal data-modal-initial-focus>Close panel</button>
+                                    <button type="button" class="btn btn-primary btn-sm" disabled>Awaiting approval</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </section>
 
-                                                <section id="drawer-sheet">
+                <section id="drawer-sheet">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">Drawer Sheet</h2>
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                        <div class="w-full max-w-4xl mx-auto space-y-24">
-                            <div class="flex flex-wrap items-center justify-center gap-12">
-                                <button type="button" class="btn btn-primary btn-sm" data-drawer-target="drawerSheetFilters">
-                                    Open Filter Sheet
-                                </button>
+                        <div class="size-grid size-grid-stack size-grid-stack-gap-24 size-grid-limit-standard mx-auto w-full">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Sizes</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Small</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Compact utility rail</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Use the small drawer for quick settings and short review tasks that should stay tighter than a full filter workspace.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Quick actions</span>
+                                                <span class="badge badge-primary badge-md">Right aligned</span>
+                                                <button type="button" class="btn btn-primary btn-sm" data-drawer-target="drawerSheetCompact">
+                                                    Open Small Drawer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Medium</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Balanced filter sheet</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Medium is the default working size for filters, segmented controls, and live toggle groups that need room without becoming a takeover.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Default size</span>
+                                                <span class="badge badge-primary badge-md">Toggle group</span>
+                                                <button type="button" class="btn btn-primary btn-sm" data-drawer-target="drawerSheetFilters">
+                                                    Open Medium Drawer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Large</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Deeper review surface</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Use the large drawer when the body needs denser summaries, longer lists, or a fuller review workflow while still preserving page context.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Dense summary</span>
+                                                <span class="badge badge-primary badge-md">Large panel</span>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-drawer-target="drawerSheetReview">
+                                                    Open Large Drawer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="text-body-sm text-grey-primary text-center">Use a right-side sheet for transient filters and settings without replacing the persistent sidebar pattern.</p>
+
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Long Content</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Scroll-safe body</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Longer content stays inside the drawer body with its own scroll region, so the page behind it remains stable and the footer actions stay anchored.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Body scroll</span>
+                                                <span class="badge badge-primary badge-md">Anchored footer</span>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-drawer-target="drawerSheetLong">
+                                                    Open Long Content Drawer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled Action</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Blocked primary action</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">The primary CTA can stay visibly disabled while the sheet remains dismissible through the close button, backdrop, Escape, or the secondary footer action.</p>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Disabled CTA</span>
+                                                <span class="badge badge-primary badge-md">Esc closes</span>
+                                                <button type="button" class="btn btn-secondary btn-sm" data-drawer-target="drawerSheetDisabled">
+                                                    Open Disabled Action Drawer
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drawer-sheet drawer-sheet-right drawer-sheet-sm" id="drawerSheetCompact" aria-hidden="true">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetCompactTitle" aria-describedby="drawerSheetCompactBody">
+                                <div class="drawer-sheet-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Quick Settings</p>
+                                        <h2 id="drawerSheetCompactTitle" class="modal-title">Adjust store shortcuts</h2>
+                                    </div>
+                                    <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close compact drawer">
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="drawerSheetCompactBody" class="drawer-sheet-body custom-scrollbar">
+                                    <div class="space-y-12">
+                                        <p class="input-label">Quick toggles</p>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch" checked data-drawer-initial-focus>
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Pin frequent searches</span>
+                                        </label>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch">
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Mute low-priority alerts</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="space-y-12">
+                                        <p class="input-label">Current context</p>
+                                        <dl class="list list-spec list-md">
+                                            <div class="list-item">
+                                                <dt class="list-key">Workspace</dt>
+                                                <dd class="list-value">Operations</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Role</dt>
+                                                <dd class="list-value">Manager</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="drawer-sheet-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-drawer-close>Close</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-drawer-close>Save shortcuts</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="drawer-sheet drawer-sheet-right drawer-sheet-md" id="drawerSheetFilters" aria-hidden="true">
-                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetFiltersTitle">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetFiltersTitle" aria-describedby="drawerSheetFiltersBody">
                                 <div class="drawer-sheet-header">
                                     <div>
-                                        <p class="text-body-xs text-grey-primary mb-8">Workspace Filters</p>
+                                        <p class="text-body-xs text-grey-primary">Workspace Filters</p>
                                         <h2 id="drawerSheetFiltersTitle" class="modal-title">Refine live inventory</h2>
                                     </div>
                                     <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close filter sheet">
@@ -2143,15 +2409,14 @@
                                     </button>
                                 </div>
 
-                                <div class="drawer-sheet-body custom-scrollbar">
+                                <div id="drawerSheetFiltersBody" class="drawer-sheet-body custom-scrollbar">
                                     <div class="space-y-12">
                                         <label for="drawerFilterSearch" class="input-label">Search inventory</label>
                                         <div class="input-icon-wrapper">
                                             <span class="input-icon-area" aria-hidden="true">
                                                 <i class="ri-search-line text-icon-md"></i>
                                             </span>
-                                            <input type="search" id="drawerFilterSearch" class="input-icon-field"
-                                                placeholder="Search a product, SKU, or profile" data-drawer-initial-focus>
+                                            <input type="search" id="drawerFilterSearch" class="input-icon-field" placeholder="Search a product, SKU, or profile" data-drawer-initial-focus>
                                         </div>
                                     </div>
 
@@ -2215,10 +2480,150 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="drawer-sheet drawer-sheet-right drawer-sheet-lg" id="drawerSheetReview" aria-hidden="true">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetReviewTitle" aria-describedby="drawerSheetReviewBody">
+                                <div class="drawer-sheet-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Review Surface</p>
+                                        <h2 id="drawerSheetReviewTitle" class="modal-title">Inspect ready-to-ship inventory</h2>
+                                    </div>
+                                    <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close review drawer">
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="drawerSheetReviewBody" class="drawer-sheet-body custom-scrollbar">
+                                    <div class="space-y-12">
+                                        <label for="drawerReviewSearch" class="input-label">Search in review</label>
+                                        <div class="input-icon-wrapper">
+                                            <span class="input-icon-area" aria-hidden="true">
+                                                <i class="ri-search-line text-icon-md"></i>
+                                            </span>
+                                            <input type="search" id="drawerReviewSearch" class="input-icon-field" placeholder="Search an item in this batch" data-drawer-initial-focus>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-12">
+                                        <p class="input-label">Shipment snapshot</p>
+                                        <dl class="list list-spec list-md">
+                                            <div class="list-item">
+                                                <dt class="list-key">Batch</dt>
+                                                <dd class="list-value">A-492 / Lisbon</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Carrier</dt>
+                                                <dd class="list-value">Priority ground</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Coverage</dt>
+                                                <dd class="list-value">Portugal, Spain, France</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Next pickup</dt>
+                                                <dd class="list-value">Today, 18:30</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+
+                                    <div class="space-y-16">
+                                        <p class="input-label">Readiness checks</p>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch" checked>
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Only show allocated units</span>
+                                        </label>
+                                        <label class="toggle toggle-md">
+                                            <input type="checkbox" class="toggle-input" role="switch" checked>
+                                            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                                            <span class="toggle-label">Hide blocked warranty stock</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="drawer-sheet-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-drawer-close>Close</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-drawer-close>Confirm batch</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drawer-sheet drawer-sheet-right drawer-sheet-lg" id="drawerSheetLong" aria-hidden="true">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetLongTitle" aria-describedby="drawerSheetLongBody">
+                                <div class="drawer-sheet-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Rollout Notes</p>
+                                        <h2 id="drawerSheetLongTitle" class="modal-title">Review the regional migration checklist</h2>
+                                    </div>
+                                    <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close long content drawer">
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="drawerSheetLongBody" class="drawer-sheet-body custom-scrollbar">
+                                    <div class="space-y-12">
+                                        <p class="text-body-sm text-grey-primary">Each region needs the latest catalog mapping, warehouse staffing confirmation, and pricing export before the migration starts.</p>
+                                        <p class="text-body-sm text-grey-primary">Once the rollout begins, all new store and repair orders will use the updated availability service, while existing draft orders keep the previous rules until they are resubmitted.</p>
+                                        <p class="text-body-sm text-grey-primary">Teams should also verify that language packs are downloaded on support kiosks, barcode scanners have synced overnight, and return labels are pointed at the new logistics provider.</p>
+                                        <p class="text-body-sm text-grey-primary">If a region cannot complete those checks in time, pause the activation for that site and keep the migration blocked until the final validation report is approved.</p>
+                                    </div>
+
+                                    <div class="space-y-12">
+                                        <p class="input-label">Checklist status</p>
+                                        <dl class="list list-spec list-md">
+                                            <div class="list-item">
+                                                <dt class="list-key">Portugal</dt>
+                                                <dd class="list-value">Ready</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">Spain</dt>
+                                                <dd class="list-value">Awaiting warehouse sync</dd>
+                                            </div>
+                                            <div class="list-item">
+                                                <dt class="list-key">France</dt>
+                                                <dd class="list-value">Awaiting tax export</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="drawer-sheet-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-drawer-close data-drawer-initial-focus>Save for later</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-drawer-close>Continue</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="drawer-sheet drawer-sheet-right drawer-sheet-md" id="drawerSheetDisabled" aria-hidden="true">
+                            <div class="drawer-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="drawerSheetDisabledTitle" aria-describedby="drawerSheetDisabledBody">
+                                <div class="drawer-sheet-header">
+                                    <div>
+                                        <p class="text-body-xs text-grey-primary">Pending Approval</p>
+                                        <h2 id="drawerSheetDisabledTitle" class="modal-title">Finalize vendor access request</h2>
+                                    </div>
+                                    <button type="button" class="modal-close drawer-sheet-close" data-drawer-close aria-label="Close disabled action drawer">
+                                        <i class="ri-close-line text-icon-md" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div id="drawerSheetDisabledBody" class="drawer-sheet-body custom-scrollbar">
+                                    <div class="space-y-12">
+                                        <p class="text-body-sm text-grey-primary">The request is almost complete, but one required approval is still missing from the regional operations team.</p>
+                                        <p class="text-body-sm text-grey-primary">The primary action stays disabled until the final sign-off arrives, while the drawer remains dismissible through the close button, backdrop, Escape, and the secondary footer action.</p>
+                                    </div>
+                                </div>
+
+                                <div class="drawer-sheet-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-drawer-close data-drawer-initial-focus>Close panel</button>
+                                    <button type="button" class="btn btn-primary btn-sm" disabled>Awaiting approval</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </section>
-<section id="toast">
+
+                <section id="toast"> 
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">Toast</h2>
                     </div>

@@ -667,7 +667,7 @@ function handleUploaderFiles(files, uploader) {
         const hasOversizedFile = maxBytes !== null && selectedFiles.some((file) => file.size > maxBytes);
 
         if (hasInvalidFileType || hasOversizedFile) {
-            const maxSizeLabel = maxBytes === null ? ' : formatUploaderMaxSize(maxBytes);
+            const maxSizeLabel = maxBytes === null ? '' : formatUploaderMaxSize(maxBytes);
             let errorText = 'Please upload a valid file.';
             let errorNote = idleNote;
 
@@ -906,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getLanguageOptionLabel(option) {
-        return option.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || ';
+        return option.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || '';
     }
 
     function getLanguageFlagSrc(code) {
@@ -1236,7 +1236,7 @@ function initializeQuantitySelectors() {
             const rawValue = input.value.trim();
             let nextValue;
 
-            if (rawValue === ') {
+            if (rawValue === '') {
                 nextValue = lastValidValue;
             } else {
                 const parsedValue = parseInt(rawValue, 10);
@@ -1302,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', initializeQuantitySelectors);
 function isLettersAndSpaces(value) {
     const trimmedValue = value.trim();
 
-    if (trimmedValue === ') {
+    if (trimmedValue === '') {
         return false;
     }
 
@@ -1403,70 +1403,160 @@ if (document.readyState === 'loading') {
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const triggers = Array.from(document.querySelectorAll('[data-modal-target]'));
+    const overlays = Array.from(document.querySelectorAll('.modal-overlay'));
 
-    // 1. Open Modal Logic
-    const openTriggers = document.querySelectorAll('[data-modal-target]');
+    if (triggers.length === 0 || overlays.length === 0) {
+        return;
+    }
 
-    openTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const modalId = trigger.getAttribute('data-modal-target');
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                openModal(modal);
-            }
-        });
-    });
-
-    // 2. Close Modal Logic
-    const closeButtons = document.querySelectorAll('[data-close-modal], .modal-close');
-
-    closeButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const modalOverlay = button.closest('.modal-overlay');
-            closeModal(modalOverlay);
-        });
-    });
-
-    // Close on Backdrop Click
-    const overlays = document.querySelectorAll('.modal-overlay');
     overlays.forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                closeModal(overlay);
+        overlay.inert = true;
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.querySelector('.modal')?.setAttribute('tabindex', '-1');
+
+        overlay.querySelectorAll('[data-close-modal], .modal-close').forEach(button => {
+            if (button.tagName === 'BUTTON') {
+                button.setAttribute('type', 'button');
+            }
+
+            button.addEventListener('click', () => {
+                closeModal(overlay, true);
+            });
+        });
+
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay) {
+                closeModal(overlay, true);
             }
         });
     });
 
-    // Close on Escape Key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const openModal = document.querySelector('.modal-overlay.is-open, .modal-overlay.is-visible');
-            if (openModal) {
-                closeModal(openModal);
+    triggers.forEach(trigger => {
+        const modalId = trigger.getAttribute('data-modal-target');
+        if (!modalId) {
+            return;
+        }
+
+        trigger.setAttribute('aria-controls', modalId);
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-haspopup', 'dialog');
+
+        trigger.addEventListener('click', () => {
+            const overlay = overlays.find(item => item.id === modalId);
+            if (!overlay) {
+                return;
             }
+
+            openModal(overlay, trigger);
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        const openOverlay = overlays.find(overlay => overlay.classList.contains('is-open'));
+        if (!openOverlay) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            closeModal(openOverlay, true);
+            return;
+        }
+
+        if (event.key === 'Tab') {
+            trapModalFocus(openOverlay, event);
         }
     });
 
-    // --- Functions ---
-
-    function openModal(modal) {
-        if (!modal) return;
-        modal.classList.add('is-open');
-        modal.classList.remove('is-visible');
-        modal.setAttribute('aria-hidden', 'false');
-
-        // Disable page scroll
-        document.body.style.overflow = 'hidden';
+    function getFocusableElements(root) {
+        return Array.from(root.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
     }
 
-    function closeModal(modal) {
-        if (!modal) return;
-        modal.classList.remove('is-open');
-        modal.classList.remove('is-visible');
-        modal.setAttribute('aria-hidden', 'true');
+    function trapModalFocus(overlay, event) {
+        const panel = overlay.querySelector('.modal');
+        if (!panel) {
+            return;
+        }
 
-        // Re-enable page scroll
-        document.body.style.overflow = '';
+        const focusable = getFocusableElements(panel);
+        if (focusable.length === 0) {
+            event.preventDefault();
+            panel.focus({ preventScroll: true });
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus({ preventScroll: true });
+            return;
+        }
+
+        if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus({ preventScroll: true });
+        }
+    }
+
+    function syncTriggerState(targetId, isOpen) {
+        triggers
+            .filter(trigger => trigger.getAttribute('data-modal-target') === targetId)
+            .forEach(trigger => {
+                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+    }
+
+    function syncBodyLock() {
+        document.body.classList.toggle('modal-open', overlays.some(overlay => overlay.classList.contains('is-open')));
+    }
+
+    function openModal(overlay, trigger) {
+        if (!overlay) {
+            return;
+        }
+
+        overlays.forEach(otherOverlay => {
+            if (otherOverlay !== overlay) {
+                closeModal(otherOverlay, false);
+            }
+        });
+
+        overlay.inert = false;
+        overlay.classList.add('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay._lastTrigger = trigger;
+        syncTriggerState(overlay.id, true);
+        syncBodyLock();
+
+        requestAnimationFrame(() => {
+            const panel = overlay.querySelector('.modal');
+            const initialFocus = overlay.querySelector('[data-modal-initial-focus]')
+                || (panel ? getFocusableElements(panel)[0] : null)
+                || panel;
+
+            initialFocus?.focus({ preventScroll: true });
+        });
+    }
+
+    function closeModal(overlay, restoreFocus) {
+        if (!overlay) {
+            return;
+        }
+
+        overlay.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.inert = true;
+        syncTriggerState(overlay.id, false);
+        syncBodyLock();
+
+        if (restoreFocus && overlay._lastTrigger) {
+            overlay._lastTrigger.focus({ preventScroll: true });
+        }
     }
 });
 
@@ -2177,7 +2267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         syncSelectedOption(true);
-        updateFilter(');
+        updateFilter('');
 
         if (isDisabled()) {
             combobox.setAttribute('aria-disabled', 'true');
@@ -2319,7 +2409,7 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.setAttribute('aria-hidden', 'true');
             input.setAttribute('aria-expanded', 'false');
             setActiveOption(null);
-            updateFilter(');
+            updateFilter('');
 
             if (restoreSelection) {
                 input.value = selectedOption ? getOptionLabel(selectedOption) : '';
@@ -2377,7 +2467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const normalizedQuery = query.trim().toLowerCase();
 
             options.forEach(option => {
-                const matches = normalizedQuery === ' || getOptionLabel(option).toLowerCase().includes(normalizedQuery);
+                const matches = normalizedQuery === '' || getOptionLabel(option).toLowerCase().includes(normalizedQuery);
                 option.hidden = !matches;
             });
 
@@ -2394,7 +2484,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateClearState() {
-            clearButton.disabled = isDisabled() || (input.value.trim() === ' && (!valueField || valueField.value === '));
+            clearButton.disabled = isDisabled() || (input.value.trim() === '' && (!valueField || valueField.value === '')); 
         }
 
         function setActiveOption(option) {
@@ -3155,7 +3245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return Array.from({ length: 7 }, (_, index) => {
             const weekday = new Date(mondayStart);
             weekday.setDate(mondayStart.getDate() + index);
-            return formatter.format(weekday).replace('.', ');
+            return formatter.format(weekday).replace('.', '');
         });
     }
 
