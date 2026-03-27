@@ -110,6 +110,11 @@ const DESIGN_TOKENS = {
         'lg': '16px',
         'xl': '24px',
         'btn': '20px',
+        'btn-xl': '20px',
+        'btn-lg': '20px',
+        'btn-md': '18px',
+        'btn-sm': '14px',
+        'btn-xs': '10px',
         'full': '9999px',
     },
     shadows: {

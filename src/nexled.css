@@ -90,6 +90,11 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-btn: 20px;
+  --radius-btn-xl: 20px;
+  --radius-btn-lg: 20px;
+  --radius-btn-md: 18px;
+  --radius-btn-sm: 14px;
+  --radius-btn-xs: 10px;
   --radius-full: 9999px;
 
   --shadow-btn-default: 0 6px 14px rgba(135, 135, 135, 0.20);
@@ -269,7 +274,6 @@ body::-webkit-scrollbar-thumb:active,
 }
 
 @media (min-width: 768px) {
-
   html,
   body,
   .custom-scrollbar {
@@ -633,6 +637,7 @@ body::-webkit-scrollbar-thumb:active,
   padding-inline: var(--space-40);
   font-size: var(--font-size-button-lg);
   line-height: var(--line-height-button-lg);
+  border-radius: var(--radius-btn-xl);
 }
 
 .btn-lg {
@@ -640,6 +645,7 @@ body::-webkit-scrollbar-thumb:active,
   padding-inline: var(--space-32);
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
+  border-radius: var(--radius-btn-lg);
 }
 
 .btn-md {
@@ -647,7 +653,7 @@ body::-webkit-scrollbar-thumb:active,
   padding-inline: var(--space-24);
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-btn-md);
 }
 
 .btn-sm {
@@ -655,7 +661,7 @@ body::-webkit-scrollbar-thumb:active,
   padding-inline: var(--space-16);
   font-size: var(--font-size-body-lg);
   line-height: var(--line-height-body-lg);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-btn-sm);
 }
 
 .btn-xs {
@@ -663,7 +669,7 @@ body::-webkit-scrollbar-thumb:active,
   padding-inline: var(--space-12);
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-btn-xs);
 }
 
 /* NAVIGATION BAR */
@@ -914,21 +920,21 @@ body::-webkit-scrollbar-thumb:active,
 
 .badge-lg {
   padding: var(--space-4) var(--space-12);
-  border-radius: var(--radius-xs);
+  border-radius: var(--responsive-badge-lg-radius);
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-body-xs);
 }
 
 .badge-md {
   padding: var(--space-4) var(--space-12);
-  border-radius: var(--radius-xs);
+  border-radius: var(--responsive-badge-md-radius);
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-body-xs);
 }
 
 .badge-sm {
   padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-xs);
+  border-radius: var(--responsive-badge-sm-radius);
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-overline);
   letter-spacing: var(--letter-spacing-wide);
@@ -955,7 +961,7 @@ body::-webkit-scrollbar-thumb:active,
   color: var(--color-black);
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-semibold);
-  box-shadow: var(--shadow-btn-default);
+  box-shadow: none;
   user-select: none;
 }
 
@@ -1921,13 +1927,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .checkbox-wrapper input[type="checkbox"]+i {
+  display: grid;
+  place-items: center;
+  line-height: 1;
   color: var(--color-white);
   opacity: 0;
-  transform: scale(var(--scale-press-deep));
   transition:
     opacity var(--motion-duration-fast) var(--motion-ease-premium),
-    transform var(--motion-duration-fast) var(--motion-ease-premium),
     color var(--motion-duration-fast) var(--motion-ease-premium);
+}
+
+.checkbox-wrapper input[type="checkbox"]+i::before {
+  display: block;
+  line-height: 1;
 }
 
 .checkbox-wrapper input[type="checkbox"]:hover {
@@ -1957,7 +1969,6 @@ input[type=number]::-webkit-outer-spin-button {
 .checkbox-wrapper input[type="checkbox"]:checked+i,
 .checkbox-wrapper input[type="checkbox"]:indeterminate+i {
   opacity: 1;
-  transform: scale(1);
 }
 
 .checkbox-wrapper input[type="checkbox"]:focus-visible {
@@ -1988,13 +1999,17 @@ input[type=number]::-webkit-outer-spin-button {
 .checkbox-sm input[type="checkbox"] {
   width: var(--size-checkbox-sm);
   height: var(--size-checkbox-sm);
-  border-radius: var(--radius-2xs);
+  border-radius: var(--radius-xs);
 }
 
 .checkbox-md input[type="checkbox"] {
   width: var(--size-checkbox-sm);
   height: var(--size-checkbox-sm);
   border-radius: var(--radius-xs);
+}
+
+.checkbox-wrapper.checkbox-md input[type="checkbox"]+i {
+  font-size: var(--space-12) !important;
 }
 
 .checkbox-lg input[type="checkbox"] {
@@ -2016,6 +2031,10 @@ input[type=number]::-webkit-outer-spin-button {
   .checkbox-md input[type="checkbox"] {
     width: var(--size-checkbox-md);
     height: var(--size-checkbox-md);
+  }
+
+  .checkbox-wrapper.checkbox-md input[type="checkbox"]+i {
+    font-size: var(--space-16) !important;
   }
 
   .checkbox-lg input[type="checkbox"] {
@@ -9790,6 +9809,14 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   --responsive-btn-xs-font: var(--font-size-body-sm);
   --responsive-btn-xs-line: var(--line-height-body-sm);
   --responsive-btn-xs-pad: var(--space-12);
+  --responsive-btn-xl-radius: min(var(--radius-btn-xl), calc(var(--responsive-btn-xl-h) / 4));
+  --responsive-btn-lg-radius: min(var(--radius-btn-lg), calc(var(--responsive-btn-lg-h) / 4));
+  --responsive-btn-md-radius: min(var(--radius-btn-md), calc(var(--responsive-btn-md-h) / 4));
+  --responsive-btn-sm-radius: min(var(--radius-btn-sm), calc(var(--responsive-btn-sm-h) / 4));
+  --responsive-btn-xs-radius: min(var(--radius-btn-xs), calc(var(--responsive-btn-xs-h) / 4));
+  --responsive-badge-lg-radius: min(var(--radius-sm), calc((var(--line-height-body-xs) + (var(--space-4) * 2)) / 4));
+  --responsive-badge-md-radius: min(var(--radius-sm), calc((var(--line-height-body-xs) + (var(--space-4) * 2)) / 4));
+  --responsive-badge-sm-radius: min(var(--radius-sm), calc((var(--responsive-meta-line) + (var(--space-4) * 2)) / 4));
   --responsive-drawer-w: var(--layout-narrow);
   --responsive-modal-w: var(--layout-narrow);
   --responsive-search-w: var(--layout-standard);
@@ -10041,6 +10068,7 @@ textarea,
   padding-inline: var(--responsive-btn-xl-pad);
   font-size: var(--responsive-btn-xl-font);
   line-height: var(--responsive-btn-xl-line);
+  border-radius: var(--responsive-btn-xl-radius);
 }
 
 .btn-lg {
@@ -10049,6 +10077,7 @@ textarea,
   padding-inline: var(--responsive-btn-lg-pad);
   font-size: var(--responsive-btn-lg-font);
   line-height: var(--responsive-btn-lg-line);
+  border-radius: var(--responsive-btn-lg-radius);
 }
 
 .btn-md {
@@ -10057,6 +10086,7 @@ textarea,
   padding-inline: var(--responsive-btn-md-pad);
   font-size: var(--responsive-btn-md-font);
   line-height: var(--responsive-btn-md-line);
+  border-radius: var(--responsive-btn-md-radius);
 }
 
 .btn-sm {
@@ -10065,6 +10095,7 @@ textarea,
   padding-inline: var(--responsive-btn-sm-pad);
   font-size: var(--responsive-btn-sm-font);
   line-height: var(--responsive-btn-sm-line);
+  border-radius: var(--responsive-btn-sm-radius);
 }
 
 .btn-xs {
@@ -10073,6 +10104,7 @@ textarea,
   padding-inline: var(--responsive-btn-xs-pad);
   font-size: var(--responsive-btn-xs-font);
   line-height: var(--responsive-btn-xs-line);
+  border-radius: var(--responsive-btn-xs-radius);
 }
 
 .badge-lg,
@@ -10083,16 +10115,17 @@ textarea,
 
 .badge-lg {
   padding: var(--space-4) var(--space-12);
-  border-radius: var(--radius-xs);
+  border-radius: var(--responsive-badge-lg-radius);
 }
 
 .badge-md {
   padding: var(--space-4) var(--space-12);
-  border-radius: var(--radius-xs);
+  border-radius: var(--responsive-badge-md-radius);
 }
 
 .badge-sm {
   padding: var(--space-4) var(--space-8);
+  border-radius: var(--responsive-badge-sm-radius);
 }
 
 .btn-icon.btn-xl,
@@ -10321,6 +10354,9 @@ textarea,
     --responsive-btn-xs-font: var(--font-size-body-sm);
     --responsive-btn-xs-line: var(--line-height-body-sm);
     --responsive-btn-xs-pad: var(--space-12);
+    --responsive-badge-lg-radius: min(var(--radius-sm), calc((var(--line-height-body-sm) + (var(--space-8) * 2)) / 4));
+    --responsive-badge-md-radius: min(var(--radius-sm), calc((var(--line-height-body-sm) + (var(--space-4) * 2)) / 4));
+    --responsive-badge-sm-radius: min(var(--radius-sm), calc((var(--responsive-meta-line) + (var(--space-4) * 2)) / 4));
   }
 
   .nav-bar {
@@ -10370,12 +10406,12 @@ textarea,
 
   .badge-lg {
     padding: var(--space-8) var(--space-16);
-    border-radius: var(--radius-sm);
+    border-radius: var(--responsive-badge-lg-radius);
   }
 
   .badge-md {
     padding: var(--space-4) var(--space-12);
-    border-radius: var(--radius-xs);
+    border-radius: var(--responsive-badge-md-radius);
   }
 
   .avatar-sm {
