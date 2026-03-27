@@ -1,11 +1,11 @@
-# Documentation Layout
+﻿# Documentation Layout
 
 ## Stable Published Paths
 
 These paths intentionally stay at the project root because they are public entry points or CDN-linked assets:
 
 - index.html
-- atoms.html
+- Atoms.html
 - molecules.html
 - organisms.html
 - tokens.html
@@ -21,7 +21,7 @@ These paths intentionally stay at the project root because they are public entry
 
 ## Docs Folders
 
-- docs/guides/ — responsive rules, page recipes, consumer build guide, demo checklist
-- docs/project/ — changelog, consumers registry, roadmap, prompt template, skills notes, working chat notes
-- starter-kit/docs/ — starter-kit copies of support documentation
-- starter-kit/scripts/ — starter-kit helper scripts
+- docs/guides/ â€” responsive rules, page recipes, consumer build guide, demo checklist
+- docs/project/ â€” changelog, consumers registry, roadmap, prompt template, skills notes, working chat notes
+- starter-kit/docs/ â€” starter-kit copies of support documentation
+- starter-kit/scripts/ â€” starter-kit helper scripts

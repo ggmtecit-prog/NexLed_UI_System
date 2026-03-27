@@ -5,7 +5,7 @@
  * Checks HTML files for NexLed Design System compliance.
  *
  * Usage: node scripts/audit-compliance.js <file.html> [file2.html ...]
- * Example: node scripts/audit-compliance.js index.html atoms.html
+ * Example: node scripts/audit-compliance.js index.html Atoms.html
  */
 
 const fs = require('fs');
@@ -21,8 +21,36 @@ const VIOLATIONS = {
     MISSING_TAILWIND: 'MISSING_TAILWIND',
     MISSING_FONTS: 'MISSING_FONTS',
     WRONG_HEAD_ORDER: 'WRONG_HEAD_ORDER',
+    INLINE_EVENT_HANDLER: 'INLINE_EVENT_HANDLER',
+    BROKEN_LOCAL_LINK: 'BROKEN_LOCAL_LINK',
 };
 
+function hasExactPathCase(targetPath) {
+    const resolvedPath = path.resolve(targetPath);
+    const parsed = path.parse(resolvedPath);
+
+    if (!fs.existsSync(resolvedPath)) {
+        return false;
+    }
+
+    let current = parsed.root;
+    const segments = resolvedPath.slice(parsed.root.length).split(path.sep).filter(Boolean);
+
+    for (const segment of segments) {
+        const entries = fs.readdirSync(current);
+        if (!entries.includes(segment)) {
+            return false;
+        }
+
+        current = path.join(current, segment);
+    }
+
+    return true;
+}
+
+function isExternalHref(href) {
+    return /^(?:[a-z]+:|#|\/\/)/i.test(href);
+}
 function auditFile(filePath) {
     const absolutePath = path.resolve(filePath);
     if (!fs.existsSync(absolutePath)) {
@@ -43,7 +71,7 @@ function auditFile(filePath) {
                 type: VIOLATIONS.STYLE_BLOCK,
                 line: lineNum,
                 severity: 'CRITICAL',
-                message: '<style> block found — all styling must come from nexled.css',
+                message: '<style> block found â€” all styling must come from nexled.css',
                 content: line.trim(),
             });
         }
@@ -54,7 +82,7 @@ function auditFile(filePath) {
                 type: VIOLATIONS.INLINE_STYLE,
                 line: lineNum,
                 severity: 'CRITICAL',
-                message: 'Inline style="" attribute found — use NexLed classes instead',
+                message: 'Inline style="" attribute found â€” use NexLed classes instead',
                 content: line.trim(),
             });
         }
@@ -73,7 +101,7 @@ function auditFile(filePath) {
                             type: VIOLATIONS.ARBITRARY_TAILWIND,
                             line: lineNum,
                             severity: 'HIGH',
-                            message: `Arbitrary Tailwind value "${arb}" — use a config-cdn.js token instead`,
+                            message: `Arbitrary Tailwind value "${arb}" â€” use a config-cdn.js token instead`,
                             content: line.trim(),
                         });
                     });
@@ -88,7 +116,7 @@ function auditFile(filePath) {
                 type: VIOLATIONS.HARDCODED_HEX,
                 line: lineNum,
                 severity: 'HIGH',
-                message: 'Hardcoded hex color in class attribute — use NexLed color token names',
+                message: 'Hardcoded hex color in class attribute â€” use NexLed color token names',
                 content: line.trim(),
             });
         }
@@ -114,7 +142,7 @@ function auditFile(filePath) {
                 type: VIOLATIONS.MISSING_CDN_CONFIG,
                 line: 0,
                 severity: 'CRITICAL',
-                message: 'config-cdn.js not found in <head> — NexLed tokens will not load',
+                message: 'config-cdn.js not found in <head> â€” NexLed tokens will not load',
                 content: '',
             });
         }
@@ -124,7 +152,7 @@ function auditFile(filePath) {
                 type: VIOLATIONS.MISSING_CDN_CSS,
                 line: 0,
                 severity: 'CRITICAL',
-                message: 'nexled.css not found in <head> — NexLed components will not load',
+                message: 'nexled.css not found in <head> â€” NexLed components will not load',
                 content: '',
             });
         }
@@ -186,6 +214,8 @@ if (files.length === 0) {
     console.log('  - No arbitrary Tailwind values (e.g., w-[320px])');
     console.log('  - No hardcoded hex colors in class attributes');
     console.log('  - Required <head> block elements present and in order');
+    console.log('  - No inline event handlers except approved onerror asset fallbacks');
+    console.log('  - Local HTML href values resolve with exact path casing');
     process.exit(0);
 }
 
@@ -221,3 +251,5 @@ if (totalViolations === 0) {
 }
 
 process.exit(totalViolations > 0 ? 1 : 0);
+
+

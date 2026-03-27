@@ -4325,7 +4325,6 @@ button.language-selector-trigger .language-selector-value {
   border-radius: var(--radius-md);
   background: var(--color-white);
   box-shadow: var(--shadow-btn-hover);
-  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   visibility: hidden;
@@ -9774,7 +9773,6 @@ body.search-overlay-open {
 body {
   font-size: var(--responsive-body-size);
   line-height: var(--responsive-body-line);
-  overflow-x: hidden;
 }
 
 .btn,
@@ -10481,6 +10479,7 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
 
 

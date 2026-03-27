@@ -1,10 +1,10 @@
-# NexLed UI System — Global Roadmap
+﻿# NexLed UI System â€” Global Roadmap
 
 Current state snapshot taken 2026-03-25.
 
 ---
 
-## Phase 0 — Foundation
+## Phase 0 â€” Foundation
 
 Fix the token and responsive CSS layer before touching any component.
 
@@ -28,7 +28,7 @@ Fix the token and responsive CSS layer before touching any component.
 
 ---
 
-## Phase 1 — Batch 1 Components
+## Phase 1 â€” Batch 1 Components
 
 Core interactive controls.
 
@@ -36,9 +36,9 @@ Core interactive controls.
 
 ### Cycle per component
 
-1. **Fix** — structural issues, missing token connections, broken proportions.
-2. **Responsive** — add breakpoint rules per the responsive contract.
-3. **States** — hover, active, focus-visible, disabled, ARIA.
+1. **Fix** â€” structural issues, missing token connections, broken proportions.
+2. **Responsive** â€” add breakpoint rules per the responsive contract.
+3. **States** â€” hover, active, focus-visible, disabled, ARIA.
 4. **Light polish.**
 
 ### Known issues (Buttons)
@@ -50,11 +50,11 @@ Core interactive controls.
 
 ### Where
 
-`src/nexled.css`, verified in `atoms.html` and `molecules.html`
+`src/nexled.css`, verified in `Atoms.html` and `molecules.html`
 
 ---
 
-## Phase 2 — Batch 2 Components
+## Phase 2 â€” Batch 2 Components
 
 Data display and navigation controls.
 
@@ -76,7 +76,7 @@ Same 4-step cycle as Phase 1.
 
 ---
 
-## Phase 3 — Batch 3 Components
+## Phase 3 â€” Batch 3 Components
 
 Layout and structural components.
 
@@ -98,7 +98,7 @@ Same 4-step cycle as Phase 1.
 
 ---
 
-## Phase 4 — Animation
+## Phase 4 â€” Animation
 
 Add motion system-wide after all three batches are stable.
 
@@ -113,7 +113,7 @@ Add motion system-wide after all three batches are stable.
 
 ---
 
-## Phase 5 — Final Global Polish
+## Phase 5 â€” Final Global Polish
 
 Run the full `docs/guides/DEMO_CHECKLIST.md` across every page.
 
@@ -123,7 +123,7 @@ Run the full `docs/guides/DEMO_CHECKLIST.md` across every page.
 
 ### Pages to validate
 
-- `atoms.html`
+- `Atoms.html`
 - `molecules.html`
 - `organisms.html`
 - `tokens.html`
@@ -141,7 +141,7 @@ Run the full `docs/guides/DEMO_CHECKLIST.md` across every page.
 
 ---
 
-## Phase 6 — Expand Page Demos
+## Phase 6 â€” Expand Page Demos
 
 Only one demo exists (`page-demos/simple-brand.html`). Four more recipes are documented in `docs/guides/PAGE_RECIPES.md`:
 
@@ -159,7 +159,7 @@ Build each after the component system is stable and responsive.
 | Phase | What | Files |
 |-------|------|-------|
 | 0 | Fix foundation tokens + add responsive CSS scaffolding | `config-cdn.js`, `nexled.css` |
-| 1 | Fix + responsify Batch 1 (Buttons, Inputs, Dropdown, Accordion, Modal, Drawer) | `nexled.css` then `atoms.html`, `molecules.html` |
+| 1 | Fix + responsify Batch 1 (Buttons, Inputs, Dropdown, Accordion, Modal, Drawer) | `nexled.css` then `Atoms.html`, `molecules.html` |
 | 2 | Fix + responsify Batch 2 (Table, Pagination, Empty State, Tabs, Segmented) | `nexled.css` then `molecules.html` |
 | 3 | Fix + responsify Batch 3 (Carousel, Footer, Announcement, Layout, Headers) | `nexled.css` then `molecules.html`, `organisms.html` |
 | 4 | Add animations system-wide | `nexled.css` |
@@ -171,3 +171,4 @@ Build each after the component system is stable and responsive.
 ## Current position
 
 Start of Phase 0. Responsive rules are written but nothing is implemented in the actual CSS. Buttons are the first visible symptom of that gap.
+

@@ -3,37 +3,72 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const accordionTriggers = document.querySelectorAll('#accordion .accordion-trigger');
+    const accordionTriggers = Array.from(document.querySelectorAll('.accordion .accordion-trigger'));
+
+    if (accordionTriggers.length === 0) {
+        return;
+    }
+
+    function getAccordionContent(trigger) {
+        const content = trigger.nextElementSibling;
+        return content && content.classList.contains('accordion-content') ? content : null;
+    }
+
+    function syncAccordionState(trigger, isExpanded) {
+        const item = trigger.closest('.accordion-item');
+        const content = getAccordionContent(trigger);
+
+        trigger.setAttribute('aria-expanded', String(isExpanded));
+        item?.classList.toggle('is-open', isExpanded);
+
+        if (!content) {
+            return;
+        }
+
+        const contentHeight = `${content.scrollHeight}px`;
+        content.style.setProperty('--accordion-content-height', contentHeight);
+
+        if (!isExpanded) {
+            requestAnimationFrame(() => {
+                content.style.setProperty('--accordion-content-height', '0px');
+            });
+        }
+    }
 
     accordionTriggers.forEach(trigger => {
+        const item = trigger.closest('.accordion-item');
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true' || item?.classList.contains('is-open');
+        syncAccordionState(trigger, isExpanded);
+
         trigger.addEventListener('click', () => {
             if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') {
                 return;
             }
 
-            const item = trigger.closest('.accordion-item');
-            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-
-            trigger.setAttribute('aria-expanded', String(!isExpanded));
-            item?.classList.toggle('is-open', !isExpanded);
-
-            // Optional: Close others in the same group (solo mode)
-            // Uncomment to enable only-one-open-at-a-time behavior
-            /*
-            if (!isExpanded) {
-                accordionTriggers.forEach(otherTrigger => {
-                    if (otherTrigger !== trigger && otherTrigger.getAttribute('aria-expanded') === 'true') {
-                        otherTrigger.click();
-                    }
-                });
-            }
-            */
+            const nextValue = trigger.getAttribute('aria-expanded') !== 'true';
+            syncAccordionState(trigger, nextValue);
         });
     });
-});
 
+    const syncOpenAccordions = () => {
+        accordionTriggers.forEach(trigger => {
+            const content = getAccordionContent(trigger);
+            if (!content) {
+                return;
+            }
 
-/**
+            if (trigger.getAttribute('aria-expanded') === 'true') {
+                content.style.setProperty('--accordion-content-height', `${content.scrollHeight}px`);
+                return;
+            }
+
+            content.style.setProperty('--accordion-content-height', '0px');
+        });
+    };
+
+    window.addEventListener('resize', syncOpenAccordions);
+    requestAnimationFrame(syncOpenAccordions);
+});/**
  * Announcement Bar Component Logic
  */
 
@@ -3674,3 +3709,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
