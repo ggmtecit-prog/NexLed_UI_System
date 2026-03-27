@@ -1,4 +1,4 @@
-﻿/*
+/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -3835,12 +3835,14 @@ body > aside.hidden.lg\:block {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all var(--motion-duration-default) var(--motion-ease-premium);
+  transition:
+    max-height var(--motion-duration-default) var(--motion-ease-premium),
+    opacity var(--motion-duration-default) var(--motion-ease-premium);
 }
 
-.accordion-trigger[aria-expanded="true"]+.accordion-content,
+.accordion-trigger[aria-expanded="true"] + .accordion-content,
 .accordion-item.is-open .accordion-content {
-  max-height: var(--size-btn-xl-w);
+  max-height: var(--accordion-content-height, 999rem);
   opacity: 1;
 }
 
@@ -7823,6 +7825,29 @@ body.search-overlay-open {
   margin-bottom: var(--space-48);
 }
 
+[data-reveal] {
+  --reveal-offset: var(--space-16);
+}
+
+[data-reveal="hero"] {
+  --reveal-offset: var(--space-20);
+}
+
+html.has-scroll-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-offset));
+  transition:
+    opacity var(--motion-duration-default) var(--motion-ease-premium),
+    transform var(--motion-duration-default) var(--motion-ease-premium);
+  will-change: opacity, transform;
+}
+
+html.has-scroll-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
 /* LOADING */
 .loading-grid {
   width: 100%;
@@ -8086,6 +8111,13 @@ body.search-overlay-open {
 
 @media (prefers-reduced-motion: reduce) {
 
+  html.has-scroll-reveal [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
   .btn,
   .btn>i,
   .skeleton {
@@ -8138,6 +8170,13 @@ body.search-overlay-open {
     transition-duration: var(--motion-duration-fast);
   }
 
+  .accordion-content,
+  .accordion-label,
+  .accordion-icon,
+  .dropdown-menu,
+  .dropdown-arrow,
+  .language-selector-menu,
+  .language-selector-arrow,
   .range-slider-track::before,
   .range-slider-selection,
   .range-slider-input::-webkit-slider-thumb,

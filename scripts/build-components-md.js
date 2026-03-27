@@ -19,7 +19,7 @@ const OUTPUT_PATH = path.join(ROOT, 'COMPONENTS.md');
 
 /**
  * Extract component class selectors from nexled.css
- * Groups them by section comments such as SECTION_NAME.
+ * Groups them by section comment blocks such as SECTION_NAME.
  */
 function extractCSSComponents(cssContent) {
     const components = {};

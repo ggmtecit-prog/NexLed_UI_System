@@ -1,4 +1,13 @@
-﻿/**
+const canUseScrollReveal = typeof window !== 'undefined'
+    && typeof document !== 'undefined'
+    && typeof window.IntersectionObserver === 'function'
+    && (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+if (canUseScrollReveal) {
+    document.documentElement.classList.add('has-scroll-reveal');
+}
+
+/**
  * Accordion Component Logic
  */
 
@@ -68,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', syncOpenAccordions);
     requestAnimationFrame(syncOpenAccordions);
-});/**
+});
+
+/**
  * Announcement Bar Component Logic
  */
 
@@ -112,6 +123,22 @@ function closeAlert(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-dismiss-surface]').forEach(trigger => {
+        if (trigger.tagName === 'BUTTON') {
+            trigger.setAttribute('type', 'button');
+        }
+    });
+
+    document.querySelectorAll('[data-toggle-pressed]').forEach(trigger => {
+        if (trigger.tagName === 'BUTTON') {
+            trigger.setAttribute('type', 'button');
+        }
+
+        if (!trigger.hasAttribute('aria-pressed')) {
+            trigger.setAttribute('aria-pressed', 'false');
+        }
+    });
+
     document.querySelectorAll('input[type="checkbox"][data-state="indeterminate"]').forEach(checkbox => {
         checkbox.indeterminate = true;
         syncIndeterminateCheckbox(checkbox);
@@ -120,6 +147,20 @@ document.addEventListener('DOMContentLoaded', () => {
             syncIndeterminateCheckbox(checkbox);
         });
     });
+});
+
+document.addEventListener('click', event => {
+    const dismissTrigger = event.target.closest('[data-dismiss-surface]');
+    if (dismissTrigger) {
+        dismissSurfaceById(dismissTrigger.dataset.dismissSurface);
+        return;
+    }
+
+    const toggleTrigger = event.target.closest('[data-toggle-pressed]');
+    if (toggleTrigger) {
+        const isPressed = toggleTrigger.getAttribute('aria-pressed') === 'true';
+        toggleTrigger.setAttribute('aria-pressed', String(!isPressed));
+    }
 });
 
 function syncIndeterminateCheckbox(checkbox) {
@@ -150,11 +191,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hover-trigger dropdowns (data-dropdown-trigger="hover")
     // Add data-dropdown-trigger="hover" to a .dropdown wrapper to open on mouseenter/mouseleave.
     // To switch to click: remove the attribute. To switch to JS hover: add it back.
+    const supportsHoverTrigger = typeof window.matchMedia === 'function'
+        && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
     dropdowns
-        .filter(d => d.dataset.dropdownTrigger === 'hover')
+        .filter(d => d.dataset.dropdownTrigger === 'hover' && supportsHoverTrigger)
         .forEach(dropdown => {
             const idx = enabledDropdowns.indexOf(dropdown);
-            if (idx !== -1) enabledDropdowns.splice(idx, 1);
+            if (idx !== -1) {
+                enabledDropdowns.splice(idx, 1);
+            }
+
             let closeTimer;
             dropdown.addEventListener('mouseenter', () => {
                 clearTimeout(closeTimer);
@@ -441,6 +488,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+/**
+ * Scroll Reveal Logic
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const revealTargets = Array.from(document.querySelectorAll('[data-reveal]'));
+
+    if (revealTargets.length === 0) {
+        return;
+    }
+
+    const revealTarget = target => {
+        target.classList.add('is-revealed');
+    };
+
+    if (!canUseScrollReveal) {
+        revealTargets.forEach(revealTarget);
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+
+            revealTarget(entry.target);
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.16,
+    });
+
+    revealTargets.forEach(target => {
+        observer.observe(target);
+    });
+});
+
 /**
  * Hyperlinks Demo Logic
  */
@@ -3379,6 +3463,178 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function isStickyPicker(picker) {
         return picker.dataset.datePickerSticky === 'true';
+    }
+});
+
+/**
+ * Search Overlay Component Logic
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const overlays = Array.from(document.querySelectorAll('.search-overlay[data-search-overlay-modal="true"]'));
+    const triggers = Array.from(document.querySelectorAll('[data-search-overlay-target]'));
+
+    if (overlays.length === 0 || triggers.length === 0) {
+        return;
+    }
+
+    let openOverlay = null;
+
+    overlays.forEach(overlay => {
+        overlay.inert = !overlay.classList.contains('is-open');
+        overlay.setAttribute('aria-hidden', overlay.classList.contains('is-open') ? 'false' : 'true');
+
+        overlay.querySelector('.search-overlay-panel')?.setAttribute('tabindex', '-1');
+
+        overlay.querySelectorAll('[data-search-overlay-close]').forEach(button => {
+            if (button.tagName === 'BUTTON') {
+                button.setAttribute('type', 'button');
+            }
+
+            button.addEventListener('click', () => {
+                closeSearchOverlay(overlay, true);
+            });
+        });
+
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay) {
+                closeSearchOverlay(overlay, true);
+            }
+        });
+    });
+
+    triggers.forEach(trigger => {
+        const targetId = trigger.dataset.searchOverlayTarget;
+        if (!targetId) {
+            return;
+        }
+
+        const overlay = document.getElementById(targetId);
+        if (!overlay) {
+            return;
+        }
+
+        if (trigger.tagName === 'BUTTON') {
+            trigger.setAttribute('type', 'button');
+        }
+
+        trigger.setAttribute('aria-controls', targetId);
+        trigger.setAttribute('aria-haspopup', 'dialog');
+        trigger.setAttribute('aria-expanded', overlay.classList.contains('is-open') ? 'true' : 'false');
+
+        trigger.addEventListener('click', () => {
+            if (openOverlay === overlay) {
+                closeSearchOverlay(overlay, true);
+                return;
+            }
+
+            openSearchOverlay(overlay, trigger);
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (!openOverlay) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            closeSearchOverlay(openOverlay, true);
+            return;
+        }
+
+        if (event.key === 'Tab') {
+            trapSearchOverlayFocus(openOverlay, event);
+        }
+    });
+
+    function getFocusableElements(root) {
+        return Array.from(root.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+            .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+    }
+
+    function trapSearchOverlayFocus(overlay, event) {
+        const panel = overlay.querySelector('.search-overlay-panel');
+        if (!panel) {
+            return;
+        }
+
+        const focusable = getFocusableElements(panel);
+        if (focusable.length === 0) {
+            event.preventDefault();
+            panel.focus({ preventScroll: true });
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus({ preventScroll: true });
+            return;
+        }
+
+        if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus({ preventScroll: true });
+        }
+    }
+
+    function syncTriggerState(targetId, isOpen) {
+        triggers
+            .filter(trigger => trigger.dataset.searchOverlayTarget === targetId)
+            .forEach(trigger => {
+                trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+    }
+
+    function syncBodyLock() {
+        document.body.classList.toggle('search-overlay-open', overlays.some(overlay => overlay.classList.contains('is-open')));
+    }
+
+    function openSearchOverlay(overlay, trigger) {
+        overlays.forEach(otherOverlay => {
+            if (otherOverlay !== overlay) {
+                closeSearchOverlay(otherOverlay, false);
+            }
+        });
+
+        overlay.inert = false;
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay._lastTrigger = trigger;
+        openOverlay = overlay;
+        syncTriggerState(overlay.id, true);
+        syncBodyLock();
+
+        requestAnimationFrame(() => {
+            const panel = overlay.querySelector('.search-overlay-panel');
+            const initialFocus = overlay.querySelector('[data-search-overlay-input]')
+                || (panel ? getFocusableElements(panel)[0] : null)
+                || panel;
+
+            initialFocus?.focus({ preventScroll: true });
+        });
+    }
+
+    function closeSearchOverlay(overlay, restoreFocus) {
+        if (!overlay) {
+            return;
+        }
+
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.inert = true;
+        syncTriggerState(overlay.id, false);
+        syncBodyLock();
+
+        if (openOverlay === overlay) {
+            openOverlay = overlays.find(item => item.classList.contains('is-open')) || null;
+        }
+
+        if (restoreFocus && overlay._lastTrigger) {
+            overlay._lastTrigger.focus({ preventScroll: true });
+        }
     }
 });
 

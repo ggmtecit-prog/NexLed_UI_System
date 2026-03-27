@@ -1,9 +1,26 @@
-﻿# Phase 5 Project Audit Report
+# Phase 5 Project Audit Report
 
 Date: 2026-03-27
 Scope: `index.html`, `Atoms.html`, `molecules.html`, `organisms.html`, `pages.html`, `tokens.html`, `src/nexled.css`, `src/nexled.js`
 Policy sources: `CLAUDE.md`, `docs/project/ROADMAP.md`, `docs/guides/RESPONSIVE_RULES.md`, repo-local mirrors of `src/config-cdn.js`, `src/nexled.css`, `COMPONENTS.md`
 
+## Implementation Status Update
+
+Status date: 2026-03-27
+
+Implemented after this audit:
+- Item 1 from the audit was intentionally left unchanged per request: local asset loading in the HTML `<head>` blocks stays in place.
+- Added the missing shared `Search Overlay` controller in `src/nexled.js`.
+- Generalized the shared accordion JS so it is no longer scoped to `#accordion`.
+- Added touch-safe click fallback for hover-trigger dropdowns.
+- Replaced inline demo event handlers with shared JS/data-attribute handling.
+- Normalized `Atoms.html` link casing across the docs shell and local tooling.
+- Replaced the accordion fixed open height with measured height via `--accordion-content-height`.
+- Extended reduced-motion coverage for accordion and dropdown families.
+- Kept `body { overflow-x: hidden; }` removed so overflow defects are not masked.
+- Tightened `scripts/audit-compliance.js` and `starter-kit/scripts/audit-compliance.js` to catch inline handlers and exact-case local link issues.
+
+The audit findings below remain as the original snapshot from 2026-03-27 and should be re-run if a fresh post-implementation report is needed.
 ## Executive Summary
 
 The NexLed system is structurally close to a usable Phase 5 demo system, but it is not fully Phase 5 compliant yet.
