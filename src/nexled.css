@@ -2403,7 +2403,7 @@ input[type=number]::-webkit-outer-spin-button {
 .range-slider {
   --range-slider-track-h: var(--space-8);
   --range-slider-thumb-size: var(--space-20);
-  --range-slider-thumb-radius: var(--radius-2xs);
+  --range-slider-thumb-radius: min(var(--radius-xs), calc(var(--range-slider-thumb-size) / 4));
   --range-slider-start-ratio: 0;
   --range-slider-end-ratio: 1;
   display: grid;
@@ -2531,7 +2531,12 @@ input[type=number]::-webkit-outer-spin-button {
     background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-.range-slider-input:hover::-webkit-slider-thumb,
+.range-slider-input:hover::-webkit-slider-thumb {
+  border-color: var(--color-green-hover-icons);
+  box-shadow: none;
+  transform: scale(var(--scale-hover));
+}
+
 .range-slider-input:hover::-moz-range-thumb {
   border-color: var(--color-green-hover-icons);
   box-shadow: none;
@@ -2539,7 +2544,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .range-slider-input:active::-webkit-slider-thumb,
-.range-slider-input:active::-moz-range-thumb {
+.range-slider-input::-webkit-slider-thumb:active {
+  background: var(--color-green-hover-text);
+  border-color: var(--color-green-secondary);
+  box-shadow: none;
+  transform: scale(var(--scale-press));
+}
+
+.range-slider-input:active::-moz-range-thumb,
+.range-slider-input::-moz-range-thumb:active {
   background: var(--color-green-hover-text);
   border-color: var(--color-green-secondary);
   box-shadow: none;
@@ -2585,7 +2598,7 @@ input[type=number]::-webkit-outer-spin-button {
 .range-slider-sm {
   --range-slider-track-h: var(--space-4);
   --range-slider-thumb-size: var(--space-20);
-  --range-slider-thumb-radius: var(--radius-2xs);
+  --range-slider-thumb-radius: min(var(--radius-xs), calc(var(--range-slider-thumb-size) / 4));
 }
 
 .range-slider-sm .range-slider-values {
@@ -2596,7 +2609,7 @@ input[type=number]::-webkit-outer-spin-button {
 .range-slider-md {
   --range-slider-track-h: var(--space-8);
   --range-slider-thumb-size: var(--space-20);
-  --range-slider-thumb-radius: var(--radius-2xs);
+  --range-slider-thumb-radius: min(var(--radius-xs), calc(var(--range-slider-thumb-size) / 4));
 }
 
 .range-slider-md .range-slider-values {
@@ -2607,7 +2620,7 @@ input[type=number]::-webkit-outer-spin-button {
 .range-slider-lg {
   --range-slider-track-h: var(--space-8);
   --range-slider-thumb-size: var(--space-24);
-  --range-slider-thumb-radius: var(--radius-xs);
+  --range-slider-thumb-radius: min(var(--radius-sm), calc(var(--range-slider-thumb-size) / 4));
 }
 
 .range-slider-lg .range-slider-values {
@@ -2627,7 +2640,7 @@ input[type=number]::-webkit-outer-spin-button {
   .range-slider-md {
     --range-slider-track-h: var(--space-8);
     --range-slider-thumb-size: var(--space-24);
-    --range-slider-thumb-radius: var(--radius-xs);
+    --range-slider-thumb-radius: min(var(--radius-sm), calc(var(--range-slider-thumb-size) / 4));
   }
 
   .range-slider-md .range-slider-values {
@@ -2638,7 +2651,7 @@ input[type=number]::-webkit-outer-spin-button {
   .range-slider-lg {
     --range-slider-track-h: var(--space-12);
     --range-slider-thumb-size: var(--space-32);
-    --range-slider-thumb-radius: var(--radius-xs);
+    --range-slider-thumb-radius: min(var(--radius-sm), calc(var(--range-slider-thumb-size) / 4));
   }
 
   .range-slider-lg .range-slider-values {
