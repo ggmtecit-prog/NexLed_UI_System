@@ -56,6 +56,28 @@ Use this exact order on every NexLed page:
 - Keep the same shell, typography rhythm, and responsive logic.
 - Add animation only after the responsive foundation is stable.
 
+## Optional Page Motion
+
+A restrained scroll reveal system is available when `nexled.js` is loaded.
+
+Use it only on top-level page structure:
+- `data-reveal="hero"` on the main `page-header-hero`
+- `data-reveal="section"` on major page sections
+- `data-reveal="section"` on the page footer when needed
+
+Rules:
+- Use it on page-level blocks only, not every card, panel, button, or control.
+- The shared JS reveals each target once as it enters the viewport.
+- Reduced-motion users get the final visible state immediately with no animation.
+- Keep the motion layer subtle and structural, not decorative.
+
+Example:
+
+```html
+<header class="page-header-hero" data-reveal="hero">
+<section id="platform" data-reveal="section">
+<footer class="footer" data-reveal="section">
+```
 ## Consumer QA Checklist
 
 - Check 360, 480, 768, 1024, 1440, 1920
