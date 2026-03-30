@@ -1355,6 +1355,7 @@
                                                         data-range-slider-end aria-label="Narrow range maximum value">
                                                 </div>
                                             </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1824,82 +1825,35 @@
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Default</h4>
                                     <div class="size-grid-content">
-                                        <div class="card custom-scrollbar w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
-                                            aria-label="Default custom scrollbar example">
-                                            <div class="p-24 flex flex-col gap-16">
-                                                <div class="flex flex-col gap-8">
-                                                    <p class="text-body text-black font-medium">Documentation panel</p>
-                                                    <p class="text-body-sm text-grey-primary">The scrollbar stays quiet until the region is hovered, focused, or scrolled.</p>
-                                                </div>
-                                                <p class="text-body-sm text-grey-primary">Use this pattern for dropdown menus, combobox lists, drawers, and dense tables where the browser page scrollbar should stay untouched.</p>
-                                                <p class="text-body-sm text-grey-primary">The thumb remains light by default so it does not compete with the content hierarchy.</p>
-                                                <p class="text-body-sm text-grey-primary">Scroll further to confirm the inset thumb shape and the stable right gutter.</p>
-                                                <p class="text-body-xs text-grey-primary">End of preview.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
+                                            <div class="custom-scrollbar flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
+                                                aria-label="Default custom scrollbar example">
+                                                <div class="flex flex-col gap-16">                                </div>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Active</h4>
                                     <div class="size-grid-content">
-                                        <div class="card custom-scrollbar is-scrolling w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
-                                            aria-label="Active custom scrollbar example">
-                                            <div class="p-24 flex flex-col gap-16">
-                                                <div class="flex flex-col gap-8">
-                                                    <p class="text-body text-black font-medium">Live interaction</p>
-                                                    <p class="text-body-sm text-grey-primary">The active state uses green-secondary only while the region is in motion, hovered, focused, or dragged.</p>
-                                                </div>
-                                                <p class="text-body-sm text-grey-primary">That keeps the control responsive without turning the scrollbar into a decorative accent.</p>
-                                                <p class="text-body-sm text-grey-primary">The browser arrow buttons stay removed, and the thumb keeps the same inset width across vertical and horizontal surfaces.</p>
-                                                <p class="text-body-sm text-grey-primary">This example is pre-activated to match the stronger state in your reference.</p>
-                                                <p class="text-body-xs text-grey-primary">End of preview.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="size-grid-column">
+                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
+                                            <div class="custom-scrollbar is-scrolling flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
+                                                aria-label="Active custom scrollbar example">
+                                                <div class="flex flex-col gap-16">                            <div class="size-grid-column">
                                 <h3 class="size-grid-column-title">Context</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Focusable</h4>
                                     <div class="size-grid-content">
-                                        <div class="card custom-scrollbar w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
-                                            aria-label="Focusable custom scrollbar example">
-                                            <div class="p-24 flex flex-col gap-16">
-                                                <div class="flex flex-col gap-8">
-                                                    <p class="text-body text-black font-medium">Keyboard access</p>
-                                                    <p class="text-body-sm text-grey-primary">Focusable scroll regions keep the same scrollbar treatment and also receive the shared focus ring.</p>
-                                                </div>
-                                                <p class="text-body-sm text-grey-primary">This matters for data-dense panels where a user tabs into the region and scrolls with the keyboard instead of the mouse wheel.</p>
-                                                <p class="text-body-sm text-grey-primary">The thumb color still shifts to the active tone so focus and movement read as one interaction family.</p>
-                                                <p class="text-body-xs text-grey-primary">Tab into this surface, then use Page Down or the arrow keys.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
+                                            <div class="custom-scrollbar flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
+                                                aria-label="Focusable custom scrollbar example">
+                                                <div class="flex flex-col gap-16">                                </div>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Horizontal</h4>
                                     <div class="size-grid-content">
-                                        <div class="card custom-scrollbar w-full max-w-narrow overflow-x-auto" tabindex="0"
-                                            aria-label="Horizontal custom scrollbar example">
-                                            <div class="p-24 min-w-max flex items-center gap-12">
-                                                <span class="badge badge-neutral badge-md">Dropdown Menu</span>
-                                                <span class="badge badge-neutral badge-md">Language Selector</span>
-                                                <span class="badge badge-neutral badge-md">Combobox List</span>
-                                                <span class="badge badge-neutral badge-md">Data Table</span>
-                                                <span class="badge badge-neutral badge-md">Drawer Body</span>
-                                                <span class="badge badge-neutral badge-md">Segmented Control</span>
-                                                <span class="badge badge-neutral badge-md">Tab Bar</span>
-                                                <span class="badge badge-neutral badge-md">Pagination</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="card w-full max-w-narrow overflow-hidden">
+                                            <div class="custom-scrollbar overflow-x-auto my-12 px-24 py-24" tabindex="0"
+                                                aria-label="Horizontal custom scrollbar example">
+                                                <div class="min-w-max flex items-center gap-12">                            </div>
                         </div>
                     </div>
 
