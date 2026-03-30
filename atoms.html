@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                        <div class="size-grid size-grid-stack size-grid-stack-gap-24">
+                        <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 md:grid-cols-2">
 
                             <!-- VARIANTS -->
                             <div class="size-grid-column size-grid-column-gap-24">
@@ -212,7 +212,7 @@
 
                             <!-- ICON & TOGGLE -->
                             <div class="size-grid-column size-grid-column-gap-24">
-                                <h3 class="size-grid-column-title">Icon & Toggle</h3>
+                                <h3 class="size-grid-column-title">Icon &amp; Toggle</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Large</h4>
@@ -290,6 +290,44 @@
                                                 data-toggle-pressed
                                                 aria-pressed="false" class="btn btn-secondary btn-xs btn-toggle"><i
                                                     class="ri-delete-bin-2-line text-icon-md"></i>Toggle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STATES -->
+                            <div class="size-grid-column size-grid-column-gap-24 md:col-span-2">
+                                <h3 class="size-grid-column-title">States</h3>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Interactive</h4>
+                                    <div class="size-grid-content">
+                                        <p class="text-body-xs text-grey-primary">Hover, press, and keyboard focus use the shared button state system.</p>
+                                        <div class="flex items-center gap-16 flex-wrap" role="group" aria-label="Interactive button state examples">
+                                            <button type="button" class="btn btn-primary btn-md">Primary</button>
+                                            <button type="button" class="btn btn-secondary btn-md">Secondary</button>
+                                            <button type="button" class="btn btn-ghost btn-md">Ghost</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap" role="group" aria-label="Disabled button state examples">
+                                            <button type="button" class="btn btn-primary btn-md" disabled>Primary</button>
+                                            <button type="button" class="btn btn-secondary btn-md" disabled>Secondary</button>
+                                            <button type="button" class="btn btn-ghost btn-md" disabled>Ghost</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row size-grid-row-gap-12">
+                                    <h4 class="size-grid-label">Pressed</h4>
+                                    <div class="size-grid-content">
+                                        <div class="flex items-center gap-16 flex-wrap" role="group" aria-label="Pressed button state examples">
+                                            <button type="button" data-toggle-pressed aria-pressed="true" class="btn btn-secondary btn-icon btn-md"><i class="ri-delete-bin-2-line text-icon-xl"></i></button>
+                                            <button type="button" data-toggle-pressed aria-pressed="true" class="btn btn-secondary btn-md btn-toggle"><i class="ri-delete-bin-2-line text-icon-xl"></i>Toggle</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2318,6 +2356,7 @@
 </body>
 
 </html>
+
 
 
 
