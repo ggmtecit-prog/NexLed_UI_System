@@ -8027,7 +8027,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 
 .progress-sm {
   --progress-radius: var(--radius-xs);
-  height: var(--space-8);
+  height: var(--space-4);
 }
 
 .progress-md {
@@ -9796,13 +9796,13 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   --responsive-meta-line: var(--line-height-body-xs);
   --responsive-link-xs-size: var(--font-size-body-xs);
   --responsive-link-xs-line: var(--line-height-body-xs);
-  --responsive-link-sm-size: var(--font-size-body-xs);
-  --responsive-link-sm-line: var(--line-height-body-xs);
-  --responsive-link-md-size: var(--font-size-body-sm);
-  --responsive-link-md-line: var(--line-height-body-sm);
-  --responsive-link-lg-size: var(--font-size-body);
-  --responsive-link-lg-line: var(--line-height-body);
-  --responsive-link-xl-size: var(--font-size-body-lg);
+  --responsive-link-sm-size: var(--font-size-body-sm);
+  --responsive-link-sm-line: var(--line-height-body-sm);
+  --responsive-link-md-size: var(--font-size-body);
+  --responsive-link-md-line: var(--line-height-body);
+  --responsive-link-lg-size: var(--font-size-body-lg);
+  --responsive-link-lg-line: var(--line-height-body-lg);
+  --responsive-link-xl-size: var(--font-size-body-xl);
   --responsive-link-xl-line: var(--line-height-body-lg);
   --responsive-support-size: var(--font-size-body);
   --responsive-support-line: var(--line-height-body);

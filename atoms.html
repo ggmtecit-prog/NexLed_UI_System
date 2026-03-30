@@ -1690,72 +1690,69 @@
                             </div>
 
                             <div class="size-grid-column">
-                                <h3 class="size-grid-column-title">States &amp; Motion</h3>
+                                <h3 class="size-grid-column-title">States &amp; Demo</h3>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Status</h4>
+                                    <h4 class="size-grid-label">Semantic</h4>
                                     <div class="size-grid-content">
                                         <div class="w-full max-w-narrow flex flex-col gap-12">
                                             <div class="flex flex-col gap-8">
                                                 <div class="flex items-center justify-between gap-12">
-                                                    <span class="text-body-sm text-grey-primary">Healthy replication</span>
+                                                    <span class="text-body-sm text-grey-primary">Success</span>
                                                     <span class="text-body-sm text-black font-medium">72%</span>
                                                 </div>
                                                 <progress class="progress progress-success progress-md" value="72" max="100"
-                                                    aria-label="Healthy replication progress">72%</progress>
+                                                    aria-label="Success progress">72%</progress>
                                             </div>
                                             <div class="flex flex-col gap-8">
                                                 <div class="flex items-center justify-between gap-12">
-                                                    <span class="text-body-sm text-grey-primary">At-risk review</span>
+                                                    <span class="text-body-sm text-grey-primary">Warning</span>
                                                     <span class="text-body-sm text-black font-medium">46%</span>
                                                 </div>
                                                 <progress class="progress progress-warning progress-md" value="46" max="100"
-                                                    aria-label="At-risk review progress">46%</progress>
+                                                    aria-label="Warning progress">46%</progress>
                                             </div>
                                             <div class="flex flex-col gap-8">
                                                 <div class="flex items-center justify-between gap-12">
-                                                    <span class="text-body-sm text-grey-primary">Blocked rollout</span>
+                                                    <span class="text-body-sm text-grey-primary">Danger</span>
                                                     <span class="text-body-sm text-black font-medium">18%</span>
                                                 </div>
                                                 <progress class="progress progress-danger progress-md" value="18" max="100"
-                                                    aria-label="Blocked rollout progress">18%</progress>
+                                                    aria-label="Danger progress">18%</progress>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Locked</h4>
+                                    <h4 class="size-grid-label">Disabled</h4>
                                     <div class="size-grid-content">
                                         <div class="w-full max-w-narrow flex flex-col gap-8">
-                                            <div class="flex items-start justify-between gap-12 flex-wrap">
-                                                <div class="flex flex-col gap-4">
-                                                    <p class="text-body-sm text-black font-medium">Approval gate</p>
-                                                    <p class="text-body-xs text-grey-primary">Waiting for external sign-off before the next milestone can advance.</p>
-                                                </div>
+                                            <div class="flex items-center justify-between gap-12">
+                                                <span class="text-body-sm text-grey-primary">Disabled state</span>
                                                 <span class="text-body-sm text-black font-medium">46%</span>
                                             </div>
                                             <progress class="progress progress-warning progress-md" value="46" max="100"
-                                                aria-label="Approval gate progress" aria-disabled="true">46%</progress>
+                                                aria-label="Disabled progress" aria-disabled="true">46%</progress>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Animated</h4>
+                                    <h4 class="size-grid-label">Motion Demo</h4>
                                     <div class="size-grid-content">
                                         <div class="w-full max-w-narrow flex flex-col gap-12" role="group"
                                             aria-labelledby="progress-bar-motion-title"
                                             aria-describedby="progress-bar-motion-note" data-progress-meter>
                                             <div class="flex items-start justify-between gap-12 flex-wrap">
                                                 <div class="flex flex-col gap-4">
-                                                    <p id="progress-bar-motion-title" class="text-body-sm text-black font-medium">Sync heartbeat</p>
-                                                    <p id="progress-bar-motion-note" class="text-body-xs text-grey-primary">The demo bar loops through live values to show the shared motion pattern without adding a new public variant.</p>
+                                                    <p id="progress-bar-motion-title" class="text-body-sm text-black font-medium">Animated value</p>
+                                                    <p id="progress-bar-motion-note" class="text-body-xs text-grey-primary">Loops through a bounded range to preview the shared motion pattern.</p>
                                                 </div>
                                                 <span class="text-body-sm text-black font-medium" data-progress-output>64%</span>
                                             </div>
                                             <progress class="progress progress-primary progress-md" value="64" max="100"
-                                                aria-label="Sync heartbeat progress" data-progress-demo data-progress-min="28"
+                                                aria-label="Animated progress" data-progress-demo data-progress-min="28"
                                                 data-progress-max="84" data-progress-duration="3200">64%</progress>
                                         </div>
                                     </div>
