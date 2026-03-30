@@ -2940,460 +2940,134 @@
                     </div>
 
                 </section>
-
                 <section id="data-table" data-reveal="section">
-    <div class="panel-wrap-head">
-        <h2 class="panel-wrap-title text-black">Data Table</h2>
-    </div>
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-black">Data Table</h2>
+                    </div>
 
-    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-        <div class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
-            <div class="size-grid-column size-grid-column-gap-24">
-                <h3 class="size-grid-column-title">Sizes</h3>
-
-                <div class="size-grid-stack size-grid-stack-gap-24">
-                    <div class="size-grid-row size-grid-row-gap-12">
-                        <h4 class="size-grid-label">Small</h4>
-                        <div class="size-grid-content">
-                            <div class="data-table data-table-sm w-full" data-table>
-                                <div class="data-table-wrap custom-scrollbar">
-                                    <table class="data-table-table">
-                                        <thead class="data-table-head">
-                                            <tr class="data-table-row">
-                                                <th class="data-table-heading" scope="col" aria-sort="ascending">
-                                                    <button type="button" class="data-table-sort" data-table-sort="product">
-                                                        <span>Product</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="lead-time">
-                                                        <span>Lead</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="status">
-                                                        <span>Status</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="NX Guide Mini">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">NX Guide Mini</p>
-                                                        <p class="text-label">SKU NX-GM-240</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">3 days</td>
-                                                <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview NX Guide Mini">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Open</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Strip 24 Flex">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Strip 24 Flex</p>
-                                                        <p class="text-label">SKU ST-24-FLX</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">12 days</td>
-                                                <td class="data-table-cell"><span class="badge badge-warning badge-md">Limited</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Strip 24 Flex">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Open</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div class="data-table data-table-md data-table-floating-head w-full" data-table>
+                            <div class="data-table-head-floating">
+                                <div class="data-table-heading" role="columnheader" aria-sort="ascending" data-table-column="0">
+                                    <div class="data-table-heading-content">
+                                        <span class="data-table-heading-label">Product</span>
+                                        <button type="button" class="data-table-sort btn btn-ghost btn-icon btn-xs" data-table-sort="product" aria-label="Sort by Product">
+                                            <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <p class="text-body-sm text-grey-primary">Compact padding works for dense operational lists without collapsing the row hierarchy.</p>
+                                <div class="data-table-heading" role="columnheader" aria-sort="none" data-table-column="1">
+                                    <div class="data-table-heading-content">
+                                        <span class="data-table-heading-label">Category</span>
+                                        <button type="button" class="data-table-sort btn btn-ghost btn-icon btn-xs" data-table-sort="category" aria-label="Sort by Category">
+                                            <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="data-table-heading" role="columnheader" aria-sort="none" data-table-column="2">
+                                    <div class="data-table-heading-content">
+                                        <span class="data-table-heading-label">Stock</span>
+                                        <button type="button" class="data-table-sort btn btn-ghost btn-icon btn-xs" data-table-sort="stock" aria-label="Sort by Stock">
+                                            <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="data-table-heading" role="columnheader" aria-sort="none" data-table-column="3">
+                                    <div class="data-table-heading-content">
+                                        <span class="data-table-heading-label">Status</span>
+                                        <button type="button" class="data-table-sort btn btn-ghost btn-icon btn-xs" data-table-sort="status" aria-label="Sort by Status">
+                                            <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="data-table-heading" role="columnheader" data-table-column="4">
+                                    <span class="data-table-heading-label">Actions</span>
+                                </div>
+                            </div>
+                            <div class="data-table-wrap custom-scrollbar">
+                                <table class="data-table-table">
+                                    <colgroup>
+                                        <col class="data-table-col-product">
+                                        <col class="data-table-col-category">
+                                        <col class="data-table-col-stock">
+                                        <col class="data-table-col-status">
+                                        <col class="data-table-col-actions">
+                                    </colgroup>
+                                    <thead class="sr-only">
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Stock</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Wall Washer Pro">
+                                                <div class="space-y-4">
+                                                    <p class="text-body">Wall Washer Pro</p>
+                                                    <p class="text-label">SKU WW-PRO-90</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Architectural</td>
+                                            <td class="data-table-cell">31 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-info badge-md">Review</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Wall Washer Pro">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-xs">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Outdoor Guard">
+                                                <div class="space-y-4">
+                                                    <p class="text-body">Outdoor Guard</p>
+                                                    <p class="text-label">SKU OG-67-EXT</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Exterior Kit</td>
+                                            <td class="data-table-cell">9 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-danger badge-md">Low</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Outdoor Guard">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-xs">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="data-table-row">
+                                            <td class="data-table-cell" data-sort-value="Track Axis">
+                                                <div class="space-y-4">
+                                                    <p class="text-body">Track Axis</p>
+                                                    <p class="text-label">SKU TR-AX-180</p>
+                                                </div>
+                                            </td>
+                                            <td class="data-table-cell">Retail Rail</td>
+                                            <td class="data-table-cell">22 units</td>
+                                            <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
+                                            <td class="data-table-cell">
+                                                <div class="data-table-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Track Axis">
+                                                        <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary btn-xs">Details</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
 
-                    <div class="size-grid-row size-grid-row-gap-12">
-                        <h4 class="size-grid-label">Medium</h4>
-                        <div class="size-grid-content">
-                            <div class="data-table data-table-md w-full" data-table>
-                                <div class="data-table-wrap custom-scrollbar">
-                                    <table class="data-table-table">
-                                        <thead class="data-table-head">
-                                            <tr class="data-table-row">
-                                                <th class="data-table-heading" scope="col" aria-sort="ascending">
-                                                    <button type="button" class="data-table-sort" data-table-sort="product">
-                                                        <span>Product</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="category">
-                                                        <span>Category</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="stock">
-                                                        <span>Stock</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="status">
-                                                        <span>Status</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Wall Washer Pro">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Wall Washer Pro</p>
-                                                        <p class="text-label">SKU WW-PRO-90</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Architectural</td>
-                                                <td class="data-table-cell">31 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-info badge-md">Review</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Wall Washer Pro">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Outdoor Guard">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Outdoor Guard</p>
-                                                        <p class="text-label">SKU OG-67-EXT</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Exterior Kit</td>
-                                                <td class="data-table-cell">9 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-danger badge-md">Low</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Outdoor Guard">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Track Axis">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Track Axis</p>
-                                                        <p class="text-label">SKU TR-AX-180</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Retail Rail</td>
-                                                <td class="data-table-cell">22 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Track Axis">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <p class="text-body-sm text-grey-primary">The standard tier balances readable body text with enough density for frequent review work.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="size-grid-row size-grid-row-gap-12">
-                        <h4 class="size-grid-label">Large</h4>
-                        <div class="size-grid-content">
-                            <div class="data-table data-table-lg w-full" data-table>
-                                <div class="data-table-wrap custom-scrollbar">
-                                    <table class="data-table-table">
-                                        <thead class="data-table-head">
-                                            <tr class="data-table-row">
-                                                <th class="data-table-heading" scope="col" aria-sort="ascending">
-                                                    <button type="button" class="data-table-sort" data-table-sort="product">
-                                                        <span>Product</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="category">
-                                                        <span>Category</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="lead-time">
-                                                        <span>Lead Time</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="stock">
-                                                        <span>Stock</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="status">
-                                                        <span>Status</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Studio Arc 48">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Studio Arc 48</p>
-                                                        <p class="text-label">SKU SA-48-ARC</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Hospitality Pendant</td>
-                                                <td class="data-table-cell">5 days</td>
-                                                <td class="data-table-cell">64 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Studio Arc 48">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Facade Beam X">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Facade Beam X</p>
-                                                        <p class="text-label">SKU FB-X-220</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Exterior Projector</td>
-                                                <td class="data-table-cell">14 days</td>
-                                                <td class="data-table-cell">18 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-warning badge-md">Limited</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Facade Beam X">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Cove Line 12">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Cove Line 12</p>
-                                                        <p class="text-label">SKU CV-12-LN</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Indirect Linear</td>
-                                                <td class="data-table-cell">8 days</td>
-                                                <td class="data-table-cell">42 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Preview Cove Line 12">
-                                                            <i class="ri-eye-line text-icon-md" aria-hidden="true"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary btn-xs">Details</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <p class="text-body-sm text-grey-primary">The larger tier keeps the same hierarchy and simply opens up padding for review-heavy workflows.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="size-grid-column size-grid-column-gap-24">
-                <h3 class="size-grid-column-title">States</h3>
-
-                <div class="size-grid-stack size-grid-stack-gap-24">
-                    <div class="size-grid-row size-grid-row-gap-12">
-                        <h4 class="size-grid-label">Sorted</h4>
-                        <div class="size-grid-content">
-                            <div class="data-table data-table-md w-full" data-table>
-                                <div class="data-table-wrap custom-scrollbar">
-                                    <table class="data-table-table">
-                                        <thead class="data-table-head">
-                                            <tr class="data-table-row">
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="product">
-                                                        <span>Product</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="category">
-                                                        <span>Category</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="descending">
-                                                    <button type="button" class="data-table-sort" data-table-sort="stock">
-                                                        <span>Stock</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="status">
-                                                        <span>Status</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Wall Washer Pro">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Wall Washer Pro</p>
-                                                        <p class="text-label">SKU WW-PRO-90</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Architectural</td>
-                                                <td class="data-table-cell">31 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-info badge-md">Review</span></td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="NX Guide Mini">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">NX Guide Mini</p>
-                                                        <p class="text-label">SKU NX-GM-240</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Indoor Profile</td>
-                                                <td class="data-table-cell">48 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-success badge-md">Ready</span></td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Outdoor Guard">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Outdoor Guard</p>
-                                                        <p class="text-label">SKU OG-67-EXT</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Exterior Kit</td>
-                                                <td class="data-table-cell">9 units</td>
-                                                <td class="data-table-cell"><span class="badge badge-danger badge-md">Low</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <p class="text-body-sm text-grey-primary">Sort buttons keep semantic aria state while the row hover stays quiet and readable.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="size-grid-row size-grid-row-gap-12">
-                        <h4 class="size-grid-label">Wide Content</h4>
-                        <div class="size-grid-content">
-                            <div class="data-table data-table-md w-full" data-table>
-                                <div class="data-table-wrap custom-scrollbar">
-                                    <table class="data-table-table">
-                                        <thead class="data-table-head">
-                                            <tr class="data-table-row">
-                                                <th class="data-table-heading" scope="col" aria-sort="ascending">
-                                                    <button type="button" class="data-table-sort" data-table-sort="product">
-                                                        <span>Product</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="application">
-                                                        <span>Application</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col" aria-sort="none">
-                                                    <button type="button" class="data-table-sort" data-table-sort="specification">
-                                                        <span>Specification</span>
-                                                        <i class="ri-arrow-up-down-line text-icon-md" aria-hidden="true"></i>
-                                                    </button>
-                                                </th>
-                                                <th class="data-table-heading" scope="col">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Linear Guide System 2400">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Linear Guide System 2400</p>
-                                                        <p class="text-label">SKU LG-2400-ALU</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Wayfinding in premium hospitality corridors and mixed-use lobby transitions</td>
-                                                <td class="data-table-cell">2700K / CRI 90 / DALI / recessed aluminium profile / opal diffuser / IP44</td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-secondary btn-xs">Review</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="data-table-row">
-                                                <td class="data-table-cell" data-sort-value="Exterior Wash 900">
-                                                    <div class="space-y-4">
-                                                        <p class="text-body">Exterior Wash 900</p>
-                                                        <p class="text-label">SKU EW-900-IP67</p>
-                                                    </div>
-                                                </td>
-                                                <td class="data-table-cell">Facade grazing for civic buildings, courtyards, and protected outdoor circulation routes</td>
-                                                <td class="data-table-cell">4000K / asymmetric optic / powder-coated housing / surge protected / IP67 / IK08</td>
-                                                <td class="data-table-cell">
-                                                    <div class="data-table-actions">
-                                                        <button type="button" class="btn btn-secondary btn-xs">Review</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <p class="text-body-sm text-grey-primary">Wide tables keep internal horizontal scroll instead of forcing page-level overflow or collapsing into cards.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<section id="empty-state" data-reveal="section">
+                </section>
+                <section id="empty-state" data-reveal="section">
                     <div class="panel-wrap-head">
                         <h2 class="panel-wrap-title text-black">Empty State</h2>
                     </div>
@@ -5434,6 +5108,9 @@
 </body>
 
 </html>
+
+
+
 
 
 

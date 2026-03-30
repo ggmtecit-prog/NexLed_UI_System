@@ -2368,6 +2368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearButton.setAttribute('type', 'button');
 
         options.forEach((option, optionIndex) => {
+            normalizeComboboxOption(option);
             option.id = option.id || `${listId}-option-${optionIndex + 1}`;
             option.setAttribute('type', 'button');
             option.addEventListener('click', () => {
@@ -2597,7 +2598,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nextActiveOption = visibleOptions.includes(activeOption)
                 ? activeOption
-                : (visibleOptions.includes(selectedOption) ? selectedOption : (visibleOptions[0] || null));
+                : (visibleOptions.includes(selectedOption) ? selectedOption : null);
 
             setActiveOption(nextActiveOption);
         }
@@ -2626,8 +2627,30 @@ document.addEventListener('DOMContentLoaded', () => {
             return options.filter(option => !option.hidden && option.getAttribute('aria-disabled') !== 'true');
         }
 
+        function normalizeComboboxOption(option) {
+            const labelText = getOptionLabel(option);
+            let label = option.querySelector('.combobox-option-label');
+
+            if (!label) {
+                option.textContent = '';
+                label = document.createElement('span');
+                label.className = 'combobox-option-label';
+                label.textContent = labelText;
+                option.append(label);
+            }
+
+            if (!option.querySelector('.combobox-option-check')) {
+                const check = document.createElement('i');
+                check.className = 'ri-check-line combobox-option-check';
+                check.setAttribute('aria-hidden', 'true');
+                option.append(check);
+            }
+        }
+
         function getOptionLabel(option) {
-            return option.textContent.replace(/\s+/g, ' ').trim();
+            const label = option.querySelector('.combobox-option-label');
+            const text = label ? label.textContent : option.textContent;
+            return text.replace(/\s+/g, ' ').trim();
         }
     });
 
@@ -2758,7 +2781,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortButtons.forEach(button => {
             const heading = button.closest('.data-table-heading');
-            const label = (button.textContent || '').replace(/\s+/g, ' ').trim();
+            const label = ((heading?.querySelector('.data-table-heading-label')?.textContent || button.getAttribute('aria-label') || button.textContent || '')
+                .replace(/^Sort by\s+/i, '')
+                .replace(/\s+/g, ' ')
+                .trim());
 
             button.setAttribute('type', 'button');
 
@@ -2770,7 +2796,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 heading.setAttribute('aria-sort', 'none');
             }
 
-            button.setAttribute('aria-pressed', heading && heading.getAttribute('aria-sort') !== 'none' ? 'true' : 'false');
+            button.removeAttribute('aria-pressed');
 
             button.addEventListener('click', () => {
                 const currentHeading = button.closest('.data-table-heading');
@@ -2788,12 +2814,36 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(button => button.closest('.data-table-heading'))
             .find(heading => heading && heading.getAttribute('aria-sort') && heading.getAttribute('aria-sort') !== 'none');
 
+        const floatingHead = tableWrapper.querySelector('.data-table-head-floating');
+
+        const syncFloatingHeadColumns = () => {
+            if (!floatingHead) {
+                return;
+            }
+
+            const firstRow = tableBody.rows[0];
+            if (!firstRow) {
+                return;
+            }
+
+            const widths = Array.from(firstRow.cells)
+                .map(cell => Math.ceil(cell.getBoundingClientRect().width))
+                .filter(width => width > 0);
+
+            if (widths.length) {
+                tableWrapper.style.setProperty('--data-table-head-columns', widths.map(width => width + 'px').join(' '));
+            }
+        };
+
         if (activeHeading) {
             sortRows(activeHeading, activeHeading.getAttribute('aria-sort'));
         }
 
+        syncFloatingHeadColumns();
+        window.addEventListener('resize', syncFloatingHeadColumns);
+
         function sortRows(activeHeading, direction) {
-            const columnIndex = activeHeading.cellIndex;
+            const columnIndex = Number(activeHeading.dataset.tableColumn ?? activeHeading.cellIndex);
             const rows = Array.from(tableBody.rows);
 
             rows.sort((firstRow, secondRow) => {
@@ -2814,8 +2864,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const isActive = heading === activeHeading;
                 heading.setAttribute('aria-sort', isActive ? direction : 'none');
-                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                button.removeAttribute('aria-pressed');
             });
+
+            requestAnimationFrame(syncFloatingHeadColumns);
         }
 
         function getCellValue(row, columnIndex) {
@@ -3965,4 +4017,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+
+
+
+
+
 
