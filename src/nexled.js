@@ -2697,27 +2697,46 @@ document.addEventListener('DOMContentLoaded', () => {
             return activeIndex === -1 ? 0 : activeIndex;
         };
 
-        const revealActivePage = activeButton => {
+        const revealActivePage = (activeButton, behavior = 'smooth') => {
             if (!pageList || !activeButton) {
                 return;
             }
 
-            const listRect = pageList.getBoundingClientRect();
-            const buttonRect = activeButton.getBoundingClientRect();
-            const isOutOfView = buttonRect.left < listRect.left || buttonRect.right > listRect.right;
+            const motionBehavior = reduceMotion ? 'auto' : behavior;
+            const shouldCenterActivePage = window.matchMedia('(min-width: 768px)').matches;
 
-            if (!isOutOfView) {
+            if (typeof activeButton.scrollIntoView === 'function') {
+                activeButton.scrollIntoView({
+                    behavior: motionBehavior,
+                    block: 'nearest',
+                    inline: shouldCenterActivePage ? 'center' : 'nearest'
+                });
                 return;
             }
 
-            const nextScrollLeft = activeButton.offsetLeft - ((pageList.clientWidth - activeButton.offsetWidth) / 2);
+            const maxScrollLeft = pageList.scrollWidth - pageList.clientWidth;
+            if (maxScrollLeft <= 0) {
+                return;
+            }
+
+            let nextScrollLeft;
+
+            if (shouldCenterActivePage) {
+                nextScrollLeft = activeButton.offsetLeft - ((pageList.clientWidth - activeButton.offsetWidth) / 2);
+            } else {
+                const listStyles = window.getComputedStyle(pageList);
+                const listGap = parseFloat(listStyles.columnGap || listStyles.gap || '0') || 0;
+                const leadingPeek = activeButton.offsetWidth + listGap;
+                nextScrollLeft = activeButton.offsetLeft - leadingPeek;
+            }
+
             pageList.scrollTo({
-                left: Math.max(0, nextScrollLeft),
-                behavior: reduceMotion ? 'auto' : 'smooth'
+                left: Math.min(Math.max(0, nextScrollLeft), maxScrollLeft),
+                behavior: motionBehavior
             });
         };
 
-        const syncState = nextIndex => {
+        const syncState = (nextIndex, options = {}) => {
             const safeIndex = Math.min(Math.max(nextIndex, 0), pageButtons.length - 1);
 
             pageButtons.forEach((button, index) => {
@@ -2738,12 +2757,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.setAttribute('aria-disabled', safeIndex === pageButtons.length - 1 ? 'true' : 'false');
             }
 
-            revealActivePage(pageButtons[safeIndex]);
+            if (options.reveal !== true) {
+                return;
+            }
+
+            window.requestAnimationFrame(() => {
+                revealActivePage(pageButtons[safeIndex], options.behavior || 'smooth');
+            });
         };
 
         pageButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                syncState(index);
+                syncState(index, { reveal: true });
             });
         });
 
@@ -2755,7 +2780,7 @@ document.addEventListener('DOMContentLoaded', () => {
             syncState(getActiveIndex() + 1);
         });
 
-        syncState(getActiveIndex());
+        syncState(getActiveIndex(), { reveal: true, behavior: 'auto' });
     });
 });
 
@@ -4017,6 +4042,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+
+
 
 
 
