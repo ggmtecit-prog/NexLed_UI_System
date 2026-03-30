@@ -2604,7 +2604,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateClearState() {
-            clearButton.disabled = isDisabled() || (input.value.trim() === '' && (!valueField || valueField.value === '')); 
+            const hasTypedQuery = input.value.trim() !== '' && (!selectedOption || input.value.trim() !== getOptionLabel(selectedOption));
+            const shouldShowClear = !isDisabled() && hasTypedQuery;
+
+            clearButton.disabled = !shouldShowClear;
+            clearButton.hidden = !shouldShowClear;
+            clearButton.setAttribute('aria-hidden', shouldShowClear ? 'false' : 'true');
         }
 
         function setActiveOption(option) {
@@ -4019,6 +4024,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
 
 
