@@ -7029,13 +7029,16 @@ button.language-selector-trigger .language-selector-value {
   --pagination-list-gap: var(--space-4);
   --pagination-track-height: calc(var(--pagination-link-height) - var(--space-12));
   --pagination-visible-count: 4;
-  width: min(100%, max-content);
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
   flex-wrap: nowrap;
 }
 
 .pagination-compact .pagination-list {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   justify-content: flex-start;
+  inline-size: min(100%, calc((var(--pagination-link-min) * var(--pagination-visible-count)) + (var(--pagination-list-gap) * (var(--pagination-visible-count) - 1))));
   max-inline-size: calc((var(--pagination-link-min) * var(--pagination-visible-count)) + (var(--pagination-list-gap) * (var(--pagination-visible-count) - 1)));
   scroll-padding-inline: var(--pagination-list-gap);
   scroll-snap-type: x proximity;
@@ -7076,6 +7079,11 @@ button.language-selector-trigger .language-selector-value {
   .pagination-list {
     flex: 0 1 auto;
     justify-content: center;
+  }
+
+  .pagination-compact .pagination-list {
+    flex: 0 0 auto;
+    justify-content: flex-start;
   }
 }
 
@@ -10789,6 +10797,7 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
 
 

@@ -2703,32 +2703,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const motionBehavior = reduceMotion ? 'auto' : behavior;
-            const shouldCenterActivePage = window.matchMedia('(min-width: 768px)').matches;
-
-            if (typeof activeButton.scrollIntoView === 'function') {
-                activeButton.scrollIntoView({
-                    behavior: motionBehavior,
-                    block: 'nearest',
-                    inline: shouldCenterActivePage ? 'center' : 'nearest'
-                });
-                return;
-            }
-
             const maxScrollLeft = pageList.scrollWidth - pageList.clientWidth;
+
             if (maxScrollLeft <= 0) {
                 return;
             }
 
-            let nextScrollLeft;
-
-            if (shouldCenterActivePage) {
-                nextScrollLeft = activeButton.offsetLeft - ((pageList.clientWidth - activeButton.offsetWidth) / 2);
-            } else {
-                const listStyles = window.getComputedStyle(pageList);
-                const listGap = parseFloat(listStyles.columnGap || listStyles.gap || '0') || 0;
-                const leadingPeek = activeButton.offsetWidth + listGap;
-                nextScrollLeft = activeButton.offsetLeft - leadingPeek;
-            }
+            const nextScrollLeft = activeButton.offsetLeft - ((pageList.clientWidth - activeButton.offsetWidth) / 2);
 
             pageList.scrollTo({
                 left: Math.min(Math.max(0, nextScrollLeft), maxScrollLeft),
@@ -2757,10 +2738,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.setAttribute('aria-disabled', safeIndex === pageButtons.length - 1 ? 'true' : 'false');
             }
 
-            if (options.reveal !== true) {
-                return;
-            }
-
             window.requestAnimationFrame(() => {
                 revealActivePage(pageButtons[safeIndex], options.behavior || 'smooth');
             });
@@ -2768,7 +2745,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pageButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                syncState(index, { reveal: true });
+                syncState(index);
             });
         });
 
@@ -2780,7 +2757,7 @@ document.addEventListener('DOMContentLoaded', () => {
             syncState(getActiveIndex() + 1);
         });
 
-        syncState(getActiveIndex(), { reveal: true, behavior: 'auto' });
+        syncState(getActiveIndex(), { behavior: 'auto' });
     });
 });
 
@@ -4042,6 +4019,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
 
 
 
