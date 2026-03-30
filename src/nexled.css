@@ -1,4 +1,4 @@
-﻿/*
+/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -5460,7 +5460,7 @@ button.language-selector-trigger .language-selector-value {
 .announcement-bar {
   --announcement-bar-gap: var(--space-12);
   --announcement-bar-padding-block-start: var(--space-12);
-  --announcement-bar-padding-block-end: var(--space-40);
+  --announcement-bar-padding-block-end: var(--space-24);
   --announcement-bar-text-size: var(--font-size-body-sm);
   --announcement-bar-text-line: var(--line-height-body-sm);
   --announcement-bar-leading-icon-size: var(--space-16);
@@ -5469,7 +5469,7 @@ button.language-selector-trigger .language-selector-value {
   position: relative;
   z-index: var(--z-base);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: var(--announcement-bar-gap);
   padding: var(--announcement-bar-padding-block-start) var(--space-24) var(--announcement-bar-padding-block-end);
@@ -5545,7 +5545,7 @@ button.language-selector-trigger .language-selector-value {
 .announcement-bar>.btn,
 .announcement-bar>button {
   flex: 0 0 auto;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .announcement-bar>.btn>.icon,
@@ -5587,6 +5587,7 @@ button.language-selector-trigger .language-selector-value {
 @media (min-width: 768px) {
   .announcement-bar {
     --announcement-bar-gap: var(--space-16);
+    --announcement-bar-padding-block-end: var(--space-32);
     --announcement-bar-text-size: var(--font-size-body);
     --announcement-bar-text-line: var(--line-height-body);
     --announcement-bar-leading-icon-size: var(--space-20);
@@ -5610,12 +5611,13 @@ button.language-selector-trigger .language-selector-value {
 /* ALERTS */
 .alert {
   --alert-accent: var(--color-grey-primary);
-  --alert-surface: var(--color-white);
+  --alert-surface: var(--color-grey-tertiary);
   --alert-border: var(--color-grey-secondary);
   --alert-gap: var(--space-12);
   --alert-padding-block: var(--space-12);
   --alert-padding-inline: var(--space-16);
-  --alert-icon-size: var(--space-20);
+  --alert-icon-size: var(--space-24);
+  --alert-icon-offset: var(--space-8);
   width: 100%;
   position: relative;
   z-index: var(--z-base);
@@ -5649,6 +5651,8 @@ button.language-selector-trigger .language-selector-value {
   justify-content: center;
   width: var(--alert-icon-size);
   min-width: var(--alert-icon-size);
+  align-self: flex-start;
+  margin-top: var(--alert-icon-offset);
   color: var(--alert-accent);
   line-height: 1;
 }
@@ -5681,15 +5685,24 @@ button.language-selector-trigger .language-selector-value {
 
 .alert-actions {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-8);
-  width: 100%;
+  width: auto;
   padding-top: var(--space-8);
 }
 
 .alert-actions .btn {
-  width: 100%;
+  width: auto;
+  min-width: 0;
+}
+
+.alert > .alert-actions {
+  flex: 0 0 auto;
+  width: auto;
+  padding-top: 0;
+  align-self: flex-start;
+  margin-top: var(--alert-icon-offset);
 }
 
 .alert-success {
@@ -5717,7 +5730,8 @@ button.language-selector-trigger .language-selector-value {
 }
 
 .alert-sm {
-  --alert-icon-size: var(--space-16);
+  --alert-icon-size: var(--space-20);
+  --alert-icon-offset: var(--space-4);
 }
 
 .alert-sm .alert-title {
@@ -5731,7 +5745,8 @@ button.language-selector-trigger .language-selector-value {
 }
 
 .alert-md {
-  --alert-icon-size: var(--space-20);
+  --alert-icon-size: var(--space-24);
+  --alert-icon-offset: var(--space-8);
 }
 
 .alert-md .alert-title {
@@ -5748,7 +5763,8 @@ button.language-selector-trigger .language-selector-value {
   --alert-gap: var(--space-16);
   --alert-padding-block: var(--space-16);
   --alert-padding-inline: var(--space-20);
-  --alert-icon-size: var(--space-20);
+  --alert-icon-size: var(--space-28);
+  --alert-icon-offset: var(--space-8);
 }
 
 .alert-lg .alert-title {
@@ -5766,7 +5782,8 @@ button.language-selector-trigger .language-selector-value {
     --alert-gap: var(--space-16);
     --alert-padding-block: var(--space-16);
     --alert-padding-inline: var(--space-20);
-    --alert-icon-size: var(--space-20);
+    --alert-icon-size: var(--space-24);
+    --alert-icon-offset: var(--space-8);
   }
 
   .alert-actions {
@@ -5794,7 +5811,8 @@ button.language-selector-trigger .language-selector-value {
   .alert-lg {
     --alert-padding-block: var(--space-20);
     --alert-padding-inline: var(--space-24);
-    --alert-icon-size: var(--space-24);
+    --alert-icon-size: var(--space-32);
+    --alert-icon-offset: var(--space-12);
   }
 
   .alert-lg .alert-title {
@@ -5815,15 +5833,18 @@ button.language-selector-trigger .language-selector-value {
 
   .alert-sm {
     --alert-icon-size: var(--space-20);
+    --alert-icon-offset: var(--space-4);
   }
 
   .alert-md {
     --alert-icon-size: var(--space-24);
+    --alert-icon-offset: var(--space-8);
   }
 
   .alert-lg {
     --alert-padding-inline: var(--space-24);
-    --alert-icon-size: var(--space-24);
+    --alert-icon-size: var(--space-40);
+    --alert-icon-offset: var(--space-12);
   }
 }
 

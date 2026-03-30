@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <aside class="hidden lg:block shrink-0 sticky top-0 h-screen px-24 py-24">
+    <aside class="hidden lg:block shrink-0 sticky top-0 h-screen px-16 py-24">
         <div class="sidebar w-sidebar h-full">
             <div class="flex flex-col h-full gap-16 p-48">
                 <a href="index.html" class="flex items-center justify-center gap-12 group">
@@ -132,7 +132,7 @@
     <div class="min-w-0 flex-1 flex flex-col">
 
         <!-- CONTENT -->
-        <main class="docs-main container-standard flex-1">
+        <main class="docs-main container-wide flex-1">
 
             <header class="page-header-hero" data-reveal="hero">
                 <h1 class="text-hero-title text-black">Molecules</h1>
@@ -417,7 +417,7 @@
                                 <h3 class="size-grid-column-title">Variants</h3>
 
                                 <div class="size-grid-stack size-grid-stack-gap-24">
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-default-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Default</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-md" role="status">
@@ -428,11 +428,16 @@
                                                     <p class="alert-text">Use the neutral alert when the message needs
                                                         clarity without adding status color.</p>
                                                 </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-default-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-success-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Success</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-success alert-md" role="status">
@@ -443,11 +448,16 @@
                                                     <p class="alert-text">Your product data is now synced across the
                                                         NexLed workspace.</p>
                                                 </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-success-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-warning-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Warning</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-warning alert-md" role="status">
@@ -458,11 +468,16 @@
                                                     <p class="alert-text">One or more fields still need confirmation
                                                         before publishing.</p>
                                                 </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-warning-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-info-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Info</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-info alert-md" role="status">
@@ -473,11 +488,16 @@
                                                     <p class="alert-text">Learn how to structure supplier files before
                                                         your next upload.</p>
                                                 </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-info-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-danger-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Danger</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-danger alert-md" role="alert">
@@ -487,6 +507,11 @@
                                                     <p class="alert-title">Upload failed</p>
                                                     <p class="alert-text">The selected file does not match the expected
                                                         product schema.</p>
+                                                </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-danger-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -498,7 +523,7 @@
                                 <h3 class="size-grid-column-title">States</h3>
 
                                 <div class="size-grid-stack size-grid-stack-gap-24">
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-large-actions-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Large Actions</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-success alert-lg" role="status">
@@ -511,9 +536,12 @@
                                                     <div class="alert-actions">
                                                         <button type="button" class="btn btn-primary btn-xs">Open
                                                             notes</button>
-                                                        <button type="button"
-                                                            class="btn btn-ghost btn-xs">Dismiss</button>
                                                     </div>
+                                                </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-large-actions-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -529,16 +557,17 @@
                                                     <p class="alert-title">Scheduled sync pending</p>
                                                     <p class="alert-text">This state closes downward so the content
                                                         clears without a hover lift or bounce.</p>
-                                                    <div class="alert-actions">
-                                                        <button type="button" class="btn btn-ghost btn-xs"
-                                                            data-dismiss-surface="alert-dismiss-demo">Dismiss</button>
-                                                    </div>
+                                                </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                            data-dismiss-surface="alert-dismiss-demo"><i class="ri-close-line"
+                                                                aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="size-grid-row size-grid-row-gap-12">
+                                    <div id="alert-disabled-demo" class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Disabled</h4>
                                         <div class="size-grid-content">
                                             <div class="alert alert-sm" role="status" aria-disabled="true">
@@ -548,10 +577,10 @@
                                                     <p class="alert-title">Notifications paused</p>
                                                     <p class="alert-text">Disabled alerts keep the message visible while
                                                         removing follow-up actions.</p>
-                                                    <div class="alert-actions">
-                                                        <button type="button" class="btn btn-secondary btn-xs"
-                                                            disabled>Retry later</button>
-                                                    </div>
+                                                </div>
+                                                <div class="alert-actions">
+                                                    <button type="button" class="btn btn-ghost btn-icon btn-xs" aria-label="Close"
+                                                        disabled><i class="ri-close-line" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
