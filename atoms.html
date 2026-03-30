@@ -1355,7 +1355,6 @@
                                                         data-range-slider-end aria-label="Narrow range maximum value">
                                                 </div>
                                             </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1825,35 +1824,82 @@
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Default</h4>
                                     <div class="size-grid-content">
-                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
-                                            <div class="custom-scrollbar flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
-                                                aria-label="Default custom scrollbar example">
-                                                <div class="flex flex-col gap-16">                                </div>
+                                        <div class="card custom-scrollbar w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
+                                            aria-label="Default custom scrollbar example">
+                                            <div class="p-24 flex flex-col gap-16">
+                                                <div class="flex flex-col gap-8">
+                                                    <p class="text-body text-black font-medium">Documentation panel</p>
+                                                    <p class="text-body-sm text-grey-primary">The scrollbar stays quiet until the region is hovered, focused, or scrolled.</p>
+                                                </div>
+                                                <p class="text-body-sm text-grey-primary">Use this pattern for dropdown menus, combobox lists, drawers, and dense tables where the browser page scrollbar should stay untouched.</p>
+                                                <p class="text-body-sm text-grey-primary">The thumb remains light by default so it does not compete with the content hierarchy.</p>
+                                                <p class="text-body-sm text-grey-primary">Scroll further to confirm the inset thumb shape and the stable right gutter.</p>
+                                                <p class="text-body-xs text-grey-primary">End of preview.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Active</h4>
                                     <div class="size-grid-content">
-                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
-                                            <div class="custom-scrollbar is-scrolling flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
-                                                aria-label="Active custom scrollbar example">
-                                                <div class="flex flex-col gap-16">                            <div class="size-grid-column">
+                                        <div class="card custom-scrollbar is-scrolling w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
+                                            aria-label="Active custom scrollbar example">
+                                            <div class="p-24 flex flex-col gap-16">
+                                                <div class="flex flex-col gap-8">
+                                                    <p class="text-body text-black font-medium">Live interaction</p>
+                                                    <p class="text-body-sm text-grey-primary">The active state uses green-secondary only while the region is in motion, hovered, focused, or dragged.</p>
+                                                </div>
+                                                <p class="text-body-sm text-grey-primary">That keeps the control responsive without turning the scrollbar into a decorative accent.</p>
+                                                <p class="text-body-sm text-grey-primary">The browser arrow buttons stay removed, and the thumb keeps the same inset width across vertical and horizontal surfaces.</p>
+                                                <p class="text-body-sm text-grey-primary">This example is pre-activated to match the stronger state in your reference.</p>
+                                                <p class="text-body-xs text-grey-primary">End of preview.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column">
                                 <h3 class="size-grid-column-title">Context</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Focusable</h4>
                                     <div class="size-grid-content">
-                                        <div class="card w-full max-w-narrow h-thumb-md overflow-hidden flex flex-col">
-                                            <div class="custom-scrollbar flex-1 overflow-y-auto my-12 px-24 py-24" tabindex="0"
-                                                aria-label="Focusable custom scrollbar example">
-                                                <div class="flex flex-col gap-16">                                </div>
+                                        <div class="card custom-scrollbar w-full max-w-narrow h-thumb-md overflow-y-auto" tabindex="0"
+                                            aria-label="Focusable custom scrollbar example">
+                                            <div class="p-24 flex flex-col gap-16">
+                                                <div class="flex flex-col gap-8">
+                                                    <p class="text-body text-black font-medium">Keyboard access</p>
+                                                    <p class="text-body-sm text-grey-primary">Focusable scroll regions keep the same scrollbar treatment and also receive the shared focus ring.</p>
+                                                </div>
+                                                <p class="text-body-sm text-grey-primary">This matters for data-dense panels where a user tabs into the region and scrolls with the keyboard instead of the mouse wheel.</p>
+                                                <p class="text-body-sm text-grey-primary">The thumb color still shifts to the active tone so focus and movement read as one interaction family.</p>
+                                                <p class="text-body-xs text-grey-primary">Tab into this surface, then use Page Down or the arrow keys.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Horizontal</h4>
                                     <div class="size-grid-content">
-                                        <div class="card w-full max-w-narrow overflow-hidden">
-                                            <div class="custom-scrollbar overflow-x-auto my-12 px-24 py-24" tabindex="0"
-                                                aria-label="Horizontal custom scrollbar example">
-                                                <div class="min-w-max flex items-center gap-12">                            </div>
+                                        <div class="card custom-scrollbar w-full max-w-narrow overflow-x-auto" tabindex="0"
+                                            aria-label="Horizontal custom scrollbar example">
+                                            <div class="p-24 min-w-max flex items-center gap-12">
+                                                <span class="badge badge-neutral badge-md">Dropdown Menu</span>
+                                                <span class="badge badge-neutral badge-md">Language Selector</span>
+                                                <span class="badge badge-neutral badge-md">Combobox List</span>
+                                                <span class="badge badge-neutral badge-md">Data Table</span>
+                                                <span class="badge badge-neutral badge-md">Drawer Body</span>
+                                                <span class="badge badge-neutral badge-md">Segmented Control</span>
+                                                <span class="badge badge-neutral badge-md">Tab Bar</span>
+                                                <span class="badge badge-neutral badge-md">Pagination</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2192,63 +2238,20 @@
                                 <h3 class="size-grid-column-title">Layouts</h3>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Content Shell</h4>
+                                    <h4 class="size-grid-label">Base Shell</h4>
                                     <div class="size-grid-content">
-                                        <article class="panel p-24 flex flex-col gap-24 w-full" tabindex="0">
-                                            <div class="flex flex-wrap items-start justify-between gap-16">
-                                                <div class="space-y-8">
-                                                    <span class="badge badge-success badge-sm">Panel</span>
-                                                    <h4 class="text-card-title text-black">Overview Surface</h4>
-                                                    <p class="text-body text-grey-primary max-w-readable">
-                                                        Panels should hold grouped atoms without forcing the content
-                                                        into the center of the stage.
-                                                    </p>
-                                                </div>
-                                                <div class="flex flex-wrap items-center gap-10">
-                                                    <button class="btn btn-ghost btn-sm">Inspect</button>
-                                                    <button class="btn btn-primary btn-sm">Apply</button>
-                                                </div>
+                                        <article class="panel p-24 flex flex-col gap-16 w-full">
+                                            <div class="space-y-8">
+                                                <span class="text-overline text-grey-primary">Panel</span>
+                                                <h4 class="text-card-title text-black">Base surface</h4>
+                                                <p class="text-body text-grey-primary max-w-readable">
+                                                    Use panels to group related content, actions, and short supporting copy inside one calm shell.
+                                                </p>
                                             </div>
 
-                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-header">
-                                                            <div class="card-icon">
-                                                                <i class="ri-layout-grid-line text-icon-lg"
-                                                                    aria-hidden="true"></i>
-                                                            </div>
-                                                            <h5 class="card-title">Layout</h5>
-                                                        </div>
-                                                        <p class="card-text">Wide enough for structured content.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-header">
-                                                            <div class="card-icon">
-                                                                <i class="ri-font-size-2 text-icon-lg"
-                                                                    aria-hidden="true"></i>
-                                                            </div>
-                                                            <h5 class="card-title">Type</h5>
-                                                        </div>
-                                                        <p class="card-text">Readable copy with a clear title ladder.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-header">
-                                                            <div class="card-icon">
-                                                                <i class="ri-focus-2-line text-icon-lg"
-                                                                    aria-hidden="true"></i>
-                                                            </div>
-                                                            <h5 class="card-title">State</h5>
-                                                        </div>
-                                                        <p class="card-text">Hover and focus feel deliberate, not loud.
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                            <div class="flex flex-wrap items-center gap-10">
+                                                <button class="btn btn-ghost btn-sm">Secondary</button>
+                                                <button class="btn btn-primary btn-sm">Primary</button>
                                             </div>
                                         </article>
                                     </div>
@@ -2259,38 +2262,20 @@
                                     <div class="size-grid-content">
                                         <div class="panel panel-wrap-body panel-wrap-body-grid panel-wrap-body-gap-24 mb-0">
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-24 w-full items-start">
-                                                <div class="space-y-16">
-                                                    <div class="space-y-8">
-                                                        <span class="text-overline text-grey-primary">Panel Wrap</span>
-                                                        <h4 class="text-card-title text-black">Grid-ready shell</h4>
-                                                        <p class="text-body text-grey-primary max-w-readable">
-                                                            Panel wrap body grid should stretch the content area and
-                                                            keep columns aligned from the start edge.
-                                                        </p>
-                                                    </div>
-                                                    <div class="flex flex-wrap items-center gap-10">
-                                                        <span class="badge badge-primary badge-md">Stable</span>
-                                                        <span class="badge badge-info badge-md">Responsive</span>
-                                                    </div>
+                                                <div class="space-y-8">
+                                                    <span class="text-overline text-grey-primary">Column One</span>
+                                                    <h4 class="text-card-title text-black">Grid-ready shell</h4>
+                                                    <p class="text-body text-grey-primary max-w-readable">
+                                                        Use the panel wrap grid when content needs aligned columns instead of one centered stack.
+                                                    </p>
                                                 </div>
 
-                                                <dl class="list list-spec list-md w-full">
-                                                    <div class="list-item">
-                                                        <dt class="list-key">Spacing</dt>
-                                                        <dd class="list-value">Uses the same section rhythm as the
-                                                            stronger atom demos.</dd>
-                                                    </div>
-                                                    <div class="list-item">
-                                                        <dt class="list-key">Alignment</dt>
-                                                        <dd class="list-value">Starts from the left instead of floating
-                                                            in the center.</dd>
-                                                    </div>
-                                                    <div class="list-item">
-                                                        <dt class="list-key">Context</dt>
-                                                        <dd class="list-value">Works for cards, lists, and button
-                                                            clusters.</dd>
-                                                    </div>
-                                                </dl>
+                                                <div class="space-y-8">
+                                                    <span class="text-overline text-grey-primary">Column Two</span>
+                                                    <p class="text-body text-grey-primary max-w-readable">
+                                                        The shell keeps both sides start-aligned and lets the internal rhythm do the layout work.
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -2298,66 +2283,23 @@
                             </div>
 
                             <div class="size-grid-column">
-                                <h3 class="size-grid-column-title">States &amp; Context</h3>
-
-                                <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Focusable</h4>
-                                    <div class="size-grid-content">
-                                        <article class="panel p-24 flex flex-col gap-16 w-full" tabindex="0">
-                                            <div class="flex items-start gap-16">
-                                                <div class="card-icon">
-                                                    <i class="ri-focus-3-line text-icon-lg" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="space-y-8">
-                                                    <h4 class="text-card-title text-black">Keyboard-ready surface</h4>
-                                                    <p class="text-body text-grey-primary max-w-readable">
-                                                        Focus stays visible on the shell, and the supporting copy gains
-                                                        contrast without changing the layout.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
+                                <h3 class="size-grid-column-title">States</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Disabled</h4>
                                     <div class="size-grid-content">
                                         <article class="panel p-24 flex flex-col gap-16 w-full" aria-disabled="true">
                                             <div class="space-y-8">
-                                                <span class="badge badge-neutral badge-sm">Locked</span>
-                                                <h4 class="text-card-title text-black">Disabled wrapper</h4>
+                                                <span class="badge badge-neutral badge-sm">Disabled</span>
+                                                <h4 class="text-card-title text-black">Unavailable shell</h4>
                                                 <p class="text-body text-grey-primary max-w-readable">
-                                                    Disabled panels dim the surface and stop pointer interaction
-                                                    without needing a custom variant.
+                                                    Use the disabled state when the whole surface is unavailable and should not respond to interaction.
                                                 </p>
                                             </div>
                                             <div class="flex flex-wrap items-center gap-10">
                                                 <button class="btn btn-secondary btn-sm" disabled>Unavailable</button>
-                                                <button class="btn btn-ghost btn-sm" disabled>Review</button>
                                             </div>
                                         </article>
-                                    </div>
-                                </div>
-
-                                <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Sidebar Rail</h4>
-                                    <div class="size-grid-content">
-                                        <aside class="panel p-24 flex flex-col gap-16 w-full" tabindex="0">
-                                            <div class="space-y-8">
-                                                <span class="text-overline text-grey-primary">Navigation</span>
-                                                <h4 class="text-card-title text-black">Compact stack</h4>
-                                            </div>
-
-                                            <div class="flex flex-col gap-10">
-                                                <a href="#buttons"
-                                                    class="link-navigation link-lg justify-between w-full">Buttons</a>
-                                                <a href="#badge"
-                                                    class="link-navigation link-lg justify-between w-full">Badges</a>
-                                                <a href="#avatar"
-                                                    class="link-navigation link-lg justify-between w-full">Avatar</a>
-                                            </div>
-                                        </aside>
                                     </div>
                                 </div>
                             </div>
