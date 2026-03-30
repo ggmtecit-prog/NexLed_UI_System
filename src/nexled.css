@@ -3990,9 +3990,10 @@ body>aside.hidden.lg\:block {
   --combobox-panel-radius: var(--radius-md);
   --combobox-panel-padding: var(--space-12);
   --combobox-panel-gap: var(--space-8);
+  --combobox-leading-width: var(--combobox-control-min-h);
   --combobox-option-padding-block: var(--space-12);
   --combobox-option-padding-inline: var(--space-16);
-  --combobox-clear-width: var(--space-48);
+  --combobox-clear-gap: var(--space-8);
   position: relative;
   display: grid;
   gap: var(--space-12);
@@ -4028,6 +4029,9 @@ body>aside.hidden.lg\:block {
 }
 
 .combobox-control .input-icon-area {
+  flex: 0 0 var(--combobox-leading-width);
+  width: var(--combobox-leading-width);
+  padding-inline: var(--radius-none);
   border-right: var(--border-thin) solid var(--color-grey-secondary);
 }
 
@@ -4070,39 +4074,17 @@ body>aside.hidden.lg\:block {
 }
 
 .combobox-clear {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--combobox-clear-width);
-  border: 0;
-  border-left: var(--border-thin) solid var(--color-grey-secondary);
-  background: var(--color-grey-tertiary);
-  color: var(--color-grey-primary);
-  transition:
-    background-color var(--motion-duration-default) var(--motion-ease-premium),
-    color var(--motion-duration-default) var(--motion-ease-premium),
-    transform var(--motion-duration-default) var(--motion-ease-premium);
+  flex: 0 0 auto;
+  align-self: center;
+  margin-inline-end: var(--combobox-clear-gap);
 }
 
-.combobox-clear:hover:not(:disabled) {
-  background: var(--color-white);
-  color: var(--color-green-primary);
-}
-
-.combobox-clear:active:not(:disabled) {
-  transform: translateY(var(--press-offset));
-}
-
-.combobox-clear:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+.combobox-clear.btn:focus-visible {
   outline-offset: calc(var(--focus-ring-offset) * -1);
 }
 
 .combobox-clear:disabled {
-  opacity: var(--opacity-semi);
   pointer-events: none;
-  cursor: not-allowed;
 }
 
 .combobox-panel {
@@ -4241,29 +4223,29 @@ body>aside.hidden.lg\:block {
   --combobox-text-line: var(--line-height-body-sm);
   --combobox-panel-padding: var(--space-8);
   --combobox-panel-gap: var(--space-4);
-  --combobox-clear-width: var(--space-40);
+  --combobox-clear-gap: var(--space-8);
 }
 
 .combobox-md {
-  --combobox-control-min-h: var(--size-btn-md-h);
+  --combobox-control-min-h: var(--size-btn-sm-h);
   --combobox-control-padding-block: var(--space-12);
-  --combobox-control-padding-inline: var(--space-20);
+  --combobox-control-padding-inline: var(--space-24);
   --combobox-text-size: var(--font-size-body-sm);
   --combobox-text-line: var(--line-height-body-sm);
   --combobox-panel-padding: var(--space-8);
   --combobox-panel-gap: var(--space-4);
-  --combobox-clear-width: var(--space-48);
+  --combobox-clear-gap: var(--space-8);
 }
 
 .combobox-lg {
-  --combobox-control-min-h: var(--size-btn-lg-h);
+  --combobox-control-min-h: var(--size-btn-md-h);
   --combobox-control-padding-block: var(--space-16);
   --combobox-control-padding-inline: var(--space-24);
   --combobox-text-size: var(--font-size-body);
   --combobox-text-line: var(--line-height-body);
   --combobox-panel-padding: var(--space-12);
   --combobox-panel-gap: var(--space-8);
-  --combobox-clear-width: var(--space-56);
+  --combobox-clear-gap: var(--space-12);
 }
 
 @media (min-width: 480px) {
@@ -4293,7 +4275,6 @@ body>aside.hidden.lg\:block {
     --combobox-control-padding-inline: var(--space-32);
   }
 }
-
 /* DROPDOWN */
 .dropdown,
 .language-selector {
@@ -10644,3 +10625,9 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+
+
+
+
+
