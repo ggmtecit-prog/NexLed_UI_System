@@ -7544,7 +7544,6 @@ button.language-selector-trigger .language-selector-value {
   transform: translateY(-50%);
   z-index: 0;
 }
-
 .pagination-list {
   position: relative;
   display: flex;
@@ -9773,7 +9772,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   left: var(--carousel-content-inline);
   right: var(--carousel-content-inline);
   bottom: var(--carousel-content-block);
-  z-index: 0;
+  z-index: 1;
   display: grid;
   gap: var(--space-8);
   opacity: 0;
@@ -9854,7 +9853,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 0;
+  z-index: 2;
 }
 
 .carousel-prev.btn:hover,
@@ -9891,7 +9890,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  z-index: 0;
+  z-index: 2;
 }
 
 .carousel-square .carousel-nav {
@@ -10268,6 +10267,10 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   gap: var(--space-12);
 }
 
+.footer-social > .btn {
+  flex: 0 0 auto;
+}
+
 .footer-social-link {
   display: inline-flex;
   align-items: center;
@@ -10351,9 +10354,21 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   color: var(--color-white);
 }
 
+.footer-bottom-link::after,
+.footer-bottom-link:visited:not(:hover)::after,
+.footer-bottom-link.is-visited:not(:hover)::after {
+  background: var(--color-green-hover-text);
+}
+
 .footer-bottom-link:hover,
-.footer-bottom-link:focus-visible {
+.footer-bottom-link:focus-visible,
+.footer-bottom-link:active {
   color: var(--color-green-hover-text);
+}
+
+.footer-bottom-link:visited:not(:hover),
+.footer-bottom-link.is-visited:not(:hover) {
+  color: var(--color-white);
 }
 
 @media (min-width: 480px) {
@@ -11079,7 +11094,9 @@ textarea,
 
 .btn {
   max-width: 100%;
-  position: relative;`r`n  isolation: isolate;`r`n}
+  position: relative;
+  isolation: isolate;
+}
 
 .btn-xl {
   width: 100%;
@@ -11291,7 +11308,6 @@ textarea,
   transform: translateY(-50%);
   z-index: 0;
 }
-
 .pagination-list {
   max-width: 100%;
   overflow-x: auto;
