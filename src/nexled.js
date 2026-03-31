@@ -3019,6 +3019,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const anchorDate = mode === 'range' ? (defaultRangeStart || defaultDate) : defaultDate;
         const viewDate = anchorDate || stripTime(new Date());
         const panelIdBase = input.id || 'datePicker' + String(index + 1);
+        const headingControls = createDatePickerHeadingControls(panelIdBase);
+        monthLabel.classList.add('sr-only');
+        monthLabel.insertAdjacentElement('afterend', headingControls);
+        const monthTriggerLabel = headingControls.querySelector('[data-date-picker-month-trigger]');
+        const yearTriggerLabel = headingControls.querySelector('[data-date-picker-year-trigger]');
         const metaPanel = createDatePickerMetaPanel(panelIdBase);
         panel.insertBefore(metaPanel, weekdayRow);
         const monthGrid = metaPanel.querySelector('[data-date-picker-month-grid]');
@@ -3040,6 +3045,8 @@ document.addEventListener('DOMContentLoaded', () => {
             rangeEnd: defaultRangeEnd,
             activePreset: mode === 'range' ? (picker.dataset.datePickerPreset || '') : '',
             panelView: 'days',
+            metaMonthPage: Math.floor(viewDate.getMonth() / 6),
+            metaYearStart: viewDate.getFullYear() - 5,
             viewYear: viewDate.getFullYear(),
             viewMonth: viewDate.getMonth(),
         };
@@ -3053,14 +3060,14 @@ document.addEventListener('DOMContentLoaded', () => {
         input.setAttribute('inputmode', 'numeric');
         input.setAttribute('maxlength', mode === 'range' ? '23' : '10');
         input.setAttribute('placeholder', mode === 'range' ? rangeInputPlaceholder : dateInputPlaceholder);
-        monthLabel.setAttribute('contenteditable', isDisabled ? 'false' : 'true');
-        monthLabel.setAttribute('role', 'textbox');
-        monthLabel.setAttribute('tabindex', isDisabled ? '-1' : '0');
-        monthLabel.setAttribute('spellcheck', 'false');
-        monthLabel.setAttribute('aria-label', 'Type month and year');
-        monthLabel.setAttribute('aria-haspopup', 'grid');
-        monthLabel.setAttribute('aria-controls', metaPanel.id);
-        monthLabel.setAttribute('aria-expanded', 'false');
+        monthTriggerLabel.setAttribute('aria-controls', metaPanel.id);
+        monthTriggerLabel.setAttribute('aria-haspopup', 'grid');
+        monthTriggerLabel.setAttribute('aria-expanded', 'false');
+        monthTriggerLabel.setAttribute('aria-label', 'Choose month');
+        yearTriggerLabel.setAttribute('aria-controls', metaPanel.id);
+        yearTriggerLabel.setAttribute('aria-haspopup', 'grid');
+        yearTriggerLabel.setAttribute('aria-expanded', 'false');
+        yearTriggerLabel.setAttribute('aria-label', 'Choose year');
 
         renderWeekdays(weekdayRow);
         renderDatePicker(picker);
@@ -3078,43 +3085,26 @@ document.addEventListener('DOMContentLoaded', () => {
             openDatePicker(picker, true);
         });
 
-        monthLabel.addEventListener('focus', () => {
-            openMetaPicker(picker);
+        monthTriggerLabel.addEventListener('click', () => {
+            openMetaPicker(picker, 'month');
         });
 
-        monthLabel.addEventListener('click', () => {
-            openMetaPicker(picker);
+        yearTriggerLabel.addEventListener('click', () => {
+            openMetaPicker(picker, 'year');
         });
 
-        monthLabel.addEventListener('keydown', event => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                commitTypedMonthYear(picker);
-                return;
-            }
-
+        monthTriggerLabel.addEventListener('keydown', event => {
             if (event.key === 'ArrowDown') {
                 event.preventDefault();
-                openMetaPicker(picker);
-                return;
-            }
-
-            if (event.key === 'Escape') {
-                event.preventDefault();
-                event.stopPropagation();
-                closeMetaPicker(picker);
-                renderDatePicker(picker);
+                openMetaPicker(picker, 'month');
             }
         });
 
-        monthLabel.addEventListener('blur', () => {
-            requestAnimationFrame(() => {
-                if (metaPanel.contains(document.activeElement)) {
-                    return;
-                }
-
-                commitTypedMonthYear(picker);
-            });
+        yearTriggerLabel.addEventListener('keydown', event => {
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                openMetaPicker(picker, 'year');
+            }
         });
 
         input.addEventListener('input', () => {
@@ -3176,6 +3166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const monthOption = event.target.closest('[data-date-picker-month-option]');
             if (monthOption) {
                 picker._datePickerState.viewMonth = Number(monthOption.dataset.datePickerMonthOption);
+                picker._datePickerState.metaMonthPage = Math.floor(picker._datePickerState.viewMonth / 6);
                 closeMetaPicker(picker);
                 renderDatePicker(picker);
                 requestAnimationFrame(() => {
@@ -3187,6 +3178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const yearOption = event.target.closest('[data-date-picker-year-option]');
             if (yearOption) {
                 picker._datePickerState.viewYear = Number(yearOption.dataset.datePickerYearOption);
+                picker._datePickerState.metaYearStart = picker._datePickerState.viewYear - 5;
                 closeMetaPicker(picker);
                 renderDatePicker(picker);
                 requestAnimationFrame(() => {
@@ -3386,13 +3378,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderMonthYearPicker(currentPicker, visibleMonth) {
             const state = currentPicker._datePickerState;
-            const shouldPreserveTypedValue = document.activeElement === monthLabel && state.panelView === 'meta';
+            const monthPageStart = state.metaMonthPage * 6;
 
-            if (!shouldPreserveTypedValue) {
-                monthLabel.textContent = monthFormatter.format(visibleMonth);
-            }
+            monthLabel.textContent = monthFormatter.format(visibleMonth);
+            monthTriggerLabel.textContent = monthNames[state.viewMonth];
+            yearTriggerLabel.textContent = String(state.viewYear);
+            monthTriggerLabel.setAttribute('aria-label', 'Choose month, current ' + monthNames[state.viewMonth]);
+            yearTriggerLabel.setAttribute('aria-label', 'Choose year, current ' + String(state.viewYear));
 
-            const monthButtons = monthOptionLabels.map((label, monthIndex) => {
+            const monthButtons = monthOptionLabels.slice(monthPageStart, monthPageStart + 6).map((label, index) => {
+                const monthIndex = monthPageStart + index;
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'date-picker-meta-option';
@@ -3403,9 +3398,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return button;
             });
 
-            const yearStart = state.viewYear - 5;
             const yearButtons = Array.from({ length: 12 }, (_, index) => {
-                const yearValue = yearStart + index;
+                const yearValue = state.metaYearStart + index;
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'date-picker-meta-option';
@@ -3421,22 +3415,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function syncMetaPicker(currentPicker) {
             const state = currentPicker._datePickerState;
-            const isMetaOpen = state.panelView === 'meta';
+            const view = state.panelView;
+            const isMetaOpen = view !== 'days';
 
             currentPicker.classList.toggle('is-meta-open', isMetaOpen);
-            monthLabel.setAttribute('aria-expanded', isMetaOpen ? 'true' : 'false');
+            currentPicker.classList.toggle('is-month-open', view === 'month');
+            currentPicker.classList.toggle('is-year-open', view === 'year');
+            monthTriggerLabel.setAttribute('aria-expanded', view === 'month' ? 'true' : 'false');
+            yearTriggerLabel.setAttribute('aria-expanded', view === 'year' ? 'true' : 'false');
         }
 
-        function openMetaPicker(currentPicker) {
+        function openMetaPicker(currentPicker, view) {
             if (isDisabled) {
                 return;
             }
 
             const state = currentPicker._datePickerState;
-            if (state.panelView !== 'meta') {
-                state.panelView = 'meta';
+            if (state.panelView === view) {
+                state.panelView = 'days';
                 syncMetaPicker(currentPicker);
+                return;
             }
+
+            state.panelView = view;
+
+            if (view === 'month') {
+                state.metaMonthPage = Math.floor(state.viewMonth / 6);
+            }
+
+            if (view === 'year') {
+                state.metaYearStart = state.viewYear - 5;
+            }
+
+            renderMonthYearPicker(currentPicker, new Date(state.viewYear, state.viewMonth, 1));
+            syncMetaPicker(currentPicker);
         }
 
         function closeMetaPicker(currentPicker) {
@@ -3445,25 +3457,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.panelView = 'days';
                 syncMetaPicker(currentPicker);
             }
-        }
-
-        function commitTypedMonthYear(currentPicker) {
-            const state = currentPicker._datePickerState;
-            const parsedMonthYear = parseTypedMonthYear(monthLabel.textContent, monthNames);
-
-            closeMetaPicker(currentPicker);
-
-            if (!parsedMonthYear) {
-                renderDatePicker(currentPicker);
-                return;
-            }
-
-            state.viewMonth = parsedMonthYear.month;
-            state.viewYear = parsedMonthYear.year;
-            renderDatePicker(currentPicker);
-            requestAnimationFrame(() => {
-                focusPreferredDay(currentPicker);
-            });
         }
 
         function openDatePicker(currentPicker, focusSelectedDay) {
@@ -3566,6 +3559,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function shiftViewMonth(currentPicker, direction) {
             const state = currentPicker._datePickerState;
+
+            if (state.panelView === 'month') {
+                const nextMonthPage = Math.max(0, Math.min(1, state.metaMonthPage + direction));
+                if (nextMonthPage !== state.metaMonthPage) {
+                    state.metaMonthPage = nextMonthPage;
+                    renderMonthYearPicker(currentPicker, new Date(state.viewYear, state.viewMonth, 1));
+                }
+
+                requestAnimationFrame(() => {
+                    monthTriggerLabel.focus();
+                });
+                return;
+            }
+
+            if (state.panelView === 'year') {
+                state.metaYearStart += direction * 12;
+                renderMonthYearPicker(currentPicker, new Date(state.viewYear, state.viewMonth, 1));
+
+                requestAnimationFrame(() => {
+                    yearTriggerLabel.focus();
+                });
+                return;
+            }
+
             const nextDate = new Date(state.viewYear, state.viewMonth + direction, 1);
 
             state.viewYear = nextDate.getFullYear();
@@ -3573,11 +3590,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderDatePicker(currentPicker);
 
             requestAnimationFrame(() => {
-                if (state.panelView === 'meta') {
-                    monthLabel.focus();
-                    return;
-                }
-
                 focusPreferredDay(currentPicker);
             });
         }
@@ -3712,8 +3724,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             picker._datePickerState.panelView = 'days';
-            picker.classList.remove('is-meta-open');
-            picker.querySelector('[data-date-picker-month]')?.setAttribute('aria-expanded', 'false');
+            picker.classList.remove('is-meta-open', 'is-month-open', 'is-year-open');
+            picker.querySelector('[data-date-picker-month-trigger]')?.setAttribute('aria-expanded', 'false');
+            picker.querySelector('[data-date-picker-year-trigger]')?.setAttribute('aria-expanded', 'false');
             picker.classList.remove('is-open');
             const panel = picker.querySelector('[data-date-picker-panel]');
             panel.hidden = true;
@@ -3731,8 +3744,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         openPicker._datePickerState.panelView = 'days';
-        openPicker.classList.remove('is-meta-open');
-        openPicker.querySelector('[data-date-picker-month]')?.setAttribute('aria-expanded', 'false');
+        openPicker.classList.remove('is-meta-open', 'is-month-open', 'is-year-open');
+        openPicker.querySelector('[data-date-picker-month-trigger]')?.setAttribute('aria-expanded', 'false');
+        openPicker.querySelector('[data-date-picker-year-trigger]')?.setAttribute('aria-expanded', 'false');
         openPicker.classList.remove('is-open');
         const panel = openPicker.querySelector('[data-date-picker-panel]');
         panel.hidden = true;
@@ -3743,16 +3757,26 @@ document.addEventListener('DOMContentLoaded', () => {
         openPicker = null;
     });
 
+    function createDatePickerHeadingControls(idBase) {
+        const headingControls = document.createElement('div');
+        headingControls.className = 'date-picker-heading-controls';
+        headingControls.innerHTML = `
+            <button type="button" class="date-picker-heading-trigger" id="${idBase}-month-trigger" data-date-picker-month-trigger></button>
+            <button type="button" class="date-picker-heading-trigger" id="${idBase}-year-trigger" data-date-picker-year-trigger></button>
+        `;
+        return headingControls;
+    }
+
     function createDatePickerMetaPanel(idBase) {
         const metaPanel = document.createElement('div');
         metaPanel.className = 'date-picker-meta-panel';
         metaPanel.id = `${idBase}-meta`;
         metaPanel.innerHTML = `
-            <div class="date-picker-meta-section">
+            <div class="date-picker-meta-section" data-date-picker-meta-section="month">
                 <p class="date-picker-meta-title">Months</p>
                 <div class="date-picker-meta-grid" data-date-picker-month-grid role="grid" aria-label="Choose month"></div>
             </div>
-            <div class="date-picker-meta-section">
+            <div class="date-picker-meta-section" data-date-picker-meta-section="year">
                 <p class="date-picker-meta-title">Years</p>
                 <div class="date-picker-meta-grid" data-date-picker-year-grid role="grid" aria-label="Choose year"></div>
             </div>
@@ -3780,56 +3804,6 @@ document.addEventListener('DOMContentLoaded', () => {
             monthDate.setMonth(index);
             return formatter.format(monthDate).replace('.', '');
         });
-    }
-
-    function normalizeMonthToken(value) {
-        return String(value || '')
-            .normalize('NFD')
-            .replace(/[̀-ͯ]/g, '')
-            .replace(/\./g, '')
-            .trim()
-            .toLowerCase();
-    }
-
-    function parseTypedMonthYear(value, monthList) {
-        const trimmedValue = String(value || '').trim().replace(/\s+/g, ' ');
-        const parts = trimmedValue.match(/^(.+?)\s+(\d{4})$/);
-        if (!parts) {
-            return null;
-        }
-
-        const monthToken = parts[1];
-        const yearValue = Number(parts[2]);
-        const normalizedToken = normalizeMonthToken(monthToken);
-        let monthIndex = -1;
-
-        if (/^\d{1,2}$/.test(normalizedToken)) {
-            const numericMonth = Number(normalizedToken);
-            if (numericMonth >= 1 && numericMonth <= 12) {
-                monthIndex = numericMonth - 1;
-            }
-        }
-
-        if (monthIndex === -1) {
-            const normalizedMonths = monthList.map(monthName => normalizeMonthToken(monthName));
-            monthIndex = normalizedMonths.findIndex(monthName => monthName === normalizedToken);
-
-            if (monthIndex === -1) {
-                const prefixMatches = normalizedMonths
-                    .map((monthName, index) => monthName.startsWith(normalizedToken) ? index : -1)
-                    .filter(index => index !== -1);
-
-                if (prefixMatches.length === 1) {
-                    monthIndex = prefixMatches[0];
-                }
-            }
-        }
-
-        if (monthIndex === -1 || !Number.isInteger(yearValue)) {
-            return null;
-        }
-
-        return { month: monthIndex, year: yearValue };
     }
 
     function formatInputDate(date) {

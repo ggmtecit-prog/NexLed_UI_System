@@ -1,4 +1,4 @@
-/*
+﻿/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -1245,7 +1245,7 @@ textarea {
   width: 100%;
 }
 
-.text-field-shell.text-field-shell-meta > textarea {
+.text-field-shell.text-field-shell-meta>textarea {
   padding-inline-end: calc(var(--space-24) + var(--space-20));
   padding-block-end: calc(var(--space-16) + var(--space-20));
 }
@@ -1275,7 +1275,7 @@ textarea {
   display: none;
 }
 
-.text-field-shell.text-field-shell-trailing-action > .input {
+.text-field-shell.text-field-shell-trailing-action>.input {
   padding-inline-end: calc(var(--space-12) + var(--responsive-btn-xs-h) + var(--space-12));
 }
 
@@ -1301,7 +1301,7 @@ textarea {
   box-shadow: none;
 }
 
-.text-field-shell.text-field-shell-status > .input {
+.text-field-shell.text-field-shell-status>.input {
   padding-inline-end: calc(var(--space-16) + var(--space-32) + var(--space-16));
 }
 
@@ -1328,6 +1328,7 @@ textarea {
 .text-field-shell:has(.input-error) .text-field-shell-status-icon {
   color: var(--color-red-primary);
 }
+
 .input-icon-wrapper {
   --input-icon-control-min-h: var(--size-btn-sm-h);
   --input-icon-padding-block: var(--space-12);
@@ -1403,7 +1404,7 @@ textarea {
   transition: none;
 }
 
-.input-icon-area > i {
+.input-icon-area>i {
   font-size: var(--input-icon-leading-icon-size);
   line-height: 1;
 }
@@ -1584,6 +1585,7 @@ textarea {
   overflow: visible;
   text-overflow: clip;
 }
+
 .text-field-prefix-shell>.language-selector.text-field-prefix-control {
   --language-selector-trigger-width: var(--text-field-prefix-control-width);
   --language-selector-menu-width: var(--text-field-prefix-control-width);
@@ -1630,6 +1632,7 @@ textarea {
   display: grid;
   gap: var(--space-12);
 }
+
 .date-picker-control {
   position: relative;
   display: flex;
@@ -1871,23 +1874,55 @@ textarea {
   font-weight: var(--font-weight-semibold);
 }
 
-.date-picker-month[contenteditable="true"] {
+.date-picker-heading-controls {
   display: inline-flex;
   align-items: center;
-  min-height: var(--date-picker-heading-line);
-  border-radius: var(--responsive-btn-xs-radius);
-  cursor: text;
-  caret-color: var(--color-black);
+  flex-wrap: wrap;
+  gap: var(--space-8);
 }
 
-.date-picker-month[contenteditable="true"]:focus {
+.date-picker-heading-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size-btn-xs-h);
+  padding: var(--space-8) var(--space-12);
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  border-radius: var(--responsive-btn-xs-radius);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-family-base);
+  font-size: var(--date-picker-heading-size);
+  line-height: 1;
+  font-weight: var(--font-weight-semibold);
+  box-shadow: none;
+  transition:
+    background-color var(--motion-duration-default) var(--motion-ease-premium),
+    color var(--motion-duration-default) var(--motion-ease-premium),
+    border-color var(--motion-duration-default) var(--motion-ease-premium),
+    box-shadow var(--motion-duration-default) var(--motion-ease-premium),
+    transform var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.date-picker-heading-trigger:hover {
+  transform: none;
+  border-color: var(--color-green-hover-icons);
+  color: var(--color-green-secondary);
+}
+
+.date-picker-heading-trigger[aria-expanded="true"] {
+  border-color: var(--color-green-secondary);
+  background: color-mix(in srgb, var(--color-green-hover-text) 88%, var(--color-white));
+  color: var(--color-green-primary);
+}
+
+.date-picker-heading-trigger:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
 }
 
 .date-picker-meta-panel {
   display: none;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-16);
 }
 
@@ -1901,8 +1936,13 @@ textarea {
 }
 
 .date-picker-meta-section {
-  display: grid;
+  display: none;
   gap: var(--space-8);
+}
+
+.date-picker.is-month-open .date-picker-meta-section[data-date-picker-meta-section="month"],
+.date-picker.is-year-open .date-picker-meta-section[data-date-picker-meta-section="year"] {
+  display: grid;
 }
 
 .date-picker-meta-title {
@@ -1996,29 +2036,89 @@ textarea {
   grid-column: var(--date-picker-range-start-line) / var(--date-picker-range-end-line);
 }
 
-.range-start-col-1 { --date-picker-range-start-line: 1; }
-.range-start-col-2 { --date-picker-range-start-line: 2; }
-.range-start-col-3 { --date-picker-range-start-line: 3; }
-.range-start-col-4 { --date-picker-range-start-line: 4; }
-.range-start-col-5 { --date-picker-range-start-line: 5; }
-.range-start-col-6 { --date-picker-range-start-line: 6; }
-.range-start-col-7 { --date-picker-range-start-line: 7; }
+.range-start-col-1 {
+  --date-picker-range-start-line: 1;
+}
 
-.range-end-col-1 { --date-picker-range-end-line: 2; }
-.range-end-col-2 { --date-picker-range-end-line: 3; }
-.range-end-col-3 { --date-picker-range-end-line: 4; }
-.range-end-col-4 { --date-picker-range-end-line: 5; }
-.range-end-col-5 { --date-picker-range-end-line: 6; }
-.range-end-col-6 { --date-picker-range-end-line: 7; }
-.range-end-col-7 { --date-picker-range-end-line: 8; }
+.range-start-col-2 {
+  --date-picker-range-start-line: 2;
+}
 
-.day-col-1 { grid-column: 1; }
-.day-col-2 { grid-column: 2; }
-.day-col-3 { grid-column: 3; }
-.day-col-4 { grid-column: 4; }
-.day-col-5 { grid-column: 5; }
-.day-col-6 { grid-column: 6; }
-.day-col-7 { grid-column: 7; }
+.range-start-col-3 {
+  --date-picker-range-start-line: 3;
+}
+
+.range-start-col-4 {
+  --date-picker-range-start-line: 4;
+}
+
+.range-start-col-5 {
+  --date-picker-range-start-line: 5;
+}
+
+.range-start-col-6 {
+  --date-picker-range-start-line: 6;
+}
+
+.range-start-col-7 {
+  --date-picker-range-start-line: 7;
+}
+
+.range-end-col-1 {
+  --date-picker-range-end-line: 2;
+}
+
+.range-end-col-2 {
+  --date-picker-range-end-line: 3;
+}
+
+.range-end-col-3 {
+  --date-picker-range-end-line: 4;
+}
+
+.range-end-col-4 {
+  --date-picker-range-end-line: 5;
+}
+
+.range-end-col-5 {
+  --date-picker-range-end-line: 6;
+}
+
+.range-end-col-6 {
+  --date-picker-range-end-line: 7;
+}
+
+.range-end-col-7 {
+  --date-picker-range-end-line: 8;
+}
+
+.day-col-1 {
+  grid-column: 1;
+}
+
+.day-col-2 {
+  grid-column: 2;
+}
+
+.day-col-3 {
+  grid-column: 3;
+}
+
+.day-col-4 {
+  grid-column: 4;
+}
+
+.day-col-5 {
+  grid-column: 5;
+}
+
+.day-col-6 {
+  grid-column: 6;
+}
+
+.day-col-7 {
+  grid-column: 7;
+}
 
 .date-picker-weekdays span {
   display: inline-flex;
@@ -2206,8 +2306,16 @@ textarea {
   gap: var(--space-12);
 }
 
+.date-picker-compact .date-picker-heading-controls {
+  gap: var(--space-4);
+}
+
+.date-picker-compact .date-picker-heading-trigger {
+  min-height: var(--size-btn-xs-h);
+  padding: var(--space-8) var(--space-10);
+}
+
 .date-picker-compact .date-picker-meta-panel {
-  grid-template-columns: 1fr;
   gap: var(--space-12);
 }
 
@@ -2256,6 +2364,7 @@ textarea {
     --date-picker-heading-line: var(--line-height-h3);
   }
 }
+
 /* Number input spinner reset */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -3293,6 +3402,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: var(--quantity-selector-value-width);
   }
 }
+
 /* HYPERLINKS */
 .link,
 .link-inline,
@@ -4416,7 +4526,7 @@ body>aside.hidden.lg\:block {
   transition: none;
 }
 
-.combobox-control .input-icon-area > i {
+.combobox-control .input-icon-area>i {
   font-size: var(--combobox-leading-icon-size);
   line-height: 1;
 }
@@ -4693,6 +4803,7 @@ body>aside.hidden.lg\:block {
     --combobox-control-padding-inline: var(--space-32);
   }
 }
+
 /* DROPDOWN */
 .dropdown,
 .language-selector {
@@ -4902,6 +5013,7 @@ button.language-selector-trigger .language-selector-value {
 .language-selector-option[aria-selected="true"] .language-selector-check {
   opacity: 1;
 }
+
 .dropdown {
   --dropdown-trigger-radius: var(--radius-md);
   --dropdown-menu-radius: var(--radius-md);
@@ -6127,7 +6239,7 @@ button.language-selector-trigger .language-selector-value {
   min-width: 0;
 }
 
-.alert > .alert-actions {
+.alert>.alert-actions {
   flex: 0 0 auto;
   width: auto;
   padding-top: 0;
@@ -6773,6 +6885,7 @@ button.language-selector-trigger .language-selector-value {
   font-weight: var(--font-weight-medium);
   text-align: left;
 }
+
 /* DATA TABLE */
 .data-table {
   --data-table-cell-py: var(--space-12);
@@ -7412,6 +7525,7 @@ button.language-selector-trigger .language-selector-value {
   width: var(--pagination-control-height);
   padding-inline: var(--radius-none);
 }
+
 .pagination-compact {
   --pagination-gap: var(--space-4);
   --pagination-list-gap: var(--space-4);
@@ -9336,6 +9450,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .material-thumb,
   .material-img,
   .material-label {
@@ -9387,6 +9502,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --material-selector-label-line-height: var(--line-height-body);
   }
 }
+
 /* CAROUSEL */
 .carousel {
   --carousel-control-offset: var(--space-16);
@@ -9418,10 +9534,11 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 }
 
 .carousel-landscape {
-  height: calc(var(--size-carousel-h) - var(--space-64));
+  aspect-ratio: 16 / 9;
 }
 
 .carousel-square {
+  aspect-ratio: 1 / 1;
   max-width: var(--layout-narrow);
   margin-left: auto;
   margin-right: auto;
@@ -9710,10 +9827,6 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --carousel-card-label-line: var(--line-height-body-lg);
   }
 
-  .carousel-landscape {
-    height: calc(var(--size-carousel-h) - var(--space-32));
-  }
-
   .carousel-grid-container {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-24);
@@ -9736,9 +9849,6 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --carousel-card-label-line: var(--line-height-body-lg);
   }
 
-  .carousel-landscape {
-    height: var(--size-carousel-h);
-  }
 }
 
 @media (min-width: 1024px) {
@@ -11194,12 +11304,3 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-
-
-
-
-
-
-
-
