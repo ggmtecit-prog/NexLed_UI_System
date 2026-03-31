@@ -1,4 +1,4 @@
-const canUseScrollReveal = typeof window !== 'undefined'
+﻿const canUseScrollReveal = typeof window !== 'undefined'
     && typeof document !== 'undefined'
     && typeof window.IntersectionObserver === 'function'
     && (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -1741,10 +1741,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Carousel Component Logic
- * Handles slide transitions, dot/arrow navigation, and keyboard support.
+ * Handles slide transitions, dot/arrow navigation, keyboard support, and opt-in autoplay.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const carousels = document.querySelectorAll('[data-carousel]');
 
     carousels.forEach((carousel, carouselIndex) => {
@@ -1755,10 +1756,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
         const prevBtn = carousel.querySelector('.carousel-prev');
         const nextBtn = carousel.querySelector('.carousel-next');
+        const isAutoplayEnabled = carousel.dataset.carouselAutoplay === 'true';
+        const autoplayDelay = 5000;
 
         if (slides.length === 0) return;
 
         let currentIndex = slides.findIndex(slide => slide.classList.contains('is-active'));
+        let autoplayTimer = null;
+        let isPointerInside = false;
+        let hasFocusWithin = false;
         if (currentIndex === -1) currentIndex = 0;
 
         carousel.setAttribute('tabindex', '0');
@@ -1811,41 +1817,116 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = index;
         }
 
-        // Arrow navigation
+        function stopAutoplay() {
+            if (autoplayTimer !== null) {
+                window.clearInterval(autoplayTimer);
+                autoplayTimer = null;
+            }
+        }
+
+        function startAutoplay() {
+            if (!isAutoplayEnabled || slides.length < 2 || prefersReducedMotionQuery.matches || document.hidden || isPointerInside || hasFocusWithin) {
+                return;
+            }
+
+            stopAutoplay();
+            autoplayTimer = window.setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, autoplayDelay);
+        }
+
+        function restartAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 goToSlide(currentIndex - 1);
+                restartAutoplay();
             });
         }
 
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 goToSlide(currentIndex + 1);
+                restartAutoplay();
             });
         }
 
-        // Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 goToSlide(index);
+                restartAutoplay();
             });
         });
 
-        // Keyboard navigation
         carousel.addEventListener('keydown', event => {
             if (event.key === 'ArrowLeft') {
                 event.preventDefault();
                 goToSlide(currentIndex - 1);
+                restartAutoplay();
             }
 
             if (event.key === 'ArrowRight') {
                 event.preventDefault();
                 goToSlide(currentIndex + 1);
+                restartAutoplay();
             }
         });
 
-        // Ensure initial state is correct
+        if (isAutoplayEnabled) {
+            carousel.addEventListener('pointerenter', () => {
+                isPointerInside = true;
+                stopAutoplay();
+            });
+
+            carousel.addEventListener('pointerleave', () => {
+                isPointerInside = false;
+                startAutoplay();
+            });
+
+            carousel.addEventListener('focusin', () => {
+                hasFocusWithin = true;
+                stopAutoplay();
+            });
+
+            carousel.addEventListener('focusout', event => {
+                const nextFocused = event.relatedTarget;
+                hasFocusWithin = Boolean(nextFocused && carousel.contains(nextFocused));
+
+                if (!hasFocusWithin) {
+                    startAutoplay();
+                }
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopAutoplay();
+                    return;
+                }
+
+                startAutoplay();
+            });
+
+            const syncMotionPreference = () => {
+                if (prefersReducedMotionQuery.matches) {
+                    stopAutoplay();
+                    return;
+                }
+
+                startAutoplay();
+            };
+
+            if (typeof prefersReducedMotionQuery.addEventListener === 'function') {
+                prefersReducedMotionQuery.addEventListener('change', syncMotionPreference);
+            } else if (typeof prefersReducedMotionQuery.addListener === 'function') {
+                prefersReducedMotionQuery.addListener(syncMotionPreference);
+            }
+        }
+
         goToSlide(currentIndex);
+        startAutoplay();
     });
 });
 
@@ -4500,6 +4581,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
 
 
