@@ -2976,7 +2976,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const locale = document.documentElement.lang || navigator.language || 'en-US';
     const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' });
-    const inputFormatter = new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric' });
+    const dateInputPlaceholder = '00/00/0000';
+    const rangeInputPlaceholder = '00/00/0000 - 00/00/0000';
     const summaryFormatter = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
     const ariaFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     const weekdayLabels = createWeekdayLabels(locale);
@@ -3040,6 +3041,11 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger.setAttribute('aria-expanded', 'false');
         input.setAttribute('aria-controls', panel.id);
         input.setAttribute('aria-expanded', 'false');
+        input.setAttribute('autocomplete', 'off');
+        input.setAttribute('spellcheck', 'false');
+        input.setAttribute('inputmode', 'numeric');
+        input.setAttribute('maxlength', mode === 'range' ? '23' : '10');
+        input.setAttribute('placeholder', mode === 'range' ? rangeInputPlaceholder : dateInputPlaceholder);
 
         renderWeekdays(weekdayRow);
         renderDatePicker(picker);
@@ -3057,11 +3063,27 @@ document.addEventListener('DOMContentLoaded', () => {
             openDatePicker(picker, true);
         });
 
-        input.addEventListener('click', () => openDatePicker(picker, true));
+        input.addEventListener('input', () => {
+            input.value = mode === 'range'
+                ? normalizeTypedRangeInput(input.value)
+                : normalizeTypedDateInput(input.value);
+        });
+
+        input.addEventListener('blur', () => {
+            commitTypedInput(picker);
+        });
+
         input.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown') {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                commitTypedInput(picker);
+                return;
+            }
+
+            if (event.key === 'ArrowDown') {
                 event.preventDefault();
                 openDatePicker(picker, true);
+                return;
             }
 
             if (event.key === 'Escape') {
@@ -3185,7 +3207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 summaryTarget.textContent = formatRangeSummary(state);
                 syncPresetButtons(currentPicker);
             } else {
-                input.value = state.selectedDate ? inputFormatter.format(state.selectedDate) : '';
+                input.value = state.selectedDate ? formatInputDate(state.selectedDate) : '';
                 if (singleValueField) {
                     singleValueField.value = state.selectedDate ? toISODate(state.selectedDate) : '';
                 }
@@ -3202,56 +3224,86 @@ document.addEventListener('DOMContentLoaded', () => {
             const offset = (firstVisibleDay.getDay() + 6) % 7;
             firstVisibleDay.setDate(firstVisibleDay.getDate() - offset);
 
-            const buttons = [];
+            const weekRows = [];
+            const hasVisibleMultiDayRange = state.mode === 'range'
+                && state.rangeStart
+                && state.rangeEnd
+                && !isSameDay(state.rangeStart, state.rangeEnd);
 
-            for (let dayIndex = 0; dayIndex < 42; dayIndex += 1) {
-                const dayDate = new Date(firstVisibleDay);
-                dayDate.setDate(firstVisibleDay.getDate() + dayIndex);
+            for (let weekIndex = 0; weekIndex < 6; weekIndex += 1) {
+                const weekRow = document.createElement('div');
+                weekRow.className = 'date-picker-week-row';
 
-                const dayButton = document.createElement('button');
-                const classNames = ['date-picker-day'];
-                const isSelected = state.mode === 'single' && state.selectedDate && isSameDay(dayDate, state.selectedDate);
-                const isRangeStart = state.mode === 'range' && state.rangeStart && isSameDay(dayDate, state.rangeStart);
-                const isRangeEnd = state.mode === 'range' && state.rangeEnd && isSameDay(dayDate, state.rangeEnd);
-                const isInRange = state.mode === 'range' && isDateInRange(dayDate, state.rangeStart, state.rangeEnd);
-                const isPressed = Boolean(isSelected || isRangeStart || isRangeEnd || isInRange);
+                let rangeStartColumn = null;
+                let rangeEndColumn = null;
 
-                dayButton.type = 'button';
-                dayButton.dataset.datePickerDay = toISODate(dayDate);
-                dayButton.textContent = String(dayDate.getDate());
-                dayButton.setAttribute('aria-label', ariaFormatter.format(dayDate));
-                dayButton.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+                for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek += 1) {
+                    const dayIndex = (weekIndex * 7) + dayOfWeek;
+                    const dayDate = new Date(firstVisibleDay);
+                    dayDate.setDate(firstVisibleDay.getDate() + dayIndex);
 
-                if (dayDate.getMonth() !== state.viewMonth) {
-                    classNames.push('is-outside');
+                    const dayButton = document.createElement('button');
+                    const classNames = ['date-picker-day', 'day-col-' + String(dayOfWeek + 1)];
+                    const isSelected = state.mode === 'single' && state.selectedDate && isSameDay(dayDate, state.selectedDate);
+                    const isRangeStart = state.mode === 'range' && state.rangeStart && isSameDay(dayDate, state.rangeStart);
+                    const isRangeEnd = state.mode === 'range' && state.rangeEnd && isSameDay(dayDate, state.rangeEnd);
+                    const isInRange = state.mode === 'range' && isDateInRange(dayDate, state.rangeStart, state.rangeEnd);
+                    const isPressed = Boolean(isSelected || isRangeStart || isRangeEnd || isInRange);
+
+                    dayButton.type = 'button';
+                    dayButton.dataset.datePickerDay = toISODate(dayDate);
+                    dayButton.textContent = String(dayDate.getDate());
+                    dayButton.setAttribute('aria-label', ariaFormatter.format(dayDate));
+                    dayButton.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+
+                    if (dayDate.getMonth() !== state.viewMonth) {
+                        classNames.push('is-outside');
+                    }
+
+                    if (isSameDay(dayDate, today)) {
+                        classNames.push('is-today');
+                        dayButton.setAttribute('aria-current', 'date');
+                    }
+
+                    if (isInRange) {
+                        classNames.push('is-in-range');
+
+                        if (hasVisibleMultiDayRange) {
+                            if (rangeStartColumn === null) {
+                                rangeStartColumn = dayOfWeek + 1;
+                            }
+
+                            rangeEndColumn = dayOfWeek + 1;
+                        }
+                    }
+
+                    if (isSelected) {
+                        classNames.push('is-selected');
+                    }
+
+                    if (isRangeStart) {
+                        classNames.push('is-range-start', 'is-selected');
+                    }
+
+                    if (isRangeEnd) {
+                        classNames.push('is-range-end', 'is-selected');
+                    }
+
+                    dayButton.className = classNames.join(' ');
+                    weekRow.append(dayButton);
                 }
 
-                if (isSameDay(dayDate, today)) {
-                    classNames.push('is-today');
-                    dayButton.setAttribute('aria-current', 'date');
+                if (rangeStartColumn !== null && rangeEndColumn !== null) {
+                    const rangeStrip = document.createElement('span');
+                    rangeStrip.className = 'date-picker-week-strip range-start-col-' + String(rangeStartColumn) + ' range-end-col-' + String(rangeEndColumn);
+                    rangeStrip.setAttribute('aria-hidden', 'true');
+                    weekRow.prepend(rangeStrip);
                 }
 
-                if (isInRange) {
-                    classNames.push('is-in-range');
-                }
-
-                if (isSelected) {
-                    classNames.push('is-selected');
-                }
-
-                if (isRangeStart) {
-                    classNames.push('is-range-start', 'is-selected');
-                }
-
-                if (isRangeEnd) {
-                    classNames.push('is-range-end', 'is-selected');
-                }
-
-                dayButton.className = classNames.join(' ');
-                buttons.push(dayButton);
+                weekRows.push(weekRow);
             }
 
-            daysTarget.replaceChildren(...buttons);
+            daysTarget.replaceChildren(...weekRows);
         }
 
         function openDatePicker(currentPicker, focusSelectedDay) {
@@ -3306,6 +3358,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextValue = isOpen ? 'true' : 'false';
             currentPicker.querySelector('[data-date-picker-trigger]')?.setAttribute('aria-expanded', nextValue);
             currentPicker.querySelector('[data-date-picker-input]')?.setAttribute('aria-expanded', nextValue);
+        }
+
+        function commitTypedInput(currentPicker) {
+            const state = currentPicker._datePickerState;
+            const typedValue = input.value.trim();
+
+            if (!typedValue) {
+                clearSelection(currentPicker);
+                return;
+            }
+
+            if (state.mode === 'range') {
+                const parsedRange = parseTypedRangeInput(typedValue);
+
+                if (!parsedRange) {
+                    renderDatePicker(currentPicker);
+                    return;
+                }
+
+                state.rangeStart = parsedRange.start;
+                state.rangeEnd = parsedRange.end;
+                state.selectedDate = parsedRange.end || parsedRange.start;
+                state.activePreset = '';
+
+                if (parsedRange.start) {
+                    state.viewYear = parsedRange.start.getFullYear();
+                    state.viewMonth = parsedRange.start.getMonth();
+                }
+
+                renderDatePicker(currentPicker);
+                return;
+            }
+
+            const parsedDate = parseTypedDateInput(typedValue);
+            if (!parsedDate) {
+                renderDatePicker(currentPicker);
+                return;
+            }
+
+            state.selectedDate = parsedDate;
+            state.viewYear = parsedDate.getFullYear();
+            state.viewMonth = parsedDate.getMonth();
+            renderDatePicker(currentPicker);
         }
 
         function shiftViewMonth(currentPicker, direction) {
@@ -3486,18 +3581,115 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function formatInputDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear());
+
+        return `${day}/${month}/${year}`;
+    }
+
+    function normalizeTypedDateInput(value) {
+        const digits = String(value || '').replace(/\D/g, '').slice(0, 8);
+        const parts = [];
+
+        if (digits.length > 0) {
+            parts.push(digits.slice(0, 2));
+        }
+
+        if (digits.length > 2) {
+            parts.push(digits.slice(2, 4));
+        }
+
+        if (digits.length > 4) {
+            parts.push(digits.slice(4, 8));
+        }
+
+        return parts.join('/');
+    }
+
+    function normalizeTypedRangeInput(value) {
+        const digits = String(value || '').replace(/\D/g, '').slice(0, 16);
+        const startValue = normalizeTypedDateInput(digits.slice(0, 8));
+        const endDigits = digits.slice(8, 16);
+        const endValue = normalizeTypedDateInput(endDigits);
+
+        if (!startValue) {
+            return '';
+        }
+
+        if (!endDigits) {
+            return startValue;
+        }
+
+        return `${startValue} - ${endValue}`;
+    }
+
+    function parseTypedDateInput(value) {
+        const parts = String(value || '').trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!parts) {
+            return null;
+        }
+
+        const day = Number(parts[1]);
+        const month = Number(parts[2]) - 1;
+        const year = Number(parts[3]);
+        const parsedDate = new Date(year, month, day);
+
+        if (Number.isNaN(parsedDate.getTime())) {
+            return null;
+        }
+
+        if (parsedDate.getFullYear() !== year || parsedDate.getMonth() !== month || parsedDate.getDate() !== day) {
+            return null;
+        }
+
+        return stripTime(parsedDate);
+    }
+
+    function parseTypedRangeInput(value) {
+        const trimmedValue = String(value || '').trim();
+        if (!trimmedValue) {
+            return { start: null, end: null };
+        }
+
+        const parts = trimmedValue.split(/\s*-\s*/);
+        if (parts.length > 2) {
+            return null;
+        }
+
+        const startDate = parseTypedDateInput(parts[0]);
+        if (!startDate) {
+            return null;
+        }
+
+        if (parts.length === 1 || !parts[1]) {
+            return { start: startDate, end: null };
+        }
+
+        const endDate = parseTypedDateInput(parts[1]);
+        if (!endDate) {
+            return null;
+        }
+
+        if (endDate.getTime() < startDate.getTime()) {
+            return { start: endDate, end: startDate };
+        }
+
+        return { start: startDate, end: endDate };
+    }
+
     function formatRangeInput(startDate, endDate) {
         if (!startDate && !endDate) {
             return '';
         }
 
         if (startDate && endDate) {
-            return `${inputFormatter.format(startDate)} - ${inputFormatter.format(endDate)}`;
+            return `${formatInputDate(startDate)} - ${formatInputDate(endDate)}`;
         }
 
-        return `${inputFormatter.format(startDate)} -`;
+        return `${formatInputDate(startDate)} -`;
     }
-
     function formatRangeSummary(state) {
         const presetLabel = presetLabels[state.activePreset];
 
