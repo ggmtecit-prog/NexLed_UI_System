@@ -4767,11 +4767,12 @@
                                                     aria-labelledby="datePickerDemoTitle">
                                                     <div class="date-picker-head">
                                                         <div class="date-picker-meta">
-                                                            <p class="text-label">Single Date</p>
                                                             <h3 class="date-picker-month" id="datePickerDemoTitle"
                                                                 data-date-picker-month></h3>
                                                         </div>
                                                         <div class="date-picker-nav">
+                                                            <button type="button" class="btn btn-ghost btn-xs"
+                                                                data-date-picker-clear>Clear</button>
                                                             <button type="button" class="btn btn-ghost btn-icon btn-xs"
                                                                 data-date-picker-prev aria-label="Show previous month">
                                                                 <i class="ri-arrow-left-s-line text-icon-md"
@@ -4789,19 +4790,159 @@
                                                         aria-hidden="true"></div>
                                                     <div class="date-picker-days" data-date-picker-days role="grid"
                                                         aria-labelledby="datePickerDemoTitle"></div>
+                                                    <p class="sr-only date-picker-summary" data-date-picker-summary
+                                                        aria-live="polite">Selected date updates here.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                                    <div class="date-picker-footer">
-                                                        <button type="button" class="btn btn-ghost btn-sm"
-                                                            data-date-picker-today>Today</button>
-                                                        <p class="date-picker-summary" data-date-picker-summary
-                                                            aria-live="polite">Selected date updates here.</p>
+                                                                                                            <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Compact Panel</h4>
+                                        <div class="size-grid-content">
+                                            <div class="date-picker date-picker-md date-picker-compact date-picker-inline"
+                                                data-date-picker data-date-picker-default="2026-06-18"
+                                                data-date-picker-open="true">
+                                                <div class="flex flex-col gap-4">
+                                                    <label for="datePickerCompactInput" class="input-label">Review Date</label>
+                                                    <p id="datePickerCompactHint" class="input-hint">Condensed calendar surface for tighter planning tools, utility flows, and side panels.</p>
+                                                </div>
+
+                                                <div class="date-picker-control">
+                                                    <span class="date-picker-leading" aria-hidden="true">
+                                                        <i class="ri-calendar-line text-icon-md"></i>
+                                                    </span>
+                                                    <input type="text" id="datePickerCompactInput"
+                                                        class="date-picker-input" placeholder="Select a date" readonly
+                                                        data-date-picker-input aria-describedby="datePickerCompactHint"
+                                                        aria-haspopup="dialog">
+                                                    <input type="hidden" name="reviewDate" data-date-picker-value>
+                                                    <button type="button" class="date-picker-trigger"
+                                                        data-date-picker-trigger
+                                                        aria-label="Open review date calendar"
+                                                        aria-haspopup="dialog">
+                                                        <i class="ri-arrow-down-s-line text-icon-md"
+                                                            aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="date-picker-panel" data-date-picker-panel hidden
+                                                    role="dialog" aria-modal="false"
+                                                    aria-labelledby="datePickerCompactTitle">
+                                                    <div class="date-picker-head">
+                                                        <div class="date-picker-meta">
+                                                            <h3 class="date-picker-month" id="datePickerCompactTitle"
+                                                                data-date-picker-month></h3>
+                                                        </div>
+                                                        <div class="date-picker-nav">
+                                                            <button type="button" class="btn btn-ghost btn-xs"
+                                                                data-date-picker-clear>Clear</button>
+                                                            <button type="button" class="btn btn-ghost btn-icon btn-xs"
+                                                                data-date-picker-prev aria-label="Show previous month">
+                                                                <i class="ri-arrow-left-s-line text-icon-md"
+                                                                    aria-hidden="true"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-ghost btn-icon btn-xs"
+                                                                data-date-picker-next aria-label="Show next month">
+                                                                <i class="ri-arrow-right-s-line text-icon-md"
+                                                                    aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
+
+                                                    <div class="date-picker-weekdays" data-date-picker-weekdays
+                                                        aria-hidden="true"></div>
+                                                    <div class="date-picker-days" data-date-picker-days role="grid"
+                                                        aria-labelledby="datePickerCompactTitle"></div>
+                                                    <p class="sr-only date-picker-summary" data-date-picker-summary
+                                                        aria-live="polite">Selected date updates here.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Compact Time Frame</h4>
+                                        <div class="size-grid-content">
+                                            <div class="date-picker date-picker-md date-picker-compact date-picker-inline"
+                                                data-date-picker data-date-picker-mode="range"
+                                                data-date-picker-range-start="2026-06-15"
+                                                data-date-picker-range-end="2026-06-21" data-date-picker-preset="week"
+                                                data-date-picker-open="true" data-date-picker-sticky="true">
+                                                <div class="flex flex-col gap-4">
+                                                    <label for="datePickerCompactRangeInput" class="input-label">Service Window</label>
+                                                    <p id="datePickerCompactRangeHint" class="input-hint">Compact preset-driven range picker for tighter scheduling flows and side-panel planning tools.</p>
+                                                </div>
+
+                                                <div class="date-picker-presets" role="group"
+                                                    aria-label="Compact quick time frames">
+                                                    <button type="button"
+                                                        class="btn btn-ghost btn-xs date-picker-preset"
+                                                        data-date-picker-preset="week" aria-pressed="true">Week</button>
+                                                    <button type="button"
+                                                        class="btn btn-ghost btn-xs date-picker-preset"
+                                                        data-date-picker-preset="next-7-days" aria-pressed="false">7 Days</button>
+                                                    <button type="button"
+                                                        class="btn btn-ghost btn-xs date-picker-preset"
+                                                        data-date-picker-preset="month" aria-pressed="false">Month</button>
+                                                </div>
+
+                                                <div class="date-picker-control">
+                                                    <span class="date-picker-leading" aria-hidden="true">
+                                                        <i class="ri-calendar-schedule-line text-icon-md"></i>
+                                                    </span>
+                                                    <input type="text" id="datePickerCompactRangeInput"
+                                                        class="date-picker-input" placeholder="Select a time frame"
+                                                        readonly data-date-picker-input
+                                                        aria-describedby="datePickerCompactRangeHint" aria-haspopup="dialog">
+                                                    <input type="hidden" name="compactServiceWindowStart"
+                                                        data-date-picker-range-start-value>
+                                                    <input type="hidden" name="compactServiceWindowEnd"
+                                                        data-date-picker-range-end-value>
+                                                    <button type="button" class="date-picker-trigger"
+                                                        data-date-picker-trigger
+                                                        aria-label="Open compact service window calendar"
+                                                        aria-haspopup="dialog">
+                                                        <i class="ri-arrow-down-s-line text-icon-md"
+                                                            aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="date-picker-panel" data-date-picker-panel hidden
+                                                    role="dialog" aria-modal="false"
+                                                    aria-labelledby="datePickerCompactRangeTitle">
+                                                    <div class="date-picker-head">
+                                                        <div class="date-picker-meta">
+                                                            <h3 class="date-picker-month" id="datePickerCompactRangeTitle"
+                                                                data-date-picker-month></h3>
+                                                        </div>
+                                                        <div class="date-picker-nav">
+                                                            <button type="button" class="btn btn-ghost btn-xs"
+                                                                data-date-picker-clear>Clear</button>
+                                                            <button type="button" class="btn btn-ghost btn-icon btn-xs"
+                                                                data-date-picker-prev aria-label="Show previous month">
+                                                                <i class="ri-arrow-left-s-line text-icon-md"
+                                                                    aria-hidden="true"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-ghost btn-icon btn-xs"
+                                                                data-date-picker-next aria-label="Show next month">
+                                                                <i class="ri-arrow-right-s-line text-icon-md"
+                                                                    aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="date-picker-weekdays" data-date-picker-weekdays
+                                                        aria-hidden="true"></div>
+                                                    <div class="date-picker-days" data-date-picker-days role="grid"
+                                                        aria-labelledby="datePickerCompactRangeTitle"></div>
+                                                    <p class="sr-only date-picker-summary" data-date-picker-summary
+                                                        aria-live="polite">Selected range updates here.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+<div class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Range + Presets</h4>
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-md date-picker-inline w-full max-w-4xl"
@@ -4856,11 +4997,12 @@
                                                     aria-labelledby="datePickerRangeTitle">
                                                     <div class="date-picker-head">
                                                         <div class="date-picker-meta">
-                                                            <p class="text-label">Service Window</p>
                                                             <h3 class="date-picker-month" id="datePickerRangeTitle"
                                                                 data-date-picker-month></h3>
                                                         </div>
                                                         <div class="date-picker-nav">
+                                                            <button type="button" class="btn btn-ghost btn-xs"
+                                                                data-date-picker-clear>Clear</button>
                                                             <button type="button" class="btn btn-ghost btn-icon btn-xs"
                                                                 data-date-picker-prev aria-label="Show previous month">
                                                                 <i class="ri-arrow-left-s-line text-icon-md"
@@ -4878,13 +5020,8 @@
                                                         aria-hidden="true"></div>
                                                     <div class="date-picker-days" data-date-picker-days role="grid"
                                                         aria-labelledby="datePickerRangeTitle"></div>
-
-                                                    <div class="date-picker-footer">
-                                                        <button type="button" class="btn btn-ghost btn-sm"
-                                                            data-date-picker-clear>Clear</button>
-                                                        <p class="date-picker-summary" data-date-picker-summary
-                                                            aria-live="polite">Selected range updates here.</p>
-                                                    </div>
+                                                    <p class="sr-only date-picker-summary" data-date-picker-summary
+                                                        aria-live="polite">Selected range updates here.</p>
                                                 </div>
                                             </div>
                                         </div>
