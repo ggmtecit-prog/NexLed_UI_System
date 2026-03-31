@@ -1,4 +1,4 @@
-﻿const canUseScrollReveal = typeof window !== 'undefined'
+const canUseScrollReveal = typeof window !== 'undefined'
     && typeof document !== 'undefined'
     && typeof window.IntersectionObserver === 'function'
     && (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -579,6 +579,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/**
+ * Docs Navigation Current Page Sync
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    syncDocsNavigationCurrentPage();
+});
+
+function syncDocsNavigationCurrentPage() {
+    const docsNavs = document.querySelectorAll('#docs-nav-drawer nav, body > aside .sidebar nav');
+    if (!docsNavs.length) return;
+
+    const currentPage = normalizeDocsPageName(window.location.pathname);
+    if (!currentPage) return;
+
+    docsNavs.forEach((nav) => {
+        const links = nav.querySelectorAll('.dropdown-trigger[href]');
+
+        links.forEach((link) => {
+            const href = (link.getAttribute('href') || '').trim();
+            const pageName = normalizeDocsPageName(href);
+
+            if (pageName && pageName === currentPage) {
+                link.setAttribute('aria-current', 'page');
+                return;
+            }
+
+            link.removeAttribute('aria-current');
+        });
+    });
+}
+
+function normalizeDocsPageName(pathValue) {
+    if (!pathValue) return '';
+
+    const trimmedValue = pathValue.trim();
+    if (!trimmedValue || trimmedValue.startsWith('#')) return '';
+    if (/^(?:[a-z]+:)?\/\//i.test(trimmedValue)) return '';
+    if (/^(?:mailto:|tel:)/i.test(trimmedValue)) return '';
+
+    const cleanPath = trimmedValue.split('#')[0].split('?')[0].replace(/\\/g, '/');
+    if (!cleanPath) return 'index.html';
+
+    const segments = cleanPath.split('/').filter(Boolean);
+    const leaf = segments.length ? segments[segments.length - 1] : '';
+
+    return (leaf || 'index.html').toLowerCase();
+}
 
 /**
  * File Uploader Component Scripts
