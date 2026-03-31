@@ -2789,9 +2789,9 @@ input[type=number]::-webkit-outer-spin-button {
   --quantity-selector-track-height: var(--quantity-selector-button-size);
   --quantity-selector-track-overlap: var(--space-8);
   --quantity-selector-track-radius: var(--responsive-btn-xs-radius);
-  --quantity-selector-value-width: var(--space-64);
+  --quantity-selector-value-width: calc(var(--space-64) + var(--space-8));
   --quantity-selector-value-font-size: var(--font-size-body-xl);
-  --quantity-selector-value-line-height: var(--line-height-body-lg);
+  --quantity-selector-value-line-height: var(--line-height-body);
   --quantity-selector-value-font-weight: var(--font-weight-medium);
 
   position: relative;
@@ -2834,9 +2834,10 @@ input[type=number]::-webkit-outer-spin-button {
   --quantity-selector-track-height: var(--quantity-selector-button-size);
   --quantity-selector-track-overlap: var(--space-8);
   --quantity-selector-track-radius: var(--radius-sm);
-  --quantity-selector-value-width: var(--space-64);
-  --quantity-selector-value-font-size: var(--font-size-body-lg);
-  --quantity-selector-value-line-height: var(--line-height-body-lg);
+  --quantity-selector-value-width: calc(var(--space-64) + var(--space-8));
+  --quantity-selector-value-font-size: var(--font-size-body-xl);
+  --quantity-selector-value-line-height: var(--line-height-body);
+  --quantity-selector-value-font-weight: var(--font-weight-medium);
 }
 
 .quantity-selector-md {
@@ -2845,9 +2846,10 @@ input[type=number]::-webkit-outer-spin-button {
   --quantity-selector-track-height: var(--quantity-selector-button-size);
   --quantity-selector-track-overlap: var(--space-12);
   --quantity-selector-track-radius: var(--responsive-btn-xs-radius);
-  --quantity-selector-value-width: var(--size-btn-md-h);
-  --quantity-selector-value-font-size: var(--font-size-body-xl);
-  --quantity-selector-value-line-height: var(--line-height-body-lg);
+  --quantity-selector-value-width: calc(var(--space-64) + var(--space-24));
+  --quantity-selector-value-font-size: var(--font-size-h3);
+  --quantity-selector-value-line-height: var(--line-height-h3);
+  --quantity-selector-value-font-weight: var(--font-weight-medium);
 }
 
 .quantity-selector-lg {
@@ -2856,9 +2858,10 @@ input[type=number]::-webkit-outer-spin-button {
   --quantity-selector-track-height: var(--quantity-selector-button-size);
   --quantity-selector-track-overlap: var(--space-16);
   --quantity-selector-track-radius: var(--radius-lg);
-  --quantity-selector-value-width: calc(var(--space-64) + var(--space-32));
-  --quantity-selector-value-font-size: var(--font-size-h3);
-  --quantity-selector-value-line-height: var(--line-height-h3);
+  --quantity-selector-value-width: calc(var(--space-64) + var(--space-40));
+  --quantity-selector-value-font-size: var(--font-size-h2);
+  --quantity-selector-value-line-height: var(--line-height-h2);
+  --quantity-selector-value-font-weight: var(--font-weight-medium);
 }
 
 .quantity-selector .btn {
@@ -10825,6 +10828,11 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+
+
+
+
 
 
 
