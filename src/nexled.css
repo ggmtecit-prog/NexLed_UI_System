@@ -552,7 +552,7 @@ body::-webkit-scrollbar-thumb:active,
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  box-shadow: none;
+  box-shadow: var(--shadow-btn-default);
   transition:
     transform var(--motion-duration-fast) var(--motion-ease-premium),
     box-shadow var(--motion-duration-fast) var(--motion-ease-premium),
