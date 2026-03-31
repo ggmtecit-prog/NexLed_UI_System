@@ -1,4 +1,4 @@
-﻿/*
+/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -10066,13 +10066,18 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   --footer-bottom-line: var(--line-height-body-xs);
   --footer-social-box: var(--space-40);
   --footer-social-radius: var(--radius-btn-sm);
-  --footer-bottom-layer-inset: var(--space-12);`r`n  --footer-bottom-overlap: var(--space-16);`r`n  --footer-bottom-radius: var(--radius-btn-sm);`r`n  background-color: var(--color-white);
+  --footer-bottom-layer-inset: var(--space-12);
+  --footer-bottom-overlap: var(--space-16);
+  --footer-bottom-radius: var(--radius-btn-sm);
+  background-color: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-btn-default);
   overflow: hidden;
   width: 100%;
-  position: relative;`r`n  isolation: isolate;`r`n}
+  position: relative;
+  isolation: isolate;
+}
 
 .footer-body {
   padding: var(--footer-body-pad-top) var(--footer-body-pad-inline) var(--footer-body-pad-bottom);
@@ -10112,31 +10117,37 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 
 .footer-brand {
   display: grid;
-  gap: var(--space-16);
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--space-16);
+  row-gap: var(--space-8);
 }
 
 .footer-brand-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--space-56);
-  height: var(--space-56);
+  width: var(--space-64);
+  height: var(--space-64);
+  align-self: start;
   border: var(--border-thin) solid var(--color-grey-secondary);
-  border-radius: var(--footer-social-radius);
+  border-radius: var(--radius-btn-md);
   background: var(--color-white);
   box-shadow: var(--shadow-btn-default);
 }
 
 .footer-brand-logo {
   display: block;
-  width: var(--space-40);
-  height: var(--space-40);
+  width: var(--space-48);
+  height: var(--space-48);
   object-fit: contain;
 }
 
 .footer-brand-copy {
   display: grid;
-  gap: var(--space-8);
+  gap: var(--space-4);
+  align-content: start;
+  padding-top: var(--space-4);
 }
 
 .footer-brand-title {
@@ -10154,6 +10165,15 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   font-size: var(--footer-link-size);
   line-height: var(--footer-link-line);
   color: var(--color-grey-primary);
+}
+
+.footer-brand > .footer-copy {
+  grid-column: 1;
+  max-width: calc(var(--space-64) + var(--space-8));
+  margin-inline: auto;
+  font-size: var(--font-size-body-xs);
+  line-height: var(--line-height-body-xs);
+  text-align: center;
 }
 
 .footer-heading {
@@ -10340,7 +10360,8 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   .footer {
     --footer-body-pad-inline: var(--space-20);
     --footer-bottom-pad-inline: var(--space-20);
-    --footer-bottom-layer-inset: var(--space-16);`r`n  }
+    --footer-bottom-layer-inset: var(--space-16);
+  }
 
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10367,7 +10388,10 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --footer-bottom-line: var(--line-height-body-sm);
     --footer-social-box: var(--space-48);
     --footer-social-radius: var(--radius-btn-md);
-    --footer-bottom-layer-inset: var(--space-16);`r`n    --footer-bottom-overlap: var(--space-20);`r`n    --footer-bottom-radius: var(--radius-btn-md);`r`n  }
+    --footer-bottom-layer-inset: var(--space-16);
+    --footer-bottom-overlap: var(--space-20);
+    --footer-bottom-radius: var(--radius-btn-md);
+  }
 
   .footer-brand {
     grid-template-columns: auto minmax(0, 1fr);
@@ -10389,7 +10413,10 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --footer-bottom-pad-inline: var(--space-32);
     --footer-brand-size: var(--font-size-h2);
     --footer-brand-line: var(--line-height-h2);
-    --footer-bottom-layer-inset: var(--space-20);`r`n    --footer-bottom-overlap: var(--space-24);`r`n    --footer-bottom-radius: var(--radius-btn-lg);`r`n  }
+    --footer-bottom-layer-inset: var(--space-20);
+    --footer-bottom-overlap: var(--space-24);
+    --footer-bottom-radius: var(--radius-btn-lg);
+  }
 
   .footer-grid {
     grid-template-columns: minmax(0, 1.45fr) repeat(3, minmax(0, 1fr));
@@ -10409,7 +10436,6 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --footer-heading-line: var(--line-height-h3);
   }
 }
-
 /* SEGMENTED CONTROL */
 .segmented-control {
   --segmented-control-padding: var(--space-8);
