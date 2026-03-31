@@ -1468,6 +1468,31 @@ function applyInputValidationState(input, hint, isValid) {
     hint.textContent = isValid ? validMessage : invalidMessage;
 }
 
+function resetInputValidationState(input, hint) {
+    if (!input || !hint) {
+        return;
+    }
+
+    const defaultMessage = hint.dataset.defaultMessage || input.dataset.defaultMessage || '';
+
+    input.classList.remove('input-success', 'input-error');
+    input.setAttribute('aria-invalid', 'false');
+
+    hint.classList.remove('input-success', 'input-error');
+    hint.textContent = defaultMessage;
+}
+
+function getTextFieldHint(input) {
+    if (!input) {
+        return null;
+    }
+
+    return (input.getAttribute('aria-describedby') || '')
+        .split(/\s+/)
+        .map(id => document.getElementById(id))
+        .find(element => element && element.classList.contains('input-hint')) || null;
+}
+
 function initializeTextFieldDemo() {
     const section = document.getElementById('text-field');
 
@@ -1507,6 +1532,40 @@ function initializeTextFieldDemo() {
         syncCharCount();
         bioInput.addEventListener('input', syncCharCount);
     }
+
+    const validatedInputs = section.querySelectorAll('[data-text-validation]');
+
+    validatedInputs.forEach(input => {
+        const hint = getTextFieldHint(input);
+
+        if (!hint) {
+            return;
+        }
+
+        const defaultMessage = hint.textContent.trim();
+        hint.dataset.defaultMessage = defaultMessage;
+        input.dataset.defaultMessage = defaultMessage;
+
+        const syncValidation = (mode = 'input') => {
+            const hasValue = input.value.trim() !== '';
+
+            if (!hasValue) {
+                if (mode === 'blur' && input.required) {
+                    applyInputValidationState(input, hint, false);
+                    return;
+                }
+
+                resetInputValidationState(input, hint);
+                return;
+            }
+
+            applyInputValidationState(input, hint, isValidTextFieldValue(input));
+        };
+
+        resetInputValidationState(input, hint);
+        input.addEventListener('input', () => syncValidation('input'));
+        input.addEventListener('blur', () => syncValidation('blur'));
+    });
 
 }
 

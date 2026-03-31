@@ -4340,8 +4340,7 @@
                                             <label for="standardInputSm" class="input-label ml-12">Full Name</label>
                                             <input type="text" id="standardInputSm" placeholder="Enter your name"
                                                 class="input input-sm" aria-describedby="standardInputSmHint">
-                                            <p id="standardInputSmHint" class="input-hint ml-12">Compact field for dense
-                                                sign-in and filter flows.</p>
+                                            <p id="standardInputSmHint" class="input-hint ml-12">Compact input for denser forms, filters, and tighter utility layouts.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -4353,8 +4352,7 @@
                                             <label for="standardInputMd" class="input-label ml-12">Full Name</label>
                                             <input type="text" id="standardInputMd" placeholder="Enter your name"
                                                 class="input input-md" aria-describedby="standardInputMdHint">
-                                            <p id="standardInputMdHint" class="input-hint ml-12">Balanced field for
-                                                everyday forms with supporting copy.</p>
+                                            <p id="standardInputMdHint" class="input-hint ml-12">Balanced default size for everyday forms with supporting copy.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -4366,24 +4364,28 @@
                                             <label for="standardInputLg" class="input-label ml-12">Full Name</label>
                                             <input type="text" id="standardInputLg" placeholder="Enter your name"
                                                 class="input input-lg" aria-describedby="standardInputLgHint">
-                                            <p id="standardInputLgHint" class="input-hint ml-12">Expanded field for
-                                                spacious onboarding and configuration layouts.</p>
+                                            <p id="standardInputLgHint" class="input-hint ml-12">Expanded input for onboarding, configuration, and higher-emphasis form flows.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="size-grid-column size-grid-column-gap-24">
-                                <h3 class="size-grid-column-title">States</h3>
+                                <h3 class="size-grid-column-title">Validation States</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Success</h4>
                                     <div class="size-grid-content">
                                         <div class="p-24">
                                             <label for="successInput" class="input-label ml-12">Work Email</label>
-                                            <input type="email" id="successInput" value="nexled@ggmtec.pt"
-                                                class="input input-md input-success" aria-describedby="successInputHint"
-                                                aria-invalid="false">
+                                            <div class="text-field-shell text-field-shell-status">
+                                                <input type="email" id="successInput" value="nexled@ggmtec.pt"
+                                                    class="input input-md input-success" aria-describedby="successInputHint"
+                                                    aria-invalid="false">
+                                                <span class="text-field-shell-status-icon" aria-hidden="true">
+                                                    <i class="ri-check-line"></i>
+                                                </span>
+                                            </div>
                                             <p id="successInputHint" class="input-hint input-success ml-12">Validated
                                                 state for completed form flows.</p>
                                         </div>
@@ -4391,25 +4393,75 @@
                                 </div>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">With Ghost Button</h4>
+                                    <h4 class="size-grid-label">Error</h4>
                                     <div class="size-grid-content">
                                         <div class="p-24">
-                                            <label for="passwordInput" class="input-label ml-12">Password</label>
-                                            <div id="passwordInputShell">
-                                                <input type="password" id="passwordInput"
-                                                    placeholder="Create a password" class="input input-lg"
-                                                    aria-describedby="passwordInputHint">
-                                                <button id="passwordToggle" type="button" aria-controls="passwordInput"
-                                                    aria-pressed="false" aria-label="Show password"
-                                                    class="btn btn-ghost btn-icon btn-xs">
-                                                    <i class="ri-eye-line text-icon-xs" aria-hidden="true"></i>
-                                                </button>
+                                            <label for="errorInput" class="input-label ml-12">Project Name</label>
+                                            <div class="text-field-shell text-field-shell-status">
+                                                <input type="text" id="errorInput" value="NX"
+                                                    class="input input-md input-error" aria-describedby="errorInputHint"
+                                                    aria-invalid="true">
+                                                <span class="text-field-shell-status-icon" aria-hidden="true">
+                                                    <i class="ri-alert-line"></i>
+                                                </span>
                                             </div>
-                                            <p id="passwordInputHint" class="input-hint ml-12">Extra-small ghost action
-                                                inside the text field.</p>
+                                            <p id="errorInputHint" class="input-hint input-error ml-12">Use at least 4
+                                                characters so the name stays descriptive.</p>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Live Validation</h4>
+                                    <div class="size-grid-content">
+                                        <div class="p-24">
+                                            <label for="validatedInput" class="input-label ml-12">Project Name <span
+                                                    aria-hidden="true">*</span></label>
+                                            <input type="text" id="validatedInput" placeholder="Name the proposal"
+                                                class="input input-md" aria-describedby="validatedInputHint"
+                                                aria-invalid="false" required data-text-validation="min-length"
+                                                data-min-length="4"
+                                                data-valid-message="Looks ready for submission."
+                                                data-invalid-message="Use at least 4 characters.">
+                                            <p id="validatedInputHint" class="input-hint ml-12">Use at least 4
+                                                characters.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Readonly</h4>
+                                    <div class="size-grid-content">
+                                        <div class="p-24">
+                                            <label for="readonlyInput" class="input-label ml-12">Product Code</label>
+                                            <input type="text" id="readonlyInput" value="NX-2026-Flow" readonly
+                                                class="input input-md" aria-describedby="readonlyInputHint">
+                                            <p id="readonlyInputHint" class="input-hint ml-12">Readable but locked for
+                                                generated references and synced fields.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="size-grid-row">
+                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <div class="size-grid-content">
+                                        <div class="p-24">
+                                            <label for="disabledInput" class="input-label ml-12">Disabled Input</label>
+                                            <input type="text" id="disabledInput" value="Cannot edit this" disabled
+                                                class="input input-md input-disabled"
+                                                aria-describedby="disabledInputHint">
+                                            <p id="disabledInputHint" class="input-hint ml-12">Locked state keeps
+                                                hierarchy visible without inviting interaction.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Compositions</h3>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">With Dropdown (Icon + Text)</h4>
@@ -4418,7 +4470,7 @@
                                             <label for="languagePrefixInput" class="input-label ml-12">Full Name</label>
                                             <div class="text-field-prefix-shell text-field-prefix-shell-language">
                                                 <div
-                                                    class="language-selector language-selector-standard language-selector-xs has-value text-field-prefix-control">
+                                                    class="language-selector language-selector-standard language-selector-md has-value text-field-prefix-control">
                                                     <button type="button" class="language-selector-trigger"
                                                         aria-haspopup="listbox" aria-expanded="false"
                                                         aria-label="Current language: United Kingdom">
@@ -4467,7 +4519,7 @@
                                                 </div>
                                                 <input type="text" id="languagePrefixInput"
                                                     placeholder="Enter your name"
-                                                    class="input input-lg text-field-prefix-field"
+                                                    class="input input-md text-field-prefix-field"
                                                     aria-describedby="languagePrefixInputHint">
                                             </div>
                                             <p id="languagePrefixInputHint" class="input-hint ml-12">Flag and dialing
@@ -4482,7 +4534,7 @@
                                         <div class="p-24">
                                             <label for="dropdownPrefixInput" class="input-label ml-12">Full Name</label>
                                             <div class="text-field-prefix-shell text-field-prefix-shell-text">
-                                                <div class="dropdown dropdown-xs text-field-prefix-control has-value">
+                                                <div class="dropdown dropdown-md text-field-prefix-control has-value">
                                                     <button type="button" class="dropdown-trigger"
                                                         aria-haspopup="listbox" aria-expanded="false"
                                                         aria-label="Current dialing code: +44">
@@ -4514,7 +4566,7 @@
                                                 </div>
                                                 <input type="text" id="dropdownPrefixInput"
                                                     placeholder="Enter your name"
-                                                    class="input input-lg text-field-prefix-field"
+                                                    class="input input-md text-field-prefix-field"
                                                     aria-describedby="dropdownPrefixInputHint">
                                             </div>
                                             <p id="dropdownPrefixInputHint" class="input-hint ml-12">Text-only selector
@@ -4528,7 +4580,7 @@
                                     <div class="size-grid-content">
                                         <div class="p-24">
                                             <label for="urlInput" class="input-label ml-12">Website URL</label>
-                                            <div class="input-icon-wrapper">
+                                            <div class="input-icon-wrapper input-md">
                                                 <span class="input-icon-area" aria-hidden="true">
                                                     <i class="ri-global-line text-icon-md"></i>
                                                 </span>
@@ -4540,40 +4592,52 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Behavior</h3>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Textarea</h4>
+                                    <h4 class="size-grid-label">With Ghost Button</h4>
                                     <div class="size-grid-content">
                                         <div class="p-24">
-                                            <div class="flex justify-between items-start ml-12 mr-12">
-                                                <label for="bioInput" class="input-label">Project Summary</label>
-                                                <span class="text-body-xs text-grey-primary mt-8" id="charCount"
-                                                    aria-live="polite">0/100</span>
+                                            <label for="passwordInput" class="input-label ml-12">Password</label>
+                                            <div id="passwordInputShell" class="text-field-shell text-field-shell-trailing-action">
+                                                <input type="password" id="passwordInput"
+                                                    placeholder="Create a password" class="input input-md"
+                                                    aria-describedby="passwordInputHint">
+                                                <button id="passwordToggle" type="button" aria-controls="passwordInput"
+                                                    aria-pressed="false" aria-label="Show password"
+                                                    class="text-field-shell-action btn btn-ghost btn-icon btn-xs">
+                                                    <i class="ri-eye-line text-icon-xs" aria-hidden="true"></i>
+                                                </button>
                                             </div>
-                                            <div id="bioInputShell">
-                                                <textarea id="bioInput" rows="3" maxlength="100"
-                                                    placeholder="Summarize the request..." class="input"
-                                                    aria-describedby="bioInputHint charCount"></textarea>
-                                                <span id="bioInputResizeIcon" aria-hidden="true">
-                                                    <i class="ri-expand-diagonal-s-2-fill text-icon-sm"></i>
-                                                </span>
-                                            </div>
-                                            <p id="bioInputHint" class="input-hint ml-12">Long-form field with live
-                                                character count and resize control.</p>
+                                            <p id="passwordInputHint" class="input-hint ml-12">Extra-small ghost action
+                                                inside the text field.</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="size-grid-row">
-                                    <h4 class="size-grid-label">Disabled</h4>
+                                    <h4 class="size-grid-label">Textarea</h4>
                                     <div class="size-grid-content">
                                         <div class="p-24">
-                                            <label for="disabledInput" class="input-label ml-12">Disabled Input</label>
-                                            <input type="text" id="disabledInput" value="Cannot edit this" disabled
-                                                class="input input-md input-disabled"
-                                                aria-describedby="disabledInputHint">
-                                            <p id="disabledInputHint" class="input-hint ml-12">Locked state keeps
-                                                hierarchy visible without inviting interaction.</p>
+                                            <div class="flex justify-between items-baseline ml-12 mr-12">
+                                                <label for="bioInput" class="input-label">Project Summary</label>
+                                                <span class="input-label text-grey-primary mb-0" id="charCount"
+                                                    aria-live="polite">0/100</span>
+                                            </div>
+                                            <div id="bioInputShell" class="text-field-shell text-field-shell-meta">
+                                                <textarea id="bioInput" rows="3" maxlength="100"
+                                                    placeholder="Summarize the request..." class="input input-md"
+                                                    aria-describedby="bioInputHint charCount"></textarea>
+                                                <span id="bioInputResizeIcon" class="text-field-shell-meta-icon"
+                                                    aria-hidden="true">
+                                                    <i class="ri-expand-diagonal-s-2-fill text-icon-sm"></i>
+                                                </span>
+                                            </div>
+                                            <p id="bioInputHint" class="input-hint ml-12">Long-form field with live
+                                                character count and resize control.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -4591,15 +4655,14 @@
                         <div
                             class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
                             <div class="size-grid-column size-grid-column-gap-24">
-                                <h3 class="size-grid-column-title">Field Sizes</h3>
+                                <h3 class="size-grid-column-title">Sizes</h3>
 
                                 <div class="size-grid-stack size-grid-stack-gap-24">
                                     <div class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Small</h4>
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-sm w-full max-w-3xl">
-                                                <label for="datePickerPreviewSm" class="input-label">Inspection
-                                                    Date</label>
+                                                <label for="datePickerPreviewSm" class="input-label">Inspection Date</label>
                                                 <div class="date-picker-control">
                                                     <span class="date-picker-leading" aria-hidden="true">
                                                         <i class="ri-calendar-event-line text-icon-md"></i>
@@ -4613,8 +4676,7 @@
                                                             aria-hidden="true"></i>
                                                     </button>
                                                 </div>
-                                                <p id="datePickerPreviewSmHint" class="input-hint">Compact scheduling
-                                                    field for dense operational layouts.</p>
+                                                <p id="datePickerPreviewSmHint" class="input-hint">Compact date field for dense schedules, filters, and utility forms.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -4623,8 +4685,7 @@
                                         <h4 class="size-grid-label">Medium</h4>
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-md w-full max-w-3xl">
-                                                <label for="datePickerPreviewMd" class="input-label">Delivery
-                                                    Date</label>
+                                                <label for="datePickerPreviewMd" class="input-label">Delivery Date</label>
                                                 <div class="date-picker-control">
                                                     <span class="date-picker-leading" aria-hidden="true">
                                                         <i class="ri-calendar-event-line text-icon-md"></i>
@@ -4638,8 +4699,7 @@
                                                             aria-hidden="true"></i>
                                                     </button>
                                                 </div>
-                                                <p id="datePickerPreviewMdHint" class="input-hint">Balanced calendar
-                                                    field for primary planning and delivery flows.</p>
+                                                <p id="datePickerPreviewMdHint" class="input-hint">Default date field for planning, delivery, and everyday scheduling flows.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -4648,8 +4708,7 @@
                                         <h4 class="size-grid-label">Large</h4>
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-lg w-full max-w-3xl">
-                                                <label for="datePickerPreviewLg" class="input-label">Warranty
-                                                    Start</label>
+                                                <label for="datePickerPreviewLg" class="input-label">Warranty Start</label>
                                                 <div class="date-picker-control">
                                                     <span class="date-picker-leading" aria-hidden="true">
                                                         <i class="ri-calendar-event-line text-icon-md"></i>
@@ -4663,8 +4722,7 @@
                                                             aria-hidden="true"></i>
                                                     </button>
                                                 </div>
-                                                <p id="datePickerPreviewLgHint" class="input-hint">Expanded field for
-                                                    spacious booking and service-planning surfaces.</p>
+                                                <p id="datePickerPreviewLgHint" class="input-hint">Expanded date field for booking, warranty, and service setup flows.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -4672,23 +4730,18 @@
                             </div>
 
                             <div class="size-grid-column size-grid-column-gap-24">
-                                <h3 class="size-grid-column-title">States</h3>
+                                <h3 class="size-grid-column-title">Patterns &amp; States</h3>
 
                                 <div class="size-grid-stack size-grid-stack-gap-24">
                                     <div class="size-grid-row size-grid-row-gap-12">
-                                        <h4 class="size-grid-label">Open State</h4>
+                                        <h4 class="size-grid-label">Single Date</h4>
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-md date-picker-inline w-full max-w-4xl"
                                                 data-date-picker data-date-picker-default="2026-04-24"
                                                 data-date-picker-open="true">
-                                                <div class="flex flex-wrap items-start justify-between gap-12">
-                                                    <div>
-                                                        <label for="datePickerDemoInput"
-                                                            class="input-label">Installation Date</label>
-                                                        <p id="datePickerDemoHint" class="input-hint">Interactive inline
-                                                            preview using the NexLed calendar surface.</p>
-                                                    </div>
-                                                    <span class="badge badge-primary badge-md">Open State</span>
+                                                <div class="flex flex-col gap-4">
+                                                    <label for="datePickerDemoInput" class="input-label">Installation Date</label>
+                                                    <p id="datePickerDemoHint" class="input-hint">Single-date selection with the calendar surface open for review.</p>
                                                 </div>
 
                                                 <div class="date-picker-control">
@@ -4714,7 +4767,7 @@
                                                     aria-labelledby="datePickerDemoTitle">
                                                     <div class="date-picker-head">
                                                         <div class="date-picker-meta">
-                                                            <p class="text-body-xs">Installation Window</p>
+                                                            <p class="text-label">Single Date</p>
                                                             <h3 class="date-picker-month" id="datePickerDemoTitle"
                                                                 data-date-picker-month></h3>
                                                         </div>
@@ -4756,14 +4809,9 @@
                                                 data-date-picker-range-start="2026-04-21"
                                                 data-date-picker-range-end="2026-04-27" data-date-picker-preset="week"
                                                 data-date-picker-open="true" data-date-picker-sticky="true">
-                                                <div class="flex flex-wrap items-start justify-between gap-12">
-                                                    <div>
-                                                        <label for="datePickerRangeInput" class="input-label">Service
-                                                            Window</label>
-                                                        <p id="datePickerRangeHint" class="input-hint">Choose a quick
-                                                            timeframe or define a manual start and end date.</p>
-                                                    </div>
-                                                    <span class="badge badge-neutral badge-md">Range + Presets</span>
+                                                <div class="flex flex-col gap-4">
+                                                    <label for="datePickerRangeInput" class="input-label">Service Window</label>
+                                                    <p id="datePickerRangeHint" class="input-hint">Quick presets plus manual start and end date selection.</p>
                                                 </div>
 
                                                 <div class="date-picker-presets" role="group"
@@ -4808,7 +4856,7 @@
                                                     aria-labelledby="datePickerRangeTitle">
                                                     <div class="date-picker-head">
                                                         <div class="date-picker-meta">
-                                                            <p class="text-body-xs">Time Frames</p>
+                                                            <p class="text-label">Service Window</p>
                                                             <h3 class="date-picker-month" id="datePickerRangeTitle"
                                                                 data-date-picker-month></h3>
                                                         </div>
@@ -4847,14 +4895,13 @@
                                         <div class="size-grid-content">
                                             <div class="date-picker date-picker-md w-full max-w-3xl"
                                                 aria-disabled="true">
-                                                <label for="datePickerDisabled" class="input-label">Project Lock
-                                                    Date</label>
+                                                <label for="datePickerDisabled" class="input-label">Project Lock Date</label>
                                                 <div class="date-picker-control">
                                                     <span class="date-picker-leading" aria-hidden="true">
                                                         <i class="ri-calendar-lock-line text-icon-md"></i>
                                                     </span>
                                                     <input type="text" id="datePickerDisabled" class="date-picker-input"
-                                                        value="Select after approval" disabled
+                                                        value="Available after approval" disabled
                                                         aria-describedby="datePickerDisabledHint">
                                                     <button type="button" class="date-picker-trigger" disabled
                                                         aria-hidden="true">
@@ -4862,8 +4909,511 @@
                                                             aria-hidden="true"></i>
                                                     </button>
                                                 </div>
-                                                <p id="datePickerDisabledHint" class="input-hint">The date becomes
-                                                    available once the project phase is approved.</p>
+                                                <p id="datePickerDisabledHint" class="input-hint">This date unlocks once the project phase is approved.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="flyout" data-reveal="section">
+                    <div class="panel-wrap-head">
+                        <h2 class="panel-wrap-title text-black">Fly-out</h2>
+                    </div>
+
+                    <div class="panel panel-wrap-body panel-wrap-body-gap-24">
+                        <div
+                            class="size-grid size-grid-layout size-grid-limit-standard size-grid-gap-24 grid-cols-1 lg:grid-cols-2">
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">Variants</h3>
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Products</h4>
+                                        <div class="size-grid-content">
+                                            <div class="flyout flyout-products" data-flyout-products>
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories"
+                                                        role="tablist">
+                                                        <button type="button" class="flyout-nav-item is-active"
+                                                            id="molecules-flyout-products-tab-lorem" role="tab"
+                                                            aria-selected="true"
+                                                            aria-controls="molecules-flyout-products-panel-lorem"
+                                                            data-flyout-category="lorem" tabindex="0">
+                                                            <span>Lorem</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-products-tab-ipsum" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-products-panel-ipsum"
+                                                            data-flyout-category="ipsum" tabindex="-1">
+                                                            <span>Ipsum</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-products-tab-dolor" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-products-panel-dolor"
+                                                            data-flyout-category="dolor" tabindex="-1">
+                                                            <span>Dolor</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-products-tab-amet" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-products-panel-amet"
+                                                            data-flyout-category="amet" tabindex="-1">
+                                                            <span>Amet</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid"
+                                                            id="molecules-flyout-products-panel-lorem" role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-products-tab-lorem"
+                                                            data-flyout-panel="lorem">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Lorem nunc product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem nunc</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/metal.webp"
+                                                                        alt="Ipsum erat product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum erat</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/stone.webp"
+                                                                        alt="Dolor amet product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor amet</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/tiles.webp"
+                                                                        alt="Sit massa product image">
+                                                                </span>
+                                                                <span class="flyout-label">Sit massa</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid"
+                                                            id="molecules-flyout-products-panel-ipsum" role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-products-tab-ipsum"
+                                                            data-flyout-panel="ipsum" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/products/product-slide-1.png"
+                                                                        alt="Ipsum nova product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum nova</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_lights_wide.webp"
+                                                                        alt="Lorem flux product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem flux</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_mountains_wide.webp"
+                                                                        alt="Dolor axis product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor axis</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_nature_wide.webp"
+                                                                        alt="Amet line product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet line</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid"
+                                                            id="molecules-flyout-products-panel-dolor" role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-products-tab-dolor"
+                                                            data-flyout-panel="dolor" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/stone.webp"
+                                                                        alt="Dolor prime product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor prime</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Lorem core product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem core</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/products/product-slide-1.png"
+                                                                        alt="Ipsum glow product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum glow</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/tiles.webp"
+                                                                        alt="Amet fold product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet fold</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid"
+                                                            id="molecules-flyout-products-panel-amet" role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-products-tab-amet"
+                                                            data-flyout-panel="amet" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/metal.webp"
+                                                                        alt="Amet via product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet via</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_nature_wide.webp"
+                                                                        alt="Lorem vale product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem vale</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Dolor nest product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor nest</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_lights_wide.webp"
+                                                                        alt="Ipsum rise product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum rise</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Features</h4>
+                                        <div class="size-grid-content">
+                                            <div class="flyout flyout-features">
+                                                <div class="flyout-body">
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-archive-line" aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                    <p class="flyout-text">Aliquam sapien felis,
+                                                                        tincidunt non fermentum ac, accumsan eget eros.
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-lightbulb-line" aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Vivamus luctus</h4>
+                                                                    <p class="flyout-text">Suspendisse potenti donec
+                                                                        varius, feugiat sit amet urna sit amet.</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-layout-grid-line"
+                                                                        aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Ligula mattis</h4>
+                                                                    <p class="flyout-text">Curabitur non magna nec augue
+                                                                        tempor efficitur sed vitae lorem.</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-shield-check-line"
+                                                                        aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Egestas sapien</h4>
+                                                                    <p class="flyout-text">Vestibulum posuere velit et
+                                                                        nisl ullamcorper, sit amet cursus purus
+                                                                        facilisis.</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="size-grid-column size-grid-column-gap-24">
+                                <h3 class="size-grid-column-title">States</h3>
+                                <div class="size-grid-stack size-grid-stack-gap-24">
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Selected Category</h4>
+                                        <div class="size-grid-content">
+                                            <div class="flyout flyout-products" data-flyout-products>
+                                                <div class="flyout-body">
+                                                    <nav class="flyout-nav" aria-label="Fly-out categories"
+                                                        role="tablist">
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-state-tab-lorem" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-state-panel-lorem"
+                                                            data-flyout-category="lorem" tabindex="-1">
+                                                            <span>Lorem</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item is-active"
+                                                            id="molecules-flyout-state-tab-ipsum" role="tab"
+                                                            aria-selected="true"
+                                                            aria-controls="molecules-flyout-state-panel-ipsum"
+                                                            data-flyout-category="ipsum" tabindex="0">
+                                                            <span>Ipsum</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-state-tab-dolor" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-state-panel-dolor"
+                                                            data-flyout-category="dolor" tabindex="-1">
+                                                            <span>Dolor</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" class="flyout-nav-item"
+                                                            id="molecules-flyout-state-tab-amet" role="tab"
+                                                            aria-selected="false"
+                                                            aria-controls="molecules-flyout-state-panel-amet"
+                                                            data-flyout-category="amet" tabindex="-1">
+                                                            <span>Amet</span>
+                                                            <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                        </button>
+                                                    </nav>
+
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid" id="molecules-flyout-state-panel-lorem"
+                                                            role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-state-tab-lorem"
+                                                            data-flyout-panel="lorem" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Lorem nunc product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem nunc</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/metal.webp"
+                                                                        alt="Ipsum erat product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum erat</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/stone.webp"
+                                                                        alt="Dolor amet product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor amet</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/tiles.webp"
+                                                                        alt="Sit massa product image">
+                                                                </span>
+                                                                <span class="flyout-label">Sit massa</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid" id="molecules-flyout-state-panel-ipsum"
+                                                            role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-state-tab-ipsum"
+                                                            data-flyout-panel="ipsum">
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/products/product-slide-1.png"
+                                                                        alt="Ipsum nova product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum nova</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_lights_wide.webp"
+                                                                        alt="Lorem flux product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem flux</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_mountains_wide.webp"
+                                                                        alt="Dolor axis product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor axis</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_nature_wide.webp"
+                                                                        alt="Amet line product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet line</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid" id="molecules-flyout-state-panel-dolor"
+                                                            role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-state-tab-dolor"
+                                                            data-flyout-panel="dolor" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/stone.webp"
+                                                                        alt="Dolor prime product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor prime</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Lorem core product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem core</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/products/product-slide-1.png"
+                                                                        alt="Ipsum glow product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum glow</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/tiles.webp"
+                                                                        alt="Amet fold product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet fold</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="flyout-grid" id="molecules-flyout-state-panel-amet"
+                                                            role="tabpanel"
+                                                            aria-labelledby="molecules-flyout-state-tab-amet"
+                                                            data-flyout-panel="amet" hidden>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/metal.webp"
+                                                                        alt="Amet via product image">
+                                                                </span>
+                                                                <span class="flyout-label">Amet via</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_nature_wide.webp"
+                                                                        alt="Lorem vale product image">
+                                                                </span>
+                                                                <span class="flyout-label">Lorem vale</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/materials/wood.webp"
+                                                                        alt="Dolor nest product image">
+                                                                </span>
+                                                                <span class="flyout-label">Dolor nest</span>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <img src="public/images/slides/img_lights_wide.webp"
+                                                                        alt="Ipsum rise product image">
+                                                                </span>
+                                                                <span class="flyout-label">Ipsum rise</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Active Link</h4>
+                                        <div class="size-grid-content">
+                                            <div class="flyout flyout-features">
+                                                <div class="flyout-body">
+                                                    <div class="flyout-copy">
+                                                        <div class="flyout-grid">
+                                                            <a href="#" class="flyout-link is-active">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-archive-line" aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Curabitur maximus</h4>
+                                                                    <p class="flyout-text">Aliquam sapien felis,
+                                                                        tincidunt non fermentum ac, accumsan eget eros.
+                                                                    </p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-lightbulb-line" aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Vivamus luctus</h4>
+                                                                    <p class="flyout-text">Suspendisse potenti donec
+                                                                        varius, feugiat sit amet urna sit amet.</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-layout-grid-line"
+                                                                        aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Ligula mattis</h4>
+                                                                    <p class="flyout-text">Curabitur non magna nec augue
+                                                                        tempor efficitur sed vitae lorem.</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="flyout-link">
+                                                                <span class="flyout-media">
+                                                                    <i class="ri-shield-check-line"
+                                                                        aria-hidden="true"></i>
+                                                                </span>
+                                                                <div>
+                                                                    <h4 class="flyout-title">Egestas sapien</h4>
+                                                                    <p class="flyout-text">Vestibulum posuere velit et
+                                                                        nisl ullamcorper, sit amet cursus purus
+                                                                        facilisis.</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -5581,6 +6131,7 @@
 </body>
 
 </html>
+
 
 
 
