@@ -1281,10 +1281,18 @@ textarea {
 
 .text-field-shell-action {
   position: absolute;
+  right: var(--space-12);
   inset-inline-end: var(--space-12);
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--responsive-btn-xs-h);
+  min-width: var(--responsive-btn-xs-h);
+  height: var(--responsive-btn-xs-h);
+  padding: 0;
   box-shadow: none;
   transition:
     background-color var(--motion-duration-fast) var(--motion-ease-premium),
@@ -4308,6 +4316,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* SIDEBAR */
 .sidebar {
   --sidebar-shell-pad-block: var(--space-24);
+  --sidebar-shell-pad-inline-start: var(--space-24);
   --sidebar-shell-pad-inline-end: var(--space-24);
   --sidebar-shell-gap: var(--space-20);
   --sidebar-nav-gap: var(--space-20);
@@ -4326,16 +4335,7 @@ input[type=number]::-webkit-outer-spin-button {
   overflow: hidden;
   transition:
     background-color var(--motion-duration-default) var(--motion-ease-premium),
-    border-color var(--motion-duration-default) var(--motion-ease-premium),
-    box-shadow var(--motion-duration-default) var(--motion-ease-premium),
-    transform var(--motion-duration-default) var(--motion-ease-premium);
-}
-
-.sidebar:hover,
-.sidebar:focus-within {
-  border-color: var(--color-green-hover-icons);
-  box-shadow: var(--shadow-btn-hover);
-  transform: translateY(var(--lift-standard));
+    border-color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
 .sidebar> :first-child {
@@ -4345,7 +4345,7 @@ input[type=number]::-webkit-outer-spin-button {
   gap: var(--sidebar-shell-gap);
   padding-block: var(--sidebar-shell-pad-block);
   padding-inline-end: var(--sidebar-shell-pad-inline-end);
-  padding-inline-start: var(--radius-none);
+  padding-inline-start: var(--sidebar-shell-pad-inline-start);
 }
 
 .sidebar> :first-child>a:first-child {
@@ -4376,7 +4376,7 @@ input[type=number]::-webkit-outer-spin-button {
   min-height: var(--space-48);
   padding-block: var(--space-12);
   padding-inline-end: var(--space-16);
-  padding-inline-start: var(--radius-none);
+  padding-inline-start: var(--space-16);
   font-size: var(--sidebar-link-size);
   line-height: var(--sidebar-link-line);
   border-radius: var(--responsive-btn-xs-radius);
@@ -4451,6 +4451,7 @@ body>aside.hidden.lg\:block {
 @media (min-width: 1440px) {
   .sidebar {
     --sidebar-shell-pad-block: var(--space-40);
+    --sidebar-shell-pad-inline-start: var(--space-32);
     --sidebar-shell-pad-inline-end: var(--space-32);
     --sidebar-shell-gap: var(--space-24);
     --sidebar-nav-gap: var(--space-24);
@@ -9874,6 +9875,43 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   right: var(--carousel-control-offset);
 }
 
+.carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  background: color-mix(in srgb, var(--color-white) 14%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 18%, transparent);
+  border-radius: var(--radius-full);
+  box-shadow: none;
+  backdrop-filter: blur(var(--space-8));
+  -webkit-backdrop-filter: blur(var(--space-8));
+}
+
+.carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:hover {
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-white) 22%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 28%, transparent);
+  box-shadow: var(--shadow-btn-default);
+}
+
+.carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:active {
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-white) 18%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 32%, transparent);
+  box-shadow: var(--shadow-btn-active);
+}
+
+.carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:focus-visible {
+  outline-color: var(--color-white);
+}
+
+.carousel-square :is(.carousel-prev, .carousel-next).btn.btn-ghost {
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-black) 18%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 22%, transparent);
+}
+
 .carousel-square .carousel-prev {
   left: var(--space-16);
 }
@@ -11641,3 +11679,29 @@ textarea,
 
 
 
+
+#passwordInputShell {
+  position: relative;
+  width: 100%;
+}
+
+#passwordInput {
+  padding-inline-end: calc(var(--space-12) + var(--responsive-btn-xs-h) + var(--space-12));
+}
+
+#passwordToggle {
+  position: absolute;
+  right: var(--space-12);
+  inset-inline-end: var(--space-12);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--responsive-btn-xs-h);
+  min-width: var(--responsive-btn-xs-h);
+  height: var(--responsive-btn-xs-h);
+  padding: 0;
+  box-shadow: none;
+}

@@ -582,6 +582,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 - `:hover`
 - `:focus-visible`
+- `[aria-current="page"]`
 
 ---
 
