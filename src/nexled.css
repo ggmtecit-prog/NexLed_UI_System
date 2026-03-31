@@ -4316,8 +4316,9 @@ input[type=number]::-webkit-outer-spin-button {
 /* SIDEBAR */
 .sidebar {
   --sidebar-shell-pad-block: var(--space-24);
-  --sidebar-shell-pad-inline-start: var(--space-24);
+  --sidebar-shell-pad-inline-start: var(--space-32);
   --sidebar-shell-pad-inline-end: var(--space-24);
+  --sidebar-item-pad-inline-start: var(--space-20);
   --sidebar-shell-gap: var(--space-20);
   --sidebar-nav-gap: var(--space-20);
   --sidebar-link-size: var(--font-size-body);
@@ -4329,8 +4330,10 @@ input[type=number]::-webkit-outer-spin-button {
   --sidebar-icon-size: var(--space-20);
   background: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-tertiary);
-  border-top-right-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
+  border-top-left-radius: var(--radius-none);
+  border-bottom-left-radius: var(--radius-none);
+  border-top-right-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
   box-shadow: none;
   overflow: hidden;
   transition:
@@ -4342,15 +4345,20 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
   gap: var(--sidebar-shell-gap);
   padding-block: var(--sidebar-shell-pad-block);
   padding-inline-end: var(--sidebar-shell-pad-inline-end);
   padding-inline-start: var(--sidebar-shell-pad-inline-start);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 .sidebar> :first-child>a:first-child {
   justify-content: flex-start;
-  padding-inline-start: var(--radius-none);
+  padding-inline-start: var(--sidebar-item-pad-inline-start);
 }
 
 .sidebar .text-card-title {
@@ -4366,6 +4374,7 @@ input[type=number]::-webkit-outer-spin-button {
 .sidebar nav {
   width: 100%;
   gap: var(--sidebar-nav-gap);
+  justify-content: center;
 }
 
 .sidebar .dropdown.dropdown-minimal {
@@ -4376,17 +4385,17 @@ input[type=number]::-webkit-outer-spin-button {
   min-height: var(--space-48);
   padding-block: var(--space-12);
   padding-inline-end: var(--space-16);
-  padding-inline-start: var(--space-16);
+  padding-inline-start: var(--sidebar-item-pad-inline-start);
   font-size: var(--sidebar-link-size);
   line-height: var(--sidebar-link-line);
-  border-radius: var(--responsive-btn-xs-radius);
+  border-radius: var(--responsive-btn-sm-radius);
 }
 
 .sidebar .dropdown.dropdown-minimal .dropdown-trigger>span {
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-12);
 }
 
 .sidebar .dropdown.dropdown-minimal .dropdown-value {
@@ -4400,6 +4409,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar .dropdown.dropdown-minimal :is(.text-icon-md, .text-icon-lg) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--sidebar-icon-size);
   color: var(--color-grey-primary);
   transition:
     color var(--motion-duration-default) var(--motion-ease-premium),
@@ -4451,8 +4464,9 @@ body>aside.hidden.lg\:block {
 @media (min-width: 1440px) {
   .sidebar {
     --sidebar-shell-pad-block: var(--space-40);
-    --sidebar-shell-pad-inline-start: var(--space-32);
+    --sidebar-shell-pad-inline-start: var(--space-40);
     --sidebar-shell-pad-inline-end: var(--space-32);
+    --sidebar-item-pad-inline-start: var(--space-24);
     --sidebar-shell-gap: var(--space-24);
     --sidebar-nav-gap: var(--space-24);
   }
