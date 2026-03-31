@@ -485,6 +485,8 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.card-body`
 - `.card-header`
 - `.card-icon`
+- `.card-image-media`
+- `.card-image-only`
 - `.card-primary`
 - `.card-product`
 - `.card-product-actions`
@@ -1219,6 +1221,8 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `.btn-xl`
 - `.btn-xs`
 - `.card`
+- `.card-image-media`
+- `.card-image-only`
 - `.card-product-desc`
 - `.card-product-name`
 - `.card-product-prefix`

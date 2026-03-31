@@ -3803,6 +3803,11 @@ input[type=number]::-webkit-outer-spin-button {
   overflow: hidden;
 }
 
+.card-product {
+  position: relative;
+  isolation: isolate;
+}
+
 .card:focus-visible,
 .card-product:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
@@ -3836,7 +3841,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .card-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-12);
   margin-bottom: 0;
 }
@@ -3874,7 +3879,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
   font-size: var(--responsive-btn-xs-font);
   line-height: var(--responsive-btn-xs-line);
-  color: var(--color-black);
+  color: var(--color-grey-primary);
   transition: color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
@@ -3915,10 +3920,23 @@ input[type=number]::-webkit-outer-spin-button {
   line-height: var(--line-height-body);
 }
 
+.card-image-only {
+  padding: var(--space-12);
+}
+
+.card-image-only .card-image-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .card-product-badge {
   position: absolute;
   top: var(--space-12);
   right: var(--space-12);
+  z-index: 2;
   padding: var(--space-4) var(--space-8);
   border-radius: var(--radius-xs);
   background: var(--color-green-primary);
@@ -3933,7 +3951,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--responsive-btn-xs-radius);
-  box-shadow: none;
+  box-shadow: var(--shadow-btn-default);
   object-fit: contain;
 }
 
@@ -3966,7 +3984,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
   font-size: var(--responsive-btn-xs-font);
   line-height: var(--responsive-btn-xs-line);
-  color: var(--color-black);
+  color: var(--color-grey-primary);
   transition: color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
@@ -3983,7 +4001,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
   font-size: var(--font-size-body-xs);
   line-height: var(--line-height-body-xs);
-  color: var(--color-black);
+  color: var(--color-grey-primary);
   font-weight: var(--font-weight-regular);
   transition: color var(--motion-duration-default) var(--motion-ease-premium);
 }
@@ -11278,4 +11296,5 @@ textarea,
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
