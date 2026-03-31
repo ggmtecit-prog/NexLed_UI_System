@@ -1987,7 +1987,7 @@ textarea {
 }
 
 .date-picker-day.is-range-start::after {
-  inset-inline-start: 50%;
+  inset-inline-start: calc(50% - var(--border-thin));
   inset-inline-end: calc((var(--date-picker-grid-gap) / -2) - var(--border-thin));
   border-start-start-radius: var(--radius-none);
   border-end-start-radius: var(--radius-none);
@@ -1997,7 +1997,7 @@ textarea {
 
 .date-picker-day.is-range-end::after {
   inset-inline-start: calc((var(--date-picker-grid-gap) / -2) - var(--border-thin));
-  inset-inline-end: 50%;
+  inset-inline-end: calc(50% - var(--border-thin));
   border-start-start-radius: var(--radius-none);
   border-end-start-radius: var(--radius-none);
   border-start-end-radius: var(--radius-none);
@@ -2038,19 +2038,8 @@ textarea {
   border-color: var(--color-green-secondary);
   color: var(--color-white);
 }
-.date-picker-day.is-range-start:not(.is-range-end) {
-  border-start-end-radius: var(--radius-none);
-  border-end-end-radius: var(--radius-none);
-}
-
-.date-picker-day.is-range-end:not(.is-range-start) {
-  border-start-start-radius: var(--radius-none);
-  border-end-start-radius: var(--radius-none);
-}
-
-.date-picker-days .date-picker-day.is-range-start:nth-child(7n):not(.is-range-end),
-.date-picker-days .date-picker-day.is-range-end:nth-child(7n + 1):not(.is-range-start),
-.date-picker-day.is-range-start.is-range-end {
+.date-picker-day.is-range-start,
+.date-picker-day.is-range-end {
   border-radius: var(--responsive-btn-xs-radius);
 }
 
