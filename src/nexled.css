@@ -4443,6 +4443,14 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-green-primary);
 }
 
+#docs-nav-drawer .dropdown.dropdown-minimal .dropdown-trigger[aria-current="page"] {
+  background: var(--color-green-hover-text);
+}
+
+#docs-nav-drawer .dropdown.dropdown-minimal .dropdown-trigger[aria-current="page"] :is(.dropdown-value, .dropdown-arrow, .text-icon-md, .text-icon-lg) {
+  color: var(--color-green-primary);
+}
+
 body>aside.hidden.lg\:block {
   padding-inline-start: var(--radius-none);
 }
