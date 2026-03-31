@@ -2981,6 +2981,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryFormatter = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
     const ariaFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     const weekdayLabels = createWeekdayLabels(locale);
+    const monthNames = createMonthNames(locale, 'long');
+    const monthOptionLabels = createMonthNames(locale, 'short');
     const presetLabels = {
         week: 'This Week',
         'next-7-days': 'Next 7 Days',
@@ -3017,6 +3019,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const anchorDate = mode === 'range' ? (defaultRangeStart || defaultDate) : defaultDate;
         const viewDate = anchorDate || stripTime(new Date());
         const panelIdBase = input.id || 'datePicker' + String(index + 1);
+        const metaPanel = createDatePickerMetaPanel(panelIdBase);
+        panel.insertBefore(metaPanel, weekdayRow);
+        const monthGrid = metaPanel.querySelector('[data-date-picker-month-grid]');
+        const yearGrid = metaPanel.querySelector('[data-date-picker-year-grid]');
 
         panel.id = panel.id || `${panelIdBase}-panel`;
         panel.setAttribute('aria-hidden', 'true');
@@ -3033,6 +3039,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rangeStart: defaultRangeStart,
             rangeEnd: defaultRangeEnd,
             activePreset: mode === 'range' ? (picker.dataset.datePickerPreset || '') : '',
+            panelView: 'days',
             viewYear: viewDate.getFullYear(),
             viewMonth: viewDate.getMonth(),
         };
@@ -3046,6 +3053,14 @@ document.addEventListener('DOMContentLoaded', () => {
         input.setAttribute('inputmode', 'numeric');
         input.setAttribute('maxlength', mode === 'range' ? '23' : '10');
         input.setAttribute('placeholder', mode === 'range' ? rangeInputPlaceholder : dateInputPlaceholder);
+        monthLabel.setAttribute('contenteditable', isDisabled ? 'false' : 'true');
+        monthLabel.setAttribute('role', 'textbox');
+        monthLabel.setAttribute('tabindex', isDisabled ? '-1' : '0');
+        monthLabel.setAttribute('spellcheck', 'false');
+        monthLabel.setAttribute('aria-label', 'Type month and year');
+        monthLabel.setAttribute('aria-haspopup', 'grid');
+        monthLabel.setAttribute('aria-controls', metaPanel.id);
+        monthLabel.setAttribute('aria-expanded', 'false');
 
         renderWeekdays(weekdayRow);
         renderDatePicker(picker);
@@ -3061,6 +3076,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             openDatePicker(picker, true);
+        });
+
+        monthLabel.addEventListener('focus', () => {
+            openMetaPicker(picker);
+        });
+
+        monthLabel.addEventListener('click', () => {
+            openMetaPicker(picker);
+        });
+
+        monthLabel.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                commitTypedMonthYear(picker);
+                return;
+            }
+
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                openMetaPicker(picker);
+                return;
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                event.stopPropagation();
+                closeMetaPicker(picker);
+                renderDatePicker(picker);
+            }
+        });
+
+        monthLabel.addEventListener('blur', () => {
+            requestAnimationFrame(() => {
+                if (metaPanel.contains(document.activeElement)) {
+                    return;
+                }
+
+                commitTypedMonthYear(picker);
+            });
         });
 
         input.addEventListener('input', () => {
@@ -3116,6 +3170,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 applyPreset(picker, preset);
             });
+        });
+
+        metaPanel.addEventListener('click', event => {
+            const monthOption = event.target.closest('[data-date-picker-month-option]');
+            if (monthOption) {
+                picker._datePickerState.viewMonth = Number(monthOption.dataset.datePickerMonthOption);
+                closeMetaPicker(picker);
+                renderDatePicker(picker);
+                requestAnimationFrame(() => {
+                    focusPreferredDay(picker);
+                });
+                return;
+            }
+
+            const yearOption = event.target.closest('[data-date-picker-year-option]');
+            if (yearOption) {
+                picker._datePickerState.viewYear = Number(yearOption.dataset.datePickerYearOption);
+                closeMetaPicker(picker);
+                renderDatePicker(picker);
+                requestAnimationFrame(() => {
+                    focusPreferredDay(picker);
+                });
+            }
         });
 
         daysGrid.addEventListener('click', event => {
@@ -3191,8 +3268,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const visibleMonth = new Date(state.viewYear, state.viewMonth, 1);
             const today = stripTime(new Date());
 
-            monthTarget.textContent = monthFormatter.format(visibleMonth);
-
             if (state.mode === 'range') {
                 input.value = formatRangeInput(state.rangeStart, state.rangeEnd);
                 if (singleValueField) {
@@ -3219,6 +3294,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 summaryTarget.textContent = state.selectedDate ? summaryFormatter.format(state.selectedDate) : 'No date selected';
             }
+
+            renderMonthYearPicker(currentPicker, visibleMonth);
+            syncMetaPicker(currentPicker);
 
             const firstVisibleDay = new Date(state.viewYear, state.viewMonth, 1);
             const offset = (firstVisibleDay.getDay() + 6) % 7;
@@ -3306,6 +3384,88 @@ document.addEventListener('DOMContentLoaded', () => {
             daysTarget.replaceChildren(...weekRows);
         }
 
+        function renderMonthYearPicker(currentPicker, visibleMonth) {
+            const state = currentPicker._datePickerState;
+            const shouldPreserveTypedValue = document.activeElement === monthLabel && state.panelView === 'meta';
+
+            if (!shouldPreserveTypedValue) {
+                monthLabel.textContent = monthFormatter.format(visibleMonth);
+            }
+
+            const monthButtons = monthOptionLabels.map((label, monthIndex) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'date-picker-meta-option';
+                button.dataset.datePickerMonthOption = String(monthIndex);
+                button.textContent = label;
+                button.setAttribute('aria-pressed', state.viewMonth === monthIndex ? 'true' : 'false');
+                button.setAttribute('aria-label', monthNames[monthIndex]);
+                return button;
+            });
+
+            const yearStart = state.viewYear - 5;
+            const yearButtons = Array.from({ length: 12 }, (_, index) => {
+                const yearValue = yearStart + index;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'date-picker-meta-option';
+                button.dataset.datePickerYearOption = String(yearValue);
+                button.textContent = String(yearValue);
+                button.setAttribute('aria-pressed', state.viewYear === yearValue ? 'true' : 'false');
+                return button;
+            });
+
+            monthGrid.replaceChildren(...monthButtons);
+            yearGrid.replaceChildren(...yearButtons);
+        }
+
+        function syncMetaPicker(currentPicker) {
+            const state = currentPicker._datePickerState;
+            const isMetaOpen = state.panelView === 'meta';
+
+            currentPicker.classList.toggle('is-meta-open', isMetaOpen);
+            monthLabel.setAttribute('aria-expanded', isMetaOpen ? 'true' : 'false');
+        }
+
+        function openMetaPicker(currentPicker) {
+            if (isDisabled) {
+                return;
+            }
+
+            const state = currentPicker._datePickerState;
+            if (state.panelView !== 'meta') {
+                state.panelView = 'meta';
+                syncMetaPicker(currentPicker);
+            }
+        }
+
+        function closeMetaPicker(currentPicker) {
+            const state = currentPicker._datePickerState;
+            if (state.panelView !== 'days') {
+                state.panelView = 'days';
+                syncMetaPicker(currentPicker);
+            }
+        }
+
+        function commitTypedMonthYear(currentPicker) {
+            const state = currentPicker._datePickerState;
+            const parsedMonthYear = parseTypedMonthYear(monthLabel.textContent, monthNames);
+
+            closeMetaPicker(currentPicker);
+
+            if (!parsedMonthYear) {
+                renderDatePicker(currentPicker);
+                return;
+            }
+
+            state.viewMonth = parsedMonthYear.month;
+            state.viewYear = parsedMonthYear.year;
+            renderDatePicker(currentPicker);
+            requestAnimationFrame(() => {
+                focusPreferredDay(currentPicker);
+            });
+        }
+
         function openDatePicker(currentPicker, focusSelectedDay) {
             if (isDisabled) {
                 return;
@@ -3340,6 +3500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function closeDatePicker(currentPicker, restoreFocus) {
+            closeMetaPicker(currentPicker);
             currentPicker.classList.remove('is-open');
             panel.hidden = true;
             panel.setAttribute('aria-hidden', 'true');
@@ -3412,6 +3573,11 @@ document.addEventListener('DOMContentLoaded', () => {
             renderDatePicker(currentPicker);
 
             requestAnimationFrame(() => {
+                if (state.panelView === 'meta') {
+                    monthLabel.focus();
+                    return;
+                }
+
                 focusPreferredDay(currentPicker);
             });
         }
@@ -3498,6 +3664,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function clearSelection(currentPicker) {
+            closeMetaPicker(currentPicker);
             const state = currentPicker._datePickerState;
 
             if (state.mode === 'range') {
@@ -3544,6 +3711,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            picker._datePickerState.panelView = 'days';
+            picker.classList.remove('is-meta-open');
+            picker.querySelector('[data-date-picker-month]')?.setAttribute('aria-expanded', 'false');
             picker.classList.remove('is-open');
             const panel = picker.querySelector('[data-date-picker-panel]');
             panel.hidden = true;
@@ -3560,6 +3730,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        openPicker._datePickerState.panelView = 'days';
+        openPicker.classList.remove('is-meta-open');
+        openPicker.querySelector('[data-date-picker-month]')?.setAttribute('aria-expanded', 'false');
         openPicker.classList.remove('is-open');
         const panel = openPicker.querySelector('[data-date-picker-panel]');
         panel.hidden = true;
@@ -3570,6 +3743,23 @@ document.addEventListener('DOMContentLoaded', () => {
         openPicker = null;
     });
 
+    function createDatePickerMetaPanel(idBase) {
+        const metaPanel = document.createElement('div');
+        metaPanel.className = 'date-picker-meta-panel';
+        metaPanel.id = `${idBase}-meta`;
+        metaPanel.innerHTML = `
+            <div class="date-picker-meta-section">
+                <p class="date-picker-meta-title">Months</p>
+                <div class="date-picker-meta-grid" data-date-picker-month-grid role="grid" aria-label="Choose month"></div>
+            </div>
+            <div class="date-picker-meta-section">
+                <p class="date-picker-meta-title">Years</p>
+                <div class="date-picker-meta-grid" data-date-picker-year-grid role="grid" aria-label="Choose year"></div>
+            </div>
+        `;
+        return metaPanel;
+    }
+
     function createWeekdayLabels(localeValue) {
         const formatter = new Intl.DateTimeFormat(localeValue, { weekday: 'short' });
         const mondayStart = new Date(2024, 0, 1);
@@ -3579,6 +3769,67 @@ document.addEventListener('DOMContentLoaded', () => {
             weekday.setDate(mondayStart.getDate() + index);
             return formatter.format(weekday).replace('.', '');
         });
+    }
+
+    function createMonthNames(localeValue, monthStyle) {
+        const formatter = new Intl.DateTimeFormat(localeValue, { month: monthStyle });
+        const anchorMonth = new Date(2024, 0, 1);
+
+        return Array.from({ length: 12 }, (_, index) => {
+            const monthDate = new Date(anchorMonth);
+            monthDate.setMonth(index);
+            return formatter.format(monthDate).replace('.', '');
+        });
+    }
+
+    function normalizeMonthToken(value) {
+        return String(value || '')
+            .normalize('NFD')
+            .replace(/[̀-ͯ]/g, '')
+            .replace(/\./g, '')
+            .trim()
+            .toLowerCase();
+    }
+
+    function parseTypedMonthYear(value, monthList) {
+        const trimmedValue = String(value || '').trim().replace(/\s+/g, ' ');
+        const parts = trimmedValue.match(/^(.+?)\s+(\d{4})$/);
+        if (!parts) {
+            return null;
+        }
+
+        const monthToken = parts[1];
+        const yearValue = Number(parts[2]);
+        const normalizedToken = normalizeMonthToken(monthToken);
+        let monthIndex = -1;
+
+        if (/^\d{1,2}$/.test(normalizedToken)) {
+            const numericMonth = Number(normalizedToken);
+            if (numericMonth >= 1 && numericMonth <= 12) {
+                monthIndex = numericMonth - 1;
+            }
+        }
+
+        if (monthIndex === -1) {
+            const normalizedMonths = monthList.map(monthName => normalizeMonthToken(monthName));
+            monthIndex = normalizedMonths.findIndex(monthName => monthName === normalizedToken);
+
+            if (monthIndex === -1) {
+                const prefixMatches = normalizedMonths
+                    .map((monthName, index) => monthName.startsWith(normalizedToken) ? index : -1)
+                    .filter(index => index !== -1);
+
+                if (prefixMatches.length === 1) {
+                    monthIndex = prefixMatches[0];
+                }
+            }
+        }
+
+        if (monthIndex === -1 || !Number.isInteger(yearValue)) {
+            return null;
+        }
+
+        return { month: monthIndex, year: yearValue };
     }
 
     function formatInputDate(date) {
