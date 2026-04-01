@@ -7939,7 +7939,6 @@ body.drawer-sheet-open {
   width: 100%;
   box-sizing: border-box;
   padding-bottom: var(--data-table-head-pad-bottom);
-  border-bottom: var(--border-thin) solid var(--color-grey-secondary);
 }
 
 .drawer-sheet-header>div {
@@ -7999,7 +7998,6 @@ body.drawer-sheet-open {
   align-items: stretch;
   gap: var(--space-12);
   padding-top: var(--space-16);
-  border-top: var(--border-thin) solid var(--color-grey-secondary);
 }
 
 .drawer-sheet-footer .btn {
@@ -8018,14 +8016,17 @@ body.drawer-sheet-open {
 }
 
 .drawer-sheet-sm {
-  --drawer-sheet-w: calc(var(--layout-readable) + var(--space-48));
+  /* 1/2 of --layout-narrow = 384px — compact settings panel */
+  --drawer-sheet-w: calc(var(--layout-narrow) / 2);
 }
 
 .drawer-sheet-md {
-  --drawer-sheet-w: calc(var(--layout-readable) + var(--space-64));
+  /* 3/4 of --layout-narrow = 576px — standard form / filter panel */
+  --drawer-sheet-w: calc(var(--layout-narrow) * 3 / 4);
 }
 
 .drawer-sheet-lg {
+  /* full --layout-narrow = 768px — detailed review panel */
   --drawer-sheet-w: var(--layout-narrow);
 }
 

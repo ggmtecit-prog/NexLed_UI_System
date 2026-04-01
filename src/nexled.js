@@ -4372,7 +4372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getFocusableElements(root) {
         return Array.from(root.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'))
-            .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+            .filter(element => !element.hasAttribute('inert') && !element.closest('[inert]') && !element.closest('[hidden]') && !element.hidden && element.getAttribute('aria-hidden') !== 'true');
     }
 
     function trapSearchOverlayFocus(overlay, event) {
