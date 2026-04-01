@@ -10239,8 +10239,8 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 }
 
 .footer:has(.footer-bottom-floating) {
-  background-color: var(--color-green-primary);
-  border-color: transparent;
+  background-color: var(--color-white);
+  border-color: var(--color-grey-secondary);
 }
 
 .footer:has(.footer-bottom-floating) .footer-body {
@@ -10249,7 +10249,6 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   margin: var(--footer-bottom-layer-inset) var(--footer-bottom-layer-inset) 0;
   border-radius: var(--radius-xl);
   background: var(--color-white);
-  border: var(--border-thin) solid var(--color-grey-secondary);
   box-shadow: var(--shadow-btn-default);
 }
 
@@ -11575,8 +11574,8 @@ textarea,
 }
 
 .footer:has(.footer-bottom-floating) {
-  background-color: var(--color-green-primary);
-  border-color: transparent;
+  background-color: var(--color-white);
+  border-color: var(--color-grey-secondary);
 }
 
 .footer:has(.footer-bottom-floating) .footer-body {
@@ -11585,13 +11584,12 @@ textarea,
   margin: var(--footer-bottom-layer-inset) var(--footer-bottom-layer-inset) 0;
   border-radius: var(--radius-xl);
   background: var(--color-white);
-  border: var(--border-thin) solid var(--color-grey-secondary);
   box-shadow: var(--shadow-btn-default);
 }
 
 .footer:has(.footer-bottom-floating) {
-  background-color: var(--color-green-primary);
-  border-color: transparent;
+  background-color: var(--color-white);
+  border-color: var(--color-grey-secondary);
 }
 
 .footer:has(.footer-bottom-floating) .footer-body {
@@ -11600,7 +11598,6 @@ textarea,
   margin: var(--footer-bottom-layer-inset) var(--footer-bottom-layer-inset) 0;
   border-radius: var(--radius-xl);
   background: var(--color-white);
-  border: var(--border-thin) solid var(--color-grey-secondary);
   box-shadow: var(--shadow-btn-default);
 }
 
