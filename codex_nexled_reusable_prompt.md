@@ -165,27 +165,28 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - `[Polish components, in every aspect, style, layout, responsive, states, etc]`
 
 ### Target
-- `[The Toast section and the components in it]`
+- `[The Modal component]`
 
 ### Files In Scope
 - `[organisms.html]`
 
 ### Mode
 - `[X] ANALYZE`
-- `[] FIX`
-- `[X] BUILD`
+- `[X] FIX`
+- `[] BUILD`
 - `[ ] RESPONSIVE`
 - `[ ] STATES`
-- `[X] POLISH`
+- `[] POLISH`
 - `[Add or remove mode flags only when needed]`
 
 ### Goal
-- `[Imrpove content in the toast section]`
+- `[Update the atoms components being used in the Modal component and remove unneccessary elements]`
 
 ### Changes Requested
-- `[Use the /audit and /critique skills, so remove the unneccessary text and improve the btns "shows" to be in the middle of the screen]`
+- `[Remove the "Danger Zone" text for all the modals and the btns differ from the main branding atoms.html ]`
 
 ### Behavior / Interactions
+
 - Hover: `[N/A]`
 - Active / pressed: `[N/A]`
 - Focus-visible: `[N/A]`
@@ -195,7 +196,7 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - Keyboard behavior: `[N/A]`
 
 ### Constraints
-- `[Always follow the system rules, use the skills to improve your work]`
+- `[Use the skills necessary to critique and improve the Search overlay, i bealive its loaded with unwanted information and unneccessary elements]`
 
 ### Optional Skills
 - `[/ui-ux-pro-max /design-system-patterns /ckm-design-system /create-design-system-rules /responsive-design /audit /critique /polish ]`

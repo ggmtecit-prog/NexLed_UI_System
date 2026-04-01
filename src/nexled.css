@@ -725,6 +725,8 @@ body::-webkit-scrollbar-thumb:active,
 
 .nav-bar:has([data-flyout-root].is-open) {
   z-index: var(--z-overlay);
+  border-bottom-left-radius: var(--radius-none);
+  border-bottom-right-radius: var(--radius-none);
 }
 
 .nav-bar>* {
@@ -6162,7 +6164,7 @@ button.language-selector-trigger .language-selector-value {
 /* Flyout panel surface */
 [data-flyout-surface] {
   position: absolute;
-  top: calc(100% + var(--space-8));
+  top: 100%;
   left: 0;
   right: 0;
   width: 100%;
