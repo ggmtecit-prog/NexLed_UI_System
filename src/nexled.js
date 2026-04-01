@@ -1980,11 +1980,171 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================================
-   Flyout Products Logic
+   Flyout Panel Logic
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-flyout-products]').forEach(flyout => {
+    const flyouts = Array.from(document.querySelectorAll('[data-flyout-root]'));
+
+    if (flyouts.length === 0) {
+        return;
+    }
+
+    const supportsHoverTrigger = typeof window.matchMedia === 'function'
+        && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    const getToggle = flyout => flyout.querySelector('[data-flyout-toggle]');
+    const getSurface = flyout => flyout.querySelector('[data-flyout-surface]');
+    const getTabs = flyout => Array.from(flyout.querySelectorAll('[data-flyout-category]'));
+
+    const getFocusableItems = flyout => {
+        const surface = getSurface(flyout);
+
+        if (!surface) {
+            return [];
+        }
+
+        return Array.from(surface.querySelectorAll('button:not([disabled]):not([aria-disabled="true"]), a[href], [tabindex]:not([tabindex="-1"])'))
+            .filter(item => !item.hidden && !item.closest('[hidden]'));
+    };
+
+    const getEntryTarget = (flyout, preferLast = false) => {
+        const tabs = getTabs(flyout);
+
+        if (tabs.length > 0) {
+            if (preferLast) {
+                return tabs[tabs.length - 1];
+            }
+
+            return tabs.find(tab => tab.getAttribute('tabindex') === '0' || tab.classList.contains('is-active')) || tabs[0];
+        }
+
+        const items = getFocusableItems(flyout);
+
+        if (items.length === 0) {
+            return null;
+        }
+
+        return preferLast ? items[items.length - 1] : items[0];
+    };
+
+    const syncFlyoutState = (flyout, isOpen) => {
+        flyout.classList.toggle('is-open', isOpen);
+        getToggle(flyout)?.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    const closeFlyout = (flyout, options = {}) => {
+        syncFlyoutState(flyout, false);
+
+        if (options.returnFocus) {
+            getToggle(flyout)?.focus({ preventScroll: true });
+        }
+    };
+
+    const closeAllFlyouts = (exceptFlyout = null) => {
+        flyouts.forEach(flyout => {
+            if (flyout !== exceptFlyout) {
+                closeFlyout(flyout);
+            }
+        });
+    };
+
+    const openFlyout = flyout => {
+        closeAllFlyouts(flyout);
+        syncFlyoutState(flyout, true);
+    };
+
+    flyouts.forEach(flyout => {
+        const toggle = getToggle(flyout);
+        const surface = getSurface(flyout);
+
+        if (!toggle || !surface) {
+            return;
+        }
+
+        if (toggle.disabled || toggle.getAttribute('aria-disabled') === 'true' || flyout.getAttribute('aria-disabled') === 'true') {
+            return;
+        }
+
+        let closeTimer;
+
+        if (supportsHoverTrigger) {
+            flyout.addEventListener('mouseenter', () => {
+                clearTimeout(closeTimer);
+                openFlyout(flyout);
+            });
+
+            flyout.addEventListener('mouseleave', () => {
+                closeTimer = setTimeout(() => {
+                    closeFlyout(flyout);
+                }, 150);
+            });
+        }
+
+        toggle.addEventListener('click', () => {
+            if (flyout.classList.contains('is-open')) {
+                closeFlyout(flyout);
+                return;
+            }
+
+            openFlyout(flyout);
+        });
+
+        toggle.addEventListener('keydown', event => {
+            if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                if (!flyout.classList.contains('is-open')) {
+                    openFlyout(flyout);
+                }
+                getEntryTarget(flyout)?.focus();
+            }
+
+            if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (!flyout.classList.contains('is-open')) {
+                    openFlyout(flyout);
+                }
+                getEntryTarget(flyout, true)?.focus();
+            }
+
+            if (event.key === 'Escape') {
+                closeFlyout(flyout);
+            }
+        });
+
+        flyout.addEventListener('keydown', event => {
+            if (event.key !== 'Escape' || !flyout.classList.contains('is-open')) {
+                return;
+            }
+
+            event.preventDefault();
+            closeFlyout(flyout, { returnFocus: true });
+        });
+
+        flyout.addEventListener('focusout', () => {
+            setTimeout(() => {
+                if (!flyout.contains(document.activeElement)) {
+                    closeFlyout(flyout);
+                }
+            }, 0);
+        });
+    });
+
+    document.addEventListener('click', event => {
+        if (event.target.closest('[data-flyout-root]')) {
+            return;
+        }
+
+        closeAllFlyouts();
+    });
+});
+
+/* ============================================================
+   Flyout Tabs Logic
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-flyout-tabs]').forEach(flyout => {
         const tabs = Array.from(flyout.querySelectorAll('[data-flyout-category]'));
         const panels = Array.from(flyout.querySelectorAll('[data-flyout-panel]'));
         if (tabs.length === 0 || panels.length === 0) return;
@@ -2035,8 +2195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         activateCategory(initialCategory);
     });
-});
-/* ============================================================
+});/* ============================================================
    Tabs Component Logic
    ============================================================ */
 

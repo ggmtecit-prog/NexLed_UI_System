@@ -159,25 +159,25 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - `[Polish components, in every aspect, style, layout, responsive, states, etc]`
 
 ### Target
-- `[The header nav bar section, in detail the flyout]`
+- `[The Toast section and the components in it]`
 
 ### Files In Scope
 - `[organisms.html]`
 
 ### Mode
-- `[ ] ANALYZE`
-- `[X ] FIX`
-- `[ ] BUILD`
+- `[X] ANALYZE`
+- `[] FIX`
+- `[X] BUILD`
 - `[ ] RESPONSIVE`
 - `[ ] STATES`
 - `[X] POLISH`
 - `[Add or remove mode flags only when needed]`
 
 ### Goal
-- `[Fix the corerns of the flyout on the organims page, its not matching the design on flyout section on molecules page]`
+- `[Apply the updates Atoms Alerts to the Toast section and the components in it]`
 
 ### Changes Requested
-- `[Fix the corners of the flyout on the header nav so it matches the design on flyout section on molecules page, improve the css and js so it does not have 2 different styles for the same component, use the stylings on the flyouts (if that exists if is already like that ignore this part)]`
+- `[Update the Toast section and the components in it to follow the new design system rules and atoms Alerts. Remeber there responsive rules.]`
 
 ### Behavior / Interactions
 - Hover: `[N/A]`
@@ -189,10 +189,10 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - Keyboard behavior: `[N/A]`
 
 ### Constraints
-- `[Always follow the system rules]`
+- `[Always follow the system rules, use the skills to improve your work]`
 
 ### Optional Skills
-- `[/ui-ux-pro-max /design-system-patterns /ckm-design-system /create-design-system-rules /responsive-design ]`
+- `[/ui-ux-pro-max /design-system-patterns /ckm-design-system /create-design-system-rules /responsive-design /audit /critique /polish ]`
 
 ## Reusable Validation Checklist
 

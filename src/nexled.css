@@ -723,7 +723,7 @@ body::-webkit-scrollbar-thumb:active,
   z-index: 0;
 }
 
-.nav-bar:has(.dropdown-flyout.is-open) {
+.nav-bar:has([data-flyout-root].is-open) {
   z-index: var(--z-overlay);
 }
 
@@ -5048,7 +5048,11 @@ body>aside.hidden.lg\:block {
   position: relative;
 }
 
-.dropdown-flyout.is-open {
+[data-flyout-root] {
+  position: relative;
+}
+
+[data-flyout-root].is-open {
   z-index: var(--z-overlay);
 }
 
@@ -5182,7 +5186,8 @@ button.language-selector-trigger .language-selector-value {
 }
 
 .dropdown.is-open .dropdown-arrow,
-.language-selector.is-open .language-selector-arrow {
+.language-selector.is-open .language-selector-arrow,
+[data-flyout-root].is-open .dropdown-arrow {
   transform: rotate(180deg);
 }
 
@@ -5267,6 +5272,12 @@ button.language-selector-trigger .language-selector-value {
   border-radius: var(--dropdown-trigger-radius);
   font-size: var(--dropdown-trigger-font-size);
   line-height: var(--dropdown-trigger-line-height);
+}
+
+[data-flyout-root] .dropdown-trigger {
+  border-radius: var(--dropdown-trigger-radius, var(--radius-md));
+  font-size: var(--dropdown-trigger-font-size, var(--font-size-body));
+  line-height: var(--dropdown-trigger-line-height, var(--line-height-body));
 }
 
 .dropdown .dropdown-menu {
@@ -5994,21 +6005,20 @@ button.language-selector-trigger .language-selector-value {
 }
 
 .flyout-products .flyout-link {
-  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  max-width: var(--flyout-product-media-size);
-  padding: 0;
-  text-align: center;
+  max-width: none;
+  padding: var(--space-12);
+  text-align: left;
 }
 
 .flyout-products .flyout-label {
-  max-inline-size: var(--flyout-product-media-size);
+  max-inline-size: none;
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
-  text-align: center;
+  text-align: left;
 }
 
 .flyout-link:hover .flyout-label,
@@ -6149,23 +6159,33 @@ button.language-selector-trigger .language-selector-value {
   }
 }
 
-/* DROPDOWN - FLYOUT PANEL MODIFIER */
-/* Use the standalone flyout surface inside dropdown menus without shrinking the panel radius. */
-.dropdown-flyout .dropdown-menu {
-  right: auto;
+/* FLYOUT PANEL SURFACE */
+[data-flyout-surface] {
+  position: absolute;
+  top: calc(100% + var(--space-8));
+  left: 0;
+  right: 0;
+  width: 100%;
   min-width: 0;
-  max-height: none;
-  padding: 0;
-  overflow: visible;
-  width: calc(var(--space-64) * 14);
-  border-radius: var(--radius-xl);
+  margin: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(var(--press-offset));
+  transform-origin: top center;
   z-index: var(--z-overlay);
-  left: 50%;
-  transform: translateX(-50%) translateY(var(--press-offset));
+  transition-property: opacity, transform, visibility;
+  transition-duration: var(--motion-duration-default), var(--motion-duration-default), 0s;
+  transition-timing-function: var(--motion-ease-premium), var(--motion-ease-premium), linear;
+  transition-delay: 0s, 0s, var(--motion-duration-default);
 }
 
-.dropdown-flyout.is-open .dropdown-menu {
-  transform: translateX(-50%) translateY(var(--radius-none));
+[data-flyout-root].is-open [data-flyout-surface] {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(var(--radius-none));
+  transition-delay: 0s, 0s, 0s;
 }
 
 /* BREADCRUMBS */
@@ -6298,7 +6318,7 @@ button.language-selector-trigger .language-selector-value {
   z-index: 0;
 }
 
-.announcement-bar-floating+*:has(.dropdown-flyout.is-open) {
+.announcement-bar-floating+*:has([data-flyout-root].is-open) {
   z-index: var(--z-overlay);
 }
 
@@ -11360,16 +11380,7 @@ textarea,
   right: 0;
 }
 
-.dropdown-flyout .dropdown-menu {
-  left: 0;
-  right: 0;
-  width: 100%;
-  transform: translateY(var(--press-offset));
-}
-
-.dropdown-flyout.is-open .dropdown-menu {
-  transform: translateY(var(--radius-none));
-}
+[data-flyout-root] [data-flyout-surface] {`r`n  left: 0;`r`n  right: 0;`r`n  width: 100%;`r`n  transform: translateY(var(--press-offset));`r`n}`r`n`r`n[data-flyout-root].is-open [data-flyout-surface] {`r`n  transform: translateY(var(--radius-none));`r`n}
 
 .language-selector {
   --language-selector-trigger-width: 100%;
@@ -11717,36 +11728,7 @@ textarea,
     width: auto;
   }
 
-  .dropdown-flyout .dropdown-menu {
-    right: auto;
-    left: 50%;
-    width: calc(var(--space-64) * 14);
-    transform: translateX(-50%) translateY(var(--press-offset));
-  }
-
-  .dropdown-flyout.is-open .dropdown-menu {
-    transform: translateX(-50%) translateY(var(--radius-none));
-  }
-
-  .nav-bar > nav > .dropdown-flyout:first-child:not(:last-child) .dropdown-menu {
-    left: 0;
-    right: auto;
-    transform: translateY(var(--press-offset));
-  }
-
-  .nav-bar > nav > .dropdown-flyout:first-child:not(:last-child).is-open .dropdown-menu {
-    transform: translateY(var(--radius-none));
-  }
-
-  .nav-bar > nav > .dropdown-flyout:last-child:not(:first-child) .dropdown-menu {
-    left: auto;
-    right: 0;
-    transform: translateY(var(--press-offset));
-  }
-
-  .nav-bar > nav > .dropdown-flyout:last-child:not(:first-child).is-open .dropdown-menu {
-    transform: translateY(var(--radius-none));
-  }
+  [data-flyout-root] [data-flyout-surface] {`r`n    right: auto;`r`n    left: 50%;`r`n    width: calc(var(--space-64) * 14);`r`n    transform: translateX(-50%) translateY(var(--press-offset));`r`n  }`r`n`r`n  [data-flyout-root].is-open [data-flyout-surface] {`r`n    transform: translateX(-50%) translateY(var(--radius-none));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child) [data-flyout-surface] {`r`n    left: 0;`r`n    right: auto;`r`n    transform: translateY(var(--press-offset));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child).is-open [data-flyout-surface] {`r`n    transform: translateY(var(--radius-none));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child) [data-flyout-surface] {`r`n    left: auto;`r`n    right: 0;`r`n    transform: translateY(var(--press-offset));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child).is-open [data-flyout-surface] {`r`n    transform: translateY(var(--radius-none));`r`n  }
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -11811,5 +11793,6 @@ textarea,
   padding: 0;
   box-shadow: none;
 }
+
 
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5101,7 +5101,7 @@
                                     <div class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Products</h4>
                                         <div class="size-grid-content">
-                                            <div class="flyout flyout-products" data-flyout-products>
+                                            <div class="flyout flyout-products" data-flyout-tabs>
                                                 <div class="flyout-body">
                                                     <nav class="flyout-nav" aria-label="Fly-out categories"
                                                         role="tablist">
@@ -5282,6 +5282,196 @@
                                     </div>
 
                                     <div class="size-grid-row size-grid-row-gap-12">
+                                        <h4 class="size-grid-label">Triggered Products</h4>
+                                        <div class="size-grid-content">
+                                            <div class="dropdown-minimal dropdown-sm w-full" data-flyout-root>
+                                                <button type="button" class="dropdown-trigger" data-flyout-toggle
+                                                    aria-haspopup="dialog" aria-expanded="false">
+                                                    <span class="dropdown-value">Open fly-out</span>
+                                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                                </button>
+                                                <div class="flyout flyout-products" data-flyout-surface role="dialog"
+                                                    aria-label="Triggered fly-out navigation" data-flyout-tabs>
+                                                    <div class="flyout-body">
+                                                        <nav class="flyout-nav" aria-label="Triggered fly-out categories"
+                                                            role="tablist">
+                                                            <button type="button" class="flyout-nav-item is-active"
+                                                                id="molecules-flyout-triggered-tab-lorem" role="tab"
+                                                                aria-selected="true"
+                                                                aria-controls="molecules-flyout-triggered-panel-lorem"
+                                                                data-flyout-category="lorem" tabindex="0">
+                                                                <span>Lorem</span>
+                                                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                            </button>
+                                                            <button type="button" class="flyout-nav-item"
+                                                                id="molecules-flyout-triggered-tab-ipsum" role="tab"
+                                                                aria-selected="false"
+                                                                aria-controls="molecules-flyout-triggered-panel-ipsum"
+                                                                data-flyout-category="ipsum" tabindex="-1">
+                                                                <span>Ipsum</span>
+                                                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                            </button>
+                                                            <button type="button" class="flyout-nav-item"
+                                                                id="molecules-flyout-triggered-tab-dolor" role="tab"
+                                                                aria-selected="false"
+                                                                aria-controls="molecules-flyout-triggered-panel-dolor"
+                                                                data-flyout-category="dolor" tabindex="-1">
+                                                                <span>Dolor</span>
+                                                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                            </button>
+                                                            <button type="button" class="flyout-nav-item"
+                                                                id="molecules-flyout-triggered-tab-amet" role="tab"
+                                                                aria-selected="false"
+                                                                aria-controls="molecules-flyout-triggered-panel-amet"
+                                                                data-flyout-category="amet" tabindex="-1">
+                                                                <span>Amet</span>
+                                                                <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                                                            </button>
+                                                        </nav>
+
+                                                        <div class="flyout-copy">
+                                                            <div class="flyout-grid"
+                                                                id="molecules-flyout-triggered-panel-lorem" role="tabpanel"
+                                                                aria-labelledby="molecules-flyout-triggered-tab-lorem"
+                                                                data-flyout-panel="lorem">
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/wood.webp"
+                                                                            alt="Lorem nunc product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Lorem nunc</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/metal.webp"
+                                                                            alt="Ipsum erat product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Ipsum erat</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/stone.webp"
+                                                                            alt="Dolor amet product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Dolor amet</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/tiles.webp"
+                                                                            alt="Sit massa product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Sit massa</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="flyout-grid"
+                                                                id="molecules-flyout-triggered-panel-ipsum" role="tabpanel"
+                                                                aria-labelledby="molecules-flyout-triggered-tab-ipsum"
+                                                                data-flyout-panel="ipsum" hidden>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/products/product-slide-1.png"
+                                                                            alt="Ipsum nova product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Ipsum nova</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/slides/img_lights_wide.webp"
+                                                                            alt="Lorem flux product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Lorem flux</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/slides/img_mountains_wide.webp"
+                                                                            alt="Dolor axis product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Dolor axis</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/slides/img_nature_wide.webp"
+                                                                            alt="Amet line product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Amet line</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="flyout-grid"
+                                                                id="molecules-flyout-triggered-panel-dolor" role="tabpanel"
+                                                                aria-labelledby="molecules-flyout-triggered-tab-dolor"
+                                                                data-flyout-panel="dolor" hidden>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/stone.webp"
+                                                                            alt="Dolor prime product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Dolor prime</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/wood.webp"
+                                                                            alt="Lorem core product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Lorem core</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/products/product-slide-1.png"
+                                                                            alt="Ipsum glow product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Ipsum glow</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/tiles.webp"
+                                                                            alt="Amet fold product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Amet fold</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="flyout-grid"
+                                                                id="molecules-flyout-triggered-panel-amet" role="tabpanel"
+                                                                aria-labelledby="molecules-flyout-triggered-tab-amet"
+                                                                data-flyout-panel="amet" hidden>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/metal.webp"
+                                                                            alt="Amet via product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Amet via</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/slides/img_nature_wide.webp"
+                                                                            alt="Lorem vale product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Lorem vale</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/materials/wood.webp"
+                                                                            alt="Dolor nest product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Dolor nest</span>
+                                                                </a>
+                                                                <a href="#" class="flyout-link">
+                                                                    <span class="flyout-media">
+                                                                        <img src="public/images/slides/img_lights_wide.webp"
+                                                                            alt="Ipsum rise product image">
+                                                                    </span>
+                                                                    <span class="flyout-label">Ipsum rise</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Features</h4>
                                         <div class="size-grid-content">
                                             <div class="flyout flyout-features">
@@ -5347,7 +5537,7 @@
                                     <div class="size-grid-row size-grid-row-gap-12">
                                         <h4 class="size-grid-label">Selected Category</h4>
                                         <div class="size-grid-content">
-                                            <div class="flyout flyout-products" data-flyout-products>
+                                            <div class="flyout flyout-products" data-flyout-tabs>
                                                 <div class="flyout-body">
                                                     <nav class="flyout-nav" aria-label="Fly-out categories"
                                                         role="tablist">
