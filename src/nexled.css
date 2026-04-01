@@ -10600,7 +10600,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
     --footer-body-pad-bottom: var(--space-24);
     --footer-bottom-pad-block: var(--space-16);
     --footer-bottom-pad-inline: var(--space-24);
-    --footer-grid-column-gap: var(--space-24);
+    --footer-grid-column-gap: var(--space-20);
     --footer-heading-size: var(--font-size-body-lg);
     --footer-heading-line: var(--line-height-body-lg);
     --footer-link-size: var(--font-size-body);
@@ -10672,12 +10672,12 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   }
 
   .footer-grid {
-    grid-template-columns: minmax(0, 1.3fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-32)), 1fr));
+    grid-template-columns: minmax(calc(var(--space-64) + var(--space-64) + var(--space-32)), 1.45fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-24)), 1fr));
   }
 
   .footer-col-brand {
     grid-column: auto;
-    padding-inline-end: var(--space-24);
+    padding-inline-end: var(--space-40);
   }
 }
 
@@ -10685,7 +10685,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   .footer {
     --footer-body-pad-inline: var(--space-40);
     --footer-bottom-pad-inline: var(--space-40);
-    --footer-grid-column-gap: var(--space-32);
+    --footer-grid-column-gap: var(--space-24);
     --footer-heading-size: var(--font-size-body-xl);
     --footer-heading-line: var(--line-height-body-lg);
   }
@@ -10695,7 +10695,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   }
 
   .footer-col-brand {
-    padding-inline-end: var(--space-32);
+    padding-inline-end: var(--space-40);
   }
 }
 /* SEGMENTED CONTROL */
@@ -11870,7 +11870,7 @@ textarea,
     transform: translateY(var(--radius-none));
   }
   .footer-grid {
-    grid-template-columns: minmax(0, 1.3fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-32)), 1fr));
+    grid-template-columns: minmax(calc(var(--space-64) + var(--space-64) + var(--space-32)), 1.45fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-24)), 1fr));
   }
 
   .carousel-grid-container {
@@ -11897,7 +11897,7 @@ textarea,
   }
 
   .footer-grid {
-    grid-template-columns: minmax(0, 1.3fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-32)), 1fr));
+    grid-template-columns: minmax(calc(var(--space-64) + var(--space-64) + var(--space-32)), 1.45fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-24)), 1fr));
   }
 
   .carousel-grid-container {
