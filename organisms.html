@@ -3103,11 +3103,15 @@
                     </div>
 
                     <div class="panel panel-wrap-body panel-wrap-body-gap-24">
-                        <div
-                            class="size-grid size-grid-stack size-grid-stack-gap-24 size-grid-limit-standard mx-auto w-full">
-                            <div class="size-grid-column size-grid-column-gap-24">
+                        <div class="space-y-24 w-full">
+                            <div class="space-y-8">
                                 <h3 class="size-grid-column-title">Patterns</h3>
+                                <p class="text-body-sm text-grey-primary max-w-readable">The desktop sidebar variants
+                                    sit side by side here, while the small-screen pattern hands off to the docs header
+                                    and drawer trigger instead of compressing the full rail.</p>
+                            </div>
 
+                            <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 items-start w-full">
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">Core Rail</h4>
                                     <div class="size-grid-content">
@@ -3123,7 +3127,7 @@
                                                 <div class="flex flex-col h-full gap-16 p-32">
                                                     <a href="index.html" class="flex items-center gap-12 group">
                                                         <img src="public/logos/support_logo.svg" alt="NexLed"
-                                                            class="w-64 h-64">
+                                                            class="w-56 h-56">
                                                         <div class="flex flex-col">
                                                             <span
                                                                 class="text-card-title leading-none tracking-tight text-black">NexLed</span>
@@ -3173,66 +3177,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="size-grid-row md:hidden">
-                                    <h4 class="size-grid-label">Small Screens</h4>
-                                    <div class="size-grid-content">
-                                        <div class="space-y-16 w-full">
-                                            <div class="space-y-8">
-                                                <p class="text-body-lg text-black">Compact section preview</p>
-                                                <p class="text-body-sm text-grey-primary max-w-readable">On smaller
-                                                    screens the section shows the same sidebar shell as a shorter
-                                                    preview, so the pattern stays readable without forcing the full
-                                                    desktop-height rail.</p>
-                                            </div>
-                                            <div class="sidebar w-full h-auto">
-                                                <div class="flex flex-col h-full gap-16 p-32">
-                                                    <a href="index.html" class="flex items-center gap-12 group">
-                                                        <img src="public/logos/support_logo.svg" alt="NexLed"
-                                                            class="w-64 h-64">
-                                                        <div class="flex flex-col">
-                                                            <span
-                                                                class="text-card-title leading-none tracking-tight text-black">NexLed</span>
-                                                            <span
-                                                                class="text-label text-black tracking-wider">Design
-                                                                System</span>
-                                                        </div>
-                                                    </a>
-
-                                                    <nav class="flex flex-col gap-24">
-                                                        <div class="dropdown dropdown-minimal dropdown-sm">
-                                                            <a href="#" class="dropdown-trigger" aria-current="page">
-                                                                <span class="dropdown-value">Overview</span>
-                                                                <i class="ri-arrow-right-s-line dropdown-arrow"
-                                                                    aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="dropdown dropdown-minimal dropdown-sm">
-                                                            <a href="#" class="dropdown-trigger">
-                                                                <span class="dropdown-value">Atoms</span>
-                                                                <i class="ri-arrow-right-s-line dropdown-arrow"
-                                                                    aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="dropdown dropdown-minimal dropdown-sm">
-                                                            <a href="#" class="dropdown-trigger">
-                                                                <span class="dropdown-value">Molecules</span>
-                                                                <i class="ri-arrow-right-s-line dropdown-arrow"
-                                                                    aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="dropdown dropdown-minimal dropdown-sm">
-                                                            <a href="#" class="dropdown-trigger">
-                                                                <span class="dropdown-value">Organisms</span>
-                                                                <i class="ri-arrow-right-s-line dropdown-arrow"
-                                                                    aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                    </nav>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="size-grid-row">
                                     <h4 class="size-grid-label">With Icons</h4>
@@ -3248,7 +3192,7 @@
                                                 <div class="flex flex-col h-full gap-16 p-32">
                                                     <a href="index.html" class="flex items-center gap-12 group">
                                                         <img src="public/logos/support_logo.svg" alt="NexLed"
-                                                            class="w-64 h-64">
+                                                            class="w-56 h-56">
                                                         <div class="flex flex-col">
                                                             <span
                                                                 class="text-card-title leading-none tracking-tight text-black">NexLed</span>
@@ -3318,9 +3262,39 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="size-grid-row lg:col-span-2">
+                                    <h4 class="size-grid-label">Mobile Handoff</h4>
+                                    <div class="size-grid-content">
+                                        <div class="space-y-16 w-full">
+                                            <div class="space-y-8">
+                                                <p class="text-body-lg text-black">Header + drawer trigger</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">On smaller
+                                                    screens the sidebar hands off to the docs header and the menu
+                                                    button. That control opens the drawer-sheet navigation instead of
+                                                    squeezing the full sidebar into a shorter rail.</p>
+                                            </div>
+                                            <div class="panel rounded-t-none rounded-b-xl border-x-0 border-t-0 w-full">
+                                                <div class="flex items-center justify-between gap-16 p-16 md:px-24 md:py-20">
+                                                    <a href="index.html" class="flex items-center gap-12">
+                                                        <img src="public/logos/support_logo.svg" alt="NexLed" class="w-56 h-56">
+                                                        <div class="flex flex-col">
+                                                            <span class="text-card-title leading-none tracking-tight text-black">NexLed</span>
+                                                            <span class="text-label text-black tracking-wider">Design System</span>
+                                                        </div>
+                                                    </a>
+                                                    <button type="button" class="btn btn-secondary btn-icon btn-xs"
+                                                        aria-label="Open navigation preview">
+                                                        <i class="ri-menu-3-line icon icon-md" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="size-grid-column size-grid-column-gap-24">
+                            <div class="space-y-16 w-full">
                                 <h3 class="size-grid-column-title">States</h3>
 
                                 <div class="size-grid-row">
@@ -3343,7 +3317,7 @@
                                                 <div class="flex flex-col h-full gap-16 p-32">
                                                     <a href="index.html" class="flex items-center gap-12 group">
                                                         <img src="public/logos/support_logo.svg" alt="NexLed"
-                                                            class="w-64 h-64">
+                                                            class="w-56 h-56">
                                                         <div class="flex flex-col">
                                                             <span
                                                                 class="text-card-title leading-none tracking-tight text-black">NexLed</span>
