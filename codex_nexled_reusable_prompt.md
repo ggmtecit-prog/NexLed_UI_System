@@ -180,10 +180,10 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - `[Add or remove mode flags only when needed]`
 
 ### Goal
-- `[Apply the updates Atoms Alerts to the Toast section and the components in it]`
+- `[Imrpove content in the toast section]`
 
 ### Changes Requested
-- `[Update the Toast section and the components in it to follow the new design system rules and atoms Alerts. Remeber there responsive rules.]`
+- `[Use the /audit and /critique skills, so remove the unneccessary text and improve the btns "shows" to be in the middle of the screen]`
 
 ### Behavior / Interactions
 - Hover: `[N/A]`
