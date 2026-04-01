@@ -719,20 +719,12 @@ body::-webkit-scrollbar-thumb:active,
   border: var(--border-thin) solid var(--color-grey-secondary);
   border-radius: var(--radius-xl);
   box-shadow: none;
-  transition:
-    border-color var(--motion-duration-default) var(--motion-ease-premium),
-    box-shadow var(--motion-duration-default) var(--motion-ease-premium);
   position: relative;
   z-index: 0;
 }
 
 .nav-bar:has(.dropdown-flyout.is-open) {
   z-index: var(--z-overlay);
-}
-
-.nav-bar:hover {
-  border-color: var(--color-green-hover-icons);
-  box-shadow: var(--shadow-btn-hover);
 }
 
 .nav-bar>* {
@@ -5943,6 +5935,8 @@ button.language-selector-trigger .language-selector-value {
 
 .flyout-products .flyout-grid {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+  align-items: start;
+  justify-items: center;
 }
 
 .flyout-products .flyout-media {
@@ -5997,6 +5991,24 @@ button.language-selector-trigger .language-selector-value {
   font-weight: var(--font-weight-medium);
   white-space: normal;
   transition: color var(--motion-duration-default) var(--motion-ease-premium);
+}
+
+.flyout-products .flyout-link {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--flyout-product-media-size);
+  padding: 0;
+  text-align: center;
+}
+
+.flyout-products .flyout-label {
+  max-inline-size: var(--flyout-product-media-size);
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  text-align: center;
 }
 
 .flyout-link:hover .flyout-label,
@@ -6129,12 +6141,6 @@ button.language-selector-trigger .language-selector-value {
   .flyout-products .flyout-nav-item {
     width: 100%;
   }
-
-  .flyout-products .flyout-label {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -6144,7 +6150,7 @@ button.language-selector-trigger .language-selector-value {
 }
 
 /* DROPDOWN - FLYOUT PANEL MODIFIER */
-/* Used when the dropdown panel is a flyout component instead of a list */
+/* Use the standalone flyout surface inside dropdown menus without shrinking the panel radius. */
 .dropdown-flyout .dropdown-menu {
   right: auto;
   min-width: 0;
@@ -6152,17 +6158,7 @@ button.language-selector-trigger .language-selector-value {
   padding: 0;
   overflow: visible;
   width: calc(var(--space-64) * 14);
-}
-
-/* DROPDOWN - FLYOUT PANEL MODIFIER */
-/* dropdown-flyout-modifier */
-.dropdown-flyout .dropdown-menu {
-  right: auto;
-  min-width: 0;
-  max-height: none;
-  padding: 0;
-  overflow: visible;
-  width: calc(var(--space-64) * 14);
+  border-radius: var(--radius-xl);
   z-index: var(--z-overlay);
   left: 50%;
   transform: translateX(-50%) translateY(var(--press-offset));
@@ -6300,6 +6296,10 @@ button.language-selector-trigger .language-selector-value {
 .announcement-bar-floating+* {
   position: relative;
   z-index: 0;
+}
+
+.announcement-bar-floating+*:has(.dropdown-flyout.is-open) {
+  z-index: var(--z-overlay);
 }
 
 .announcement-bar-list {
@@ -11728,6 +11728,25 @@ textarea,
     transform: translateX(-50%) translateY(var(--radius-none));
   }
 
+  .nav-bar > nav > .dropdown-flyout:first-child:not(:last-child) .dropdown-menu {
+    left: 0;
+    right: auto;
+    transform: translateY(var(--press-offset));
+  }
+
+  .nav-bar > nav > .dropdown-flyout:first-child:not(:last-child).is-open .dropdown-menu {
+    transform: translateY(var(--radius-none));
+  }
+
+  .nav-bar > nav > .dropdown-flyout:last-child:not(:first-child) .dropdown-menu {
+    left: auto;
+    right: 0;
+    transform: translateY(var(--press-offset));
+  }
+
+  .nav-bar > nav > .dropdown-flyout:last-child:not(:first-child).is-open .dropdown-menu {
+    transform: translateY(var(--radius-none));
+  }
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -11792,3 +11811,5 @@ textarea,
   padding: 0;
   box-shadow: none;
 }
+
+
