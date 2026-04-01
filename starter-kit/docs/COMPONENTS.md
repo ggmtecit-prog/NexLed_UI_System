@@ -425,7 +425,7 @@ Every component follows the pattern: `[component] [variant] [size]`
 
 ### Classes
 
-- `.dropdown-flyout`
+- `.flyout-products`
 - `.flyout`
 - `.flyout-body`
 - `.flyout-copy`
@@ -757,4 +757,5 @@ Every component follows the pattern: `[component] [variant] [size]`
 - `:focus-visible`
 
 ---
+
 

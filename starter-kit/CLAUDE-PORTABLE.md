@@ -156,7 +156,8 @@ Every component follows: `[component] [variant] [size]`
 | Card | `card` | `card-primary` | â€” |
 | Card Product | `card-product` | â€” | â€” |
 | Accordion | `accordion` | â€” | `accordion-sm`, `accordion-md`, `accordion-lg` |
-| Dropdown | `dropdown` | `dropdown-minimal`, `dropdown-multi`, `dropdown-flyout` | `dropdown-xs`, `dropdown-sm`, `dropdown-md`, `dropdown-lg` |
+| Dropdown | `dropdown` | `dropdown-minimal`, `dropdown-multi` | `dropdown-xs`, `dropdown-sm`, `dropdown-md`, `dropdown-lg` |
+| Flyout | `flyout` | `flyout-features`, `flyout-products` | - |
 | Breadcrumb | `breadcrumb` | â€” | â€” |
 | Announcement Bar | `announcement-bar` | `announcement-bar-standard`, `announcement-bar-floating`, `announcement-bar-light` | â€” |
 | Carousel | `carousel` | `carousel-landscape`, `carousel-square` | â€” |

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * NexLed UI System - nexled.css
  * Version: v1.3
  * Source: https://github.com/ggmtecit-prog/NexLed_UI_System
@@ -6159,7 +6159,7 @@ button.language-selector-trigger .language-selector-value {
   }
 }
 
-/* FLYOUT PANEL SURFACE */
+/* Flyout panel surface */
 [data-flyout-surface] {
   position: absolute;
   top: calc(100% + var(--space-8));
@@ -11380,7 +11380,16 @@ textarea,
   right: 0;
 }
 
-[data-flyout-root] [data-flyout-surface] {`r`n  left: 0;`r`n  right: 0;`r`n  width: 100%;`r`n  transform: translateY(var(--press-offset));`r`n}`r`n`r`n[data-flyout-root].is-open [data-flyout-surface] {`r`n  transform: translateY(var(--radius-none));`r`n}
+[data-flyout-root] [data-flyout-surface] {
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: translateY(var(--press-offset));
+}
+
+[data-flyout-root].is-open [data-flyout-surface] {
+  transform: translateY(var(--radius-none));
+}
 
 .language-selector {
   --language-selector-trigger-width: 100%;
@@ -11728,7 +11737,36 @@ textarea,
     width: auto;
   }
 
-  [data-flyout-root] [data-flyout-surface] {`r`n    right: auto;`r`n    left: 50%;`r`n    width: calc(var(--space-64) * 14);`r`n    transform: translateX(-50%) translateY(var(--press-offset));`r`n  }`r`n`r`n  [data-flyout-root].is-open [data-flyout-surface] {`r`n    transform: translateX(-50%) translateY(var(--radius-none));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child) [data-flyout-surface] {`r`n    left: 0;`r`n    right: auto;`r`n    transform: translateY(var(--press-offset));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child).is-open [data-flyout-surface] {`r`n    transform: translateY(var(--radius-none));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child) [data-flyout-surface] {`r`n    left: auto;`r`n    right: 0;`r`n    transform: translateY(var(--press-offset));`r`n  }`r`n`r`n  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child).is-open [data-flyout-surface] {`r`n    transform: translateY(var(--radius-none));`r`n  }
+  [data-flyout-root] [data-flyout-surface] {
+    right: auto;
+    left: 50%;
+    width: calc(var(--space-64) * 14);
+    transform: translateX(-50%) translateY(var(--press-offset));
+  }
+
+  [data-flyout-root].is-open [data-flyout-surface] {
+    transform: translateX(-50%) translateY(var(--radius-none));
+  }
+
+  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child) [data-flyout-surface] {
+    left: 0;
+    right: auto;
+    transform: translateY(var(--press-offset));
+  }
+
+  .nav-bar > nav > [data-flyout-root]:first-child:not(:last-child).is-open [data-flyout-surface] {
+    transform: translateY(var(--radius-none));
+  }
+
+  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child) [data-flyout-surface] {
+    left: auto;
+    right: 0;
+    transform: translateY(var(--press-offset));
+  }
+
+  .nav-bar > nav > [data-flyout-root]:last-child:not(:first-child).is-open [data-flyout-surface] {
+    transform: translateY(var(--radius-none));
+  }
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -11793,6 +11831,7 @@ textarea,
   padding: 0;
   box-shadow: none;
 }
+
 
 
 
