@@ -11553,6 +11553,23 @@ textarea,
   max-width: min(100%, var(--responsive-toast-w));
 }
 
+@media (min-width: 768px) {
+  .toast-viewport {
+    left: auto;
+    width: min(var(--responsive-toast-w), calc(100vw - (var(--responsive-container-inline) * 2)));
+    max-width: calc(100vw - (var(--responsive-container-inline) * 2));
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 1024px) {
+  .toast-viewport {
+    left: calc(var(--size-sidebar-w) + (var(--space-24) * 2) + var(--responsive-container-inline));
+    width: min(var(--responsive-toast-w), calc(100vw - (var(--size-sidebar-w) + (var(--space-24) * 2) + (var(--responsive-container-inline) * 2))));
+    max-width: calc(100vw - (var(--size-sidebar-w) + (var(--space-24) * 2) + (var(--responsive-container-inline) * 2)));
+  }
+}
+
 .data-table-actions {
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -11847,7 +11864,7 @@ textarea,
     --responsive-btn-xs-pad: var(--space-12);
     --responsive-drawer-w: var(--layout-standard);
     --responsive-modal-w: var(--layout-narrow);
-    --responsive-toast-w: var(--layout-narrow);
+    --responsive-toast-w: calc((var(--layout-standard) - var(--space-24)) / 2);
   }
 
   .date-picker-panel,
@@ -11892,7 +11909,7 @@ textarea,
     --responsive-hero-line: var(--line-height-display);
     --responsive-hero-subtitle-size: var(--font-size-body-lg);
     --responsive-hero-subtitle-line: var(--line-height-body-lg);
-    --responsive-toast-w: var(--layout-standard);
+    --responsive-toast-w: calc((var(--layout-standard) - var(--space-24)) / 2);
   }
 
   .footer-grid {
