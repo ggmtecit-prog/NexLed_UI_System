@@ -182,10 +182,8 @@ body {
 }
 
 /* SCROLLBAR */
-/* Root page scrollbars and internal .custom-scrollbar surfaces share the same treatment. */
+/* Internal .custom-scrollbar surfaces share the shared NexLed scrollbar treatment. */
 
-html,
-body,
 .custom-scrollbar {
   --scrollbar-size: var(--space-12);
   --scrollbar-thumb-radius: var(--radius-sm);
@@ -196,17 +194,11 @@ body,
 }
 
 @supports not selector(::-webkit-scrollbar) {
-  html,
-  body,
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb-default) var(--scrollbar-track);
   }
 
-  html:hover,
-  body:hover,
-  html.is-scrolling-root,
-  body.is-scrolling-root,
   .custom-scrollbar:hover,
   .custom-scrollbar.is-scrolling,
   .custom-scrollbar:focus-visible,
@@ -220,33 +212,21 @@ body,
   outline-offset: var(--focus-ring-offset);
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar,
 .custom-scrollbar::-webkit-scrollbar {
   width: var(--scrollbar-size);
   height: var(--scrollbar-size);
   background-color: var(--scrollbar-track);
 }
 
-html::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track,
 .custom-scrollbar::-webkit-scrollbar-track,
-html::-webkit-scrollbar-track-piece,
-body::-webkit-scrollbar-track-piece,
 .custom-scrollbar::-webkit-scrollbar-track-piece,
-html::-webkit-scrollbar-corner,
-body::-webkit-scrollbar-corner,
 .custom-scrollbar::-webkit-scrollbar-corner {
   background-color: var(--scrollbar-track);
   border: none;
   box-shadow: none;
 }
 
-html::-webkit-scrollbar-button,
-body::-webkit-scrollbar-button,
 .custom-scrollbar::-webkit-scrollbar-button,
-html::-webkit-scrollbar-button:single-button,
-body::-webkit-scrollbar-button:single-button,
 .custom-scrollbar::-webkit-scrollbar-button:single-button {
   display: none;
   width: 0;
@@ -269,28 +249,18 @@ body::-webkit-scrollbar-button:single-button,
   pointer-events: none;
 }
 
-html::-webkit-scrollbar-button:vertical:start:decrement,
-body::-webkit-scrollbar-button:vertical:start:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:vertical:start:decrement,
-html::-webkit-scrollbar-button:vertical:end:increment,
-body::-webkit-scrollbar-button:vertical:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:vertical:end:increment {
   display: none;
   height: 0;
 }
 
-html::-webkit-scrollbar-button:horizontal:start:decrement,
-body::-webkit-scrollbar-button:horizontal:start:decrement,
 .custom-scrollbar::-webkit-scrollbar-button:horizontal:start:decrement,
-html::-webkit-scrollbar-button:horizontal:end:increment,
-body::-webkit-scrollbar-button:horizontal:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:horizontal:end:increment {
   display: none;
   width: 0;
 }
 
-html::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb,
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb-default);
   border-radius: var(--scrollbar-thumb-radius);
@@ -301,27 +271,17 @@ body::-webkit-scrollbar-thumb,
   transition: background-color var(--motion-duration-fast) var(--motion-ease-premium);
 }
 
-html:hover::-webkit-scrollbar-thumb,
-body:hover::-webkit-scrollbar-thumb,
-html.is-scrolling-root::-webkit-scrollbar-thumb,
-body.is-scrolling-root::-webkit-scrollbar-thumb,
 .custom-scrollbar:hover::-webkit-scrollbar-thumb,
 .custom-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
 .custom-scrollbar:focus-visible::-webkit-scrollbar-thumb,
 .custom-scrollbar:focus-within::-webkit-scrollbar-thumb,
-html::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover,
 .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-html::-webkit-scrollbar-thumb:active,
-body::-webkit-scrollbar-thumb:active,
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
   background-color: var(--scrollbar-thumb-active);
 }
 
 @media (min-width: 768px) {
 
-  html,
-  body,
   .custom-scrollbar {
     --scrollbar-size: var(--space-16);
   }

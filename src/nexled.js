@@ -475,7 +475,6 @@ document.addEventListener('DOMContentLoaded', () => {
  * Custom Scrollbar Logic
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const rootScrollTargets = [document.documentElement, document.body].filter(Boolean);
     const scrollContainerSelectors = [
         '.custom-scrollbar',
         '.dropdown-menu',
@@ -491,22 +490,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollContainers = Array.from(document.querySelectorAll(scrollContainerSelectors.join(', ')))
         .filter((container, index, collection) => collection.indexOf(container) === index)
         .filter(container => container !== document.documentElement && container !== document.body);
-
-    let rootScrollTimeout;
-    const setRootScrolling = () => {
-        rootScrollTargets.forEach(target => {
-            target.classList.add('is-scrolling-root');
-        });
-
-        clearTimeout(rootScrollTimeout);
-        rootScrollTimeout = setTimeout(() => {
-            rootScrollTargets.forEach(target => {
-                target.classList.remove('is-scrolling-root');
-            });
-        }, 900);
-    };
-
-    window.addEventListener('scroll', setRootScrolling, { passive: true });
 
     scrollContainers.forEach(container => {
         container.classList.add('custom-scrollbar');
