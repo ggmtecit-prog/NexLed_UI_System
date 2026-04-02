@@ -29,6 +29,7 @@ Use the existing spacing tokens for page padding:
 Use only these wrappers:
 
 - container-standard
+- container-balanced
 - container-wide
 - container-narrow
 - container-readable

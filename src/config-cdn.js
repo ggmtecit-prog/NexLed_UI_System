@@ -196,7 +196,7 @@ const DESIGN_TOKENS = {
     },
     layout: {
         'standard': '1280px',
-        'balanced': '1360px',
+        'balanced': '1600px',
         'wide': '1440px',
         'narrow': '768px',
         'readable': '65ch',

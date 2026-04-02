@@ -132,7 +132,7 @@
   --press-offset: 1px;
 
   --layout-standard: 1280px;
-  --layout-balanced: calc((var(--layout-standard) + var(--layout-wide)) / 2);
+  --layout-balanced: calc(var(--layout-wide) + var(--space-64) + var(--space-64) + var(--space-32));
   --layout-wide: 1440px;
   --layout-narrow: 768px;
   --layout-readable: 65ch;
