@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLed Responsive Lab</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind -->
+    <script src="https://ggmtecit-prog.github.io/NexLed_UI_System/src/config-cdn.js?v=1.3"></script>
+    <link rel="stylesheet" href="https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.css?v=1.3">
+</head>
+
+<body class="bg-grey-tertiary text-black">
+    <div class="min-h-screen flex flex-col">
+        <header class="container-wide pt-24 pb-16">
+            <div class="nav-bar">
+                <a href="#" class="flex items-center gap-12">
+                    <img src="../favicon.svg" alt="NexLed" class="w-56 h-56">
+                    <div class="flex flex-col">
+                        <span class="text-card-title leading-none tracking-tight text-black">NexLed</span>
+                        <span class="text-label text-black tracking-wider">Responsive Lab</span>
+                    </div>
+                </a>
+
+                <nav class="flex flex-wrap items-center h-full gap-12" aria-label="Primary">
+                    <a href="#" class="link-navigation link-sm"><span class="link-label">Overview</span></a>
+                    <a href="#" class="link-navigation link-sm"><span class="link-label">Cards</span></a>
+                    <a href="#" class="link-navigation link-sm"><span class="link-label">Panels</span></a>
+                    <a href="#" class="link-navigation link-sm"><span class="link-label">Footer</span></a>
+                </nav>
+
+                <div class="flex items-center gap-12">
+                    <a href="#" class="link-subtle link-sm"><span class="link-label">Documentation</span></a>
+                    <button type="button" class="btn btn-primary btn-sm">Inspect Layout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container-wide flex-1 flex flex-col gap-24 pb-32">
+            <section class="panel panel-wrap-body panel-wrap-body-gap-24">
+                <div class="flex flex-col gap-16 max-w-readable">
+                    <span class="badge badge-success badge-md">Responsive Demo</span>
+                    <h1 class="text-hero-title text-black">A page built to stress-test cards, panels, header rhythm, and footer wrapping.</h1>
+                    <p class="text-hero-subtitle text-black">Resize this page to verify column stacking, action wrapping, copy density, and footer behavior across phone, tablet, desktop, and wide desktop widths.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-12">
+                    <button type="button" class="btn btn-primary btn-md">Primary Action</button>
+                    <button type="button" class="btn btn-secondary btn-md">Secondary Action</button>
+                    <a href="#" class="link link-md"><span class="link-label">Open checklist</span></a>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 gap-24 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-24 sm:grid-cols-2 lg:col-span-2">
+                    <article class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-layout-grid-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h2 class="card-title">Layout Audit</h2>
+                            </div>
+                            <p class="card-text">Check how cards hold their spacing when the grid collapses from two columns to one and then expands again on larger screens.</p>
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-primary btn-sm">Review</button>
+                                <button type="button" class="btn btn-secondary btn-sm">Share</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="ri-archive-line text-icon-lg" aria-hidden="true"></i>
+                                </div>
+                                <h2 class="card-title">Content Density</h2>
+                            </div>
+                            <p class="card-text">Use this card to inspect paragraph width, heading rhythm, and action spacing when copy lengths vary between breakpoints.</p>
+                            <a href="#" class="link link-md"><span class="link-label">Open notes</span></a>
+                        </div>
+                    </article>
+
+                    <article class="card card-primary sm:col-span-2">
+                        <div class="card-body">
+                            <h2 class="card-title">Wide-Surface Check</h2>
+                            <p class="card-text">This larger card helps validate how the primary surface scales when it spans the full row on tablet and desktop layouts.</p>
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-secondary btn-sm">Compare</button>
+                                <button type="button" class="btn btn-ghost btn-sm">Export</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Action Wrap</h2>
+                            <p class="card-text">Buttons should stack on smaller widths and settle back into a horizontal row once the available width increases.</p>
+                            <div class="card-actions">
+                                <button type="button" class="btn btn-primary btn-sm">Approve</button>
+                                <button type="button" class="btn btn-secondary btn-sm">Review</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="panel panel-wrap-body panel-wrap-body-gap-24">
+                    <div class="flex flex-col gap-8">
+                        <span class="badge badge-info badge-md">Side Panel</span>
+                        <h2 class="text-card-title text-black">Responsive Checklist</h2>
+                        <p class="text-body-sm text-grey-primary">Keep one denser panel beside the cards so you can validate how secondary content behaves when the layout shifts to a single column.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-12">
+                        <div class="flex flex-col gap-8">
+                            <h3 class="text-body-lg text-black">Viewports</h3>
+                            <p class="text-body-sm text-grey-primary">360, 480, 768, 1024, 1440, 1920</p>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="flex flex-col gap-8">
+                            <h3 class="text-body-lg text-black">Watch for</h3>
+                            <ul class="flex flex-col gap-8">
+                                <li><span class="text-body-sm text-grey-primary">Card stacking</span></li>
+                                <li><span class="text-body-sm text-grey-primary">Action wrapping</span></li>
+                                <li><span class="text-body-sm text-grey-primary">Panel readability</span></li>
+                                <li><span class="text-body-sm text-grey-primary">Footer column balance</span></li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-md">Run Visual Pass</button>
+                    </div>
+                </aside>
+            </section>
+        </main>
+
+        <div class="container-wide pb-32">
+            <footer class="footer">
+                <div class="footer-body">
+                    <div class="footer-grid">
+                        <div class="footer-col footer-col-brand">
+                            <div class="footer-brand">
+                                <div class="footer-stack justify-items-center">
+                                    <span class="footer-brand-mark">
+                                        <img src="../favicon.svg" alt="NexLed logo" class="footer-brand-logo">
+                                    </span>
+                                    <p class="footer-copy">Curabitur faucibus tellus</p>
+                                </div>
+                                <div class="footer-brand-copy">
+                                    <h3 class="footer-brand-title">Lobortis</h3>
+                                    <ul class="footer-links">
+                                        <li>
+                                            <a href="#" class="link-navigation link-sm flex items-center gap-8">
+                                                <i class="ri-linkedin-fill icon icon-sm text-grey-primary" aria-hidden="true"></i>
+                                                <span class="link-label">Nunc</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="link-navigation link-sm flex items-center gap-8">
+                                                <i class="ri-linkedin-fill icon icon-sm text-grey-primary" aria-hidden="true"></i>
+                                                <span class="link-label">Ornare</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="link-navigation link-sm flex items-center gap-8">
+                                                <i class="ri-linkedin-fill icon icon-sm text-grey-primary" aria-hidden="true"></i>
+                                                <span class="link-label">Condimentum</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="link-navigation link-sm flex items-center gap-8">
+                                                <i class="ri-linkedin-fill icon icon-sm text-grey-primary" aria-hidden="true"></i>
+                                                <span class="link-label">Neque</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Consectetur</h4>
+                            <ul class="footer-links">
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Nunc</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Ornare</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Condimentum</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Neque</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Malesuada</h4>
+                            <ul class="footer-links">
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Nunc</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Ornare</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Condimentum</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Neque</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="footer-heading">Habitasse</h4>
+                            <ul class="footer-links">
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Nunc</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Ornare</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Condimentum</span></a></li>
+                                <li><a href="#" class="link-subtle link-sm"><span class="link-label">Elementum</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
