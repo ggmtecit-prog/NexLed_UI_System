@@ -10009,17 +10009,22 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: color-mix(in srgb, var(--color-white) 72%, transparent);
-  background: color-mix(in srgb, var(--color-white) 14%, transparent);
-  border-color: color-mix(in srgb, var(--color-white) 18%, transparent);
+  color: var(--color-white);
+  background: transparent;
+  border-color: var(--color-white);
   border-radius: var(--radius-full);
   box-shadow: none;
   backdrop-filter: blur(var(--space-8));
   -webkit-backdrop-filter: blur(var(--space-8));
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  background: color-mix(in srgb, var(--color-white) 14%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 18%, transparent);
 }
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:hover {
   color: var(--color-white);
+  background: transparent;
+  border-color: var(--color-white);
   background: color-mix(in srgb, var(--color-white) 22%, transparent);
   border-color: color-mix(in srgb, var(--color-white) 28%, transparent);
   box-shadow: var(--shadow-btn-default);
@@ -10027,6 +10032,8 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:active {
   color: var(--color-white);
+  background: var(--color-black);
+  border-color: var(--color-white);
   background: color-mix(in srgb, var(--color-white) 18%, transparent);
   border-color: color-mix(in srgb, var(--color-white) 32%, transparent);
   box-shadow: var(--shadow-btn-active);
