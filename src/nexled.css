@@ -8872,6 +8872,8 @@ body.search-overlay-open {
 
 [data-reveal] {
   --reveal-offset: var(--space-16);
+  --reveal-duration: var(--motion-duration-slow);
+  --reveal-delay: var(--motion-duration-fast);
 }
 
 [data-reveal="hero"] {
@@ -8882,8 +8884,8 @@ html.has-scroll-reveal [data-reveal] {
   opacity: 0;
   transform: translateY(var(--reveal-offset));
   transition:
-    opacity var(--motion-duration-default) var(--motion-ease-premium),
-    transform var(--motion-duration-default) var(--motion-ease-premium);
+    opacity var(--reveal-duration) var(--motion-ease-premium) var(--reveal-delay),
+    transform var(--reveal-duration) var(--motion-ease-premium) var(--reveal-delay);
   will-change: opacity, transform;
 }
 
