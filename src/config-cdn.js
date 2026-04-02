@@ -1,6 +1,7 @@
 /**
  * SHARED TAILWIND CONFIGURATION (CDN MODE)
  * Consolidates all design tokens into a single source of truth.
+ * VERSÂO ATUALIZADA
  */
 
 const DESIGN_TOKENS = {
