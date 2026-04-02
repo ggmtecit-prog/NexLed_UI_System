@@ -727,8 +727,6 @@ body::-webkit-scrollbar-thumb:active,
 
 .nav-bar:has([data-flyout-root].is-open) {
   z-index: var(--z-overlay);
-  border-bottom-left-radius: var(--radius-none);
-  border-bottom-right-radius: var(--radius-none);
 }
 
 .nav-bar>* {
@@ -9855,11 +9853,26 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   background: transparent;
 }
 
+.carousel:not(.carousel-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.carousel:not(.carousel-grid) > .carousel-track,
+.carousel:not(.carousel-grid) > .carousel-prev,
+.carousel:not(.carousel-grid) > .carousel-next,
+.carousel:not(.carousel-grid) > .carousel-nav {
+  grid-area: 1 / 1;
+}
+
 .carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  align-self: stretch;
+  justify-self: stretch;
 }
 
 .carousel-slide {
@@ -9991,56 +10004,46 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 
 .carousel-prev,
 .carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  top: auto;
+  transform: none;
+  align-self: center;
   z-index: 3;
   pointer-events: auto;
 }
 
 .carousel-prev.btn:hover,
 .carousel-next.btn:hover {
-  transform: translateY(calc(-50% + var(--lift-subtle)));
+  transform: translateY(var(--lift-subtle));
 }
 
 .carousel-prev.btn:active,
 .carousel-next.btn:active {
-  transform: translateY(calc(-50% + var(--press-offset)));
+  transform: translateY(var(--press-offset));
 }
 
 .carousel-prev {
-  left: var(--carousel-control-offset);
+  left: auto;
+  justify-self: start;
+  margin-inline-start: var(--carousel-control-offset);
 }
 
 .carousel-next {
-  right: var(--carousel-control-offset);
+  right: auto;
+  justify-self: end;
+  margin-inline-end: var(--carousel-control-offset);
 }
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--carousel-control-color);
-  background: transparent;
-  border-color: var(--carousel-control-border);
-  border-radius: var(--radius-full);
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:hover {
   color: var(--carousel-control-hover-color);
-  background: transparent;
-  border-color: var(--carousel-control-border);
-  box-shadow: none;
 }
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:active {
   color: var(--carousel-control-active-color);
-  background: transparent;
-  border-color: var(--carousel-control-border);
-  box-shadow: none;
 }
 
 .carousel :is(.carousel-prev, .carousel-next).btn.btn-ghost:focus-visible {
@@ -10049,26 +10052,29 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 
 
 .carousel-square .carousel-prev {
-  left: var(--space-16);
+  margin-inline-start: var(--space-16);
 }
 
 .carousel-square .carousel-next {
-  right: var(--space-16);
+  margin-inline-end: var(--space-16);
 }
 
 .carousel-nav {
-  position: absolute;
-  bottom: var(--carousel-nav-offset);
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
   display: flex;
   align-items: center;
+  justify-self: center;
+  align-self: end;
+  margin-block-end: var(--carousel-nav-offset);
   gap: var(--space-8);
   z-index: 2;
 }
 
 .carousel-square .carousel-nav {
-  bottom: var(--space-16);
+  margin-block-end: var(--space-16);
 }
 
 .carousel-dot {
