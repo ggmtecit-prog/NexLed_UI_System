@@ -1,4 +1,7 @@
-﻿# NexLed UI System
+> Historical record.
+> This file is preserved for reference only and may describe pre-release findings, outdated priorities, or superseded implementation guidance.
+> Do not treat it as the current NexLed source of truth.
+# NexLed UI System
 
 ## Focus
 Improve the UI system in the correct order so component fixes, responsive behavior, accessibility, and motion build on a stable foundation.

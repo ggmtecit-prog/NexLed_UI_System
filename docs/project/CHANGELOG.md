@@ -1,44 +1,45 @@
-# NexLed UI System - Changelog
+# NexLed UI System Changelog
 
-All notable changes to this project will be documented in this file.
-Format follows [Semantic Versioning](https://semver.org/).
-
----
+All notable changes to NexLed are documented here.
 
 ## [Unreleased]
 
 ### Added
-- Shared opt-in page scroll reveal via `data-reveal="hero"` and `data-reveal="section"` for live projects using `nexled.js`.
-- Reveal guidance in the consumer build guide and starter template.
 
----
-## [1.3.0] Ã¢â‚¬â€ 2026-03-16
+- Canonical root `version.json` metadata for release and compliance tooling.
+- Machine-readable `component-registry.json` generation alongside `COMPONENTS.md`.
+- Directory-aware compliance auditing for `HTML + CSS + JS`.
+- JSON output mode for the compliance auditor.
+
+### Changed
+
+- Refreshed `docs/` to reflect the current NexLed 1.3 system state.
+- Aligned `starter-kit/version.json` with starter-kit-local docs and registry paths.
+- Reclassified historical docs so they are no longer treated as live guidance.
 
 ### Fixed
-- CSS typo: `var(--color-grery-re)` corrected to `var(--color-grey-primary)` in dropdown value color
-- Removed hardcoded `text-35px` and redundant `font-urbanist` span in product card (molecules.html)
-- Standardized font loading across all pages to `Urbanist:wght@300;400;500;600;700` (was inconsistent)
-- Fixed empty Figma link in tokens.html navigation
-- Fixed UTF-8 encoding corruption in organisms.html comments
+
+- Broken Markdown fences in the consumer build guide.
+- Encoding corruption and stale statements across project docs.
+- Starter-kit script drift for component-registry generation.
+
+## [1.3.0] - 2026-03-16
 
 ### Added
-- `starter.html` Ã¢â‚¬â€ canonical boilerplate for new projects consuming NexLed via CDN
-- `CLAUDE-PORTABLE.md` Ã¢â‚¬â€ drop-in AI implementation rules for external projects
-- `version.json` Ã¢â‚¬â€ machine-readable version metadata
-- `docs/project/CHANGELOG.md` Ã¢â‚¬â€ version history (this file)
-- `docs/project/CONSUMERS.md` Ã¢â‚¬â€ registry of projects using NexLed
-- `scripts/audit-compliance.js` Ã¢â‚¬â€ HTML linting tool for NexLed compliance
-- `scripts/build-components-md.js` Ã¢â‚¬â€ auto-generates COMPONENTS.md from source files
-- Rebuilt `COMPONENTS.md` with complete component reference and HTML snippets
 
----
+- `starter-kit/starter.html` as the canonical NexLed consumer starter page.
+- Published `COMPONENTS.md` reference generated from the current system sources.
+- `scripts/audit-compliance.js` for NexLed compliance checks.
+- `scripts/build-components-md.js` for published component documentation generation.
 
-## [1.2.0] Ã¢â‚¬â€ Prior
+### Fixed
 
-- Initial NexLed Design System release
-- 30+ component families (atoms, molecules, organisms)
-- Complete design token system (colors, spacing, typography, shadows, motion, breakpoints)
-- Tailwind CDN integration via config-cdn.js
-- Interactive component logic via nexled.js (accordion, dropdown, modal, stepper)
-- CLAUDE.md implementation rules for AI-assisted development
-- Skills system for Claude Code (22 skills across 4 sources)
+- Standardized Urbanist font loading across system pages.
+- Corrected dropdown color token typo in the shared CSS.
+- Fixed empty Figma link references in `tokens.html`.
+- Fixed UTF-8 corruption in system page comments.
+
+## [1.2.0] - Prior
+
+- Initial published NexLed design system release.
+- Token, component, and runtime foundation established.

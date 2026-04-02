@@ -1,110 +1,112 @@
 # NexLed Page Recipes
 
-## Current Live Demo
+These recipes use current published NexLed components only.
 
-### Simple Brand Page
+## Support or Brand Page
 
-Use this order:
+Recommended order:
 
-1. Header / nav bar
-2. Hero intro
-3. Feature or capability grid
-4. One denser explanatory panel section
-5. Primary CTA block
-6. Footer
+1. Header or support navigation
+2. Page header hero or top copy block
+3. One supporting panel
+4. Card grid or content band
+5. Footer
 
-Allowed building blocks:
+Core components:
 
-- 
-av-bar
-- panel
-- card
-- lert
-- list
-- tn
-- link
-- ooter
+- `nav-bar`
+- `page-header-hero`
+- `panel`
+- `card`
+- `btn`
+- `footer`
 
-## Next Recipes
+## Store or Catalog Page
 
-### Store / Catalog Page
+Recommended order:
 
-1. Header / nav
-2. Category or collection intro
-3. Filter / control bar
+1. Header or nav
+2. Category intro
+3. Filter or control row
 4. Product grid
-5. Supporting content or trust section
+5. Supporting content or trust block
 6. Footer
 
 Core components:
 
-- 
-av-bar
-- dropdown
-- combobox
-- card-product
-- pagination
-- ooter
+- `nav-bar`
+- `dropdown`
+- `combobox`
+- `card-product`
+- `pagination`
+- `footer`
 
-### Product Detail Page
+## Product Detail Page
 
-1. Header / nav
-2. Breadcrumb
+Recommended order:
+
+1. Header or nav
+2. `breadcrumb`
 3. Product summary block
-4. Selector / quantity controls
-5. Feature or specification sections
-6. Related content or related products
+4. Selector and quantity controls
+5. Specs or explanatory sections
+6. Related products or related content
 7. Footer
 
 Core components:
 
-- readcrumb
-- material-selector
-- quantity-selector
-- ccordion
-- list
-- card-product
-- ooter
+- `breadcrumb`
+- `material-selector`
+- `quantity-selector`
+- `accordion`
+- `list`
+- `card-product`
+- `footer`
 
-### Content / Help Page
+## Content or Help Page
 
-1. Header / nav
+Recommended order:
+
+1. Header or nav
 2. Page hero
 3. Search or index block
 4. Content sections or FAQ
-5. CTA or contact support
+5. CTA or support contact block
 6. Footer
 
 Core components:
 
-- search-overlay
-- ccordion
-- card
-- lert
-- ooter
+- `nav-bar`
+- `search-overlay`
+- `accordion`
+- `card`
+- `alert`
+- `footer`
 
-### Contact / Lead Page
+## Contact or Lead Page
 
-1. Header / nav
-2. Intro / trust statement
+Recommended order:
+
+1. Header or nav
+2. Trust or intro block
 3. Contact form panel
-4. Support or contact details
-5. CTA or follow-up state
+4. Contact detail band
+5. CTA or confirmation state
 6. Footer
 
 Core components:
 
-- input
-- 	extarea
-- dropdown
-- date-picker
-- tn
-- lert
-- ooter
+- `panel`
+- `text-field`
+- `date-picker`
+- `dropdown`
+- `btn`
+- `alert`
+- `footer`
 
 ## Recipe Rules
 
-- Do not improvise section order until the base recipe works.
-- Build with current NexLed components only.
-- Use the responsive contract before adding page-specific animation.
-- Keep pages premium technical, not generic SaaS and not commerce-first unless the recipe is explicitly commerce-oriented.
+- Start from the published component pages first.
+- Copy existing component markup before restructuring.
+- Solve responsive behavior before adding motion.
+- Keep the page shell on published container tiers.

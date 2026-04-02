@@ -1,41 +1,48 @@
-# NexLed UI System — Consumer Projects
+# NexLed Consumer Projects
 
-Projects using the NexLed Design System via CDN.
+Projects using NexLed via CDN should be tracked here.
 
 ## Registry
 
 | Project | Version | Last Audit | Status | Notes |
-|---------|---------|------------|--------|-------|
-| UI System (this repo) | v1.3.0 | 2026-03-16 | Compliant | Reference implementation |
+| --- | --- | --- | --- | --- |
+| UI System (this repo) | 1.3.0 | 2026-04-02 | Compliant | Canonical reference implementation |
 
-## How to Register
+## Required Consumer Contract
 
-When a new project adopts NexLed, add a row to the table above with:
-- **Project**: Name and brief description
-- **Version**: Which NexLed version the project pins to (from CDN `?v=` parameter)
-- **Last Audit**: Date of last compliance check (using `scripts/audit-compliance.js`)
-- **Status**: `Compliant`, `N issues`, or `Needs audit`
-- **Notes**: Any relevant context
+- Use NexLed CDN assets pinned to `?v=1.3`.
+- Use published NexLed classes and published container tiers.
+- Load `nexled.js` when interactive NexLed components are present.
+- Pass the compliance auditor with `core fail, drift warn` enforcement.
 
-## Updating Projects
+## Audit Workflow
 
-When NexLed releases a new version:
-1. Check `docs/project/CHANGELOG.md` for breaking changes
-2. Update the `?v=` parameter in the project's `<head>` block
-3. Run `scripts/audit-compliance.js` against the project's HTML files
-4. Update the registry table above
+```bash
+node scripts/audit-compliance.js path-to-project
+node scripts/audit-compliance.js --json path-to-project
+```
 
-## Requesting New Components
+Recommended audit targets:
 
-If your project needs a component that doesn't exist in NexLed:
-1. Check `COMPONENTS.md` to confirm it's truly missing
-2. Open an issue in the `NexLed_UI_System` repository with:
-   - Component name
-   - Use case / description
-   - Visual reference (screenshot or Figma link)
-   - Proposed class names following existing patterns
-3. The design system maintainer will review and either:
-   - Approve and implement in `nexled.css` / `nexled.js`
-   - Suggest composition from existing components
-   - Reject with rationale
-4. New component ships in the next MINOR version
+- page entry HTML files
+- demo directories
+- project-level HTML, CSS, and JS surfaces
+
+## Adding a Consumer Project
+
+When a new project adopts NexLed, add a row with:
+
+- project name
+- pinned NexLed version
+- last audit date
+- current status
+- any consumer-specific notes
+
+## Release Update Workflow
+
+When NexLed publishes a new compatible release:
+
+1. confirm `docs/project/CHANGELOG.md`
+2. update CDN asset pins
+3. rerun the compliance audit
+4. update this registry

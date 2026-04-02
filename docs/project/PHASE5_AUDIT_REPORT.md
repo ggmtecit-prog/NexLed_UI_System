@@ -1,3 +1,6 @@
+> Historical record.
+> This file is preserved for reference only and may describe pre-release findings, outdated priorities, or superseded implementation guidance.
+> Do not treat it as the current NexLed source of truth.
 # Phase 5 Project Audit Report
 
 Date: 2026-03-27

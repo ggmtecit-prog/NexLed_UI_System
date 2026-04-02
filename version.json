@@ -1,5 +1,5 @@
 {
-  "name": "NexLed UI System Starter Kit",
+  "name": "NexLed UI System",
   "version": "1.3.0",
   "released": "2026-03-16",
   "complianceMode": "core-fail-drift-warn",
@@ -8,8 +8,8 @@
     "config": "src/config-cdn.js",
     "css": "src/nexled.css",
     "js": "src/nexled.js",
-    "components": "docs/COMPONENTS.md",
-    "registry": "docs/component-registry.json",
-    "docs": "docs/CONSUMERS.md"
+    "components": "COMPONENTS.md",
+    "registry": "component-registry.json",
+    "docs": "docs/README.md"
   }
 }

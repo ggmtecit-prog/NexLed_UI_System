@@ -1,93 +1,101 @@
 # NexLed Responsive Rules
 
-## Breakpoint Contract
+These rules describe the current responsive contract implemented by NexLed 1.3.
 
-Use only the published NexLed breakpoints:
+## Validation Viewports
 
-- <480: small phone
-- 480-767: large phone / narrow landscape
-- 768-1023: tablet
-- 1024-1439: desktop
-- 1440+: wide desktop
+Always validate pages and demos at:
 
-Rules:
+- `360`
+- `480`
+- `768`
+- `1024`
+- `1440`
+- `1920`
 
-- Build mobile-first.
-- 1440+ may expand layout and hero scale, but it must not make everyday components feel oversized.
-- Do not invent extra breakpoints.
+## Breakpoints
 
-## Container Rhythm
+NexLed uses these breakpoint tiers from `src/config-cdn.js`:
 
-Use the existing spacing tokens for page padding:
+- `sm`: `480px`
+- `md`: `768px`
+- `lg`: `1024px`
+- `xl`: `1440px`
 
-- <480: 16
-- 480-767: 20
-- 768-1023: 24
-- 1024-1439: 32
-- 1440+: 40
+## Container Tiers
 
-Use only these wrappers:
+Use the published container tiers instead of inventing page widths:
 
-- container-standard
-- container-balanced
-- container-wide
-- container-narrow
-- container-readable
+- `container-narrow`
+- `container-standard`
+- `container-balanced`
+- `container-wide`
+- `container-readable`
 
-## Typography Matrix
+Use `container-balanced` when `container-standard` feels too constrained and `container-wide` feels too stretched.
 
-Map typography to the current token set only.
+## Container Padding Rhythm
 
-- Meta and labels: 12 on phone, 14 from tablet upward
-- Body and UI text: 14 on phone, 16 on tablet, 18 only for stronger supporting copy on desktop and wider
-- Component subheads and card/form headings: 16 / 18 / 24
-- Component heading tier: 22 / 24 / 30
-- Section title tier: 26 / 30 / 35 / 40
-- Page title tier: 30 / 36 / 40 / 45
-- Hero tier: 30 / 36 / 45 / 48
+Use the shared container padding rhythm:
 
-## Component-Family Rules
+- base: `16`
+- `sm`: `20`
+- `md`: `24`
+- `lg`: `32`
+- `xl`: `40`
 
-### Buttons, inputs, dropdowns, selectors
+## Mobile-First Rule
 
-- On narrow screens, prefer stacked layouts and allow controls to grow to the available width.
-- Size classes remain public, but they behave as semantic responsive tiers, not rigid desktop outputs.
-- Restore intrinsic sizing gradually from 768 upward.
+Build from the smallest layout first.
 
-### Popovers and selectors
+- Stack first, then split.
+- Let cards, panels, and controls grow with available width.
+- Restore denser or multi-column patterns only when the breakpoint contract allows it.
 
-- On phone, panels should align to the control or the container width.
-- Restore anchored and more compact panels from 1024 upward.
+## Component Expectations
 
-### Modal, drawer, search overlay, toast
+### Navigation and Sidebar
 
-- Use safe insets and near-full-width surfaces on phone.
-- Restore constrained widths from md and lg upward.
-- Do not size these surfaces from button-width tokens.
+- Header navigation must remain usable below desktop.
+- Sidebar flows can convert to top bar plus drawer on smaller screens.
+- Flyout and drawer surfaces must keep keyboard access and focus-visible states.
 
-### Data table, tabs, pagination, segmented control, stepper
+### Cards and Panels
 
-- Never allow uncontrolled page-level horizontal overflow.
-- Prefer internal scroll, wrapping, or stacked action layouts below desktop.
+- Card and panel content must reflow without page-level horizontal overflow.
+- Actions may stack on smaller widths.
+- Decorative density should increase only at larger widths.
 
-### Footer and carousel
+### Data and Controls
 
-- Increase density progressively.
-- Avoid big one-step jumps from small to large desktop.
+- Tables use internal overflow handling, not page overflow.
+- Pagination, segmented control, tabs, and steppers must remain usable in narrower layouts.
+- Dropdown, accordion, modal, drawer, search overlay, and toast keep their open/close behavior at all sizes.
 
-## Catalog Shell Rules
+### Footer
 
-- Below 1024, the documentation shell uses a top bar plus drawer navigation.
-- At 1024+, the left sidebar returns.
-- Do not depend on h-screen overflow-hidden for small-screen layout.
+- Footer columns may stack or reflow on smaller widths.
+- Bottom-bar and layered footer variants must keep clean edges and no page overflow.
+- Footer links and headings must preserve hierarchy without crowding adjacent columns.
 
-## Acceptance Rules
+## Motion and States
 
-Every responsive pass must verify:
+Responsive validation is not only layout validation. Confirm:
 
-- 360, 480, 768, 1024, 1440, 1920
-- no horizontal page scroll outside sanctioned internal-scroll regions
-- hover, active, focus-visible, disabled, and open/close states
+- hover
+- active
+- focus-visible
+- disabled
+- ARIA/state classes
 - reduced-motion behavior
-- required NexLed CDN head block
-- no inline styles, local CSS files, arbitrary Tailwind values, or invented tokens
+- open and close behavior for interactive surfaces
+
+## Failure Conditions
+
+A page is not responsive-complete if any of the following are true:
+
+- page-level horizontal overflow appears
+- layout depends on arbitrary values or inline styles
+- text stays locked to an obviously desktop-only scale on phone widths
+- controls lose focus-visible or keyboard access at any viewport
+- interactive surfaces break because `nexled.js` is missing
