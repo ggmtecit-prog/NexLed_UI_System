@@ -11878,26 +11878,6 @@ textarea,
     transform: translateX(-50%) translateY(var(--radius-none));
   }
 
-  .nav-bar>nav>[data-flyout-root]:first-child:not(:last-child) [data-flyout-surface] {
-    left: 0;
-    right: auto;
-    transform: translateY(var(--press-offset));
-  }
-
-  .nav-bar>nav>[data-flyout-root]:first-child:not(:last-child).is-open [data-flyout-surface] {
-    transform: translateY(var(--radius-none));
-  }
-
-  .nav-bar>nav>[data-flyout-root]:last-child:not(:first-child) [data-flyout-surface] {
-    left: auto;
-    right: 0;
-    transform: translateY(var(--press-offset));
-  }
-
-  .nav-bar>nav>[data-flyout-root]:last-child:not(:first-child).is-open [data-flyout-surface] {
-    transform: translateY(var(--radius-none));
-  }
-
   .footer-grid {
     grid-template-columns: minmax(calc(var(--space-64) + var(--space-64) + var(--space-32)), 1.45fr) repeat(auto-fit, minmax(calc(var(--space-64) + var(--space-24)), 1fr));
   }
