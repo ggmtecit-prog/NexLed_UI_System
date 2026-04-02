@@ -190,6 +190,7 @@ body {
   --scrollbar-thumb-default: var(--color-grey-secondary);
   --scrollbar-thumb-active: var(--color-green-secondary);
   --scrollbar-track: transparent;
+  --scrollbar-thumb-inset: var(--space-4);
   scrollbar-gutter: stable;
 }
 
@@ -264,7 +265,7 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb-default);
   border-radius: var(--scrollbar-thumb-radius);
-  border: calc(var(--space-4) / 2) solid var(--scrollbar-track);
+  border: var(--scrollbar-thumb-inset) solid var(--scrollbar-track);
   background-clip: padding-box;
   min-height: var(--space-40);
   min-width: var(--space-40);
