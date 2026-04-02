@@ -22,27 +22,25 @@
 
 <body class="bg-grey-tertiary text-black">
     <div class="min-h-screen flex flex-col">
-        <header class="container-wide pt-24 pb-16">
-            <div class="nav-bar">
-                <a href="#" class="flex items-center gap-12">
-                    <img src="../favicon.svg" alt="NexLed" class="w-56 h-56">
-                    <div class="flex flex-col">
-                        <span class="text-card-title leading-none tracking-tight text-black">NexLed</span>
-                        <span class="text-label text-black tracking-wider">Responsive Lab</span>
-                    </div>
-                </a>
-
-                <nav class="flex flex-wrap items-center h-full gap-12" aria-label="Primary">
-                    <a href="#" class="link-navigation link-sm"><span class="link-label">Overview</span></a>
-                    <a href="#" class="link-navigation link-sm"><span class="link-label">Cards</span></a>
-                    <a href="#" class="link-navigation link-sm"><span class="link-label">Panels</span></a>
-                    <a href="#" class="link-navigation link-sm"><span class="link-label">Footer</span></a>
-                </nav>
-
-                <div class="flex items-center gap-12">
-                    <a href="#" class="link-subtle link-sm"><span class="link-label">Documentation</span></a>
-                    <button type="button" class="btn btn-primary btn-sm">Inspect Layout</button>
+        <header class="nav-bar">
+            <a href="#" class="flex items-center gap-12 group">
+                <img src="../favicon.svg" alt="NexLed" class="w-56 h-56">
+                <div class="flex flex-col">
+                    <span class="text-card-title leading-none tracking-tight text-black">NexLed</span>
+                    <span class="text-label text-black tracking-wider">Responsive Lab</span>
                 </div>
+            </a>
+
+            <nav class="flex flex-wrap items-center h-full gap-12" aria-label="Primary">
+                <a href="#" class="link-navigation link-sm"><span class="link-label">Overview</span></a>
+                <a href="#" class="link-navigation link-sm"><span class="link-label">Cards</span></a>
+                <a href="#" class="link-navigation link-sm"><span class="link-label">Panels</span></a>
+                <a href="#" class="link-navigation link-sm"><span class="link-label">Footer</span></a>
+            </nav>
+
+            <div class="flex flex-wrap items-center justify-end gap-12">
+                <a href="#" class="link-subtle link-sm"><span class="link-label">Documentation</span></a>
+                <button type="button" class="btn btn-primary btn-sm">Inspect Layout</button>
             </div>
         </header>
 
@@ -63,7 +61,7 @@
 
             <section class="grid grid-cols-1 gap-24 lg:grid-cols-3">
                 <div class="grid grid-cols-1 gap-24 sm:grid-cols-2 lg:col-span-2">
-                    <article class="card">
+                    <div class="card">
                         <div class="card-body">
                             <div class="card-header">
                                 <div class="card-icon">
@@ -77,9 +75,9 @@
                                 <button type="button" class="btn btn-secondary btn-sm">Share</button>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
-                    <article class="card">
+                    <div class="card">
                         <div class="card-body">
                             <div class="card-header">
                                 <div class="card-icon">
@@ -90,9 +88,9 @@
                             <p class="card-text">Use this card to inspect paragraph width, heading rhythm, and action spacing when copy lengths vary between breakpoints.</p>
                             <a href="#" class="link link-md"><span class="link-label">Open notes</span></a>
                         </div>
-                    </article>
+                    </div>
 
-                    <article class="card card-primary sm:col-span-2">
+                    <div class="card card-primary sm:col-span-2">
                         <div class="card-body">
                             <h2 class="card-title">Wide-Surface Check</h2>
                             <p class="card-text">This larger card helps validate how the primary surface scales when it spans the full row on tablet and desktop layouts.</p>
@@ -101,9 +99,9 @@
                                 <button type="button" class="btn btn-ghost btn-sm">Export</button>
                             </div>
                         </div>
-                    </article>
+                    </div>
 
-                    <article class="card">
+                    <div class="card">
                         <div class="card-body">
                             <h2 class="card-title">Action Wrap</h2>
                             <p class="card-text">Buttons should stack on smaller widths and settle back into a horizontal row once the available width increases.</p>
@@ -112,7 +110,7 @@
                                 <button type="button" class="btn btn-secondary btn-sm">Review</button>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
 
                 <aside class="panel panel-wrap-body panel-wrap-body-gap-24">
