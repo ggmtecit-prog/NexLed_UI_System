@@ -1,0 +1,10 @@
+﻿exclude:
+  - skills
+  - .agents
+  - AGENTS.md
+  - RTK.md
+  - NEXT_CHAT_HANDOFF.md
+  - codex_nexled_reusable_prompt.md
+  - my_prompt.md
+  - openai_prompt.md
+  - skills-lock.json
