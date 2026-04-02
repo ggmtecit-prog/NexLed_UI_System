@@ -192,20 +192,27 @@ body,
   --scrollbar-thumb-default: var(--color-grey-secondary);
   --scrollbar-thumb-active: var(--color-green-secondary);
   --scrollbar-track: transparent;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb-default) var(--scrollbar-track);
   scrollbar-gutter: stable;
 }
 
-html:hover,
-body:hover,
-html.is-scrolling-root,
-body.is-scrolling-root,
-.custom-scrollbar:hover,
-.custom-scrollbar.is-scrolling,
-.custom-scrollbar:focus-visible,
-.custom-scrollbar:focus-within {
-  scrollbar-color: var(--scrollbar-thumb-active) var(--scrollbar-track);
+@supports not selector(::-webkit-scrollbar) {
+  html,
+  body,
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-default) var(--scrollbar-track);
+  }
+
+  html:hover,
+  body:hover,
+  html.is-scrolling-root,
+  body.is-scrolling-root,
+  .custom-scrollbar:hover,
+  .custom-scrollbar.is-scrolling,
+  .custom-scrollbar:focus-visible,
+  .custom-scrollbar:focus-within {
+    scrollbar-color: var(--scrollbar-thumb-active) var(--scrollbar-track);
+  }
 }
 
 .custom-scrollbar:focus-visible {
@@ -255,6 +262,9 @@ body::-webkit-scrollbar-button:single-button,
   background-image: none;
   border: none;
   box-shadow: none;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
   -webkit-appearance: none;
   pointer-events: none;
 }
@@ -265,6 +275,7 @@ body::-webkit-scrollbar-button:vertical:start:decrement,
 html::-webkit-scrollbar-button:vertical:end:increment,
 body::-webkit-scrollbar-button:vertical:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:vertical:end:increment {
+  display: none;
   height: 0;
 }
 
@@ -274,6 +285,7 @@ body::-webkit-scrollbar-button:horizontal:start:decrement,
 html::-webkit-scrollbar-button:horizontal:end:increment,
 body::-webkit-scrollbar-button:horizontal:end:increment,
 .custom-scrollbar::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none;
   width: 0;
 }
 
