@@ -132,6 +132,7 @@
   --press-offset: 1px;
 
   --layout-standard: 1280px;
+  --layout-balanced: calc((var(--layout-standard) + var(--layout-wide)) / 2);
   --layout-wide: 1440px;
   --layout-narrow: 768px;
   --layout-readable: 65ch;
@@ -8809,6 +8810,7 @@ body.search-overlay-open {
 
 /* LAYOUT */
 .container-standard,
+.container-balanced,
 .container-wide,
 .container-narrow,
 .container-readable {
@@ -8819,6 +8821,10 @@ body.search-overlay-open {
 
 .container-standard {
   max-width: var(--layout-standard);
+}
+
+.container-balanced {
+  max-width: var(--layout-balanced);
 }
 
 .container-wide {
@@ -11103,6 +11109,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
 }
 
 .container-standard,
+.container-balanced,
 .container-wide,
 .container-narrow,
 .container-readable {
