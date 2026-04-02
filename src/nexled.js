@@ -13,6 +13,39 @@ if (canUseScrollReveal) {
     document.documentElement.classList.add('has-scroll-reveal');
 }
 
+const isDocsShellPage = () => Boolean(document.querySelector('.docs-main') && document.querySelector('#docs-nav-drawer, .sidebar'));
+
+const shouldResetDocsScroll = () => {
+    if (!isDocsShellPage() || window.location.hash) {
+        return false;
+    }
+
+    const navigationEntry = typeof performance !== 'undefined' && typeof performance.getEntriesByType === 'function'
+        ? performance.getEntriesByType('navigation')[0]
+        : null;
+
+    return navigationEntry?.type !== 'back_forward';
+};
+
+const resetDocsScrollPosition = () => {
+    if (!shouldResetDocsScroll()) {
+        return;
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+};
+
+if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.requestAnimationFrame(resetDocsScrollPosition);
+});
+
+window.addEventListener('pageshow', () => {
+    window.requestAnimationFrame(resetDocsScrollPosition);
+});
 /**
  * Accordion Component Logic
  */
