@@ -3778,6 +3778,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: var(--border-thin) solid var(--color-grey-tertiary);
   border-radius: var(--radius-btn);
   box-shadow: var(--shadow-btn-active);
+  align-self: start;
   transition:
     background-color var(--motion-duration-default) var(--motion-ease-premium),
     color var(--motion-duration-default) var(--motion-ease-premium),
