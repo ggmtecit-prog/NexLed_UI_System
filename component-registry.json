@@ -7,7 +7,7 @@
   "source": {
     "css": "src/nexled.css",
     "html": [
-      "Atoms.html",
+      "atoms.html",
       "molecules.html",
       "organisms.html"
     ]

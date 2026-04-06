@@ -4,7 +4,7 @@
 # Phase 5 Project Audit Report
 
 Date: 2026-03-27
-Scope: `index.html`, `Atoms.html`, `molecules.html`, `organisms.html`, `pages.html`, `tokens.html`, `src/nexled.css`, `src/nexled.js`
+Scope: `index.html`, `atoms.html`, `molecules.html`, `organisms.html`, `pages.html`, `tokens.html`, `src/nexled.css`, `src/nexled.js`
 Policy sources: `CLAUDE.md`, `docs/project/ROADMAP.md`, `docs/guides/RESPONSIVE_RULES.md`, repo-local mirrors of `src/config-cdn.js`, `src/nexled.css`, `COMPONENTS.md`
 
 ## Implementation Status Update
@@ -17,7 +17,7 @@ Implemented after this audit:
 - Generalized the shared accordion JS so it is no longer scoped to `#accordion`.
 - Added touch-safe click fallback for hover-trigger dropdowns.
 - Replaced inline demo event handlers with shared JS/data-attribute handling.
-- Normalized `Atoms.html` link casing across the docs shell and local tooling.
+- Normalized `atoms.html` link casing across the docs shell and local tooling.
 - Replaced the accordion fixed open height with measured height via `--accordion-content-height`.
 - Extended reduced-motion coverage for accordion and dropdown families.
 - Kept `body { overflow-x: hidden; }` removed so overflow defects are not masked.
@@ -38,7 +38,7 @@ What is blocking full compliance:
 - Every audited HTML page still fails the strict required `<head>` block rule.
 - The shared JS layer is inconsistent across components; `Search Overlay` is styled and demoed but not implemented in `src/nexled.js`.
 - Some older demos still depend on inline JS handlers.
-- One filename/link mismatch (`Atoms.html` vs `atoms.html`) is a real deployment risk on case-sensitive hosting.
+- One filename/link mismatch (`atoms.html` vs `atoms.html`) is a real deployment risk on case-sensitive hosting.
 - The built-in checker in `scripts/audit-compliance.js` is too lenient and currently reports false positives (`PASS`) against stricter Phase 5 rules.
 
 Overall verdict: **Partially aligned, not release-clean**.
@@ -50,7 +50,7 @@ Overall verdict: **Partially aligned, not release-clean**.
 2. `Search Overlay` has shared CSS and demo markup but no shared JS controller.
 3. Accordion JS only initializes inside `#accordion`, so it is not a truly shared component script.
 4. Hover-trigger dropdowns have no touch-safe fallback.
-5. `Atoms.html` filename casing does not match the linked `atoms.html` references used across the docs shell.
+5. `atoms.html` filename casing does not match the linked `atoms.html` references used across the docs shell.
 
 ### Medium
 1. Older demos still rely on inline `onclick` and `onerror` handlers.
@@ -68,7 +68,7 @@ Overall verdict: **Partially aligned, not release-clean**.
 | Page | Exact CDN-only head block | Local fallback assets in head | Inline `style` / `<style>` | Inline JS handlers | `atoms.html` case risk | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | `index.html` | Fail | Yes | Pass | `onerror` only | Yes | Shell structure is otherwise consistent |
-| `Atoms.html` | Fail | Yes | Pass | `onerror` + multiple `onclick` | Yes | Highest demo-level rule drift |
+| `atoms.html` | Fail | Yes | Pass | `onerror` + multiple `onclick` | Yes | Highest demo-level rule drift |
 | `molecules.html` | Fail | Yes | Pass | `onerror` + `onclick` | Yes | Demo surface still mixes old and new patterns |
 | `organisms.html` | Fail | Yes | Pass | `onerror` + `onclick` | Yes | Organism layer stronger than legacy demos, but not fully clean |
 | `pages.html` | Fail | Yes | Pass | `onerror` only | Yes | Minimal page shell, same head issue |
@@ -89,7 +89,7 @@ This preserves rough load order but does **not** match the exact required Phase 
 
 Examples:
 - `index.html:21`, `index.html:23`, `index.html:27`
-- `Atoms.html:21`, `Atoms.html:22`, `Atoms.html:25`
+- `atoms.html:21`, `atoms.html:22`, `atoms.html:25`
 - `molecules.html:21`, `molecules.html:23`, `molecules.html:27`
 - `organisms.html:21`, `organisms.html:22`, `organisms.html:25`
 - `pages.html:21`, `pages.html:22`, `pages.html:25`
@@ -139,11 +139,11 @@ Impact:
 - This is a responsive interaction gap on touch devices.
 - The component becomes mode-dependent in a way the shared API does not surface clearly.
 
-### 5. `Atoms.html` casing mismatch will break on case-sensitive hosting
+### 5. `atoms.html` casing mismatch will break on case-sensitive hosting
 Severity: High
 
 Repo file:
-- `Atoms.html`
+- `atoms.html`
 
 Linked path used across the docs shell:
 - `atoms.html`
@@ -163,7 +163,7 @@ Impact:
 Severity: Medium
 
 Examples:
-- `Atoms.html:222` through `Atoms.html:290` (`onclick` toggle demos)
+- `atoms.html:222` through `atoms.html:290` (`onclick` toggle demos)
 - `molecules.html:331`, `343`, `355`, `385`, `534`
 - `organisms.html:979`
 
@@ -227,7 +227,7 @@ Current behavior:
 - does **not** fail the current local/fallback pattern
 
 Observed result:
-- `node scripts/audit-compliance.js index.html Atoms.html molecules.html organisms.html pages.html tokens.html`
+- `node scripts/audit-compliance.js index.html atoms.html molecules.html organisms.html pages.html tokens.html`
 - output: all 6 files `PASS`
 
 Impact:
@@ -251,7 +251,7 @@ Impact:
 
 ### P0: Make the docs pages truthful and deploy-safe
 1. Normalize all audited HTML pages to the exact required CDN-only head block.
-2. Resolve the `Atoms.html` vs `atoms.html` filename/path mismatch.
+2. Resolve the `atoms.html` vs `atoms.html` filename/path mismatch.
 3. Remove inline event handlers from demo markup where shared JS should own the interaction.
 
 ### P1: Fix shared interaction gaps
@@ -292,7 +292,7 @@ This report does **not** include:
 ## Appendix: Key Audit Commands Used
 
 - `node --check src/nexled.js`
-- `node scripts/audit-compliance.js index.html Atoms.html molecules.html organisms.html pages.html tokens.html`
+- `node scripts/audit-compliance.js index.html atoms.html molecules.html organisms.html pages.html tokens.html`
 - project-wide searches for:
   - `<style` / `style="`
   - `onclick=` / `onerror=`

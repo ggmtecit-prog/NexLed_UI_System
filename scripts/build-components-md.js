@@ -8,7 +8,7 @@ const STARTER_ROOT = path.join(ROOT, 'starter-kit');
 const VERSION_PATH = path.join(ROOT, 'version.json');
 const STARTER_VERSION_PATH = path.join(STARTER_ROOT, 'version.json');
 const CSS_PATH = path.join(ROOT, 'src', 'nexled.css');
-const HTML_FILES = ['Atoms.html', 'molecules.html', 'organisms.html'].map(file => path.join(ROOT, file));
+const HTML_FILES = ['atoms.html', 'molecules.html', 'organisms.html'].map(file => path.join(ROOT, file));
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
