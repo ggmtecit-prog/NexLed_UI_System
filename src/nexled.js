@@ -682,7 +682,27 @@ document.addEventListener('DOMContentLoaded', () => {
         label.setAttribute(attributeName, 'xs');
     };
 
+    const syncSidebarDensity = (root) => {
+        if (!root.matches('.sidebar')) {
+            return;
+        }
+
+        const shell = root.firstElementChild;
+
+        root.removeAttribute('data-sidebar-density');
+
+        if (!shell || !shell.isConnected || shell.getClientRects().length === 0 || shell.clientHeight === 0) {
+            return;
+        }
+
+        if (shell.scrollHeight > shell.clientHeight + 1) {
+            root.setAttribute('data-sidebar-density', 'compact');
+        }
+    };
+
     const syncRoot = (root) => {
+        syncSidebarDensity(root);
+
         root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
             syncLabel(label, 'data-fit-size');
         });

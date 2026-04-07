@@ -4306,6 +4306,9 @@ input[type=number]::-webkit-outer-spin-button {
   --sidebar-item-radius: var(--responsive-btn-sm-radius);
   --sidebar-shell-gap: var(--space-20);
   --sidebar-nav-gap: var(--space-20);
+  --sidebar-dense-nav-gap: var(--space-12);
+  --sidebar-dense-item-pad-block: var(--space-8);
+  --sidebar-dense-item-min-height: var(--size-btn-xs-h);
   --sidebar-link-size: var(--font-size-body);
   --sidebar-link-line: var(--line-height-body);
   --sidebar-meta-size: var(--font-size-body-xs);
@@ -4334,6 +4337,12 @@ input[type=number]::-webkit-outer-spin-button {
     border-color var(--motion-duration-default) var(--motion-ease-premium);
 }
 
+
+.sidebar[data-sidebar-density="compact"] {
+  --sidebar-nav-gap: var(--sidebar-dense-nav-gap);
+  --sidebar-item-pad-block: var(--sidebar-dense-item-pad-block);
+  --sidebar-item-min-height: var(--sidebar-dense-item-min-height);
+}
 
 .sidebar> :first-child {
   display: flex;
@@ -4552,6 +4561,9 @@ body>aside.hidden.lg\:block {
   .sidebar {
     --sidebar-shell-pad-block: var(--space-32);
     --sidebar-shell-pad-inline-end: var(--space-24);
+    --sidebar-dense-nav-gap: var(--space-16);
+    --sidebar-dense-item-pad-block: var(--space-8);
+    --sidebar-dense-item-min-height: var(--size-btn-xs-h);
     --sidebar-link-size: var(--font-size-body-lg);
     --sidebar-link-line: var(--line-height-body-lg);
     --sidebar-meta-size: var(--font-size-body-sm);
@@ -4585,6 +4597,9 @@ body>aside.hidden.lg\:block {
     --sidebar-item-pad-inline-start: var(--space-24);
     --sidebar-shell-gap: var(--space-24);
     --sidebar-nav-gap: var(--space-24);
+    --sidebar-dense-nav-gap: var(--space-16);
+    --sidebar-dense-item-pad-block: var(--space-8);
+    --sidebar-dense-item-min-height: var(--size-btn-xs-h);
     --sidebar-meta-size: var(--font-size-body);
     --sidebar-meta-line: var(--line-height-body);
     --sidebar-brand-size: var(--font-size-h2);
