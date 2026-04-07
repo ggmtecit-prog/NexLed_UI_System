@@ -4313,6 +4313,14 @@ input[type=number]::-webkit-outer-spin-button {
   --sidebar-brand-size: var(--font-size-h3-mobile);
   --sidebar-brand-line: var(--line-height-h3);
   --sidebar-icon-size: var(--space-20);
+  --sidebar-fit-step-1-size: var(--font-size-body-sm);
+  --sidebar-fit-step-1-line: var(--line-height-body-sm);
+  --sidebar-fit-step-2-size: var(--font-size-body-xs);
+  --sidebar-fit-step-2-line: var(--line-height-body-xs);
+  --sidebar-brand-fit-step-1-size: var(--font-size-body-xs);
+  --sidebar-brand-fit-step-1-line: var(--line-height-body-xs);
+  --sidebar-brand-fit-step-2-size: var(--font-size-body-xs);
+  --sidebar-brand-fit-step-2-line: var(--line-height-body-xs);
   background: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-tertiary);
   border-top-left-radius: var(--radius-none);
@@ -4343,15 +4351,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar> :first-child>a:first-child {
+  min-width: 0;
   justify-content: flex-start;
   padding-inline-start: var(--sidebar-item-pad-inline-start);
 }
 
-.sidebar[data-sidebar-fit="one-line"]> :first-child>a:first-child {
-  min-width: 0;
-}
-
-.sidebar[data-sidebar-fit="one-line"]> :first-child>a:first-child>div {
+.sidebar> :first-child>a:first-child>div {
   min-width: 0;
   flex: 1 1 auto;
 }
@@ -4375,7 +4380,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-grey-primary);
 }
 
-.sidebar[data-sidebar-fit="one-line"]> :first-child>a:first-child .text-label {
+.sidebar> :first-child>a:first-child .text-label {
   display: block;
   max-inline-size: 100%;
   overflow: hidden;
@@ -4383,12 +4388,12 @@ input[type=number]::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 
-.sidebar[data-sidebar-fit="one-line"]> :first-child>a:first-child .text-label[data-fit-brand-size="sm"] {
+.sidebar> :first-child>a:first-child .text-label[data-fit-brand-size="sm"] {
   font-size: var(--sidebar-brand-fit-step-1-size);
   line-height: var(--sidebar-brand-fit-step-1-line);
 }
 
-.sidebar[data-sidebar-fit="one-line"]> :first-child>a:first-child .text-label[data-fit-brand-size="xs"] {
+.sidebar> :first-child>a:first-child .text-label[data-fit-brand-size="xs"] {
   font-size: var(--sidebar-brand-fit-step-2-size);
   line-height: var(--sidebar-brand-fit-step-2-line);
 }
@@ -4418,6 +4423,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   align-items: center;
   gap: var(--space-12);
+  flex: 1 1 auto;
 }
 
 [data-sidebar-fit="one-line"] .dropdown.dropdown-minimal .dropdown-trigger>span {
@@ -4428,11 +4434,7 @@ input[type=number]::-webkit-outer-spin-button {
   flex: 1 1 auto;
 }
 
-.sidebar .dropdown.dropdown-minimal .dropdown-value {
-  font-size: inherit;
-  line-height: inherit;
-}
-
+.sidebar .dropdown.dropdown-minimal .dropdown-value,
 [data-sidebar-fit="one-line"] .dropdown.dropdown-minimal .dropdown-value {
   min-width: 0;
   max-inline-size: 100%;
@@ -4440,13 +4442,17 @@ input[type=number]::-webkit-outer-spin-button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: inherit;
+  line-height: inherit;
 }
 
+.sidebar .dropdown.dropdown-minimal .dropdown-value[data-fit-size="sm"],
 [data-sidebar-fit="one-line"] .dropdown.dropdown-minimal .dropdown-value[data-fit-size="sm"] {
   font-size: var(--sidebar-fit-step-1-size);
   line-height: var(--sidebar-fit-step-1-line);
 }
 
+.sidebar .dropdown.dropdown-minimal .dropdown-value[data-fit-size="xs"],
 [data-sidebar-fit="one-line"] .dropdown.dropdown-minimal .dropdown-value[data-fit-size="xs"] {
   font-size: var(--sidebar-fit-step-2-size);
   line-height: var(--sidebar-fit-step-2-line);
@@ -4553,9 +4559,6 @@ body>aside.hidden.lg\:block {
     --sidebar-brand-size: var(--font-size-h3);
     --sidebar-brand-line: var(--line-height-h3);
     --sidebar-icon-size: var(--space-24);
-  }
-
-  .sidebar[data-sidebar-fit="one-line"] {
     --sidebar-fit-step-1-size: var(--font-size-body);
     --sidebar-fit-step-1-line: var(--line-height-body);
     --sidebar-fit-step-2-size: var(--font-size-body-sm);
@@ -4586,9 +4589,6 @@ body>aside.hidden.lg\:block {
     --sidebar-meta-line: var(--line-height-body);
     --sidebar-brand-size: var(--font-size-h2);
     --sidebar-brand-line: var(--line-height-h2);
-  }
-
-  .sidebar[data-sidebar-fit="one-line"] {
     --sidebar-brand-fit-step-1-size: var(--font-size-body-sm);
     --sidebar-brand-fit-step-1-line: var(--line-height-body-sm);
     --sidebar-brand-fit-step-2-size: var(--font-size-body-xs);

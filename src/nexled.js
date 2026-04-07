@@ -654,7 +654,7 @@ function normalizeDocsPageName(pathValue) {
  * Sidebar One-Line Label Fit
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const fitRoots = Array.from(document.querySelectorAll('[data-sidebar-fit="one-line"]'));
+    const fitRoots = Array.from(new Set(document.querySelectorAll('.sidebar, [data-sidebar-fit="one-line"]')));
 
     if (fitRoots.length === 0) {
         return;
