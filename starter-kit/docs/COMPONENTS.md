@@ -8,7 +8,7 @@
 ## Overview
 
 - Published component sections: 56
-- Published classes: 640
+- Published classes: 638
 - Recognized state hooks: 34
 
 ## Published Sections
@@ -33,7 +33,7 @@
 - **HYPERLINKS** (15 classes)
 - **TOOLTIPS** (11 classes)
 - **CARDS** (39 classes)
-- **SIDEBAR** (16 classes)
+- **SIDEBAR** (14 classes)
 - **ACCORDION** (12 classes)
 - **COMBOBOX** (17 classes)
 - **DROPDOWN** (30 classes)
@@ -635,8 +635,6 @@
 - `.hidden`
 - `.lg`
 - `.sidebar`
-- `.sidebar-brand-adaptive`
-- `.sidebar-sm`
 - `.text-card-title`
 - `.text-icon-lg`
 - `.text-icon-md`
