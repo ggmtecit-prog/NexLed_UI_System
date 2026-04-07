@@ -3879,6 +3879,7 @@ input[type=number]::-webkit-outer-spin-button {
 .card-body>.card-header+.card-text+.link,
 .card-body>.card-header+.card-text+.link-text-icon {
   justify-self: end;
+  margin-inline-end: var(--space-8);
 }
 
 .card-actions {
