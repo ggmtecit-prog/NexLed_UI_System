@@ -4355,8 +4355,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar> :first-child>a:first-child {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  min-width: 0;
   justify-content: flex-start;
-  padding-inline-start: var(--sidebar-item-pad-inline-start);
+  padding-inline-start: var(--radius-none);
+}
+
+.sidebar> :first-child>a:first-child>div {
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .sidebar> :first-child>a:first-child img {
@@ -4366,16 +4375,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar .text-card-title {
+  display: block;
+  max-inline-size: 100%;
   font-size: var(--sidebar-brand-size);
   line-height: var(--sidebar-brand-line);
   font-weight: var(--font-weight-medium);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .sidebar .text-label {
+  display: block;
+  max-inline-size: 100%;
   font-size: var(--sidebar-meta-size);
   line-height: var(--sidebar-meta-line);
   font-weight: var(--font-weight-medium);
   color: var(--color-grey-primary);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .sidebar nav {
