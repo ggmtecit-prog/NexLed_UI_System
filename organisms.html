@@ -61,7 +61,7 @@
                         aria-hidden="true"></i></button>
             </div>
             <div class="drawer-sheet-body">
-                <nav class="flex flex-col gap-12">
+                <nav class="flex flex-col gap-12" data-sidebar-fit="one-line">
                     <div class="dropdown dropdown-minimal dropdown-md"><a href="index.html"
                             class="dropdown-trigger"><span class="dropdown-value">Overview</span><i
                                 class="ri-arrow-right-s-line dropdown-arrow" aria-hidden="true"></i></a></div>
@@ -91,7 +91,7 @@
     </div>
 
     <aside class="hidden lg:block shrink-0 sticky top-0 h-screen px-24 py-24">
-        <div class="sidebar w-sidebar h-full">
+        <div class="sidebar w-sidebar h-full" data-sidebar-fit="one-line">
             <div class="flex flex-col h-full gap-16 p-48">
                 <a href="index.html" class="flex items-center justify-center gap-12 group">
                     <img src="favicon.svg" alt="NexLed" class="w-64 h-64">
@@ -3001,8 +3001,12 @@
                                                     sidebar keeps the brand lockup compact and the navigation
                                                     left-aligned
                                                     for desktop documentation layouts.</p>
+                                                <p class="text-body-sm text-grey-primary max-w-readable">Add <span
+                                                        class="text-black">data-sidebar-fit="one-line"</span> to the
+                                                    sidebar shell or nav when longer labels must stay on one line. Only
+                                                    the items that overflow step down in size.</p>
                                             </div>
-                                            <div class="sidebar w-sidebar h-sidebar">
+                                            <div class="sidebar w-sidebar h-sidebar" data-sidebar-fit="one-line">
                                                 <div class="flex flex-col h-full gap-16 p-48">
                                                     <a href="index.html" class="flex items-center justify-center gap-12 group">
                                                         <img src="favicon.svg" alt="NexLed" class="w-64 h-64">
@@ -3077,9 +3081,12 @@
                                             <div class="space-y-8">
                                                 <p class="text-body-lg text-black">Leading-icon navigation</p>
                                                 <p class="text-body-sm text-grey-primary max-w-readable">Adds leading
-                                                    icons while keeping the same layout and navigation rhythm.</p>
+                                                    icons while keeping the same layout and navigation rhythm. With
+                                                    <span class="text-black">data-sidebar-fit="one-line"</span>,
+                                                    longer labels stay on one line and only shrink when they actually
+                                                    overflow.</p>
                                             </div>
-                                            <div class="sidebar w-sidebar h-sidebar">
+                                            <div class="sidebar w-sidebar h-sidebar" data-sidebar-fit="one-line">
                                                 <div class="flex flex-col h-full gap-16 p-48">
                                                     <a href="index.html" class="flex items-center justify-center gap-12 group">
                                                         <img src="favicon.svg" alt="NexLed" class="w-64 h-64">
@@ -3217,7 +3224,7 @@
                                             <div class="flex flex-wrap items-center gap-12">
                                                 <span class="badge badge-primary badge-md">aria-current</span>
                                             </div>
-                                            <div class="sidebar w-sidebar h-sidebar">
+                                            <div class="sidebar w-sidebar h-sidebar" data-sidebar-fit="one-line">
                                                 <div class="flex flex-col h-full gap-16 p-48">
                                                     <a href="index.html" class="flex items-center justify-center gap-12 group">
                                                         <img src="favicon.svg" alt="NexLed" class="w-64 h-64">

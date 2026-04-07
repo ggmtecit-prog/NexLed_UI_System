@@ -651,6 +651,99 @@ function normalizeDocsPageName(pathValue) {
 }
 
 /**
+ * Sidebar One-Line Label Fit
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const fitRoots = Array.from(document.querySelectorAll('[data-sidebar-fit="one-line"]'));
+
+    if (fitRoots.length === 0) {
+        return;
+    }
+
+    let syncFrame = 0;
+
+    const syncLabel = (label) => {
+        label.removeAttribute('data-fit-size');
+
+        if (!label.isConnected || label.getClientRects().length === 0 || label.clientWidth === 0) {
+            return;
+        }
+
+        if (label.scrollWidth <= label.clientWidth + 1) {
+            return;
+        }
+
+        label.setAttribute('data-fit-size', 'sm');
+
+        if (label.scrollWidth <= label.clientWidth + 1) {
+            return;
+        }
+
+        label.setAttribute('data-fit-size', 'xs');
+    };
+
+    const syncRoot = (root) => {
+        root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach(syncLabel);
+    };
+
+    const scheduleSync = () => {
+        if (syncFrame) {
+            return;
+        }
+
+        syncFrame = window.requestAnimationFrame(() => {
+            syncFrame = 0;
+            fitRoots.forEach(syncRoot);
+        });
+    };
+
+    const resizeObserver = typeof window.ResizeObserver === 'function'
+        ? new window.ResizeObserver(() => {
+            scheduleSync();
+        })
+        : null;
+
+    const mutationObserver = typeof window.MutationObserver === 'function'
+        ? new window.MutationObserver(() => {
+            scheduleSync();
+        })
+        : null;
+
+    fitRoots.forEach((root) => {
+        resizeObserver?.observe(root);
+        mutationObserver?.observe(root, {
+            attributes: true,
+            attributeFilter: ['class', 'style', 'aria-hidden'],
+            childList: true,
+            characterData: true,
+            subtree: true,
+        });
+
+        const drawer = root.closest('.drawer-sheet');
+        if (!drawer) {
+            return;
+        }
+
+        resizeObserver?.observe(drawer);
+        mutationObserver?.observe(drawer, {
+            attributes: true,
+            attributeFilter: ['class', 'style', 'aria-hidden'],
+        });
+    });
+
+    window.addEventListener('resize', scheduleSync);
+
+    if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+        document.fonts.ready.then(() => {
+            scheduleSync();
+        });
+    }
+
+    scheduleSync();
+});
+
+
+/**
  * File Uploader Component Scripts
  */
 
