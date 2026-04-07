@@ -4357,6 +4357,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar> :first-child>a:first-child {
+  justify-content: flex-start;
+  padding-inline-start: var(--sidebar-item-pad-inline-start);
+}
+
+.sidebar> :first-child>a:first-child.sidebar-brand-adaptive {
   display: flex;
   align-items: flex-start;
   gap: var(--sidebar-brand-gap);
@@ -4365,7 +4370,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding-inline-start: var(--radius-none);
 }
 
-.sidebar> :first-child>a:first-child>div {
+.sidebar> :first-child>a:first-child.sidebar-brand-adaptive>div {
   min-width: 0;
   flex: 1 1 auto;
 }
@@ -4377,22 +4382,21 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar .text-card-title {
-  display: block;
-  max-inline-size: 100%;
   font-size: var(--sidebar-brand-size);
   line-height: var(--sidebar-brand-line);
   font-weight: var(--font-weight-medium);
-  overflow-wrap: anywhere;
-  text-wrap: balance;
 }
 
 .sidebar .text-label {
-  display: block;
-  max-inline-size: 100%;
   font-size: var(--sidebar-meta-size);
   line-height: var(--sidebar-meta-line);
   font-weight: var(--font-weight-medium);
   color: var(--color-grey-primary);
+}
+
+.sidebar> :first-child>a:first-child.sidebar-brand-adaptive :is(.text-card-title, .text-label) {
+  display: block;
+  max-inline-size: 100%;
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
