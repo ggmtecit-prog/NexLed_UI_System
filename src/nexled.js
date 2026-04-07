@@ -700,8 +700,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const syncSidebarLabel = (label) => {
-        label.removeAttribute('data-fit-size');
+    const syncSidebarWrappedLabel = (label, attributeName = 'data-fit-size') => {
+        label.removeAttribute(attributeName);
         label.removeAttribute('title');
 
         if (!label.isConnected || label.getClientRects().length === 0 || label.clientWidth === 0) {
@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (root.matches('.sidebar')) {
             root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
-                syncSidebarLabel(label);
+                syncSidebarWrappedLabel(label);
             });
         } else {
             root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         root.querySelectorAll(':scope > :first-child > a:first-child .text-label').forEach((label) => {
-            syncLabel(label, 'data-fit-brand-size');
+            syncSidebarWrappedLabel(label, 'data-fit-brand-size');
         });
     };
 
