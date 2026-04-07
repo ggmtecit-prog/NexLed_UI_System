@@ -2,7 +2,7 @@
   "name": "NexLed UI System",
   "version": "1.3.0",
   "released": "2026-03-16",
-  "generatedAt": "2026-04-02T10:54:33.957Z",
+  "generatedAt": "2026-04-07T08:09:08.222Z",
   "complianceMode": "core-fail-drift-warn",
   "source": {
     "css": "src/nexled.css",
@@ -35,12 +35,10 @@
       "slug": "scrollbar",
       "classes": [
         "custom-scrollbar",
-        "is-scrolling",
-        "is-scrolling-root"
+        "is-scrolling"
       ],
       "states": [
         ".is-scrolling",
-        ".is-scrolling-root",
         ":active",
         ":focus-visible",
         ":focus-within",
@@ -608,6 +606,7 @@
         "hidden",
         "lg",
         "sidebar",
+        "sidebar-sm",
         "text-card-title",
         "text-icon-lg",
         "text-icon-md",
@@ -1085,6 +1084,8 @@
       "name": "TOAST",
       "slug": "toast",
       "classes": [
+        "btn",
+        "icon",
         "is-visible",
         "toast",
         "toast-actions",
@@ -1102,9 +1103,7 @@
       ],
       "states": [
         ".is-visible",
-        ":active",
-        ":focus-within",
-        ":hover"
+        ":focus-visible"
       ],
       "examples": []
     },
@@ -2009,7 +2008,6 @@
     "is-range-start",
     "is-revealed",
     "is-scrolling",
-    "is-scrolling-root",
     "is-selected",
     "is-today",
     "is-visible",
@@ -2151,6 +2149,7 @@
     "segmented-control-option",
     "segmented-control-sm",
     "sidebar",
+    "sidebar-sm",
     "size-grid",
     "size-grid-column",
     "size-grid-column-gap-12",
@@ -2329,7 +2328,6 @@
     ".is-range-start",
     ".is-revealed",
     ".is-scrolling",
-    ".is-scrolling-root",
     ".is-selected",
     ".is-today",
     ".is-visible",
@@ -2649,6 +2647,7 @@
     "segmented",
     "segmented-control",
     "sidebar",
+    "sidebar-sm",
     "size",
     "size-grid",
     "skeleton",
