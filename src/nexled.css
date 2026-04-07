@@ -3917,7 +3917,9 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: inherit;
+  border: var(--border-thin) solid var(--color-grey-secondary);
+  border-radius: var(--responsive-btn-xs-radius);
+  box-shadow: var(--shadow-btn-default);
 }
 
 .card-embed {
