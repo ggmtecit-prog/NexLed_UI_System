@@ -3876,6 +3876,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 0;
 }
 
+.card-body>.card-header+.card-text+.link,
+.card-body>.card-header+.card-text+.link-text-icon {
+  justify-self: end;
+}
+
 .card-actions {
   display: flex;
   flex-direction: column;
