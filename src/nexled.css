@@ -4312,6 +4312,7 @@ input[type=number]::-webkit-outer-spin-button {
   --sidebar-meta-line: var(--line-height-body-xs);
   --sidebar-brand-size: var(--font-size-h3-mobile);
   --sidebar-brand-line: var(--line-height-h3);
+  --sidebar-brand-gap: var(--space-12);
   --sidebar-icon-size: var(--space-20);
   background: var(--color-white);
   border: var(--border-thin) solid var(--color-grey-tertiary);
@@ -4327,16 +4328,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar.sidebar-sm {
-  --sidebar-shell-pad-block: var(--space-20);
-  --sidebar-shell-pad-inline-start: var(--space-24);
-  --sidebar-shell-pad-inline-end: var(--space-20);
-  --sidebar-item-pad-inline-start: var(--space-16);
-  --sidebar-item-pad-inline-end: var(--space-12);
-  --sidebar-item-pad-block: var(--space-8);
+  --sidebar-shell-pad-block: var(--space-16);
+  --sidebar-shell-pad-inline-start: var(--space-20);
+  --sidebar-shell-pad-inline-end: var(--space-16);
+  --sidebar-item-pad-inline-start: var(--space-12);
+  --sidebar-item-pad-inline-end: var(--space-10);
+  --sidebar-item-pad-block: var(--space-4);
   --sidebar-item-min-height: var(--size-btn-xs-h);
-  --sidebar-item-radius: var(--responsive-btn-xs-radius);
-  --sidebar-shell-gap: var(--space-16);
-  --sidebar-nav-gap: var(--space-16);
+  --sidebar-item-radius: var(--responsive-btn-sm-radius);
+  --sidebar-shell-gap: var(--space-12);
+  --sidebar-nav-gap: var(--space-12);
+  --sidebar-brand-gap: var(--space-8);
 }
 
 .sidebar> :first-child {
@@ -4357,7 +4359,7 @@ input[type=number]::-webkit-outer-spin-button {
 .sidebar> :first-child>a:first-child {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-12);
+  gap: var(--sidebar-brand-gap);
   min-width: 0;
   justify-content: flex-start;
   padding-inline-start: var(--radius-none);
