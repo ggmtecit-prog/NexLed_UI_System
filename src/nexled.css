@@ -4315,6 +4315,7 @@ input[type=number]::-webkit-outer-spin-button {
   --sidebar-meta-line: var(--line-height-body-xs);
   --sidebar-brand-size: var(--font-size-h3-mobile);
   --sidebar-brand-line: var(--line-height-h3);
+  --sidebar-brand-offset-block-start: var(--space-8);
   --sidebar-icon-size: var(--space-20);
   --sidebar-fit-step-1-size: var(--font-size-body-sm);
   --sidebar-fit-step-1-line: var(--line-height-body-sm);
@@ -4360,6 +4361,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar> :first-child>a:first-child {
+  margin-block-start: var(--sidebar-brand-offset-block-start);
   min-width: 0;
   justify-content: flex-start;
   padding-inline-start: var(--sidebar-item-pad-inline-start);
