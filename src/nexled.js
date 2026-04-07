@@ -662,8 +662,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let syncFrame = 0;
 
-    const syncLabel = (label) => {
-        label.removeAttribute('data-fit-size');
+    const syncLabel = (label, attributeName = 'data-fit-size') => {
+        label.removeAttribute(attributeName);
 
         if (!label.isConnected || label.getClientRects().length === 0 || label.clientWidth === 0) {
             return;
@@ -673,17 +673,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        label.setAttribute('data-fit-size', 'sm');
+        label.setAttribute(attributeName, 'sm');
 
         if (label.scrollWidth <= label.clientWidth + 1) {
             return;
         }
 
-        label.setAttribute('data-fit-size', 'xs');
+        label.setAttribute(attributeName, 'xs');
     };
 
     const syncRoot = (root) => {
-        root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach(syncLabel);
+        root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
+            syncLabel(label, 'data-fit-size');
+        });
+
+        if (!root.matches('.sidebar')) {
+            return;
+        }
+
+        root.querySelectorAll(':scope > :first-child > a:first-child .text-label').forEach((label) => {
+            syncLabel(label, 'data-fit-brand-size');
+        });
     };
 
     const scheduleSync = () => {
