@@ -9586,6 +9586,7 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   display: block;
   object-fit: cover;
   border-radius: var(--responsive-btn-xs-radius);
+  box-shadow: var(--shadow-btn-default);
 }
 
 .text-style-media-content {
