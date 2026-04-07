@@ -651,7 +651,7 @@ function normalizeDocsPageName(pathValue) {
 }
 
 /**
- * Sidebar One-Line Label Fit
+ * Sidebar Label Fit
  */
 document.addEventListener('DOMContentLoaded', () => {
     const fitRoots = Array.from(new Set(document.querySelectorAll('.sidebar, [data-sidebar-fit="one-line"]')));
@@ -700,12 +700,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const syncSidebarLabel = (label) => {
+        label.removeAttribute('data-fit-size');
+        label.removeAttribute('title');
+
+        if (!label.isConnected || label.getClientRects().length === 0 || label.clientWidth === 0) {
+            return;
+        }
+
+        const fullLabel = (label.textContent || '').trim();
+
+        if (!fullLabel) {
+            return;
+        }
+
+        if (label.scrollHeight > label.clientHeight + 1 || label.scrollWidth > label.clientWidth + 1) {
+            label.setAttribute('title', fullLabel);
+        }
+    };
+
     const syncRoot = (root) => {
         syncSidebarDensity(root);
 
-        root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
-            syncLabel(label, 'data-fit-size');
-        });
+        if (root.matches('.sidebar')) {
+            root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
+                syncSidebarLabel(label);
+            });
+        } else {
+            root.querySelectorAll('.dropdown-trigger .dropdown-value').forEach((label) => {
+                syncLabel(label, 'data-fit-size');
+            });
+        }
 
         if (!root.matches('.sidebar')) {
             return;
