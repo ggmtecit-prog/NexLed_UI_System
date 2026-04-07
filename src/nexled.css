@@ -4369,9 +4369,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sidebar> :first-child>a:first-child img {
-  width: var(--space-56);
-  height: var(--space-56);
-  flex: 0 0 var(--space-56);
+  width: var(--space-64);
+  height: var(--space-64);
+  flex: 0 0 var(--space-64);
 }
 
 .sidebar .text-card-title {
