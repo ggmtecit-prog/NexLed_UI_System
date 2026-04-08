@@ -162,28 +162,28 @@ You are producing plain text that will later be styled by the CLI. Follow these 
 Edit this section for each task. Keep the rest of the file stable unless you are intentionally updating the reusable prompt itself.
 
 ### Project Phase
-- `[Polish components, in every aspect, style, layout, responsive, states, etc]`
+- `[Update components to the new nexled ui system]`
 
 ### Target
-- `[The Modal component]`
+- `[every .html page]`
 
 ### Files In Scope
-- `[organisms.html]`
+- `[all .html files]`
 
 ### Mode
 - `[X] ANALYZE`
-- `[X] FIX`
-- `[] BUILD`
+- `[] FIX`
+- `[X] BUILD`
 - `[ ] RESPONSIVE`
 - `[ ] STATES`
-- `[] POLISH`
+- `[X] POLISH`
 - `[Add or remove mode flags only when needed]`
 
 ### Goal
-- `[Update the atoms components being used in the Modal component and remove unneccessary elements]`
+- `[Update and improve all the components to the new nexled ui system, analyse the current components and search the folders UI_system and the pages atoms, moluces and organisms to copy and duplicate the components]`
 
 ### Changes Requested
-- `[Remove the "Danger Zone" text for all the modals and the btns differ from the main branding atoms.html ]`
+- `[Update and improve all the components to the new nexled ui system, analyse the current components and search the folders UI_system and the pages atoms, moluces and organisms to copy and duplicate the components]`
 
 ### Behavior / Interactions
 
@@ -196,7 +196,7 @@ Edit this section for each task. Keep the rest of the file stable unless you are
 - Keyboard behavior: `[N/A]`
 
 ### Constraints
-- `[Use the skills necessary to critique and improve the Search overlay, i bealive its loaded with unwanted information and unneccessary elements]`
+- `[Dont invent components, stricly follow the one on the UI system, Use the skills necessary to critique and improve the Search overlay, i bealive its loaded with unwanted information and unneccessary elements]`
 
 ### Optional Skills
 - `[/ui-ux-pro-max /design-system-patterns /ckm-design-system /create-design-system-rules /responsive-design /audit /critique /polish ]`

@@ -19,7 +19,9 @@
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/typeset\")",
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/arrange\")",
       "Bash(curl -s \"https://api.github.com/repos/pbakaus/impeccable/contents/.claude/skills/overdrive\")",
-      "Bash(rtk git:*)"
+      "Bash(rtk git:*)",
+      "Bash(mv \"Atoms.html\" \"atoms.html.tmp\")",
+      "Bash(mv \"atoms.html.tmp\" \"atoms.html\")"
     ]
   }
 }
