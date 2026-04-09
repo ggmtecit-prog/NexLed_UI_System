@@ -3287,6 +3287,19 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 0;
 }
 
+.quantity-selector-xs {
+  --quantity-selector-control-min-h: var(--size-btn-xs-h);
+  --quantity-selector-button-size: var(--size-btn-icon-xs);
+  --quantity-selector-track-inset: var(--space-8);
+  --quantity-selector-track-height: calc(var(--quantity-selector-button-size) - var(--quantity-selector-track-inset));
+  --quantity-selector-track-overlap: var(--space-4);
+  --quantity-selector-track-radius: var(--responsive-btn-xs-radius);
+  --quantity-selector-value-width: var(--space-64);
+  --quantity-selector-value-font-size: var(--font-size-body-lg);
+  --quantity-selector-value-line-height: var(--line-height-body-lg);
+  --quantity-selector-value-font-weight: var(--font-weight-medium);
+}
+
 .quantity-selector-sm {
   --quantity-selector-control-min-h: var(--size-btn-sm-h);
   --quantity-selector-button-size: var(--size-btn-icon-sm);
@@ -3371,6 +3384,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color-grey-primary);
 }
 
+.quantity-selector-xs .quantity-selector-value,
 .quantity-selector-sm .quantity-selector-value,
 .quantity-selector-md .quantity-selector-value,
 .quantity-selector-lg .quantity-selector-value {

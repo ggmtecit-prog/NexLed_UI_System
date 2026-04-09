@@ -8,7 +8,7 @@
 ## Overview
 
 - Published component sections: 56
-- Published classes: 639
+- Published classes: 640
 - Recognized state hooks: 34
 
 ## Published Sections
@@ -29,7 +29,7 @@
 - **TOGGLE** (8 classes)
 - **RANGE SLIDER** (8 classes)
 - **REUSABLE SIZE GRID** (20 classes)
-- **QUANTITY SELECTOR** (6 classes)
+- **QUANTITY SELECTOR** (7 classes)
 - **HYPERLINKS** (15 classes)
 - **TOOLTIPS** (11 classes)
 - **CARDS** (40 classes)
@@ -517,6 +517,7 @@
 - `.quantity-selector-md`
 - `.quantity-selector-sm`
 - `.quantity-selector-value`
+- `.quantity-selector-xs`
 
 ### States
 

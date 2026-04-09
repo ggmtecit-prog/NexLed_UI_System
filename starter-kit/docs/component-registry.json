@@ -2,7 +2,7 @@
   "name": "NexLed UI System",
   "version": "1.3.0",
   "released": "2026-03-16",
-  "generatedAt": "2026-04-09T11:04:25.142Z",
+  "generatedAt": "2026-04-09T11:23:11.503Z",
   "complianceMode": "core-fail-drift-warn",
   "source": {
     "css": "src/nexled.css",
@@ -481,7 +481,8 @@
         "quantity-selector-lg",
         "quantity-selector-md",
         "quantity-selector-sm",
-        "quantity-selector-value"
+        "quantity-selector-value",
+        "quantity-selector-xs"
       ],
       "states": [
         ":disabled",
@@ -2105,6 +2106,7 @@
     "quantity-selector-md",
     "quantity-selector-sm",
     "quantity-selector-value",
+    "quantity-selector-xs",
     "radio-lg",
     "radio-md",
     "radio-sm",
