@@ -2,7 +2,7 @@
   "name": "NexLed UI System",
   "version": "1.3.0",
   "released": "2026-03-16",
-  "generatedAt": "2026-04-07T09:13:30.471Z",
+  "generatedAt": "2026-04-09T11:04:25.142Z",
   "complianceMode": "core-fail-drift-warn",
   "source": {
     "css": "src/nexled.css",
@@ -582,7 +582,8 @@
         "card-product-price",
         "card-text",
         "card-title",
-        "link"
+        "link",
+        "link-text-icon"
       ],
       "states": [
         ":disabled",
@@ -1342,6 +1343,7 @@
         "material-selector-md",
         "material-selector-sm",
         "material-selector-title",
+        "material-selector-xs",
         "material-thumb"
       ],
       "states": [
@@ -2062,6 +2064,7 @@
     "material-selector-md",
     "material-selector-sm",
     "material-selector-title",
+    "material-selector-xs",
     "material-thumb",
     "modal",
     "modal-body",

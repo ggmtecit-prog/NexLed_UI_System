@@ -9665,6 +9665,18 @@ html.has-scroll-reveal [data-reveal].is-revealed {
   gap: var(--material-selector-gap);
 }
 
+.material-selector-xs {
+  --material-selector-gap: var(--space-12);
+  --material-selector-list-gap: var(--space-12);
+  --material-selector-item-gap: var(--space-8);
+  --material-selector-thumb-size: calc(var(--space-40) + var(--space-40));
+  --material-selector-thumb-radius: var(--radius-md);
+  --material-selector-title-size: var(--font-size-body-lg);
+  --material-selector-title-line-height: var(--line-height-body-lg);
+  --material-selector-label-size: var(--font-size-body-sm);
+  --material-selector-label-line-height: var(--line-height-body-sm);
+}
+
 .material-selector-sm {
   --material-selector-gap: var(--space-12);
   --material-selector-list-gap: var(--space-16);
