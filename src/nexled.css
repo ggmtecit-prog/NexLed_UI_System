@@ -5278,6 +5278,14 @@ button.language-selector-trigger .language-selector-value {
   transition-delay: 0s, 0s, var(--motion-duration-default);
 }
 
+.dropdown-panel-top .dropdown-menu,
+.language-selector-panel-top .language-selector-menu {
+  top: auto;
+  bottom: calc(100% + var(--space-8));
+  transform: translateY(calc(var(--press-offset) * -1));
+  transform-origin: bottom center;
+}
+
 .dropdown.is-open .dropdown-menu,
 .language-selector.is-open .language-selector-menu {
   visibility: visible;
