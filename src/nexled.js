@@ -3219,6 +3219,26 @@ document.addEventListener('DOMContentLoaded', () => {
             return activeIndex === -1 ? 0 : activeIndex;
         };
 
+        const syncEdgeGutter = () => {
+            if (!pageList) {
+                return;
+            }
+
+            pageList.style.removeProperty('--pagination-edge-gutter');
+
+            const maxScrollWithoutGutter = pageList.scrollWidth - pageList.clientWidth;
+            if (maxScrollWithoutGutter <= 0) {
+                return;
+            }
+
+            const widestPageWidth = pageButtons.reduce((widest, button) => {
+                return Math.max(widest, button.offsetWidth);
+            }, 0);
+
+            const edgeGutter = Math.max(0, (pageList.clientWidth - widestPageWidth) / 2);
+            pageList.style.setProperty('--pagination-edge-gutter', `${edgeGutter}px`);
+        };
+
         const revealActivePage = (activeButton, behavior = 'smooth') => {
             if (!pageList || !activeButton) {
                 return;
@@ -3261,6 +3281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             window.requestAnimationFrame(() => {
+                syncEdgeGutter();
                 revealActivePage(pageButtons[safeIndex], options.behavior || 'smooth');
             });
         };
@@ -3278,6 +3299,29 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn?.addEventListener('click', () => {
             syncState(getActiveIndex() + 1);
         });
+
+        const syncLayout = () => {
+            syncEdgeGutter();
+            revealActivePage(pageButtons[getActiveIndex()], 'auto');
+        };
+
+        const resizeObserver = typeof window.ResizeObserver === 'function'
+            ? new window.ResizeObserver(() => {
+                syncLayout();
+            })
+            : null;
+
+        resizeObserver?.observe(pagination);
+
+        if (!resizeObserver) {
+            window.addEventListener('resize', syncLayout);
+        }
+
+        if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+            document.fonts.ready.then(() => {
+                syncLayout();
+            });
+        }
 
         syncState(getActiveIndex(), { behavior: 'auto' });
     });

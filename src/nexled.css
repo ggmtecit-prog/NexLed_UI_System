@@ -7731,6 +7731,7 @@ button.language-selector-trigger .language-selector-value {
   --pagination-track-height: calc(var(--pagination-link-height) - var(--space-8));
   --pagination-track-radius: min(var(--responsive-btn-xs-radius), calc(var(--pagination-track-height) / 4));
   --pagination-control-height: var(--pagination-link-height);
+  --pagination-edge-gutter: var(--radius-none);
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -7771,12 +7772,14 @@ button.language-selector-trigger .language-selector-value {
   gap: var(--pagination-list-gap);
   flex: 1 1 auto;
   min-width: 0;
-  padding: var(--radius-none);
+  padding-block: var(--radius-none);
+  padding-inline: var(--pagination-edge-gutter);
   margin: 0;
   list-style: none;
   overflow-x: auto;
   background: transparent;
   box-shadow: none;
+  scroll-padding-inline: max(var(--pagination-edge-gutter), var(--pagination-list-gap));
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -7922,7 +7925,7 @@ button.language-selector-trigger .language-selector-value {
   justify-content: flex-start;
   inline-size: min(100%, calc((var(--pagination-link-min) * var(--pagination-visible-count)) + (var(--pagination-list-gap) * (var(--pagination-visible-count) - 1))));
   max-inline-size: calc((var(--pagination-link-min) * var(--pagination-visible-count)) + (var(--pagination-list-gap) * (var(--pagination-visible-count) - 1)));
-  scroll-padding-inline: var(--pagination-list-gap);
+  scroll-padding-inline: max(var(--pagination-edge-gutter), var(--pagination-list-gap));
   scroll-snap-type: x proximity;
 }
 
