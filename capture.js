@@ -11,6 +11,8 @@ const zoomStep = 0.1;
 const sourceCache = new Map();
 const repeatParamKeys = ['count', 'layout', 'columns', 'gap'];
 const repeatDefaults = { count: '1', layout: 'single', columns: '1', gap: 'md' };
+const itemParamKey = 'items';
+const slotParamKey = 'slot';
 
 const option = (value, label) => ({ value, label });
 const sizeOptions = ['xs', 'sm', 'md', 'lg'].map(value => option(value, sizeLabel[value]));
@@ -93,7 +95,7 @@ const families = {
         ]
     },
     inputs: {
-        label: 'Inputs',
+        label: 'Text Field',
         defaults: { pattern: 'standard', size: 'md', state: 'default' },
         controls: [
             { key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('standard', 'Standard'), option('success', 'Success'), option('error', 'Error')] },
@@ -161,6 +163,44 @@ const families = {
     footer: { label: 'Footer', defaults: { pattern: 'core' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('core', 'Core'), option('bottom', 'Bottom Bar')] }] }
 };
 
+const genericFamilyDescriptors = {
+    avatar: { label: 'Avatar', file: 'atoms.html', sectionId: 'avatar', width: 1200, height: 1200 },
+    icons: { label: 'Icons', file: 'atoms.html', sectionId: 'icons', width: 1200, height: 1200 },
+    'radio-buttons': { label: 'Radio Buttons', file: 'atoms.html', sectionId: 'radio-buttons', width: 1200, height: 1200 },
+    toggle: { label: 'Toggle', file: 'atoms.html', sectionId: 'toggle', width: 1200, height: 1200 },
+    'range-slider': { label: 'Range Slider', file: 'atoms.html', sectionId: 'range-slider', width: 1200, height: 1200 },
+    hyperlinks: { label: 'Hyperlinks', file: 'atoms.html', sectionId: 'hyperlinks', width: 1200, height: 1200 },
+    loading: { label: 'Loading', file: 'atoms.html', sectionId: 'loading', width: 1200, height: 1200 },
+    'progress-bar': { label: 'Progress Bar', file: 'atoms.html', sectionId: 'progress-bar', width: 1200, height: 1200 },
+    'skeleton-loader': { label: 'Skeleton Loader', file: 'atoms.html', sectionId: 'skeleton-loader', width: 1200, height: 1200 },
+    scroll: { label: 'Scroll Bar', file: 'atoms.html', sectionId: 'scroll', width: 1200, height: 1200 },
+    tooltip: { label: 'Tooltip', file: 'atoms.html', sectionId: 'tooltip', width: 1200, height: 1200 },
+    text: { label: 'Text Styles', file: 'atoms.html', sectionId: 'text', width: 1600, height: 1200 },
+    panel: { label: 'Panels', file: 'atoms.html', sectionId: 'panel', width: 1600, height: 1200 },
+    'announcement-bar': { label: 'Announcement Bar', file: 'molecules.html', sectionId: 'announcement-bar', width: 1600, height: 1000 },
+    breadcrumbs: { label: 'Breadcrumbs', file: 'molecules.html', sectionId: 'breadcrumbs', width: 1600, height: 1000 },
+    combobox: { label: 'Combobox', file: 'molecules.html', sectionId: 'combobox', width: 1600, height: 1000 },
+    'file-uploader': { label: 'File Uploader', file: 'molecules.html', sectionId: 'file-uploader', width: 1600, height: 1000 },
+    'language-selector': { label: 'Language Selector', file: 'molecules.html', sectionId: 'language-selector', width: 1600, height: 1000 },
+    list: { label: 'List', file: 'molecules.html', sectionId: 'List', width: 1600, height: 1000 },
+    'material-selector': { label: 'Material Selector', file: 'molecules.html', sectionId: 'material-selector', width: 1600, height: 1000 },
+    'quantity-selector': { label: 'Quantity Selector', file: 'molecules.html', sectionId: 'quantity-selector', width: 1600, height: 1000 },
+    stepper: { label: 'Stepper', file: 'molecules.html', sectionId: 'stepper', width: 1600, height: 1000 },
+    'date-picker': { label: 'Date Picker', file: 'molecules.html', sectionId: 'date-picker', width: 1600, height: 1000 },
+    flyout: { label: 'Fly-out', file: 'molecules.html', sectionId: 'flyout', width: 1600, height: 1000 },
+    'image-carousel': { label: 'Image Carousel', file: 'molecules.html', sectionId: 'image-carousel', width: 1600, height: 1000 },
+    'segmented-control': { label: 'Segmented Control', file: 'molecules.html', sectionId: 'segmented-control', width: 1600, height: 1000 },
+    tabs: { label: 'Tabs', file: 'molecules.html', sectionId: 'tabs', width: 1600, height: 1000 },
+    header: { label: 'Header / Nav', file: 'organisms.html', sectionId: 'header', width: 1920, height: 1080 },
+    'search-overlay': { label: 'Search Overlay', file: 'organisms.html', sectionId: 'search-overlay', width: 1920, height: 1080 },
+    modal: { label: 'Modal', file: 'organisms.html', sectionId: 'modal', width: 1920, height: 1080 },
+    'drawer-sheet': { label: 'Drawer Sheet', file: 'organisms.html', sectionId: 'drawer-sheet', width: 1920, height: 1080 }
+};
+
+Object.entries(genericFamilyDescriptors).forEach(([key, meta]) => {
+    families[key] = { label: meta.label, defaults: {}, controls: [] };
+});
+
 function clampDimension(value, fallback) {
     const parsed = Number.parseInt(value, 10);
     return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
@@ -215,6 +255,43 @@ function normalizeRepeatValues(incomingValues = {}) {
     return values;
 }
 
+function createItemValuesList(familyKey, count, seedValues = {}, incomingItems = []) {
+    const safeCount = Math.max(1, count || 1);
+    const normalizedSeed = normalizeControlValues(familyKey, seedValues);
+    return Array.from({ length: safeCount }, (_, index) => {
+        const incoming = incomingItems[index] ? { ...normalizedSeed, ...incomingItems[index] } : normalizedSeed;
+        return normalizeControlValues(familyKey, incoming);
+    });
+}
+
+function parseItemsParam(familyKey, raw, count, seedValues = {}) {
+    if (!raw) return createItemValuesList(familyKey, count, seedValues);
+    try {
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) return createItemValuesList(familyKey, count, seedValues);
+        return createItemValuesList(familyKey, count, seedValues, parsed);
+    } catch {
+        return createItemValuesList(familyKey, count, seedValues);
+    }
+}
+
+function buildItemsPayload(familyKey, items) {
+    const family = getFamily(familyKey);
+    return items.map(item => {
+        const payload = {};
+        family.controls.forEach(control => {
+            if (item[control.key]) payload[control.key] = item[control.key];
+        });
+        return payload;
+    });
+}
+
+function getSharedItemValue(itemDescriptors, key) {
+    const values = itemDescriptors.map(item => item.values?.[key]).filter(Boolean);
+    if (values.length === 0) return '';
+    return values.every(value => value === values[0]) ? values[0] : '';
+}
+
 function dropdownMenu(options, selectedValue) {
     return options.map(item => `<li class="dropdown-item" role="option" aria-selected="${String(item.value === selectedValue)}" data-value="${item.value}"><span>${item.label}</span><i class="ri-check-line dropdown-item-check" aria-hidden="true"></i></li>`).join('');
 }
@@ -257,6 +334,10 @@ function findByXPath(doc, xpath) {
     return doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
 
+function buildGenericSectionXPath(sectionId) {
+    return `(//section[@id='${sectionId}']//div[contains(@class,'size-grid-content')][1]/*[1])[1] | (//section[@id='${sectionId}']//div[contains(@class,'panel-wrap-body')][1]/*[1])[1]`;
+}
+
 function getRepeatGapClass(gap) {
     return { sm: 'gap-10', md: 'gap-16', lg: 'gap-24', xl: 'gap-32' }[gap] || 'gap-16';
 }
@@ -293,52 +374,117 @@ function uniquifyNodeIds(root, suffix) {
     });
 }
 
-function appendRepeatedNodes(group, target, descriptor) {
-    const count = Math.max(1, Number.parseInt(descriptor.repeat?.count, 10) || 1);
-    for (let index = 0; index < count; index += 1) {
-        const node = index === 0 ? target : target.cloneNode(true);
-        uniquifyNodeIds(node, `capture-${index + 1}`);
+function buildActiveItemDescriptors(familyKey, items, repeatValues) {
+    const count = Math.max(1, Number.parseInt(repeatValues?.count, 10) || 1);
+    return items.slice(0, count).map(values => ({
+        ...buildSourceDescriptor(familyKey, values),
+        familyKey,
+        values: { ...values }
+    }));
+}
+
+function resolveLiveTargets(doc, descriptor) {
+    const itemDescriptors = descriptor.itemDescriptors?.length ? descriptor.itemDescriptors : [descriptor];
+    return itemDescriptors.map((itemDescriptor, index) => {
+        const target = findByXPath(doc, itemDescriptor.xpath);
+        if (!target) throw new Error('Missing live specimen ' + (index + 1) + ' for ' + itemDescriptor.file);
+        return target.cloneNode(true);
+    });
+}
+
+function appendResolvedNodes(group, targets) {
+    targets.forEach((node, index) => {
+        uniquifyNodeIds(node, 'capture-' + (index + 1));
         group.appendChild(node);
-    }
+    });
 }
 
 function getPresentationMeta(descriptor) {
     const values = descriptor.values || {};
+    const itemDescriptors = descriptor.itemDescriptors?.length ? descriptor.itemDescriptors : [descriptor];
+    const multipleItems = itemDescriptors.length > 1;
+    const sharedPattern = getSharedItemValue(itemDescriptors, 'pattern');
+    const sharedSize = getSharedItemValue(itemDescriptors, 'size');
+    const sharedState = getSharedItemValue(itemDescriptors, 'state');
 
     switch (descriptor.familyKey) {
         case 'buttons':
             return {
                 wrapperClass: 'w-full h-full flex items-center justify-center',
                 rowClass: values.state === 'default' ? 'size-grid-row' : 'size-grid-row size-grid-row-gap-12',
-                label: values.state === 'default' ? (sizeLabel[values.size] || titleCase(values.size || 'medium')) : titleCase(values.state),
+                label: multipleItems
+                    ? (sharedState && sharedState !== 'default'
+                        ? titleCase(sharedState)
+                        : sharedSize
+                            ? (sizeLabel[sharedSize] || titleCase(sharedSize))
+                            : '')
+                    : values.state === 'default'
+                        ? (sizeLabel[values.size] || titleCase(values.size || 'medium'))
+                        : titleCase(values.state),
                 groupClass: values.pattern === 'text' || values.pattern === 'icon-text' ? 'flex items-center gap-10 flex-wrap justify-center' : 'flex items-center gap-16 flex-wrap justify-center'
             };
         case 'badges':
             return {
                 wrapperClass: 'w-full h-full flex items-center justify-center',
                 rowClass: 'size-grid-row',
-                label: values.pattern === 'label' ? (sizeLabel[values.size] || 'Medium') : values.pattern === 'dot' ? 'Dot' : values.state === 'aria-disabled' ? 'ARIA Disabled' : titleCase(values.state || 'default'),
+                label: multipleItems
+                    ? (sharedPattern === 'dot'
+                        ? 'Dot'
+                        : sharedState === 'aria-disabled'
+                            ? 'ARIA Disabled'
+                            : sharedSize
+                                ? (sizeLabel[sharedSize] || titleCase(sharedSize))
+                                : '')
+                    : values.pattern === 'label'
+                        ? (sizeLabel[values.size] || 'Medium')
+                        : values.pattern === 'dot'
+                            ? 'Dot'
+                            : values.state === 'aria-disabled'
+                                ? 'ARIA Disabled'
+                                : titleCase(values.state || 'default'),
                 groupClass: 'flex items-center gap-16 flex-wrap justify-center'
             };
         case 'checkboxes':
             return {
                 wrapperClass: 'w-full h-full flex items-center justify-center',
                 rowClass: 'size-grid-row',
-                label: sizeLabel[values.size] || titleCase(values.size || 'medium'),
+                label: multipleItems
+                    ? (sharedSize ? (sizeLabel[sharedSize] || titleCase(sharedSize)) : '')
+                    : sizeLabel[values.size] || titleCase(values.size || 'medium'),
                 groupClass: 'flex items-center gap-16 flex-wrap justify-center'
             };
         case 'accordion':
             return {
                 wrapperClass: 'w-full h-full flex items-center justify-center',
                 rowClass: values.state === 'closed' ? 'size-grid-row' : 'size-grid-row size-grid-row-gap-12',
-                label: values.state === 'closed' ? (sizeLabel[values.size] || titleCase(values.size || 'medium')) : titleCase(values.state),
+                label: multipleItems
+                    ? (sharedState && sharedState !== 'closed'
+                        ? titleCase(sharedState)
+                        : sharedSize
+                            ? (sizeLabel[sharedSize] || titleCase(sharedSize))
+                            : '')
+                    : values.state === 'closed'
+                        ? (sizeLabel[values.size] || titleCase(values.size || 'medium'))
+                        : titleCase(values.state),
                 groupClass: 'w-full max-w-readable'
             };
         case 'dropdown':
             return {
                 wrapperClass: 'w-full h-full flex items-center justify-center',
                 rowClass: 'size-grid-row',
-                label: values.pattern === 'top-panel' ? 'Top Panel' : values.state === 'selected' ? 'Selected' : (sizeLabel[values.size] || 'Medium'),
+                label: multipleItems
+                    ? (sharedPattern === 'top-panel'
+                        ? 'Top Panel'
+                        : sharedState === 'selected'
+                            ? 'Selected'
+                            : sharedSize
+                                ? (sizeLabel[sharedSize] || 'Medium')
+                                : '')
+                    : values.pattern === 'top-panel'
+                        ? 'Top Panel'
+                        : values.state === 'selected'
+                            ? 'Selected'
+                            : (sizeLabel[values.size] || 'Medium'),
                 groupClass: 'flex items-start gap-16 flex-wrap justify-center'
             };
         default:
@@ -347,8 +493,7 @@ function getPresentationMeta(descriptor) {
 }
 
 function isolateLiveNode(doc, descriptor) {
-    const target = findByXPath(doc, descriptor.xpath);
-    if (!target) throw new Error(`Missing live specimen for ${descriptor.file}`);
+    const targets = resolveLiveTargets(doc, descriptor);
     const presentation = getPresentationMeta(descriptor);
     const wrapper = doc.createElement('main');
     wrapper.className = presentation?.wrapperClass || descriptor.contentClass || defaultContentClass;
@@ -359,7 +504,7 @@ function isolateLiveNode(doc, descriptor) {
     if (!presentation) {
         const group = doc.createElement('div');
         group.className = getRepeatGroupClass(descriptor, { groupClass: descriptor.contentClass || defaultContentClass });
-        appendRepeatedNodes(group, target, descriptor);
+        appendResolvedNodes(group, targets);
         wrapper.appendChild(group);
         return;
     }
@@ -378,7 +523,7 @@ function isolateLiveNode(doc, descriptor) {
     content.className = 'size-grid-content';
     const group = doc.createElement('div');
     group.className = getRepeatGroupClass(descriptor, presentation);
-    appendRepeatedNodes(group, target, descriptor);
+    appendResolvedNodes(group, targets);
     content.appendChild(group);
     row.appendChild(content);
     wrapper.appendChild(row);
@@ -487,7 +632,11 @@ function buildSourceDescriptor(familyKey, values) {
         }
         case 'sidebar': return { file: 'organisms.html', xpath: `(//section[@id='Sidebar']//div[contains(@class,'sidebar') and contains(@class,'w-sidebar')])[1] | (//div[contains(@class,'sidebar') and contains(@class,'w-sidebar') and contains(@class,'h-sidebar')])[1]`, width: 1600, height: 1200 };
         case 'footer': return { file: 'organisms.html', xpath: `//section[@id='footer']//div[contains(@class,'size-grid-row')][.//h4[normalize-space()='${values.pattern === 'bottom' ? 'Footer + Bottom Bar' : 'Core Footer'}']]//footer[1]`, width: 1920, height: 1080, contentClass: 'w-full h-full flex items-end justify-center' };
-        default: return buildSourceDescriptor('buttons', values);
+        default: {
+            const generic = genericFamilyDescriptors[familyKey];
+            if (generic) return { file: generic.file, xpath: buildGenericSectionXPath(generic.sectionId), width: generic.width, height: generic.height, contentClass: generic.contentClass };
+            return buildSourceDescriptor('buttons', values);
+        }
     }
 }
 
@@ -502,6 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const familyMenu = document.getElementById('family-dropdown-menu');
     const controlsWrap = document.getElementById('component-controls');
     const repeatControlsWrap = document.getElementById('repeat-controls');
+    const slotControlsWrap = document.getElementById('slot-controls');
     const canvas = document.getElementById('capture-canvas');
     const viewport = document.getElementById('capture-viewport');
     const stage = document.getElementById('capture-stage');
@@ -518,10 +668,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const surfaceButtons = Array.from(document.querySelectorAll('[data-canvas-surface]'));
     const url = new URL(window.location.href);
     let activeFamilyKey = 'buttons';
-    let activeValues = normalizeControlValues('buttons');
     let activeRepeatValues = normalizeRepeatValues();
+    let activeItems = createItemValuesList('buttons', 1, normalizeControlValues('buttons'));
+    let activeSlotIndex = 0;
+    let activeValues = activeItems[0];
     let renderVersion = 0;
     let zoomLevel = defaultZoom;
+
+    const getActiveItemCount = () => Math.max(1, Number.parseInt(activeRepeatValues.count, 10) || 1);
+    const syncSelectedValues = () => {
+        if (activeItems.length === 0) activeItems = createItemValuesList(activeFamilyKey, 1, normalizeControlValues(activeFamilyKey));
+        activeSlotIndex = Math.max(0, Math.min(activeItems.length - 1, activeSlotIndex));
+        activeValues = activeItems[activeSlotIndex] || activeItems[0] || normalizeControlValues(activeFamilyKey);
+    };
 
     const syncUrl = () => {
         const activeSurface = surfaceButtons.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.canvasSurface || 'grey';
@@ -531,6 +690,8 @@ document.addEventListener('DOMContentLoaded', () => {
         url.searchParams.set('h', String(clampDimension(heightInput.value, defaultCanvas.height)));
         url.searchParams.set('surface', activeSurface);
         url.searchParams.set('zoom', String(Math.round(clampZoom(zoomLevel) * 100)));
+        url.searchParams.set(slotParamKey, String(activeSlotIndex + 1));
+        url.searchParams.set(itemParamKey, JSON.stringify(buildItemsPayload(activeFamilyKey, activeItems.slice(0, getActiveItemCount()))));
         url.searchParams.delete('component');
         controlParamKeys.forEach(key => {
             if (activeValues[key]) url.searchParams.set(key, activeValues[key]);
@@ -627,18 +788,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     };
 
+    const renderSlotControls = () => {
+        const family = getFamily(activeFamilyKey);
+        if (getActiveItemCount() <= 1 || family.controls.length === 0) {
+            slotControlsWrap.innerHTML = '';
+            return;
+        }
+        const options = Array.from({ length: getActiveItemCount() }, (_, index) => option(String(index), `Item ${index + 1}`));
+        const selected = options.find(item => item.value === String(activeSlotIndex)) || options[0];
+        slotControlsWrap.innerHTML = `<div class="dropdown dropdown-md w-full md:w-48 has-value" data-slot-key="item"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Item selection options">${dropdownMenu(options, selected.value)}</ul></div>`;
+    };
+
     const renderActiveComponent = async options => {
-        const version = ++renderVersion;
-        const descriptor = { ...buildSourceDescriptor(activeFamilyKey, activeValues), familyKey: activeFamilyKey, values: { ...activeValues }, repeat: { ...activeRepeatValues } };
+        const itemDescriptors = buildActiveItemDescriptors(activeFamilyKey, activeItems, activeRepeatValues);
+        const descriptor = {
+            ...itemDescriptors[0],
+            familyKey: activeFamilyKey,
+            values: { ...activeValues },
+            repeat: { ...activeRepeatValues },
+            itemDescriptors
+        };
         if (!options.keepSize) {
             widthInput.value = String(descriptor.width || defaultCanvas.width);
             heightInput.value = String(descriptor.height || defaultCanvas.height);
         }
         if (!options.keepSurface) applySurface(descriptor.surface || 'grey');
-        const frame = createLiveFrame(version);
+        const frame = createLiveFrame(renderVersion + 1);
         const loader = document.createElement('div');
         loader.className = defaultContentClass;
         loader.innerHTML = '<div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true"><i class="ri-loader-4-line icon icon-lg"></i></div>';
+        const version = ++renderVersion;
         captureContent.className = 'w-full h-full';
         captureContent.replaceChildren(frame, loader);
         try {
@@ -653,10 +832,33 @@ document.addEventListener('DOMContentLoaded', () => {
         queuePreviewSize();
     };
 
+    const setSelectedSlot = slotIndex => {
+        activeSlotIndex = Math.max(0, Math.min(getActiveItemCount() - 1, slotIndex));
+        syncSelectedValues();
+        renderSlotControls();
+        renderControls();
+        syncUrl();
+    };
+
+    const updateSelectedItem = (nextValues, options = {}) => {
+        activeItems[activeSlotIndex] = normalizeControlValues(activeFamilyKey, nextValues);
+        syncSelectedValues();
+        renderSlotControls();
+        renderControls();
+        renderActiveComponent(options);
+    };
+
     const setFamily = (familyKey, nextValues = {}, options = {}) => {
         activeFamilyKey = families[familyKey] ? familyKey : 'buttons';
-        activeValues = normalizeControlValues(activeFamilyKey, nextValues);
+        const count = getActiveItemCount();
+        const baseValues = normalizeControlValues(activeFamilyKey, nextValues);
+        activeItems = options.itemValuesList
+            ? createItemValuesList(activeFamilyKey, count, baseValues, options.itemValuesList)
+            : createItemValuesList(activeFamilyKey, count, baseValues);
+        activeSlotIndex = Math.max(0, Math.min(count - 1, Number.isInteger(options.slotIndex) ? options.slotIndex : 0));
+        syncSelectedValues();
         renderFamilyMenu();
+        renderSlotControls();
         renderControls();
         renderRepeatControls();
         renderActiveComponent(options);
@@ -722,7 +924,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const key = dropdown.dataset.controlKey;
         dropdown.classList.remove('is-open');
         dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
-        setFamily(activeFamilyKey, { ...activeValues, [key]: optionNode.dataset.value }, { keepSize: true, keepSurface: true });
+        updateSelectedItem({ ...activeValues, [key]: optionNode.dataset.value }, { keepSize: true, keepSurface: true });
     });
     repeatControlsWrap.addEventListener('click', event => {
         const optionNode = event.target.closest('.dropdown-item');
@@ -733,8 +935,21 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdown.classList.remove('is-open');
         dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
         activeRepeatValues = normalizeRepeatValues({ ...activeRepeatValues, [key]: optionNode.dataset.value });
+        activeItems = createItemValuesList(activeFamilyKey, getActiveItemCount(), activeValues, activeItems);
+        syncSelectedValues();
+        renderSlotControls();
+        renderControls();
         renderRepeatControls();
         renderActiveComponent({ keepSize: true, keepSurface: true });
+    });
+    slotControlsWrap.addEventListener('click', event => {
+        const optionNode = event.target.closest('.dropdown-item');
+        if (!optionNode) return;
+        const dropdown = optionNode.closest('[data-slot-key]');
+        if (!dropdown) return;
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        setSelectedSlot(Number.parseInt(optionNode.dataset.value, 10) || 0);
     });
     panelToggle.addEventListener('click', () => applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true'));
     cleanToggle.addEventListener('click', () => applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true'));
@@ -751,13 +966,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialFamily = url.searchParams.get('family') || url.searchParams.get('component') || 'buttons';
     const initialValues = Object.fromEntries(controlParamKeys.map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value)));
     activeRepeatValues = normalizeRepeatValues(Object.fromEntries(repeatParamKeys.map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value))));
+    const initialItemValues = parseItemsParam(initialFamily, url.searchParams.get(itemParamKey), getActiveItemCount(), initialValues);
+    const initialSlotIndex = Math.max(0, Math.min(getActiveItemCount() - 1, (Number.parseInt(url.searchParams.get(slotParamKey), 10) || 1) - 1));
     widthInput.value = String(clampDimension(url.searchParams.get('w'), defaultCanvas.width));
     heightInput.value = String(clampDimension(url.searchParams.get('h'), defaultCanvas.height));
     zoomLevel = clampZoom((Number.parseFloat(url.searchParams.get('zoom')) || 100) / 100, defaultZoom);
     zoomInput.value = formatZoom(zoomLevel);
     if (keepSurface) applySurface(url.searchParams.get('surface') || 'grey');
     applyCleanMode(url.searchParams.get('clean') === '1');
-    setFamily(initialFamily, initialValues, { keepSize, keepSurface });
+    setFamily(initialFamily, initialValues, { keepSize, keepSurface, itemValuesList: initialItemValues, slotIndex: initialSlotIndex });
 });
 
 
