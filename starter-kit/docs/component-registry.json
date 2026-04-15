@@ -2,7 +2,7 @@
   "name": "NexLed UI System",
   "version": "1.3.0",
   "released": "2026-03-16",
-  "generatedAt": "2026-04-10T12:41:57.587Z",
+  "generatedAt": "2026-04-15T08:47:19.671Z",
   "complianceMode": "core-fail-drift-warn",
   "source": {
     "css": "src/nexled.css",
@@ -985,6 +985,7 @@
       "name": "PAGINATION",
       "slug": "pagination",
       "classes": [
+        "is-scrollable",
         "pagination",
         "pagination-compact",
         "pagination-item",
@@ -994,6 +995,7 @@
         "pagination-prev"
       ],
       "states": [
+        ".is-scrollable",
         ":active",
         ":disabled",
         ":focus-visible",
@@ -2012,6 +2014,7 @@
     "is-range-end",
     "is-range-start",
     "is-revealed",
+    "is-scrollable",
     "is-scrolling",
     "is-selected",
     "is-today",
@@ -2334,6 +2337,7 @@
     ".is-range-end",
     ".is-range-start",
     ".is-revealed",
+    ".is-scrollable",
     ".is-scrolling",
     ".is-selected",
     ".is-today",
@@ -2568,6 +2572,7 @@
     "is-outside",
     "is-range",
     "is-revealed",
+    "is-scrollable",
     "is-scrolling",
     "is-selected",
     "is-today",
