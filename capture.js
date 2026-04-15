@@ -9,10 +9,36 @@ const minZoom = 0.1;
 const maxZoom = 8;
 const zoomStep = 0.1;
 const sourceCache = new Map();
+const repeatParamKeys = ['count', 'layout', 'columns', 'gap'];
+const repeatDefaults = { count: '1', layout: 'single', columns: '1', gap: 'md' };
 
 const option = (value, label) => ({ value, label });
 const sizeOptions = ['xs', 'sm', 'md', 'lg'].map(value => option(value, sizeLabel[value]));
 const badgeToneOptions = ['primary', 'success', 'danger', 'neutral', 'warning', 'info'].map(value => option(value, titleCase(value)));
+const repeatControlConfig = [
+    { key: 'count', widthClass: 'md:w-40', options: () => Array.from({ length: 12 }, (_, index) => option(String(index + 1), String(index + 1))) },
+    {
+        key: 'layout',
+        widthClass: 'md:w-48',
+        options: values => (Number.parseInt(values.count, 10) || 1) <= 1
+            ? [option('single', 'Single')]
+            : [option('row', 'Row'), option('column', 'Column'), option('grid', 'Grid')]
+    },
+    {
+        key: 'columns',
+        widthClass: 'md:w-40',
+        options: values => values.layout === 'grid'
+            ? Array.from({ length: Math.max(1, Math.min(4, Number.parseInt(values.count, 10) || 1)) }, (_, index) => option(String(index + 1), String(index + 1)))
+            : [option('1', '1')]
+    },
+    {
+        key: 'gap',
+        widthClass: 'md:w-48',
+        options: values => (Number.parseInt(values.count, 10) || 1) <= 1
+            ? [option('md', 'Medium')]
+            : [option('sm', 'Tight'), option('md', 'Medium'), option('lg', 'Large'), option('xl', 'XL')]
+    }
+];
 
 const families = {
     buttons: {
@@ -177,12 +203,30 @@ function normalizeControlValues(familyKey, incomingValues = {}) {
     return values;
 }
 
+function normalizeRepeatValues(incomingValues = {}) {
+    let values = { ...repeatDefaults, ...incomingValues };
+    for (let pass = 0; pass < 4; pass += 1) {
+        repeatControlConfig.forEach(control => {
+            const options = control.options(values);
+            const optionValues = options.map(item => item.value);
+            if (!optionValues.includes(values[control.key])) values[control.key] = options[0].value;
+        });
+    }
+    return values;
+}
+
 function dropdownMenu(options, selectedValue) {
     return options.map(item => `<li class="dropdown-item" role="option" aria-selected="${String(item.value === selectedValue)}" data-value="${item.value}"><span>${item.label}</span><i class="ri-check-line dropdown-item-check" aria-hidden="true"></i></li>`).join('');
 }
 function getControlOptions(familyKey, controlKey, values) {
     const family = getFamily(familyKey);
     const control = family.controls.find(item => item.key === controlKey);
+    if (!control) return [];
+    return control.options(values).map(item => ({ ...item }));
+}
+
+function getRepeatOptions(controlKey, values) {
+    const control = repeatControlConfig.find(item => item.key === controlKey);
     if (!control) return [];
     return control.options(values).map(item => ({ ...item }));
 }
@@ -211,6 +255,51 @@ function waitForFrameLoad(frame, url) {
 
 function findByXPath(doc, xpath) {
     return doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
+
+function getRepeatGapClass(gap) {
+    return { sm: 'gap-10', md: 'gap-16', lg: 'gap-24', xl: 'gap-32' }[gap] || 'gap-16';
+}
+
+function getRepeatGroupClass(descriptor, presentation) {
+    const count = Math.max(1, Number.parseInt(descriptor.repeat?.count, 10) || 1);
+    if (count <= 1) return presentation.groupClass;
+    const gapClass = getRepeatGapClass(descriptor.repeat?.gap);
+    const layout = descriptor.repeat?.layout || 'row';
+    if (layout === 'column') return `flex flex-col items-center justify-center ${gapClass}`;
+    if (layout === 'grid') {
+        const columns = Math.max(1, Math.min(4, Number.parseInt(descriptor.repeat?.columns, 10) || 1));
+        const columnClass = { 1: 'grid-cols-1', 2: 'grid-cols-2', 3: 'grid-cols-3', 4: 'grid-cols-4' }[columns] || 'grid-cols-1';
+        return `grid ${columnClass} ${gapClass} place-items-center`;
+    }
+    return `flex flex-wrap items-center justify-center ${gapClass}`;
+}
+
+function uniquifyNodeIds(root, suffix) {
+    const withIds = [root, ...root.querySelectorAll('[id]')].filter(node => node.id);
+    if (withIds.length === 0) return;
+    const idMap = new Map(withIds.map(node => [node.id, `${node.id}-${suffix}`]));
+    withIds.forEach(node => {
+        node.id = idMap.get(node.id);
+    });
+    const refAttrs = ['for', 'aria-describedby', 'aria-labelledby', 'aria-controls', 'aria-owns'];
+    [root, ...root.querySelectorAll('*')].forEach(node => {
+        refAttrs.forEach(attr => {
+            const value = node.getAttribute(attr);
+            if (!value) return;
+            const nextValue = value.split(/\s+/).map(part => idMap.get(part) || part).join(' ');
+            node.setAttribute(attr, nextValue);
+        });
+    });
+}
+
+function appendRepeatedNodes(group, target, descriptor) {
+    const count = Math.max(1, Number.parseInt(descriptor.repeat?.count, 10) || 1);
+    for (let index = 0; index < count; index += 1) {
+        const node = index === 0 ? target : target.cloneNode(true);
+        uniquifyNodeIds(node, `capture-${index + 1}`);
+        group.appendChild(node);
+    }
 }
 
 function getPresentationMeta(descriptor) {
@@ -268,7 +357,10 @@ function isolateLiveNode(doc, descriptor) {
     doc.body.replaceChildren(wrapper);
 
     if (!presentation) {
-        wrapper.appendChild(target);
+        const group = doc.createElement('div');
+        group.className = getRepeatGroupClass(descriptor, { groupClass: descriptor.contentClass || defaultContentClass });
+        appendRepeatedNodes(group, target, descriptor);
+        wrapper.appendChild(group);
         return;
     }
 
@@ -285,8 +377,8 @@ function isolateLiveNode(doc, descriptor) {
     const content = doc.createElement('div');
     content.className = 'size-grid-content';
     const group = doc.createElement('div');
-    group.className = presentation.groupClass;
-    group.appendChild(target);
+    group.className = getRepeatGroupClass(descriptor, presentation);
+    appendRepeatedNodes(group, target, descriptor);
     content.appendChild(group);
     row.appendChild(content);
     wrapper.appendChild(row);
@@ -409,6 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const familyValue = document.getElementById('family-dropdown-value');
     const familyMenu = document.getElementById('family-dropdown-menu');
     const controlsWrap = document.getElementById('component-controls');
+    const repeatControlsWrap = document.getElementById('repeat-controls');
     const canvas = document.getElementById('capture-canvas');
     const viewport = document.getElementById('capture-viewport');
     const stage = document.getElementById('capture-stage');
@@ -426,6 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = new URL(window.location.href);
     let activeFamilyKey = 'buttons';
     let activeValues = normalizeControlValues('buttons');
+    let activeRepeatValues = normalizeRepeatValues();
     let renderVersion = 0;
     let zoomLevel = defaultZoom;
 
@@ -440,6 +534,10 @@ document.addEventListener('DOMContentLoaded', () => {
         url.searchParams.delete('component');
         controlParamKeys.forEach(key => {
             if (activeValues[key]) url.searchParams.set(key, activeValues[key]);
+            else url.searchParams.delete(key);
+        });
+        repeatParamKeys.forEach(key => {
+            if (activeRepeatValues[key]) url.searchParams.set(key, activeRepeatValues[key]);
             else url.searchParams.delete(key);
         });
         if (clean) url.searchParams.set('clean', '1');
@@ -520,9 +618,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     };
 
+    const renderRepeatControls = () => {
+        repeatControlsWrap.innerHTML = repeatControlConfig.map(control => {
+            const options = getRepeatOptions(control.key, activeRepeatValues);
+            if (options.length <= 1) return '';
+            const selected = options.find(item => item.value === activeRepeatValues[control.key]) || options[0];
+            return `<div class="dropdown dropdown-md w-full ${control.widthClass || 'md:w-48'} has-value" data-repeat-key="${control.key}"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Repeat ${control.key} options">${dropdownMenu(options, selected.value)}</ul></div>`;
+        }).join('');
+    };
+
     const renderActiveComponent = async options => {
         const version = ++renderVersion;
-        const descriptor = { ...buildSourceDescriptor(activeFamilyKey, activeValues), familyKey: activeFamilyKey, values: { ...activeValues } };
+        const descriptor = { ...buildSourceDescriptor(activeFamilyKey, activeValues), familyKey: activeFamilyKey, values: { ...activeValues }, repeat: { ...activeRepeatValues } };
         if (!options.keepSize) {
             widthInput.value = String(descriptor.width || defaultCanvas.width);
             heightInput.value = String(descriptor.height || defaultCanvas.height);
@@ -551,6 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeValues = normalizeControlValues(activeFamilyKey, nextValues);
         renderFamilyMenu();
         renderControls();
+        renderRepeatControls();
         renderActiveComponent(options);
     };
 
@@ -616,6 +724,18 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
         setFamily(activeFamilyKey, { ...activeValues, [key]: optionNode.dataset.value }, { keepSize: true, keepSurface: true });
     });
+    repeatControlsWrap.addEventListener('click', event => {
+        const optionNode = event.target.closest('.dropdown-item');
+        if (!optionNode) return;
+        const dropdown = optionNode.closest('[data-repeat-key]');
+        if (!dropdown) return;
+        const key = dropdown.dataset.repeatKey;
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        activeRepeatValues = normalizeRepeatValues({ ...activeRepeatValues, [key]: optionNode.dataset.value });
+        renderRepeatControls();
+        renderActiveComponent({ keepSize: true, keepSurface: true });
+    });
     panelToggle.addEventListener('click', () => applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true'));
     cleanToggle.addEventListener('click', () => applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true'));
     document.addEventListener('keydown', event => {
@@ -630,6 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const keepSurface = url.searchParams.has('surface');
     const initialFamily = url.searchParams.get('family') || url.searchParams.get('component') || 'buttons';
     const initialValues = Object.fromEntries(controlParamKeys.map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value)));
+    activeRepeatValues = normalizeRepeatValues(Object.fromEntries(repeatParamKeys.map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value))));
     widthInput.value = String(clampDimension(url.searchParams.get('w'), defaultCanvas.width));
     heightInput.value = String(clampDimension(url.searchParams.get('h'), defaultCanvas.height));
     zoomLevel = clampZoom((Number.parseFloat(url.searchParams.get('zoom')) || 100) / 100, defaultZoom);
