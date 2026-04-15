@@ -263,8 +263,8 @@ function isolateLiveNode(doc, descriptor) {
     const presentation = getPresentationMeta(descriptor);
     const wrapper = doc.createElement('main');
     wrapper.className = presentation?.wrapperClass || descriptor.contentClass || defaultContentClass;
-    doc.documentElement.className = 'bg-transparent';
-    doc.body.className = 'min-h-screen m-0 bg-transparent overflow-hidden';
+    doc.documentElement.className = 'h-full bg-transparent';
+    doc.body.className = 'h-full m-0 bg-transparent overflow-hidden flex items-center justify-center';
     doc.body.replaceChildren(wrapper);
 
     if (!presentation) {
