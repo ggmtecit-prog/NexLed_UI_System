@@ -379,6 +379,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, '', url);
     };
 
+    const applyPreviewZoom = () => {
+        const zoom = clampZoom(zoomLevel);
+        zoomInput.value = formatZoom(zoom);
+        captureContent.style.transform = `scale(${zoom})`;
+        captureContent.style.transformOrigin = 'center center';
+    };
+
     const syncPreviewSize = () => {
         const actualWidth = clampDimension(widthInput.value, defaultCanvas.width);
         const actualHeight = clampDimension(heightInput.value, defaultCanvas.height);
@@ -390,10 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const availableWidth = Math.max(viewport.clientWidth, 1);
         const availableHeight = Math.max(viewport.clientHeight, 1);
         const scale = Math.min(availableWidth / actualWidth, availableHeight / actualHeight, 1);
-        const previewScale = scale * clampZoom(zoomLevel);
-        zoomInput.value = formatZoom(zoomLevel);
-        stage.setAttribute('width', String(Math.max(1, Math.floor(actualWidth * previewScale))));
-        stage.setAttribute('height', String(Math.max(1, Math.floor(actualHeight * previewScale))));
+        stage.setAttribute('width', String(Math.max(1, Math.floor(actualWidth * scale))));
+        stage.setAttribute('height', String(Math.max(1, Math.floor(actualHeight * scale))));
+        applyPreviewZoom();
         syncUrl();
     };
 
