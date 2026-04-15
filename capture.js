@@ -213,15 +213,83 @@ function findByXPath(doc, xpath) {
     return doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
 
+function getPresentationMeta(descriptor) {
+    const values = descriptor.values || {};
+
+    switch (descriptor.familyKey) {
+        case 'buttons':
+            return {
+                wrapperClass: 'w-full h-full flex items-center justify-center',
+                rowClass: values.state === 'default' ? 'size-grid-row' : 'size-grid-row size-grid-row-gap-12',
+                label: values.state === 'default' ? (sizeLabel[values.size] || titleCase(values.size || 'medium')) : titleCase(values.state),
+                groupClass: values.pattern === 'text' || values.pattern === 'icon-text' ? 'flex items-center gap-10 flex-wrap justify-center' : 'flex items-center gap-16 flex-wrap justify-center'
+            };
+        case 'badges':
+            return {
+                wrapperClass: 'w-full h-full flex items-center justify-center',
+                rowClass: 'size-grid-row',
+                label: values.pattern === 'label' ? (sizeLabel[values.size] || 'Medium') : values.pattern === 'dot' ? 'Dot' : values.state === 'aria-disabled' ? 'ARIA Disabled' : titleCase(values.state || 'default'),
+                groupClass: 'flex items-center gap-16 flex-wrap justify-center'
+            };
+        case 'checkboxes':
+            return {
+                wrapperClass: 'w-full h-full flex items-center justify-center',
+                rowClass: 'size-grid-row',
+                label: sizeLabel[values.size] || titleCase(values.size || 'medium'),
+                groupClass: 'flex items-center gap-16 flex-wrap justify-center'
+            };
+        case 'accordion':
+            return {
+                wrapperClass: 'w-full h-full flex items-center justify-center',
+                rowClass: values.state === 'closed' ? 'size-grid-row' : 'size-grid-row size-grid-row-gap-12',
+                label: values.state === 'closed' ? (sizeLabel[values.size] || titleCase(values.size || 'medium')) : titleCase(values.state),
+                groupClass: 'w-full max-w-readable'
+            };
+        case 'dropdown':
+            return {
+                wrapperClass: 'w-full h-full flex items-center justify-center',
+                rowClass: 'size-grid-row',
+                label: values.pattern === 'top-panel' ? 'Top Panel' : values.state === 'selected' ? 'Selected' : (sizeLabel[values.size] || 'Medium'),
+                groupClass: 'flex items-start gap-16 flex-wrap justify-center'
+            };
+        default:
+            return null;
+    }
+}
+
 function isolateLiveNode(doc, descriptor) {
     const target = findByXPath(doc, descriptor.xpath);
     if (!target) throw new Error(`Missing live specimen for ${descriptor.file}`);
+    const presentation = getPresentationMeta(descriptor);
     const wrapper = doc.createElement('main');
-    wrapper.className = descriptor.contentClass || defaultContentClass;
+    wrapper.className = presentation?.wrapperClass || descriptor.contentClass || defaultContentClass;
     doc.documentElement.className = 'bg-transparent';
     doc.body.className = 'min-h-screen m-0 bg-transparent overflow-hidden';
     doc.body.replaceChildren(wrapper);
-    wrapper.appendChild(target);
+
+    if (!presentation) {
+        wrapper.appendChild(target);
+        return;
+    }
+
+    const row = doc.createElement('div');
+    row.className = presentation.rowClass;
+
+    if (presentation.label) {
+        const label = doc.createElement('h4');
+        label.className = 'size-grid-label text-center';
+        label.textContent = presentation.label;
+        row.appendChild(label);
+    }
+
+    const content = doc.createElement('div');
+    content.className = 'size-grid-content';
+    const group = doc.createElement('div');
+    group.className = presentation.groupClass;
+    group.appendChild(target);
+    content.appendChild(group);
+    row.appendChild(content);
+    wrapper.appendChild(row);
 }
 
 function createLiveFrame(version) {
@@ -454,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderActiveComponent = async options => {
         const version = ++renderVersion;
-        const descriptor = buildSourceDescriptor(activeFamilyKey, activeValues);
+        const descriptor = { ...buildSourceDescriptor(activeFamilyKey, activeValues), familyKey: activeFamilyKey, values: { ...activeValues } };
         if (!options.keepSize) {
             widthInput.value = String(descriptor.width || defaultCanvas.width);
             heightInput.value = String(descriptor.height || defaultCanvas.height);
