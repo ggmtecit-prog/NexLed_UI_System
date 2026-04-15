@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,12 +34,16 @@
             <div class="container-balanced w-full flex items-center justify-center px-16 md:px-24 lg:px-32">
                 <div class="panel p-12 md:p-16">
                     <div class="flex flex-wrap items-center justify-center gap-12 md:gap-16">
-                        <div id="component-dropdown" class="dropdown dropdown-md w-full md:w-btn-xl">
-                            <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
-                                <span id="component-dropdown-value" class="dropdown-value">Buttons</span>
-                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
-                            </button>
-                            <ul id="component-dropdown-menu" class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Capture component options"></ul>
+                        <div class="flex flex-wrap items-center justify-center gap-12 md:gap-16 w-full md:w-auto">
+                            <div id="family-dropdown" class="dropdown dropdown-md w-full md:w-btn-lg">
+                                <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span id="family-dropdown-value" class="dropdown-value">Buttons</span>
+                                    <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                                </button>
+                                <ul id="family-dropdown-menu" class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Capture family options"></ul>
+                            </div>
+
+                            <div id="component-controls" class="flex flex-wrap items-center justify-center gap-12 md:gap-16 w-full md:w-auto"></div>
                         </div>
 
                         <div class="flex items-center gap-12" aria-label="Canvas size">
@@ -98,256 +102,13 @@
         </main>
     </div>
 
-    <script>
-        const defaultCanvas = { width: 1200, height: 1200 };
-        const defaultContentClass = 'w-full h-full flex items-center justify-center';
-        const componentSources = {
-            buttons: { label: 'Buttons', file: 'atoms.html', section: 'buttons', width: 1200, height: 1200, surface: 'grey' },
-            badges: { label: 'Badges', file: 'atoms.html', section: 'badges', width: 1200, height: 1200, surface: 'grey' },
-            inputs: { label: 'Inputs', file: 'molecules.html', section: 'text-field', width: 1200, height: 1200, surface: 'grey' },
-            checkboxes: { label: 'Checkboxes', file: 'atoms.html', section: 'checkboxes', width: 1200, height: 1200, surface: 'grey' },
-            accordion: { label: 'Accordion', file: 'molecules.html', section: 'accordion', width: 1200, height: 1200, surface: 'grey' },
-            dropdown: { label: 'Dropdown', file: 'molecules.html', section: 'dropdown', width: 1200, height: 1200, surface: 'grey' },
-            cards: { label: 'Cards', file: 'molecules.html', section: 'card', width: 1200, height: 1200, surface: 'grey' },
-            alerts: { label: 'Alerts', file: 'molecules.html', section: 'alerts', width: 1600, height: 1000, surface: 'grey' },
-            'empty-state': { label: 'Empty State', file: 'molecules.html', section: 'empty-state', width: 1600, height: 1000, surface: 'grey' },
-            pagination: { label: 'Pagination', file: 'molecules.html', section: 'pagination', width: 1200, height: 1200, surface: 'grey' },
-            'data-table': { label: 'Data Table', file: 'molecules.html', section: 'data-table', width: 1920, height: 1080, surface: 'grey', contentClass: 'w-full h-full flex items-start justify-center' },
-            toast: { label: 'Toast', file: 'organisms.html', section: 'toast', width: 1600, height: 1000, surface: 'grey' },
-            sidebar: { label: 'Sidebar', file: 'organisms.html', section: 'Sidebar', width: 1600, height: 1200, surface: 'grey' },
-            footer: { label: 'Footer', file: 'organisms.html', section: 'footer', width: 1920, height: 1080, surface: 'grey', contentClass: 'w-full h-full flex items-end justify-center' }
-        };
-        const canvasSurfaceClasses = { white: ['bg-white'], grey: ['bg-grey-tertiary'], black: ['bg-black'] };
-        const bodySurfaceClasses = ['bg-white', 'bg-grey-tertiary', 'bg-black', 'text-black', 'text-white'];
-        const sourceCache = new Map();
-
-        function clampDimension(value, fallback) {
-            const parsed = Number.parseInt(value, 10);
-            return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-        }
-
-        async function getSourceDocument(file) {
-            if (sourceCache.has(file)) {
-                return sourceCache.get(file);
-            }
-
-            const response = await fetch(file);
-            const text = await response.text();
-            const doc = new DOMParser().parseFromString(text, 'text/html');
-            sourceCache.set(file, doc);
-            return doc;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-            const panelToggle = document.getElementById('panel-toggle');
-            const panelToggleIcon = document.getElementById('panel-toggle-icon');
-            const toolbar = document.getElementById('capture-toolbar');
-            const componentDropdown = document.getElementById('component-dropdown');
-            const componentTrigger = componentDropdown.querySelector('.dropdown-trigger');
-            const componentValue = document.getElementById('component-dropdown-value');
-            const componentMenu = document.getElementById('component-dropdown-menu');
-            const canvas = document.getElementById('capture-canvas');
-            const viewport = document.getElementById('capture-viewport');
-            const stage = document.getElementById('capture-stage');
-            const foreignObject = document.getElementById('capture-foreign-object');
-            const captureContent = document.getElementById('capture-content');
-            const cleanToggle = document.getElementById('clean-toggle');
-            const cleanToggleIcon = document.getElementById('clean-toggle-icon');
-            const widthInput = document.getElementById('canvas-width');
-            const heightInput = document.getElementById('canvas-height');
-            const surfaceButtons = Array.from(document.querySelectorAll('[data-canvas-surface]'));
-            const url = new URL(window.location.href);
-            let activeComponentKey = 'buttons';
-
-            componentMenu.innerHTML = Object.entries(componentSources).map(([key, preset]) => `<li class="dropdown-item" role="option" aria-selected="false" data-value="${key}"><span>${preset.label}</span><i class="ri-check-line dropdown-item-check" aria-hidden="true"></i></li>`).join('');
-            const componentItems = Array.from(componentMenu.querySelectorAll('.dropdown-item'));
-
-            const syncUrl = () => {
-                const activeSurface = surfaceButtons.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.canvasSurface || 'grey';
-                const clean = cleanToggle.getAttribute('aria-pressed') === 'true';
-                const width = clampDimension(widthInput.value, defaultCanvas.width);
-                const height = clampDimension(heightInput.value, defaultCanvas.height);
-
-                url.searchParams.set('component', activeComponentKey);
-                url.searchParams.set('w', String(width));
-                url.searchParams.set('h', String(height));
-                url.searchParams.set('surface', activeSurface);
-
-                if (clean) {
-                    url.searchParams.set('clean', '1');
-                } else {
-                    url.searchParams.delete('clean');
-                }
-
-                window.history.replaceState({}, '', url);
-            };
-
-            const syncPreviewSize = () => {
-                const actualWidth = clampDimension(widthInput.value, defaultCanvas.width);
-                const actualHeight = clampDimension(heightInput.value, defaultCanvas.height);
-
-                widthInput.value = String(actualWidth);
-                heightInput.value = String(actualHeight);
-
-                stage.setAttribute('viewBox', `0 0 ${actualWidth} ${actualHeight}`);
-                foreignObject.setAttribute('width', String(actualWidth));
-                foreignObject.setAttribute('height', String(actualHeight));
-
-                const availableWidth = Math.max(viewport.clientWidth, 1);
-                const availableHeight = Math.max(viewport.clientHeight, 1);
-                const scale = Math.min(availableWidth / actualWidth, availableHeight / actualHeight, 1);
-                const previewWidth = Math.max(1, Math.floor(actualWidth * scale));
-                const previewHeight = Math.max(1, Math.floor(actualHeight * scale));
-
-                stage.setAttribute('width', String(previewWidth));
-                stage.setAttribute('height', String(previewHeight));
-                syncUrl();
-            };
-
-            const queuePreviewSize = () => {
-                window.requestAnimationFrame(syncPreviewSize);
-            };
-
-            const applySurface = surfaceKey => {
-                body.classList.remove(...bodySurfaceClasses);
-                body.classList.add(...(canvasSurfaceClasses[surfaceKey] || canvasSurfaceClasses.grey));
-                body.classList.add(surfaceKey === 'black' ? 'text-white' : 'text-black');
-
-                surfaceButtons.forEach(button => {
-                    button.setAttribute('aria-pressed', String(button.dataset.canvasSurface === surfaceKey));
-                });
-
-                syncUrl();
-            };
-
-            const applyCleanMode = isClean => {
-                const nextLabel = isClean ? 'Show toolbar' : 'Hide toolbar';
-                const nextIconClass = isClean ? 'ri-eye-line text-icon-xl' : 'ri-eye-off-line text-icon-xl';
-
-                cleanToggle.setAttribute('aria-pressed', String(isClean));
-                cleanToggle.setAttribute('aria-label', nextLabel);
-                cleanToggleIcon.className = nextIconClass;
-                panelToggle.setAttribute('aria-pressed', String(isClean));
-                panelToggle.setAttribute('aria-label', nextLabel);
-                panelToggleIcon.className = nextIconClass;
-                toolbar.classList.toggle('hidden', isClean);
-                canvas.classList.toggle('py-20', !isClean);
-                canvas.classList.toggle('md:py-24', !isClean);
-                canvas.classList.toggle('lg:py-32', !isClean);
-                canvas.classList.toggle('py-0', isClean);
-                queuePreviewSize();
-            };
-
-            const setComponentSelection = componentKey => {
-                const preset = componentSources[componentKey] || componentSources.buttons;
-                activeComponentKey = componentSources[componentKey] ? componentKey : 'buttons';
-                componentDropdown.classList.add('has-value');
-                componentValue.textContent = preset.label;
-                componentItems.forEach(item => {
-                    item.setAttribute('aria-selected', String(item.dataset.value === activeComponentKey));
-                });
-            };
-
-            const renderUnavailable = () => {
-                captureContent.className = defaultContentClass;
-                captureContent.innerHTML = '<div class="alert alert-danger alert-md" role="alert"><span class="alert-icon"><i class="ri-close-circle-line" aria-hidden="true"></i></span><div class="alert-copy"><p class="alert-title">Component unavailable</p><p class="alert-text">Could not load the selected component section.</p></div></div>';
-            };
-
-            const renderComponent = async (componentKey, options = {}) => {
-                const preset = componentSources[componentKey] || componentSources.buttons;
-                setComponentSelection(componentKey);
-
-                if (!options.keepSize) {
-                    widthInput.value = String(preset.width || defaultCanvas.width);
-                    heightInput.value = String(preset.height || defaultCanvas.height);
-                }
-
-                if (!options.keepSurface) {
-                    applySurface(preset.surface || 'grey');
-                }
-
-                captureContent.className = preset.contentClass || defaultContentClass;
-                captureContent.innerHTML = '<div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true"><i class="ri-loader-4-line icon icon-lg"></i></div>';
-
-                try {
-                    const doc = await getSourceDocument(preset.file);
-                    const section = doc.getElementById(preset.section);
-                    const panel = section?.querySelector('.panel');
-
-                    if (!panel) {
-                        throw new Error('Missing panel');
-                    }
-
-                    captureContent.innerHTML = panel.outerHTML;
-                } catch (error) {
-                    renderUnavailable();
-                }
-
-                queuePreviewSize();
-            };
-
-            [widthInput, heightInput].forEach(input => {
-                input.addEventListener('change', queuePreviewSize);
-                input.addEventListener('blur', queuePreviewSize);
-                input.addEventListener('keydown', event => {
-                    if (event.key === 'Enter') {
-                        queuePreviewSize();
-                    }
-                });
-            });
-
-            surfaceButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    applySurface(button.dataset.canvasSurface);
-                });
-            });
-
-            componentItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    componentDropdown.classList.remove('is-open');
-                    componentTrigger.setAttribute('aria-expanded', 'false');
-                    renderComponent(item.dataset.value);
-                });
-            });
-
-            panelToggle.addEventListener('click', () => {
-                applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
-            });
-
-            cleanToggle.addEventListener('click', () => {
-                applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
-            });
-
-            document.addEventListener('keydown', event => {
-                if (event.key.toLowerCase() === 'c') {
-                    event.preventDefault();
-                    applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
-                }
-            });
-
-            window.addEventListener('resize', queuePreviewSize);
-
-            const keepSize = url.searchParams.has('w') && url.searchParams.has('h');
-            const keepSurface = url.searchParams.has('surface');
-            const initialComponent = url.searchParams.get('component') || 'buttons';
-            const initialSurface = url.searchParams.get('surface') || 'grey';
-            const initialClean = url.searchParams.get('clean') === '1';
-
-            widthInput.value = String(clampDimension(url.searchParams.get('w'), defaultCanvas.width));
-            heightInput.value = String(clampDimension(url.searchParams.get('h'), defaultCanvas.height));
-
-            if (keepSurface) {
-                applySurface(initialSurface);
-            }
-
-            applyCleanMode(initialClean);
-            renderComponent(initialComponent, { keepSize, keepSurface });
-        });
-    </script>
+        <script src="capture.js"></script>
 </body>
 
 </html>
+
+
+
 
 
 
