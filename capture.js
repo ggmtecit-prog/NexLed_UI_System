@@ -259,8 +259,9 @@ function createItemValuesList(familyKey, count, seedValues = {}, incomingItems =
     const safeCount = Math.max(1, count || 1);
     const normalizedSeed = normalizeControlValues(familyKey, seedValues);
     return Array.from({ length: safeCount }, (_, index) => {
-        const incoming = incomingItems[index] ? { ...normalizedSeed, ...incomingItems[index] } : normalizedSeed;
-        return normalizeControlValues(familyKey, incoming);
+        const existing = incomingItems[index];
+        if (existing) return normalizeControlValues(familyKey, existing);
+        return normalizeControlValues(familyKey, normalizedSeed);
     });
 }
 
@@ -679,7 +680,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const syncSelectedValues = () => {
         if (activeItems.length === 0) activeItems = createItemValuesList(activeFamilyKey, 1, normalizeControlValues(activeFamilyKey));
         activeSlotIndex = Math.max(0, Math.min(activeItems.length - 1, activeSlotIndex));
-        activeValues = activeItems[activeSlotIndex] || activeItems[0] || normalizeControlValues(activeFamilyKey);
+        activeValues = activeItems[activeSlotIndex]
+            ? { ...activeItems[activeSlotIndex] }
+            : activeItems[0]
+                ? { ...activeItems[0] }
+                : normalizeControlValues(activeFamilyKey);
     };
 
     const syncUrl = () => {
@@ -841,7 +846,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateSelectedItem = (nextValues, options = {}) => {
-        activeItems[activeSlotIndex] = normalizeControlValues(activeFamilyKey, nextValues);
+        activeItems = activeItems.map((item, index) => index === activeSlotIndex
+            ? normalizeControlValues(activeFamilyKey, nextValues)
+            : normalizeControlValues(activeFamilyKey, item));
         syncSelectedValues();
         renderSlotControls();
         renderControls();
@@ -935,7 +942,12 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdown.classList.remove('is-open');
         dropdown.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
         activeRepeatValues = normalizeRepeatValues({ ...activeRepeatValues, [key]: optionNode.dataset.value });
-        activeItems = createItemValuesList(activeFamilyKey, getActiveItemCount(), activeValues, activeItems);
+        activeItems = createItemValuesList(
+            activeFamilyKey,
+            getActiveItemCount(),
+            activeItems[activeSlotIndex] || activeValues,
+            activeItems
+        );
         syncSelectedValues();
         renderSlotControls();
         renderControls();
