@@ -5,8 +5,8 @@ const bodySurfaceClasses = ['bg-white', 'bg-grey-tertiary', 'bg-black', 'text-bl
 const controlParamKeys = ['pattern', 'variant', 'size', 'state'];
 const sizeLabel = { xs: 'Extra Small', sm: 'Small', md: 'Medium', lg: 'Large' };
 const defaultZoom = 1;
-const minZoom = 0.25;
-const maxZoom = 3;
+const minZoom = 0.1;
+const maxZoom = 8;
 const zoomStep = 0.1;
 const sourceCache = new Map();
 
