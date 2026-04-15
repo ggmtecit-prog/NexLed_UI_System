@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>NexLed Capture</title>
+
+    <!-- 1. Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- 2. Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 3. Configure Tailwind -->
+    <script src="https://ggmtecit-prog.github.io/NexLed_UI_System/src/config-cdn.js?v=1.3"></script>
+    <link rel="stylesheet" href="https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.css?v=1.3">
+
+    <script src="https://ggmtecit-prog.github.io/NexLed_UI_System/src/nexled.js?v=1.3"></script>
+</head>
+
+<body class="min-h-screen bg-grey-tertiary text-black selection:bg-green-primary/10">
+    <div class="min-h-screen flex flex-col">
+        <button id="panel-toggle" type="button" class="btn btn-ghost btn-icon btn-md fixed top-20 left-20 md:top-24 md:left-24 z-overlay" aria-pressed="false" aria-label="Hide toolbar">
+            <i id="panel-toggle-icon" class="ri-eye-off-line text-icon-xl" aria-hidden="true"></i>
+        </button>
+
+        <header id="capture-toolbar" class="w-full pt-20 md:pt-24 lg:pt-32">
+            <div class="container-balanced w-full flex items-center justify-center px-16 md:px-24 lg:px-32">
+                <div class="panel p-12 md:p-16">
+                    <div class="flex flex-wrap items-center justify-center gap-12 md:gap-16">
+                        <div id="component-dropdown" class="dropdown dropdown-md w-full md:w-btn-xl">
+                            <button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+                                <span id="component-dropdown-value" class="dropdown-value">Buttons</span>
+                                <i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i>
+                            </button>
+                            <ul id="component-dropdown-menu" class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Capture component options"></ul>
+                        </div>
+
+                        <div class="flex items-center gap-12" aria-label="Canvas size">
+                            <div class="w-56 md:w-64">
+                                <input id="canvas-width" type="text" inputmode="numeric" pattern="[0-9]*" class="input input-sm text-center" value="1200" aria-label="Canvas width">
+                            </div>
+                            <div class="icon-box icon-box-neutral icon-box-sm" aria-hidden="true">
+                                <i class="ri-close-line icon icon-sm"></i>
+                            </div>
+                            <div class="w-56 md:w-64">
+                                <input id="canvas-height" type="text" inputmode="numeric" pattern="[0-9]*" class="input input-sm text-center" value="1200" aria-label="Canvas height">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-12" role="group" aria-label="Canvas background">
+                            <button type="button" class="btn btn-secondary btn-icon btn-md" data-canvas-surface="white" aria-pressed="false" aria-label="White canvas">
+                                <i class="ri-sun-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-icon btn-md" data-canvas-surface="grey" aria-pressed="true" aria-label="Grey canvas">
+                                <i class="ri-contrast-2-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-icon btn-md" data-canvas-surface="black" aria-pressed="false" aria-label="Black canvas">
+                                <i class="ri-moon-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-12" role="group" aria-label="Capture actions">
+                            <button id="clean-toggle" type="button" class="btn btn-ghost btn-icon btn-md" aria-pressed="false" aria-label="Hide toolbar">
+                                <i id="clean-toggle-icon" class="ri-eye-off-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="capture-canvas" class="flex-1 flex px-16 py-20 md:px-24 md:py-24 lg:px-32 lg:py-32">
+            <div id="capture-viewport" class="container-balanced w-full flex-1 flex items-center justify-center">
+                <div id="capture-frame" class="shrink-0">
+                    <svg id="capture-stage" viewBox="0 0 1200 1200" width="1200" height="1200" class="block" role="img" aria-label="Capture canvas">
+                        <foreignObject id="capture-foreign-object" x="0" y="0" width="1200" height="1200">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="w-full h-full p-16 md:p-24 lg:p-32">
+                                <div id="capture-surface" class="panel rounded-none w-full h-full p-20 md:p-24 lg:p-32 flex items-center justify-center bg-white">
+                                    <!-- Replace this block with NexLed component markup when preparing captures. -->
+                                    <div id="capture-content" class="w-full h-full flex items-center justify-center">
+                                        <div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true">
+                                            <i class="ri-add-line icon icon-lg"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </foreignObject>
+                    </svg>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const defaultCanvas = { width: 1200, height: 1200 };
+        const defaultContentClass = 'w-full h-full flex items-center justify-center';
+        const componentSources = {
+            buttons: { label: 'Buttons', file: 'atoms.html', section: 'buttons', width: 1200, height: 1200, surface: 'grey' },
+            badges: { label: 'Badges', file: 'atoms.html', section: 'badges', width: 1200, height: 1200, surface: 'grey' },
+            inputs: { label: 'Inputs', file: 'molecules.html', section: 'text-field', width: 1200, height: 1200, surface: 'grey' },
+            checkboxes: { label: 'Checkboxes', file: 'atoms.html', section: 'checkboxes', width: 1200, height: 1200, surface: 'grey' },
+            accordion: { label: 'Accordion', file: 'molecules.html', section: 'accordion', width: 1200, height: 1200, surface: 'grey' },
+            dropdown: { label: 'Dropdown', file: 'molecules.html', section: 'dropdown', width: 1200, height: 1200, surface: 'grey' },
+            cards: { label: 'Cards', file: 'molecules.html', section: 'card', width: 1200, height: 1200, surface: 'grey' },
+            alerts: { label: 'Alerts', file: 'molecules.html', section: 'alerts', width: 1600, height: 1000, surface: 'grey' },
+            'empty-state': { label: 'Empty State', file: 'molecules.html', section: 'empty-state', width: 1600, height: 1000, surface: 'grey' },
+            pagination: { label: 'Pagination', file: 'molecules.html', section: 'pagination', width: 1200, height: 1200, surface: 'grey' },
+            'data-table': { label: 'Data Table', file: 'molecules.html', section: 'data-table', width: 1920, height: 1080, surface: 'grey', contentClass: 'w-full h-full flex items-start justify-center' },
+            toast: { label: 'Toast', file: 'organisms.html', section: 'toast', width: 1600, height: 1000, surface: 'grey' },
+            sidebar: { label: 'Sidebar', file: 'organisms.html', section: 'Sidebar', width: 1600, height: 1200, surface: 'grey' },
+            footer: { label: 'Footer', file: 'organisms.html', section: 'footer', width: 1920, height: 1080, surface: 'grey', contentClass: 'w-full h-full flex items-end justify-center' }
+        };
+        const canvasSurfaceClasses = { white: ['bg-white'], grey: ['bg-grey-tertiary'], black: ['bg-black'] };
+        const bodySurfaceClasses = ['bg-white', 'bg-grey-tertiary', 'bg-black', 'text-black', 'text-white'];
+        const sourceCache = new Map();
+
+        function clampDimension(value, fallback) {
+            const parsed = Number.parseInt(value, 10);
+            return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+        }
+
+        async function getSourceDocument(file) {
+            if (sourceCache.has(file)) {
+                return sourceCache.get(file);
+            }
+
+            const response = await fetch(file);
+            const text = await response.text();
+            const doc = new DOMParser().parseFromString(text, 'text/html');
+            sourceCache.set(file, doc);
+            return doc;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const panelToggle = document.getElementById('panel-toggle');
+            const panelToggleIcon = document.getElementById('panel-toggle-icon');
+            const toolbar = document.getElementById('capture-toolbar');
+            const componentDropdown = document.getElementById('component-dropdown');
+            const componentTrigger = componentDropdown.querySelector('.dropdown-trigger');
+            const componentValue = document.getElementById('component-dropdown-value');
+            const componentMenu = document.getElementById('component-dropdown-menu');
+            const canvas = document.getElementById('capture-canvas');
+            const viewport = document.getElementById('capture-viewport');
+            const stage = document.getElementById('capture-stage');
+            const foreignObject = document.getElementById('capture-foreign-object');
+            const captureContent = document.getElementById('capture-content');
+            const cleanToggle = document.getElementById('clean-toggle');
+            const cleanToggleIcon = document.getElementById('clean-toggle-icon');
+            const widthInput = document.getElementById('canvas-width');
+            const heightInput = document.getElementById('canvas-height');
+            const surfaceButtons = Array.from(document.querySelectorAll('[data-canvas-surface]'));
+            const url = new URL(window.location.href);
+            let activeComponentKey = 'buttons';
+
+            componentMenu.innerHTML = Object.entries(componentSources).map(([key, preset]) => `<li class="dropdown-item" role="option" aria-selected="false" data-value="${key}"><span>${preset.label}</span><i class="ri-check-line dropdown-item-check" aria-hidden="true"></i></li>`).join('');
+            const componentItems = Array.from(componentMenu.querySelectorAll('.dropdown-item'));
+
+            const syncUrl = () => {
+                const activeSurface = surfaceButtons.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.canvasSurface || 'grey';
+                const clean = cleanToggle.getAttribute('aria-pressed') === 'true';
+                const width = clampDimension(widthInput.value, defaultCanvas.width);
+                const height = clampDimension(heightInput.value, defaultCanvas.height);
+
+                url.searchParams.set('component', activeComponentKey);
+                url.searchParams.set('w', String(width));
+                url.searchParams.set('h', String(height));
+                url.searchParams.set('surface', activeSurface);
+
+                if (clean) {
+                    url.searchParams.set('clean', '1');
+                } else {
+                    url.searchParams.delete('clean');
+                }
+
+                window.history.replaceState({}, '', url);
+            };
+
+            const syncPreviewSize = () => {
+                const actualWidth = clampDimension(widthInput.value, defaultCanvas.width);
+                const actualHeight = clampDimension(heightInput.value, defaultCanvas.height);
+
+                widthInput.value = String(actualWidth);
+                heightInput.value = String(actualHeight);
+
+                stage.setAttribute('viewBox', `0 0 ${actualWidth} ${actualHeight}`);
+                foreignObject.setAttribute('width', String(actualWidth));
+                foreignObject.setAttribute('height', String(actualHeight));
+
+                const availableWidth = Math.max(viewport.clientWidth, 1);
+                const availableHeight = Math.max(viewport.clientHeight, 1);
+                const scale = Math.min(availableWidth / actualWidth, availableHeight / actualHeight, 1);
+                const previewWidth = Math.max(1, Math.floor(actualWidth * scale));
+                const previewHeight = Math.max(1, Math.floor(actualHeight * scale));
+
+                stage.setAttribute('width', String(previewWidth));
+                stage.setAttribute('height', String(previewHeight));
+                syncUrl();
+            };
+
+            const queuePreviewSize = () => {
+                window.requestAnimationFrame(syncPreviewSize);
+            };
+
+            const applySurface = surfaceKey => {
+                body.classList.remove(...bodySurfaceClasses);
+                body.classList.add(...(canvasSurfaceClasses[surfaceKey] || canvasSurfaceClasses.grey));
+                body.classList.add(surfaceKey === 'black' ? 'text-white' : 'text-black');
+
+                surfaceButtons.forEach(button => {
+                    button.setAttribute('aria-pressed', String(button.dataset.canvasSurface === surfaceKey));
+                });
+
+                syncUrl();
+            };
+
+            const applyCleanMode = isClean => {
+                const nextLabel = isClean ? 'Show toolbar' : 'Hide toolbar';
+                const nextIconClass = isClean ? 'ri-eye-line text-icon-xl' : 'ri-eye-off-line text-icon-xl';
+
+                cleanToggle.setAttribute('aria-pressed', String(isClean));
+                cleanToggle.setAttribute('aria-label', nextLabel);
+                cleanToggleIcon.className = nextIconClass;
+                panelToggle.setAttribute('aria-pressed', String(isClean));
+                panelToggle.setAttribute('aria-label', nextLabel);
+                panelToggleIcon.className = nextIconClass;
+                toolbar.classList.toggle('hidden', isClean);
+                canvas.classList.toggle('py-20', !isClean);
+                canvas.classList.toggle('md:py-24', !isClean);
+                canvas.classList.toggle('lg:py-32', !isClean);
+                canvas.classList.toggle('py-0', isClean);
+                queuePreviewSize();
+            };
+
+            const setComponentSelection = componentKey => {
+                const preset = componentSources[componentKey] || componentSources.buttons;
+                activeComponentKey = componentSources[componentKey] ? componentKey : 'buttons';
+                componentDropdown.classList.add('has-value');
+                componentValue.textContent = preset.label;
+                componentItems.forEach(item => {
+                    item.setAttribute('aria-selected', String(item.dataset.value === activeComponentKey));
+                });
+            };
+
+            const renderUnavailable = () => {
+                captureContent.className = defaultContentClass;
+                captureContent.innerHTML = '<div class="alert alert-danger alert-md" role="alert"><span class="alert-icon"><i class="ri-close-circle-line" aria-hidden="true"></i></span><div class="alert-copy"><p class="alert-title">Component unavailable</p><p class="alert-text">Could not load the selected component section.</p></div></div>';
+            };
+
+            const renderComponent = async (componentKey, options = {}) => {
+                const preset = componentSources[componentKey] || componentSources.buttons;
+                setComponentSelection(componentKey);
+
+                if (!options.keepSize) {
+                    widthInput.value = String(preset.width || defaultCanvas.width);
+                    heightInput.value = String(preset.height || defaultCanvas.height);
+                }
+
+                if (!options.keepSurface) {
+                    applySurface(preset.surface || 'grey');
+                }
+
+                captureContent.className = preset.contentClass || defaultContentClass;
+                captureContent.innerHTML = '<div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true"><i class="ri-loader-4-line icon icon-lg"></i></div>';
+
+                try {
+                    const doc = await getSourceDocument(preset.file);
+                    const section = doc.getElementById(preset.section);
+                    const panel = section?.querySelector('.panel');
+
+                    if (!panel) {
+                        throw new Error('Missing panel');
+                    }
+
+                    captureContent.innerHTML = panel.outerHTML;
+                } catch (error) {
+                    renderUnavailable();
+                }
+
+                queuePreviewSize();
+            };
+
+            [widthInput, heightInput].forEach(input => {
+                input.addEventListener('change', queuePreviewSize);
+                input.addEventListener('blur', queuePreviewSize);
+                input.addEventListener('keydown', event => {
+                    if (event.key === 'Enter') {
+                        queuePreviewSize();
+                    }
+                });
+            });
+
+            surfaceButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    applySurface(button.dataset.canvasSurface);
+                });
+            });
+
+            componentItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    componentDropdown.classList.remove('is-open');
+                    componentTrigger.setAttribute('aria-expanded', 'false');
+                    renderComponent(item.dataset.value);
+                });
+            });
+
+            panelToggle.addEventListener('click', () => {
+                applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
+            });
+
+            cleanToggle.addEventListener('click', () => {
+                applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key.toLowerCase() === 'c') {
+                    event.preventDefault();
+                    applyCleanMode(cleanToggle.getAttribute('aria-pressed') !== 'true');
+                }
+            });
+
+            window.addEventListener('resize', queuePreviewSize);
+
+            const keepSize = url.searchParams.has('w') && url.searchParams.has('h');
+            const keepSurface = url.searchParams.has('surface');
+            const initialComponent = url.searchParams.get('component') || 'buttons';
+            const initialSurface = url.searchParams.get('surface') || 'grey';
+            const initialClean = url.searchParams.get('clean') === '1';
+
+            widthInput.value = String(clampDimension(url.searchParams.get('w'), defaultCanvas.width));
+            heightInput.value = String(clampDimension(url.searchParams.get('h'), defaultCanvas.height));
+
+            if (keepSurface) {
+                applySurface(initialSurface);
+            }
+
+            applyCleanMode(initialClean);
+            renderComponent(initialComponent, { keepSize, keepSurface });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
