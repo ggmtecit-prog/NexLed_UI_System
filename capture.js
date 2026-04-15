@@ -4,6 +4,10 @@ const canvasSurfaceClasses = { white: ['bg-white'], grey: ['bg-grey-tertiary'], 
 const bodySurfaceClasses = ['bg-white', 'bg-grey-tertiary', 'bg-black', 'text-black', 'text-white'];
 const controlParamKeys = ['pattern', 'variant', 'size', 'state'];
 const sizeLabel = { xs: 'Extra Small', sm: 'Small', md: 'Medium', lg: 'Large' };
+const defaultZoom = 1;
+const minZoom = 0.25;
+const maxZoom = 3;
+const zoomStep = 0.1;
 const sourceCache = new Map();
 
 const option = (value, label) => ({ value, label });
@@ -136,6 +140,22 @@ function clampDimension(value, fallback) {
     return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
+function clampZoom(value, fallback = defaultZoom) {
+    const parsed = typeof value === 'number' ? value : Number.parseFloat(value);
+    if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
+    return Math.min(maxZoom, Math.max(minZoom, parsed));
+}
+
+function formatZoom(zoom) {
+    return `${Math.round(clampZoom(zoom) * 100)}%`;
+}
+
+function parseZoomInput(value) {
+    const normalized = String(value || '').replace('%', '').trim();
+    if (!normalized) return defaultZoom;
+    return clampZoom(Number.parseFloat(normalized) / 100, defaultZoom);
+}
+
 function titleCase(value) {
     return value.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 }
@@ -204,14 +224,19 @@ function isolateLiveNode(doc, descriptor) {
     wrapper.appendChild(target);
 }
 
-async function buildLiveFrame(descriptor, version) {
+function createLiveFrame(version) {
     const frame = document.createElement('iframe');
-    frame.className = 'w-full h-full border-0 bg-transparent';
+    frame.className = 'w-full h-full border-0 bg-transparent hidden';
     frame.setAttribute('title', 'Live component preview');
     frame.setAttribute('loading', 'eager');
+    frame.dataset.renderVersion = String(version);
+    return frame;
+}
+
+async function loadLiveFrame(frame, descriptor) {
     const doc = await waitForFrameLoad(frame, descriptor.file);
     isolateLiveNode(doc, descriptor);
-    frame.dataset.renderVersion = String(version);
+    frame.classList.remove('hidden');
     return frame;
 }
 
@@ -325,11 +350,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const cleanToggleIcon = document.getElementById('clean-toggle-icon');
     const widthInput = document.getElementById('canvas-width');
     const heightInput = document.getElementById('canvas-height');
+    const zoomInput = document.getElementById('preview-zoom');
+    const zoomOut = document.getElementById('zoom-out');
+    const zoomIn = document.getElementById('zoom-in');
+    const zoomReset = document.getElementById('zoom-reset');
     const surfaceButtons = Array.from(document.querySelectorAll('[data-canvas-surface]'));
     const url = new URL(window.location.href);
     let activeFamilyKey = 'buttons';
     let activeValues = normalizeControlValues('buttons');
     let renderVersion = 0;
+    let zoomLevel = defaultZoom;
 
     const syncUrl = () => {
         const activeSurface = surfaceButtons.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.canvasSurface || 'grey';
@@ -338,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         url.searchParams.set('w', String(clampDimension(widthInput.value, defaultCanvas.width)));
         url.searchParams.set('h', String(clampDimension(heightInput.value, defaultCanvas.height)));
         url.searchParams.set('surface', activeSurface);
+        url.searchParams.set('zoom', String(Math.round(clampZoom(zoomLevel) * 100)));
         url.searchParams.delete('component');
         controlParamKeys.forEach(key => {
             if (activeValues[key]) url.searchParams.set(key, activeValues[key]);
@@ -359,12 +390,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const availableWidth = Math.max(viewport.clientWidth, 1);
         const availableHeight = Math.max(viewport.clientHeight, 1);
         const scale = Math.min(availableWidth / actualWidth, availableHeight / actualHeight, 1);
-        stage.setAttribute('width', String(Math.max(1, Math.floor(actualWidth * scale))));
-        stage.setAttribute('height', String(Math.max(1, Math.floor(actualHeight * scale))));
+        const previewScale = scale * clampZoom(zoomLevel);
+        zoomInput.value = formatZoom(zoomLevel);
+        stage.setAttribute('width', String(Math.max(1, Math.floor(actualWidth * previewScale))));
+        stage.setAttribute('height', String(Math.max(1, Math.floor(actualHeight * previewScale))));
         syncUrl();
     };
 
     const queuePreviewSize = () => window.requestAnimationFrame(syncPreviewSize);
+
+    const setZoom = nextZoom => {
+        zoomLevel = clampZoom(nextZoom, defaultZoom);
+        zoomInput.value = formatZoom(zoomLevel);
+        queuePreviewSize();
+    };
 
     const applySurface = surfaceKey => {
         body.classList.remove(...bodySurfaceClasses);
@@ -415,13 +454,16 @@ document.addEventListener('DOMContentLoaded', () => {
             heightInput.value = String(descriptor.height || defaultCanvas.height);
         }
         if (!options.keepSurface) applySurface(descriptor.surface || 'grey');
-        captureContent.className = defaultContentClass;
-        captureContent.innerHTML = '<div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true"><i class="ri-loader-4-line icon icon-lg"></i></div>';
+        const frame = createLiveFrame(version);
+        const loader = document.createElement('div');
+        loader.className = defaultContentClass;
+        loader.innerHTML = '<div class="icon-box icon-box-neutral icon-box-lg" aria-hidden="true"><i class="ri-loader-4-line icon icon-lg"></i></div>';
+        captureContent.className = 'w-full h-full';
+        captureContent.replaceChildren(frame, loader);
         try {
-            const frame = await buildLiveFrame(descriptor, version);
+            await loadLiveFrame(frame, descriptor);
             if (version !== renderVersion) return;
-            captureContent.className = 'w-full h-full';
-            captureContent.replaceChildren(frame);
+            loader.remove();
         } catch (error) {
             if (version !== renderVersion) return;
             captureContent.className = defaultContentClass;
@@ -443,6 +485,13 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('blur', queuePreviewSize);
         input.addEventListener('keydown', event => { if (event.key === 'Enter') queuePreviewSize(); });
     });
+
+    zoomInput.addEventListener('change', () => setZoom(parseZoomInput(zoomInput.value)));
+    zoomInput.addEventListener('blur', () => setZoom(parseZoomInput(zoomInput.value)));
+    zoomInput.addEventListener('keydown', event => { if (event.key === 'Enter') setZoom(parseZoomInput(zoomInput.value)); });
+    zoomOut.addEventListener('click', () => setZoom(zoomLevel - zoomStep));
+    zoomIn.addEventListener('click', () => setZoom(zoomLevel + zoomStep));
+    zoomReset.addEventListener('click', () => setZoom(defaultZoom));
 
     surfaceButtons.forEach(button => button.addEventListener('click', () => applySurface(button.dataset.canvasSurface)));
 
@@ -509,6 +558,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialValues = Object.fromEntries(controlParamKeys.map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value)));
     widthInput.value = String(clampDimension(url.searchParams.get('w'), defaultCanvas.width));
     heightInput.value = String(clampDimension(url.searchParams.get('h'), defaultCanvas.height));
+    zoomLevel = clampZoom((Number.parseFloat(url.searchParams.get('zoom')) || 100) / 100, defaultZoom);
+    zoomInput.value = formatZoom(zoomLevel);
     if (keepSurface) applySurface(url.searchParams.get('surface') || 'grey');
     applyCleanMode(url.searchParams.get('clean') === '1');
     setFamily(initialFamily, initialValues, { keepSize, keepSurface });

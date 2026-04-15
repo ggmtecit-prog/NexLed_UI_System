@@ -58,6 +58,21 @@
                             </div>
                         </div>
 
+                        <div class="flex items-center gap-12" aria-label="Preview zoom">
+                            <button id="zoom-out" type="button" class="btn btn-secondary btn-icon btn-md" aria-label="Zoom out">
+                                <i class="ri-subtract-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                            <div class="w-56 md:w-64">
+                                <input id="preview-zoom" type="text" inputmode="decimal" class="input input-sm text-center" value="100%" aria-label="Preview zoom">
+                            </div>
+                            <button id="zoom-in" type="button" class="btn btn-secondary btn-icon btn-md" aria-label="Zoom in">
+                                <i class="ri-add-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                            <button id="zoom-reset" type="button" class="btn btn-ghost btn-icon btn-md" aria-label="Reset zoom">
+                                <i class="ri-focus-3-line text-icon-xl" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
                         <div class="flex items-center gap-12" role="group" aria-label="Canvas background">
                             <button type="button" class="btn btn-secondary btn-icon btn-md" data-canvas-surface="white" aria-pressed="false" aria-label="White canvas">
                                 <i class="ri-sun-line text-icon-xl" aria-hidden="true"></i>
