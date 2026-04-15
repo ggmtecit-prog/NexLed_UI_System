@@ -567,16 +567,17 @@ body {
 .btn-primary {
   background: var(--color-green-primary);
   color: var(--color-white);
-  border-color: var(--color-green-primary);
+  border-color: transparent;
 }
 
 .btn-primary:hover {
   background: var(--color-green-secondary);
+  border-color: transparent;
 }
 
 .btn-primary:active {
   background: var(--color-green-secondary);
-  border-color: var(--color-green-secondary);
+  border-color: transparent;
 }
 
 .btn-secondary {
