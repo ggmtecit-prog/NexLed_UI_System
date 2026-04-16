@@ -18,24 +18,24 @@ const option = (value, label) => ({ value, label });
 const sizeOptions = ['xs', 'sm', 'md', 'lg'].map(value => option(value, sizeLabel[value]));
 const badgeToneOptions = ['primary', 'success', 'danger', 'neutral', 'warning', 'info'].map(value => option(value, titleCase(value)));
 const repeatControlConfig = [
-    { key: 'count', widthClass: 'md:w-40', options: () => Array.from({ length: 12 }, (_, index) => option(String(index + 1), String(index + 1))) },
+    { key: 'count', widthClass: 'w-40', options: () => Array.from({ length: 12 }, (_, index) => option(String(index + 1), String(index + 1))) },
     {
         key: 'layout',
-        widthClass: 'md:w-48',
+        widthClass: 'w-48',
         options: values => (Number.parseInt(values.count, 10) || 1) <= 1
             ? [option('single', 'Single')]
             : [option('row', 'Row'), option('column', 'Column'), option('grid', 'Grid')]
     },
     {
         key: 'columns',
-        widthClass: 'md:w-40',
+        widthClass: 'w-40',
         options: values => values.layout === 'grid'
             ? Array.from({ length: Math.max(1, Math.min(4, Number.parseInt(values.count, 10) || 1)) }, (_, index) => option(String(index + 1), String(index + 1)))
             : [option('1', '1')]
     },
     {
         key: 'gap',
-        widthClass: 'md:w-48',
+        widthClass: 'w-48',
         options: values => (Number.parseInt(values.count, 10) || 1) <= 1
             ? [option('md', 'Medium')]
             : [option('sm', 'Tight'), option('md', 'Medium'), option('lg', 'Large'), option('xl', 'XL')]
@@ -47,10 +47,10 @@ const families = {
         label: 'Buttons',
         defaults: { pattern: 'text', variant: 'primary', size: 'md', state: 'default' },
         controls: [
-            { key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('text', 'Text'), option('icon-text', 'Icon + Text'), option('icon', 'Icon'), option('toggle', 'Toggle')] },
+            { key: 'pattern', widthClass: 'w-btn-md', options: () => [option('text', 'Text'), option('icon-text', 'Icon + Text'), option('icon', 'Icon'), option('toggle', 'Toggle')] },
             {
                 key: 'variant',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => {
                     if (values.pattern === 'text') return [option('primary', 'Primary'), option('secondary', 'Secondary'), option('ghost', 'Ghost')];
                     if (values.pattern === 'icon') return [option('secondary', 'Secondary'), option('ghost', 'Ghost')];
@@ -58,10 +58,10 @@ const families = {
                     return [option('secondary', 'Secondary')];
                 }
             },
-            { key: 'size', widthClass: 'md:w-btn-md', options: () => sizeOptions },
+            { key: 'size', widthClass: 'w-btn-md', options: () => sizeOptions },
             {
                 key: 'state',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => {
                     if (values.pattern === 'toggle') return [option('default', 'Default'), option('active', 'Active'), option('disabled', 'Disabled')];
                     if (values.pattern === 'icon' && values.variant === 'secondary') return [option('default', 'Default'), option('active', 'Active'), option('disabled', 'Disabled')];
@@ -74,11 +74,11 @@ const families = {
         label: 'Badges',
         defaults: { pattern: 'label', variant: 'primary', size: 'md', state: 'default' },
         controls: [
-            { key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('label', 'Label'), option('button', 'Button'), option('dot', 'Dot')] },
-            { key: 'variant', widthClass: 'md:w-btn-md', options: () => badgeToneOptions },
+            { key: 'pattern', widthClass: 'w-btn-md', options: () => [option('label', 'Label'), option('button', 'Button'), option('dot', 'Dot')] },
+            { key: 'variant', widthClass: 'w-btn-md', options: () => badgeToneOptions },
             {
                 key: 'size',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => {
                     if (values.pattern === 'label') return [option('lg', 'Large'), option('md', 'Medium'), option('sm', 'Small')];
                     if (values.pattern === 'button') return [option('md', 'Medium')];
@@ -87,7 +87,7 @@ const families = {
             },
             {
                 key: 'state',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => values.pattern === 'button'
                     ? [option('default', 'Default'), option('disabled', 'Disabled'), option('aria-disabled', 'ARIA Disabled')]
                     : [option('default', 'Default')]
@@ -98,15 +98,15 @@ const families = {
         label: 'Text Field',
         defaults: { pattern: 'standard', size: 'md', state: 'default' },
         controls: [
-            { key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('standard', 'Standard'), option('success', 'Success'), option('error', 'Error')] },
+            { key: 'pattern', widthClass: 'w-btn-md', options: () => [option('standard', 'Standard'), option('success', 'Success'), option('error', 'Error')] },
             {
                 key: 'size',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => { if (values.pattern !== 'standard') return [option('md', 'Medium')]; if (values.state === 'disabled') return [option('md', 'Medium')]; return [option('sm', 'Small'), option('md', 'Medium'), option('lg', 'Large')]; }
             },
             {
                 key: 'state',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => values.pattern === 'standard' ? [option('default', 'Default'), option('disabled', 'Disabled')] : [option('default', 'Default')]
             }
         ]
@@ -115,26 +115,26 @@ const families = {
         label: 'Checkboxes',
         defaults: { size: 'md', state: 'checked' },
         controls: [
-            { key: 'size', widthClass: 'md:w-btn-md', options: () => [option('lg', 'Large'), option('md', 'Medium'), option('sm', 'Small')] },
-            { key: 'state', widthClass: 'md:w-btn-md', options: () => [option('unchecked', 'Unchecked'), option('checked', 'Checked'), option('disabled', 'Disabled')] }
+            { key: 'size', widthClass: 'w-btn-md', options: () => [option('lg', 'Large'), option('md', 'Medium'), option('sm', 'Small')] },
+            { key: 'state', widthClass: 'w-btn-md', options: () => [option('unchecked', 'Unchecked'), option('checked', 'Checked'), option('disabled', 'Disabled')] }
         ]
     },
     accordion: {
         label: 'Accordion',
         defaults: { size: 'md', state: 'closed' },
         controls: [
-            { key: 'size', widthClass: 'md:w-btn-md', options: () => [option('sm', 'Small'), option('md', 'Medium'), option('lg', 'Large')] },
-            { key: 'state', widthClass: 'md:w-btn-md', options: () => [option('closed', 'Closed'), option('open', 'Open'), option('disabled', 'Disabled')] }
+            { key: 'size', widthClass: 'w-btn-md', options: () => [option('sm', 'Small'), option('md', 'Medium'), option('lg', 'Large')] },
+            { key: 'state', widthClass: 'w-btn-md', options: () => [option('closed', 'Closed'), option('open', 'Open'), option('disabled', 'Disabled')] }
         ]
     },
     dropdown: {
         label: 'Dropdown',
         defaults: { pattern: 'standard', size: 'md', state: 'empty' },
         controls: [
-            { key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('standard', 'Standard'), option('minimal', 'Minimal'), option('top-panel', 'Top Panel')] },
+            { key: 'pattern', widthClass: 'w-btn-md', options: () => [option('standard', 'Standard'), option('minimal', 'Minimal'), option('top-panel', 'Top Panel')] },
             {
                 key: 'size',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => {
                     if (values.pattern === 'standard' && values.state === 'selected') return [option('md', 'Medium')];
                     if (values.pattern === 'standard') return sizeOptions;
@@ -144,7 +144,7 @@ const families = {
             },
             {
                 key: 'state',
-                widthClass: 'md:w-btn-md',
+                widthClass: 'w-btn-md',
                 options: values => {
                     if (values.pattern === 'standard') return [option('empty', 'Empty'), option('selected', 'Selected')];
                     if (values.pattern === 'minimal') return [option('selected', 'Selected')];
@@ -153,14 +153,14 @@ const families = {
             }
         ]
     },
-    cards: { label: 'Cards', defaults: { pattern: 'title-copy' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-lg', options: () => [option('text-only', 'Text Only'), option('title-copy', 'Title + Copy'), option('icon-link', 'Icon + Link'), option('actions', 'Actions'), option('metric', 'Metric'), option('image-only', 'Image Only')] }] },
-    alerts: { label: 'Alerts', defaults: { pattern: 'default' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-lg', options: () => [option('default', 'Default'), option('success', 'Success'), option('warning', 'Warning'), option('info', 'Info'), option('danger', 'Danger'), option('large', 'Large'), option('disabled', 'Disabled')] }] },
-    'empty-state': { label: 'Empty State', defaults: { pattern: 'folders' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-lg', options: () => [option('search', 'Search'), option('folders', 'Folders'), option('review', 'Review'), option('compact', 'Compact'), option('action', 'Action'), option('disabled', 'Disabled')] }] },
-    pagination: { label: 'Pagination', defaults: { pattern: 'standard' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('standard', 'Standard'), option('compact', 'Compact')] }] },
-    'data-table': { label: 'Data Table', defaults: { pattern: 'floating' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('floating', 'Floating Head')] }] },
-    toast: { label: 'Toast', defaults: { pattern: 'success' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('success', 'Success'), option('info', 'Info'), option('warning', 'Warning'), option('danger', 'Danger'), option('action', 'Action')] }] },
-    sidebar: { label: 'Sidebar', defaults: { pattern: 'rail' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('rail', 'Rail')] }] },
-    footer: { label: 'Footer', defaults: { pattern: 'core' }, controls: [{ key: 'pattern', widthClass: 'md:w-btn-md', options: () => [option('core', 'Core'), option('bottom', 'Bottom Bar')] }] }
+    cards: { label: 'Cards', defaults: { pattern: 'title-copy' }, controls: [{ key: 'pattern', widthClass: 'w-btn-lg', options: () => [option('text-only', 'Text Only'), option('title-copy', 'Title + Copy'), option('icon-link', 'Icon + Link'), option('actions', 'Actions'), option('metric', 'Metric'), option('image-only', 'Image Only')] }] },
+    alerts: { label: 'Alerts', defaults: { pattern: 'default' }, controls: [{ key: 'pattern', widthClass: 'w-btn-lg', options: () => [option('default', 'Default'), option('success', 'Success'), option('warning', 'Warning'), option('info', 'Info'), option('danger', 'Danger'), option('large', 'Large'), option('disabled', 'Disabled')] }] },
+    'empty-state': { label: 'Empty State', defaults: { pattern: 'folders' }, controls: [{ key: 'pattern', widthClass: 'w-btn-lg', options: () => [option('search', 'Search'), option('folders', 'Folders'), option('review', 'Review'), option('compact', 'Compact'), option('action', 'Action'), option('disabled', 'Disabled')] }] },
+    pagination: { label: 'Pagination', defaults: { pattern: 'standard' }, controls: [{ key: 'pattern', widthClass: 'w-btn-md', options: () => [option('standard', 'Standard'), option('compact', 'Compact')] }] },
+    'data-table': { label: 'Data Table', defaults: { pattern: 'floating' }, controls: [{ key: 'pattern', widthClass: 'w-btn-md', options: () => [option('floating', 'Floating Head')] }] },
+    toast: { label: 'Toast', defaults: { pattern: 'success' }, controls: [{ key: 'pattern', widthClass: 'w-btn-md', options: () => [option('success', 'Success'), option('info', 'Info'), option('warning', 'Warning'), option('danger', 'Danger'), option('action', 'Action')] }] },
+    sidebar: { label: 'Sidebar', defaults: { pattern: 'rail' }, controls: [{ key: 'pattern', widthClass: 'w-btn-md', options: () => [option('rail', 'Rail')] }] },
+    footer: { label: 'Footer', defaults: { pattern: 'core' }, controls: [{ key: 'pattern', widthClass: 'w-btn-md', options: () => [option('core', 'Core'), option('bottom', 'Bottom Bar')] }] }
 };
 
 const genericFamilyDescriptors = {
@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const options = getControlOptions(activeFamilyKey, control.key, activeValues);
             if (options.length <= 1) return '';
             const selected = options.find(item => item.value === activeValues[control.key]) || options[0];
-            return `<div class="dropdown dropdown-md w-full ${control.widthClass || 'md:w-btn-md'} has-value" data-control-key="${control.key}"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="${family.label} ${control.key} options">${dropdownMenu(options, selected.value)}</ul></div>`;
+            return `<div class="dropdown dropdown-md w-full ${control.widthClass || 'w-btn-md'} has-value" data-control-key="${control.key}"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="${family.label} ${control.key} options">${dropdownMenu(options, selected.value)}</ul></div>`;
         }).join('');
     };
 
@@ -789,7 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const options = getRepeatOptions(control.key, activeRepeatValues);
             if (options.length <= 1) return '';
             const selected = options.find(item => item.value === activeRepeatValues[control.key]) || options[0];
-            return `<div class="dropdown dropdown-md w-full ${control.widthClass || 'md:w-48'} has-value" data-repeat-key="${control.key}"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Repeat ${control.key} options">${dropdownMenu(options, selected.value)}</ul></div>`;
+            return `<div class="dropdown dropdown-md w-full ${control.widthClass || 'w-48'} has-value" data-repeat-key="${control.key}"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Repeat ${control.key} options">${dropdownMenu(options, selected.value)}</ul></div>`;
         }).join('');
     };
 
@@ -801,7 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const options = Array.from({ length: getActiveItemCount() }, (_, index) => option(String(index), `Item ${index + 1}`));
         const selected = options.find(item => item.value === String(activeSlotIndex)) || options[0];
-        slotControlsWrap.innerHTML = `<div class="dropdown dropdown-md w-full md:w-48 has-value" data-slot-key="item"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Item selection options">${dropdownMenu(options, selected.value)}</ul></div>`;
+        slotControlsWrap.innerHTML = `<div class="dropdown dropdown-md w-full w-48 has-value" data-slot-key="item"><button type="button" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="dropdown-value">${selected.label}</span><i class="ri-arrow-down-s-line dropdown-arrow" aria-hidden="true"></i></button><ul class="dropdown-menu custom-scrollbar" role="listbox" aria-label="Item selection options">${dropdownMenu(options, selected.value)}</ul></div>`;
     };
 
     const renderActiveComponent = async options => {
