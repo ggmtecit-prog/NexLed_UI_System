@@ -5534,6 +5534,7 @@ button.language-selector-trigger .language-selector-value {
 
 .dropdown-menu {
   --scrollbar-size: var(--space-8);
+  --scrollbar-thumb-inset: var(--space-2);
   --scrollbar-track: var(--color-white);
   scrollbar-gutter: auto;
 }
@@ -5642,6 +5643,7 @@ button.language-selector-trigger .language-selector-value {
 
 .language-selector-menu {
   --scrollbar-size: var(--space-8);
+  --scrollbar-thumb-inset: var(--space-2);
   --scrollbar-track: var(--color-white);
   scrollbar-gutter: auto;
   left: 0;
