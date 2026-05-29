@@ -3121,8 +3121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateClearState() {
-            const hasTypedQuery = input.value.trim() !== '' && (!selectedOption || input.value.trim() !== getOptionLabel(selectedOption));
-            const shouldShowClear = !isDisabled() && hasTypedQuery;
+            const hasValue = Boolean(selectedOption) || input.value.trim() !== '';
+            const shouldShowClear = !isDisabled() && hasValue;
 
             clearButton.disabled = !shouldShowClear;
             clearButton.hidden = !shouldShowClear;
