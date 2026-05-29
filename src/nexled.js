@@ -2894,8 +2894,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 selectOption(option);
-                closeComboboxPanel(combobox, false);
                 input.focus();
+                closeComboboxPanel(combobox, false);
             });
         });
 
